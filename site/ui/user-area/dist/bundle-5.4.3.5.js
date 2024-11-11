@@ -1,2 +1,6969 @@
-/*! For license information please see bundle-5.4.3.5.js.LICENSE.txt */
-!function(){var t,e,r,n,a,i={9579:function(t,e,r){"use strict";function n(t){var e;return!(null===(e=this.me)||void 0===e||!e.rights)&&this.me.rights.find((function(e){return e===t}))}r.d(e,{A:function(){return n}})},94149:function(t,e,r){"use strict";function n(t){return{"-1":this.$gettext("No connection to the server"),1:this.$gettext("You have been logged out because you signed in with this account on another device."),3:this.$gettext("Invalid username or password"),4:this.$gettext("Authorization error: Login rejected"),5:this.$pgettext("An error message displayed if the current number of users exceeds the maximum number permitted by the license.","Maximum number of licensed users has been reached. Please try again later."),"005":this.$pgettext("An error message displayed if the current number of unregistered (guest) users participating in the conference exceeds the maximum number permitted by the license.","Maximum number of guest users has been reached. Please try again later."),6:this.$gettext("Authorization error: Your account is inactive"),2e3:this.$pgettext("Error message","An error occurred. Please reload this page to continue."),2001:this.$pgettext("Error message","Not enough free space on your hard drive to continue the conference."),2002:this.$pgettext("Error message","Please enable cookies in your browser to join the conference.")}[t]||this.$pgettext("Error message","An error occurred. Please reload this page or contact your system administrator. Error code: %error_code").replace("%error_code",t)}r.d(e,{A:function(){return n}})},42282:function(t,e,r){"use strict";function n(t){return{0:this.$gettext("The user has rejected your call"),1:this.$gettext("Busy"),2:this.$gettext("Participant is busy"),3:this.$gettext("User is not available now"),4:this.$gettext("Invalid conference"),7:this.$pgettext("An error message","You cannot join meetings at the moment due to license restrictions. Please contact your administrator."),8:this.$gettext("Access denied"),9:this.$gettext("Rejected by logout"),10:this.$gettext("Rejected by resource limit"),11:this.$gettext("Rejected by local resource limit"),12:this.$gettext("Enter conference password"),13:this.$gettext("Wrong password"),15:this.$gettext("Rejected by bad rating"),401:this.$gettext("Conference does not exist"),403:this.$gettext("Invalid conference"),405:this.$gettext("Access denied"),407:this.$pgettext("An error message displayed if the current number of unregistered (guest) users participating in the conference exceeds the maximum number permitted by the license.","Maximum number of guest users has been reached. Please try again later."),408:this.$gettext("Unable to start a conference"),411:this.$pgettext("A notification displayed when the current number of conferences hosted simultaneously exceeds the maximum number permitted by the license.","Maximum number of active conferences on the server has been reached. Please try again later.")}[t]||this.$pgettext("Error message","An error occurred. Please reload this page or contact your server administrator. Error code: %error_code").replace("%error_code",t)}r.d(e,{A:function(){return n}})},22911:function(t,e,r){"use strict";r.d(e,{rC:function(){return i},I0:function(){return n},IT:function(){return a},zM:function(){return o}});var n={0:"UNKNOWN",1:"CAMERA",2:"MICROPHONE",3:"SPEAKERS",4:"SCREEN",5:"CAPTURE_CARD",UNKNOWN:0,CAMERA:1,MICROPHONE:2,SPEAKERS:3,SCREEN:4,CAPTURE_CARD:5},a={0:"UNKNOWN",1:"CAMERA",2:"MICROPHONE",3:"SPEAKERS",4:"SCREEN",UNKNOWN:0,CAMERA:1,MICROPHONE:2,SPEAKERS:3,SCREEN:4},i={0:"UNKNOWN_ERROR",1:"INVALID_DEVICE",2:"INVALID_CAPTURE_CONFIGURATION",3:"NOT_AVAILABLE",4:"PERMISSION_DENIED",UNKNOWN_ERROR:0,INVALID_DEVICE:1,INVALID_CAPTURE_CONFIGURATION:2,NOT_AVAILABLE:3,PERMISSION_DENIED:4},o=r(36382)},13698:function(t,e,r){"use strict";r(52675),r(89463),r(66412),r(60193),r(92168),r(2259),r(86964),r(83142),r(83237),r(61833),r(67947),r(31073),r(45700),r(78125),r(20326),r(16280),r(30067),r(4294),r(18107),r(28706),r(26835),r(33771),r(2008),r(50113),r(48980),r(10838),r(13451),r(46449),r(78350),r(23418),r(74423),r(23792),r(48598),r(62062),r(31051),r(44114),r(34782),r(26910),r(87478),r(54554),r(9678),r(57145),r(71658),r(93514),r(30237),r(11558),r(54743),r(46761),r(11745),r(89572),r(48957),r(62010),r(55081),r(33110),r(4731),r(36033),r(93153),r(82326),r(36389),r(64444),r(8085),r(77762),r(65070),r(60605),r(39469),r(72152),r(75376),r(56624),r(11367),r(5914),r(78553),r(98690),r(60479),r(70761),r(2892),r(45374),r(25428),r(32637),r(40150),r(59149),r(64601),r(44435),r(87220),r(25843),r(62337),r(9868),r(69085),r(17427),r(87607),r(5506),r(52811),r(53921),r(83851),r(81278),r(1480),r(40875),r(78347),r(29908),r(94052),r(94003),r(221),r(79432),r(9220),r(7904),r(93967),r(63548),r(93941),r(10287),r(26099),r(16034),r(3362),r(96167),r(93518),r(9391),r(39796),r(60825),r(87411),r(21211),r(40888),r(9065),r(86565),r(32812),r(84634),r(71137),r(30985),r(34268),r(34873),r(15472),r(84864),r(57465),r(27495),r(69479),r(87745),r(90906),r(38781),r(31415),r(67357),r(23860),r(99449),r(27337),r(21699),r(42043),r(47764),r(71761),r(28543),r(35701),r(68156),r(85906),r(42781),r(25440),r(79978),r(5746),r(90744),r(11392),r(67438),r(42762),r(39202),r(43359),r(89907),r(11898),r(35490),r(5745),r(94298),r(60268),r(69546),r(20781),r(50778),r(89195),r(46276),r(48718),r(16308),r(34594),r(29833),r(46594),r(72107),r(95477),r(21489),r(22134),r(3690),r(61740),r(48140),r(81630),r(72170),r(75044),r(69539),r(31694),r(89955),r(21903),r(91134),r(33206),r(48345),r(44496),r(66651),r(12887),r(19369),r(66812),r(8995),r(52568),r(31575),r(36072),r(88747),r(28845),r(29423),r(57301),r(373),r(86614),r(41405),r(37467),r(44732),r(33684),r(79577),r(73772),r(30958),r(2945),r(42207),r(23500),r(62953),r(55815),r(64979),r(79739),r(59848),r(122),r(13611),r(71678),r(3296),r(2222),r(27208),r(48408),r(14603),r(47566),r(98721),r(7452),r(78624),r(21579),r(94092);var n=r(64583);window.Promise=n.Promise,-1!==navigator.userAgent.indexOf("QtWebEngine/5.11.0")&&r.e(205).then(r.t.bind(r,50133,23)),Math.trunc||(Math.trunc=function(t){return t=+t,isFinite(t)?t-t%1||(t<0?-0:0===t?t:0):t});var a=r(26678),i=r.n(a),o=r(95353),s=r(91563),c=r(40173),l=r(58723),u=r(58814),d=r.n(u),f=r(87810),p=r(42197),h=function(){var t=this,e=t._self._c;return e("div",{staticClass:"router-container main-background",class:{"router-container--ripple-disabled":t.rippleDisabled}},[t.appStateStore.error?e("MainError",{attrs:{state:t.appStateStore.error}}):[e("transition",{attrs:{appear:"",name:"main-screen-animation",mode:"out-in"}},[e("router-view")],1),t._v(" "),t.showWarningSsl?e("WarningSsl",{on:{close:function(e){t.appStateStore.warningSslIsVisible=!1}}}):t._e(),t._v(" "),t.showServerDocument?e("ServerDocument",{on:{close:function(e){t.appStateStore.serverDocumentIsVisible=!1}}}):t._e(),t._v(" "),t.authManagerStore.visibility?e("Authorization",{ref:"authorizationModule",attrs:{authManifest:t.authManifest,adminContacts:t.serverContacts,authHandler:t.authHandler},on:{close:t.closeAuthHandler,guestLoginSuccess:function(e){t.$store.dispatch("auth/checkAuthorization",e),t.afterSignInHandler()},userLoginSuccess:t.afterSignInHandler,backToRegisterInConference:function(e){t.appStateStore.showRegistrationPopup=!0},outerAuth:t.outerAuthHandler}}):t._e(),t._v(" "),t.appStateStore.warning?e("CommonWarningModal",{attrs:{reason:t.appStateStore.warning},on:{close:function(e){t.appStateStore.warning=null}}}):t._e(),t._v(" "),t.appStateStore.adminContactsAreVisible?e("AdminContactsModal",{on:{close:function(e){t.appStateStore.adminContactsAreVisible=!1}}}):t._e(),t._v(" "),e("TheNotifier",{ref:"notifier-main"})],t._v(" "),t.isMounted?e("iframe",{staticStyle:{display:"none"},attrs:{src:t.authManagerStore.outerLogoutSrc},on:{load:t.loadOuterLogoutUrl}}):t._e()],2)};h._withStripped=!0;var g=function(){var t=this,e=t._self._c;return e("transition",{attrs:{appear:"",name:"authorization"}},[e("div",{staticClass:"authorization-wrapper",class:{"authorization-wrapper--outer":t.isOuterScreen}},[e("div",{staticClass:"authorization",class:{"authorization--fullscreen":t.authModuleStore.fullscreen}},[t.authModuleStore.fullscreen?t._e():e("TcButton",{staticClass:"authorization__close-button",attrs:{icon:t.svgClose,id:"authorization-close"},on:{click:function(e){return t.authModuleStore.sendEvent({name:"close"})}}}),t._v(" "),e("div",{staticClass:"authorization__content-container",class:{"authorization__content-container--fullscreen":t.authModuleStore.fullscreen}},[e("div",{staticClass:"authorization__content"},[e("transition",{attrs:{appear:"",name:"authorization-content",mode:"out-in"}},[e(t.authManagerStore.moduleScreen.mode,{tag:"component"})],1)],1)]),t._v(" "),t.isOuterScreen?t._e():e("div",{staticClass:"authorization__graphics-container",class:{"authorization__graphics-container--fullscreen":t.authModuleStore.fullscreen}},[e("div",{staticClass:"authorization__graphics"},[e("transition",{attrs:{appear:"",name:"authorization-content",mode:"out-in"}},[e("div",{key:t.currentGraphics,staticClass:"authorization__graphics__item",attrs:{"aria-hidden":""},domProps:{innerHTML:t._s(t.currentGraphics)}})])],1)])],1)])])};g._withStripped=!0;var y=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block"},[e("transition",{attrs:{name:"authorization-form",mode:"out-in"}},[t.authModuleStore.authManifest?e(t.authenticationScripts.component,t._g(t._b({key:t.authMode,tag:"component"},"component",t.authenticationScripts.props,!1),t.authenticationScripts.actions)):e("TcPreloader",{staticClass:"preloader"})],1)],1)};y._withStripped=!0;var A=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block"},[e("div",{staticClass:"authorization__form-content"},[e("p",{staticClass:"authorization__heading"},[t._v("\n      "+t._s(t.headerText)+"\n    ")]),t._v(" "),t.showAuthForm?[e("div",{staticClass:"authorization__error-container"},[e("transition",{attrs:{name:"authorization-content",mode:"out-in"}},[t.mainError&&t.mainError.length>0?e("p",{staticClass:"authorization__error",attrs:{title:t.mainError}},[t._v("\n            "+t._s(t.mainError)+"\n          ")]):t._e()])],1),t._v(" "),e("TcTextField",{ref:"authorizationInputTrueconfId",staticClass:"authorization__textfield",attrs:{type:"text",label:"TrueConf ID",id:"authorization__input-trueconfId"},on:{keyup:function(e){return!e.type.indexOf("key")&&t._k(e.keyCode,"enter",13,e.key,"Enter")||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey?null:t.signInByUser.apply(null,arguments)}},model:{value:t.username,callback:function(e){t.username=e},expression:"username"}}),t._v(" "),e("TcTextField",{ref:"authorizationInputPassword",staticClass:"authorization__textfield",attrs:{type:"password",label:t.$pgettext("Hint","Password"),id:"authorization__input-password"},on:{keyup:function(e){return!e.type.indexOf("key")&&t._k(e.keyCode,"enter",13,e.key,"Enter")||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey?null:t.signInByUser.apply(null,arguments)}},model:{value:t.password,callback:function(e){t.password=e},expression:"password"}}),t._v(" "),e("div",{staticClass:"authorization__right-button-container"},[t.authManagerStore.permissions.resetPassword?e("TcButton",{staticClass:"authorization__link-button",attrs:{text:t.$pgettext("Button text","Forgot your password?"),id:"authorization__button-reset-password"},on:{click:function(e){return t.setModuleMode("resetPassword")}}}):t._e()],1),t._v(" "),e("transition",{attrs:{name:"authorization-preloader",mode:"out-in"}},[t.isPending?t._e():e("TcButton",{staticClass:"authorization__main-button",attrs:{type:"unelevated",text:t.$pgettext("Text on the button","Sign In"),id:"authorization__button-sing-in"},on:{click:t.signInByUser}}),t._v(" "),t.isPending?e("div",{key:"sign-in-preloader",staticClass:"authorization__preloader-container"},[e("TcPreloader",{staticClass:"authorization__preloader-container__preloader",attrs:{type:"fountain"}})],1):t._e()],1),t._v(" "),t.authManagerStore.permissions.accountCreation?e("TcButton",{staticClass:"authorization__link-button",attrs:{text:t.$pgettext("Button text","Create an account"),id:"authorization__button-create-account"},on:{click:function(e){return t.setModuleMode("signUp")}}}):t._e()]:t._e(),t._v(" "),t.providersList.length?e("div",{staticClass:"authorization__user-form-providers"},[t.showAuthForm?e("span",{staticClass:"authorization__user-form-providers-text"},[t._v("\n        "+t._s(t.$pgettext("This phrase will be displayed in the authorization menu. Here, the user is asked to enter his/her email “or sign in with” one of the social network accounts. Right below this hint, there will be multiple icons for social networks like Facebook or Twitter. ","Or sign in with"))+"\n      ")]):t._e(),t._v(" "),e("div",{staticClass:"authorization__provider-buttons"},t._l(t.providersList,(function(r){return e("TcButton",{key:r.id,staticClass:"authorization__provider-button",attrs:{type:"outlined",title:r.title},on:{click:function(e){return t.authModuleStore.sendEvent({name:"outerAuth",payload:r})}},scopedSlots:t._u([{key:"icon",fn:function(){return[e("img",{attrs:{width:"24px",height:"24px",src:r.icon}})]},proxy:!0}],null,!0)})})),1)]):t._e()],2),t._v(" "),t.authManagerStore.permissions.outerRegisterInConferenceForm?e("div",{staticClass:"authorization__user-form-footer",on:{click:t.backToRegisterInConferenceHandler}},[e("div",{domProps:{innerHTML:t._s(t.registerInConferenсeDescription)}})]):t._e(),t._v(" "),t.authManagerStore.permissions.guestAuthorization?e("TcButton",{staticClass:"authorization__default-button",attrs:{text:t.$pgettext("Text on the button","Enter as a guest"),id:"authorization-select-auth"},on:{click:function(e){return t.$emit("changeAuthMode","guest")}}}):t._e()],1)};function m(t){return{400:this.$pgettext("Error message","The form has been filled incorrectly."),403:this.$pgettext("Error message","Access denied."),500:this.$pgettext("Error message","Internal Server Error."),invalid_grant:this.$pgettext("Error message","Invalid username or password."),InvalidCredentials:this.$pgettext("Error message","Invalid username or password."),UserIsBanned:this.$pgettext("User receives this notification after a number of unsuccessful login attempts.","Your account is locked. Please try again later or contact your server administrator."),missingRequiredField:this.$pgettext("Error message","Please fill out this field"),fieldHasInvalidLength:this.$pgettext("Error message","Field has invalid value."),fieldIsEmpty:this.$pgettext("Error message","You can't leave this empty."),fieldHasInvalidUrl:this.$pgettext("Error message","Please use valid URL."),fieldHasInvalidValue:this.$pgettext("Error message","Field has invalid value."),fieldHasInvalidType:this.$pgettext("Error message","Field has invalid type."),uniqueValueAlreadyInUse:this.$pgettext("Error message","Value is already in use. Please try another."),fieldMinNumber:this.$pgettext("Error message","Value must be more."),fieldMaxNumber:this.$pgettext("Error message","Value must be less."),UserIsDisabled:this.$pgettext("An error message displayed when a user tries to sign in.","Your account was disabled.")}[t]||null}A._withStripped=!0;var v=(0,s.nY)("authModule",{state:function(){return{event:null,fullscreen:null,authHandler:function(){},authManifest:null,adminContacts:null}},actions:{sendEvent:function(t){this.event=t}}});function x(t){return x="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},x(t)}function b(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function w(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?b(Object(r),!0).forEach((function(e){S(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):b(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function S(t,e,r){var n;return n=function(t,e){if("object"!=x(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=x(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==x(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var _={computed:w(w({},(0,s.n2)(v)),{},{currentScreen:function(){return this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode]}}),methods:{setModuleMode:function(t){this.authManagerStore.moduleScreen.mode=t,this.authManagerStore.permissions.guestAuthorization?this.authManagerStore.moduleScreen.screen.signIn="guest":this.authManagerStore.moduleScreen.screen.signIn="user",this.authManagerStore.moduleScreen.screen.signUp="form",this.authManagerStore.moduleScreen.screen.resetPassword="form"},setModuleScreen:function(t,e){e&&(this.authManagerStore.moduleScreen.screen[t]=e)}}};function O(t){return O="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},O(t)}function k(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function E(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?k(Object(r),!0).forEach((function(e){T(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):k(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function T(t,e,r){var n;return n=function(t,e){if("object"!=O(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=O(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==O(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var M={name:"UserForm",mixins:[_],created:function(){var t;this.showAuthForm||1!==(null===(t=this.providersList)||void 0===t?void 0:t.length)||this.authModuleStore.sendEvent({name:"outerAuth",payload:this.providersList[0]})},mounted:function(){var t=this;this.$nextTick((function(){try{localStorage.getItem("trueconfServerUserName")&&(t.username=localStorage.getItem("trueconfServerUserName")),t.$nextTick((function(){var e;null!==(e=t.authManagerStore.outerError)&&void 0!==e&&e.reason&&(t.mainError=m.call(t,t.authManagerStore.outerError.reason))}))}catch(t){console.warn("LocalStorage is unavailable.")}t.focusOnInput()}))},methods:{signInByUser:function(){var t=this;!this.isPending&&this.validation()?(this.isPending=!0,this.authModuleStore.authHandler({username:this.username,password:this.password}).then((function(e){try{localStorage.setItem("trueconfServerUserName",t.username)}catch(t){console.warn("LocalStorage is unavailable.")}return t.authModuleStore.sendEvent({name:"userLoginSuccess",payload:e}),Promise.resolve()})).catch((function(e){try{if(e){var r=e.response.data,n=r.reason,a=r.error,i=r.email;if("2FactorAuthEnabled"===n&&i)return t.$emit("changeAuthMode","code"),Promise.reject(e);t.mainError=m.call(t,n||a),t.focusOnInput()}return Promise.reject(e)}catch(a){return Promise.reject(e)}})).finally((function(){t.isPending=!1}))):this.focusOnInput()},validation:function(){return!(!this.username||0===this.username.length||!this.password||0===this.password.length)||(this.mainError=m.call(this,"missingRequiredField"),!1)},focusOnInput:function(){this.currentPlatform.desktop&&this.showAuthForm&&(0!==this.username.length?this.$refs.authorizationInputPassword.focus():this.$refs.authorizationInputTrueconfId.focus())},backToRegisterInConferenceHandler:function(t){var e=this;t.target===document.querySelector("#back-to-register")&&(this.authModuleStore.sendEvent({name:"backToRegisterInConference",payload:null}),this.$nextTick((function(){e.authModuleStore.sendEvent({name:"close",payload:null})})))}},computed:{showAuthForm:function(){return!this.authModuleStore.authManifest||this.authModuleStore.authManifest.password},providersList:function(){var t;return((null===(t=this.authModuleStore.authManifest)||void 0===t?void 0:t.networks)||[]).map((function(t){return E(E({},t),{},{title:t.name,icon:t.icon})}))},headerText:function(){return this.authManagerStore.permissions.guestAuthorization?this.$pgettext("Header","Enter as a registered user"):this.$pgettext("Header","Authorization")},"registerInConferenсeDescription":function(){return this.$pgettext("A text hint displayed to a user who wants to join a conference.","If you don’t have an account, fill out the [a]registration form[/a] to join the conference.").replace("[a]",'<span id="back-to-register" class="authorization__register-in-conference-back-link">').replace("[/a]","</span>")}},data:function(){return{username:"",password:"",mainError:"",isPending:!1}},watch:{username:{handler:function(){this.mainError=""}},password:{handler:function(){this.mainError=""}}}},L=r(14486),P=(0,L.A)(M,A,[],!1,null,null,null).exports,G=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block"},[e("div",{staticClass:"authorization__form-content"},[e("p",{staticClass:"authorization__heading"},[t._v("\n      "+t._s(t.$pgettext("Header","Enter as a guest"))+"\n    ")]),t._v(" "),e("div",{staticClass:"authorization__error-container"},[e("transition",{attrs:{name:"authorization-content",mode:"out-in"}},[t.mainError&&t.mainError.length>0?e("p",{staticClass:"authorization__error",attrs:{title:t.mainError}},[t._v("\n          "+t._s(t.mainError)+"\n        ")]):t._e()])],1),t._v(" "),e("TcTextField",{ref:"authorizationInputGuestname",staticClass:"authorization__textfield",attrs:{maxlength:"64",label:t.usernameHint,id:"authorization__input-guest-name"},on:{keyup:function(e){return!e.type.indexOf("key")&&t._k(e.keyCode,"enter",13,e.key,"Enter")||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey?null:t.signInByGuest.apply(null,arguments)}},model:{value:t.username,callback:function(e){t.username="string"==typeof e?e.trim():e},expression:"username"}}),t._v(" "),e("TcButton",{key:"sign-in-button",staticClass:"authorization__main-button",attrs:{type:"unelevated",text:t.$pgettext("Text on the button","Sign In"),id:"authorization__button-sing-in"},on:{click:t.signInByGuest}}),t._v(" "),e("TermsOfUse")],1),t._v(" "),t.authManagerStore.permissions.guestAuthorization?e("TcButton",{staticClass:"authorization__default-button",attrs:{text:t.$pgettext("Text on the button","Enter as a registered user"),id:"authorization-select-auth"},on:{click:function(e){return t.$emit("changeAuthMode","user")}}}):t._e()],1)};G._withStripped=!0;var U={name:"GuestForm",components:{TermsOfUse:r(8684).A},mixins:[_],mounted:function(){var t=this;this.$nextTick((function(){try{localStorage.getItem("trueconfServerGuestName")&&(t.username=localStorage.getItem("trueconfServerGuestName"))}catch(t){console.warn("LocalStorage is unavailable.")}t.currentPlatform.desktop&&t.$refs.authorizationInputGuestname.focus()}))},methods:{signInByGuest:function(){if(!this.username||0===this.username.length)return this.mainError=m.call(this,"missingRequiredField"),void this.$refs.authorizationInputGuestname.focus();var t={userInfo:{type:"guest",username:this.username,display_name:this.username,guestId:"$".concat(this.username),userFromAnotherServer:!1}};try{localStorage.setItem("trueconfServerGuestName",this.username),localStorage.setItem("trueconfServerUserAuthorization",JSON.stringify(t))}catch(t){console.warn("LocalStorage is unavailable.")}this.authModuleStore.sendEvent({name:"guestLoginSuccess",payload:t})}},computed:{usernameHint:function(){return this.$pgettext("Hint","Username")}},data:function(){return{username:"",mainError:""}},watch:{username:{handler:function(){this.mainError=""}}}},Z=(0,L.A)(U,G,[],!1,null,null,null).exports,j=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block"},[e("div",{staticClass:"one-off-code-from-email"},[e("div",{staticClass:"one-off-code-from-email__header"},[t._v("\n      "+t._s(t.$pgettext("The heading for a pop-up window. This window will be displayed when the user is expected to enter the confirmation code sent to his/her email.","Enter the code from the email"))+"\n    ")]),t._v(" "),e("div",{staticClass:"one-off-code-from-email__subheader"},[t._v("\n      "+t._s(t.$pgettext("The notification displayed to a user. when he/she requests the verification code needed for accessing the web application. Please note that %email will be replaced with an actual user email. So, do not delete or replace this part of the sentence.","The verification code has been sent to your email %email.").replace("%email",t.email))+"\n    ")]),t._v(" "),t.isBlockedAccount?e("div",{staticClass:"one-off-code-from-email__account-block"},[t._v("\n      Ваш аккаунт заблокирован. Попробуйте позже или обратитесь к администратору вашего сервера.\n    ")]):t._e(),t._v(" "),e("TcTextField",{staticClass:"one-off-code-from-email__textfield",attrs:{label:t.$pgettext("The text hint for an input field. Here, the user will need to enter the verification code in order to sign in to the application.","Verification code"),error:t.verifyCodeInputError},model:{value:t.verificationCode,callback:function(e){t.verificationCode=e},expression:"verificationCode"}}),t._v(" "),e("TcButton",{staticClass:"one-off-code-from-email__button",attrs:{type:"unelevated",mode:"secondary",text:t.$pgettext("The button for entering the verification code needed for signing in to the application.","Verify"),disabled:t.isVerificationCodeIsExpired},on:{click:t.verifyButtonHandler}}),t._v(" "),e("div",{staticClass:"one-off-code-from-email__resend"},[t.countdownTimerStartTimeSeconds&&!t.isVerificationCodeIsExpired?e("div",{staticClass:"one-off-code-from-email__resend-timer"},[t._v("\n        "+t._s(t.$pgettext("A text hint indicating that a user needs to wait until he/she can request the verification code. For example, it may be necessary to wait for 2 minutes.","You can request a new code in %timer").replace("%timer",t.countdownTimerView))+"\n      ")]):t._e(),t._v(" "),!t.countdownTimerStartTimeSeconds||t.isVerificationCodeIsExpired?e("TcButton",{attrs:{text:t.$pgettext("A text button. A new verification code will be sent to the users’ email address.","Resend code")},on:{click:t.resendVerificationCodeButtonHandler}}):t._e()],1)],1),t._v(" "),e("div",{staticClass:"one-off-code-from-email__cancel"},[e("TcButton",{staticClass:"one-off-code-from-email__cancel-button",attrs:{text:t.$pgettext("Text on the button","Cancel")},on:{click:t.cancelButtonHandler}})],1)])};j._withStripped=!0;var C={name:"OneOffCodeForm",created:function(){this.countdownTimerStart()},beforeDestroy:function(){clearTimeout(this.countdownTimerId)},methods:{countdownTimerStart:function(){var t=this;this.countdownTimerId=setTimeout((function(){t.countdownTimerStartTimeSeconds--,0!==t.countdownTimerStartTimeSeconds?t.countdownTimerStart():clearTimeout(t.countdownTimerId)}),1e3)},verifyButtonHandler:function(){this.verificationCode.length||(this.verifyCodeInputError=m.call(this,"fieldIsEmpty"))},resendVerificationCodeButtonHandler:function(){this.countdownTimerStartTimeSeconds=120,this.countdownTimerStart()},cancelButtonHandler:function(){this.countdownTimerStartTimeSeconds=120,this.$emit("changeAuthMode","user")}},computed:{email:function(){var t;return null===(t=this.authManagerStore.tempData)||void 0===t?void 0:t.email},isBlockedAccount:function(){return!1},isVerificationCodeIsExpired:function(){return!1},countdownTimerView:function(){var t=String(Math.floor(this.countdownTimerStartTimeSeconds/60)).padStart(2,0),e=String(Math.floor(this.countdownTimerStartTimeSeconds%60)).padStart(2,0);return"".concat(t,":").concat(e)}},data:function(){return{verificationCode:"",countdownTimerId:null,verifyCodeInputError:null,countdownTimerStartTimeSeconds:120}},watch:{verificationCode:{handler:function(){this.verifyCodeInputError&&(this.verifyCodeInputError=null)}}}},I=(0,L.A)(C,j,[],!1,null,null,null).exports,V=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block"},[e("div",{staticClass:"off-authorization-screen"},[e("div",{staticClass:"off-authorization-screen__block-title"},[t._v("\n      "+t._s(t.$pgettext("A notification displayed on a web page if due to some reason authentication is disabled.","Authorization is disabled"))+"\n    ")]),t._v(" "),e("div",{staticClass:"off-authorization-screen__block-subtitle"},[t._v("\n      "+t._s(t.$pgettext("A text hint displayed on a web page where a user tries to enter login information in order to sign in.","Authorization from your subnet was disabled by the server administrator"))+"\n    ")])]),t._v(" "),t.authManagerStore.permissions.guestAuthorization?e("TcButton",{staticClass:"authorization__default-button",attrs:{text:t.$pgettext("Text on the button","Enter as a guest"),id:"authorization-select-auth"},on:{click:function(e){return t.$emit("changeAuthMode","guest")}}}):t._e()],1)};V._withStripped=!0;var K={name:"OffAuthScreen"};function N(t){return N="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},N(t)}var z={name:"SignIn",components:{UserForm:P,GuestForm:Z,OneOffCodeForm:I,OffAuthScreen:(0,L.A)(K,V,[],!1,null,null,null).exports},mixins:[_],MODE_NAME:"signIn",methods:{changeAuthMode:function(t){var e="object"===N(t)?t.value:t;this.currentEntity={value:e,payload:(null==t?void 0:t.payload)||null},this.setModuleScreen(this.$options.MODE_NAME,e)},checkDisablePasswordAuth:function(t){var e;!t||t.password||null!==(e=t.networks)&&void 0!==e&&e.length||"guest"===this.authMode||this.setModuleScreen(this.$options.MODE_NAME,"offForAll")}},computed:{authenticationScripts:function(){return{user:{component:"UserForm",props:{},actions:{changeAuthMode:this.changeAuthMode}},guest:{component:"GuestForm",props:{},actions:{changeAuthMode:this.changeAuthMode}},code:{component:"OneOffCodeForm",props:{},actions:{changeAuthMode:this.changeAuthMode}},offForAll:{component:"OffAuthScreen",props:{},actions:{changeAuthMode:this.changeAuthMode}},offForGuest:"OffAuthGuestScreen"}[this.authMode]},authMode:function(){return this.authManagerStore.moduleScreen.screen[this.$options.MODE_NAME]}},data:function(){return{currentEntity:null}},watch:{"authModuleStore.authManifest":{handler:function(t){this.checkDisablePasswordAuth(t)},immediate:!0},authMode:function(){this.checkDisablePasswordAuth(this.authModuleStore.authManifest)}}},D=(0,L.A)(z,y,[],!1,null,null,null).exports,W=function(){return(0,this._self._c)(this.currentError,{tag:"component"})};W._withStripped=!0;var X=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block authorization__block--error"},[e("p",{staticClass:"authorization__heading authorization__heading--error"},[t._v("\n    "+t._s(t.$pgettext("Header","Authorization unavailable"))+"\n  ")]),t._v(" "),e("p",{staticClass:"authorization__desc authorization__desc--error"},[t._v("\n    "+t._s(t.$pgettext("Message","Authorization requires HTTPS to ensure your data safety."))+"\n  ")])])};X._withStripped=!0;var R={name:"NoHTTPSError"},q=(0,L.A)(R,X,[],!1,null,null,null).exports,H=function(){var t=this,e=t._self._c;return e("div",{staticClass:"authorization__block provider-error"},[e("span",{staticClass:"authorization__heading"},[t._v("\n    "+t._s(t.$pgettext("The title of a dialogue window","Authorization error"))+"\n  ")]),t._v(" "),e("div",{staticClass:"provider-error__block"},[e("span",[t._v(t._s("500 Internal Server Error"))])]),t._v(" "),t.adminContacts&&t.adminContacts.adminName?e("div",{staticClass:"provider-error__block"},[e("span",{staticClass:"provider-error__block__title"},[t._v("\n      "+t._s(t.$pgettext("Subheader","Your administrator"))+"\n    ")]),t._v(" "),e("br"),t._v(" "),e("span",[t._v("\n      "+t._s(t.adminContacts.adminName)+"\n    ")])]):t._e(),t._v(" "),t.adminContacts&&t.adminContacts.email?e("div",{staticClass:"provider-error__block"},[e("span",{staticClass:"provider-error__block__title"},[t._v("\n      "+t._s(t.$pgettext("Subheader","Email"))+"\n    ")]),t._v(" "),e("br"),t._v(" "),e("span",[t._v("\n      "+t._s(t.adminContacts.email)+"\n    ")])]):t._e()])};H._withStripped=!0;var F={name:"ProviderLoginError",mixins:[_],computed:{adminContacts:function(){return this.authModuleStore.adminContacts||null}}},J={name:"AuthorizationError",components:{HTTPSError:q,ProviderLoginError:(0,L.A)(F,H,[],!1,null,null,null).exports},mixins:[_],computed:{currentError:function(){return{httpsError:"HTTPSError",providerError:"ProviderLoginError"}[this.authManagerStore.moduleScreen.screen.error]}}},Y=(0,L.A)(J,W,[],!1,null,null,null).exports,Q='<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="326.69" y1="180.87" x2="60.09" y2="108.85" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-736.85" y1="276.05" x2="-656.06" y2="276.05" gradientTransform="translate(868 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-6" x1="135.98" y1="112.71" x2="207.25" y2="112.71" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cddeb"/><stop offset="1" stop-color="#58d3e0"/></linearGradient><linearGradient id="linear-gradient-7" x1="153.69" y1="100.3" x2="189.22" y2="100.3" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="linear-gradient-8" x1="144.02" y1="136.29" x2="199.21" y2="136.29" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-9" x1="116.01" y1="167.42" x2="226.89" y2="167.42" xlink:href="#linear-gradient-6"/><linearGradient id="linear-gradient-10" x1="131.5" y1="167.42" x2="141.89" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="148.88" y1="167.42" x2="159.27" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="166.26" y1="167.42" x2="176.65" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-13" x1="183.63" y1="167.42" x2="194.03" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="201.01" y1="167.42" x2="211.41" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-15" x1="145.99" y1="193.79" x2="197.54" y2="193.79" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ac3b"/><stop offset="1" stop-color="#f99446"/></linearGradient><linearGradient id="linear-gradient-16" x1="186.39" y1="194" x2="157.13" y2="193.59" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-17" x1="254.39" y1="232.86" x2="263.77" y2="232.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-18" x1="254.93" y1="228.65" x2="264.36" y2="228.65" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-19" x1="258.58" y1="212.14" y2="212.14" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-20" x1="248.15" y1="236.24" x2="251.84" y2="236.24" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-21" x1="249.07" y1="224.39" x2="250.61" y2="224.39" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-22" x1="266.53" y1="274.61" x2="236.29" y2="249.19" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-23" x1="255.11" y1="246.9" x2="265.52" y2="281.1" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-24" x1="-8905.14" y1="262.76" x2="-8876.7" y2="262.76" gradientTransform="translate(-8801.62) rotate(-180) scale(1 -1)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-25" x1="76.09" y1="262" x2="102.76" y2="262" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-26" x1="-8840.99" y1="242.17" x2="-8812.69" y2="242.17" gradientTransform="translate(-8736.95) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset=".21" stop-color="#58d5e2"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-27" x1="137.13" y1="244.97" x2="170.87" y2="244.97" gradientTransform="translate(-64.43)" xlink:href="#linear-gradient-25"/><linearGradient id="linear-gradient-28" x1="85.25" y1="262" x2="93.6" y2="262" xlink:href="#linear-gradient-7"/></defs><g id="Layer_1-2"><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(-180)" style="fill:url(#linear-gradient-5);"/><g><g><path d="M207.25,112.67c0,7.05-2.07,13.94-5.99,19.81-3.91,5.87-9.47,10.44-15.99,13.15-6.51,2.7-13.68,3.42-20.59,2.05-6.92-1.37-13.27-4.76-18.26-9.74-4.99-4.98-8.39-11.33-9.77-18.25-1.38-6.91-.68-14.08,2.02-20.6,2.7-6.52,7.26-12.08,13.13-16,5.86-3.92,12.75-6.01,19.8-6.01,4.68,0,9.31,.91,13.63,2.7,4.32,1.79,8.25,4.41,11.56,7.71,3.31,3.31,5.94,7.23,7.73,11.55,1.79,4.32,2.71,8.95,2.71,13.63Z" style="fill:url(#linear-gradient-6);"/><path d="M171.45,118.07c9.81,0,17.77-7.96,17.77-17.77s-7.96-17.77-17.77-17.77-17.77,7.95-17.77,17.77,7.95,17.77,17.77,17.77Z" style="fill:url(#linear-gradient-7);"/><path d="M199.21,135.23c-3.34,4.09-7.55,7.38-12.33,9.64-4.77,2.26-9.99,3.44-15.27,3.44s-10.5-1.17-15.27-3.44c-4.77-2.26-8.98-5.56-12.33-9.64,2.45-3.4,5.67-6.16,9.4-8.07,3.73-1.91,7.86-2.9,12.04-2.89h12.31c4.19,0,8.32,.99,12.04,2.9,3.73,1.91,6.95,4.67,9.4,8.07Z" style="fill:url(#linear-gradient-8);"/></g><g><rect x="116.01" y="155.54" width="110.88" height="23.75" rx="3.81" ry="3.81" style="fill:url(#linear-gradient-9);"/><g><circle cx="136.7" cy="167.42" r="5.2" style="fill:url(#linear-gradient-10);"/><circle cx="154.07" cy="167.42" r="5.2" style="fill:url(#linear-gradient-11);"/><circle cx="171.45" cy="167.42" r="5.2" style="fill:url(#linear-gradient-12);"/><circle cx="188.83" cy="167.42" r="5.2" style="fill:url(#linear-gradient-13);"/><circle cx="206.21" cy="167.42" r="5.2" style="fill:url(#linear-gradient-14);"/></g></g><g><path d="M195.39,186.05h-47.26c-1.19,0-2.15,.96-2.15,2.15v11.18c0,1.19,.96,2.15,2.15,2.15h47.26c1.19,0,2.15-.96,2.15-2.15v-11.18c0-1.19-.96-2.15-2.15-2.15Z" style="fill:url(#linear-gradient-15);"/><path d="M184.25,195.94h-24.97c-1.19,0-2.15-.96-2.15-2.15s.96-2.15,2.15-2.15h24.97c1.19,0,2.15,.96,2.15,2.15s-.96,2.15-2.15,2.15Z" style="fill:url(#linear-gradient-16);"/></g></g></g><g><polygon points="263.77 216.53 263.49 218.8 260.93 239.15 259.58 249.83 256.92 249.5 254.39 249.18 255.73 238.49 258.29 218.15 258.58 215.88 261.11 216.19 263.77 216.53" style="fill:url(#linear-gradient-17);"/><path d="M264.35,219.84l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-18);"/><polygon points="263.77 216.53 261.11 216.19 258.58 215.88 262.12 208.17 262.31 207.76 263.77 216.53" style="fill:url(#linear-gradient-19);"/><rect x="248.15" y="225.62" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-20);"/><path d="M250.61,223.19v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-21);"/><path d="M251.84,226.22v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M262.12,208.17l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M261.15,280.59h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-22);"/><path d="M265.67,247.68l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-23); opacity:.4;"/></g><g id="Group_947" transform="translate(310.612,110.434)"><g id="Group_946" transform="translate(1.629,2.471)"><g id="Group_945"><path id="Path_1315" d="M103.52,244.92c-.32,3.53-.64,6.75-.96,9.64-.48,5.14-.96,9.64-1.45,14.78-.27,2.83-.65,5.78-.96,9.21-.1,1.15-1.07,2.03-2.23,2.03h-17.15c-1.14,0-2.1-.86-2.22-1.99-.36-3.37-.63-6.43-.9-9.26-.48-5.14-.96-9.48-1.61-14.78-.32-2.89-.64-6.11-.96-9.64h28.44Z" style="fill:url(#linear-gradient-24);"/></g></g><path id="Path_1316" d="M76.09,254.61c.48,5.14,.96,9.64,1.45,14.78h23.62c.48-5.14,.96-9.48,1.61-14.78h-26.67Z" style="fill:url(#linear-gradient-25);"/><path id="Rectangle_770" d="M75.51,240.16h27.83c.39,0,.71,.39,.71,.88v2.24c0,.49-.32,.88-.71,.88h-27.83c-.39,0-.71-.39-.71-.88v-2.24c0-.49,.32-.88,.71-.88Z" style="fill:url(#linear-gradient-26);"/><rect id="Rectangle_769" x="72.56" y="242.56" width="33.74" height="4.82" rx=".71" ry=".71" style="fill:url(#linear-gradient-27);"/><path id="Path_1317" d="M93.6,262c0-2.41-1.93-4.18-4.18-4.18-2.41,0-4.18,1.93-4.18,4.18s1.93,4.18,4.18,4.18c2.25,0,4.18-1.93,4.18-4.18h0Z" style="fill:url(#linear-gradient-28); opacity:.5;"/></g></g></g></svg>',B='<?xml version="1.0" encoding="utf-8"?>\n\x3c!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --\x3e\n<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\n\t viewBox="0 0 911.3 999.8" style="enable-background:new 0 0 911.3 999.8;" xml:space="preserve">\n<style type="text/css">\n\t.st0{clip-path:url(#SVGID_2_);fill:#0097A7;}\n\t.st1{clip-path:url(#SVGID_2_);}\n\t.st2{fill:#12323A;}\n\t.st3{fill:#F9D1C2;}\n\t.st4{fill:#3A2E32;}\n\t.st5{clip-path:url(#SVGID_4_);fill:#FFFFFF;}\n\t.st6{clip-path:url(#SVGID_4_);fill:#F89394;}\n\t.st7{fill:#F4CDC1;}\n\t.st8{fill:#FFFFFF;}\n\t.st9{fill:#CFDEE7;}\n\t.st10{fill:#163F4C;}\n\t.st11{fill:#EF993A;}\n\t.st12{fill:#E58F39;}\n\t.st13{fill:#E2F1F7;}\n\t.st14{fill:#00939F;}\n</style>\n<g>\n\t<g>\n\t\t<defs>\n\t\t\t<circle id="SVGID_1_" cx="455.7" cy="544.1" r="455.7"/>\n\t\t</defs>\n\t\t<clipPath id="SVGID_2_">\n\t\t\t<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>\n\t\t</clipPath>\n\t\t<rect x="-195" y="-20.7" class="st0" width="1436" height="1065"/>\n\t\t<g class="st1">\n\t\t\t<polygon class="st2" points="328.2,1003.6 328.2,1127.1 661.9,1121.6 656.5,964.4 420.8,961 \t\t\t"/>\n\t\t\t<path class="st3" d="M560.8,404.1c-11.9,31.4-16,30.1-42.7,26.7c-22.2-2.8-35.8-20-39.1-24.6c5.3-18.2,10.6-36.5,16-54.7\n\t\t\t\tl64.7,0.3L560.8,404.1z"/>\n\t\t\t<g>\n\t\t\t\t<path class="st3" d="M383,218c-2.1-26.3-7.3-101.9,43.2-146.9c20.1-17.9,48.5-28.7,87.9-29.9c39.4-1.2,68.4,7.9,89.6,24.5\n\t\t\t\t\tc55.5,43.6,53.1,121,52.1,144c-0.7,16.2-2.9,54.8-28.5,92.3c-4,5.8-14.2,19.9-31.2,33.9c-9.8,8-34.8,28-73.1,34.2\n\t\t\t\t\tc-15.6,2.5-35.4,5.8-57.8-3c-23-9.1-35.8-25.9-45.7-38.8c-14.9-19.5-21.1-37.8-25.8-52C390.8,267.2,385.2,245.8,383,218z"/>\n\t\t\t\t<path class="st4" d="M514.8,177.6c-3.4,0.6-6.6-1.7-7.2-5.1c-0.6-3.4,1.7-6.6,5-7.2c1.3-0.2,32-5.3,49.3,9.1\n\t\t\t\t\tc2.6,2.2,3,6.1,0.8,8.7c-1.2,1.4-2.9,2.2-4.6,2.2c-1.5,0-2.9-0.4-4.2-1.4C543.4,175.1,522.1,176.4,514.8,177.6z"/>\n\t\t\t\t<path class="st4" d="M421.6,181.5c3.4,0.8,6.6-1.4,7.4-4.7c0.7-3.3-1.4-6.6-4.7-7.4c-1.3-0.3-31.7-6.9-49.6,6.7\n\t\t\t\t\tc-2.7,2.1-3.3,6-1.2,8.7c1.1,1.5,2.8,2.3,4.5,2.4c1.5,0.1,3-0.3,4.2-1.2C393.2,177.6,414.4,179.9,421.6,181.5z"/>\n\t\t\t\t<g>\n\t\t\t\t\t<defs>\n\t\t\t\t\t\t<path id="SVGID_3_" d="M490.4,286.9c-2.9-0.2-37.2-2.8-40.1-3c-19.4-1.5-5.5,23.6,16.1,27.1c0.5,0.1,1.9,0.3,2.1,0.3\n\t\t\t\t\t\t\tc0.2,0,1.6,0.1,2.1,0.1C492.3,311.1,509.8,288.3,490.4,286.9L490.4,286.9z"/>\n\t\t\t\t\t</defs>\n\t\t\t\t\t<use xlink:href="#SVGID_3_"  style="overflow:visible;fill:#F36A6B;"/>\n\t\t\t\t\t<clipPath id="SVGID_4_">\n\t\t\t\t\t\t<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>\n\t\t\t\t\t</clipPath>\n\t\t\t\t\t<path class="st5" d="M453.5,276.1c0,0-4.7-0.3-5,4.3l-0.4,5.1c0,0-0.3,4.7,4.3,5l34.8,2.6c0,0,4.7,0.3,5-4.3l0.4-5.1\n\t\t\t\t\t\tc0,0,0.3-4.7-4.3-5L453.5,276.1L453.5,276.1z"/>\n\t\t\t\t\t<path class="st6" d="M487.8,320.7c-2.9-0.2-37.2-2.8-40.1-3c-19.4-1.5-1.9-24.2,19.9-24.4c0.5,0,1.9,0,2.1,0\n\t\t\t\t\t\tc0.2,0,1.6,0.2,2.1,0.3C493.3,297.1,507.2,322.2,487.8,320.7L487.8,320.7z"/>\n\t\t\t\t\t<path class="st5" d="M456.1,304.3c0,0-3.4-0.3-3.7,3.1l-0.3,3.7c0,0-0.3,3.4,3.1,3.7l25.4,1.9c0,0,3.4,0.3,3.7-3.1l0.3-3.7\n\t\t\t\t\t\tc0,0,0.3-3.4-3.1-3.7L456.1,304.3L456.1,304.3z"/>\n\t\t\t\t</g>\n\t\t\t\t<path class="st4" d="M422.6,219.1c-3.9-1.2-9.9-2.5-17.2-2.2c-6.2,0.3-11.2,1.7-14.7,2.9c0.6-8.1,7.2-14.5,15.2-14.9\n\t\t\t\t\tC414.1,204.6,421.5,210.7,422.6,219.1z"/>\n\t\t\t\t<path class="st4" d="M545.6,223.7c-3.8-1.5-9.6-3.3-17-3.5c-6.2-0.2-11.3,0.8-14.9,1.7c1.3-8,8.4-13.9,16.4-13.6\n\t\t\t\t\tC538.3,208.5,545.2,215.3,545.6,223.7z"/>\n\t\t\t\t<path class="st7" d="M619.5,100.4c11.3-2,37.6,52.8,36.5,109.2c-0.2,12.3-1.6,52.9-28.5,92.3c-3.1,4.5-13.4,19.1-31.2,33.9\n\t\t\t\t\tc-18.1,15-34.6,22.3-38.7,24.1c-11.7,5-21.2,7.4-26.4,8.6c-6.7,1.6-22.2,5.2-39,4.3c-8.6-0.5-15-2-16.6-2.4\n\t\t\t\t\tc-4.2-1-7.6-2.2-10.1-3.1c3.6-0.7,8.9-1.7,15.3-3.2c0,0,17.6-3.9,31.9-9.7c38.9-15.8,59.7-49.7,70-67\n\t\t\t\t\tC634.7,199.9,604.8,103,619.5,100.4z"/>\n\t\t\t\t<path class="st4" d="M314.9,91c1.4,3,5.4,10.3,13.8,15.5c8.3,5.1,16.2,5.3,19.5,5.3c11.6,0.1,20-4.8,23.4-7.1\n\t\t\t\t\tc-1.7,15.3-2.5,33-1.4,52.6c1.7,31.7,7.8,58.6,14.3,79.4c-1.3-13.8-3.2-37.3-2.9-61c0-1.6,0-11.7,2.5-24.6\n\t\t\t\t\tc2.4-12.6,4.2-21.2,10.4-25.4c8.4-5.8,20.9-0.8,26.3,1.1c0,0,56.5,20.3,147.2,1.5c10.6-2.2,21.5-2.6,32.2-4.7\n\t\t\t\t\tc9.8-1.9,15.3-3.4,17.4-0.7c3.1,3.9-5.6,10.7-7.2,24.4c-1.5,12.5,5,13.6,5.4,30.3c0.4,15.3-4,28.4-4,28.4\n\t\t\t\t\tc-2.9,8.8-6.6,14.6-3.9,18.2c1.7,2.3,5.8,3.2,8.8,2c7-2.8,5.1-16,11.3-17.8c1.8-0.5,3.5,0.1,6.4,1.6c5.1,2.6,12.5,7,20.9,14.6\n\t\t\t\t\tc6.7-10.4,16.5-28.9,18.4-53.5c0.6-7.3,1.2-14.8,0.8-23.9c-0.2-4.6-0.7-8.2-1.2-11.1c-1.5-7.7-4.5-10.1-3.7-15\n\t\t\t\t\tc0.6-3.6,2.2-3.6,4.4-8.4c3.3-7.4,2.4-14.4,1.9-18.6c-0.7-5.5-2.3-10.6-5.7-17.2c-11.2-22.1-29.6-38.3-29.6-38.3\n\t\t\t\t\tc-12.2-8.6-23.3-16.4-37.7-23c-0.6-0.3-14.1-6.2-29.5-10.1c-29-7.2-85-12-141.4,13c-18.4,8.1-34.5,15.2-49.5,31.4\n\t\t\t\t\tc-9.1,9.8-12.1,16.6-22.3,24.6C344.7,86.5,327.2,90,314.9,91z"/>\n\t\t\t\t<path class="st7" d="M677.9,233.4c4.1-22.9-6.2-44-23-47c-16.8-3-33.8,13.2-37.9,36.1c-4.1,22.9,6.2,44,23,47\n\t\t\t\t\tC656.9,272.5,673.8,256.3,677.9,233.4z"/>\n\t\t\t</g>\n\t\t\t<polygon class="st3" points="193.4,410.4 199.1,460.3 163.9,461.6 163.5,401.2 \t\t\t"/>\n\t\t\t<polygon class="st8" points="160.3,438.3 159.8,426.8 201,424.6 203.8,434.7 \t\t\t"/>\n\t\t\t<path class="st2" d="M414.3,422.6c-12.3,10.7-36.3,21.9-48.7,33.9c-54.1,52.5-96.6,106.6-129.9,157.4l-30-186l-50.4,5.2\n\t\t\t\tc0,0-29.4,183.1,37.1,283.4c0,0,49.9,37.3,222.5-186.2L414.3,422.6z"/>\n\t\t\t<path class="st9" d="M449.5,807.5c-6.2-2.7-48.8-100.6-48.8-100.6L419,474.7c2.6-9.6,10.1-32.7,31-50.2\n\t\t\t\tc12.8-10.8,25.8-15.4,34.1-17.5c3.3,1.8,6,7,12,10c7,3.5,11.7,5.8,12,5.6c6.6-3.6,61.5-19.3,61.5-19.3l21.9,33.6L449.5,807.5z"/>\n\t\t\t<path class="st10" d="M456.8,413.9c-10.6,1.7-21.1,3.4-31.7,5.1c-8.5,2.4-22.7,7.3-37,17.7c-63.6,46.5-64.7,154.6-65.3,227.2\n\t\t\t\tc-0.3,34.5-1.6,60.2-1.1,99.8c0.9,65.6,1.8,152.2,5,242.2c12.4,7.9,26.8,11.9,55.2,15.8c18.6,2.5,60.8,0.4,60.8,0.4\n\t\t\t\ts14.2-39.9,14.4-77.6c0,0,20-169.2-2.2-203.1c-1.9-2.9-2.3-6.4-2.3-6.4c-3.2,3.7-4.9,13.1-10.5,11.3c-5.2-1.7-11.8-12.6-13.4-22\n\t\t\t\tc-4.4-26.2-8.1-23.2-12.3-46.8c-4.4-24.7-1.8-36.9-0.2-87.6c1.4-43.3-0.2-42.2,1-57.3C419.3,504.9,427.4,464,456.8,413.9z"/>\n\t\t\t<path class="st10" d="M675.7,439.9c0,0-30.7-16.2-39.9-19.1c-2.1-0.7-4.1-1.4-6.1-2.3c-23-9.7-50.4-11.2-50.3-11.4\n\t\t\t\tc0,0,0.2,0,0.2,0c-12.9-3.8-7.3,3.5,6.5,21.6c11.6,15.2-4.3,38-17.1,54.7l-47.3,44l0.5,54.7c-10.6,13.1-25,31.8-40.4,55.3\n\t\t\t\tc-11,16.7-25,49.3-45.4,108.1c-3.2,79.8,7.7,239.7,6.2,276.5c29.7,8,67.6,14.1,132.2-0.7c33.7-7.7,60.8-20.2,80.7-31.4\n\t\t\t\tc0-107-3.8-192.8-7.4-252.9c-2.7-45.1-5.7-82.2-3.1-134.7C648.7,530.1,651.1,472,675.7,439.9z"/>\n\t\t\t<path class="st11" d="M488.6,434.9c-15.7,25.2-31,62.2-43.3,102.8c-27,88.9-17.7,163.6-8.9,206.8c3.6-12.2,9.2-29.2,15-54.2\n\t\t\t\tc15.6-67.2,13-85.6,29.1-142.1c8.1-28.6,17.9-56.2,20.9-64.5c7-19.5,14.4-38.5,19.9-51.7C511.3,433.5,498.7,433.4,488.6,434.9z"\n\t\t\t\t/>\n\t\t\t<path class="st12" d="M524.8,435.9c-2.7,2.3-7.5,5.8-14.3,7.4c-14.5,3.4-26.2-4.4-28.4-5.9c9.3-7,16.2-9.8,25.5-16.9L524.8,435.9\n\t\t\t\tz"/>\n\t\t\t<path class="st13" d="M507.6,420.5c-2-0.8-5.4-2.3-9.4-4.5c0,0-5.3-2.9-18.5-12.2l0,0c-3.2,1.1-9.8,17-11.1,18.8\n\t\t\t\tc7.2,15.3,11.1,18.9,11.2,18.8C481.8,437.8,507.6,420.5,507.6,420.5z"/>\n\t\t\t<path class="st13" d="M508.1,420.9l16.7,23.2c17.3-9.1,37.1-28.4,46.2-34.7c6.9-4.7-10.1-13.4-10.1-13.4\n\t\t\t\tc-7.4,4.7-13.7,8.1-18.4,10.3c-4.5,2.2-8.5,3.9-16.3,7.2C518.7,416.7,512.5,419.2,508.1,420.9z"/>\n\t\t\t<path class="st14" d="M544.2,572c-5.7-8-11.5-16-17.2-24c8.7-2.2,39.9-13,39.9-13c9.7-26.1,16.5-48.1,21-63.7\n\t\t\t\tc11.8-40.7,6.3-63.1,6.3-63.1l-21.6-2.8l0,0c-5.5,12.8-13.8,31.6-24.3,54.1c-21,45-80.6,176.4-94.6,221.1\n\t\t\t\tc-7.7,24.7-13.9,50.8-17.3,63.8C435.4,748.7,509.8,628.6,544.2,572z"/>\n\t\t\t<path class="st14" d="M383.5,521.3c7.7,5.5,15.5,10.9,23.2,16.4c-8.3,7.8-16.6,15.5-25,23.3l0,0c0.9,23.9,4.4,55.4,14.7,90.8\n\t\t\t\tc10.9,37.1,26.3,72.4,40,92.8c-10.3-30.9-22.5-80.9-21.2-135.2c2.3-98.9,42.8-171.4,64.4-204.6c-6.8,0.8-15.2,2.4-24.3,5.6\n\t\t\t\tc-6.1,2.1-11.3,4.5-15.8,6.9c-10.2,14.5-21,31.4-31.4,50.7C397.9,487,389.9,505,383.5,521.3z"/>\n\t\t\t<path class="st2" d="M675.7,439.9c30,5.9,37.4,101.9,39.5,200.9c0,0,3.1,145.6-9.6,341l0,0c-21.7,0.5-43.5,1-65.2,1.5\n\t\t\t\tc-8.6-85.3-12.2-156.2-13.8-208.3c-2.3-76.2-9.9-223,0.1-289.2c1.2-8.1,4.1-25.1,17.6-36.1C654.4,441.5,668.3,438.4,675.7,439.9z\n\t\t\t\t"/>\n\t\t\t<path class="st2" d="M436.5,744.5c-1,48.6-1,99.2,0.4,151.7c1.1,43.4,3.1,85.4,5.8,125.9C444.9,985.1,436.5,744.5,436.5,744.5z"\n\t\t\t\t/>\n\t\t\t<path class="st3" d="M105.8,300.6c1-1.3,3.1-1.2,3.4-1.1c1.6,0.1,2.7,1.1,3.8,2c0.8,0.7,2,1.9,3.1,3.8c4.1,6.1,22,33,24,34.1\n\t\t\t\tc1,0.6,1.6,0.4,1.6,0.4c0.5-0.2,0.8-0.7,1-1.2c0,0,0.4-0.9,0.5-1.7c0.2-1.3-9-24.1-22.1-55c-2.3-4.1-2.2-8-0.5-9.2\n\t\t\t\tc1.4-1,3.7-0.2,4.3,0c2.1,0.7,3.4,2.2,4.3,3.4c3.1,4,4.6,7.9,6.2,11.5c2.3,5.4,0-0.7,3.9,8.6c8.9,21.3,12.1,31.9,16.7,32.1\n\t\t\t\tc0.2,0,1.3,0.1,2.2-0.7c2.1-1.7,0.8-6.5,0.3-8.7c-4.5-16.6-7.5-33.6-12.1-50.2c-0.7-2.4-2.1-7.8,0.3-9.8c1-0.9,2.7-1.1,4-0.8\n\t\t\t\tc0.7,0.2,2,0.7,3.9,3.4c2.3,3.4,3.1,6.5,3.1,6.5c0.2,1,13.4,54.7,14.8,55.8c1,0.8,1.7,0.5,1.7,0.5c0.4-0.1,0.8-0.5,0.8-0.8\n\t\t\t\tc0.8-11.1,5.7-22.8,21.3-24.8c19.5-2.4,30.6,13.1,36,20.1c1.9,4.2,2.9,6.1-1.1,8c-0.4,0.2-1.9,0.9-3.8,0.5\n\t\t\t\tc-2.4-0.4-4-2.5-4.7-3.5c-3.5-4.5-7.3-9.4-11.7-11.5c-0.6-0.3-5.9-2.7-10.8-0.1c-4.5,2.4-5.6,7.5-6,8.9\n\t\t\t\tc-0.6,2.5-0.4,4.4,1.4,12.2c1.6,7.2,2,6.4,7.6,24.7c0.4,1.2,0.9,2.3,1.7,3.2c3,3.4,9.8,4.5,13.2,2.5c6.4-3.9,13-8.8,10.6-21.4\n\t\t\t\tc-0.9-4.6-3.2-13.5,1.9-15c4.7-1.3,7.3,2.9,8.5,7.8c3.8,15.3,0.2,27.3-7.7,39.7c-5,7.9-11.4,20.6-17.3,27.8\n\t\t\t\tc-11.1,13.5-28.3,23.2-46.2,17.2c-12.7-4.3-17.7-22.3-21.6-34.4c-0.6-1.7-1.1-3.5-1.7-5.1c-1.5-4.5-3.2-8.9-5.1-13.2\n\t\t\t\tc-4.1-9.3-11.1-20.6-13.5-24.6c-4.3-7-10.2-17.1-16.7-30.2c-1.7-2.9-2.7-5.5-3.2-7.3C105.1,302.2,105.4,301.2,105.8,300.6z"/>\n\t\t</g>\n\t</g>\n\t<path class="st4" d="M315,91.3c1.4,3,5.4,10.3,13.8,15.5c8.3,5.1,16.2,5.3,19.5,5.3c11.6,0.1,20-4.8,23.4-7.1\n\t\tc-1.7,15.3-2.5,33-1.4,52.6c1.7,31.7,7.8,58.6,14.3,79.4c-1.3-13.8-3.2-37.3-2.9-61c0-1.6,0-11.7,2.5-24.6\n\t\tc2.4-12.6,4.2-21.2,10.4-25.4c8.4-5.8,20.9-0.8,26.3,1.1c0,0,56.5,20.3,147.2,1.5c10.6-2.2,21.5-2.6,32.2-4.7\n\t\tc9.8-1.9,15.3-3.4,17.4-0.7c3.1,3.9-5.6,10.7-7.2,24.4c-1.5,12.5,5,13.6,5.4,30.3c0.4,15.3-4,28.4-4,28.4\n\t\tc-2.9,8.8-6.6,14.6-3.9,18.2c1.7,2.3,5.8,3.2,8.8,2c7-2.8,5.1-16,11.3-17.8c1.8-0.5,3.5,0.1,6.4,1.6c5.1,2.6,12.5,7,20.9,14.6\n\t\tc6.7-10.4,16.5-28.9,18.4-53.5c0.6-7.3,1.2-14.8,0.8-23.9c-0.2-4.6-0.7-8.2-1.2-11.1c-1.5-7.7-4.5-10.1-3.7-15\n\t\tc0.6-3.6,2.2-3.6,4.4-8.4c3.3-7.4,2.4-14.4,1.9-18.6c-0.7-5.5-2.3-10.6-5.7-17.2c-11.2-22.1-29.6-38.3-29.6-38.3\n\t\tc-12.2-8.6-23.3-16.4-37.7-23c-0.6-0.3-14.1-6.2-29.5-10.1c-29-7.2-85-12-141.4,13c-18.4,8.1-34.5,15.2-49.5,31.4\n\t\tc-9.1,9.8-12.1,16.6-22.3,24.6C344.8,86.8,327.4,90.3,315,91.3z"/>\n</g>\n</svg>\n',$='<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="302.39" y1="99.94" x2="37.89" y2="179.35" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-1620.33" y1="276.05" x2="-1539.53" y2="276.05" gradientTransform="translate(1751.48 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="_езымянный_градиент_154" x1="34.35" y1="139.4" x2="309.52" y2="139.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#faaaad"/><stop offset=".63" stop-color="#f58f99"/><stop offset="1" stop-color="#f27e8c"/></linearGradient><linearGradient id="linear-gradient-6" x1="116.23" y1="138.55" x2="220.14" y2="138.55" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="_езымянный_градиент_154-2" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="_езымянный_градиент_154-3" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="linear-gradient-7" x1="84.43" y1="232.6" x2="93.81" y2="232.6" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-8" x1="84.97" y1="228.4" x2="94.4" y2="228.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-9" x1="88.62" y1="211.89" y2="211.89" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-10" x1="78.19" y1="235.99" x2="81.88" y2="235.99" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="79.11" y1="224.13" x2="80.65" y2="224.13" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="96.57" y1="274.36" x2="66.33" y2="248.94" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-13" x1="85.15" y1="246.65" x2="95.56" y2="280.85" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="252.5" y1="244.53" x2="267.16" y2="244.53" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-2" x1="304.01" y1="277.86" x2="310.43" y2="277.86" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-3" x1="310.58" y1="246.37" x2="315.55" y2="246.37" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-4" x1="306.7" y1="257.31" x2="312.12" y2="257.31" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-5" x1="305.58" y1="263.7" x2="311.8" y2="263.7" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-6" x1="304.81" y1="269.92" x2="311.83" y2="269.92" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-15" x1="234.19" y1="253.26" x2="251.01" y2="253.26" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-7" x1="125.05" y1="177.33" x2="130.03" y2="177.33" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-8" x1="128.48" y1="188.27" x2="133.91" y2="188.27" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-9" x1="128.8" y1="194.66" x2="135.02" y2="194.66" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-10" x1="128.77" y1="200.89" x2="135.8" y2="200.89" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-16" x1="-84.04" y1="889.44" x2="-81.6" y2="899.89" gradientTransform="translate(90.9 -640.25) rotate(-14.58)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-11" x1="76.34" y1="152.13" x2="79.17" y2="152.13" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-12" x1="76.88" y1="163.69" x2="82.23" y2="163.69" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-13" x1="78.81" y1="169.51" x2="84.71" y2="169.51" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-17" x1="129.62" y1="791.83" x2="124.92" y2="846.04" gradientTransform="translate(66.05 -498.5) rotate(-4.96) scale(.91 .93)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-14" x1="242.32" y1="286.75" x2="247.56" y2="286.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-15" x1="242.58" y1="293.44" x2="248.74" y2="293.44" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-16" x1="242.82" y1="301.75" x2="249.28" y2="301.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-17" x1="242.75" y1="309.1" x2="249.42" y2="309.1" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-18" x1="242.24" y1="317.46" x2="249.41" y2="317.46" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-18" x1="348.41" y1="-756.25" x2="346.98" y2="-745.97" gradientTransform="translate(-190.84 863.32) rotate(9.34) scale(1 .9)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-19" x1="263.73" y1="238.67" x2="268.79" y2="238.67" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-20" x1="259.66" y1="248.61" x2="264.85" y2="248.61" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-21" x1="258.3" y1="254.23" x2="264.28" y2="254.23" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-19" x1="254.16" y1="244.83" x2="252.04" y2="263.26" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-22" x1="251.05" y1="236.12" x2="257.02" y2="236.12" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-23" x1="249.1" y1="243.85" x2="256.05" y2="243.85" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-24" x1="247.67" y1="253.44" x2="255.04" y2="253.44" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-25" x1="246.77" y1="261.97" x2="254.34" y2="261.97" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-26" x1="245.91" y1="271.6" x2="253.92" y2="271.6" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-20" x1="236.71" y1="270.22" x2="263.32" y2="270.22" xlink:href="#linear-gradient-12"/><linearGradient id="linear-gradient-21" x1="234.37" y1="256.13" x2="265.67" y2="256.13" xlink:href="#linear-gradient-12"/></defs><g id="Layer_1-2"><g><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(180)" style="fill:url(#linear-gradient-5);"/><rect x="34.35" y="61.95" width="275.17" height="154.9" rx="3.09" ry="3.09" style="fill:url(#_езымянный_градиент_154);"/><g><circle cx="168.18" cy="138.55" r="51.96" style="fill:url(#linear-gradient-6);"/><g><path d="M188,162.6c-1.08,0-2.17-.41-3-1.24l-39.63-39.63c-1.66-1.65-1.66-4.34,0-5.99,1.65-1.66,4.34-1.66,5.99,0l39.63,39.63c1.66,1.65,1.66,4.34,0,5.99-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-2);"/><path d="M148.37,162.6c-1.08,0-2.17-.41-3-1.24-1.66-1.65-1.66-4.34,0-5.99l39.63-39.63c1.65-1.66,4.34-1.66,5.99,0,1.66,1.65,1.66,4.34,0,5.99l-39.63,39.63c-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-3);"/></g></g></g><g><polygon points="93.81 216.28 93.53 218.55 90.97 238.9 89.62 249.58 86.96 249.25 84.43 248.93 85.77 238.24 88.33 217.89 88.62 215.62 91.15 215.94 93.81 216.28" style="fill:url(#linear-gradient-7);"/><path d="M94.39,219.59l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-8);"/><polygon points="93.81 216.28 91.15 215.94 88.62 215.62 92.16 207.92 92.35 207.5 93.81 216.28" style="fill:url(#linear-gradient-9);"/><rect x="78.19" y="225.37" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-10);"/><path d="M80.65,222.94v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-11);"/><path d="M81.88,225.97v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M92.16,207.92l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M91.19,280.34h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-12);"/><path d="M95.71,247.43l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-13); opacity:.4;"/></g></g><g><g><g><path d="M257.75,266.28s-6.3,1.38-5.09-1.75c.21-.54,.4-1.23,.58-2.06,.13-.6,.26-1.27,.4-2.02,.2-1.16,.41-2.5,.65-4.03,.08-.54,.17-1.1,.25-1.68,.24-1.57,.5-3.3,.82-5.21,.1-.64,.22-1.31,.33-1.99,.21-1.21,.43-2.49,.67-3.83,.16-.87,.33-1.77,.51-2.7,.04-.2,.08-.41,.12-.62,.22-1.1,.46-2.14,.74-3.12,.28-.99,.59-1.92,.91-2.8,.99-2.66,2.17-4.81,3.33-6.52,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81-.65,2.19-1.31,4.73-1.77,7.16h0c-.14,.71-.26,1.42-.36,2.1-.2,1.33-.31,2.58-.31,3.66h0c0,.51,.02,.98,.07,1.4,.01,.09,.02,.18,.04,.27,.17,1.07,.07,2.68-.19,4.55-.12,.82-.26,1.68-.44,2.58-.35,1.84-.81,3.8-1.28,5.71-.23,.9-.46,1.79-.69,2.64-.35,1.32-.7,2.55-1.02,3.64-.17,.58-.32,1.11-.47,1.6-.49,1.66-.82,2.7-.82,2.7Z" style="fill:url(#linear-gradient-14);"/><path d="M260.05,258.35c-.78-.83-2.09-1.89-3.54-1.69-.8,.11-1.57-.02-2.24-.24,.08-.54,.17-1.1,.25-1.68,1.75,.38,4.54,.93,6.2,.96-.23,.9-.46,1.79-.69,2.64Z" style="fill:url(#_езымянный_градиент_157-2); opacity:.2;"/><path d="M264.99,228.27c-.91-.34-2.05-.38-3.03-.32,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81Z" style="fill:url(#_езымянный_градиент_157-3); opacity:.2;"/><path d="M262.86,237.53c-1.23,.18-3.08,.27-5.14-.26,.28-.99,.59-1.92,.91-2.8,.91,.7,2.6,1.61,4.58,.96-.14,.71-.26,1.41-.36,2.1Z" style="fill:url(#_езымянный_градиент_157-4); opacity:.2;"/><path d="M262.62,242.59c-1.57,.51-4.41,1.31-6.26,1.12,.16-.87,.33-1.77,.51-2.7,1.41,.7,3.71,1.45,5.68,.18,0,.51,.02,.98,.07,1.4Z" style="fill:url(#_езымянный_градиент_157-5); opacity:.2;"/><path d="M262.02,249.99c-1.14-.29-2.66-.55-3.61-.17-.96,.38-2.18,.06-3.06-.28,.1-.64,.22-1.31,.33-1.99,1.97,.09,5.39,.18,6.78-.13-.12,.82-.26,1.68-.44,2.58Z" style="fill:url(#_езымянный_градиент_157-6); opacity:.2;"/><path d="M258.57,263.59l-5.33-1.11c.13-.6,.26-1.27,.4-2.02,1.61,.52,4.01,1.27,5.4,1.54-.17,.58-.32,1.11-.47,1.6Z" style="fill:#188aa5;"/></g><g><path d="M245.82,274.81s6.36,1.06,4.99-2c-.24-.53-.46-1.21-.69-2.03-.16-.59-.33-1.25-.5-2-.26-1.15-.54-2.48-.85-3.99-.11-.53-.22-1.09-.34-1.67-.32-1.55-.67-3.27-1.08-5.16-.14-.64-.28-1.3-.43-1.97-.27-1.2-.55-2.46-.87-3.79-.2-.86-.42-1.75-.64-2.67-.05-.2-.1-.41-.15-.61-.27-1.09-.57-2.11-.9-3.08-.33-.97-.68-1.89-1.06-2.75-1.13-2.6-2.41-4.7-3.66-6.34-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69,.77,2.15,1.55,4.66,2.14,7.06h0c.18,.71,.33,1.4,.47,2.08,.26,1.32,.44,2.56,.5,3.64h0c.03,.51,.03,.98,0,1.4,0,.09-.01,.18-.02,.27-.12,1.08,.06,2.68,.43,4.53,.16,.81,.35,1.67,.57,2.55,.45,1.82,1,3.76,1.57,5.64,.27,.89,.55,1.76,.82,2.6,.42,1.3,.83,2.51,1.2,3.59,.2,.57,.38,1.1,.55,1.57,.58,1.63,.96,2.65,.96,2.65Z" style="fill:url(#linear-gradient-15);"/><path d="M243.12,267c.74-.86,1.99-1.99,3.44-1.86,.81,.07,1.57-.1,2.22-.35-.11-.53-.22-1.09-.34-1.67-1.73,.47-4.49,1.16-6.15,1.28,.27,.89,.55,1.76,.82,2.6Z" style="fill:#188aa5;"/><path d="M236.65,237.22c.89-.39,2.03-.49,3.01-.48-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69Z" style="fill:url(#_езымянный_градиент_157-7); opacity:.2;"/><path d="M239.25,246.36c1.24,.12,3.09,.11,5.12-.52-.33-.97-.68-1.89-1.06-2.75-.88,.74-2.51,1.74-4.53,1.2,.18,.7,.33,1.4,.47,2.07Z" style="fill:url(#_езымянный_градиент_157-8); opacity:.2;"/><path d="M239.75,251.4c1.6,.43,4.48,1.08,6.31,.8-.2-.86-.42-1.75-.64-2.67-1.37,.78-3.64,1.64-5.67,.47,.03,.51,.03,.98,0,1.4Z" style="fill:url(#_езымянный_градиент_157-9); opacity:.2;"/><path d="M240.72,258.76c1.12-.35,2.63-.69,3.6-.36,.98,.33,2.18-.05,3.04-.44-.14-.64-.28-1.3-.43-1.97-1.97,.19-5.38,.45-6.78,.22,.16,.81,.35,1.67,.57,2.55Z" style="fill:url(#_езымянный_градиент_157-10); opacity:.2;"/><path d="M244.87,272.16l5.26-1.39c-.16-.59-.33-1.25-.5-2-1.58,.6-3.94,1.47-5.31,1.81,.2,.57,.38,1.1,.55,1.57Z" style="fill:#188aa5;"/></g><g><path d="M253.36,274.62s-4.26,4.46-5.28,1.29c-.18-.55-.46-1.21-.85-1.98-.27-.55-.6-1.16-.98-1.84-.58-1.04-1.27-2.24-2.06-3.59-.28-.48-.57-.97-.87-1.49-.81-1.39-1.71-2.93-2.68-4.63-.33-.57-.66-1.17-1.01-1.78-.61-1.09-1.25-2.23-1.91-3.44-.43-.79-.87-1.6-1.32-2.45-.1-.19-.2-.37-.3-.56-.53-1-1-1.97-1.4-2.91-.41-.95-.76-1.86-1.05-2.74-.9-2.67-1.32-5.03-1.47-7.03-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83,.87,2.11,1.97,4.51,3.15,6.71h0c.34,.65,.7,1.28,1.05,1.89,.7,1.18,1.4,2.25,2.1,3.12h0c.32,.41,.65,.78,.96,1.09,.07,.07,.14,.14,.21,.2,.83,.77,1.78,2.12,2.76,3.77,.43,.72,.87,1.5,1.3,2.32,.89,1.67,1.79,3.5,2.62,5.29,.39,.85,.78,1.69,1.14,2.5,.56,1.25,1.07,2.43,1.51,3.48,.23,.56,.45,1.07,.65,1.54,.66,1.6,1.06,2.61,1.06,2.61Z" style="fill:url(#linear-gradient-16);"/><path d="M250.15,266.99c-1.17-.25-2.92-.42-3.97,.51-.59,.51-1.29,.82-1.98,.99-.28-.48-.57-.97-.87-1.49,1.68-.62,4.31-1.66,5.69-2.52,.39,.85,.78,1.69,1.14,2.5Z" style="fill:#188aa5;"/><path d="M234.86,240.11c-.96,.2-1.92,.78-2.68,1.34-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83Z" style="fill:url(#_езымянный_градиент_157-11); opacity:.2;"/><path d="M239.06,248.71c-.89,.8-2.34,1.85-4.37,2.51-.41-.95-.76-1.86-1.05-2.74,1.2,.08,3.16-.08,4.37-1.65,.34,.65,.7,1.28,1.05,1.88Z" style="fill:url(#_езымянный_градиент_157-12); opacity:.2;"/><path d="M242.12,252.92c-.96,1.24-2.77,3.39-4.4,4.23-.43-.79-.87-1.6-1.32-2.45,1.6-.18,3.97-.8,4.76-2.87,.32,.41,.65,.78,.96,1.09Z" style="fill:url(#_езымянный_градиент_157-13); opacity:.2;"/><path d="M246.39,259.21c-1.12,.37-2.53,.97-3.06,1.78-.54,.82-1.74,1.21-2.68,1.39-.33-.57-.66-1.17-1.01-1.78,1.67-.98,4.52-2.72,5.46-3.7,.43,.72,.87,1.5,1.3,2.32Z" style="fill:#188aa5;"/><path d="M252.3,272.01l-5.07,1.93c-.27-.55-.6-1.16-.98-1.84,1.65-.43,4.09-1.1,5.4-1.63,.23,.56,.45,1.07,.65,1.54Z" style="fill:#188aa5;"/></g><g><path d="M249.68,226.71c-.26,.63-.51,3.01-.59,6.03-.06,2.37-.01,5.13,.22,7.73,.06,.71,.14,1.41,.23,2.09,.16,1.15,.36,2.23,.61,3.2,.05,.2,.1,.41,.15,.64,.12,.6,.23,1.33,.33,2.14,.21,1.77,.35,3.97,.45,6.35,.02,.49,.04,.99,.05,1.49,.06,1.8,.1,3.67,.12,5.52,0,.52,.01,1.04,.02,1.56,.01,2.02,.01,3.98,0,5.75,0,1.05-.02,2.04-.03,2.93-.04,2.81-.08,4.65-.08,4.65,0,0-9.91,4.17-7.88,1.81,.66-.77,1.14-3.23,1.47-6.65,.07-.76,.14-1.56,.19-2.41,.12-1.74,.2-3.64,.26-5.64,.02-.68,.03-1.37,.04-2.07,.03-1.5,.03-3.03,.02-4.57,0-.72-.01-1.45-.02-2.17-.02-1.54-.06-3.08-.12-4.57-.03-.88-.07-1.74-.11-2.59-.05-.99-.11-1.96-.17-2.89-.03-.37-.04-.74-.06-1.11-.04-1.1-.02-2.15,.04-3.16h0c.17-2.92,.71-5.45,1.38-7.55,1.58-4.99,3.85-7.46,3.47-6.54Z" style="fill:url(#linear-gradient-17);"/><path d="M249.55,242.57c-1.05,.7-3.1,1.85-4.74,1.39-.04-1.1-.02-2.15,.04-3.16,1.3,.36,3.18,.63,4.48-.32,.06,.71,.14,1.41,.23,2.09Z" style="fill:url(#_езымянный_градиент_157-14); opacity:.2;"/><path d="M250.63,248.54c-1.08,.64-3.99,2.27-5.49,2-.03-.88-.07-1.74-.11-2.59,1.28,.17,4.06,.29,5.27-1.55,.12,.6,.23,1.33,.33,2.14Z" style="fill:url(#_езымянный_градиент_157-15); opacity:.2;"/><path d="M251.08,254.9c.02,.49,.04,.99,.05,1.49l-2.34,.18s-1.38,1.54-3.52,.72c0-.72-.01-1.45-.02-2.17,1.46,.16,4.61,.4,5.83-.22Z" style="fill:url(#_езымянный_градиент_157-16); opacity:.2;"/><path d="M251.26,261.92c0,.52,.01,1.04,.02,1.56-.85-.22-1.92-.37-2.04,.23-.14,.67-2.42,.6-4.02,.21,.02-.68,.03-1.37,.04-2.07,1.33,.1,4.32,.29,6,.06Z" style="fill:url(#_езымянный_градиент_157-17); opacity:.2;"/><path d="M251.27,269.23c0,1.05-.02,2.04-.03,2.93-1.57,.53-4.96,.06-6.49-.19,.07-.76,.14-1.56,.19-2.41,1.68,.89,4.82,.12,6.32-.33Z" style="fill:url(#_езымянный_градиент_157-18); opacity:.2;"/></g><g><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.66,1.98-1.32,4.3-1.76,6.53-.12,.61-.23,1.21-.31,1.8-.14,1-.23,1.95-.24,2.81,0,.17,0,.36-.02,.56-.04,.53-.12,1.16-.23,1.86-.25,1.52-.67,3.4-1.18,5.43-.11,.42-.22,.84-.33,1.27-.4,1.52-.84,3.1-1.29,4.66-.13,.44-.26,.88-.38,1.31-.5,1.7-1,3.34-1.46,4.83-.28,.88-.53,1.71-.77,2.45-.75,2.35-1.26,3.88-1.26,3.88,0,0-10.52,1.48-7.98-.09,.82-.51,1.91-2.48,3.1-5.28,.26-.62,.53-1.28,.8-1.98,.56-1.44,1.12-3.02,1.68-4.68,.19-.57,.38-1.14,.57-1.73,.41-1.25,.8-2.54,1.19-3.83,.18-.61,.36-1.22,.53-1.83,.37-1.3,.72-2.59,1.05-3.86,.2-.74,.38-1.48,.56-2.2,.2-.84,.4-1.66,.57-2.46,.07-.32,.15-.63,.23-.94,.24-.93,.52-1.81,.84-2.65h0c.91-2.42,2.07-4.43,3.23-6.05,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#linear-gradient-18);"/><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.81-.36-1.92-.31-2.88-.17,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#_езымянный_градиент_157-19); opacity:.2;"/><path d="M264.54,249.56c-1.18,.38-3.42,.92-4.88,.2,.24-.93,.52-1.81,.84-2.65,1.15,.57,2.88,1.18,4.35,.65-.12,.61-.23,1.21-.31,1.8Z" style="fill:url(#_езымянный_градиент_157-20); opacity:.2;"/><path d="M264.05,254.8c-1.19,.32-4.38,1.09-5.74,.56,.2-.74,.38-1.48,.56-2.2,1.17,.4,3.8,1.08,5.42-.22-.04,.53-.12,1.16-.23,1.86Z" style="fill:url(#_езымянный_градиент_157-21); opacity:.2;"/><path d="M262.86,260.22c-.11,.42-.22,.84-.33,1.27l-2.28-.33s-1.71,1.01-3.54-.12c.18-.61,.36-1.22,.53-1.83,1.36,.43,4.3,1.28,5.61,1.01Z" style="fill:#188aa5;"/><path d="M261.24,266.15c-.13,.44-.26,.88-.38,1.31-.75-.36-1.74-.71-2.01-.22-.3,.54-2.46,0-3.89-.64,.19-.57,.38-1.14,.57-1.73,1.24,.36,4.05,1.12,5.71,1.28Z" style="fill:#188aa5;"/><path d="M259.4,272.29c-.28,.88-.53,1.71-.77,2.45-1.63,.12-4.75-.96-6.14-1.48,.26-.62,.53-1.28,.8-1.98,1.38,1.09,4.57,1.09,6.11,1.01Z" style="fill:#188aa5;"/></g><g><path d="M252.51,216.49c.26,.8,.32,3.81,.1,7.59-.17,2.97-.51,6.41-1.06,9.65-.15,.88-.32,1.75-.5,2.59-.31,1.42-.67,2.77-1.08,3.95-.08,.24-.16,.5-.25,.78-.21,.75-.42,1.64-.62,2.65-.44,2.19-.84,4.93-1.21,7.91-.07,.61-.15,1.23-.22,1.86-.26,2.25-.5,4.59-.72,6.9-.06,.66-.12,1.31-.18,1.95-.23,2.53-.43,4.98-.59,7.19-.1,1.32-.19,2.55-.27,3.66-.25,3.51-.38,5.82-.38,5.82,0,0,11.77,5.97,9.51,2.86-.73-1.01-1.08-4.13-1.13-8.42-.01-.95,0-1.96,0-3.02,.03-2.18,.13-4.57,.26-7.07,.05-.85,.1-1.71,.16-2.59,.12-1.87,.27-3.79,.44-5.72,.08-.9,.16-1.81,.25-2.71,.19-1.93,.39-3.84,.61-5.71,.13-1.09,.26-2.18,.4-3.23,.17-1.24,.33-2.44,.51-3.6,.07-.46,.13-.92,.18-1.38,.16-1.37,.25-2.69,.28-3.95h0c.09-3.66-.32-6.87-.92-9.54-1.43-6.36-3.98-9.61-3.6-8.44Z" style="fill:url(#linear-gradient-19);"/><path d="M251.05,236.32c1.22,.96,3.62,2.55,5.7,2.1,.16-1.37,.25-2.69,.28-3.95-1.63,.35-3.98,.54-5.48-.73-.15,.88-.32,1.75-.5,2.59Z" style="fill:url(#_езымянный_градиент_157-22); opacity:.2;"/><path d="M249.1,243.71c1.26,.89,4.68,3.14,6.55,2.91,.13-1.09,.26-2.18,.4-3.23-1.59,.11-5.03,.06-6.33-2.34-.21,.75-.42,1.64-.62,2.65Z" style="fill:url(#_езымянный_градиент_157-23); opacity:.2;"/><path d="M247.89,251.62c-.07,.61-.15,1.23-.22,1.86l2.86,.4s1.55,2.02,4.25,1.16c.08-.9,.16-1.81,.25-2.71-1.82,.08-5.72,.15-7.15-.71Z" style="fill:url(#_езымянный_градиент_157-24); opacity:.2;"/><path d="M246.95,260.39c-.06,.66-.12,1.31-.18,1.95,1.06-.21,2.4-.32,2.49,.44,.1,.85,2.92,.93,4.92,.57,.05-.85,.1-1.71,.16-2.59-1.65,.02-5.35,.03-7.4-.38Z" style="fill:url(#_езымянный_градиент_157-25); opacity:.2;"/><path d="M246.17,269.53c-.1,1.32-.19,2.55-.27,3.66,1.88,.78,6.1,.45,8.01,.26-.01-.95,0-1.96,0-3.02-2.16,.98-5.95-.21-7.75-.89Z" style="fill:url(#_езымянный_градиент_157-26); opacity:.2;"/></g></g><g><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96-.79-1.27-1.25-2.78-1.25-4.39v-16.69h26.6Z" style="fill:url(#linear-gradient-20);"/><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96,17.25,.06,21.4-13.28,22.35-21.08h3.01Z" style="fill:#27494f; opacity:.08;"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95-.01-.06-.02-.13-.02-.2v-2.39c0-.64,.51-1.15,1.15-1.15h28.99c.63,0,1.15,.51,1.15,1.15Z" style="fill:url(#linear-gradient-21);"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95,26.64,.81,29.41-2.53,29.55-3.74h.58c.63,0,1.15,.51,1.15,1.15Z" style="fill:#27494f; opacity:.08;"/></g></g></g></g></svg>',tt={name:"AuthorizationModule",props:{authManifest:{type:Object,default:null},adminContacts:{type:Object,default:null},fullscreen:{type:Boolean,default:!1},disableClosingForPressEsc:{type:Boolean,default:!1},authHandler:{type:Function,required:!0},outerError:{type:Object,default:null}},components:{SignIn:D,Error:Y},mixins:[_],created:function(){-1!==window.location.protocol.indexOf("https")?(this.authModuleStore.fullscreen=this.fullscreen,this.authModuleStore.authHandler=this.authHandler,this.disableClosingForPressEsc||window.addEventListener("keyup",this.closeByPressKey,!1)):this.setModuleMode("error")},beforeDestroy:function(){window.removeEventListener("keyup",this.closeByPressKey,!1),this.authModuleStore.$dispose()},methods:{closeByPressKey:function(t){27===t.keyCode&&this.authModuleStore.sendEvent({name:"close"})}},computed:{currentGraphics:function(){return"success"===this.currentScreen?B:{signIn:Q,error:$}[this.authManagerStore.moduleScreen.mode]||Q},isOuterScreen:function(){return"signIn"===this.authManagerStore.moduleScreen.mode&&"outer"===this.currentScreen}},data:function(){return{SignInGraphics:Q,SuccessGraphics:B,ErrorGraphics:$,svgClose:'<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">\n    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>\n    <path d="M0 0h24v24H0z" fill="none"/>\n</svg>'}},watch:{authManifest:{handler:function(t){this.authModuleStore.authManifest=t},immediate:!0},adminContacts:{handler:function(t){this.authModuleStore.adminContacts=t},immediate:!0},"authModuleStore.event":{handler:function(t){this.$emit(t.name,t.payload)}}}},et=(0,L.A)(tt,g,[],!1,null,null,null).exports,rt=function(){var t=this,e=t._self._c;return e("TcModal",{attrs:{headerText:t.$pgettext("Text on the button","Contact your administrator")},on:{close:function(e){return t.$emit("close")}},scopedSlots:t._u([{key:"content",fn:function(){return[e("div",{staticClass:"admin-contacts-modal__container"},[e("AdminContacts"),t._v(" "),e("div",{staticClass:"admin-contacts-modal__img"},[e("div",{attrs:{"aria-hidden":""},domProps:{innerHTML:t._s(t.Illustration)}})])],1)]},proxy:!0}])})};rt._withStripped=!0;var nt=r(460),at={name:"AdminContactsModal",components:{AdminContacts:nt.A},data:function(){return{Illustration:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="6866 521.1 140 129.94">\n  <defs>\n    <style>\n      .admin-contacts-cls-1 {\n        fill: #ebf4f9;\n      }\n\n      .admin-contacts-cls-2 {\n        fill: #fff;\n      }\n\n      .admin-contacts-cls-3 {\n        fill: #45433f;\n      }\n\n      .admin-contacts-cls-4, .admin-contacts-cls-8 {\n        fill: #ffcd97;\n      }\n\n      .admin-contacts-cls-5 {\n        fill: #efc092;\n      }\n\n      .admin-contacts-cls-10, .admin-contacts-cls-6 {\n        fill: none;\n      }\n\n      .admin-contacts-cls-6, .admin-contacts-cls-8 {\n        stroke: #45433f;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-miterlimit: 10;\n      }\n\n      .admin-contacts-cls-6 {\n        stroke-width: 2px;\n      }\n\n      .admin-contacts-cls-7 {\n        fill: #0097a7;\n      }\n\n      .admin-contacts-cls-9 {\n        fill: #d3ac4a;\n      }\n\n      .admin-contacts-cls-11 {\n        fill: #6d4f19;\n      }\n\n      .admin-contacts-cls-12 {\n        fill: #656668;\n      }\n\n      .admin-contacts-cls-13 {\n        fill: #b8bed1;\n      }\n\n      .admin-contacts-cls-14 {\n        fill: #f8ebec;\n      }\n\n      .admin-contacts-cls-15 {\n        fill: #cfc4c5;\n      }\n\n      .admin-contacts-cls-16 {\n        fill: #e0d5d6;\n      }\n\n      .admin-contacts-cls-17 {\n        fill: #f7636c;\n      }\n\n      .admin-contacts-cls-18 {\n        fill: #d1474f;\n      }\n\n      .admin-contacts-cls-19 {\n        fill: #43414d;\n      }\n\n      .admin-contacts-cls-20 {\n        fill: #adadae;\n      }\n\n      .admin-contacts-cls-21 {\n        fill: #e1e1e1;\n      }\n\n      .admin-contacts-cls-22 {\n        opacity: 0.5;\n      }\n\n      .admin-contacts-cls-23 {\n        opacity: 0.2;\n      }\n\n      .admin-contacts-cls-24 {\n        fill: #858585;\n      }\n    </style>\n  </defs>\n  <g id="admin" transform="translate(6904.821 530.314)">\n    <path id="Path_1945" class="admin-contacts-cls-1" d="M102.013,151V134.936a32.057,32.057,0,0,0-64.113,0V151Z" transform="translate(-39.33 -46.517)"/>\n    <path id="Path_1946" class="admin-contacts-cls-2" d="M70.089,105.7A32.181,32.181,0,0,0,38,137.9V154.03h0v-8.263a32.057,32.057,0,0,1,64.113,0V137.9A32.21,32.21,0,0,0,70.089,105.7Z" transform="translate(-39.365 -47.447)"/>\n    <g id="Group_1273" transform="translate(-1.792 55.464)">\n      <path id="Path_1947" class="admin-contacts-cls-3" d="M-137.7-66.321H-201.81a.422.422,0,0,1-.391-.393V-82.781a32.48,32.48,0,0,1,32.154-32.92,32.472,32.472,0,0,1,32.741,32.33v16.657A.377.377,0,0,1-137.7-66.321Zm-63.721-.787h63.33V-82.781a31.707,31.707,0,0,0-31.632-31.8,31.763,31.763,0,0,0-31.7,31.8Z" transform="translate(202.203 115.703)"/>\n    </g>\n    <path id="Path_1948" class="admin-contacts-cls-4" d="M90.605,104.364l-7.37,4.984L75.8,104.364V98.2H90.605Z" transform="translate(-52.511 -44.866)"/>\n    <path id="Path_1949" class="admin-contacts-cls-5" d="M75.8,104.1a4.107,4.107,0,0,1,.587.262,18.8,18.8,0,0,0,13.631,0,4.107,4.107,0,0,0,.587-.262V98.2H75.865l-.065,5.9Z" transform="translate(-52.511 -44.866)"/>\n    <path id="Path_1950" class="admin-contacts-cls-6" d="M90.605,104.364l-7.37,4.984L75.8,104.364V98.2H90.605Z" transform="translate(-52.511 -44.866)"/>\n    <path id="Path_1951" class="admin-contacts-cls-7" d="M83.974,115.1l-6,34.166a3.548,3.548,0,0,0,.326,2.164l1.957,3.672h7.435l1.957-3.672a3.548,3.548,0,0,0,.326-2.164Z" transform="translate(-53.249 -50.683)"/>\n    <g id="Group_1274" transform="translate(23.868 61.632)">\n      <path id="Path_1952" class="admin-contacts-cls-3" d="M-160.746-64.465h-7.435a.8.8,0,0,1-.717-.459l-1.957-3.869a4.192,4.192,0,0,1-.391-2.82l6-35.936a.766.766,0,0,1,.913-.656.84.84,0,0,1,.652.656l6,36a5,5,0,0,1-.391,2.754v.066l-1.957,3.869A.993.993,0,0,1-160.746-64.465Zm-6.979-1.639h6.457l1.7-3.41a2.766,2.766,0,0,0,.261-1.771l-5.218-31.215-5.152,31.149a2.766,2.766,0,0,0,.261,1.771Zm8.87-3.082Z" transform="translate(171.335 108.215)"/>\n    </g>\n    <g id="Group_1275" transform="translate(30.337 56.791)">\n      <path id="Path_1953" class="admin-contacts-cls-2" d="M-153.086-102.449l5.544-7.935a35.451,35.451,0,0,0-7.7-3.017L-163-108.219l7.044,6.1a1.889,1.889,0,0,0,2.739-.262C-153.152-102.449-153.152-102.449-153.086-102.449Z" transform="translate(163.352 113.793)"/>\n      <path id="Path_1954" class="admin-contacts-cls-3" d="M-154.839-101.475a2.318,2.318,0,0,1-1.5-.525l-7.044-6.1a.416.416,0,0,1-.065-.59l.065-.066,7.761-5.181A.487.487,0,0,1-155.3-114a37.335,37.335,0,0,1,7.761,3.017.441.441,0,0,1,.2.525v.066l-5.544,7.935h0a2.178,2.178,0,0,1-1.565.918A1.142,1.142,0,0,1-154.839-101.475Zm-7.631-6.951,6.653,5.771a1.628,1.628,0,0,0,1.239.328,1.693,1.693,0,0,0,1.044-.59l5.283-7.607a33.4,33.4,0,0,0-6.979-2.689Zm9.2,5.705Z" transform="translate(163.539 114)"/>\n    </g>\n    <g id="Group_1276" transform="translate(14.909 56.856)">\n      <path id="Path_1955" class="admin-contacts-cls-2" d="M-175.956-102.483l-5.544-8a35.45,35.45,0,0,1,7.7-3.017l7.761,5.181-7.044,6.1a1.94,1.94,0,0,1-2.739-.2C-175.891-102.483-175.891-102.483-175.956-102.483Z" transform="translate(181.897 113.762)"/>\n      <path id="Path_1956" class="admin-contacts-cls-3" d="M-174.6-101.44h-.326a2.178,2.178,0,0,1-1.565-.918h0l-5.544-7.935a.49.49,0,0,1,.065-.59h.065a34.012,34.012,0,0,1,7.761-3.017.486.486,0,0,1,.326.066l7.761,5.181a.429.429,0,0,1,.13.59l-.065.066-7.044,6.1A5.478,5.478,0,0,1-174.6-101.44Zm-1.174-1.443a1.327,1.327,0,0,0,1.044.59,1.7,1.7,0,0,0,1.239-.328l6.587-5.705-7.174-4.787a37.48,37.48,0,0,0-6.979,2.689Z" transform="translate(182.109 113.9)"/>\n    </g>\n    <g id="Group_1277" transform="translate(50.059 89.22)">\n      <path id="Path_1957" class="admin-contacts-cls-3" d="M-139.409-59.527a.422.422,0,0,1-.391-.393V-74.807a.422.422,0,0,1,.391-.393.422.422,0,0,1,.391.393h0v14.886A.422.422,0,0,1-139.409-59.527Z" transform="translate(139.8 75.2)"/>\n    </g>\n    <g id="Group_1277_1_" transform="translate(10.6 89.22)">\n      <path id="Path_1957_1_" class="admin-contacts-cls-3" d="M-199.909-59.527a.422.422,0,0,1-.391-.393V-74.807a.422.422,0,0,1,.391-.393.422.422,0,0,1,.391.393h0v14.886C-199.452-59.724-199.648-59.527-199.909-59.527Z" transform="translate(200.3 75.2)"/>\n    </g>\n    <path id="Path_1958" class="admin-contacts-cls-8" d="M95.025,47.674V42.756a20.908,20.908,0,0,0-41.807,0v4.984A3.769,3.769,0,0,0,49.5,51.477v1.246a3.769,3.769,0,0,0,3.718,3.738h.326a20.885,20.885,0,0,0,41.155,0h.326a3.769,3.769,0,0,0,3.718-3.738V51.477a3.657,3.657,0,0,0-3.587-3.738A.2.2,0,0,0,95.025,47.674Z" transform="translate(-43.364 -18.734)"/>\n    <g id="Group_1281" transform="translate(8.438 2.254)">\n      <g id="Group_1278" transform="translate(0.413 1.326)">\n        <path id="Path_1959" class="admin-contacts-cls-9" d="M-184.7-148.388a21.03,21.03,0,0,0,.457-8.787c2.152.721,5.74-2.361,5.74-2.361v-4.984a26.078,26.078,0,0,0,22.11,0v4.984s3.522,3.082,5.739,2.361a21.03,21.03,0,0,0,.457,8.787,3.629,3.629,0,0,1,3.587-3.607,3.674,3.674,0,0,1,1.174.2c0-.066,0-.066.065-.066h0a6.794,6.794,0,0,0-1.109-.262v-4.918a20.961,20.961,0,0,0-21.458-20.46,21.05,21.05,0,0,0-20.349,20.46v4.984a2.134,2.134,0,0,0-1.109.262c0,.066,0,.066.065.066h0a3.519,3.519,0,0,1,4.435,2.361A2.2,2.2,0,0,1-184.7-148.388Z" transform="translate(189.4 177.513)"/>\n      </g>\n      <g id="Group_1279" transform="translate(1.404 0.132)">\n        <path id="Path_1960" class="admin-contacts-cls-10" d="M-167.329-173.86a21.017,21.017,0,0,1,20.936,21.05h0v-4.918A20.935,20.935,0,0,0-166.742-179.3a20.963,20.963,0,0,0-21.458,20.46v6.033A21.046,21.046,0,0,1-167.329-173.86Z" transform="translate(188.2 179.308)"/>\n      </g>\n      <g id="Group_1280" transform="translate(0 0)">\n        <path id="Path_1961" class="admin-contacts-cls-11" d="M-184.813-148.579h0a.377.377,0,0,1-.391-.393,3.031,3.031,0,0,0-1.3-2.557,3.047,3.047,0,0,0-2.8-.459.466.466,0,0,1-.587-.328v-.131a.568.568,0,0,1,.2-.393,3.722,3.722,0,0,1,.913-.262v-4.59A21.357,21.357,0,0,1-167.725-179.4a21.351,21.351,0,0,1,21.588,21.181v5.115a1.2,1.2,0,0,1,.457.131c.13.066.261.066.391.131.2.066.391.262.326.459a.341.341,0,0,1-.13.262.4.4,0,0,1-.457.131,3.452,3.452,0,0,0-3,.459,3.145,3.145,0,0,0-1.239,2.557.422.422,0,0,1-.391.393.44.44,0,0,1-.391-.262,20.294,20.294,0,0,1-.587-8.394,9.87,9.87,0,0,1-5.544-2.557.5.5,0,0,1-.13-.328v-4.394a26.262,26.262,0,0,1-21.327,0v4.394c0,.131-.065.2-.13.328a10.111,10.111,0,0,1-5.544,2.557,22.768,22.768,0,0,1-.587,8.394A.358.358,0,0,1-184.813-148.579Zm.391-.393Zm33.72-9.181a.422.422,0,0,1,.391.393v.066a20.728,20.728,0,0,0,.065,6.951,3.408,3.408,0,0,1,1.174-1.377,4.3,4.3,0,0,1,2.152-.787v-4.722A20.529,20.529,0,0,0-167.4-178.22a20.529,20.529,0,0,0-20.48,20.591v4.722a3.936,3.936,0,0,1,3.131,2.164,22.174,22.174,0,0,0,.13-6.886.385.385,0,0,1,.326-.459h.2c1.565.525,4.174-1.312,5.218-2.164v-4.787a.361.361,0,0,1,.2-.328.823.823,0,0,1,.391-.066,25.966,25.966,0,0,0,21.849,0,.443.443,0,0,1,.522.262v4.918c1.044.852,3.652,2.689,5.218,2.164-.13,0-.065-.066,0-.066Zm5.609,5.771Z" transform="translate(189.9 179.402)"/>\n      </g>\n    </g>\n    <path id="Path_1962" class="admin-contacts-cls-3" d="M89.218,84.887H79.761c-.13,0-.2-.066-.261-.2v-.328c0-.131.065-.2.2-.262h9.522c.13,0,.2.066.261.2v.328a.24.24,0,0,1-.261.262Z" transform="translate(-53.798 -40.012)"/>\n    <ellipse id="Ellipse_339" class="admin-contacts-cls-3" cx="1.37" cy="2.426" rx="1.37" ry="2.426" transform="translate(21.398 27.038)"/>\n    <ellipse id="Ellipse_340" class="admin-contacts-cls-3" cx="1.37" cy="2.426" rx="1.37" ry="2.426" transform="translate(37.377 27.038)"/>\n    <g id="Group_1291" transform="translate(0.374 -2.784)">\n      <g id="Group_1282" transform="translate(4.907 39.54)">\n        <path id="Path_1963" class="admin-contacts-cls-3" d="M-180.59-121.54h-1.239a11.946,11.946,0,0,1-11.87-11.935v-3.738a.8.8,0,0,1,.783-.787.8.8,0,0,1,.783.787v3.738a10.244,10.244,0,0,0,10.24,10.3h1.239a.8.8,0,0,1,.783.787.7.7,0,0,1-.717.853Z" transform="translate(193.7 138)"/>\n      </g>\n      <g id="Group_1283" transform="translate(2.478)">\n        <path id="Path_1964" class="admin-contacts-cls-3" d="M-141.683-154.02a.8.8,0,0,1-.783-.787v-2.426a26.32,26.32,0,0,0-26.284-26.428,26.32,26.32,0,0,0-26.284,26.428h0v2.426a.8.8,0,0,1-.783.787.8.8,0,0,1-.783-.787h0v-2.426A27.981,27.981,0,0,1-168.685-185.3a27.939,27.939,0,0,1,27.915,28.067h0v2.426A1.044,1.044,0,0,1-141.683-154.02Z" transform="translate(196.6 185.3)"/>\n      </g>\n      <g id="Group_1286" transform="translate(0 29.541)">\n        <g id="Group_1284" transform="translate(0 0.149)">\n          <path id="Path_1965" class="admin-contacts-cls-2" d="M-191.03-136.206h-7.109c-.13,0-.2-.066-.261-.2v-11.935c0-.131.065-.2.2-.262h7.174Z" transform="translate(199.183 149.387)"/>\n          <path id="Path_1966" class="admin-contacts-cls-3" d="M-191.447-135.832h-7.109a.98.98,0,0,1-1.044-.984v-11.935a.981.981,0,0,1,.978-1.049h7.174a.8.8,0,0,1,.783.787v12.328a.774.774,0,0,1-.783.853Zm-6.522-1.574h5.74v-10.689h-5.74Z" transform="translate(199.6 149.8)"/>\n        </g>\n        <g id="Group_1285" transform="translate(4.907)">\n          <path id="Path_1967" class="admin-contacts-cls-12" d="M-192.4-138.7a2.414,2.414,0,0,0,2.413,2.426,2.457,2.457,0,0,0,2.413-2.426v-7.476a2.414,2.414,0,0,0-2.413-2.426,2.457,2.457,0,0,0-2.413,2.426Z" transform="translate(193.248 149.518)"/>\n          <path id="Path_1968" class="admin-contacts-cls-3" d="M-190.439-135.967a3.322,3.322,0,0,1-3.261-3.279v-7.476A3.323,3.323,0,0,1-190.439-150a3.322,3.322,0,0,1,3.261,3.279v7.476A3.322,3.322,0,0,1-190.439-135.967Zm0-12.328a1.758,1.758,0,0,0-1.631,1.639v7.476a1.619,1.619,0,0,0,1.631,1.639h0a1.758,1.758,0,0,0,1.631-1.639v-7.476a1.707,1.707,0,0,0-1.631-1.639Z" transform="translate(193.7 150)"/>\n        </g>\n      </g>\n      <g id="Group_1289" transform="translate(49.289 29.541)">\n        <g id="Group_1287" transform="translate(2.395 0.214)">\n          <path id="Path_1969" class="admin-contacts-cls-2" d="M-136.2-136.206h7.109c.13,0,.2-.066.261-.2v-11.935c0-.131-.065-.2-.2-.262H-136.2Z" transform="translate(136.983 149.321)"/>\n          <path id="Path_1970" class="admin-contacts-cls-3" d="M-129.508-135.8h-7.109a.8.8,0,0,1-.783-.787v-12.328a.8.8,0,0,1,.783-.787h7.109a.98.98,0,0,1,1.044.984v11.935a.981.981,0,0,1-.978,1.049C-129.443-135.8-129.443-135.8-129.508-135.8Zm-6.261-1.574h5.74v-10.689h-5.74Z" transform="translate(137.4 149.7)"/>\n        </g>\n        <g id="Group_1288">\n          <path id="Path_1971" class="admin-contacts-cls-12" d="M-134.174-138.7a2.414,2.414,0,0,1-2.413,2.426A2.457,2.457,0,0,1-139-138.7v-7.476a2.414,2.414,0,0,1,2.413-2.426,2.457,2.457,0,0,1,2.413,2.426Z" transform="translate(139.848 149.518)"/>\n          <path id="Path_1972" class="admin-contacts-cls-3" d="M-137.039-135.967a3.322,3.322,0,0,1-3.261-3.279v-7.476A3.323,3.323,0,0,1-137.039-150a3.322,3.322,0,0,1,3.261,3.279v7.476A3.238,3.238,0,0,1-137.039-135.967Zm0-12.328a1.619,1.619,0,0,0-1.631,1.639h0v7.476a1.758,1.758,0,0,0,1.631,1.639,1.619,1.619,0,0,0,1.631-1.639h0v-7.476A1.758,1.758,0,0,0-137.039-148.295Z" transform="translate(140.3 150)"/>\n        </g>\n      </g>\n      <g id="Group_1290" transform="translate(17.2 50.72)">\n        <ellipse id="Ellipse_341" class="admin-contacts-cls-12" cx="3.718" cy="3.738" rx="3.718" ry="3.738" transform="translate(0.783 0.787)"/>\n        <path id="Path_1973" class="admin-contacts-cls-3" d="M-174.4-115.55a4.522,4.522,0,0,1-4.5-4.525,4.522,4.522,0,0,1,4.5-4.525,4.522,4.522,0,0,1,4.5,4.525A4.44,4.44,0,0,1-174.4-115.55Zm0-7.476a2.931,2.931,0,0,0-2.935,2.951,2.931,2.931,0,0,0,2.935,2.951,2.931,2.931,0,0,0,2.935-2.951h0a2.931,2.931,0,0,0-2.935-2.951Z" transform="translate(178.9 124.6)"/>\n      </g>\n    </g>\n    <g id="Group_1293" transform="translate(68.236 -9.214)">\n      <ellipse id="Ellipse_342" class="admin-contacts-cls-13" cx="16.472" cy="16.562" rx="16.472" ry="16.562" transform="translate(0)"/>\n      <ellipse id="Ellipse_343" class="admin-contacts-cls-14" cx="13.776" cy="13.852" rx="13.776" ry="13.852" transform="translate(2.695 2.71)"/>\n      <ellipse id="Ellipse_344" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(15.199 3.388)"/>\n      <ellipse id="Ellipse_345" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(15.199 27.025)"/>\n      <ellipse id="Ellipse_346" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(26.954 15.131)"/>\n      <path id="Ellipse_347" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(24.037 24.796) rotate(-45)"/>\n      <ellipse id="Ellipse_348" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(3.519 15.131)"/>\n      <path id="Ellipse_349" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(7.417 8.16) rotate(-45)"/>\n      <path id="Ellipse_350" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(7.508 24.826) rotate(-45)"/>\n      <path id="Ellipse_351" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(24.038 8.118) rotate(-45)"/>\n      <path id="Ellipse_352" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(20.358 27.064) rotate(-23.229)"/>\n      <path id="Ellipse_353" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(11.079 5.38) rotate(-23.229)"/>\n      <path id="Ellipse_354" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(4.999 20.795) rotate(-23.229)"/>\n      <path id="Ellipse_355" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(26.507 11.624) rotate(-23.229)"/>\n      <path id="Ellipse_356" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 26.709, 21.086)"/>\n      <path id="Ellipse_357" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 5.015, 12.435)"/>\n      <path id="Ellipse_358" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 11.597, 27.646)"/>\n      <path id="Ellipse_359" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 20.187, 5.834)"/>\n      <path id="Path_1976" class="admin-contacts-cls-17" d="M-97.651-145.7h0a.433.433,0,0,1-.449-.452V-153.6h1.048v7.377A.636.636,0,0,1-97.651-145.7Z" transform="translate(114.123 170.613)"/>\n      <path id="Path_1977" class="admin-contacts-cls-17" d="M-96.129-163.2h0a.566.566,0,0,1,.374.527l-1.647,6.324-.9-.3,1.647-6.324C-96.578-163.054-96.278-163.28-96.129-163.2Z" transform="translate(114.173 172.991)"/>\n      <ellipse id="Ellipse_360" class="admin-contacts-cls-18" cx="1.572" cy="1.581" rx="1.572" ry="1.581" transform="translate(14.899 14.981)"/>\n    </g>\n    <g id="Group_1294" data-name="Group 1294" transform="translate(11.419 23.628)">\n      <path id="Path_1980" data-name="Path 1980" class="admin-contacts-cls-19" d="M96.668,53.949H92.885A10.746,10.746,0,0,0,87.667,52.9c-3.848,0-6.522.721-7.892,2.23a5.875,5.875,0,0,0-2.674-.787,6.151,6.151,0,0,0-2.674.721Q72.373,52.9,66.6,52.9a10.928,10.928,0,0,0-5.218,1.049H57.6V56.7l1.239.459a6.389,6.389,0,0,0-.2,1.508c0,4.131,1.3,6.492,7.892,6.492,5.609,0,7.827-1.574,8.8-6.361a4.682,4.682,0,0,0,.065-1.639,3.1,3.1,0,0,1,1.631-.393,3.2,3.2,0,0,1,1.7.393A4.682,4.682,0,0,0,78.8,58.8c.978,4.722,3.2,6.361,8.8,6.361,6.653,0,7.892-2.361,7.892-6.492a5.618,5.618,0,0,0-.2-1.508l1.239-.459V53.949ZM74.1,58.54c-.848,4.131-2.413,5.246-7.435,5.246-6.066,0-6.522-2.033-6.522-5.115,0-1.049,0-4.328,6.522-4.328,4.5,0,6.261,1.049,6.979,1.9A2.717,2.717,0,0,1,74.1,58.54Zm13.566,5.246c-4.957,0-6.587-1.115-7.435-5.246a2.515,2.515,0,0,1,.457-2.3c.717-.853,2.478-1.9,6.979-1.9,6.522,0,6.522,3.279,6.522,4.328C94.189,61.753,93.733,63.786,87.667,63.786Z" transform="translate(-57.6 -52.9)"/>\n    </g>\n    <g id="computer_1_" transform="translate(-6.106 63.564)">\n      <g id="Group_1295" data-name="Group 1295" transform="translate(0 50.691)">\n        <path id="Path_1981" data-name="Path 1981" class="admin-contacts-cls-20" d="M98.526,194.248H32.065a1.574,1.574,0,0,1,0-3.148H98.526a1.591,1.591,0,0,1,1.565,1.574A1.549,1.549,0,0,1,98.526,194.248Z" transform="translate(-30.5 -191.1)"/>\n      </g>\n      <g id="Group_1296" data-name="Group 1296">\n        <path id="Path_1982" data-name="Path 1982" class="admin-contacts-cls-21" d="M96.83,164.622H33.761a3.238,3.238,0,0,1-3.261-3.279V117.079a3.238,3.238,0,0,1,3.261-3.279H96.83a3.238,3.238,0,0,1,3.261,3.279v44.265A3.279,3.279,0,0,1,96.83,164.622Z" transform="translate(-30.5 -113.8)"/>\n      </g>\n      <g id="Group_1297" data-name="Group 1297" class="admin-contacts-cls-22" transform="translate(29.089 18.099)">\n        <ellipse id="Ellipse_361" data-name="Ellipse 361" class="admin-contacts-cls-2" cx="5.674" cy="5.705" rx="5.674" ry="5.705"/>\n      </g>\n      <g id="Group_1298" data-name="Group 1298" class="admin-contacts-cls-23" transform="translate(0 0.066)">\n        <path id="Path_1983" data-name="Path 1983" class="admin-contacts-cls-2" d="M84.243,113.9H33.37a2.861,2.861,0,0,0-2.87,2.885v44.986a2.861,2.861,0,0,0,2.87,2.885H43.414A57.94,57.94,0,0,1,84.243,113.9Z" transform="translate(-30.5 -113.9)"/>\n      </g>\n    </g>\n    <rect id="Rectangle_1214" data-name="Rectangle 1214" class="admin-contacts-cls-24" width="135.756" height="3.422" rx="1.711" transform="translate(-38.821 117.304)"/>\n  </g>\n</svg>\n'}},watch:{"$route.path":{handler:function(){this.$emit("close")}}}},it=(0,L.A)(at,rt,[],!1,null,null,null).exports,ot=function(){var t=this,e=t._self._c;return e("TcModal",{attrs:{headerText:t.$gettext("Warning!")},on:{close:t.closeThisWarning},scopedSlots:t._u([{key:"content",fn:function(){return[e("div",{staticClass:"warning-ssl__container"},[e("div",{staticClass:"warning-ssl__manual"},[e("p",{staticClass:"warning-ssl-desc"},[t._v("\n          "+t._s(t.$gettext("In order to use all the possibilities of Web configurator, you need to add website into security exception list."))+"\n        ")]),t._v(" "),e("div",[e("p",{staticClass:"warning-ssl__manual"},[t._v("\n            1. "+t._s(t.$gettext("Click on %button").replace("%button",""))+"\n          ")]),t._v(" "),e("TcButton",{staticClass:"warning-ssl__button",attrs:{type:"unelevated",text:t.$gettext("Continue"),id:"warning-ssl"},on:{click:t.continueHandler}})],1)]),t._v(" "),e("div",{staticClass:"warning-ssl__imgs"},[e("p",[t._v("2.")]),t._v(" "),e("div",{staticClass:"warning-ssl__img-container"},[e("img",{staticClass:"warning-ssl__img",attrs:{alt:"",src:r(89979)("./"+t.lang+"/"+t.browserName+"-security-warning-1.png")}})]),t._v(" "),e("p",[t._v("3.")]),t._v(" "),e("div",{staticClass:"warning-ssl__img-container"},[e("img",{staticClass:"warning-ssl__img",attrs:{alt:"",src:r(10734)("./"+t.lang+"/"+t.browserName+"-security-warning-2.png")}})])])])]},proxy:!0},{key:"footer",fn:function(){return[e("div",{staticClass:"warning-ssl__buttons"},[e("TcCheckbox",{staticClass:"warning-ssl__show-ssl-checkbox",attrs:{text:t.dontShowMessage},model:{value:t.dontShowThisWarning,callback:function(e){t.dontShowThisWarning=e},expression:"dontShowThisWarning"}})],1)]},proxy:!0}])})};ot._withStripped=!0;var st={name:"WarningSsl",methods:{closeThisWarning:function(){this.dontShowThisWarning&&localStorage.setItem("trueconfDontShowWarningSsl",!0),this.$emit("close")},continueHandler:function(){window.open(this.serverInfo.url+this.$route.fullPath)}},computed:{browserName:function(){return this.browser.chrome?"chrome":this.browser.firefox?"firefox":this.browser.edge?"edge":this.browser.ie?"ie":this.browser.safari?"safari":"chrome"},lang:function(){return"ru"===this.appStateStore.language?"ru":"en"},dontShowMessage:function(){return this.$pgettext("Option to disable the warning message","Don't show again")}},data:function(){return{dontShowThisWarning:!1}}},ct=(0,L.A)(st,ot,[],!1,null,null,null).exports,lt=function(){var t=this,e=t._self._c;return e("TcModal",{staticClass:"server-document-popup",attrs:{headerText:t.appStateStore.serverDocumentData.name},on:{close:function(e){return t.$emit("close")}}},[e("div",{staticClass:"server-document-popup__text",attrs:{slot:"content"},domProps:{innerHTML:t._s(t.appStateStore.serverDocumentData.content)},slot:"content"})])};lt._withStripped=!0;var ut={name:"ServerDocument"},dt=(0,L.A)(ut,lt,[],!1,null,null,null).exports,ft=function(){var t=this,e=t._self._c;return e("div",[t.errorScreen?e("TcModal",{staticClass:"main-error-container__notification-popup",on:{close:function(e){t.appStateStore.error=null}}},[e("div",{attrs:{slot:"content"},slot:"content"},[e(t.errorScreen.component,t._b({tag:"component"},"component",t.errorScreen.props,!1))],1)]):e("ErrorContent",{attrs:{state:t.state,customDescription:t.customDescription}})],1)};ft._withStripped=!0;var pt=function(){var t=this,e=t._self._c;return e("div",{staticClass:"main-error"},[e("div",{staticClass:"main-error__container"},[e("transition",{attrs:{name:"main-error-animation-left",css:t.animated}},[t.showInfo?e("div",{staticClass:"main-error__info-content"},[e("div",{staticClass:"main-error__center-info"},[e("p",{staticClass:"main-error__header"},[t._v("\n            "+t._s(t.header)+"\n          ")]),t._v(" "),e("p",{staticClass:"main-error__desc",domProps:{innerHTML:t._s(t.description)}}),t._v(" "),t._l(t.getAdminContacts,(function(r){return e("div",{directives:[{name:"show",rawName:"v-show",value:r.value,expression:"item.value"}],key:r.label,staticClass:"main-error__contact-container"},[e("p",{staticClass:"main-error__contact-label"},[t._v("\n              "+t._s(r.label)+"\n            ")]),t._v(" "),e("p",{staticClass:"main-error__contact-value"},[t._v("\n              "+t._s(r.value)+"\n            ")])])}))],2)]):t._e()]),t._v(" "),e("transition",{attrs:{name:"main-error-animation-right",css:t.animated}},[t.showInfo?e("div",{staticClass:"main-error__img-container"},[e("div",{staticClass:"main-error__img-error",domProps:{innerHTML:t._s(t.ErrorImg)}})]):t._e()])],1)])};pt._withStripped=!0;var ht=r(94149),gt=r(42282);function yt(t){return{ACCESS_DENIED:this.$pgettext("This message is displayed when a user does not have access to application settings","Try to open this window once again or contact your server administrator"),SECURITY_FLAW_FIRST_PART:this.$pgettext("Message","This feature requires HTTPS to ensure your data safety."),SECURITY_FLAW_SECOND_PART:this.$pgettext("Message","To solve this problem please contact your server administrator."),LOGOUT_ERROR:this.$pgettext("An error message displayed when a user tries to sign in","Your account was disabled.<br>Please contact your server administrator.")}[t]||this.$pgettext("Error message","An error occurred. Please reload this page or contact your system administrator. Error code: %error_code").replace("%error_code",t)}var At={name:"ErrorContent",props:{state:{type:String,default:"ACCESS_DENIED"},animated:{type:Boolean,default:!0},customDescription:{type:String,default:null}},mounted:function(){var t=this;this.animated?setTimeout((function(){t.showInfo=!0}),500):this.showInfo=!0},computed:{adminContacts:function(){return this.$store.getters["server/getServerContacts"]||null},getAdminContacts:function(){return[{label:this.$pgettext("Subheader","Your administrator"),value:this.adminContacts.adminName},{label:this.$pgettext("Subheader","Phone"),value:this.adminContacts.phone},{label:this.$pgettext("Subheader","Email"),value:this.adminContacts.email}]},header:function(){return{ACCESS_DENIED:this.$pgettext("Title","Access denied"),SECURITY_FLAW:this.$pgettext("Message","HTTPS not enabled."),LOGOUT_ERROR:this.$pgettext("Message","Access denied."),CLIENT_ERROR:this.$pgettext("The title of a dialogue window","Authorization error"),7:this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.","Unable to join the conference"),5:this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.","Unable to join the conference"),"005":this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.","Unable to join the conference"),407:this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.","Unable to join the conference"),411:this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.","Unable to join the conference")}[this.state]||null},description:function(){return this.customDescription?this.customDescription:{ACCESS_DENIED:this.parseUserError(this.state),SECURITY_FLAW:"\n            <p>".concat(this.parseUserError("".concat(this.state,"_FIRST_PART")),"</p>\n            <p>").concat(this.parseUserError("".concat(this.state,"_SECOND_PART")),"</p>\n          "),LOGOUT_ERROR:"<p>".concat(this.parseUserError(this.state),"</p>"),7:"<p>".concat(this.parseWebrtcRejectError(this.state),"</p>"),5:"<p>".concat(this.parseWebrtcAuthError(this.state),"</p>"),"005":"<p>".concat(this.parseWebrtcAuthError(this.state),"</p>"),407:"<p>".concat(this.parseWebrtcRejectError(this.state),"</p>"),411:"<p>".concat(this.parseWebrtcRejectError(this.state),"</p>")}[this.state]||null}},data:function(){return{parseWebrtcAuthError:ht.A,parseWebrtcRejectError:gt.A,parseUserError:yt,ErrorImg:'<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="302.39" y1="99.94" x2="37.89" y2="179.35" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-1620.33" y1="276.05" x2="-1539.53" y2="276.05" gradientTransform="translate(1751.48 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="_езымянный_градиент_154" x1="34.35" y1="139.4" x2="309.52" y2="139.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#faaaad"/><stop offset=".63" stop-color="#f58f99"/><stop offset="1" stop-color="#f27e8c"/></linearGradient><linearGradient id="linear-gradient-6" x1="116.23" y1="138.55" x2="220.14" y2="138.55" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="_езымянный_градиент_154-2" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="_езымянный_градиент_154-3" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="linear-gradient-7" x1="84.43" y1="232.6" x2="93.81" y2="232.6" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-8" x1="84.97" y1="228.4" x2="94.4" y2="228.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-9" x1="88.62" y1="211.89" y2="211.89" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-10" x1="78.19" y1="235.99" x2="81.88" y2="235.99" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="79.11" y1="224.13" x2="80.65" y2="224.13" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="96.57" y1="274.36" x2="66.33" y2="248.94" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-13" x1="85.15" y1="246.65" x2="95.56" y2="280.85" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="252.5" y1="244.53" x2="267.16" y2="244.53" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-2" x1="304.01" y1="277.86" x2="310.43" y2="277.86" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-3" x1="310.58" y1="246.37" x2="315.55" y2="246.37" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-4" x1="306.7" y1="257.31" x2="312.12" y2="257.31" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-5" x1="305.58" y1="263.7" x2="311.8" y2="263.7" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-6" x1="304.81" y1="269.92" x2="311.83" y2="269.92" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-15" x1="234.19" y1="253.26" x2="251.01" y2="253.26" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-7" x1="125.05" y1="177.33" x2="130.03" y2="177.33" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-8" x1="128.48" y1="188.27" x2="133.91" y2="188.27" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-9" x1="128.8" y1="194.66" x2="135.02" y2="194.66" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-10" x1="128.77" y1="200.89" x2="135.8" y2="200.89" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-16" x1="-84.04" y1="889.44" x2="-81.6" y2="899.89" gradientTransform="translate(90.9 -640.25) rotate(-14.58)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-11" x1="76.34" y1="152.13" x2="79.17" y2="152.13" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-12" x1="76.88" y1="163.69" x2="82.23" y2="163.69" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-13" x1="78.81" y1="169.51" x2="84.71" y2="169.51" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-17" x1="129.62" y1="791.83" x2="124.92" y2="846.04" gradientTransform="translate(66.05 -498.5) rotate(-4.96) scale(.91 .93)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-14" x1="242.32" y1="286.75" x2="247.56" y2="286.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-15" x1="242.58" y1="293.44" x2="248.74" y2="293.44" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-16" x1="242.82" y1="301.75" x2="249.28" y2="301.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-17" x1="242.75" y1="309.1" x2="249.42" y2="309.1" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-18" x1="242.24" y1="317.46" x2="249.41" y2="317.46" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-18" x1="348.41" y1="-756.25" x2="346.98" y2="-745.97" gradientTransform="translate(-190.84 863.32) rotate(9.34) scale(1 .9)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-19" x1="263.73" y1="238.67" x2="268.79" y2="238.67" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-20" x1="259.66" y1="248.61" x2="264.85" y2="248.61" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-21" x1="258.3" y1="254.23" x2="264.28" y2="254.23" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-19" x1="254.16" y1="244.83" x2="252.04" y2="263.26" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-22" x1="251.05" y1="236.12" x2="257.02" y2="236.12" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-23" x1="249.1" y1="243.85" x2="256.05" y2="243.85" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-24" x1="247.67" y1="253.44" x2="255.04" y2="253.44" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-25" x1="246.77" y1="261.97" x2="254.34" y2="261.97" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-26" x1="245.91" y1="271.6" x2="253.92" y2="271.6" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-20" x1="236.71" y1="270.22" x2="263.32" y2="270.22" xlink:href="#linear-gradient-12"/><linearGradient id="linear-gradient-21" x1="234.37" y1="256.13" x2="265.67" y2="256.13" xlink:href="#linear-gradient-12"/></defs><g id="Layer_1-2"><g><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(180)" style="fill:url(#linear-gradient-5);"/><rect x="34.35" y="61.95" width="275.17" height="154.9" rx="3.09" ry="3.09" style="fill:url(#_езымянный_градиент_154);"/><g><circle cx="168.18" cy="138.55" r="51.96" style="fill:url(#linear-gradient-6);"/><g><path d="M188,162.6c-1.08,0-2.17-.41-3-1.24l-39.63-39.63c-1.66-1.65-1.66-4.34,0-5.99,1.65-1.66,4.34-1.66,5.99,0l39.63,39.63c1.66,1.65,1.66,4.34,0,5.99-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-2);"/><path d="M148.37,162.6c-1.08,0-2.17-.41-3-1.24-1.66-1.65-1.66-4.34,0-5.99l39.63-39.63c1.65-1.66,4.34-1.66,5.99,0,1.66,1.65,1.66,4.34,0,5.99l-39.63,39.63c-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-3);"/></g></g></g><g><polygon points="93.81 216.28 93.53 218.55 90.97 238.9 89.62 249.58 86.96 249.25 84.43 248.93 85.77 238.24 88.33 217.89 88.62 215.62 91.15 215.94 93.81 216.28" style="fill:url(#linear-gradient-7);"/><path d="M94.39,219.59l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-8);"/><polygon points="93.81 216.28 91.15 215.94 88.62 215.62 92.16 207.92 92.35 207.5 93.81 216.28" style="fill:url(#linear-gradient-9);"/><rect x="78.19" y="225.37" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-10);"/><path d="M80.65,222.94v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-11);"/><path d="M81.88,225.97v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M92.16,207.92l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M91.19,280.34h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-12);"/><path d="M95.71,247.43l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-13); opacity:.4;"/></g></g><g><g><g><path d="M257.75,266.28s-6.3,1.38-5.09-1.75c.21-.54,.4-1.23,.58-2.06,.13-.6,.26-1.27,.4-2.02,.2-1.16,.41-2.5,.65-4.03,.08-.54,.17-1.1,.25-1.68,.24-1.57,.5-3.3,.82-5.21,.1-.64,.22-1.31,.33-1.99,.21-1.21,.43-2.49,.67-3.83,.16-.87,.33-1.77,.51-2.7,.04-.2,.08-.41,.12-.62,.22-1.1,.46-2.14,.74-3.12,.28-.99,.59-1.92,.91-2.8,.99-2.66,2.17-4.81,3.33-6.52,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81-.65,2.19-1.31,4.73-1.77,7.16h0c-.14,.71-.26,1.42-.36,2.1-.2,1.33-.31,2.58-.31,3.66h0c0,.51,.02,.98,.07,1.4,.01,.09,.02,.18,.04,.27,.17,1.07,.07,2.68-.19,4.55-.12,.82-.26,1.68-.44,2.58-.35,1.84-.81,3.8-1.28,5.71-.23,.9-.46,1.79-.69,2.64-.35,1.32-.7,2.55-1.02,3.64-.17,.58-.32,1.11-.47,1.6-.49,1.66-.82,2.7-.82,2.7Z" style="fill:url(#linear-gradient-14);"/><path d="M260.05,258.35c-.78-.83-2.09-1.89-3.54-1.69-.8,.11-1.57-.02-2.24-.24,.08-.54,.17-1.1,.25-1.68,1.75,.38,4.54,.93,6.2,.96-.23,.9-.46,1.79-.69,2.64Z" style="fill:url(#_езымянный_градиент_157-2); opacity:.2;"/><path d="M264.99,228.27c-.91-.34-2.05-.38-3.03-.32,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81Z" style="fill:url(#_езымянный_градиент_157-3); opacity:.2;"/><path d="M262.86,237.53c-1.23,.18-3.08,.27-5.14-.26,.28-.99,.59-1.92,.91-2.8,.91,.7,2.6,1.61,4.58,.96-.14,.71-.26,1.41-.36,2.1Z" style="fill:url(#_езымянный_градиент_157-4); opacity:.2;"/><path d="M262.62,242.59c-1.57,.51-4.41,1.31-6.26,1.12,.16-.87,.33-1.77,.51-2.7,1.41,.7,3.71,1.45,5.68,.18,0,.51,.02,.98,.07,1.4Z" style="fill:url(#_езымянный_градиент_157-5); opacity:.2;"/><path d="M262.02,249.99c-1.14-.29-2.66-.55-3.61-.17-.96,.38-2.18,.06-3.06-.28,.1-.64,.22-1.31,.33-1.99,1.97,.09,5.39,.18,6.78-.13-.12,.82-.26,1.68-.44,2.58Z" style="fill:url(#_езымянный_градиент_157-6); opacity:.2;"/><path d="M258.57,263.59l-5.33-1.11c.13-.6,.26-1.27,.4-2.02,1.61,.52,4.01,1.27,5.4,1.54-.17,.58-.32,1.11-.47,1.6Z" style="fill:#188aa5;"/></g><g><path d="M245.82,274.81s6.36,1.06,4.99-2c-.24-.53-.46-1.21-.69-2.03-.16-.59-.33-1.25-.5-2-.26-1.15-.54-2.48-.85-3.99-.11-.53-.22-1.09-.34-1.67-.32-1.55-.67-3.27-1.08-5.16-.14-.64-.28-1.3-.43-1.97-.27-1.2-.55-2.46-.87-3.79-.2-.86-.42-1.75-.64-2.67-.05-.2-.1-.41-.15-.61-.27-1.09-.57-2.11-.9-3.08-.33-.97-.68-1.89-1.06-2.75-1.13-2.6-2.41-4.7-3.66-6.34-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69,.77,2.15,1.55,4.66,2.14,7.06h0c.18,.71,.33,1.4,.47,2.08,.26,1.32,.44,2.56,.5,3.64h0c.03,.51,.03,.98,0,1.4,0,.09-.01,.18-.02,.27-.12,1.08,.06,2.68,.43,4.53,.16,.81,.35,1.67,.57,2.55,.45,1.82,1,3.76,1.57,5.64,.27,.89,.55,1.76,.82,2.6,.42,1.3,.83,2.51,1.2,3.59,.2,.57,.38,1.1,.55,1.57,.58,1.63,.96,2.65,.96,2.65Z" style="fill:url(#linear-gradient-15);"/><path d="M243.12,267c.74-.86,1.99-1.99,3.44-1.86,.81,.07,1.57-.1,2.22-.35-.11-.53-.22-1.09-.34-1.67-1.73,.47-4.49,1.16-6.15,1.28,.27,.89,.55,1.76,.82,2.6Z" style="fill:#188aa5;"/><path d="M236.65,237.22c.89-.39,2.03-.49,3.01-.48-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69Z" style="fill:url(#_езымянный_градиент_157-7); opacity:.2;"/><path d="M239.25,246.36c1.24,.12,3.09,.11,5.12-.52-.33-.97-.68-1.89-1.06-2.75-.88,.74-2.51,1.74-4.53,1.2,.18,.7,.33,1.4,.47,2.07Z" style="fill:url(#_езымянный_градиент_157-8); opacity:.2;"/><path d="M239.75,251.4c1.6,.43,4.48,1.08,6.31,.8-.2-.86-.42-1.75-.64-2.67-1.37,.78-3.64,1.64-5.67,.47,.03,.51,.03,.98,0,1.4Z" style="fill:url(#_езымянный_градиент_157-9); opacity:.2;"/><path d="M240.72,258.76c1.12-.35,2.63-.69,3.6-.36,.98,.33,2.18-.05,3.04-.44-.14-.64-.28-1.3-.43-1.97-1.97,.19-5.38,.45-6.78,.22,.16,.81,.35,1.67,.57,2.55Z" style="fill:url(#_езымянный_градиент_157-10); opacity:.2;"/><path d="M244.87,272.16l5.26-1.39c-.16-.59-.33-1.25-.5-2-1.58,.6-3.94,1.47-5.31,1.81,.2,.57,.38,1.1,.55,1.57Z" style="fill:#188aa5;"/></g><g><path d="M253.36,274.62s-4.26,4.46-5.28,1.29c-.18-.55-.46-1.21-.85-1.98-.27-.55-.6-1.16-.98-1.84-.58-1.04-1.27-2.24-2.06-3.59-.28-.48-.57-.97-.87-1.49-.81-1.39-1.71-2.93-2.68-4.63-.33-.57-.66-1.17-1.01-1.78-.61-1.09-1.25-2.23-1.91-3.44-.43-.79-.87-1.6-1.32-2.45-.1-.19-.2-.37-.3-.56-.53-1-1-1.97-1.4-2.91-.41-.95-.76-1.86-1.05-2.74-.9-2.67-1.32-5.03-1.47-7.03-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83,.87,2.11,1.97,4.51,3.15,6.71h0c.34,.65,.7,1.28,1.05,1.89,.7,1.18,1.4,2.25,2.1,3.12h0c.32,.41,.65,.78,.96,1.09,.07,.07,.14,.14,.21,.2,.83,.77,1.78,2.12,2.76,3.77,.43,.72,.87,1.5,1.3,2.32,.89,1.67,1.79,3.5,2.62,5.29,.39,.85,.78,1.69,1.14,2.5,.56,1.25,1.07,2.43,1.51,3.48,.23,.56,.45,1.07,.65,1.54,.66,1.6,1.06,2.61,1.06,2.61Z" style="fill:url(#linear-gradient-16);"/><path d="M250.15,266.99c-1.17-.25-2.92-.42-3.97,.51-.59,.51-1.29,.82-1.98,.99-.28-.48-.57-.97-.87-1.49,1.68-.62,4.31-1.66,5.69-2.52,.39,.85,.78,1.69,1.14,2.5Z" style="fill:#188aa5;"/><path d="M234.86,240.11c-.96,.2-1.92,.78-2.68,1.34-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83Z" style="fill:url(#_езымянный_градиент_157-11); opacity:.2;"/><path d="M239.06,248.71c-.89,.8-2.34,1.85-4.37,2.51-.41-.95-.76-1.86-1.05-2.74,1.2,.08,3.16-.08,4.37-1.65,.34,.65,.7,1.28,1.05,1.88Z" style="fill:url(#_езымянный_градиент_157-12); opacity:.2;"/><path d="M242.12,252.92c-.96,1.24-2.77,3.39-4.4,4.23-.43-.79-.87-1.6-1.32-2.45,1.6-.18,3.97-.8,4.76-2.87,.32,.41,.65,.78,.96,1.09Z" style="fill:url(#_езымянный_градиент_157-13); opacity:.2;"/><path d="M246.39,259.21c-1.12,.37-2.53,.97-3.06,1.78-.54,.82-1.74,1.21-2.68,1.39-.33-.57-.66-1.17-1.01-1.78,1.67-.98,4.52-2.72,5.46-3.7,.43,.72,.87,1.5,1.3,2.32Z" style="fill:#188aa5;"/><path d="M252.3,272.01l-5.07,1.93c-.27-.55-.6-1.16-.98-1.84,1.65-.43,4.09-1.1,5.4-1.63,.23,.56,.45,1.07,.65,1.54Z" style="fill:#188aa5;"/></g><g><path d="M249.68,226.71c-.26,.63-.51,3.01-.59,6.03-.06,2.37-.01,5.13,.22,7.73,.06,.71,.14,1.41,.23,2.09,.16,1.15,.36,2.23,.61,3.2,.05,.2,.1,.41,.15,.64,.12,.6,.23,1.33,.33,2.14,.21,1.77,.35,3.97,.45,6.35,.02,.49,.04,.99,.05,1.49,.06,1.8,.1,3.67,.12,5.52,0,.52,.01,1.04,.02,1.56,.01,2.02,.01,3.98,0,5.75,0,1.05-.02,2.04-.03,2.93-.04,2.81-.08,4.65-.08,4.65,0,0-9.91,4.17-7.88,1.81,.66-.77,1.14-3.23,1.47-6.65,.07-.76,.14-1.56,.19-2.41,.12-1.74,.2-3.64,.26-5.64,.02-.68,.03-1.37,.04-2.07,.03-1.5,.03-3.03,.02-4.57,0-.72-.01-1.45-.02-2.17-.02-1.54-.06-3.08-.12-4.57-.03-.88-.07-1.74-.11-2.59-.05-.99-.11-1.96-.17-2.89-.03-.37-.04-.74-.06-1.11-.04-1.1-.02-2.15,.04-3.16h0c.17-2.92,.71-5.45,1.38-7.55,1.58-4.99,3.85-7.46,3.47-6.54Z" style="fill:url(#linear-gradient-17);"/><path d="M249.55,242.57c-1.05,.7-3.1,1.85-4.74,1.39-.04-1.1-.02-2.15,.04-3.16,1.3,.36,3.18,.63,4.48-.32,.06,.71,.14,1.41,.23,2.09Z" style="fill:url(#_езымянный_градиент_157-14); opacity:.2;"/><path d="M250.63,248.54c-1.08,.64-3.99,2.27-5.49,2-.03-.88-.07-1.74-.11-2.59,1.28,.17,4.06,.29,5.27-1.55,.12,.6,.23,1.33,.33,2.14Z" style="fill:url(#_езымянный_градиент_157-15); opacity:.2;"/><path d="M251.08,254.9c.02,.49,.04,.99,.05,1.49l-2.34,.18s-1.38,1.54-3.52,.72c0-.72-.01-1.45-.02-2.17,1.46,.16,4.61,.4,5.83-.22Z" style="fill:url(#_езымянный_градиент_157-16); opacity:.2;"/><path d="M251.26,261.92c0,.52,.01,1.04,.02,1.56-.85-.22-1.92-.37-2.04,.23-.14,.67-2.42,.6-4.02,.21,.02-.68,.03-1.37,.04-2.07,1.33,.1,4.32,.29,6,.06Z" style="fill:url(#_езымянный_градиент_157-17); opacity:.2;"/><path d="M251.27,269.23c0,1.05-.02,2.04-.03,2.93-1.57,.53-4.96,.06-6.49-.19,.07-.76,.14-1.56,.19-2.41,1.68,.89,4.82,.12,6.32-.33Z" style="fill:url(#_езымянный_градиент_157-18); opacity:.2;"/></g><g><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.66,1.98-1.32,4.3-1.76,6.53-.12,.61-.23,1.21-.31,1.8-.14,1-.23,1.95-.24,2.81,0,.17,0,.36-.02,.56-.04,.53-.12,1.16-.23,1.86-.25,1.52-.67,3.4-1.18,5.43-.11,.42-.22,.84-.33,1.27-.4,1.52-.84,3.1-1.29,4.66-.13,.44-.26,.88-.38,1.31-.5,1.7-1,3.34-1.46,4.83-.28,.88-.53,1.71-.77,2.45-.75,2.35-1.26,3.88-1.26,3.88,0,0-10.52,1.48-7.98-.09,.82-.51,1.91-2.48,3.1-5.28,.26-.62,.53-1.28,.8-1.98,.56-1.44,1.12-3.02,1.68-4.68,.19-.57,.38-1.14,.57-1.73,.41-1.25,.8-2.54,1.19-3.83,.18-.61,.36-1.22,.53-1.83,.37-1.3,.72-2.59,1.05-3.86,.2-.74,.38-1.48,.56-2.2,.2-.84,.4-1.66,.57-2.46,.07-.32,.15-.63,.23-.94,.24-.93,.52-1.81,.84-2.65h0c.91-2.42,2.07-4.43,3.23-6.05,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#linear-gradient-18);"/><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.81-.36-1.92-.31-2.88-.17,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#_езымянный_градиент_157-19); opacity:.2;"/><path d="M264.54,249.56c-1.18,.38-3.42,.92-4.88,.2,.24-.93,.52-1.81,.84-2.65,1.15,.57,2.88,1.18,4.35,.65-.12,.61-.23,1.21-.31,1.8Z" style="fill:url(#_езымянный_градиент_157-20); opacity:.2;"/><path d="M264.05,254.8c-1.19,.32-4.38,1.09-5.74,.56,.2-.74,.38-1.48,.56-2.2,1.17,.4,3.8,1.08,5.42-.22-.04,.53-.12,1.16-.23,1.86Z" style="fill:url(#_езымянный_градиент_157-21); opacity:.2;"/><path d="M262.86,260.22c-.11,.42-.22,.84-.33,1.27l-2.28-.33s-1.71,1.01-3.54-.12c.18-.61,.36-1.22,.53-1.83,1.36,.43,4.3,1.28,5.61,1.01Z" style="fill:#188aa5;"/><path d="M261.24,266.15c-.13,.44-.26,.88-.38,1.31-.75-.36-1.74-.71-2.01-.22-.3,.54-2.46,0-3.89-.64,.19-.57,.38-1.14,.57-1.73,1.24,.36,4.05,1.12,5.71,1.28Z" style="fill:#188aa5;"/><path d="M259.4,272.29c-.28,.88-.53,1.71-.77,2.45-1.63,.12-4.75-.96-6.14-1.48,.26-.62,.53-1.28,.8-1.98,1.38,1.09,4.57,1.09,6.11,1.01Z" style="fill:#188aa5;"/></g><g><path d="M252.51,216.49c.26,.8,.32,3.81,.1,7.59-.17,2.97-.51,6.41-1.06,9.65-.15,.88-.32,1.75-.5,2.59-.31,1.42-.67,2.77-1.08,3.95-.08,.24-.16,.5-.25,.78-.21,.75-.42,1.64-.62,2.65-.44,2.19-.84,4.93-1.21,7.91-.07,.61-.15,1.23-.22,1.86-.26,2.25-.5,4.59-.72,6.9-.06,.66-.12,1.31-.18,1.95-.23,2.53-.43,4.98-.59,7.19-.1,1.32-.19,2.55-.27,3.66-.25,3.51-.38,5.82-.38,5.82,0,0,11.77,5.97,9.51,2.86-.73-1.01-1.08-4.13-1.13-8.42-.01-.95,0-1.96,0-3.02,.03-2.18,.13-4.57,.26-7.07,.05-.85,.1-1.71,.16-2.59,.12-1.87,.27-3.79,.44-5.72,.08-.9,.16-1.81,.25-2.71,.19-1.93,.39-3.84,.61-5.71,.13-1.09,.26-2.18,.4-3.23,.17-1.24,.33-2.44,.51-3.6,.07-.46,.13-.92,.18-1.38,.16-1.37,.25-2.69,.28-3.95h0c.09-3.66-.32-6.87-.92-9.54-1.43-6.36-3.98-9.61-3.6-8.44Z" style="fill:url(#linear-gradient-19);"/><path d="M251.05,236.32c1.22,.96,3.62,2.55,5.7,2.1,.16-1.37,.25-2.69,.28-3.95-1.63,.35-3.98,.54-5.48-.73-.15,.88-.32,1.75-.5,2.59Z" style="fill:url(#_езымянный_градиент_157-22); opacity:.2;"/><path d="M249.1,243.71c1.26,.89,4.68,3.14,6.55,2.91,.13-1.09,.26-2.18,.4-3.23-1.59,.11-5.03,.06-6.33-2.34-.21,.75-.42,1.64-.62,2.65Z" style="fill:url(#_езымянный_градиент_157-23); opacity:.2;"/><path d="M247.89,251.62c-.07,.61-.15,1.23-.22,1.86l2.86,.4s1.55,2.02,4.25,1.16c.08-.9,.16-1.81,.25-2.71-1.82,.08-5.72,.15-7.15-.71Z" style="fill:url(#_езымянный_градиент_157-24); opacity:.2;"/><path d="M246.95,260.39c-.06,.66-.12,1.31-.18,1.95,1.06-.21,2.4-.32,2.49,.44,.1,.85,2.92,.93,4.92,.57,.05-.85,.1-1.71,.16-2.59-1.65,.02-5.35,.03-7.4-.38Z" style="fill:url(#_езымянный_градиент_157-25); opacity:.2;"/><path d="M246.17,269.53c-.1,1.32-.19,2.55-.27,3.66,1.88,.78,6.1,.45,8.01,.26-.01-.95,0-1.96,0-3.02-2.16,.98-5.95-.21-7.75-.89Z" style="fill:url(#_езымянный_градиент_157-26); opacity:.2;"/></g></g><g><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96-.79-1.27-1.25-2.78-1.25-4.39v-16.69h26.6Z" style="fill:url(#linear-gradient-20);"/><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96,17.25,.06,21.4-13.28,22.35-21.08h3.01Z" style="fill:#27494f; opacity:.08;"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95-.01-.06-.02-.13-.02-.2v-2.39c0-.64,.51-1.15,1.15-1.15h28.99c.63,0,1.15,.51,1.15,1.15Z" style="fill:url(#linear-gradient-21);"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95,26.64,.81,29.41-2.53,29.55-3.74h.58c.63,0,1.15,.51,1.15,1.15Z" style="fill:#27494f; opacity:.08;"/></g></g></g></g></svg>',showInfo:!1}}},mt=(0,L.A)(At,pt,[],!1,null,null,null).exports,vt={name:"MainError",props:{state:{type:String,default:"ACCESS_DENIED"},customDescription:{type:String,default:null}},components:{ErrorContent:mt},computed:{errorScreen:function(){return{LOGOUT_ERROR:{component:"ErrorContent",props:{class:["main-error-container__notification-error"],state:this.state,animated:!1}},5:{component:"ErrorContent",props:{class:["main-error-container__notification-error"],state:this.state,animated:!1}},"005":{component:"ErrorContent",props:{class:["main-error-container__notification-error"],state:this.state,animated:!1}},407:{component:"ErrorContent",props:{class:["main-error-container__notification-error"],state:this.state,animated:!1}},411:{component:"ErrorContent",props:{class:["main-error-container__notification-error"],state:this.state,animated:!1}},ACCESS_DENIED:null}[this.state]}}},xt=(0,L.A)(vt,ft,[],!1,null,null,null).exports,bt=r(85867),wt=function(){var t=this,e=t._self._c;return e("div",{staticClass:"notifier__container"},[e("transition-group",{staticClass:"transition__wrapper",attrs:{name:"list",tag:"p",duration:600}},t._l(t.shownNotifications,(function(r){return e("TheNotifierItem",{key:r.notificationId,staticClass:"notifier__item",attrs:{text:r.text,duration:r.duration,icon:r.icon,actionIcon:r.actionIcon,actionText:r.actionText,actionHandler:r.actionHandler,showCloseButton:r.showCloseButton},on:{close:function(e){return t.closeNotify(r.notificationId)}}})})),1)],1)};wt._withStripped=!0;var St=function(){var t=this,e=t._self._c;return e("div",{staticClass:"notifier__item-container",class:{"notifier__item-container--just-text":t.hasJustText}},[t.icon?e("TcIcon",{staticClass:"notifier__icon",attrs:{icon:t.icon}}):t._e(),t._v(" "),e("div",{staticClass:"notifier__text-content",domProps:{innerHTML:t._s(t.text)}}),t._v(" "),e("div",{staticClass:"notifier__button-wrapper"},[t.actionText||t.actionIcon?e("TcButton",{staticClass:"notifier__action-button",attrs:{text:t.actionText,icon:t.actionIcon},on:{click:function(e){t.actionHandler?t.actionHandler():t.closeHandler()}}}):t._e(),t._v(" "),t.showCloseButton?e("TcButton",{staticClass:"notifier__close-button",attrs:{icon:"close"},on:{click:t.closeHandler}}):t._e()],1)],1)};St._withStripped=!0;var _t={name:"TheNotifierItem",props:{text:{type:String,default:null},duration:{type:Number,default:null},icon:{type:[String,Object],default:null},actionIcon:{type:String||Object,default:null},actionText:{type:String,default:null},actionHandler:{type:Function,default:null},showCloseButton:{type:Boolean,default:null},notificationId:{type:String,default:null}},created:function(){this.duration&&-1!==Math.sign(this.duration)&&(this.timer=setTimeout(this.closeHandler,this.duration))},methods:{closeHandler:function(){clearTimeout(this.timer),this.$emit("close")}},computed:{hasJustText:function(){return!(this.actionIcon||this.actionText||this.showCloseButton)}},data:function(){return{timer:null}}};function Ot(t){return Ot="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},Ot(t)}function kt(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function Et(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?kt(Object(r),!0).forEach((function(e){Tt(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):kt(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function Tt(t,e,r){var n;return n=function(t,e){if("object"!=Ot(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=Ot(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==Ot(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var Mt={name:"TheNotifier",components:{TheNotifierItem:(0,L.A)(_t,St,[],!1,null,null,null).exports},methods:{notify:function(t){var e,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;return t.duration||(t.duration=5e3),t.notificationId=null!==(e=t.notificationId)&&void 0!==e?e:Date.now().toString(36)+Math.random().toString(36).substr(2),Number.isNaN(parseInt(r,10))?this.notificationList.push(t):this.notificationList.splice(r,1,t),Promise.resolve(t.notificationId)},closeNotify:function(t){var e=this.notificationList.findIndex((function(e){return e.notificationId===t}));-1!==e&&this.notificationList.splice(e,1)},editNotify:function(t){var e=t.notificationId,r=t.config;this.notificationList=this.notificationList.map((function(t){return t.notificationId===e&&(t=Et(Et({},t),r)),t}))},getNotifyList:function(){return this.notificationList}},computed:{shownNotifications:function(){return this.notificationList.slice(0,4)}},data:function(){return{notificationList:[]}}},Lt=Mt,Pt=(0,L.A)(Lt,wt,[],!1,null,null,null).exports,Gt=r(99761);function Ut(t){!function(t,e){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};r&&r.expires instanceof Date&&(r.expires=r.expires.toUTCString());var n="".concat(encodeURIComponent(t),"=").concat(encodeURIComponent(e));for(var a in r){n+=";".concat(a);var i=r[a];!0!==i&&(n+="=".concat(i))}document.cookie=n}(t,Gt,{"max-age":-1})}var Zt="SESSION_IS_EXPIRED",jt="authProviderId",Ct="TrueconfUpdatingToken",It=r(99761);function Vt(t){return Vt="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},Vt(t)}function Kt(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function Nt(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?Kt(Object(r),!0).forEach((function(e){zt(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):Kt(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function zt(t,e,r){var n;return n=function(t,e){if("object"!=Vt(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=Vt(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==Vt(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}function Dt(){Dt=function(){return e};var t,e={},r=Object.prototype,n=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",s=i.asyncIterator||"@@asyncIterator",c=i.toStringTag||"@@toStringTag";function l(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{l({},"")}catch(t){l=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var i=e&&e.prototype instanceof A?e:A,o=Object.create(i.prototype),s=new L(n||[]);return a(o,"_invoke",{value:k(t,r,s)}),o}function d(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=u;var f="suspendedStart",p="suspendedYield",h="executing",g="completed",y={};function A(){}function m(){}function v(){}var x={};l(x,o,(function(){return this}));var b=Object.getPrototypeOf,w=b&&b(b(P([])));w&&w!==r&&n.call(w,o)&&(x=w);var S=v.prototype=A.prototype=Object.create(x);function _(t){["next","throw","return"].forEach((function(e){l(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function r(a,i,o,s){var c=d(t[a],t,i);if("throw"!==c.type){var l=c.arg,u=l.value;return u&&"object"==Vt(u)&&n.call(u,"__await")?e.resolve(u.__await).then((function(t){r("next",t,o,s)}),(function(t){r("throw",t,o,s)})):e.resolve(u).then((function(t){l.value=t,o(l)}),(function(t){return r("throw",t,o,s)}))}s(c.arg)}var i;a(this,"_invoke",{value:function(t,n){function a(){return new e((function(e,a){r(t,n,e,a)}))}return i=i?i.then(a,a):a()}})}function k(e,r,n){var a=f;return function(i,o){if(a===h)throw new Error("Generator is already running");if(a===g){if("throw"===i)throw o;return{value:t,done:!0}}for(n.method=i,n.arg=o;;){var s=n.delegate;if(s){var c=E(s,n);if(c){if(c===y)continue;return c}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(a===f)throw a=g,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);a=h;var l=d(e,r,n);if("normal"===l.type){if(a=n.done?g:p,l.arg===y)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(a=g,n.method="throw",n.arg=l.arg)}}}function E(e,r){var n=r.method,a=e.iterator[n];if(a===t)return r.delegate=null,"throw"===n&&e.iterator.return&&(r.method="return",r.arg=t,E(e,r),"throw"===r.method)||"return"!==n&&(r.method="throw",r.arg=new TypeError("The iterator does not provide a '"+n+"' method")),y;var i=d(a,e.iterator,r.arg);if("throw"===i.type)return r.method="throw",r.arg=i.arg,r.delegate=null,y;var o=i.arg;return o?o.done?(r[e.resultName]=o.value,r.next=e.nextLoc,"return"!==r.method&&(r.method="next",r.arg=t),r.delegate=null,y):o:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,y)}function T(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function M(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(T,this),this.reset(!0)}function P(e){if(e||""===e){var r=e[o];if(r)return r.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,i=function r(){for(;++a<e.length;)if(n.call(e,a))return r.value=e[a],r.done=!1,r;return r.value=t,r.done=!0,r};return i.next=i}}throw new TypeError(Vt(e)+" is not iterable")}return m.prototype=v,a(S,"constructor",{value:v,configurable:!0}),a(v,"constructor",{value:m,configurable:!0}),m.displayName=l(v,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===m||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,v):(t.__proto__=v,l(t,c,"GeneratorFunction")),t.prototype=Object.create(S),t},e.awrap=function(t){return{__await:t}},_(O.prototype),l(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,r,n,a,i){void 0===i&&(i=Promise);var o=new O(u(t,r,n,a),i);return e.isGeneratorFunction(r)?o:o.next().then((function(t){return t.done?t.value:o.next()}))},_(S),l(S,c,"Generator"),l(S,o,(function(){return this})),l(S,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(M),!e)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var r=this;function a(n,a){return s.type="throw",s.arg=e,r.next=n,a&&(r.method="next",r.arg=t),!!a}for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i],s=o.completion;if("root"===o.tryLoc)return a("end");if(o.tryLoc<=this.prev){var c=n.call(o,"catchLoc"),l=n.call(o,"finallyLoc");if(c&&l){if(this.prev<o.catchLoc)return a(o.catchLoc,!0);if(this.prev<o.finallyLoc)return a(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return a(o.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return a(o.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var a=this.tryEntries[r];if(a.tryLoc<=this.prev&&n.call(a,"finallyLoc")&&this.prev<a.finallyLoc){var i=a;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=e,i?(this.method="next",this.next=i.finallyLoc,y):this.complete(o)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),y},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),M(r),y}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var a=n.arg;M(r)}return a}}throw new Error("illegal catch attempt")},delegateYield:function(e,r,n){return this.delegate={iterator:P(e),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=t),y}},e}function Wt(t,e,r,n,a,i,o){try{var s=t[i](o),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,a)}var Xt={name:"RouterContainer",components:{Authorization:et,AdminContactsModal:it,WarningSsl:ct,ServerDocument:dt,MainError:xt,CommonWarningModal:bt.A,TheNotifier:Pt},outerWindow:null,mounted:function(){this.isMounted=!0;var t=this.$refs["notifier-main"],e=t.notify,r=t.closeNotify,n=t.editNotify,a=t.getNotifyList;this.appStateStore.notifier={notify:e,close:r,editNotify:n,getNotifyList:a}},methods:{closeAuthHandler:function(){this.authManagerStore.visibility=!1,"providerError"===this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode]&&(this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode]="user")},afterSignInHandler:function(t){var e,r=this;return(e=Dt().mark((function e(){var n,a;return Dt().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(t&&t.anotherServer&&(!t.anotherServer||-1===(null===(n=r.$route.name)||void 0===n?void 0:n.search(/^conference\./)))){e.next=4;break}return r.authManagerStore.visibility=!1,r.redirectTo(r.authManagerStore.actionsAfterAuthorization.signIn),e.abrupt("return");case 4:a={conferenceMain:"/user/general",conferenceWebRTC:"/user/general",conferenceScheduler:"/user/conference/create",personalArea:"/user/general"}[r.authManagerStore.actionsAfterAuthorization.signIn]||window.location.pathname,window.location.assign("".concat(t.url).concat(a,"?call_id=").concat(t.call_id,"&k=").concat(t.k));case 6:case"end":return e.stop()}}),e)})),function(){var t=this,r=arguments;return new Promise((function(n,a){var i=e.apply(t,r);function o(t){Wt(i,n,a,o,s,"next",t)}function s(t){Wt(i,n,a,o,s,"throw",t)}o(void 0)}))})()},authorization:function(t){var e=this;return this.$store.dispatch("auth/authorization",Nt(Nt({},{grant_type:"password",client_id:"trueconf_server_users"}),t)).catch((function(t){try{var r=t.response.data;return"2FactorAuthEnabled"===r.reason&&r.email&&(e.authManagerStore.tempData=r),Promise.reject(t)}catch(e){return Promise.reject(t)}}))},authorizationAsGuest2:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r={conferenceMain:!0,conferenceWebRTC:!0,conferenceScheduler:!1,personalArea:!1}[this.authManagerStore.actionsAfterAuthorization.signIn];if(t&&t.anotherServer&&r){var n=t.display_name||e.username,a={userInfo:{type:"guest",username:n,display_name:n,guestId:"2$".concat(t.call_id,"*").concat(n),userFromAnotherServer:!0,k:t.k,call_id:t.call_id}};try{localStorage.setItem("trueconfServerGuestName",n),localStorage.setItem("trueconfServerUserAuthorization",JSON.stringify(a))}catch(t){console.warn("LocalStorage is unavailable.")}return this.$store.dispatch("auth/checkAuthorization",a),t}return t},authHandler:function(t){var e=this;return this.authorization(t).then((function(r){return e.authorizationAsGuest2(r,t)}))},outerAuthHandler:function(t){this.currentAuthProvider=t;var e=window,r=e.innerWidth,n=e.innerHeight,a=Math.round(r-r/100*50),i=Math.round(n-n/100*25),o=n>i?Math.round((n-i)/2):0,s=r>a?Math.round((r-a)/2):0;this.$options.outerWindow=window.open(t.features.login,It,"popup=true".concat(this.browser.chrome?"":",width=".concat(a,",height=").concat(i,",top=").concat(o,",left=").concat(s))),this.browser.chrome&&(this.$options.outerWindow.resizeTo(a,i),this.$options.outerWindow.moveBy(s,o)),window.addEventListener("message",this.postMessageHandler),this.authManagerStore.visibility=!1},postMessageHandler:function(t){var e=this;try{var r=JSON.parse(t.data),n=r.login,a=r.password;if(r.error)return this.$options.outerWindow.close(),this.$options.outerWindow=null,this.authManagerStore.moduleScreen.mode="error",this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode]="providerError",void(this.authManagerStore.visibility=!0);var i={username:n,password:a,grant_type:"trusted_password"};this.authorization(i,"outer").then((function(t){e.authorizationAsGuest2(t,i),localStorage.setItem(jt,e.currentAuthProvider.id),e.afterSignInHandler(t)})).catch((function(t){var r;if(e.currentAuthProvider){var n,a=null===(r=e.authManifest)||void 0===r?void 0:r.networks.find((function(t){return t.id===e.currentAuthProvider.id}));if(a)e.authManagerStore.outerLogoutSrc=a.features.logout,localStorage.setItem(jt,null),e.authManagerStore.outerError=null===(n=t.response)||void 0===n?void 0:n.data,e.authManagerStore.visibility=!0}})).finally((function(){window.removeEventListener("message",e.postMessageHandler),e.$options.outerWindow.close(),e.$options.outerWindow=null}))}catch(t){}},loadOuterLogoutUrl:function(){this.authManagerStore.outerLogoutSrc&&(this.authManagerStore.outerLogoutSrc=null,Ut("ATID"))}},computed:{showWarningSsl:function(){try{return this.appStateStore.warningSslIsVisible&&(!localStorage.getItem("trueconfDontShowWarningSsl")||"true"!==localStorage.getItem("trueconfDontShowWarningSsl"))}catch(t){return this.appStateStore.warningSslIsVisible}},showServerDocument:function(){return this.appStateStore.serverDocumentIsVisible},rippleDisabled:function(){var t,e;return(null===(t=this.system)||void 0===t?void 0:t.ios)&&this.system.majorVersion>=13||(null===(e=this.system)||void 0===e?void 0:e.mac)&&"ontouchstart"in window},authManifest:function(){return this.$store.getters["auth/getAuthManifest"]}},data:function(){return{currentAuthProvider:null,isMounted:!1}},watch:{"authManagerStore.visibility":{handler:function(t){!t&&this.authManagerStore.outerError&&(this.authManagerStore.outerError=null),t&&this.$store.dispatch("auth/updateAuthManifest",{version:this.serverInfo.version,lang:this.serverInfo.lang})}},"appStateStore.language":{handler:function(t,e){e&&(this.$store.dispatch("server/updateDocumentation",{parameters:{lang:t}}),this.$store.dispatch("serverDocuments/updateDocuments",{lang:t}),this.$store.dispatch("server/updateServerInfo",{parameters:{lang:t}}),this.$store.dispatch("server/updateGuestPageInfo",{force:!0,parameters:{lang:t}}))}}}},Rt=Xt,qt=(0,L.A)(Rt,h,[],!1,null,null,null).exports,Ht=(r(92245),{bind:function(t){setTimeout((function(){return window.componentHandler.upgradeElement(t)}))}});var Ft={bind:function(t){t._blurHandler=function(){var e,r,n;e=document,r="pointerup",n=function(){t.blur()},e.addEventListener(r,(function t(a){e.removeEventListener(r,t),n(a)}))},t.addEventListener("pointerdown",t._blurHandler)},unbind:function(t){t.removeEventListener("pointerdown",t._blurHandler),delete t._blurHandler}},Jt=[{path:"/",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(553)]).then(r.bind(r,18065))},beforeEnter:function(t,e,r){Re.app.$store.dispatch("server/updateGuestPageInfo",{parameters:{lang:Re.app.appStateStore.language}}).finally(r)},children:[{name:"guest.main",path:"/",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(553)]).then(r.bind(r,88012))}},{name:"guest.clients",path:"guest/clients",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(553)]).then(r.bind(r,71760))},beforeEnter:function(t,e,r){Re.app.$store.dispatch("softwareClients/updateSoftwareClients",{parameters:{lang:Re.app.appStateStore.language,call_id:t.params.id,case:"download",user:Re.app.me?"guest"===Re.app.me.type?Re.app.me.guestId:Re.app.me.id:null}}),Re.app.$store.dispatch("server/updateConferencePublicInfo").then(r)}},{name:"guest.adminLogin",path:"guest/login",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(553)]).then(r.bind(r,80204))}},{name:"guest.notFound",path:"guest/404",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(553)]).then(r.bind(r,69414))}},{name:"guest.forbidden",path:"guest/403",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(553)]).then(r.bind(r,45084))}},{path:"/guest/auth/login",redirect:{name:"guest.adminLogin"}},{path:"/guest",redirect:{name:"guest.main"}}]}],Yt=r(9579),Qt=function(t,e){var r,n={analytics:function(){return document.URL.replace(/(.*list\/)+/,"").replace(/\/analytics/,"")},recordings:function(){return document.URL.replace(/(.*list\/)+/,"").replace(/\/recordings/,"")}}[e]();return Re.app.$store.dispatch("conference/updateConference",{accessToken:Re.app.$store.getters["auth/getAccessToken"],conferenceId:null!==(r=t.params.id)&&void 0!==r?r:n})},Bt=function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,88593))},$t=function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,19741))},te="conference|room|template",ee=[{path:"/user",component:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,68644))},beforeEnter:function(t,e,r){Promise.all([Re.app.$store.dispatch("server/updateConferenceEditInfo",{accessToken:Re.app.$store.getters["auth/getAccessToken"]}),Re.app.$store.dispatch("licenseSlots/updateSettings",{accessToken:Re.app.$store.getters["auth/getAccessToken"]})]).finally(r)},children:[{name:"user.general",path:"general/:id?",component:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,76010))},beforeEnter:function(t,e,r){Re.app.authManagerStore.moduleScreen.screen.signIn="user",r()}},{name:"user.conferenceList",path:":type(".concat(te,")/list/:id?"),components:{default:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,3169))},header:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,19375))}},beforeEnter:function(t,e,r){Re.app.$store.getters["auth/getClientAppList"].length?r():Re.app.$store.dispatch("auth/updateClientAppList",{accessToken:Re.app.$store.getters["auth/getAccessToken"]}).finally(r)}},{name:"user.conferenceAnalytics",path:":type(".concat(te,")/list/:id/analytics"),components:{default:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,88802))},header:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,86958))}},beforeEnter:function(t,e,r){Qt.bind(null,t)("analytics").then((function(){r()})).catch((function(){Re.push({path:"/guest/404"})}))}},{name:"user.conferenceRecordings",path:":type(".concat(te,")/list/:id/recordings"),components:{default:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,49516))},header:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,24966))}},beforeEnter:function(t,e,r){Qt.bind(null,t)("recordings").then((function(){r()})).catch((function(){Re.push({path:"/guest/404"})}))}},{name:"user.account",path:"account",component:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,73411))}},{name:"user.contacts",path:"contacts/:contact?",components:{default:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,74505))},header:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,71858))}}},{name:"user.createConference",path:":type(".concat(te,")/create"),components:{default:Bt,header:$t},beforeEnter:function(t,e,r){Yt.A.call(Re.app,"create_group_conference")?r():Re.app.redirectTo("conferenceList")}},{name:"user.editConference",path:":type(".concat(te,")/edit/:id"),components:{default:Bt,header:$t},beforeEnter:function(t,e,r){"template"!==t.params.type?Re.app.$store.dispatch("conference/updateConferenceMe",{accessToken:Re.app.$store.getters["auth/getAccessToken"],conferenceId:t.params.id}).then((function(t){t.owner?r():r({name:"user.general"})})):r()}},{name:"user.callHistory",path:"call-history/:id?",components:{default:function(){return Promise.all([r.e(860),r.e(96),r.e(101),r.e(806)]).then(r.bind(r,12117))}}},{path:"/user",redirect:{name:"user.general"}},{path:"/user/*",redirect:{name:"user.general"}},{path:":type(".concat(te,")/view/:id/*"),redirect:":type(".concat(te,")/view/:id")},{path:":type(".concat(te,")/create/*"),redirect:":type(".concat(te,")/create")},{path:":type(".concat(te,")/edit/:id/*"),redirect:":type(".concat(te,")/edit/:id")}]}],re=r(61465),ne=["auth"];function ae(t){return ae="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},ae(t)}function ie(){ie=function(){return e};var t,e={},r=Object.prototype,n=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",s=i.asyncIterator||"@@asyncIterator",c=i.toStringTag||"@@toStringTag";function l(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{l({},"")}catch(t){l=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var i=e&&e.prototype instanceof A?e:A,o=Object.create(i.prototype),s=new L(n||[]);return a(o,"_invoke",{value:k(t,r,s)}),o}function d(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=u;var f="suspendedStart",p="suspendedYield",h="executing",g="completed",y={};function A(){}function m(){}function v(){}var x={};l(x,o,(function(){return this}));var b=Object.getPrototypeOf,w=b&&b(b(P([])));w&&w!==r&&n.call(w,o)&&(x=w);var S=v.prototype=A.prototype=Object.create(x);function _(t){["next","throw","return"].forEach((function(e){l(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function r(a,i,o,s){var c=d(t[a],t,i);if("throw"!==c.type){var l=c.arg,u=l.value;return u&&"object"==ae(u)&&n.call(u,"__await")?e.resolve(u.__await).then((function(t){r("next",t,o,s)}),(function(t){r("throw",t,o,s)})):e.resolve(u).then((function(t){l.value=t,o(l)}),(function(t){return r("throw",t,o,s)}))}s(c.arg)}var i;a(this,"_invoke",{value:function(t,n){function a(){return new e((function(e,a){r(t,n,e,a)}))}return i=i?i.then(a,a):a()}})}function k(e,r,n){var a=f;return function(i,o){if(a===h)throw new Error("Generator is already running");if(a===g){if("throw"===i)throw o;return{value:t,done:!0}}for(n.method=i,n.arg=o;;){var s=n.delegate;if(s){var c=E(s,n);if(c){if(c===y)continue;return c}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(a===f)throw a=g,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);a=h;var l=d(e,r,n);if("normal"===l.type){if(a=n.done?g:p,l.arg===y)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(a=g,n.method="throw",n.arg=l.arg)}}}function E(e,r){var n=r.method,a=e.iterator[n];if(a===t)return r.delegate=null,"throw"===n&&e.iterator.return&&(r.method="return",r.arg=t,E(e,r),"throw"===r.method)||"return"!==n&&(r.method="throw",r.arg=new TypeError("The iterator does not provide a '"+n+"' method")),y;var i=d(a,e.iterator,r.arg);if("throw"===i.type)return r.method="throw",r.arg=i.arg,r.delegate=null,y;var o=i.arg;return o?o.done?(r[e.resultName]=o.value,r.next=e.nextLoc,"return"!==r.method&&(r.method="next",r.arg=t),r.delegate=null,y):o:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,y)}function T(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function M(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(T,this),this.reset(!0)}function P(e){if(e||""===e){var r=e[o];if(r)return r.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,i=function r(){for(;++a<e.length;)if(n.call(e,a))return r.value=e[a],r.done=!1,r;return r.value=t,r.done=!0,r};return i.next=i}}throw new TypeError(ae(e)+" is not iterable")}return m.prototype=v,a(S,"constructor",{value:v,configurable:!0}),a(v,"constructor",{value:m,configurable:!0}),m.displayName=l(v,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===m||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,v):(t.__proto__=v,l(t,c,"GeneratorFunction")),t.prototype=Object.create(S),t},e.awrap=function(t){return{__await:t}},_(O.prototype),l(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,r,n,a,i){void 0===i&&(i=Promise);var o=new O(u(t,r,n,a),i);return e.isGeneratorFunction(r)?o:o.next().then((function(t){return t.done?t.value:o.next()}))},_(S),l(S,c,"Generator"),l(S,o,(function(){return this})),l(S,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(M),!e)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var r=this;function a(n,a){return s.type="throw",s.arg=e,r.next=n,a&&(r.method="next",r.arg=t),!!a}for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i],s=o.completion;if("root"===o.tryLoc)return a("end");if(o.tryLoc<=this.prev){var c=n.call(o,"catchLoc"),l=n.call(o,"finallyLoc");if(c&&l){if(this.prev<o.catchLoc)return a(o.catchLoc,!0);if(this.prev<o.finallyLoc)return a(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return a(o.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return a(o.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var a=this.tryEntries[r];if(a.tryLoc<=this.prev&&n.call(a,"finallyLoc")&&this.prev<a.finallyLoc){var i=a;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=e,i?(this.method="next",this.next=i.finallyLoc,y):this.complete(o)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),y},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),M(r),y}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var a=n.arg;M(r)}return a}}throw new Error("illegal catch attempt")},delegateYield:function(e,r,n){return this.delegate={iterator:P(e),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=t),y}},e}function oe(t,e,r,n,a,i,o){try{var s=t[i](o),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,a)}function se(t){return function(){var e=this,r=arguments;return new Promise((function(n,a){var i=t.apply(e,r);function o(t){oe(i,n,a,o,s,"next",t)}function s(t){oe(i,n,a,o,s,"throw",t)}o(void 0)}))}}function ce(t,e){if(null==t)return{};var r,n,a=function(t,e){if(null==t)return{};var r,n,a={},i=Object.keys(t);for(n=0;n<i.length;n++)r=i[n],e.indexOf(r)>=0||(a[r]=t[r]);return a}(t,e);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);for(n=0;n<i.length;n++)r=i[n],e.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(t,r)&&(a[r]=t[r])}return a}function le(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function ue(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?le(Object(r),!0).forEach((function(e){de(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):le(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function de(t,e,r){var n;return n=function(t,e){if("object"!=ae(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=ae(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==ae(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var fe=function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(101),r.e(521)]).then(r.bind(r,69414))};function pe(t){var e=(0,re.A)(),r={"conference.info":"join_conference_button","conference.how-to-join":"download","conference.conference":"join_conference_button"}[t.name],n={user:Re.app.me?Re.app.me.id:null,guest:Re.app.me&&Re.app.me.guestId?Re.app.me.guestId:null}[Re.app.me&&Re.app.me.type?Re.app.me.type:null]||null;n||Re.app.me||!e.randomGuestName||(n="$".concat(e.randomGuestName));var a={lang:Re.app.appStateStore.language,call_id:t.params.id,case:r,user:n};return Re.app.system.linux&&"conference.how-to-join"===t.name&&(a={case:"join_conference_button",call_id:t.params.id,lang:Re.app.appStateStore.language}),!Re.app.$store.getters["conference/getConference"].registration.enabled&&Re.app.me&&"guest"===Re.app.me.type&&Re.app.me.guestId.match(/^2\$/)&&(a.user="$".concat(Re.app.me.username)),Re.app.$store.dispatch("softwareClients/updateSoftwareClients",{accessToken:Re.app.$store.getters["auth/getAccessToken"],parameters:a})}function he(t,e){return Re.app.$store.dispatch("conference/updateConference",{accessToken:Re.app.$store.getters["auth/getAccessToken"],conferenceId:t.params.id}).catch((function(){return e({name:"conference.not-found",params:t.params}),Promise.reject()}))}var ge=[{path:"/c",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(101),r.e(521)]).then(r.bind(r,83993))},children:[{name:"conference.main",path:":id",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(101),r.e(521)]).then(r.bind(r,69480))},beforeEnter:function(t,e,r){if(null!=t&&t.query.auth)return Re.app.authManagerStore.permissions=ue(ue({},Re.app.authManagerStore.permissions),{},{userAuthorization:!0,guestAuthorization:!0,accountCreation:!1,resetPassword:!1}),Re.app.authManagerStore.moduleScreen.mode="signIn",Re.app.authManagerStore.visibility=!0,void r({name:t.name,params:t.params,query:function(t){t.auth;return ce(t,ne)}(t.query)});Promise.all([Re.app.$store.dispatch("server/updateConferencePublicInfo"),Re.app.$store.dispatch("server/updateServerInfo")]).finally(r)}},{name:"conference.conference",path:":id/conference",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(101),r.e(521)]).then(r.bind(r,6132))},beforeEnter:function(t,e,r){return se(ie().mark((function e(){return ie().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(Re.app.$store.getters["conference/getConference"]){e.next=9;break}return e.prev=1,e.next=4,he(t,r);case 4:e.next=9;break;case 6:return e.prev=6,e.t0=e.catch(1),e.abrupt("return");case 9:return e.next=11,pe(t);case 11:r();case 12:case"end":return e.stop()}}),e,null,[[1,6]])})))()}},{name:"conference.info",path:":id/info",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(101),r.e(521)]).then(r.bind(r,11018))},beforeEnter:function(t,e,r){return se(ie().mark((function e(){return ie().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(Re.app.$store.getters["conference/getConference"]){e.next=9;break}return e.prev=1,e.next=4,he(t,r);case 4:e.next=9;break;case 6:return e.prev=6,e.t0=e.catch(1),e.abrupt("return");case 9:return e.next=11,pe(t);case 11:Re.app.$store.dispatch("server/updateConferencePublicInfo").then(r);case 12:case"end":return e.stop()}}),e,null,[[1,6]])})))()}},{name:"conference.how-to-join",path:":id/how-to-join",component:function(){return Promise.all([r.e(860),r.e(96),r.e(839),r.e(101),r.e(521)]).then(r.bind(r,79216))},beforeEnter:function(t,e,r){return se(ie().mark((function e(){return ie().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(Re.app.$store.getters["conference/getConference"]){e.next=9;break}return e.prev=1,e.next=4,he(t,r);case 4:e.next=9;break;case 6:return e.prev=6,e.t0=e.catch(1),e.abrupt("return");case 9:return e.next=11,pe(t);case 11:Re.app.$store.dispatch("server/updateConferencePublicInfo").then(r);case 12:case"end":return e.stop()}}),e,null,[[1,6]])})))()}},{name:"conference.is-missing",path:":id/404",component:fe},{name:"conference.not-found",path:"/",component:fe},{path:":id/help",redirect:{name:"conference.how-to-join"}},{path:"*",redirect:{name:"conference.not-found"}}]}],ye=r(33611),Ae=r(76233),me=r.n(Ae),ve=r(72505),xe=r.n(ve);function be(t){var e=this,r=t.to;if(-1!==window.location.host.indexOf("localhost")||-1!==window.location.protocol.indexOf("https"))return Promise.resolve();if(!this.serverInfo.sslEnabled)return this.isInAppMode&&(this.appStateStore.error="SECURITY_FLAW"),Promise.resolve();var n=!1;return xe().get(this.serverInfo.url).then((function(){return n=!0,window.location.replace("".concat(e.serverInfo.url).concat(r.fullPath)),Promise.reject()})).catch((function(){return n?Promise.reject():(e.appStateStore.warningSslIsVisible=!0,Promise.resolve())}))}var we=r(67596),Se=r.n(we);function _e(t){return _e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},_e(t)}function Oe(){Oe=function(){return e};var t,e={},r=Object.prototype,n=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",s=i.asyncIterator||"@@asyncIterator",c=i.toStringTag||"@@toStringTag";function l(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{l({},"")}catch(t){l=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var i=e&&e.prototype instanceof A?e:A,o=Object.create(i.prototype),s=new L(n||[]);return a(o,"_invoke",{value:k(t,r,s)}),o}function d(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=u;var f="suspendedStart",p="suspendedYield",h="executing",g="completed",y={};function A(){}function m(){}function v(){}var x={};l(x,o,(function(){return this}));var b=Object.getPrototypeOf,w=b&&b(b(P([])));w&&w!==r&&n.call(w,o)&&(x=w);var S=v.prototype=A.prototype=Object.create(x);function _(t){["next","throw","return"].forEach((function(e){l(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function r(a,i,o,s){var c=d(t[a],t,i);if("throw"!==c.type){var l=c.arg,u=l.value;return u&&"object"==_e(u)&&n.call(u,"__await")?e.resolve(u.__await).then((function(t){r("next",t,o,s)}),(function(t){r("throw",t,o,s)})):e.resolve(u).then((function(t){l.value=t,o(l)}),(function(t){return r("throw",t,o,s)}))}s(c.arg)}var i;a(this,"_invoke",{value:function(t,n){function a(){return new e((function(e,a){r(t,n,e,a)}))}return i=i?i.then(a,a):a()}})}function k(e,r,n){var a=f;return function(i,o){if(a===h)throw new Error("Generator is already running");if(a===g){if("throw"===i)throw o;return{value:t,done:!0}}for(n.method=i,n.arg=o;;){var s=n.delegate;if(s){var c=E(s,n);if(c){if(c===y)continue;return c}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(a===f)throw a=g,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);a=h;var l=d(e,r,n);if("normal"===l.type){if(a=n.done?g:p,l.arg===y)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(a=g,n.method="throw",n.arg=l.arg)}}}function E(e,r){var n=r.method,a=e.iterator[n];if(a===t)return r.delegate=null,"throw"===n&&e.iterator.return&&(r.method="return",r.arg=t,E(e,r),"throw"===r.method)||"return"!==n&&(r.method="throw",r.arg=new TypeError("The iterator does not provide a '"+n+"' method")),y;var i=d(a,e.iterator,r.arg);if("throw"===i.type)return r.method="throw",r.arg=i.arg,r.delegate=null,y;var o=i.arg;return o?o.done?(r[e.resultName]=o.value,r.next=e.nextLoc,"return"!==r.method&&(r.method="next",r.arg=t),r.delegate=null,y):o:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,y)}function T(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function M(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(T,this),this.reset(!0)}function P(e){if(e||""===e){var r=e[o];if(r)return r.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,i=function r(){for(;++a<e.length;)if(n.call(e,a))return r.value=e[a],r.done=!1,r;return r.value=t,r.done=!0,r};return i.next=i}}throw new TypeError(_e(e)+" is not iterable")}return m.prototype=v,a(S,"constructor",{value:v,configurable:!0}),a(v,"constructor",{value:m,configurable:!0}),m.displayName=l(v,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===m||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,v):(t.__proto__=v,l(t,c,"GeneratorFunction")),t.prototype=Object.create(S),t},e.awrap=function(t){return{__await:t}},_(O.prototype),l(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,r,n,a,i){void 0===i&&(i=Promise);var o=new O(u(t,r,n,a),i);return e.isGeneratorFunction(r)?o:o.next().then((function(t){return t.done?t.value:o.next()}))},_(S),l(S,c,"Generator"),l(S,o,(function(){return this})),l(S,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(M),!e)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var r=this;function a(n,a){return s.type="throw",s.arg=e,r.next=n,a&&(r.method="next",r.arg=t),!!a}for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i],s=o.completion;if("root"===o.tryLoc)return a("end");if(o.tryLoc<=this.prev){var c=n.call(o,"catchLoc"),l=n.call(o,"finallyLoc");if(c&&l){if(this.prev<o.catchLoc)return a(o.catchLoc,!0);if(this.prev<o.finallyLoc)return a(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return a(o.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return a(o.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var a=this.tryEntries[r];if(a.tryLoc<=this.prev&&n.call(a,"finallyLoc")&&this.prev<a.finallyLoc){var i=a;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=e,i?(this.method="next",this.next=i.finallyLoc,y):this.complete(o)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),y},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),M(r),y}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var a=n.arg;M(r)}return a}}throw new Error("illegal catch attempt")},delegateYield:function(e,r,n){return this.delegate={iterator:P(e),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=t),y}},e}function ke(t,e,r,n,a,i,o){try{var s=t[i](o),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,a)}function Ee(t){var e,r=t.to,n=null===(e=this.$store.getters["auth/getAuthorizationUserInfo"])||void 0===e?void 0:e.type;return n&&"guest"!==n||!this.isInAppMode?n&&"guest"!==n||-1===r.name.indexOf("user.")?Promise.resolve():Promise.reject():(this.appStateStore.error="ACCESS_DENIED",Promise.reject())}function Te(t){return Me.apply(this,arguments)}function Me(){var t;return t=Oe().mark((function t(e){var r,n,a,i,o,s,c,l=this;return Oe().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:r=e.to,n=new(Se())(window.location.search),a=n.get("call_id"),i=n.get("k"),o=null;try{o=this.appStateStore.callIdParser.createCallId(a).getLogin()}catch(t){console.warn("Parameter `call_id` is not valid")}if(!i&&!a){t.next=22;break}if((c=n.get("record_id"))&&o===(null===(s=localStorage)||void 0===s?void 0:s.getItem("trueconfServerUserName"))){t.next=11;break}return t.next=11,this.$store.dispatch("auth/logout").catch((function(t){console.warn("Dispatch auth/logout:",t),l.$store.commit("auth/logout")}));case 11:if(t.t1=c,!t.t1){t.next=16;break}return t.next=15,this.$store.dispatch("auth/checkAuthorization").then((function(){return!0})).catch((function(){return!1}));case 15:t.t1=t.sent;case 16:if(t.t0=t.t1,!t.t0){t.next=19;break}t.t0=(0,Ae.userAuthorizationIsRelevant)({userInfo:this.$store.getters["auth/getAuthorizationUserInfo"],tokenInfo:this.$store.getters["auth/getAuthorizationTokenInfo"]});case 19:if(!t.t0){t.next=21;break}return t.abrupt("return",Ee.call(this,{to:r}));case 21:return t.abrupt("return",this.$store.dispatch("auth/authorization",{grant_type:"client_secretkey",client_id:"trueconf_client_secret_key",call_id:a,k:i}).then((function(){var t;return null===(t=localStorage)||void 0===t||t.setItem("trueconfServerUserName",o),Ee.call(l,{to:r})})));case 22:return t.abrupt("return",this.$store.dispatch("auth/checkAuthorization","conference.conference"===r.name?"sync":null).then((function(){return Ee.call(l,{to:r})})));case 23:case"end":return t.stop()}}),t,this)})),Me=function(){var e=this,r=arguments;return new Promise((function(n,a){var i=t.apply(e,r);function o(t){ke(i,n,a,o,s,"next",t)}function s(t){ke(i,n,a,o,s,"throw",t)}o(void 0)}))},Me.apply(this,arguments)}var Le=r(22911),Pe=["replaceIndex"];function Ge(t,e){if(null==t)return{};var r,n,a=function(t,e){if(null==t)return{};var r,n,a={},i=Object.keys(t);for(n=0;n<i.length;n++)r=i[n],e.indexOf(r)>=0||(a[r]=t[r]);return a}(t,e);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);for(n=0;n<i.length;n++)r=i[n],e.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(t,r)&&(a[r]=t[r])}return a}function Ue(t){return Ue="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},Ue(t)}var Ze=(0,s.nY)("appState",{state:function(){return{notifier:null,language:null,warningSslIsVisible:!1,serverDocumentIsVisible:!1,serverDocumentData:{name:null,content:null},adminContactsAreVisible:!1,companyName:"TrueConf",launchMode:null,clientVersion:null,qtWindowCompactMode:null,callIdParser:new Le.zM.v,error:null,warning:null,currentMode:null,showRegistrationPopup:!1}},actions:{setLanguage:function(t){this.language=t,this.$app.$setLocale(t),(0,ye.saveLanguage)("trueconfServerLang",t)},setServerDocumentData:function(t){var e=t.name,r=t.content;this.serverDocumentData.name=e,this.serverDocumentData.content=r},notify:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(!this.notifier)throw new Error("Notifier is not setup");if("object"!==Ue(t))throw new Error('Incorrect argument type for call "notify" method');var e=t.replaceIndex,r=Ge(t,Pe);this.notifier.notify(r,e)},closeNotify:function(t){if(!this.notifier)throw new Error("Notifier is not setup");this.notifier.close(t)},getNotifyList:function(){if(!this.notifier)throw new Error("Notifier is not setup");return this.notifier.getNotifyList()}}});function je(t){var e=this,r=t.to,n=t.next,a=this.appStateStore||Ze();if(!a.launchMode){var i,o=new(Se())(window.location.search);a.launchMode=o.get("mode")||"default",a.clientVersion=o.get("version"),this.$store.dispatch("device/updateInfo");var s=(0,ye.getPriorityLanguage)("trueconfServerLang");return"ua"===s&&(s="uk"),"az"===s&&(s="en"),JSON.parse(null===(i=localStorage)||void 0===i?void 0:i.getItem(Ct))&&localStorage.removeItem(Ct),this.$store.dispatch("server/updateServerInfo",{parameters:{lang:s}}).then((function(){return a.setLanguage(s),e.serverInfo.id||"guest.adminLogin"===r.name?be.call(e,{to:r}).then((function(){return Te.call(e,{to:r}).catch((function(){return-1!==r.name.indexOf("user.")?(e.isInAppMode?a.error="ACCESS_DENIED":n({name:"guest.main",hash:a.warning===Zt?void 0:"#auth-personal-area"}),Promise.reject()):Promise.resolve()}))})):(n({name:"guest.adminLogin"}),Promise.reject())}))}return(0,Ae.authorizationIsRelevant)({userInfo:this.$store.getters["auth/getAuthorizationUserInfo"],tokenInfo:this.$store.getters["auth/getAuthorizationTokenInfo"]})||this.$store.dispatch("auth/checkAuthorization"),Promise.resolve()}var Ce=function(){return(0,this._self._c)("MainError",{attrs:{state:"CLIENT_ERROR",customDescription:this.errorDescription}})};Ce._withStripped=!0;var Ie={name:"ClientError",components:{MainError:xt},created:function(){this.$store.dispatch("server/updateServerInfo");var t=new(Se())(window.location.search);this.errorCode=t.get("error_code")},computed:{errorDescription:function(){return this.$pgettext("A text hint. The word will be followed by an error code such as 402.","Error code: %error_code").replace("%error_code",this.errorCode)}},data:function(){return{errorCode:null}}},Ve=(0,L.A)(Ie,Ce,[],!1,null,null,null).exports,Ke=["k","call_id","lang","version","utm_content"];function Ne(t,e){if(null==t)return{};var r,n,a=function(t,e){if(null==t)return{};var r,n,a={},i=Object.keys(t);for(n=0;n<i.length;n++)r=i[n],e.indexOf(r)>=0||(a[r]=t[r]);return a}(t,e);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);for(n=0;n<i.length;n++)r=i[n],e.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(t,r)&&(a[r]=t[r])}return a}function ze(t){return function(t){if(Array.isArray(t))return De(t)}(t)||function(t){if("undefined"!=typeof Symbol&&null!=t[Symbol.iterator]||null!=t["@@iterator"])return Array.from(t)}(t)||function(t,e){if(!t)return;if("string"==typeof t)return De(t,e);var r=Object.prototype.toString.call(t).slice(8,-1);"Object"===r&&t.constructor&&(r=t.constructor.name);if("Map"===r||"Set"===r)return Array.from(t);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return De(t,e)}(t)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function De(t,e){(null==e||e>t.length)&&(e=t.length);for(var r=0,n=new Array(e);r<e;r++)n[r]=t[r];return n}var We=[].concat([{path:"/client-error",name:"client-error",component:Ve},{path:"*",redirect:{name:"guest.notFound"}}],ze(Jt),ze(ge),ze(ee)),Xe=new c.Ay({mode:"history",routes:We});Xe.beforeEach((function(t,e,r){je.call(Xe.app,{to:t,from:e,next:r}).then((function(){t.query&&t.query.k&&t.query.call_id?r({name:t.name,params:t.params,query:function(t){t.k,t.call_id,t.lang,t.version,t.utm_content;return Ne(t,Ke)}(t.query),replace:!0}):r()}))}));var Re=Xe,qe=r(69407),He=r.n(qe),Fe=new(i())({methods:{gettext:function(t){return this.jed?(this.cache.gettext[t]||(this.cache.gettext[t]=this.jed.gettext(t)),this.cache.gettext[t]):t},pgettext:function(t,e){return this.jed?(this.cache.pgettext[e]||(this.cache.pgettext[e]={}),this.cache.pgettext[e][t]||(this.cache.pgettext[e][t]=this.jed.pgettext(t,e)),this.cache.pgettext[e][t]):e},npgettext:function(t,e,r,n){return this.jed?(this.cache.npgettext[e]||(this.cache.npgettext[e]={}),this.cache.npgettext[e][t]||(this.cache.npgettext[e][t]={}),this.cache.npgettext[e][t][n]||(this.cache.npgettext[e][t][n]=this.jed.npgettext(t,e,r,n)),this.cache.npgettext[e][t][n]):r},clearCache:function(){this.cache={gettext:{},pgettext:{},npgettext:{}}},importLocale:function(t){var e={be:function(){return r.e(939).then(r.t.bind(r,69734,19))},de:function(){return r.e(977).then(r.t.bind(r,61382,19))},en:function(){return r.e(337).then(r.t.bind(r,53513,19))},es:function(){return r.e(76).then(r.t.bind(r,79752,19))},fa:function(){return r.e(147).then(r.t.bind(r,86384,19))},fr:function(){return r.e(384).then(r.t.bind(r,3920,19))},it:function(){return r.e(991).then(r.t.bind(r,12290,19))},ja:function(){return r.e(783).then(r.t.bind(r,63933,19))},pl:function(){return r.e(340).then(r.t.bind(r,34628,19))},pt:function(){return r.e(804).then(r.t.bind(r,75732,19))},ru:function(){return r.e(523).then(r.t.bind(r,74242,19))},uk:function(){return r.e(980).then(r.t.bind(r,25938,19))},vi:function(){return r.e(91).then(r.t.bind(r,39071,19))},zh:function(){return r.e(478).then(r.t.bind(r,46911,19))},zht:function(){return r.e(678).then(r.t.bind(r,14351,19))},he:function(){return r.e(861).then(r.t.bind(r,40535,19))},ko:function(){return r.e(918).then(r.t.bind(r,13711,19))},tr:function(){return r.e(558).then(r.t.bind(r,21156,19))},cs:function(){return r.e(578).then(r.t.bind(r,22835,19))}};return e[t]?e[t]():e.en()},addLang:function(t){var e=this;return this.importLocale(t).then((function(r){var n=new(He())(r);e.jeds[t]=n}))},setLocale:function(t){var e=this;if(t!==this.lang)return this.jeds[t]?(this.lang=t,void this.clearCache()):void this.addLang(t).then((function(){e.lang=t,e.clearCache()}))}},computed:{jed:function(){return this.jeds[this.lang]}},data:function(){return{lang:null,jeds:{},cache:{gettext:{},pgettext:{},npgettext:{}}}}}),Je={install:function(t){t.prototype.$gettext=function(t){return Fe.gettext(t)},t.prototype.$pgettext=function(t,e){return Fe.pgettext(t,e)},t.prototype.$npgettext=function(t,e,r,n){return Fe.npgettext(t,e,r,n)},t.prototype.$setLocale=function(t){return Fe.setLocale(t)}}},Ye=Je,Qe=r(7973),Be=r.n(Qe),$e=r(12449),tr=r.n($e),er=r(30547),rr=r.n(er),nr=r(33456),ar=r.n(nr),ir=r(97856),or=r.n(ir),sr=r(74200),cr=r.n(sr),lr=r(52594),ur=r.n(lr),dr=r(21921),fr=r.n(dr),pr=r(53674),hr=r.n(pr),gr=r(66001),yr=r.n(gr),Ar=r(97556),mr=r.n(Ar),vr=r(40172),xr=r.n(vr),br=r(88808),wr=r.n(br),Sr=r(53143),_r=r.n(Sr),Or=r(66155),kr=r.n(Or),Er=r(69674),Tr=r.n(Er),Mr=r(25768),Lr=r.n(Mr),Pr=r(38157),Gr=r.n(Pr),Ur=r(86048),Zr=r.n(Ur),jr=r(88422),Cr=r.n(jr),Ir=r(52320),Vr=r.n(Ir),Kr=r(79569),Nr=r.n(Kr),zr=r(32475),Dr=r.n(zr),Wr=r(93402),Xr=r.n(Wr),Rr=r(12836),qr=r.n(Rr),Hr=r(53162),Fr=r.n(Hr),Jr=r(85904);function Yr(){var t={};return t.promise=new Promise((function(e,r){t.resolve=e,t.reject=r})),t}function Qr(t){return Qr="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},Qr(t)}function Br(){Br=function(){return e};var t,e={},r=Object.prototype,n=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",s=i.asyncIterator||"@@asyncIterator",c=i.toStringTag||"@@toStringTag";function l(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{l({},"")}catch(t){l=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var i=e&&e.prototype instanceof A?e:A,o=Object.create(i.prototype),s=new L(n||[]);return a(o,"_invoke",{value:k(t,r,s)}),o}function d(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=u;var f="suspendedStart",p="suspendedYield",h="executing",g="completed",y={};function A(){}function m(){}function v(){}var x={};l(x,o,(function(){return this}));var b=Object.getPrototypeOf,w=b&&b(b(P([])));w&&w!==r&&n.call(w,o)&&(x=w);var S=v.prototype=A.prototype=Object.create(x);function _(t){["next","throw","return"].forEach((function(e){l(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function r(a,i,o,s){var c=d(t[a],t,i);if("throw"!==c.type){var l=c.arg,u=l.value;return u&&"object"==Qr(u)&&n.call(u,"__await")?e.resolve(u.__await).then((function(t){r("next",t,o,s)}),(function(t){r("throw",t,o,s)})):e.resolve(u).then((function(t){l.value=t,o(l)}),(function(t){return r("throw",t,o,s)}))}s(c.arg)}var i;a(this,"_invoke",{value:function(t,n){function a(){return new e((function(e,a){r(t,n,e,a)}))}return i=i?i.then(a,a):a()}})}function k(e,r,n){var a=f;return function(i,o){if(a===h)throw new Error("Generator is already running");if(a===g){if("throw"===i)throw o;return{value:t,done:!0}}for(n.method=i,n.arg=o;;){var s=n.delegate;if(s){var c=E(s,n);if(c){if(c===y)continue;return c}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(a===f)throw a=g,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);a=h;var l=d(e,r,n);if("normal"===l.type){if(a=n.done?g:p,l.arg===y)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(a=g,n.method="throw",n.arg=l.arg)}}}function E(e,r){var n=r.method,a=e.iterator[n];if(a===t)return r.delegate=null,"throw"===n&&e.iterator.return&&(r.method="return",r.arg=t,E(e,r),"throw"===r.method)||"return"!==n&&(r.method="throw",r.arg=new TypeError("The iterator does not provide a '"+n+"' method")),y;var i=d(a,e.iterator,r.arg);if("throw"===i.type)return r.method="throw",r.arg=i.arg,r.delegate=null,y;var o=i.arg;return o?o.done?(r[e.resultName]=o.value,r.next=e.nextLoc,"return"!==r.method&&(r.method="next",r.arg=t),r.delegate=null,y):o:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,y)}function T(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function M(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(T,this),this.reset(!0)}function P(e){if(e||""===e){var r=e[o];if(r)return r.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,i=function r(){for(;++a<e.length;)if(n.call(e,a))return r.value=e[a],r.done=!1,r;return r.value=t,r.done=!0,r};return i.next=i}}throw new TypeError(Qr(e)+" is not iterable")}return m.prototype=v,a(S,"constructor",{value:v,configurable:!0}),a(v,"constructor",{value:m,configurable:!0}),m.displayName=l(v,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===m||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,v):(t.__proto__=v,l(t,c,"GeneratorFunction")),t.prototype=Object.create(S),t},e.awrap=function(t){return{__await:t}},_(O.prototype),l(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,r,n,a,i){void 0===i&&(i=Promise);var o=new O(u(t,r,n,a),i);return e.isGeneratorFunction(r)?o:o.next().then((function(t){return t.done?t.value:o.next()}))},_(S),l(S,c,"Generator"),l(S,o,(function(){return this})),l(S,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(M),!e)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var r=this;function a(n,a){return s.type="throw",s.arg=e,r.next=n,a&&(r.method="next",r.arg=t),!!a}for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i],s=o.completion;if("root"===o.tryLoc)return a("end");if(o.tryLoc<=this.prev){var c=n.call(o,"catchLoc"),l=n.call(o,"finallyLoc");if(c&&l){if(this.prev<o.catchLoc)return a(o.catchLoc,!0);if(this.prev<o.finallyLoc)return a(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return a(o.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return a(o.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var a=this.tryEntries[r];if(a.tryLoc<=this.prev&&n.call(a,"finallyLoc")&&this.prev<a.finallyLoc){var i=a;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=e,i?(this.method="next",this.next=i.finallyLoc,y):this.complete(o)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),y},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),M(r),y}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var a=n.arg;M(r)}return a}}throw new Error("illegal catch attempt")},delegateYield:function(e,r,n){return this.delegate={iterator:P(e),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=t),y}},e}function $r(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function tn(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?$r(Object(r),!0).forEach((function(e){en(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):$r(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function en(t,e,r){var n;return n=function(t,e){if("object"!=Qr(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=Qr(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==Qr(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}function rn(t,e,r,n,a,i,o){try{var s=t[i](o),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,a)}function nn(t){return function(){var e=this,r=arguments;return new Promise((function(n,a){var i=t.apply(e,r);function o(t){rn(i,n,a,o,s,"next",t)}function s(t){rn(i,n,a,o,s,"throw",t)}o(void 0)}))}}var an=null,on=null,sn=null,cn=null,ln=null,un=(new Date).getTime(),dn=null,fn=30;function pn(){ln=setTimeout((function(){if(dn)return ln=null,cn=null,void(dn=null);var t=100*Math.round(((new Date).getTime()-un)/100);cn-=t>1e3?t/1e3:1,un=(new Date).getTime(),cn>fn&&pn()}),1e3)}function hn(t){t&&t.tokenInfo?(Re.app.$store.commit("auth/setUserInfo",t.userInfo),Re.app.$store.commit("auth/setTokenInfo",t.tokenInfo)):Promise.reject(new Error("No authData.tokenInfo"))}function gn(){return gn=nn(Br().mark((function t(e){var r,n,a,i,o,s,c,l,u,d,f,p,h;return Br().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(n=(r=["^/oauth2/v1/token","^/api/v[\\d.]+/server","^[^/].+"]).find((function(t){return new RegExp(t).test(e.url)})),a=Re.app.$store.getters["auth/getAuthorizationTokenInfo"],i=Re.app.$store.getters["server/getServerInfo"],!new RegExp(r[0]).test(e.url)||a){t.next=8;break}return t.next=7,Re.app.$store.dispatch("server/updateServerInfo");case 7:un=(new Date).getTime();case 8:if(!n||/^https?:\/\/localhost\/.+/.test(e.url)){t.next=10;break}return t.abrupt("return",e);case 10:if(!/^\/oauth2\/v1\/logout/.test(e.url)){t.next=13;break}return dn=!0,t.abrupt("return",e);case 13:if(!an){t.next=19;break}return t.next=16,an.promise;case 16:o=t.sent,a=o.tokenInfo,e.url=e.url.replace(/access_token=.+?(?=$|&)/,"access_token=".concat(a.access_token));case 19:if(!on){t.next=24;break}return t.next=22,on.promise;case 22:a=t.sent,e.url=e.url.replace(/access_token=.+?(?=$|&)/,"access_token=".concat(a.access_token));case 24:if(!an&&i&&a&&!ln&&(cn=(a.expires_at||a.receipt_time+a.expires_in)-i.timestamp,dn&&(dn=null),un=(new Date).getTime(),pn(),sn||(window.addEventListener("storage",function(){var t=nn(Br().mark((function t(e){var r,n,o;return Br().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(e.key!==Re.app.$store.state.auth.localStorageParamName||!e.newValue){t.next=13;break}if(t.prev=1,r=JSON.parse(localStorage.getItem(Re.app.$store.state.auth.localStorageParamName)),n=r.tokenInfo,o=r.userInfo,!(a.access_token&&n.access_token===a.access_token||an)){t.next=5;break}return t.abrupt("return");case 5:a=n,hn({userInfo:tn(tn({},o),"inapp"===Re.app.appStateStore.launchMode?Re.app.$store.state.auth.userInfo:{}),tokenInfo:n}),on&&on.resolve(n),t.next=13;break;case 10:t.prev=10,t.t0=t.catch(1),console.warn(t.t0);case 13:if(e.key!==Ct||!e.newValue||an){t.next=24;break}return on=Yr(),clearTimeout(ln),ln=null,t.next=19,on.promise;case 19:return on=null,t.next=22,Re.app.$store.dispatch("server/updateServerInfo");case 22:i=Re.app.$store.getters["server/getServerInfo"],cn=(a.expires_at||a.receipt_time+a.expires_in)-i.timestamp;case 24:case"end":return t.stop()}}),t,null,[[1,10]])})));return function(e){return t.apply(this,arguments)}}()),sn=!0)),!(!an&&a&&null!==cn&&cn<=fn&&Re.app.appStateStore.warning!==Zt)){t.next=59;break}if(t.prev=26,!(JSON.parse(null===(s=localStorage)||void 0===s?void 0:s.getItem(Ct))&&cn>0)){t.next=41;break}return on=Yr(),clearTimeout(ln),ln=null,t.next=33,on.promise;case 33:return on=null,t.next=36,Re.app.$store.dispatch("server/updateServerInfo");case 36:i=Re.app.$store.getters["server/getServerInfo"],cn=(a.expires_at||a.receipt_time+a.expires_in)-i.timestamp,e.url=e.url.replace(/access_token=.+?(?=$|&)/,"access_token=".concat(a.access_token)),t.next=53;break;case 41:return an=Yr(),null===(c=localStorage)||void 0===c||c.setItem(Ct,!0),clearTimeout(ln),ln=null,an.promise.finally(nn(Br().mark((function t(){return Br().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return an=null,t.next=3,Re.app.$store.dispatch("server/updateServerInfo");case 3:i=Re.app.$store.getters["server/getServerInfo"],cn=(a.expires_at||a.receipt_time+a.expires_in)-i.timestamp;case 5:case"end":return t.stop()}}),t)})))),t.next=48,Re.app.$store.dispatch("auth/authorization",{client_id:null!==(l=a.client_id)&&void 0!==l?l:"inapp"===Re.app.appStateStore.launchMode?"trueconf_client_secret_key":"trueconf_server_users",refresh_token:a.refresh_token,grant_type:"refresh_token"});case 48:d=t.sent,null===(u=localStorage)||void 0===u||u.removeItem(Ct),an.resolve(d),e.url=e.url.replace(/access_token=.+?(?=$|&)/,"access_token=".concat(d.tokenInfo.access_token)),a=tn(tn({},d.tokenInfo),{},{client_id:a.client_id});case 53:t.next=59;break;case 55:t.prev=55,t.t0=t.catch(26),null===(f=localStorage)||void 0===f||f.removeItem(Ct),(null===t.t0||void 0===t.t0?void 0:t.t0.message)===Zt&&"inapp"!==Re.app.appStateStore.launchMode&&Re.app.appStateStore.warning!==Zt?(Re.app.$store.commit("auth/logout"),Re.app.appStateStore.warning=Zt,-1===(null===(p=Re.history.current.name)||void 0===p?void 0:p.search(/^conference\\./))&&Re.replace({name:"guest.main"}),an.reject(Zt)):(Re.app.$store.commit("auth/logout"),"inapp"===Re.app.appStateStore.launchMode&&(Re.app.appStateStore.error="ACCESS_DENIED"),null===(h=an)||void 0===h||h.reject(t.t0));case 59:return t.abrupt("return",e);case 60:case"end":return t.stop()}}),t,null,[[26,55]])}))),gn.apply(this,arguments)}function yn(t){return yn="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},yn(t)}function An(){An=function(){return e};var t,e={},r=Object.prototype,n=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",s=i.asyncIterator||"@@asyncIterator",c=i.toStringTag||"@@toStringTag";function l(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{l({},"")}catch(t){l=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var i=e&&e.prototype instanceof A?e:A,o=Object.create(i.prototype),s=new L(n||[]);return a(o,"_invoke",{value:k(t,r,s)}),o}function d(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=u;var f="suspendedStart",p="suspendedYield",h="executing",g="completed",y={};function A(){}function m(){}function v(){}var x={};l(x,o,(function(){return this}));var b=Object.getPrototypeOf,w=b&&b(b(P([])));w&&w!==r&&n.call(w,o)&&(x=w);var S=v.prototype=A.prototype=Object.create(x);function _(t){["next","throw","return"].forEach((function(e){l(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function r(a,i,o,s){var c=d(t[a],t,i);if("throw"!==c.type){var l=c.arg,u=l.value;return u&&"object"==yn(u)&&n.call(u,"__await")?e.resolve(u.__await).then((function(t){r("next",t,o,s)}),(function(t){r("throw",t,o,s)})):e.resolve(u).then((function(t){l.value=t,o(l)}),(function(t){return r("throw",t,o,s)}))}s(c.arg)}var i;a(this,"_invoke",{value:function(t,n){function a(){return new e((function(e,a){r(t,n,e,a)}))}return i=i?i.then(a,a):a()}})}function k(e,r,n){var a=f;return function(i,o){if(a===h)throw new Error("Generator is already running");if(a===g){if("throw"===i)throw o;return{value:t,done:!0}}for(n.method=i,n.arg=o;;){var s=n.delegate;if(s){var c=E(s,n);if(c){if(c===y)continue;return c}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(a===f)throw a=g,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);a=h;var l=d(e,r,n);if("normal"===l.type){if(a=n.done?g:p,l.arg===y)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(a=g,n.method="throw",n.arg=l.arg)}}}function E(e,r){var n=r.method,a=e.iterator[n];if(a===t)return r.delegate=null,"throw"===n&&e.iterator.return&&(r.method="return",r.arg=t,E(e,r),"throw"===r.method)||"return"!==n&&(r.method="throw",r.arg=new TypeError("The iterator does not provide a '"+n+"' method")),y;var i=d(a,e.iterator,r.arg);if("throw"===i.type)return r.method="throw",r.arg=i.arg,r.delegate=null,y;var o=i.arg;return o?o.done?(r[e.resultName]=o.value,r.next=e.nextLoc,"return"!==r.method&&(r.method="next",r.arg=t),r.delegate=null,y):o:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,y)}function T(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function M(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(T,this),this.reset(!0)}function P(e){if(e||""===e){var r=e[o];if(r)return r.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,i=function r(){for(;++a<e.length;)if(n.call(e,a))return r.value=e[a],r.done=!1,r;return r.value=t,r.done=!0,r};return i.next=i}}throw new TypeError(yn(e)+" is not iterable")}return m.prototype=v,a(S,"constructor",{value:v,configurable:!0}),a(v,"constructor",{value:m,configurable:!0}),m.displayName=l(v,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===m||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,v):(t.__proto__=v,l(t,c,"GeneratorFunction")),t.prototype=Object.create(S),t},e.awrap=function(t){return{__await:t}},_(O.prototype),l(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,r,n,a,i){void 0===i&&(i=Promise);var o=new O(u(t,r,n,a),i);return e.isGeneratorFunction(r)?o:o.next().then((function(t){return t.done?t.value:o.next()}))},_(S),l(S,c,"Generator"),l(S,o,(function(){return this})),l(S,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(M),!e)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var r=this;function a(n,a){return s.type="throw",s.arg=e,r.next=n,a&&(r.method="next",r.arg=t),!!a}for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i],s=o.completion;if("root"===o.tryLoc)return a("end");if(o.tryLoc<=this.prev){var c=n.call(o,"catchLoc"),l=n.call(o,"finallyLoc");if(c&&l){if(this.prev<o.catchLoc)return a(o.catchLoc,!0);if(this.prev<o.finallyLoc)return a(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return a(o.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return a(o.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var a=this.tryEntries[r];if(a.tryLoc<=this.prev&&n.call(a,"finallyLoc")&&this.prev<a.finallyLoc){var i=a;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=e,i?(this.method="next",this.next=i.finallyLoc,y):this.complete(o)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),y},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),M(r),y}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var a=n.arg;M(r)}return a}}throw new Error("illegal catch attempt")},delegateYield:function(e,r,n){return this.delegate={iterator:P(e),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=t),y}},e}function mn(t,e,r,n,a,i,o){try{var s=t[i](o),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,a)}var vn=!1;function xn(){var t;return t=An().mark((function t(e){return An().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if("get"===e.config.method){t.next=2;break}return t.abrupt("return",e);case 2:try{new Map([[/^\/api\/v\d+(\.\d+)?\/conferences\/\?/,{responseField:"conferences",patchField:"topic"}],[/^\/api\/v\d+(\.\d+)?\/conferences\/\d+\?/,{responseField:"conference",patchField:"topic"}]]).forEach((function(t,r){-1!==e.config.url.search(r)&&(Array.isArray(e.data[t.responseField])?e.data[t.responseField]:[e.data[t.responseField]]).forEach((function(e){e[t.patchField]||(e[t.patchField]=Re.app.$root.$pgettext("A text indicating that a file has no title. It will be displayed in the table.","(no title)"))}))}))}catch(t){}return t.abrupt("return",e);case 4:case"end":return t.stop()}}),t)})),xn=function(){var e=this,r=arguments;return new Promise((function(n,a){var i=t.apply(e,r);function o(t){mn(i,n,a,o,s,"next",t)}function s(t){mn(i,n,a,o,s,"throw",t)}o(void 0)}))},xn.apply(this,arguments)}xe().interceptors.request.use((function(t){return gn.apply(this,arguments)})),xe().interceptors.response.use(null,(function(t){var e,r,n=Re.history.current.name;if(["^guest\\.","^conference\\."].find((function(t){return new RegExp(t).test(n)}))||Re.app.appStateStore.warning===Zt)return Promise.reject(t);var a,i=Re.app.serverInfo.url,o=null===(e=t.config)||void 0===e?void 0:e.url;try{a=new URL(o).origin}catch(t){a=i}return a!==i||403!==(null===(r=t.response)||void 0===r?void 0:r.status)||vn||(vn=!0,Re.app.$store.dispatch("auth/checkAuthorization",{userInfo:Re.app.$store.getters["auth/getAuthorizationUserInfo"],tokenInfo:Re.app.$store.getters["auth/getAuthorizationTokenInfo"]}).catch((function(){Re.app.appStateStore.warning="USER_IS_DISABLED",Re.push({name:"guest.main"})})).finally((function(){vn=!1}))),Promise.reject(t)})),xe().interceptors.response.use((function(t){return xn.apply(this,arguments)})),xe().interceptors.response.use((function(t){try{var e=localStorage.getItem(jt);if(!e)return t;if("post"===t.config.method&&-1!==t.config.url.search(/^\/oauth2\/v1\/logout/)){var r=Re.app.$store.getters["server/getServerInfo"];Re.app.$store.dispatch("auth/updateAuthManifest",{version:r.version,lang:r.lang}).then((function(t){var r=null==t?void 0:t.networks.find((function(t){return t.id===e}));r&&(Re.app.authManagerStore.outerLogoutSrc=r.features.logout,localStorage.setItem(jt,null))}))}}catch(t){}return t}));var bn={modules:{auth:me()({axios:xe()}),addressBook:yr()({Vue:i(),axios:xe()}),conferenceList:ar()({axios:xe()}),conferenceLayout:ur()({axios:xe()}),conferenceRole:xr()({axios:xe()}),conferenceEditor:fr()({Vue:i(),axios:xe()}),conferenceAnalytics:hr()({Vue:i(),axios:xe()}),template:cr()({axios:xe()}),templateList:or()({axios:xe()}),templateEditor:Nr()({Vue:i(),axios:xe()}),server:Be()({axios:xe()}),logs:tr()({axios:xe()}),softwareClients:rr()({axios:xe()}),serverDocuments:Dr()({axios:xe()}),user:Gr()({axios:xe()}),deeplinks:_r()({axios:xe()}),license:kr()({axios:xe()}),addressBookEditor:mr()({Vue:i(),axios:xe()}),conference:wr()({axios:xe()}),userEditor:Zr()({Vue:i(),axios:xe()}),users:Lr()({Vue:i(),axios:xe()}),broadcasts:Cr()({Vue:i(),axios:xe()}),callHistory:Vr()({axios:xe()}),device:(0,Jr.device)(),mediaDevices:(0,Jr.mediaDevices)(),browserPermissionDevices:(0,Jr.browserPermissionDevices)(),conferenceSchemes:Xr()({axios:xe()}),userSettings:qr()({axios:xe()}),registrationInConference:Fr()({axios:xe()}),licenseSlots:Tr()({axios:xe()})}},wn=r(3047),Sn=r.n(wn),_n=r(44929),On=r.n(_n),kn=(0,s.nY)("authManager",{state:function(){return{visibility:!1,moduleScreen:{mode:"signIn",screen:{signIn:"user",signUp:"form",resetPassword:"form",error:"httpsError"}},tempData:null,outerLogoutSrc:null,outerError:null,permissions:{userAuthorization:!0,guestAuthorization:!0,accountCreation:!0,resetPassword:!0,accountCreationEnabled:!0,outerRegisterInConferenceForm:!1},actionsAfterAuthorization:{signIn:null,signUp:null,resetPassword:null}}}});function En(t){return En="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},En(t)}function Tn(){Tn=function(){return e};var t,e={},r=Object.prototype,n=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",s=i.asyncIterator||"@@asyncIterator",c=i.toStringTag||"@@toStringTag";function l(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{l({},"")}catch(t){l=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var i=e&&e.prototype instanceof A?e:A,o=Object.create(i.prototype),s=new L(n||[]);return a(o,"_invoke",{value:k(t,r,s)}),o}function d(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=u;var f="suspendedStart",p="suspendedYield",h="executing",g="completed",y={};function A(){}function m(){}function v(){}var x={};l(x,o,(function(){return this}));var b=Object.getPrototypeOf,w=b&&b(b(P([])));w&&w!==r&&n.call(w,o)&&(x=w);var S=v.prototype=A.prototype=Object.create(x);function _(t){["next","throw","return"].forEach((function(e){l(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function r(a,i,o,s){var c=d(t[a],t,i);if("throw"!==c.type){var l=c.arg,u=l.value;return u&&"object"==En(u)&&n.call(u,"__await")?e.resolve(u.__await).then((function(t){r("next",t,o,s)}),(function(t){r("throw",t,o,s)})):e.resolve(u).then((function(t){l.value=t,o(l)}),(function(t){return r("throw",t,o,s)}))}s(c.arg)}var i;a(this,"_invoke",{value:function(t,n){function a(){return new e((function(e,a){r(t,n,e,a)}))}return i=i?i.then(a,a):a()}})}function k(e,r,n){var a=f;return function(i,o){if(a===h)throw new Error("Generator is already running");if(a===g){if("throw"===i)throw o;return{value:t,done:!0}}for(n.method=i,n.arg=o;;){var s=n.delegate;if(s){var c=E(s,n);if(c){if(c===y)continue;return c}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(a===f)throw a=g,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);a=h;var l=d(e,r,n);if("normal"===l.type){if(a=n.done?g:p,l.arg===y)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(a=g,n.method="throw",n.arg=l.arg)}}}function E(e,r){var n=r.method,a=e.iterator[n];if(a===t)return r.delegate=null,"throw"===n&&e.iterator.return&&(r.method="return",r.arg=t,E(e,r),"throw"===r.method)||"return"!==n&&(r.method="throw",r.arg=new TypeError("The iterator does not provide a '"+n+"' method")),y;var i=d(a,e.iterator,r.arg);if("throw"===i.type)return r.method="throw",r.arg=i.arg,r.delegate=null,y;var o=i.arg;return o?o.done?(r[e.resultName]=o.value,r.next=e.nextLoc,"return"!==r.method&&(r.method="next",r.arg=t),r.delegate=null,y):o:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,y)}function T(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function M(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(T,this),this.reset(!0)}function P(e){if(e||""===e){var r=e[o];if(r)return r.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,i=function r(){for(;++a<e.length;)if(n.call(e,a))return r.value=e[a],r.done=!1,r;return r.value=t,r.done=!0,r};return i.next=i}}throw new TypeError(En(e)+" is not iterable")}return m.prototype=v,a(S,"constructor",{value:v,configurable:!0}),a(v,"constructor",{value:m,configurable:!0}),m.displayName=l(v,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===m||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,v):(t.__proto__=v,l(t,c,"GeneratorFunction")),t.prototype=Object.create(S),t},e.awrap=function(t){return{__await:t}},_(O.prototype),l(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,r,n,a,i){void 0===i&&(i=Promise);var o=new O(u(t,r,n,a),i);return e.isGeneratorFunction(r)?o:o.next().then((function(t){return t.done?t.value:o.next()}))},_(S),l(S,c,"Generator"),l(S,o,(function(){return this})),l(S,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(M),!e)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var r=this;function a(n,a){return s.type="throw",s.arg=e,r.next=n,a&&(r.method="next",r.arg=t),!!a}for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i],s=o.completion;if("root"===o.tryLoc)return a("end");if(o.tryLoc<=this.prev){var c=n.call(o,"catchLoc"),l=n.call(o,"finallyLoc");if(c&&l){if(this.prev<o.catchLoc)return a(o.catchLoc,!0);if(this.prev<o.finallyLoc)return a(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return a(o.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return a(o.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var a=this.tryEntries[r];if(a.tryLoc<=this.prev&&n.call(a,"finallyLoc")&&this.prev<a.finallyLoc){var i=a;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=e,i?(this.method="next",this.next=i.finallyLoc,y):this.complete(o)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),y},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),M(r),y}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var a=n.arg;M(r)}return a}}throw new Error("illegal catch attempt")},delegateYield:function(e,r,n){return this.delegate={iterator:P(e),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=t),y}},e}function Mn(t,e,r,n,a,i,o){try{var s=t[i](o),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,a)}function Ln(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function Pn(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?Ln(Object(r),!0).forEach((function(e){Gn(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):Ln(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function Gn(t,e,r){var n;return n=function(t,e){if("object"!=En(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=En(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==En(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}i().use(o.Ay),i().use(s.R2),i().use(c.Ay),i().use(d()),i().use(f.A),i().use(p.Ay),i().use(Ye),i().use(Sn()),i().use(On()),i().directive("mdl",Ht),i().directive("pointer-auto-blur",Ft);var Un=new o.Ay.Store(bn);(0,l.O)(Un,Re);var Zn=(0,s.Ey)();Zn.use((function(t){var e=t.store,r=t.app,n=e.$dispose;e.$app=r,e.$dispose=function(){e.$reset(),n()}})),i().mixin({created:function(){this.console=window.console},methods:{notify:function(){var t;return(t=this.appStateStore).notify.apply(t,arguments)},closeNotify:function(){var t;return(t=this.appStateStore).closeNotify.apply(t,arguments)},getNotifyList:function(){var t;return(t=this.appStateStore).getNotifyList.apply(t,arguments)},authorizationHandler:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(this.me&&"user"===this.me.type)this.redirectTo(t);else{var r="conferenceMain"===t;(!this.currentConference||this.currentConference&&!this.currentConference.allow_guests)&&(r=!1),e&&(this.authManagerStore.moduleScreen.screen.signIn=e),this.authManagerStore.actionsAfterAuthorization.signIn=t,this.authManagerStore.moduleScreen.mode="signIn",this.authManagerStore.permissions=Pn(Pn({},this.authManagerStore.permissions),{},{userAuthorization:!0,guestAuthorization:r,accountCreation:!1,resetPassword:!1}),this.authManagerStore.visibility=!0}},redirectTo:function(t){var e,r=this;return(e=Tn().mark((function e(){return Tn().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(t){e.next=2;break}return e.abrupt("return");case 2:if("conferenceMain"!==t){e.next=6;break}return e.next=5,r.$store.dispatch("auth/checkAuthorization","sync");case 5:r.$router.push({name:"conference.main",params:{id:r.$route.params.id}});case 6:if("conferenceWebRTC"!==t){e.next=10;break}return e.next=9,r.$store.dispatch("auth/checkAuthorization","sync");case 9:r.$router.push({name:"conference.conference",params:{id:r.$route.params.id}});case 10:"conferenceScheduler"===t&&r.$router.push({name:"user.createConference",params:{type:"conference"}}),"conferenceList"===t&&r.$router.push({name:"user.conferenceList",params:{type:"conference"}}),"personalArea"===t&&r.$router.push({name:"user.general"});case 13:case"end":return e.stop()}}),e)})),function(){var t=this,r=arguments;return new Promise((function(n,a){var i=e.apply(t,r);function o(t){Mn(i,n,a,o,s,"next",t)}function s(t){Mn(i,n,a,o,s,"throw",t)}o(void 0)}))})()}},computed:Pn(Pn(Pn({},(0,s.n2)(kn,Ze)),(0,o.L8)({me:"auth/getAuthorizationUserInfo",serverInfo:"server/getServerInfo",storageType:"server/getStorageType",serverContacts:"server/getServerContacts",appDocumentation:"server/getDocumentation",softwareClients:"softwareClients/getSoftwareClients",deeplinks:"softwareClients/getDeeplinks",currentConference:"conference/getConference",browser:"device/getBrowser",system:"device/getSystem",platform:"device/getPlatform",currentPlatform:"device/getPlatform",window:"device/getWindow",enableDirectoryState:"users/getEnableDirectoryState"})),{},{isMobile:function(){return this.platform.mobile||this.window.width<=450},isInAppMode:function(){return"inapp"===this.appStateStore.launchMode},newQtVersion:function(){return/8\.[0-9]+\.[0-9]+/.test(this.appStateStore.clientVersion)}})});var jn=new(i())({el:"#root",store:Un,pinia:Zn,created:function(){var t=this;if(this.isInAppMode){var e=document.querySelector("body"),r=document.createElement("script");r.src="qrc:///qtwebchannel/qwebchannel.js",e.appendChild(r)}else window.addEventListener("storage",(function(e){if(e.key===t.$store.state.auth.localStorageParamName){var r=null;try{r=JSON.parse(e.newValue)}catch(t){console.warn(t)}t.$store.dispatch("auth/checkAuthorization",r).catch((function(e){xe().isCancel(e)||t.$router.push({name:"guest.main"})}))}}))},router:Re,render:function(t){return t(qt)}});Un.$app=jn},61465:function(t,e,r){"use strict";var n=r(91563);e.A=(0,n.nY)("conferenceState",{state:function(){return{randomGuestName:"",registrationErrors:null,localeTimestampInSeconds:Math.round(Date.now()/1e3),description:{text:""}}}})},460:function(t,e,r){"use strict";r.d(e,{A:function(){return i}});var n=function(){var t=this,e=t._self._c;return e("div",{staticClass:"admin-contacts"},[t._l(t.contacts,(function(r){return e("div",{key:r.type,staticClass:"admin-contacts__item"},[e("p",{staticClass:"admin-contacts__label"},[t._v("\n      "+t._s(r.label)+"\n    ")]),t._v(" "),"email"!==r.type?e("p",{staticClass:"admin-contacts__desc",attrs:{title:r.value}},[t._v("\n      "+t._s(r.value)+"\n    ")]):t._e(),t._v(" "),"email"===r.type?e("a",{staticClass:"admin-contacts__desc",attrs:{href:"mailto:".concat(r.value),title:r.value}},[t._v(t._s(r.value))]):t._e()])})),t._v(" "),!t.contacts.length&&t.emptyMessage?e("div",{staticClass:"admin-contacts__content-is-empty"},[e("p",{staticClass:"admin-contacts__content-is-empty__desc"},[t._v("\n      "+t._s(t.$pgettext("Error message","Unfortunately, your administrator did not leave any contact details."))+"\n    ")])]):t._e()],2)};n._withStripped=!0;var a={name:"AdminContacts",props:{emptyMessage:{type:Boolean,default:!0}},computed:{contacts:function(){return[{label:this.$pgettext("Subheader","Your administrator"),value:this.serverContacts.adminName,type:"name"},{label:this.$pgettext("Subheader","Phone"),value:this.serverContacts.phone,type:"tel"},{label:this.$pgettext("Subheader","Email"),value:this.serverContacts.email,type:"email"}].filter((function(t){return t.value}))}}},i=(0,r(14486).A)(a,n,[],!1,null,null,null).exports},85867:function(t,e,r){"use strict";r.d(e,{A:function(){return A}});var n=function(){var t=this,e=t._self._c;return e("TcModal",{ref:"warningModal",staticClass:"warning-modal",on:{close:function(e){return t.$emit("close")}},scopedSlots:t._u([{key:"header",fn:function(){return[e("div")]},proxy:!0},{key:"content",fn:function(){return[t.reasonDescription?e(t.reasonDescription.component,t._g(t._b({tag:"component"},"component",t.reasonDescription.props,!1),t.reasonDescription.actions)):t._e()]},proxy:!0}])})};n._withStripped=!0;var a=function(){var t=this,e=t._self._c;return e("div",{staticClass:"warning-modal__content"},[e("div",{staticClass:"warning-modal__info",class:{"warning-modal__info--center":"EDIT_IS_UNAVAILABLE"!==t.content.reason}},[e("div",{staticClass:"warning-modal__title-block"},[e("p",{staticClass:"warning-modal__title"},[t._v("\n        "+t._s(t.content.header)+"\n      ")])]),t._v(" "),e("div",{staticClass:"warning-modal__desc-block"},[e("p",{staticClass:"warning-modal__desc"},[t._v("\n        "+t._s(t.content.description)+"\n      ")]),t._v(" "),"EDIT_IS_UNAVAILABLE"===t.content.reason?e("div",{staticClass:"warning-modal__admin-contacts"},[e("AdminContacts",{attrs:{emptyMessage:!1}})],1):t._e(),t._v(" "),t.content.subButton?e("TcButton",{staticClass:"warning-modal__auth-button",attrs:{type:"unelevated",mode:"secondary",text:t.$pgettext("A button","Authorization"),id:"warning-authorization"},on:{click:function(e){t.authorizationHandler(t.$route.name&&-1!==t.$route.name.search(/^conference\./)?"conferenceMain":null)}}}):t._e()],1)]),t._v(" "),e("div",{staticClass:"warning-modal__picture-container"},[e("div",{staticClass:"warning-modal__picture",domProps:{innerHTML:t._s(t.content.image||t.illustrationerror)}})]),t._v(" "),e("TcButton",{staticClass:"warning-modal__close-button",attrs:{icon:"close",id:"warning-close"},on:{click:function(e){return t.$emit("close")}}})],1)};a._withStripped=!0;var i=r(460),o={props:{content:{type:Object,required:!0}},components:{AdminContacts:i.A},data:function(){return{illustrationerror:'<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="326.69" y1="180.87" x2="60.09" y2="108.85" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-736.85" y1="276.05" x2="-656.06" y2="276.05" gradientTransform="translate(868 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-6" x1="135.98" y1="112.71" x2="207.25" y2="112.71" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cddeb"/><stop offset="1" stop-color="#58d3e0"/></linearGradient><linearGradient id="linear-gradient-7" x1="153.69" y1="100.3" x2="189.22" y2="100.3" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="linear-gradient-8" x1="144.02" y1="136.29" x2="199.21" y2="136.29" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-9" x1="116.01" y1="167.42" x2="226.89" y2="167.42" xlink:href="#linear-gradient-6"/><linearGradient id="linear-gradient-10" x1="131.5" y1="167.42" x2="141.89" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="148.88" y1="167.42" x2="159.27" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="166.26" y1="167.42" x2="176.65" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-13" x1="183.63" y1="167.42" x2="194.03" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="201.01" y1="167.42" x2="211.41" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-15" x1="145.99" y1="193.79" x2="197.54" y2="193.79" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ac3b"/><stop offset="1" stop-color="#f99446"/></linearGradient><linearGradient id="linear-gradient-16" x1="186.39" y1="194" x2="157.13" y2="193.59" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-17" x1="254.39" y1="232.86" x2="263.77" y2="232.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-18" x1="254.93" y1="228.65" x2="264.36" y2="228.65" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-19" x1="258.58" y1="212.14" y2="212.14" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-20" x1="248.15" y1="236.24" x2="251.84" y2="236.24" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-21" x1="249.07" y1="224.39" x2="250.61" y2="224.39" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-22" x1="266.53" y1="274.61" x2="236.29" y2="249.19" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-23" x1="255.11" y1="246.9" x2="265.52" y2="281.1" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-24" x1="-8905.14" y1="262.76" x2="-8876.7" y2="262.76" gradientTransform="translate(-8801.62) rotate(-180) scale(1 -1)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-25" x1="76.09" y1="262" x2="102.76" y2="262" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-26" x1="-8840.99" y1="242.17" x2="-8812.69" y2="242.17" gradientTransform="translate(-8736.95) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset=".21" stop-color="#58d5e2"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-27" x1="137.13" y1="244.97" x2="170.87" y2="244.97" gradientTransform="translate(-64.43)" xlink:href="#linear-gradient-25"/><linearGradient id="linear-gradient-28" x1="85.25" y1="262" x2="93.6" y2="262" xlink:href="#linear-gradient-7"/></defs><g id="Layer_1-2"><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(-180)" style="fill:url(#linear-gradient-5);"/><g><g><path d="M207.25,112.67c0,7.05-2.07,13.94-5.99,19.81-3.91,5.87-9.47,10.44-15.99,13.15-6.51,2.7-13.68,3.42-20.59,2.05-6.92-1.37-13.27-4.76-18.26-9.74-4.99-4.98-8.39-11.33-9.77-18.25-1.38-6.91-.68-14.08,2.02-20.6,2.7-6.52,7.26-12.08,13.13-16,5.86-3.92,12.75-6.01,19.8-6.01,4.68,0,9.31,.91,13.63,2.7,4.32,1.79,8.25,4.41,11.56,7.71,3.31,3.31,5.94,7.23,7.73,11.55,1.79,4.32,2.71,8.95,2.71,13.63Z" style="fill:url(#linear-gradient-6);"/><path d="M171.45,118.07c9.81,0,17.77-7.96,17.77-17.77s-7.96-17.77-17.77-17.77-17.77,7.95-17.77,17.77,7.95,17.77,17.77,17.77Z" style="fill:url(#linear-gradient-7);"/><path d="M199.21,135.23c-3.34,4.09-7.55,7.38-12.33,9.64-4.77,2.26-9.99,3.44-15.27,3.44s-10.5-1.17-15.27-3.44c-4.77-2.26-8.98-5.56-12.33-9.64,2.45-3.4,5.67-6.16,9.4-8.07,3.73-1.91,7.86-2.9,12.04-2.89h12.31c4.19,0,8.32,.99,12.04,2.9,3.73,1.91,6.95,4.67,9.4,8.07Z" style="fill:url(#linear-gradient-8);"/></g><g><rect x="116.01" y="155.54" width="110.88" height="23.75" rx="3.81" ry="3.81" style="fill:url(#linear-gradient-9);"/><g><circle cx="136.7" cy="167.42" r="5.2" style="fill:url(#linear-gradient-10);"/><circle cx="154.07" cy="167.42" r="5.2" style="fill:url(#linear-gradient-11);"/><circle cx="171.45" cy="167.42" r="5.2" style="fill:url(#linear-gradient-12);"/><circle cx="188.83" cy="167.42" r="5.2" style="fill:url(#linear-gradient-13);"/><circle cx="206.21" cy="167.42" r="5.2" style="fill:url(#linear-gradient-14);"/></g></g><g><path d="M195.39,186.05h-47.26c-1.19,0-2.15,.96-2.15,2.15v11.18c0,1.19,.96,2.15,2.15,2.15h47.26c1.19,0,2.15-.96,2.15-2.15v-11.18c0-1.19-.96-2.15-2.15-2.15Z" style="fill:url(#linear-gradient-15);"/><path d="M184.25,195.94h-24.97c-1.19,0-2.15-.96-2.15-2.15s.96-2.15,2.15-2.15h24.97c1.19,0,2.15,.96,2.15,2.15s-.96,2.15-2.15,2.15Z" style="fill:url(#linear-gradient-16);"/></g></g></g><g><polygon points="263.77 216.53 263.49 218.8 260.93 239.15 259.58 249.83 256.92 249.5 254.39 249.18 255.73 238.49 258.29 218.15 258.58 215.88 261.11 216.19 263.77 216.53" style="fill:url(#linear-gradient-17);"/><path d="M264.35,219.84l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-18);"/><polygon points="263.77 216.53 261.11 216.19 258.58 215.88 262.12 208.17 262.31 207.76 263.77 216.53" style="fill:url(#linear-gradient-19);"/><rect x="248.15" y="225.62" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-20);"/><path d="M250.61,223.19v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-21);"/><path d="M251.84,226.22v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M262.12,208.17l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M261.15,280.59h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-22);"/><path d="M265.67,247.68l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-23); opacity:.4;"/></g><g id="Group_947" transform="translate(310.612,110.434)"><g id="Group_946" transform="translate(1.629,2.471)"><g id="Group_945"><path id="Path_1315" d="M103.52,244.92c-.32,3.53-.64,6.75-.96,9.64-.48,5.14-.96,9.64-1.45,14.78-.27,2.83-.65,5.78-.96,9.21-.1,1.15-1.07,2.03-2.23,2.03h-17.15c-1.14,0-2.1-.86-2.22-1.99-.36-3.37-.63-6.43-.9-9.26-.48-5.14-.96-9.48-1.61-14.78-.32-2.89-.64-6.11-.96-9.64h28.44Z" style="fill:url(#linear-gradient-24);"/></g></g><path id="Path_1316" d="M76.09,254.61c.48,5.14,.96,9.64,1.45,14.78h23.62c.48-5.14,.96-9.48,1.61-14.78h-26.67Z" style="fill:url(#linear-gradient-25);"/><path id="Rectangle_770" d="M75.51,240.16h27.83c.39,0,.71,.39,.71,.88v2.24c0,.49-.32,.88-.71,.88h-27.83c-.39,0-.71-.39-.71-.88v-2.24c0-.49,.32-.88,.71-.88Z" style="fill:url(#linear-gradient-26);"/><rect id="Rectangle_769" x="72.56" y="242.56" width="33.74" height="4.82" rx=".71" ry=".71" style="fill:url(#linear-gradient-27);"/><path id="Path_1317" d="M93.6,262c0-2.41-1.93-4.18-4.18-4.18-2.41,0-4.18,1.93-4.18,4.18s1.93,4.18,4.18,4.18c2.25,0,4.18-1.93,4.18-4.18h0Z" style="fill:url(#linear-gradient-28); opacity:.5;"/></g></g></g></svg>'}}},s=r(14486),c=(0,s.A)(o,a,[],!1,null,null,null).exports,l=function(){var t=this,e=t._self._c;return e("div",{staticClass:"auth-expired"},[e("div",{staticClass:"auth-expired__header"},[e("TcButton",{staticClass:"auth-expired__header-close",attrs:{icon:"close",id:"warning-close"},on:{click:function(e){return t.$emit("close")}}})],1),t._v(" "),e("div",{staticClass:"auth-expired__container"},[e("div",{staticClass:"auth-expired__icon",domProps:{innerHTML:t._s(t.expireTokenErrorIllistration)}}),t._v(" "),e("p",{staticClass:"auth-expired__title"},[t._v("\n      "+t._s(t.content.header)+"\n    ")]),t._v(" "),e("p",{staticClass:"auth-expired__description"},[t._v("\n      "+t._s(t.content.description)+"\n    ")])]),t._v(" "),e("div",{staticClass:"auth-expired__footer"},[e("TcButton",{staticClass:"auth-expired__button",attrs:{text:t.$pgettext("The button that will close the dialogue window.","Cancel")},on:{click:function(e){return t.$emit("close")}}}),t._v(" "),e("TcButton",{attrs:{type:"unelevated",mode:"secondary",text:t.$pgettext("The button that enables a user to sign in to his/her personal area.","Sign in")},on:{click:function(e){return t.$emit("apply")}}})],1)])};l._withStripped=!0;var u={name:"ExpiredTokenWarningModalContent",props:{content:{type:Object,required:!0}},data:function(){return{expireTokenErrorIllistration:'<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="326.69" y1="180.87" x2="60.09" y2="108.85" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-736.85" y1="276.05" x2="-656.06" y2="276.05" gradientTransform="translate(868 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-6" x1="135.98" y1="112.71" x2="207.25" y2="112.71" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cddeb"/><stop offset="1" stop-color="#58d3e0"/></linearGradient><linearGradient id="linear-gradient-7" x1="153.69" y1="100.3" x2="189.22" y2="100.3" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="linear-gradient-8" x1="144.02" y1="136.29" x2="199.21" y2="136.29" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-9" x1="116.01" y1="167.42" x2="226.89" y2="167.42" xlink:href="#linear-gradient-6"/><linearGradient id="linear-gradient-10" x1="131.5" y1="167.42" x2="141.89" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="148.88" y1="167.42" x2="159.27" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="166.26" y1="167.42" x2="176.65" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-13" x1="183.63" y1="167.42" x2="194.03" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="201.01" y1="167.42" x2="211.41" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-15" x1="145.99" y1="193.79" x2="197.54" y2="193.79" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ac3b"/><stop offset="1" stop-color="#f99446"/></linearGradient><linearGradient id="linear-gradient-16" x1="186.39" y1="194" x2="157.13" y2="193.59" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-17" x1="254.39" y1="232.86" x2="263.77" y2="232.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-18" x1="254.93" y1="228.65" x2="264.36" y2="228.65" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-19" x1="258.58" y1="212.14" y2="212.14" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-20" x1="248.15" y1="236.24" x2="251.84" y2="236.24" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-21" x1="249.07" y1="224.39" x2="250.61" y2="224.39" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-22" x1="266.53" y1="274.61" x2="236.29" y2="249.19" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-23" x1="255.11" y1="246.9" x2="265.52" y2="281.1" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-24" x1="-8905.14" y1="262.76" x2="-8876.7" y2="262.76" gradientTransform="translate(-8801.62) rotate(-180) scale(1 -1)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-25" x1="76.09" y1="262" x2="102.76" y2="262" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-26" x1="-8840.99" y1="242.17" x2="-8812.69" y2="242.17" gradientTransform="translate(-8736.95) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset=".21" stop-color="#58d5e2"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-27" x1="137.13" y1="244.97" x2="170.87" y2="244.97" gradientTransform="translate(-64.43)" xlink:href="#linear-gradient-25"/><linearGradient id="linear-gradient-28" x1="85.25" y1="262" x2="93.6" y2="262" xlink:href="#linear-gradient-7"/></defs><g id="Layer_1-2"><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(-180)" style="fill:url(#linear-gradient-5);"/><g><g><path d="M207.25,112.67c0,7.05-2.07,13.94-5.99,19.81-3.91,5.87-9.47,10.44-15.99,13.15-6.51,2.7-13.68,3.42-20.59,2.05-6.92-1.37-13.27-4.76-18.26-9.74-4.99-4.98-8.39-11.33-9.77-18.25-1.38-6.91-.68-14.08,2.02-20.6,2.7-6.52,7.26-12.08,13.13-16,5.86-3.92,12.75-6.01,19.8-6.01,4.68,0,9.31,.91,13.63,2.7,4.32,1.79,8.25,4.41,11.56,7.71,3.31,3.31,5.94,7.23,7.73,11.55,1.79,4.32,2.71,8.95,2.71,13.63Z" style="fill:url(#linear-gradient-6);"/><path d="M171.45,118.07c9.81,0,17.77-7.96,17.77-17.77s-7.96-17.77-17.77-17.77-17.77,7.95-17.77,17.77,7.95,17.77,17.77,17.77Z" style="fill:url(#linear-gradient-7);"/><path d="M199.21,135.23c-3.34,4.09-7.55,7.38-12.33,9.64-4.77,2.26-9.99,3.44-15.27,3.44s-10.5-1.17-15.27-3.44c-4.77-2.26-8.98-5.56-12.33-9.64,2.45-3.4,5.67-6.16,9.4-8.07,3.73-1.91,7.86-2.9,12.04-2.89h12.31c4.19,0,8.32,.99,12.04,2.9,3.73,1.91,6.95,4.67,9.4,8.07Z" style="fill:url(#linear-gradient-8);"/></g><g><rect x="116.01" y="155.54" width="110.88" height="23.75" rx="3.81" ry="3.81" style="fill:url(#linear-gradient-9);"/><g><circle cx="136.7" cy="167.42" r="5.2" style="fill:url(#linear-gradient-10);"/><circle cx="154.07" cy="167.42" r="5.2" style="fill:url(#linear-gradient-11);"/><circle cx="171.45" cy="167.42" r="5.2" style="fill:url(#linear-gradient-12);"/><circle cx="188.83" cy="167.42" r="5.2" style="fill:url(#linear-gradient-13);"/><circle cx="206.21" cy="167.42" r="5.2" style="fill:url(#linear-gradient-14);"/></g></g><g><path d="M195.39,186.05h-47.26c-1.19,0-2.15,.96-2.15,2.15v11.18c0,1.19,.96,2.15,2.15,2.15h47.26c1.19,0,2.15-.96,2.15-2.15v-11.18c0-1.19-.96-2.15-2.15-2.15Z" style="fill:url(#linear-gradient-15);"/><path d="M184.25,195.94h-24.97c-1.19,0-2.15-.96-2.15-2.15s.96-2.15,2.15-2.15h24.97c1.19,0,2.15,.96,2.15,2.15s-.96,2.15-2.15,2.15Z" style="fill:url(#linear-gradient-16);"/></g></g></g><g><polygon points="263.77 216.53 263.49 218.8 260.93 239.15 259.58 249.83 256.92 249.5 254.39 249.18 255.73 238.49 258.29 218.15 258.58 215.88 261.11 216.19 263.77 216.53" style="fill:url(#linear-gradient-17);"/><path d="M264.35,219.84l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-18);"/><polygon points="263.77 216.53 261.11 216.19 258.58 215.88 262.12 208.17 262.31 207.76 263.77 216.53" style="fill:url(#linear-gradient-19);"/><rect x="248.15" y="225.62" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-20);"/><path d="M250.61,223.19v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-21);"/><path d="M251.84,226.22v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M262.12,208.17l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M261.15,280.59h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-22);"/><path d="M265.67,247.68l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-23); opacity:.4;"/></g><g id="Group_947" transform="translate(310.612,110.434)"><g id="Group_946" transform="translate(1.629,2.471)"><g id="Group_945"><path id="Path_1315" d="M103.52,244.92c-.32,3.53-.64,6.75-.96,9.64-.48,5.14-.96,9.64-1.45,14.78-.27,2.83-.65,5.78-.96,9.21-.1,1.15-1.07,2.03-2.23,2.03h-17.15c-1.14,0-2.1-.86-2.22-1.99-.36-3.37-.63-6.43-.9-9.26-.48-5.14-.96-9.48-1.61-14.78-.32-2.89-.64-6.11-.96-9.64h28.44Z" style="fill:url(#linear-gradient-24);"/></g></g><path id="Path_1316" d="M76.09,254.61c.48,5.14,.96,9.64,1.45,14.78h23.62c.48-5.14,.96-9.48,1.61-14.78h-26.67Z" style="fill:url(#linear-gradient-25);"/><path id="Rectangle_770" d="M75.51,240.16h27.83c.39,0,.71,.39,.71,.88v2.24c0,.49-.32,.88-.71,.88h-27.83c-.39,0-.71-.39-.71-.88v-2.24c0-.49,.32-.88,.71-.88Z" style="fill:url(#linear-gradient-26);"/><rect id="Rectangle_769" x="72.56" y="242.56" width="33.74" height="4.82" rx=".71" ry=".71" style="fill:url(#linear-gradient-27);"/><path id="Path_1317" d="M93.6,262c0-2.41-1.93-4.18-4.18-4.18-2.41,0-4.18,1.93-4.18,4.18s1.93,4.18,4.18,4.18c2.25,0,4.18-1.93,4.18-4.18h0Z" style="fill:url(#linear-gradient-28); opacity:.5;"/></g></g></g></svg>'}}},d=(0,s.A)(u,l,[],!1,null,null,null).exports;function f(t){return f="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},f(t)}function p(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function h(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?p(Object(r),!0).forEach((function(e){g(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):p(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function g(t,e,r){var n;return n=function(t,e){if("object"!=f(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=f(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==f(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var y={name:"CommonWarningModal",props:{reason:{type:[String,Boolean],default:null}},components:{DefaultWarningModalContent:c,ExpiredTokenWarningModalContent:d},methods:{redirectUserToAuthorizationPage:function(){this.appStateStore.error=null,this.authManagerStore.moduleScreen.mode="signIn",this.authManagerStore.permissions=h(h({},this.authManagerStore.permissions),{},{userAuthorization:!0,guestAuthorization:!1,accountCreation:!1,resetPassword:!1}),this.authManagerStore.actionsAfterAuthorization.signIn||-1!==this.$route.name.search(/^conference\./)||(this.authManagerStore.actionsAfterAuthorization.signIn="personalArea"),this.authManagerStore.visibility=!0,this.$emit("close")}},computed:{reasonDescription:function(){var t=this;return{participantsConnectionIsLocked:{component:c,props:{content:{header:this.$pgettext("The heading for a pop-up. The heading indicates that users are unable to join the ongoing meeting.","The conference is locked"),description:this.$pgettext("A text hint indicating that new participants will not be able to join an ongoing meeting. Please note that the owner is the user who created the conference. He/she has additional rights in comparison with other users.","The conference is currently locked for all participants except the owner and moderators."),subButton:!1}},actions:{close:function(){return t.$emit("close")}}},unavailableForNonParticipant:{component:c,props:{content:{header:this.$pgettext("A pop-up heading","Access is denied"),description:this.$pgettext("A notification in the pop-up window","Only invited users can join the conference"),subButton:!1}},actions:{close:function(){return t.$emit("close")}}},unavailableForGuest:{component:c,props:{content:{header:this.$pgettext("A pop-up heading","Restricted access"),description:this.$pgettext("A notification in the pop-up window","Only invited users can join the conference"),subButton:!0}},actions:{close:function(){return t.$emit("close")}}},unavaliableCookies:{component:c,props:{content:{header:this.$pgettext("A heading indicating that some features of a web page may be unavailable because cookies are disabled in the browser settings","Cookies disabled"),description:this.$pgettext("A text hint in the pop-up window","Please enable cookies in your browser settings to access this page"),subButton:!1}},actions:{close:function(){return t.$emit("close")}}},USER_IS_DISABLED:{component:c,props:{content:{header:this.$pgettext("A pop-up heading","Access is denied"),description:this.$pgettext("An error message displayed when a user tries to sign in.","Your account was disabled. Please contact your server administrator")}},actions:{close:function(){return t.$emit("close")}}},SESSION_IS_EXPIRED:{component:"ExpiredTokenWarningModalContent",props:{content:{header:this.$pgettext("The heading for the notification displayed to a user when he/she is logged out of the web application. The user could be logged out because he/she stayed inactive for a certain time.","Your session has expired"),description:this.$pgettext("A text hint displayed to a user who wants to access the web application.","Please sign in again to access the personal area.")}},actions:{apply:this.redirectUserToAuthorizationPage,close:function(){return t.$emit("close")}}},EDIT_IS_UNAVAILABLE:{component:c,props:{content:{header:this.$pgettext("An error message displayed when a user tries to  edit his/her profile","Profile editing is not available"),description:this.$pgettext("Text in the pop-up window","Your personal details cannot be updated. If you need to make changes, please contact your server administrator."),image:'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="239.948" viewBox="0 0 240 239.948"><defs><style>.a{fill:#99d6db;}.b{fill:#323232;}.c{fill:#ffbfa6;}.d{fill:#f0b49c;opacity:0.58;}.e{fill:#703c27;}.f{fill:#898889;}.g{fill:#8a898a;}.h{fill:#555350;}.i{fill:#eaa494;}.j{fill:#36261f;}.k{fill:#e0f1ff;}.l{fill:#d4005f;}.m{fill:#6c6b6a;}.n{fill:#b20d60;}.o{fill:#fff;}.p{fill:#c88a57;}.q{fill:#b3723e;}.r{fill:url(#a);}.s{fill:#b5b3b2;}.t{fill:#b0ddeb;opacity:0.25;}.u{fill:#f7f7f7;}.v{fill:#ededed;}.w{fill:#828282;}.x{fill:#4a4a4a;}.y{fill:none;stroke:#828282;stroke-miterlimit:10;stroke-width:3px;}</style><linearGradient id="a" x1="-1.195" y1="-2.079" x2="0.754" y2="0.887" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#e3e3e3"/><stop offset="0.21" stop-color="#dfdfdf"/><stop offset="0.43" stop-color="#d3d3d3"/><stop offset="0.64" stop-color="#bfbfbf"/><stop offset="0.84" stop-color="#a4a4a4"/><stop offset="1" stop-color="#8a8a8a"/></linearGradient></defs><g transform="translate(-67 -134)"><g transform="translate(67 134)"><path class="a" d="M240,119.979v.044a119.826,119.826,0,0,1-49.388,97q-4.5,3.28-9.291,6.132l-.145.089a119.389,119.389,0,0,1-59.584,16.708h-3.325a118.947,118.947,0,0,1-12.854-.852c-.852-.1-1.664-.206-2.492-.327A119.57,119.57,0,0,1,58.81,223.246l-.149-.089q-4.8-2.852-9.291-6.132A120,120,0,1,1,240,119.979Z" transform="translate(0.003 -0.006)"/><path class="b" d="M276.589,397.171v14.215a86.851,86.851,0,0,1-41.939,11.408h-2.424a85.179,85.179,0,0,1-9.291-.618c-.618-.069-1.212-.149-1.806-.234h0a86.369,86.369,0,0,1-30.66-10.5V397.22a29.557,29.557,0,0,1,17.584-27.053h0a28.9,28.9,0,0,1,6.383-1.992c.541-.105,1.095-.19,1.644-.267h0A29.447,29.447,0,0,1,220,367.65h27.041c.828,0,1.652.036,2.468.1h.032c.832.069,1.737.186,2.593.335.291.04.574.1.856.154l.719.154a28.964,28.964,0,0,1,3.749,1.143A29.6,29.6,0,0,1,276.577,397.2Z" transform="translate(-113.527 -219.138)"/><rect class="c" width="27.582" height="26.564" transform="translate(106.21 135.271)"/><path class="d" d="M290.522,338.9v5.328c-4.444,3.123-10.4,6.9-13.827,6.9-3.361-.032-9.408-3.983-13.735-7.376v-4.116Z" transform="translate(-156.734 -202.002)"/><path class="c" d="M282.417,190.452c.537,9.893-1.971,23.765-9.768,31.274a52.176,52.176,0,0,1-8.548,6.314c-5.457,3.264-8.3,4.944-12.119,4.944-4.1-.036-7.271-2.181-13.6-6.463a62.69,62.69,0,0,1-7.477-5.773c-10.192-9.824-9.465-28.875-9.4-30.3.885-18.025,13.234-42.52,30.462-42.512S281.436,172.44,282.417,190.452Z" transform="translate(-132.007 -88.181)"/><path class="e" d="M221.369,147.813s20.6,10.3,41.547,0c0,0,10.349,20.719,10.733,28.992s12.729-32.054-4.141-46.213c0,0,4.157-4.326,1.309-5.975s-5.655,2.593-5.655,2.593-4.633-6.059-8.2-4.8,2.165,5.106,2.165,5.106-14.542-9.937-38.138-6.924c0,0-5.308.254-.259,7.772,0,0-6.8-2.472-8.887,1.107s1.1,4.755,1.1,4.755a31.618,31.618,0,0,0-4.629,8.919,34.219,34.219,0,0,0-1.5,7.974,47.054,47.054,0,0,0,.174,9.6,97.112,97.112,0,0,0,3.842,18.36c.969,1.426,1.539,1.616,1.854,1.539,1.729-.4.1-8.657,2.472-19.39a33.268,33.268,0,0,1,1.983-6.29,32.406,32.406,0,0,1,4.229-7.122Z" transform="translate(-123.17 -71.54)"/><path class="f" d="M277.585,182.3h-.061a1.551,1.551,0,0,1-1.491-1.616h0c.683-17.31-12.486-32.317-29.364-33.419a31.509,31.509,0,0,0-23.833,9.053,32.466,32.466,0,0,0-9.941,24.375,1.559,1.559,0,1,1-3.078.481,1.462,1.462,0,0,1,0-.376,35.621,35.621,0,0,1,10.907-26.714,34.567,34.567,0,0,1,26.184-9.889c18.546,1.236,33.011,17.653,32.264,36.639a1.551,1.551,0,0,1-1.588,1.466Z" transform="translate(-125.05 -85.914)"/><path class="g" d="M371.633,258.455l-1.317-.073a2.02,2.02,0,0,1-1.891-2.121h0l1.212-20.986a2.02,2.02,0,0,1,2.121-1.891l1.313.073a9.291,9.291,0,0,1,8.713,9.788h0l-.368,6.463a9.291,9.291,0,0,1-9.78,8.738Z" transform="translate(-219.595 -139.109)"/><path class="h" d="M370.524,258.089h0A2.678,2.678,0,0,1,368,255.261l1.184-20.767a2.674,2.674,0,0,1,2.828-2.521h0a2.674,2.674,0,0,1,2.521,2.828l-1.184,20.767a2.674,2.674,0,0,1-2.828,2.521Z" transform="translate(-219.342 -138.266)"/><path class="f" d="M217.812,301.359a1.539,1.539,0,0,1-.618-.125c-10.963-4.617-12.248-12.664-12.276-13.011a1.563,1.563,0,1,1,3.07-.461c.044.3,1.188,6.714,10.43,10.608a1.555,1.555,0,0,1-.618,2.989Z" transform="translate(-122.105 -170.617)"/><path class="g" d="M202.2,233.311l1.317-.077a2.02,2.02,0,0,1,2.137,1.878h0l1.26,21.006a2.02,2.02,0,0,1-1.891,2.129l-1.321.081a9.291,9.291,0,0,1-9.828-8.717h0l-.4-6.483a9.291,9.291,0,0,1,8.717-9.828h0Z" transform="translate(-115.308 -139.018)"/><path class="h" d="M213.274,231.893h0a2.67,2.67,0,0,1,2.828,2.521l1.184,20.767a2.67,2.67,0,0,1-2.521,2.828h0a2.674,2.674,0,0,1-2.828-2.517l-1.184-20.771a2.682,2.682,0,0,1,2.521-2.828Z" transform="translate(-125.614 -138.218)"/><rect class="h" width="4.864" height="14.244" rx="2.432" transform="translate(94.217 131.29) rotate(-65.94)"/><g transform="translate(117.298 109.172)"><path class="i" d="M294.809,281.7a.9.9,0,0,1-.295-.048c-2.759-.982-4.076-2.064-4.145-3.413a2.908,2.908,0,0,1,1.107-2.145,10.275,10.275,0,0,0,1.095-1.309,8.334,8.334,0,0,0,1.361-3.821.885.885,0,0,1,1.749.206,10.1,10.1,0,0,1-1.664,4.646,12.007,12.007,0,0,1-1.264,1.519c-.343.36-.618.671-.618.84,0,.081.121.836,2.973,1.858a.881.881,0,0,1-.291,1.709Z" transform="translate(-290.37 -270.263)"/></g><g transform="translate(102.041 100.449)"><ellipse class="j" cx="3.377" cy="4.334" rx="3.377" ry="4.334"/></g><g transform="translate(130.415 100.449)"><ellipse class="j" cx="3.377" cy="4.334" rx="3.377" ry="4.334"/></g><g transform="translate(97.515 92.754)"><path class="e" d="M255.35,233.251c1.66.158,1.987-.808,1.81-1.676s-.7-1.773-1.672-1.814c-.372,0-10.689-1.361-13.415,4.359-.541,1.123-1.038,2.913-.315,2.545.525-.254,1.212-1.785,2.286-2.517C247.137,232.1,252.546,233,255.35,233.251Z" transform="translate(-241.395 -229.62)"/></g><g transform="translate(125.889 92.754)"><path class="e" d="M313.492,233.251c-1.664.158-1.987-.808-1.814-1.676s.7-1.773,1.672-1.814c.372,0,10.689-1.361,13.419,4.359.537,1.123,1.038,2.913.311,2.545-.525-.254-1.188-1.785-2.286-2.517C321.7,232.1,316.3,233,313.492,233.251Z" transform="translate(-311.637 -229.62)"/></g><path class="k" d="M285.365,371.75l-19.951,47.667L245.49,371.75h11.392a66.653,66.653,0,0,0,8.7,3.413,70.321,70.321,0,0,0,8.956-3.413Z" transform="translate(-146.321 -221.582)"/><path class="l" d="M286.621,393.989l5.841-4.242-2.23-6.867H283.01l-2.23,6.867Z" transform="translate(-167.356 -228.216)"/><path class="l" d="M280.354,432.9h-1.281a85.3,85.3,0,0,1-9.291-.618c-.121-1.026-.957-2.06-.7-3.09q1.236-4.952,2.424-9.893.808-3.312,1.616-6.629c.036-.158.081-.327.125-.493q2.258-9.271,4.544-18.5c.21-.873.4-1.745.618-2.618l1.394-5.676h0c.053-.214.109-.424.158-.618l.057-.214.105.4h0l1.495,6.088.513,2.1,4.262,17.326.1.4,5.062,20.634c-.2.267-.4.521-.618.755a88.123,88.123,0,0,1-9.457.618Z" transform="translate(-160.353 -229.211)"/><path class="m" d="M258.265,423.2a85.241,85.241,0,0,1-9.291-.618c-.618-.065-1.212-.145-1.806-.234h0c-5.183-6.059-7.546-21.187-7.546-21.187l6.419-3.8-8.544-2.157-3.377-24.641a28.9,28.9,0,0,1,6.383-1.991c.541-.105,1.095-.19,1.644-.267h0l.4,1.422,1.341,4.577,7.675,26.055.763,2.622,5.95,20.2Z" transform="translate(-139.544 -219.531)"/><path class="m" d="M317.091,394.967l-8.544,2.157,6.419,3.8s-2.238,14.357-7.134,20.691a7.7,7.7,0,0,1-.578.707l-.04.048a85.664,85.664,0,0,1-9.436.618H296.34v-.024L302.723,401l.683-2.282,6.253-21.006,2.476-8.208.465-1.575h.032c.832.069,1.737.186,2.593.335.291.04.574.1.856.154l.719.154a28.972,28.972,0,0,1,3.749,1.143Z" transform="translate(-176.63 -219.305)"/><g transform="translate(100.93 144.937)"><g transform="translate(1.03 1.474)"><path class="n" d="M273,370.347l-.848,1.212-12.014,13.048L252.4,366.126l4.819-3.676c.271,1.5,3.123,2.755,5.87,4.1a71.042,71.042,0,0,0,9.073,3.563Z" transform="translate(-252.4 -362.45)"/></g><g transform="translate(16.09 1.773)"><path class="n" d="M310.254,366.632l-.3.521-8.831,18.069-10.588-13.048-.852-1.212s.315-.089.864-.263a74.993,74.993,0,0,0,9.339-3.547c2.828-1.361,5.8-2.46,6.088-3.963Z" transform="translate(-289.68 -363.19)"/></g><g transform="translate(0 0.085)"><path class="o" d="M270.464,367.239l-.848,1.212-12.03,13.036-7.736-18.465,5.251-4.011c.271,1.5,2.678,3.09,5.425,4.444a70.8,70.8,0,0,0,9.073,3.563Z" transform="translate(-249.85 -359.01)"/></g><g transform="translate(17.099)"><path class="o" d="M312.762,362.779l-.3.517-8.839,18.073-10.588-13.052-.852-1.212s.315-.085.864-.259a75.005,75.005,0,0,0,9.344-3.563c2.828-1.357,5.251-2.981,5.55-4.484Z" transform="translate(-292.18 -358.8)"/></g></g><path class="i" d="M287,322.577a13.917,13.917,0,0,1-7.271-2,1.112,1.112,0,0,1,1.24-1.846,12.25,12.25,0,0,0,12.341-.052,1.112,1.112,0,1,1,1.058,1.955A15.322,15.322,0,0,1,287,322.577Z" transform="translate(-166.433 -189.867)"/><path class="p" d="M131.461,543.372q-4.8-2.852-9.291-6.132H263.43q-4.5,3.28-9.291,6.132l-.145.089h-122.4Z" transform="translate(-72.817 -320.221)"/><path class="q" d="M145.17,552.42H267.844l-.145.089a119.389,119.389,0,0,1-59.58,16.708h-3.325a118.951,118.951,0,0,1-12.854-.852c-.852-.1-1.664-.206-2.492-.327a119.57,119.57,0,0,1-44.108-15.528Z" transform="translate(-86.526 -329.269)"/><g transform="translate(73.913 162.343)"><path class="r" d="M272.66,456.682H185.442a2.424,2.424,0,0,1-2.472-2.391V404.277a2.424,2.424,0,0,1,2.472-2.387H272.66a2.424,2.424,0,0,1,2.472,2.387h0v50.018a2.424,2.424,0,0,1-2.472,2.387Z" transform="translate(-182.97 -401.889)"/></g><circle class="s" cx="5.203" cy="5.203" r="5.203" transform="translate(114.798 184.537)"/><path class="t" d="M488.608,181.528v.044a120.483,120.483,0,0,1-.646,12.494L426.1,146.857h-.024l-5.567-4.25-.028-.02-3.381-2.581.642-.743,9.929-11.489,10.1-11.658,11.1-12.846,7.368,5.546h0L472,120.628A119.571,119.571,0,0,1,488.608,181.528Z" transform="translate(-248.608 -61.556)"/><circle class="u" cx="24.597" cy="24.597" r="24.597" transform="translate(164.836 39.198)"/><path class="v" d="M452.131,103.23a24.6,24.6,0,0,1-29.541,38.041,24.6,24.6,0,1,0,29.541-38.041Z" transform="translate(-251.881 -61.532)"/><path class="u" d="M446.382,122.41l2.783,16.106-16.106.877" transform="translate(-258.121 -72.964)"/><path class="w" d="M446.295,122.4c.323,1.329.594,2.662.893,4s.549,2.67.808,4.007c.529,2.674,1.01,5.352,1.478,8.039l.081.448-.456.02c-2.682.141-5.369.271-8.079.351q-2.02.069-4.04.1c-1.345,0-2.69.04-4.04.024,1.337-.166,2.674-.275,4.015-.4s2.678-.234,4.019-.335c2.682-.21,5.365-.376,8.047-.529l-.376.473c-.456-2.686-.9-5.373-1.3-8.079-.2-1.345-.4-2.694-.578-4.04S446.452,123.761,446.295,122.4Z" transform="translate(-258.05 -72.958)"/><path class="x" d="M469.722,157.911a2.161,2.161,0,1,1-2.161-2.161A2.161,2.161,0,0,1,469.722,157.911Z" transform="translate(-277.397 -92.836)"/><circle class="y" cx="24.597" cy="24.597" r="24.597" transform="translate(164.836 39.198)"/></g></g></svg>',reason:this.reason}},actions:{close:function(){return t.$emit("close")}}}}[this.reason]}},data:function(){return{openModal:!1}}},A=(0,s.A)(y,n,[],!1,null,null,null).exports},8684:function(t,e,r){"use strict";r.d(e,{A:function(){return u}});var n=function(){var t=this,e=t._self._c;return t.termsOfUseDocument?e("div",{staticClass:"user-area__terms-of-use",class:{"user-area__terms-of-use--white":t.whiteText},domProps:{innerHTML:t._s(t.termsOfUseText)},on:{click:t.openHandler}}):t._e()};n._withStripped=!0;var a=r(95353);function i(t){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i(t)}function o(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function s(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?o(Object(r),!0).forEach((function(e){c(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):o(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function c(t,e,r){var n;return n=function(t,e){if("object"!=i(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,e||"default");if("object"!=i(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(e,"string"),(e="symbol"==i(n)?n:String(n))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var l={name:"TermsOfUse",props:{whiteText:{type:Boolean,default:!1}},methods:{openHandler:function(t){t.target.classList.contains("user-area__content-link")&&(this.appStateStore.setServerDocumentData({name:this.termsOfUseDocument.name,content:this.termsOfUseDocument.content}),this.appStateStore.serverDocumentIsVisible=!0)}},computed:s(s({},(0,a.L8)({reservedDocuments:"serverDocuments/getReservedDocuments"})),{},{termsOfUseText:function(){return this.$pgettext("Notification","By using this website, you agree to the [a]%docName[/a] set by the site owner.").replace("%docName",this.termsOfUseDocument.name).replace(/\[a\]/g,"<a href='javascript:void(0)' class='user-area__content-link user-area__terms-of-use__content-link ".concat(this.whiteText&&"user-area__terms-of-use__content-link--white","'>")).replace(/\[\/a\]/g,"</a>")},termsOfUseDocument:function(){return this.reservedDocuments.find((function(t){var e=t.id,r=t.enabled;return"terms_of_use"===e&&r}))||null}})},u=(0,r(14486).A)(l,n,[],!1,null,null,null).exports},89979:function(t,e,r){var n={"./en/chrome-security-warning-1.png":93556,"./en/edge-security-warning-1.png":56827,"./en/firefox-security-warning-1.png":33741,"./en/opera-security-warning-1.png":95627,"./en/safari-security-warning-1.png":90638,"./ru/chrome-security-warning-1.png":55426,"./ru/edge-security-warning-1.png":42329,"./ru/firefox-security-warning-1.png":58419,"./ru/ie-security-warning-1.png":34402,"./ru/opera-security-warning-1.png":72873,"./ru/safari-security-warning-1.png":67668};function a(t){var e=i(t);return r(e)}function i(t){if(!r.o(n,t)){var e=new Error("Cannot find module '"+t+"'");throw e.code="MODULE_NOT_FOUND",e}return n[t]}a.keys=function(){return Object.keys(n)},a.resolve=i,t.exports=a,a.id=89979},10734:function(t,e,r){var n={"./en/chrome-security-warning-2.png":15023,"./en/edge-security-warning-2.png":59264,"./en/firefox-security-warning-2.png":18326,"./en/opera-security-warning-2.png":25776,"./en/safari-security-warning-2.png":62437,"./ru/chrome-security-warning-2.png":69433,"./ru/edge-security-warning-2.png":94146,"./ru/firefox-security-warning-2.png":46456,"./ru/ie-security-warning-2.png":48409,"./ru/opera-security-warning-2.png":7730,"./ru/safari-security-warning-2.png":90127};function a(t){var e=i(t);return r(e)}function i(t){if(!r.o(n,t)){var e=new Error("Cannot find module '"+t+"'");throw e.code="MODULE_NOT_FOUND",e}return n[t]}a.keys=function(){return Object.keys(n)},a.resolve=i,t.exports=a,a.id=10734},93556:function(t,e,r){"use strict";t.exports=r.p+"assets/images/06e59e80327940b23591.png"},15023:function(t,e,r){"use strict";t.exports=r.p+"assets/images/414a5a6b2890d03fa703.png"},56827:function(t){"use strict";t.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApQAAAIcCAMAAAB/8s67AAABBVBMVEX29vbZ9/jFxcVtxff8JRH39uD49sUAcsbjAAAQEBAAX6Xto1aQ4Pj1dnUAh8WzWQD/wYX93anRggAmqOGWAACy+PleYmkKEFoCE4ZhBQWp4vj22tlxs93D9/mWAFb26ururHuNyfXFd3zZlGIOEi/7OShGlsjBeWL/yJT3sKoxEg35lYz+xqD+//xle7j3ycX6ZlipZpZjBnnq9/iwW1v6Tj6HZpMAT5BXZZu/n3iLa1fjxs2dyNxUtel8DwNfQi8S1Pu8cw7WhilaJwp0nrPc7OMXQVgDrOs0V3KYOAAAd+i3p7F46f+TZyAAL0uWAITlvZkverosqLzL8MADhqYAhorCw/VfZneNAAAXe0lEQVR42uydC3PTVhqG5fXYi+KgyFbSxMShpHgL487QKWYIySQwhJAtwxCg2+7//yl7vu9cJNmyY8BG2t3nmWl80bmfV++5uOhEEQAAAAAAAAAAAAAAAAAAAAAAAAAAAPxv8cuPtAE0i8M7d2kEaBZ379zBKqFhRnkHq4TGGSVWCY0zSqwSmmeUWCU0ziixSmieUWKV0DijxCqheUaJVULjjBKrhOYZJVYJjTNKrBKaZ5RYJTTOKLFKaJ5RYpXQOKPEKqF5RolVQuOMEquE5hklVgmNM0qsEpphlP+4a8AqoUlGqeaIVUKTZpRlUWKV0IAZ5YwosUqof+k9I0qsEupfes+KEquEuo1yTpRYJdRtlPOixCqhZqOcFyVWCTUbZYUosUqo1ygrRIlVQr1GWSVKrBJqNcoqUWKVUKtRVooSq4Q6jbJSlFgl1GmU1aLEKqFGo6wWJVYJNRrlAlFilVCfUS4QJVYJ9RnlIlFilVCbUS4SJVYJtRnlQlFilVCXUS4UJVYJdRnlYlFilVCTUS4WJVYJNRnlElFilVCPUS4RJVYJ9RjlzGNbsEqo3yiXglVCHUa5FKwSmmaUWCU0ziixSqjHKJesvrFKqMcol4sSq4QaZpTLRYlVQg0zyltEiVXC9196L9k8xyqhaUtvrBLqMUr2KuG/ziixSmieUWKV0DijxCqheUaJVULjjBKrhOYZJVYJ6+aXu9/Mr7QiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAc+i/HP/cWi3og8nNxfoyXm9q8JV0XsdxnOnbyzget5tSphVL0n8ZxwdHCy93d+ODvS+5GZamBt+Lx5M4PjmyHRiftOotTP9RshlRHp7+sL0WUZqE9hDNd7OlB7UbpdwWiYrjw/jzdMUB983NKLpVlL043t/+5tTsaHKAKL+PVW5No85O7UYZRLnOFL9IlLcyQJTfxyqNGvePo3RS+4wSUYLHyDFOZBRXo+yfvYrj66t7hS4Q2ZpX0czW20eTrdxPO6evjJZ/P5b3n87emLdXetGIIG53zyb2kkZsnb6Kb560fDQTdGRH6M6nM0ljJKGUtuRrNXQo6d+8ONcxfSjFNDGvr6YlHUt5tCA3kpvG7UvW5z5QzyUcCp4XT8ugUR682d+2qZl5TPxPN1abYhzaOp7bgEoyWwfYhFUe/G2oRtl5NLHtPr6oFOXJh0LfRo/f2MBm9d794Drspu16/eqlptN2SyibsMbtv7RBdX3VdxGTClGmLv34c8uK8s8dG3Y6I8ruu6AWiXuq8YI3Vory6k1ISqKYG8OLsvvSBpVEt6aSrVYkK4myVAfYiFWOf7BGeRl7RE3zoiz1bd9rJtMgDtGC9PrYhZ5qxPEkpOr7UxXh5VQlynQYF0KKOlwq+VDsRHkZF0XpQoWpQKUoy9W0qbrUzKCxf89Oti8iL0rJNBdlqQ6wIau03fPY9MC1GageDLV3KkRpvv1xWli3fzZO8WmkU4CTe1Hn4US1IL1uPopqXcTxz9POI2uqsh86mnYeatdf2pBR/6owp7SilGxNtKj/Tj+qKEdTteSLsih1kXYU/fjpyips68jXIFdhcU4pxTPTaF9aiXJ9bOrlRJmqGiXUganD8/OpbZjC2FGuA2yCB2ItYpQ9vy106Z1hRpTFLhC3+Ps0bJXsH/upwJH2+kVQlw7fR25WqN4o0Uz0cVs+hBFwRpQSXNMXkWThYxp2+3NRyi8AJ+dTH/c4lHmxKKV4OkDrvWdl7icDWg5JQUtz+P752auJzdS1SKkO6Gczy953ToyXXna9BaIsLHLc8Ba81mrLRtGVREjGR7SdnY98Jox8SKJqUaY+fZFj5iTtP5WHbzvQ62+Tfj46WC5K/egqFtZVvqCXUhsnuDBZLoqyVAf0sxl8t3yRKNP460Q5LIpyuBZRmuWSX0d9qShPWvOiNLfb/nGq1zTIeUuuFEU5RJTfTZRh+LZzfff1AlGG4TUM96Gbl4mytBtZ+m2zYvhO/J7VxXJRyhbNGy38iqLUaroJyJwoZeTILjUbM5mUa7IiLw7fa99RhYWilPm8LDt0mTBVbSVTXQ9UiFIXIp+NmZzahY5ZXhQXOotEqesjGWgPT49V/bEultxCR3IvLnRGpYXOAlF2fjpvWe0uFuU4K88pTUZ+zTQnSrnH/npndwB0d8yv0XRtP4pm6gAbFWVhS0hWC4/dPk61KPMtm9KWkFmxLhWlKj+MfGFbKYn89lDVllAWLRXlTp53pSgfLNwSOtmrEqXJ42Yit6UfqMduoXPpylqqA2xWlGoJugc+cps+sd2yrhKlGurs5vn1dnSLKO1i33eo34CXC71JefPcp6//e8YKohxfLFjoWLmXRPnDJGz1z4vSJngRmmD8h5tT2nsomakDbFSU7tfC66v898DrUWeRKKPuI/lN8okscdyvhYWfGReK0kX73e7hHJ7Khxe6vpK3xZ8ZbUB7bdmcUgptynEvWiDKqHs2mf2Z8ZP87HkUVYpSQxzc83NV+xuoZto/sxOUch0AvpUeDgeIEgBRAqIEQJSAKAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADZKf7jkH0F3dlb8F9Ld3Txg9/7M+V695Ivifx291R6uO0iKVV/tJLL+0wXB0ltPIOsP9d+Yp/mD6AqHvthr/nCBtHDOSrjmsrFx0hBXmmvV0n9bx97acfe3NyDKwfMk9OkgW0fZQzl9chV6WbUuC8JVpNhLNtIxy5K9tRJ6zkvb6k3e2IewJqVr9nyezIWZueY/qRj9q23Zb5NVs0XZ/fgvTfb/UJQrlWFZsv2ne7eJ8q9dI67OjhFdzyiqP8rd1V0LnthTYVrV+WuuGZ27DoLLSsbfpoZmizJNVDtyu47k8NBtfwaNvG693ZHbO/PHyqRbr+2ZDm1bsdFunJhL+ohyawhbDxNTzvdDk4SeRbptO7ZnPSD13/T19KXenzv7p9LO6cGeiZ9uPXTP9DUvVtA2nI56WRjX4vZAjcQ9y9Q97NSqR3Uiw62LIt92NO3Xru8Tn49NW2Kb6nZ2roamtnmF3KCqOWnDuwRDId14axN2Q6/WPAvnjFt3a9s//aH9sjgGS5F6IbVE/ytecxdeDLWR3KutxHzpW95jzQ0gB7mErpQi72+nroTnu6G/esVHy6Zbn6zo3WNtBv64DRWBTnt69iCFkKGk/8d9+0D6tT4IZyAd1io4pbmbOzuZ/he9N+WROaf9Qtq+ra/df1tRHux1d+Vwk8ReNaXtD6XgUt6k4JSxTS/VFmqFG6wnD/qVN4PMpp7pDFeb1InQhtMnCbf9HW5yl9LKN3I5betbK0rb2EmIEkTpW01E6fKRyN1dUa6Ud6tVqlD0056WV3MyAX2CPrK/AzThVLs505qL+LTxcnE5p1QBmC9mr412w+mBxYMz2v4u3OqL4vyrH4LmSu/nmnLBNqjrylRzT/Re7e4eaL3kci/cyv6m0J78rSVXpJ9+dX9VjHLkUHumucTNRPteEeta5viBoDR8q520nBm2nf+k9su8wTv+DkqllG0bWyog6UnQ0vBtvpDPnWfbudiSEMG6WcvrMxRFwtkvvOgyn6K9lzLfS655bVlClNwpW+WqmRiqaH3ytc2/VCGfuRNlSNBHDqIMn807W9qsMOh7N9SDAuwZPGXhuSe2H+zZ+WY2K0pRg4jRv3onmS+9q722Sf/paVKqrwhSxXNfT6Fp+zbqftyLClHdhMS8pHoL2b/9F63+k2fbJmwpQw2sH7L1jt49P73ORTnQL7wGtJlSd76Clsl8l+Si7GVzQqgWZf/F25384fW5KKUBkqggSjtLKYjSfuGEYnPvJXnRtVuDKE1g04Yhym2i1Fi+8MUK6Zi0H0QZEqwSpa25+WRtvz0nStOm+++Hdh7SjqI5FzUL6fMdHef9cBpE6c6yODiNg7BzUZZKX+5ODWi7Uooo4guiNPHNe3tGa1jBW7193NPOFjt1kxg7mvXavSxNyhl6heaKWA+hOXNRDrIZp8z0VskLHvZV5kSZ2UuLnXJm28hXcdAuiXK3HRyx4JRpUtjVUacs3Bq5U5q3vSyPspJTGveeE6UfQkpOmS5zSn8vVIky8uIrbiF5F7Wi3LWv2yuJMovmSx8VGqn78UO5K0uidE75rLRE8U5pfXUv7ITJ38Efv+31XzzMyhmG+fvMTts6Rm/bGV6U8l4mhDp7kDmlvPES0eo9if7D3r3wJJKlYRwvvNBBkC6KEXsEBhniLQaRaXUZ4yZuMq6JbWeybXa//0fZ855LcQqKiwp2of9fZrobqjiF1OOpcwreIjF+i0Opfzv1mHIslPpLItbtwWAklEH470HOD2UQTRlT2q27MWUwHFu5HFRq8jPFQ0D9tXyTQzkcJI2EMjRzhfExZVoo4zHlhFCGNk/uMB6678tYD+LTRJE7GnnLIvulFPawXfEmOuPP3jvdK/2g+UWSXZkI5S/l+BFF05r9Ycx8wbyO6ofd1x2k+VPtokMVxdrIBvUNNaY0+2TmqYj5pznmxSvqeZw5Hysz5Ouy/YoRPVz+1czy7K7Vs/JcWij1VK3jhdL94hflu3iqyXPHcobE7Dr9s/mh1FP94SRpK+dd59Ru3T5bc4BVu/n7MJR6ijW8NKp6Tj+m9JRu7j4WStnQf/V+92bf7pg1Gkp3/ntaKLdy7rvFk6GMv43FvjjzhDKeCfjPPj45sVuKzG+U3ZXJnvJPO322X3Vedh2mnEYo2P0+UB2m2eHmh9ZZj9wXz8QblBuN30pmn4QZ/mbA6NmD3tQzXS8/j7awM3BZFr10ajH+YlcOg8TQ7KWOSpl9tcLnv/WVOhwpfnnpwaD4yhd3Jbz4XdnJ57rD9/m6hYXk18XO+aCxF6NYKBRemsnkVAIfPpQAAAAAAAAAAAAAsFhRdZ4PS8Rvzoa8iY23CKWYUQo7/MRAscxrhoyFcnEfZcZK8Uu3XXG3KR02tbz2g8auotuVWicKhsdqj80nkaWou2SblAds/UuXeETxh8hlC1X7me20OuIP8WldpIXSL902FTpSkLBma3ltTfWwoluXHkkf1huW24/UHpuK8VzR1q24ahCpugm9SmNdhXxjy6tT64ijKjvoY4ZyWOnsirujchB41d26lMtWdNuy4sQFn9Jrj81h2jYZV3L7oRxGblIdMYPKDxxKV79ny+mCyJQGFcqBrakelvbbsmL/mmDjtcfl+C/b5JOr5PZC6VY3lU6pdcSEklC64u7A1blEZVtTHVd0h97VHdb9njJRe+z1lINh2aO+gMhYT2nr8lLriIscvj98KO1RU64lE2496VreuKbaG1NK7PQsxM6OU2qPzZiyPBwERCljSikxy9+E7lJMY3XEZnxLZ/mxQ+muihgV7CXTTMH1l+/VuKLbHmztvLk8nH0nao91xbgJn7vQYmQquUNXsq1TKYtseXVKHbEuVSaUmGp0MrzsQl+GlJgl3H3banPeZsT0gLykohsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMNvm0Zlcgmq/EeQvarXa4X5NnJkrXZm7An3fnlp1uER01M22XWiW3R3pRzfcGpXrtrR9qNduu6b3G+a2bUKWui38vnesVxo8XTVlsWlJ3R0c12T9fL95rJ9Bvr+nnl3DLnSrJJ8fVjaUv183bCj7TRvTtlto75IUqSzo3d9xictfqDRtfrMRi5dVrprDxjv9Qy+Uruk4lJtHsqSjcuRvwWxCt2UTphM3kIbVE5I4qpXVI/f/kuVeKE2899ipqx/KG9nLo6FU2VL/eaFU/9S7X+/5YNiLBV4oZZkfynz/SRqYGEqzQO70t2BalnY67WAYykNZW56QLJbHqHtl9ZFQ2kax2qHcOzZd1fRQqn0tOz7uRk2HlQile2DctkpJpzE5lK4ttdzbgot7p+E6Sps4WV2ekDxd2YpaLC2PhjLRVWNVQykpcGPKdvLwfREPG3X3pAd+iSO7GQ6qA69b5mVCGtKBHw2lHjbW2iZOOrtuC14oK1fx87CJs78lckuaVKvJxkZDGT8xrHQoVa83a0x5PDC7v3MYTOwp9TIvlC4yM3vKhr+FeGDQGTSToVQN5c1wwD5pMzAd7SmZ6ryLUKr+7M9ZEx2VlDgKE8aUepkXStMjHure0mxn6pjSbiFuOR69xonbPLqRJ1S5elItHtu5/Ggo45kYVjuUQac2e6KzZ/Obc6d7GqOzbzfa8/tSaeVCNbivk5kMpZnAyxTc38LkUKptSu+5eXTVsE3Fj4lX6dBRvpdQyik/PYBUu9QP5cXwxOL+oGk6u0N/wLln+sP2pls2DKWJ7+aRGvpd12r6WDwSSjNKbbi77BamhFJWsad97HY6h7oN/cjjxDlSAPiJdA9Za79qjXlJH1vjdDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvGOt3skJrwIyk8bT7fODjY2NA14M/Gx1l0anxWuCzKTR6vHSIDNpFAfn23VeIbxhGnsqjZcT03h6Qh7xhmk8IY3IzqRapfFgchp7TGtWy93astzN3PZrTxfKKZ6JabwkjfNqlz8tWLn9qie0tqz91lqbtcL2iyfB09N4Thqf59MSvC6US/tRZ7Tck0xdtkgjocxMKE9Nkk6ekcbtyWncJo2E8rUt180s+aD3qjRu6DQyqSaUi2jZdpPbU3u3Gae/T0kjoVxcy66bPHlhGjnhSCgX3fKJydt5nTQSymyEsnVuMnaaSGNvRhr5/AShXF4obTd5WffSOOmtQU5/E8o3CKWcLxen09+o5oQjoXyzUPYOXOo4/U0osxHK041JSCOhnD+Umxel+ZpJWXEt9URQ2psxTKoJ5cxQFr/sLDyUJwdjb8Zw+nu1QvkYnI3d99Csv00o839/X190KFunfijPOcWT9VDe57rdbussM6EMy2FZd5iFwo+LUriVC4JoPf9LoVBV//jxuSD9aFiQvyq/6htmxVkt9/xcnp8wgsxyKG+7wU2jlKFQqgT+piImaSzuluTf+b93wvWg8kcpiHbV/+UgVFk82ZFFai274hwtk8sVCeX9V5e1+6bqMP+yoSx1u+r+x6/d7ppasqduSShv5daSQ1n5YyeIqsHm53VzVI7WA9Nz6htVndZIH9+LZTnW77gV55pCkctVCOVt95vrCYPGfc50kY/du38+dtceSo37ne7Zw0735v5OhfK2W19+TylRqwxyOmbyR1iWPzc/Fwq7JpSVwZ2JoDpsqztv3Irzzuvrp5d+LglF9kIpR+pbNahc072gjajc+ZCrm9D2Tf/40Gw1W/9Zeiglfcq67inNsXtNRVTdcj2lCuVn01NWzQPsis842eTlcptQZLGn7H8qVx8llP1P7visQymHa5kD9fUSdbvrOtVlhlJPbKS7LLqhYnRV1aHTY0odylxRjynlDll37jFlWi6ZiGdxTKkPybfjPeV9Th2u16peT1nfSZn/LDqUUdUMLFUA7aQ6lMCp6fY/ruNQypFbRVHdWVAH+2iu2Xd6LrnUVCZn34/d1k27qQaQekxpDtCP3Xq11P2m0qjGlP37ZmDGlPdf047fi559L8hcLdcZUmbzPOWtmmJ3/3emz1faM0OPwZ5Mu9V8XP2jr5fY2Xf9fYUSGQ3lxyyxBaEklCCUhJJQEkoQSkJJKAklCCWhJJSEEoTSReenXZ8ShHKCn3klXxBKIFV58Zks86riVTJ3zXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+H97cEgAAAAAIOj/a1fYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANgEQRxDiEOLkmIAAAAASUVORK5CYII="},59264:function(t,e,r){"use strict";t.exports=r.p+"assets/images/82271246e3946a9095d2.png"},33741:function(t,e,r){"use strict";t.exports=r.p+"assets/images/54c3532f4bb01667c4a6.png"},18326:function(t,e,r){"use strict";t.exports=r.p+"assets/images/363b2ef2f4d2c7375426.png"},95627:function(t){"use strict";t.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApQAAAISCAMAAABF+K/LAAAAilBMVEX////3+PgAnP/u7u4AlfL/AAATFBUAm/0AlvUAmfqrrKzIyMlzc3T8JBIAlPH7/PyLi4zb29v/NzhUVVU+P0DDAADNAwVlZWbxBgjkAAD/JCZ/f4DYAQG3AAD6gH8mJyj8oaH8YF7/3Nya3v7+wL8AuvzT8f7uRkShoqKXl5jcvr3/8fFfzf319fXpPtJHAAAbO0lEQVR42uyde3OqPBCHYZjyR8IZgqCoWC6OM8B0+P5f793sEu5abNWe83Z/aEXMDfK4yYaaWBaLxWKxWCwWi8VisVgsFovFYrFYLBaLxWKxWCwWi8VisVgsFovFYrFYLBaLxWKxWCwWi8V6qM6XPE2LzfHtbVOkaX458yVh/aT8SwowTnQs8g++NKyfMZF58XZNRc4Gk/V6JNO320oZS9ZL9ZG/fS7GkvVC5ZsrHB43ZbkDlWWpg6TcuWS9RpflvuSxKN9H2gGYKV8u1ivM5CKSmwmRhss3bsNZP8PkMpKoDRtL1pO15HQfryMJ2rLDw3qqlrqTgOS2TEHFbhnLgq8b63k6LjGJptDXss75jqlkvVQLSO7LFIDsQvjWAMut3rZbppL1PC2NTpazociPdDvUO1LJ3g7rZf3JBdh8P9/O9H7h68d6jd99xQCe51Ru2QVnPVxL45P5clDfP++GPOKbHd9yZD1Yl/V2UmN52e52W7PRPncrWQ9WuXAb55btS3dTbblbyXp6430bsnJG5YkvI+uB+tjc03iTs3OaUZnzhWQ91VBuPnNc0t1purGvw3qYzus974F1PQGG3QM39nVYD9PCEOVmRazTAMsTvuFLyfpJQ4mmciruVbKe2KNcZWBPp8OJnqjDqeSLyXqMii8ZSss/I4gH+oM7J77ZyHqI/IXWe50fXSKLB/2kncMNmCtX0I4TJ/ZPnKedhMHnoWRU/0S2rLEuX2y9LT/VHBKS7d719tt3wtDBPZHJHznP5megbBjKx/jeK8d2LoeZbiDcmkonfLmhlPHTsPCF5/ydJfu3dbz3DmOvOZSXT01l9XpDqaKnVb3thc7fWbJ/WksDQv5aF+mwP8AD/9DrLRuLpvIHDCVD+X/oUq7+yU0BIGoW993rjahkKslQ+iLM3LBusDn3kFKh68f2vKbKPLtvHXU4MY5hqdCRYRapxqIYInSjCuP4QZxloaAvVZBEbuY5wtWCrBXxQ4cDaxaZIkU6t6YO3axvWuGgo6IsJBvvB17mRon+VGHaXXl1waAAFFG6EkojMdu6bR7w7LEACZSlK5nlw/lksWQaW+XfgDLf75HH/nnTRQJTGaChdOIsFiLOdH1MoayyvpJ1uEok9TgGVHMd1SJ2dVK2FydhVYVuTU5UWMEHysf9SInaC6QKs0RVTQulPiyBMGFNI/dQNl6WCBXK/qCKPQGR8AtVZ2Etkky/gbQjpUQPpYA8kyySCCWUxCUoA3KfmjhuYD/UYWLH6koGScaiCjPBOH7XzwEru5/Jum0qE12VvqLalRnQM4EyHNgLOzH9z1EMsE9Qo0AOxXCVxhw7rEFU+Tqw/kBmXjNuJBUFAc8Ecp1HHkApCdmmP4jZU+7wVxc4wEjNqPlWGjUdHNgDKD205TrbJsZgmG6ADFOL0ZZMIsXN97oCDGXbH93/2R8HGzwut00lWrcgSvxuCG8C5dANCrrhmVEMiwiF1k/qGFSvtX6pY8eA5Sd9d20IZd0ellk9iTyE0q1G5YbsbTTcABsUoR3a0l1kewIllR7Tk27cdNnSONggH+KeSmYndAlkxg142y/82v0cEmB4OJKJPODen8ttU0kWx20vvjYXU0s5qON+RHMUA6q57bQhFQSiJhQMXysxcqgGUEJwsn+Y7TDyEEroLKjAmn07sHSQsG/a9BmUlJGPxZXt3YLWQGOjgP0KX9YJdJB7KJ3QlJuhJG2+A2VrKEF/Wmt501K2DVTHgN6ZQBk3S77pKIbxWFoo2+iYVKhUDZuShMwcSpObgbKPPHJ0HAVelZx4P0Rgl/ASlO2bFkrZH/T1X7KEAXhWXl1FPZS6l4nFrtkX//YwJUQ27bZpwW9aSlOFnd0TA0tZtY7OYMBIdFCOYlyFsmkNH0GX+AtQNr2lTG5ACd8fGfV+xxDKgaWsr0GJpRxBqYH0E503dC+DLkljKX/mxuvfq7fvQPlHm0g0lft2L18BJbZl1EN0zDE7mUMps6p3f/sYV6Ec9iNb12LWp1Rdn7KybkGp+xpdWYZQdhgiedPmW/alHEPpxEkQVsbAmsadSjMsK+vbUGoWOyT3Gss1lrL1qn10NlrvQGZzKJ04kiM/3MS4AqXxuBvt3wpyktHvoL4pRoMgDnUkgutQNuTWLEJpEnZCbZbH/26hXJ1/O0YwhtKqwrptq3FQLEQoa+OyUZI8JHS9T3kHlDOtgRKqRI8/xlnS0HhLIpJQzaHUH3lCJGoS4yqUvnIjJVSkD8F+qGQd4+hQWClnME4JQRD3a1DKKBFVnMml5psSFklGNFZuLOp+nDIJa+HRwNAESjgXtPZ2AjH0SKuwupI1notDn4pxfID3fSQfh57robRsfccklP1dGC8QC1CCwxG5dKejGcS4CiXeGYH6dcgHjjNgVGMkIm1CKRrdj1Hmjs4SlL7T3/SZQ9kmXJszyXqTDDmICD5qrDmU3aBrA+cUSkqyLZm+XwVnJxrG8ftQnu+0lLMxortL63//hP21Qe7PS3Hf8OcHzy9zKH/1z2wZygfpO/e+51BuLIaS9aNQ5kChedCzYChZ39fCv64dV/dHgcR2a19ShpL1AC0MVK79UeJmc5xsOV9P1nM8nZVonTeaytGTf2PLeoD8r//reT5F8sjLRLAeoo8vdyrTzVQ8xRXrMSq+eKPxoyXRmEoQz+bLeozyt/1kWzd8ns8MJbferAfpPINyv8r/LmZQsu/Nepz/PaNyhc07z5hk35v1MP/7vAcMR8+3/ed8FezmsJ5pKuc/lf3UVC4YSp7znPU4fRz3b4d+Qyo/6x+yoWQ9twFPcdIVs+FkF8fzna43G0rWY6ncdO02WkqNZnFn482uN+uxyrvJ/Pbd3xuUfRQ8Rsl6fgM+mGRy377mdzDJw0Gsx2tzWD8FasqNN+sVOi9AuTxd1ccCk+x5s57TrTzNtiUqzwttd8GeN+s53UpaE8es2ISLNh3ySV/xY2EsiJlkPU3lfGG706EYYvlx2TCTrJcqXaRyA1wCmOdznm6YSdbL+5Wnbk3afm3aZRR7JnkwiPXUfuXltNvBA3UyL+UNLIs7Bs2D6MZMtba3chpbZzCbqTNdHEmou+J/TSsy0VJqeOrrFicJri1PJt3f+/NdpHJnyOwILYsrSJb5HYkrqiasUyW+CuUIMAOlSW6BF2flql5Xwi2kuBLKe0/uVrLO716a7JzuFlXMuCyLsryn6Xa8AC/tL4RyVRluJRvEv3uaA/9S7razTT/KoiMT9srdLrX8O6YmkwrZ0QsiSc91o0BPnK8bJf3qOZ7EKff0G6gd6SWuDKJ2bnrbE6Gr4CNoBJFeCTEqBZUtIkjCxuSoYgVG1wHoiE7Ds0XiRULP+ydDnZH0KgqmQxPQFA4XXBKmyYXcsbQ4Vb6gGfN1GNVxopvbNoo+amPaCRUaDrT5UNo6Nk4FXEVwtv0J6bJCApgT0tsm2BWSQihKGHctOnMBSf6aVj0vt1q77VhEZ1nS8V16p4ejdIXZA0sZaATpaQlgRfc56YDE2R31q9NOJBk6TggVCB0A/LSdEV9PAW17amApXUpPB5A0+STVM8TFHSUodYE9XM2pWcWBwuGs5tKYbshdl1Yf0R9LibsEJX45YNdE6aDs5mdXXT46sqNXThO6vLgEQH9CVuVgeTEnCGgSNJHNN4Cm98evpcAzDyL9ffwt0//6fjoFstf715DE60oVr8btLcGjjaFs7Y+kg/0FRwAUGlBb72NsoSg9HXTUfMMB/d7GleoGeVIEsma24bMrig5HBwx0wqRI3yVhOgptO0tl6aL0ltIenxrEQKI9XGsN8x+dkMm8hbJL0ETuoOzewx6VVnylL/EvW8tie133I2lWIlRDKBUeMAygxZLtaodYA3pFsB5KIWYgLEMZJI7XL0vTQwk1K5U1gJK6egMo6UALCuWuY5qi40I9HZQQOEjsLspnUGIsU/jhCWHrHnVQdgkuQUlnDu/I7MtfBqXlQyv+/v6+NY9OZfqVOQe6y9lDqcTEUuomvV29w1StUotQCvrouqWcDBsZIpQcQRnKziIOLKVUg1EdtJSDr0ZvKWFXiD7KKksJ1nsG5X/snYtS4soWQMNhiokJcwjivVYNVZaKoJb6/793ej+6OwEFdNSBsJYlr6QTHovdD7I7sQrpRMp6W6SM34XTk1K5u74KTUh1US7/9//769uPzfFs/Ud5x6OUclsahNbYCm1KuREVkU9g+FB02m9JSm12aZtyQ0ppO86s0bkhZXh0PmhLWTRb2pS+99imjLF0lqWcXsprSk1AaRaO3pYytynXpJSV6hwp8wZfkzK1KU9Yyol2r5+Cm9fXd7d6ErcPbsmHkivthdY6miw9ZDv1w0h6ovKg9VH9o9Ve+eA1KaXit973NNaA3vuej633XOVTHlcjq1sL86ItpXb1cyfJe9+1x0Xdgj9bq2BD93mcpdQuVpGKhOf0sCVSxr77hpS6I7W21fuui9el9K76SUvZsvPgnlLz7n7nq8OFHxog/cOS0FPqi3f/yNG8FlWqD4/0VWPOXgdZyFEcG39XoQ2JpKL8qJMySsgnAQAAAAAAAAAAAAAAfaMZ+UGSel13fk2xZYVnSOT8htYyJSyp29eF/drX+IGXH+LTjmlo/t5R4HKI5R5pmukAp9kUH4t03I4eKOsZK60DeeymHI3jOTfJytbxPnavbl+3D6A5cSnlaleGWnqpNb/b6/txMR/p4YuSnTKq5XDFlA3ty2JMHM5UzLqzzN57TyVLKWXpUGGkfJeUJ56z246VesCi1raeQZjq78qOXbzwPDFJdUz1d5WkHIxn6mq89nfXUg5TEuA86jzSL4AdSmzHIbbTIlPqox3Hm7IY9Zi0sUrvh0DaV0Av9eDNmSVOdHYY7oznVXc7ko+oh42KCp5f2YzsDWgdvBnKXFSXw5jI2frCFcXmq2rkVaXMxgs/UPPhMnyNa0/JTKt5ayitPXts0jOoEDLJ5ZGyKlopOHmZZ5XK25zblFnKRnJe63wdQ4Qm0qQkwDq3NcMCycwJtyxlsJNFGFMfJdnH8xWjlGENUc/SFy2v0S5NxkoyEjo7jHmRcuRweuLyQCUptrIpy69Uqf1y8DCwg55rzW70RM6cw6kvYv1VabbZ0DIbbZO5fOs12GqeL5rWlqP1bd8nfXDwhpTWlvQs6nZbUT9VXyahb9SNonZDFtXpWqWcW9ZuNwmw8ENwh+Nh0Tz6JxUTYGIWYUzoiYWqTvJkjCWS9GhfIb3f1MXjQxPW7ewwlZBtT4pWw02EjAmYg/nU8jRytoZ/ZeTaEzk7SbMbr0pXmuSj0mWTXr4tpa9WFGt5kXLH9k2jsi1XqGKaxmqT6pUoKh3p2uq2ak1K93n0MIvytqTsJgGmtS88OcYzGjpZhJ76KFKmVMu2ClVMX7SQHrMbh01Qfd7NOsx5ke2hAl0yHlr88/zK2ucfiLMQzIYp09ITOdsVyMar8us6dRlHdSzflrLOlfio/bXRNDjbN1J2I55V4Z2jdD2KmpSVy7mXlF59d5MAi5T2LXk7YRVPGdyU0iNlpzKLcS+mLxbxoPVGWgOVVNLjYWeHnnhTxWbDhpRFzq+04ZhwqYH0chhn7oiJnEXrEPmNV+UdGot9dRawnm1Gym6+aFOlDWtzguo7y2Xf78qrap27pU7iNfaYjgyNZNoWrWoq62xYtdOk9n7u6HTblClxKwUV/1zq9UjpqY/epsyfpU5iET5mT0K0vEbPbhzMJV32cn2HnhcpzUSfC2FNSq81K+0j+aVtxCYGSZNd2H5i/s/6q9JktXoYRbTu4mab0lfzfFFrnHib0vYtjtYcOt+Wso4J/mtSipWxP6n93d1S5iGhdhJgrrvsI2s8ZbArpac+Vk2s3VOC98OF9c81fdGG++Ogf6VPpl7fYWN5kdbpnU83pPTx1trr8DhD0VznY7Het71q248US73v9quyxXbXh3DDc5fyvpc0k4LtTfJF09qSAWr7lqeIlF89Qvcp45OP01al+QdP6fHdRdabePUXj9jQpPziAPzR9/fNUZHvz521ztg3fpP5mfFQbT4MKbXWZigbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATg+dcqkYNgObTKjK86b5FKntSYaaVKyJ0/j4VL2NTb2W567U2QVlvrLheOgbrX1PNkOQzv9j26xjaZsfyvYis+rYOb8fpzbxmSzQ7dqcQMOxTcLORCf9k3IuE5uJlD77U5rCyW/J4zIvkE4L6TNU6Gwm06kXiUuqPJ3EoJEHopR+kaTUyUlkGicvqQuk9ItsME4cJFLKLGrhAdtRU/t2s5Ryo2I+qP5JWQV1dkipglRZO79+SVJ2lhYylZSI9oaU7nZY3UslKeVWnA5S9/nglspC2YZttytle7/QEymnTbUhZVOHu61IGUSRqDbPQax1HZe05KhqVeh1KV37uokls5TDy2mcxdS+CFKhP9oT0Npbt7smZWtWU+iLlMEEb1PqHJRZylk8k4G3/+IcvzGYepG4JEupU5rXG1L6PM0ukUwgbSWzlEU1j4Z5dA7fmEcL1WGDvl2k7L+U0tHYWn3brLxVOp3GZqS02eTzOUGaXBO/GSmnj7FkS8p8ei6XMqz8qHuXUr7ddSkf+Rj7J+VgXG1vU2rNWeVFbmeWUpdkKf0sEtnHt9uU0TUvnWZEz+3YRqSczusqbXdNSk4900cpQ+96vrVNKRpVrTOI6TTOdT1odXSalpRW0M8ponPMd3vf9YV3mr3kVil1MnO7TNvtSNkwJtRLKeWD9dOArLUpR2ZePRtqB3iWxoRkgNGLxCVJShtprO1Ej3YCvY6UeZzSSm6V0hS2szT5doe63zhO2fAhAsBhUY22z7nc2KmS/giN0IyIAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwKEyOTL4xE7AydXynyNiucLK3jNY/XNkYGXv4+RgeWRO/lwOsLLvUh6ZkuEfKXsv5c9/ju0PKfve8375eXS8IGXPrURKQEqkBKSEo2xTnh3XP1L2PlKe/Ty2P6Tsv5RHB1IiJVLCd7cpkRKIlEgJXyzlohgs31lkOSiKBVLCH0q50pVf0+/9UoqTSAnb25Tl2c7/la/+fLa2LErp95eDsMqW7ZThbyFK5seeJ7KBPZ5D+kfK/kfKcrcGQcrV0mwyyhi1yhwpS1XUvD3L65WbsTWvU7ZCbZk3s/0fKU+g+t6hgUQ3lXIl+iykVLijES88IE4tV+pZaQE1rrRwJbW6XqWC7XVWZ0u9+/IiS8LtxRmREkzKXX9efa80MnblWui/VtpJSq/sg2FlaU5GKUPBzjp+d6VWP08mz+UezwYp+9+m3McD10wjZKkVsNTl4ZZIuZhoVIxLyme9r3E1PPacl5Zqb15HmpNW/wdzF+GWb3/HH1L2PlLu42SZ2pRik/Z4Fu5cUGwQ4uCGdX5ZWgW9kg6NFYzrxJ6TbMjaB6tsL5HyxKXcB3GmDOFsFf6tupZAKEtUSrtp98w6v+mFQ329iAXjOl7Fa6Qsg+sh4KbNbAcpT0HKs53/KmUQaeU1rlffpVbfzyJrS0qpmstylVWVhxexYJJyEZfJeiFMhs7OXs8FKfvfptxHgzKNU1olHG4sOx0dMUzWk8W5o6PSWYnVIhY0KX0d8VrbqnI1Wez1XJCS6jvVwIWGNAmXVjNrW1GllJsp7hUaEYtUeauUHmdbtbttcmE3YtugpPqGvaX8erT/jZRwSFLmfhFS0qY8CCVXqQmKlHA4Uu7tJFIi5Ro/vsLJH+/aNFL2Xsof5bH9IWXv25Q/jg6k7H+kREpASqQEpATalEgJfxwp/z2yP6Tsu5SD5b9HBhPx91/K1Y/jcvLHCil7L+XLanlMWi5XL0h5Ala+DI+IF5w8CSsHwctjITxZnDyJYSFOGAoH6OUR/QEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwNcyub27412Ag7Hx+urm/NevX+e8GXAwNkaYJxP+Ghs2Ore8NXAwNgrnN1dICd9t4/2bNl7f4SN8G087baQhCd9r429shE/g7voLbbwXG5+07807DfsqdfXhTvDT7ds2/r4PwVFt5JQ98N4wqYPYk6+wEeAjTK7MpLu9bQxV9f352zbeYSP8GbfWSz7f7eRk24AjNsKncW1OXT191EYGHOGTw+TN1qobG+H7w6T1U242w+RuG+lPwxfwZGHy9zU2woFwZ+rd37ZsfOunwftoI2dkhi8Mkz4QdDXZ9kP17/sb/zGG4W/48h7OeYyBO4e/0RG+hatfb9Ee/sZG+L4wec+PMafNcDaqPmM71Wg2/Jz9X/9+5ccYBhz7Q1W37zWj8WDdn4OT8umqPeJzg429Y3pZ/X0ph7OL6bsi9W3by5tr6uy+1c7zh78uZT16p5R42XMmTTN5VcrpxUiuVYrwyHQ2inaEJXUT7g3G9lBYJWmlZdWysLGwoj4eVh4/6EbDLSkS1qrCvupwTzcle9I7Yf++9cZ2NKre/FLgZY95GA+TlI6KZTdcyouZChSlvAx39KEgnaiTrGxLObswzZq4UbFYraxUQNtFlFIfC6v/184d9CQMg2EA1pBwWD3UwMkDif7/H2n3tR0rAUSjB5fnOSzLNoqJL9/XloQ2enmvOvD+TqX+OK0W4u9+QWXjoSz5yU/lkFooy6Gc5R7KPIc2Sl2q9TW36KxDGfeOr/F4GWouhuV6Ko9PvV7uxvad6uORzBwvnt/n7vRhlcuT/+VGPF9v37tDq1K9fe+W29Fgz4dW/lpgh/b9HGc1c9NSDONkvhSVMPVQ9oIbA8+fifhcPDKn7blUKTcyo7y10OmtM38Zyh7feu9KKKcllK0Sz5eiRsZLc328nNdSuoSyVubHFlpzLt98g7PxLaGlV/f2nWrXvlopax5bpYw8jpWy9v5eIIeleI5JQMxMy6XpolLGpQdX/x8K5Ubc3jzv644eytViZgzlsiRqs8L+5BLK3t+XOUFqoZzaMibW+em4v2jffazf2ZLinxq2hNIQysN03va5CGWdDfbSN8Wyeh3KOWH7HIPWfA6hnOprYkvoZWjf8Scc00EouVpQv/cd4Y8nd2aF/FUoQSgRSgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg930CF8fcb3jb3owAAAAASUVORK5CYII="},25776:function(t,e,r){"use strict";t.exports=r.p+"assets/images/9e2da50f13ef89037f5e.png"},90638:function(t,e,r){"use strict";t.exports=r.p+"assets/images/7884956bc2af9d698794.png"},62437:function(t,e,r){"use strict";t.exports=r.p+"assets/images/3f9c5808b67804d2ba68.png"},55426:function(t,e,r){"use strict";t.exports=r.p+"assets/images/cccb3f8dac7eb69ef757.png"},69433:function(t,e,r){"use strict";t.exports=r.p+"assets/images/0a6975e068cd8a79dd0b.png"},42329:function(t){"use strict";t.exports="data:image/png;base64,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"},94146:function(t,e,r){"use strict";t.exports=r.p+"assets/images/f72fda4c5ae3d69c340f.png"},58419:function(t,e,r){"use strict";t.exports=r.p+"assets/images/f24f5dd03ecc82232d6d.png"},46456:function(t,e,r){"use strict";t.exports=r.p+"assets/images/a791a6a7186e47be17df.png"},34402:function(t){"use strict";t.exports="data:image/png;base64,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"},48409:function(t,e,r){"use strict";t.exports=r.p+"assets/images/48f048f511b9faebccc6.png"},72873:function(t){"use strict";t.exports="data:image/png;base64,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"},7730:function(t,e,r){"use strict";t.exports=r.p+"assets/images/fa0fc528520dc6647a5f.png"},67668:function(t,e,r){"use strict";t.exports=r.p+"assets/images/5f7b69a8fd19a4e92072.png"},90127:function(t,e,r){"use strict";t.exports=r.p+"assets/images/a4efe04e933bc62a2b2b.png"}},o={};function s(t){var e=o[t];if(void 0!==e)return e.exports;var r=o[t]={id:t,loaded:!1,exports:{}};return i[t].call(r.exports,r,r.exports,s),r.loaded=!0,r.exports}s.m=i,s.amdD=function(){throw new Error("define cannot be used indirect")},t=[],s.O=function(e,r,n,a){if(!r){var i=1/0;for(u=0;u<t.length;u++){r=t[u][0],n=t[u][1],a=t[u][2];for(var o=!0,c=0;c<r.length;c++)(!1&a||i>=a)&&Object.keys(s.O).every((function(t){return s.O[t](r[c])}))?r.splice(c--,1):(o=!1,a<i&&(i=a));if(o){t.splice(u--,1);var l=n();void 0!==l&&(e=l)}}return e}a=a||0;for(var u=t.length;u>0&&t[u-1][2]>a;u--)t[u]=t[u-1];t[u]=[r,n,a]},s.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return s.d(e,{a:e}),e},r=Object.getPrototypeOf?function(t){return Object.getPrototypeOf(t)}:function(t){return t.__proto__},s.t=function(t,n){if(1&n&&(t=this(t)),8&n)return t;if("object"==typeof t&&t){if(4&n&&t.__esModule)return t;if(16&n&&"function"==typeof t.then)return t}var a=Object.create(null);s.r(a);var i={};e=e||[null,r({}),r([]),r(r)];for(var o=2&n&&t;"object"==typeof o&&!~e.indexOf(o);o=r(o))Object.getOwnPropertyNames(o).forEach((function(e){i[e]=function(){return t[e]}}));return i.default=function(){return t},s.d(a,i),a},s.d=function(t,e){for(var r in e)s.o(e,r)&&!s.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:e[r]})},s.f={},s.e=function(t){return Promise.all(Object.keys(s.f).reduce((function(e,r){return s.f[r](t,e),e}),[]))},s.u=function(t){return"chunks/"+({76:"locale/es",91:"locale/vi",147:"locale/fa",205:"DragDropQT",337:"locale/en",340:"locale/pl",384:"locale/fr",478:"locale/zh",521:"conference",523:"locale/ru",553:"guest",558:"locale/tr",578:"locale/cs",678:"locale/zht",783:"locale/ja",804:"locale/pt",806:"user",861:"locale/he",918:"locale/ko",939:"locale/be",977:"locale/de",980:"locale/uk",991:"locale/it"}[t]||t)+".bundle-5.4.3.5.js"},s.miniCssF=function(t){return"chunks/"+{521:"conference",553:"guest",806:"user"}[t]+".styles-5.4.3.5.css"},s.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(t){if("object"==typeof window)return window}}(),s.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n={},a="@tc-server/user-area:",s.l=function(t,e,r,i){if(n[t])n[t].push(e);else{var o,c;if(void 0!==r)for(var l=document.getElementsByTagName("script"),u=0;u<l.length;u++){var d=l[u];if(d.getAttribute("src")==t||d.getAttribute("data-webpack")==a+r){o=d;break}}o||(c=!0,(o=document.createElement("script")).charset="utf-8",o.timeout=120,s.nc&&o.setAttribute("nonce",s.nc),o.setAttribute("data-webpack",a+r),o.src=t),n[t]=[e];var f=function(e,r){o.onerror=o.onload=null,clearTimeout(p);var a=n[t];if(delete n[t],o.parentNode&&o.parentNode.removeChild(o),a&&a.forEach((function(t){return t(r)})),e)return e(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)}},s.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},s.nmd=function(t){return t.paths=[],t.children||(t.children=[]),t},s.p="/user-area/",function(){if("undefined"!=typeof document){var t=function(t){return new Promise((function(e,r){var n=s.miniCssF(t),a=s.p+n;if(function(t,e){for(var r=document.getElementsByTagName("link"),n=0;n<r.length;n++){var a=(o=r[n]).getAttribute("data-href")||o.getAttribute("href");if("stylesheet"===o.rel&&(a===t||a===e))return o}var i=document.getElementsByTagName("style");for(n=0;n<i.length;n++){var o;if((a=(o=i[n]).getAttribute("data-href"))===t||a===e)return o}}(n,a))return e();!function(t,e,r,n,a){var i=document.createElement("link");i.rel="stylesheet",i.type="text/css",s.nc&&(i.nonce=s.nc),i.onerror=i.onload=function(r){if(i.onerror=i.onload=null,"load"===r.type)n();else{var o=r&&r.type,s=r&&r.target&&r.target.href||e,c=new Error("Loading CSS chunk "+t+" failed.\n("+o+": "+s+")");c.name="ChunkLoadError",c.code="CSS_CHUNK_LOAD_FAILED",c.type=o,c.request=s,i.parentNode&&i.parentNode.removeChild(i),a(c)}},i.href=e,r?r.parentNode.insertBefore(i,r.nextSibling):document.head.appendChild(i)}(t,a,null,e,r)}))},e={792:0};s.f.miniCss=function(r,n){e[r]?n.push(e[r]):0!==e[r]&&{521:1,553:1,806:1}[r]&&n.push(e[r]=t(r).then((function(){e[r]=0}),(function(t){throw delete e[r],t})))}}}(),function(){var t={792:0};s.f.j=function(e,r){var n=s.o(t,e)?t[e]:void 0;if(0!==n)if(n)r.push(n[2]);else{var a=new Promise((function(r,a){n=t[e]=[r,a]}));r.push(n[2]=a);var i=s.p+s.u(e),o=new Error;s.l(i,(function(r){if(s.o(t,e)&&(0!==(n=t[e])&&(t[e]=void 0),n)){var a=r&&("load"===r.type?"missing":r.type),i=r&&r.target&&r.target.src;o.message="Loading chunk "+e+" failed.\n("+a+": "+i+")",o.name="ChunkLoadError",o.type=a,o.request=i,n[1](o)}}),"chunk-"+e,e)}},s.O.j=function(e){return 0===t[e]};var e=function(e,r){var n,a,i=r[0],o=r[1],c=r[2],l=0;if(i.some((function(e){return 0!==t[e]}))){for(n in o)s.o(o,n)&&(s.m[n]=o[n]);if(c)var u=c(s)}for(e&&e(r);l<i.length;l++)a=i[l],s.o(t,a)&&t[a]&&t[a][0](),t[a]=0;return s.O(u)},r=self.webpackChunk_tc_server_user_area=self.webpackChunk_tc_server_user_area||[];r.forEach(e.bind(null,0)),r.push=e.bind(null,r.push.bind(r))}();var c=s.O(void 0,[860,717,96],(function(){return s(13698)}));c=s.O(c)}();
+/*! For license information please see bundle-5.4.3.5.js.LICENSE.txt */ ! function() {
+	var t, e, r, n, a, i = {
+        9579: function(t, e, r) {
+            "use strict";
+
+            function n(t) {
+                var e;
+                return !(null === (e = this.me) || void 0 === e || !e.rights) && this.me.rights.find((function(e) {
+                    return e === t
+                }))
+            }
+            r.d(e, {
+                A: function() {
+                    return n
+                }
+            })
+        },
+        94149: function(t, e, r) {
+            "use strict";
+
+            function n(t) {
+                return {
+                    "-1": this.$gettext("No connection to the server"),
+                    1: this.$gettext("You have been logged out because you signed in with this account on another device."),
+                    3: this.$gettext("Invalid username or password"),
+                    4: this.$gettext("Authorization error: Login rejected"),
+                    5: this.$pgettext("An error message displayed if the current number of users exceeds the maximum number permitted by the license.", "Maximum number of licensed users has been reached. Please try again later."),
+                    "005": this.$pgettext("An error message displayed if the current number of unregistered (guest) users participating in the conference exceeds the maximum number permitted by the license.", "Maximum number of guest users has been reached. Please try again later."),
+                    6: this.$gettext("Authorization error: Your account is inactive"),
+                    2e3: this.$pgettext("Error message", "An error occurred. Please reload this page to continue."),
+                    2001: this.$pgettext("Error message", "Not enough free space on your hard drive to continue the conference."),
+                    2002: this.$pgettext("Error message", "Please enable cookies in your browser to join the conference.")
+                } [t] || this.$pgettext("Error message", "An error occurred. Please reload this page or contact your system administrator. Error code: %error_code").replace("%error_code", t)
+            }
+            r.d(e, {
+                A: function() {
+                    return n
+                }
+            })
+        },
+        42282: function(t, e, r) {
+            "use strict";
+
+            function n(t) {
+                return {
+                    0: this.$gettext("The user has rejected your call"),
+                    1: this.$gettext("Busy"),
+                    2: this.$gettext("Participant is busy"),
+                    3: this.$gettext("User is not available now"),
+                    4: this.$gettext("Invalid conference"),
+                    7: this.$pgettext("An error message", "You cannot join meetings at the moment due to license restrictions. Please contact your administrator."),
+                    8: this.$gettext("Access denied"),
+                    9: this.$gettext("Rejected by logout"),
+                    10: this.$gettext("Rejected by resource limit"),
+                    11: this.$gettext("Rejected by local resource limit"),
+                    12: this.$gettext("Enter conference password"),
+                    13: this.$gettext("Wrong password"),
+                    15: this.$gettext("Rejected by bad rating"),
+                    401: this.$gettext("Conference does not exist"),
+                    403: this.$gettext("Invalid conference"),
+                    405: this.$gettext("Access denied"),
+                    407: this.$pgettext("An error message displayed if the current number of unregistered (guest) users participating in the conference exceeds the maximum number permitted by the license.", "Maximum number of guest users has been reached. Please try again later."),
+                    408: this.$gettext("Unable to start a conference"),
+                    411: this.$pgettext("A notification displayed when the current number of conferences hosted simultaneously exceeds the maximum number permitted by the license.", "Maximum number of active conferences on the server has been reached. Please try again later.")
+                } [t] || this.$pgettext("Error message", "An error occurred. Please reload this page or contact your server administrator. Error code: %error_code").replace("%error_code", t)
+            }
+            r.d(e, {
+                A: function() {
+                    return n
+                }
+            })
+        },
+        22911: function(t, e, r) {
+            "use strict";
+            r.d(e, {
+                rC: function() {
+                    return i
+                },
+                I0: function() {
+                    return n
+                },
+                IT: function() {
+                    return a
+                },
+                zM: function() {
+                    return o
+                }
+            });
+            var n = {
+                    0: "UNKNOWN",
+                    1: "CAMERA",
+                    2: "MICROPHONE",
+                    3: "SPEAKERS",
+                    4: "SCREEN",
+                    5: "CAPTURE_CARD",
+                    UNKNOWN: 0,
+                    CAMERA: 1,
+                    MICROPHONE: 2,
+                    SPEAKERS: 3,
+                    SCREEN: 4,
+                    CAPTURE_CARD: 5
+                },
+                a = {
+                    0: "UNKNOWN",
+                    1: "CAMERA",
+                    2: "MICROPHONE",
+                    3: "SPEAKERS",
+                    4: "SCREEN",
+                    UNKNOWN: 0,
+                    CAMERA: 1,
+                    MICROPHONE: 2,
+                    SPEAKERS: 3,
+                    SCREEN: 4
+                },
+                i = {
+                    0: "UNKNOWN_ERROR",
+                    1: "INVALID_DEVICE",
+                    2: "INVALID_CAPTURE_CONFIGURATION",
+                    3: "NOT_AVAILABLE",
+                    4: "PERMISSION_DENIED",
+                    UNKNOWN_ERROR: 0,
+                    INVALID_DEVICE: 1,
+                    INVALID_CAPTURE_CONFIGURATION: 2,
+                    NOT_AVAILABLE: 3,
+                    PERMISSION_DENIED: 4
+                },
+                o = r(36382)
+        },
+        13698: function(t, e, r) {
+            "use strict";
+            r(52675), r(89463), r(66412), r(60193), r(92168), r(2259), r(86964), r(83142), r(83237), r(61833), r(67947), r(31073), r(45700), r(78125), r(20326), r(16280), r(30067), r(4294), r(18107), r(28706), r(26835), r(33771), r(2008), r(50113), r(48980), r(10838), r(13451), r(46449), r(78350), r(23418), r(74423), r(23792), r(48598), r(62062), r(31051), r(44114), r(34782), r(26910), r(87478), r(54554), r(9678), r(57145), r(71658), r(93514), r(30237), r(11558), r(54743), r(46761), r(11745), r(89572), r(48957), r(62010), r(55081), r(33110), r(4731), r(36033), r(93153), r(82326), r(36389), r(64444), r(8085), r(77762), r(65070), r(60605), r(39469), r(72152), r(75376), r(56624), r(11367), r(5914), r(78553), r(98690), r(60479), r(70761), r(2892), r(45374), r(25428), r(32637), r(40150), r(59149), r(64601), r(44435), r(87220), r(25843), r(62337), r(9868), r(69085), r(17427), r(87607), r(5506), r(52811), r(53921), r(83851), r(81278), r(1480), r(40875), r(78347), r(29908), r(94052), r(94003), r(221), r(79432), r(9220), r(7904), r(93967), r(63548), r(93941), r(10287), r(26099), r(16034), r(3362), r(96167), r(93518), r(9391), r(39796), r(60825), r(87411), r(21211), r(40888), r(9065), r(86565), r(32812), r(84634), r(71137), r(30985), r(34268), r(34873), r(15472), r(84864), r(57465), r(27495), r(69479), r(87745), r(90906), r(38781), r(31415), r(67357), r(23860), r(99449), r(27337), r(21699), r(42043), r(47764), r(71761), r(28543), r(35701), r(68156), r(85906), r(42781), r(25440), r(79978), r(5746), r(90744), r(11392), r(67438), r(42762), r(39202), r(43359), r(89907), r(11898), r(35490), r(5745), r(94298), r(60268), r(69546), r(20781), r(50778), r(89195), r(46276), r(48718), r(16308), r(34594), r(29833), r(46594), r(72107), r(95477), r(21489), r(22134), r(3690), r(61740), r(48140), r(81630), r(72170), r(75044), r(69539), r(31694), r(89955), r(21903), r(91134), r(33206), r(48345), r(44496), r(66651), r(12887), r(19369), r(66812), r(8995), r(52568), r(31575), r(36072), r(88747), r(28845), r(29423), r(57301), r(373), r(86614), r(41405), r(37467), r(44732), r(33684), r(79577), r(73772), r(30958), r(2945), r(42207), r(23500), r(62953), r(55815), r(64979), r(79739), r(59848), r(122), r(13611), r(71678), r(3296), r(2222), r(27208), r(48408), r(14603), r(47566), r(98721), r(7452), r(78624), r(21579), r(94092);
+            var n = r(64583);
+            window.Promise = n.Promise, -1 !== navigator.userAgent.indexOf("QtWebEngine/5.11.0") && r.e(205).then(r.t.bind(r, 50133, 23)), Math.trunc || (Math.trunc = function(t) {
+                return t = +t, isFinite(t) ? t - t % 1 || (t < 0 ? -0 : 0 === t ? t : 0) : t
+            });
+            var a = r(26678),
+                i = r.n(a),
+                o = r(95353),
+                s = r(91563),
+                c = r(40173),
+                l = r(58723),
+                u = r(58814),
+                d = r.n(u),
+                f = r(87810),
+                p = r(42197),
+                h = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "router-container main-background",
+                        class: {
+                            "router-container--ripple-disabled": t.rippleDisabled
+                        }
+                    }, [t.appStateStore.error ? e("MainError", {
+                        attrs: {
+                            state: t.appStateStore.error
+                        }
+                    }) : [e("transition", {
+                        attrs: {
+                            appear: "",
+                            name: "main-screen-animation",
+                            mode: "out-in"
+                        }
+                    }, [e("router-view")], 1), t._v(" "), t.showWarningSsl ? e("WarningSsl", {
+                        on: {
+                            close: function(e) {
+                                t.appStateStore.warningSslIsVisible = !1
+                            }
+                        }
+                    }) : t._e(), t._v(" "), t.showServerDocument ? e("ServerDocument", {
+                        on: {
+                            close: function(e) {
+                                t.appStateStore.serverDocumentIsVisible = !1
+                            }
+                        }
+                    }) : t._e(), t._v(" "), t.authManagerStore.visibility ? e("Authorization", {
+                        ref: "authorizationModule",
+                        attrs: {
+                            authManifest: t.authManifest,
+                            adminContacts: t.serverContacts,
+                            authHandler: t.authHandler
+                        },
+                        on: {
+                            close: t.closeAuthHandler,
+                            guestLoginSuccess: function(e) {
+                                t.$store.dispatch("auth/checkAuthorization", e), t.afterSignInHandler()
+                            },
+                            userLoginSuccess: t.afterSignInHandler,
+                            backToRegisterInConference: function(e) {
+                                t.appStateStore.showRegistrationPopup = !0
+                            },
+                            outerAuth: t.outerAuthHandler
+                        }
+                    }) : t._e(), t._v(" "), t.appStateStore.warning ? e("CommonWarningModal", {
+                        attrs: {
+                            reason: t.appStateStore.warning
+                        },
+                        on: {
+                            close: function(e) {
+                                t.appStateStore.warning = null
+                            }
+                        }
+                    }) : t._e(), t._v(" "), t.appStateStore.adminContactsAreVisible ? e("AdminContactsModal", {
+                        on: {
+                            close: function(e) {
+                                t.appStateStore.adminContactsAreVisible = !1
+                            }
+                        }
+                    }) : t._e(), t._v(" "), e("TheNotifier", {
+                        ref: "notifier-main"
+                    })], t._v(" "), t.isMounted ? e("iframe", {
+                        staticStyle: {
+                            display: "none"
+                        },
+                        attrs: {
+                            src: t.authManagerStore.outerLogoutSrc
+                        },
+                        on: {
+                            load: t.loadOuterLogoutUrl
+                        }
+                    }) : t._e()], 2)
+                };
+            h._withStripped = !0;
+            var g = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("transition", {
+                    attrs: {
+                        appear: "",
+                        name: "authorization"
+                    }
+                }, [e("div", {
+                    staticClass: "authorization-wrapper",
+                    class: {
+                        "authorization-wrapper--outer": t.isOuterScreen
+                    }
+                }, [e("div", {
+                    staticClass: "authorization",
+                    class: {
+                        "authorization--fullscreen": t.authModuleStore.fullscreen
+                    }
+                }, [t.authModuleStore.fullscreen ? t._e() : e("TcButton", {
+                    staticClass: "authorization__close-button",
+                    attrs: {
+                        icon: t.svgClose,
+                        id: "authorization-close"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.authModuleStore.sendEvent({
+                                name: "close"
+                            })
+                        }
+                    }
+                }), t._v(" "), e("div", {
+                    staticClass: "authorization__content-container",
+                    class: {
+                        "authorization__content-container--fullscreen": t.authModuleStore.fullscreen
+                    }
+                }, [e("div", {
+                    staticClass: "authorization__content"
+                }, [e("transition", {
+                    attrs: {
+                        appear: "",
+                        name: "authorization-content",
+                        mode: "out-in"
+                    }
+                }, [e(t.authManagerStore.moduleScreen.mode, {
+                    tag: "component"
+                })], 1)], 1)]), t._v(" "), t.isOuterScreen ? t._e() : e("div", {
+                    staticClass: "authorization__graphics-container",
+                    class: {
+                        "authorization__graphics-container--fullscreen": t.authModuleStore.fullscreen
+                    }
+                }, [e("div", {
+                        staticClass: "authorization__graphics"
+                    }, [e("transition", {
+                        attrs: {
+                            appear: "",
+                            name: "authorization-content",
+                            mode: "out-in"
+                        }
+                    }, [e("div", {
+                        key: t.currentGraphics,
+                        staticClass: "authorization__graphics__item",
+                        attrs: {
+                            "aria-hidden": ""
+                        },
+                        domProps: {
+                            // innerHTML: t._s(t.currentGraphics)
+                            innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="83.89mm" height="82.15mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                        viewBox="0 0 8389 8215"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <defs>
+                                          <style type="text/css">
+                                          <![CDATA[
+                                            .fil3 {fill:none}
+                                            .fil6 {fill:red}
+                                            .fil2 {fill:yellow}
+                                            .fil5 {fill:white}
+                                            .fil4 {fill:yellow;fill-rule:nonzero}
+                                            .fil1 {fill:white;fill-rule:nonzero}
+                                            .fil0 {fill:white;fill-rule:nonzero}
+                                          ]]>
+                                          </style>
+                                        </defs>
+                                        <g id="Layer_x0020_1">
+                                          <metadata id="CorelCorpID_0Corel-Layer"/>
+                                          <g id="_2539052085008">
+                                          <path class="fil0" d="M3002.06 3679.1l0 -125.69 184.59 0c24.15,0 46.05,-4.92 65.68,-14.76 19.63,-9.79 35.1,-23.95 46.44,-42.44 11.31,-18.52 16.98,-40.97 16.98,-67.38 0,-25.66 -5.67,-47.95 -16.98,-66.83 -11.34,-18.84 -26.81,-33.2 -46.44,-43.04 -19.63,-9.79 -41.53,-14.71 -65.68,-14.71l-184.59 0 0 -125.69 200.45 0c50.57,0 96.07,10.19 136.44,30.58 40.42,20.38 72.31,49.26 95.71,86.62 23.4,37.36 35.1,81.75 35.1,133.07 0,51.32 -11.7,95.7 -35.1,133.07 -23.4,37.36 -55.29,66.23 -95.71,86.62 -40.37,20.38 -85.87,30.58 -136.44,30.58l-200.45 0zm-113.24 295.56l0 -796.1 154.01 0 0 796.1 -154.01 0zm1070.13 12.46c-58.1,0 -112.28,-10.55 -162.49,-31.69 -50.22,-21.14 -94,-50.42 -131.36,-87.78 -37.37,-37.36 -66.64,-81.15 -87.78,-131.36 -21.14,-50.21 -31.69,-103.99 -31.69,-161.39 0,-57.35 10.39,-110.77 31.14,-160.23 20.78,-49.46 49.81,-92.85 87.22,-130.21 37.36,-37.4 80.95,-66.44 130.76,-87.22 49.86,-20.74 103.84,-31.14 161.94,-31.14 58.9,0 113.24,10.4 163.1,31.14 49.81,20.78 93.4,49.82 130.76,87.22 37.4,37.36 66.63,80.95 87.77,130.76 21.14,49.86 31.73,103.44 31.73,160.84 0,57.35 -10.59,110.97 -31.73,160.79 -21.14,49.81 -50.37,93.44 -87.77,130.8 -37.36,37.36 -80.75,66.64 -130.21,87.78 -49.46,21.14 -103.24,31.69 -161.39,31.69zm-2.26 -143.82c51.37,0 95.91,-11.34 133.63,-33.99 37.75,-22.65 67.38,-53.98 88.92,-93.96 21.5,-40.02 32.24,-86.82 32.24,-140.45 0,-39.26 -6.02,-75.12 -18.08,-107.56 -12.1,-32.48 -29.47,-60.6 -52.12,-84.36 -22.65,-23.8 -49.46,-42.12 -80.39,-54.93 -30.94,-12.85 -65.68,-19.28 -104.2,-19.28 -49.81,0 -93.8,11.15 -131.91,33.44 -38.12,22.25 -67.95,53.38 -89.48,93.4 -21.5,40.02 -32.25,86.46 -32.25,139.29 0,40.02 6.23,76.63 18.68,109.87 12.46,33.2 29.83,61.52 52.08,84.92 22.29,23.4 49.06,41.52 80.4,54.37 31.33,12.81 65.52,19.24 102.48,19.24zm535.68 131.36l0 -796.1 154.01 0 0 796.1 -154.01 0zm113.24 0l0 -137.03 405.43 0 0 137.03 -405.43 0zm629.64 -332.92l0 -120.06 184.59 0c37.76,0 66.99,-9.6 87.77,-28.88 20.74,-19.23 31.14,-45.85 31.14,-79.84 0,-30.93 -10.4,-56.79 -31.14,-77.58 -20.78,-20.74 -50.01,-31.13 -87.77,-31.13l-184.59 0 0 -125.69 198.19 0c51.33,0 96.42,9.99 135.33,30.02 38.87,19.99 69.05,47.36 90.59,82.1 21.5,34.71 32.24,74.73 32.24,120.02 0,46.8 -10.74,87.38 -32.24,121.73 -21.54,34.38 -51.92,61.16 -91.18,80.43 -39.27,19.24 -84.92,28.88 -137.04,28.88l-195.89 0zm-113.24 332.92l0 -796.1 154.01 0 0 796.1 -154.01 0zm434.86 0l-262.72 -344.27 141.55 -44.14 308.02 388.41 -186.85 0zm274.07 0l0 -796.1 154.01 0 0 796.1 -154.01 0z"/>
+                                          <path class="fil1" d="M3317.02 4937.82c-55.89,0 -107.76,-10.19 -155.72,-30.58 -47.95,-20.38 -89.63,-49.1 -125.13,-86.06 -35.5,-37.01 -62.87,-79.84 -82.1,-128.55 -19.24,-48.71 -28.88,-100.98 -28.88,-156.82 0,-55.89 9.64,-108.16 28.88,-156.87 19.23,-48.7 46.44,-91.14 81.54,-127.39 35.11,-36.26 76.43,-64.54 123.99,-84.92 47.55,-20.39 98.92,-30.58 154.01,-30.58 59.65,0 113.08,10.55 160.23,31.69 47.2,21.14 88.53,50.21 124.03,87.22l-56.64 56.59c-27.17,-30.18 -60.01,-53.78 -98.52,-70.75 -38.51,-17.02 -81.55,-25.51 -129.1,-25.51 -43.79,0 -83.97,7.94 -120.62,23.8 -36.6,15.87 -68.69,38.31 -96.26,67.39 -27.52,29.07 -48.66,63.02 -63.38,101.89 -14.75,38.91 -22.09,81.35 -22.09,127.44 0,46.04 7.54,88.68 22.65,127.95 15.07,39.26 36.21,73.41 63.42,102.48 27.17,29.08 59.25,51.53 96.26,67.39 36.96,15.83 77.38,23.76 121.17,23.76 49.81,0 94.16,-8.69 133.07,-26.02 38.86,-17.37 71.9,-41.17 99.07,-71.35l56.6 57.75c-34.7,37 -76.23,66.23 -124.54,87.77 -48.31,21.49 -102.29,32.28 -161.94,32.28zm750.81 0c-55.13,0 -106.26,-10.39 -153.46,-31.17 -47.19,-20.74 -88.52,-49.42 -124.02,-86.07 -35.46,-36.61 -63.22,-79.24 -83.21,-127.95 -20.03,-48.71 -30.03,-100.98 -30.03,-156.82 0,-56.64 9.84,-109.12 29.47,-157.42 19.64,-48.31 47.16,-90.59 82.66,-126.84 35.5,-36.26 76.63,-64.54 123.43,-84.92 46.8,-20.39 97.77,-30.58 152.9,-30.58 55.09,0 106.25,10.19 153.41,30.58 47.2,20.38 88.53,48.66 124.02,84.92 35.46,36.25 63.03,78.69 82.66,127.39 19.63,48.71 29.43,101.38 29.43,157.98 0,55.88 -9.8,108.16 -29.43,156.86 -19.63,48.67 -47,91.14 -82.1,127.4 -35.1,36.21 -76.07,64.73 -122.87,85.47 -46.81,20.78 -97.77,31.17 -152.86,31.17zm-2.26 -80.43c58.86,0 111.13,-13.96 156.82,-41.89 45.69,-27.92 81.55,-66.07 107.57,-114.38 26.05,-48.31 39.1,-103.44 39.1,-165.31 0,-46.09 -7.57,-88.53 -22.68,-127.44 -15.08,-38.87 -36.22,-72.82 -63.38,-101.89 -27.21,-29.08 -59.1,-51.52 -95.71,-67.39 -36.61,-15.86 -77.18,-23.8 -121.72,-23.8 -58.15,0 -110.07,13.81 -155.72,41.33 -45.69,27.57 -81.54,65.52 -107.6,113.83 -26.02,48.31 -39.07,103.44 -39.07,165.36 0,46.04 7.58,88.68 22.65,127.95 15.11,39.26 36.25,73.41 63.42,102.48 27.17,29.08 59.25,51.53 96.26,67.39 37,15.83 77.02,23.76 120.06,23.76zm550.35 69.09l0 -779.13 58.86 0 23.8 98.52 0 680.61 -82.66 0zm539.01 0l-492.6 -668.15 12.45 -110.98 491.5 668.15 -11.35 110.98zm0 0l-24.9 -94 0 -685.13 83.8 0 0 779.13 -58.9 0zm257.09 0l0 -779.13 58.86 0 23.8 98.52 0 680.61 -82.66 0zm539.02 0l-492.61 -668.15 12.45 -110.98 491.5 668.15 -11.34 110.98zm0 0l-24.91 -94 0 -685.13 83.81 0 0 779.13 -58.9 0zm257.09 0l0 -779.13 82.65 0 0 779.13 -82.65 0zm54.34 0l0 -75.87 458.65 0 0 75.87 -458.65 0zm0 -362.4l0 -73.61 422.4 0 0 73.61 -422.4 0zm0 -340.85l0 -75.88 451.83 0 0 75.88 -451.83 0zm947.85 714.59c-55.89,0 -107.77,-10.19 -155.72,-30.58 -47.95,-20.38 -89.63,-49.1 -125.13,-86.06 -35.5,-37.01 -62.87,-79.84 -82.1,-128.55 -19.24,-48.71 -28.88,-100.98 -28.88,-156.82 0,-55.89 9.64,-108.16 28.88,-156.87 19.23,-48.7 46.44,-91.14 81.54,-127.39 35.1,-36.26 76.43,-64.54 123.99,-84.92 47.55,-20.39 98.91,-30.58 154.01,-30.58 59.65,0 113.07,10.55 160.23,31.69 47.2,21.14 88.53,50.21 124.03,87.22l-56.64 56.59c-27.17,-30.18 -60.01,-53.78 -98.52,-70.75 -38.52,-17.02 -81.55,-25.51 -129.1,-25.51 -43.79,0 -83.97,7.94 -120.62,23.8 -36.61,15.87 -68.69,38.31 -96.26,67.39 -27.52,29.07 -48.66,63.02 -63.38,101.89 -14.75,38.91 -22.09,81.35 -22.09,127.44 0,46.04 7.54,88.68 22.65,127.95 15.07,39.26 36.21,73.41 63.42,102.48 27.17,29.08 59.25,51.53 96.26,67.39 36.96,15.83 77.38,23.76 121.17,23.76 49.81,0 94.15,-8.69 133.06,-26.02 38.87,-17.37 71.91,-41.17 99.08,-71.35l56.6 57.75c-34.71,37 -76.23,66.23 -124.54,87.77 -48.31,21.49 -102.29,32.28 -161.94,32.28zm626.23 -11.34l0 -757.59 83.8 0 0 757.59 -83.8 0zm-274.07 -703.25l0 -75.88 631.9 0 0 75.88 -631.9 0z"/>
+                                          <path class="fil2" d="M1682.38 3036.44l65.73 141.25 152.77 17.12 -114.03 106.16 30.94 150.58 -136.2 -75.63 -133.67 75.95 29.86 -152.91 -113.53 -103.65 154.63 -18.85 63.5 -140.02zm110.06 380.81l-104.48 -137.07 0.07 3.09 -1.3 -2.09 -4.93 73.59 110.64 62.48zm-220.67 -0.77l98.06 -141.73 -2.91 1.02 1.58 -1.89 -71.51 18.04 -25.22 124.56zm58.78 -224.62l-126.24 14.48 165.08 49.48 -1.86 -2.44 2.28 0.91 -39.26 -62.43zm52.74 -114.59l3.97 172.29 1.75 -2.54 -0.16 2.46 47.23 -56.63 -52.79 -115.58zm178.08 130.34l-162.63 57 2.95 0.89 -2.38 0.61 68.46 27.43 93.6 -85.93zm-663.59 209.64l-104.48 -137.07 0.07 3.09 -1.3 -2.09 -4.93 73.59 110.64 62.48zm-220.68 -0.77l98.07 -141.73 -2.91 1.02 1.57 -1.89 -71.5 18.04 -25.23 124.56zm58.79 -224.62l-126.25 14.48 165.09 49.48 -1.87 -2.44 2.29 0.91 -39.26 -62.43zm52.74 -114.59l3.97 172.29 1.75 -2.54 -0.16 2.46 47.23 -56.63 -52.79 -115.58zm178.08 130.34l-162.63 57 2.94 0.89 -2.39 0.61 68.48 27.43 93.6 -85.93zm228.4 -120.28l-104.48 -137.06 0.08 3.07 -1.32 -2.08 -4.93 73.58 110.65 62.49zm-220.68 -0.77l98.07 -141.73 -2.9 1.02 1.57 -1.89 -71.51 18.05 -25.23 124.55zm58.8 -224.63l-126.26 14.5 165.09 49.48 -1.87 -2.45 2.29 0.91 -39.25 -62.44zm52.74 -114.58l3.96 172.3 1.76 -2.55 -0.18 2.46 47.25 -56.64 -52.79 -115.57zm178.08 130.34l-162.65 57.01 2.96 0.88 -2.39 0.61 68.46 27.42 93.62 -85.92zm-476.33 158.75l65.71 141.25 152.79 17.12 -114.03 106.16 30.92 150.58 -136.18 -75.63 -133.67 75.95 29.86 -152.91 -113.55 -103.65 154.65 -18.85 63.5 -140.02zm297.34 -329.91l65.71 141.25 152.77 17.11 -114.02 106.15 30.93 150.6 -136.19 -75.65 -133.66 75.96 29.85 -152.91 -113.54 -103.66 154.65 -18.84 63.5 -140.01z"/>
+                                          <path class="fil3" d="M1934.71 4411.98c-92.45,193.67 -366.41,177.23 -522.53,295.42l-26.94 20.4 -26.95 -20.4c-156.11,-118.19 -430.07,-101.75 -522.52,-295.42 -11.18,-20.69 -18.79,-42.83 -22.94,-65.95 -12.13,-67.49 5.95,-136.96 29.57,-199.97 14.22,-37.94 31.03,-74.65 46.78,-111.95 10.32,-24.42 23.52,-55.45 27.4,-81.69 5.57,-37.56 -0.34,-75.79 -13.84,-111.09 -5.93,-15.5 -14.93,-34.78 -24.74,-48.41l-23.95 -32.64 30.6 -26.73c48.19,-42.1 85.6,-92.23 103.7,-153.94l10.19 -34.73 36.22 2.99c114.85,9.49 226.53,-1.75 330.51,-53.72l19.97 -9.98 19.97 9.98c103.97,51.97 215.66,63.21 330.51,53.72l36.22 -2.99 10.19 34.73c18.1,61.71 55.5,111.84 103.7,153.94l30.6 26.73 -23.95 32.64c-9.81,13.63 -18.81,32.91 -24.74,48.41 -13.5,35.3 -19.42,73.53 -13.85,111.09 3.89,26.24 17.08,57.27 27.4,81.69 15.76,37.3 32.57,74.01 46.79,111.95 32.18,85.85 52.55,180.98 6.63,265.92z"/>
+                                          <path class="fil4" d="M1945.41 4417.07c-58.46,122.48 -184.47,163.31 -310.21,204.05 -78.23,25.35 -156.35,50.66 -215.88,95.73l-34.08 25.8 -34.08 -25.8c-59.53,-45.07 -137.66,-70.38 -215.89,-95.73 -125.73,-40.74 -251.74,-81.57 -310.2,-204.05 -5.71,-10.62 -10.54,-21.67 -14.5,-33.06 -4.05,-11.64 -7.17,-23.63 -9.37,-35.9 -6.35,-35.31 -4.83,-70.92 1.33,-105.79 6.08,-34.37 16.73,-68.21 28.79,-100.39 10.09,-26.92 21.51,-53.3 32.94,-79.69 4.6,-10.64 9.22,-21.31 14.04,-32.71l0.35 -0.83c9.98,-23.63 22.58,-53.43 26.21,-78 2.54,-17.11 2.53,-34.44 0.4,-51.58 -2.28,-18.26 -6.98,-36.28 -13.6,-53.57 -3.15,-8.26 -7.11,-17.42 -11.45,-25.93 -3.65,-7.14 -7.64,-14 -11.74,-19.71l-30.39 -41.38 38.78 -33.88c23.39,-20.43 44.14,-42.78 61.19,-67.44 16.94,-24.49 30.26,-51.33 38.95,-80.93l12.91 -44.01 45.82 3.79c56.6,4.67 112.35,4.25 166.65,-3.73 54.14,-7.95 106.88,-23.39 157.6,-48.74l25.26 -12.62 25.25 12.62c50.73,25.35 103.47,40.79 157.61,48.74 54.3,7.98 110.05,8.4 166.64,3.73l45.83 -3.79 12.91 44.01c8.68,29.6 22.01,56.45 38.94,80.93 17.05,24.66 37.8,47.01 61.19,67.44l38.78 33.88 -30.37 41.39c-4.12,5.71 -8.11,12.56 -11.75,19.7 -4.35,8.51 -8.3,17.67 -11.46,25.93 -6.61,17.29 -11.31,35.31 -13.59,53.57 -2.13,17.14 -2.15,34.47 0.39,51.58 3.65,24.59 16.26,54.43 26.25,78.07l0.32 0.76c4.83,11.44 9.45,22.11 14.06,32.77 11.42,26.37 22.83,52.73 32.91,79.63 16.45,43.87 29.88,90.18 33.35,136.55 3.52,47.04 -3.16,94.06 -27.09,138.59zm-317.44 181.53c120.84,-39.15 241.94,-78.39 296.03,-191.72l0.28 -0.51c21.77,-40.25 27.81,-83.09 24.59,-126.13 -3.28,-43.89 -16.13,-88.08 -31.86,-130.06 -9.98,-26.61 -21.21,-52.56 -32.45,-78.53 -4.85,-11.2 -9.7,-22.42 -14.15,-32.95l-0.32 -0.76c-10.55,-24.96 -23.87,-56.46 -27.92,-83.81 -2.86,-19.32 -2.87,-38.76 -0.49,-57.88 2.52,-20.2 7.71,-40.1 14.99,-59.14 3.27,-8.57 7.58,-18.47 12.56,-28.23 4.19,-8.2 8.82,-16.14 13.66,-22.86l17.57 -23.99 -22.42 -19.58c-24.8,-21.67 -46.86,-45.45 -65.08,-71.8 -18.33,-26.52 -32.77,-55.61 -42.19,-87.7l-7.46 -25.47 -26.62 2.2c-58.24,4.81 -115.77,4.36 -172.02,-3.9 -56.4,-8.29 -111.5,-24.45 -164.74,-51.06l-14.69 -7.34 -14.69 7.34c-53.24,26.61 -108.35,42.77 -164.75,51.06 -56.24,8.26 -113.77,8.71 -172.01,3.9l-26.62 -2.2 -7.47 25.47c-9.42,32.09 -23.85,61.17 -42.19,87.7 -18.22,26.35 -40.28,50.13 -65.08,71.8l-22.42 19.58 17.58 23.99c4.83,6.72 9.46,14.65 13.65,22.86 4.99,9.76 9.29,19.66 12.57,28.23 7.28,19.04 12.47,38.94 14.98,59.14 2.38,19.12 2.38,38.56 -0.48,57.88 -4.05,27.33 -17.35,58.79 -27.89,83.74l-0.35 0.83c-4.45,10.53 -9.29,21.71 -14.13,32.9 -11.25,25.98 -22.49,51.96 -32.47,78.58 -11.56,30.83 -21.76,63.25 -27.59,96.22 -5.74,32.48 -7.2,65.38 -1.42,97.54 1.97,10.99 4.78,21.77 8.44,32.29 3.58,10.29 8.01,20.37 13.29,30.14l0.28 0.51c54.1,113.33 175.2,152.57 296.03,191.72 80.21,25.99 160.31,51.95 222.93,99.35l19.81 15 19.81 -15c62.61,-47.4 142.71,-73.36 222.92,-99.35z"/>
+                                          <path class="fil2" d="M1385.23 4677.45c122.82,-93.4 300.61,-107.57 416.87,-180.61l3.6 1.45 1.38 -0.88c11.65,-7.5 22.68,-15.64 32.96,-24.53 10.29,-8.9 19.82,-18.58 28.49,-29.13l3.18 -3.87 -3.44 -0.83c9.53,-11.97 17.95,-25.14 25.06,-39.59l3.28 0.36 1.2 -2.43c6.15,-11.26 10.88,-22.85 14.37,-34.65 3.49,-11.82 5.75,-23.92 6.93,-36.17l0.34 -3.41 -3.19 -0.04c1.26,-15.47 0.84,-31.22 -0.9,-47.12l3.15 -0.28 -0.38 -3.21c-1.55,-12.84 -3.92,-25.74 -6.95,-38.65 -2.99,-12.82 -6.67,-25.74 -10.8,-38.64l-0.93 -2.88 -3.05 0.83c-4.08,-12.5 -8.58,-24.91 -13.32,-37.24l2.98 -1.1 -1.16 -2.97c-9.21,-23.71 -19.11,-46.63 -28.62,-68.65l-4.85 -11.22 -2.77 1.53c-4.83,-11.21 -9.49,-22.14 -13.82,-32.77l2.68 -1.76 -0.97 -2.39c-5.7,-14.13 -10.81,-27.66 -14.86,-40.35 -4.04,-12.67 -7.08,-24.61 -8.71,-35.69 -0.43,-3.2 -0.81,-6.32 -1.18,-9.53l-2.94 2.44c-2.67,-23.01 -1.78,-44.92 1.17,-65.07l3.09 -3.14 0.87 -1.68c11.19,-67.26 44.95,-113.48 45.05,-113.62l1.65 -2.31 -2.14 -1.9c-7.27,-6.38 -14.31,-12.92 -21.07,-19.62 -6.72,-6.64 -13.2,-13.47 -19.42,-20.48l-2.58 -2.9 -1.92 2.58c-16.53,-18.91 -30.98,-38.91 -43.16,-60.13l1.84 -3.14 -0.89 -1.57c-6.06,-10.83 -11.52,-21.98 -16.34,-33.44 -4.84,-11.46 -9.03,-23.27 -12.58,-35.41l-0.73 -2.48 -2.56 0.21c-9.56,0.79 -18.94,1.44 -28.09,1.93 -9.4,0.5 -18.68,0.85 -27.84,1.07l-2.05 0.04 -1.36 3.19c-24.52,0.45 -48.72,-0.17 -72.62,-1.99l0.94 -3.09 -3.91 -0.31c-16.13,-1.29 -32.13,-3.14 -47.97,-5.58 -15.82,-2.44 -31.51,-5.48 -47.05,-9.13l-3.22 -0.76 -0.57 3.09c-23.02,-5.53 -45.66,-12.5 -67.98,-20.95l0.08 -3.32 -2.07 -0.81c-8.15,-3.15 -16.33,-6.53 -24.53,-10.16 -8.22,-3.63 -16.31,-7.44 -24.25,-11.42l-1.4 -0.71 -1.42 0.71c-7.56,3.79 -15.2,7.4 -22.89,10.82 -7.58,3.39 -15.3,6.61 -23.12,9.68l-2.05 0.8 0.08 3.34c-22.44,8.65 -45.23,15.76 -68.35,21.44l-0.57 -3.1 -3.22 0.78c-15.53,3.73 -31.22,6.83 -47.03,9.33 -15.74,2.49 -31.73,4.39 -47.95,5.75l-3.9 0.32 0.94 3.09c-23.86,1.9 -48.05,2.6 -72.55,2.22l-1.34 -3.17 -2.04 -0.05c-9.58,-0.19 -19.29,-0.54 -29.12,-1.06 -9.59,-0.5 -19.4,-1.16 -29.38,-1.99l-2.56 -0.22 -0.73 2.49c-3.41,11.68 -7.46,23.11 -12.09,34.25 -4.63,11.1 -9.85,21.9 -15.62,32.38l-0.86 1.57 1.85 3.16c-12.09,21.47 -26.54,41.64 -43.06,60.74l-1.9 -2.56 -2.58 2.92c-6.42,7.29 -13.1,14.4 -20.04,21.29 -6.99,6.95 -14.28,13.74 -21.82,20.36l-2.14 1.89 1.64 2.31c0.1,0.14 32.82,44.93 44.52,110.51l0.87 1.67 3.15 3.2c3.24,20.44 4.34,42.73 1.85,66.19l-2.83 -2.33c-0.48,3.79 -0.96,7.58 -1.49,11.37 -1.6,10.85 -4.58,22.6 -8.53,35.09 -4,12.58 -8.95,25.84 -14.51,39.63l-0.97 2.38 2.68 1.76c-4.35,10.68 -8.99,21.7 -13.86,32.97l-2.78 -1.53 -5.55 12.85c-9.33,21.6 -19.03,44.07 -28.09,67.33l-1.16 2.96 2.97 1.1c-4.79,12.37 -9.31,24.87 -13.41,37.45l-3.07 -0.83 -0.93 2.86c-4.17,12.97 -7.86,25.95 -10.89,38.85 -3.06,12.97 -5.46,25.96 -7.03,38.85l-0.39 3.21 3.17 0.28c-1.78,15.98 -2.21,31.81 -0.94,47.36l-3.18 0.04 0.32 3.41c1.2,12.27 3.46,24.35 6.95,36.17 3.47,11.81 8.22,23.38 14.36,34.64l1.33 2.71 3.31 -0.37c7.18,14.59 15.67,27.8 25.31,39.83l-3.43 0.83 3.2 3.89c8.72,10.57 18.36,20.25 28.75,29.19 10.34,8.9 21.47,17.04 33.24,24.58l1.38 0.88 3.62 -1.46c116.28,72.53 293.43,86.89 415.86,179.98zm-353.51 -584.5c-1.37,3.3 -2.66,6.58 -3.87,9.74 -8.82,23.11 -15.33,49.05 -14.91,73.91 0.23,12.81 2.33,25.59 7.24,37.49 12.52,30.29 39.62,51.96 65,71.23 15.6,11.85 45.39,31.56 46.95,52.87 0.12,1.76 0.08,3.54 -0.13,5.29 -2.11,16.86 -12.88,33.87 -23.37,51.1l6.72 -6.64c9.95,-9.83 26.14,-15.64 39.99,-13.74 16.31,2.22 32.04,12 40.41,26.33 4.43,7.6 8.47,16.17 12.42,24.05 3.87,7.71 7.73,15.46 11.55,23.22l9.88 6.14 320.89 0 9.88 -6.14c3.83,-7.76 7.67,-15.51 11.54,-23.22 3.96,-7.88 7.99,-16.45 12.42,-24.05 8.37,-14.33 24.1,-24.11 40.42,-26.33 13.84,-1.9 30.04,3.91 39.98,13.74l6.73 6.64c-10.49,-17.23 -21.25,-34.24 -23.37,-51.1 -0.22,-1.75 -0.26,-3.53 -0.14,-5.29 1.57,-21.31 31.36,-41.02 46.96,-52.87 25.37,-19.27 52.48,-40.94 64.99,-71.23 2.7,-6.53 4.57,-13.36 5.72,-20.32 0.94,-5.67 1.41,-11.4 1.52,-17.13 0.44,-25 -6.14,-51.08 -15.04,-74.33 -1.17,-3.06 -2.43,-6.22 -3.76,-9.4 -3.13,30.8 -11.18,66.09 -26.21,87.63 -28.23,40.48 -92.24,61.47 -131.77,90.17 -13.81,10.02 -24.37,23.44 -31.16,39.08 -2.68,6.13 -5.6,14.65 -6.4,21.37 -1.47,9.69 -11.3,10.31 -18.23,0.87 -0.21,-0.2 -0.4,-0.39 -0.59,-0.58 -5.09,-5.1 -9.41,-13.62 -11.49,-20.35 -5.58,-18.05 -1.41,-36.2 7.93,-52.21 12.83,-21.99 38.17,-45.15 57.17,-62.08 12.75,-11.37 25.8,-22.37 38.78,-33.47 9.44,-8.07 19.56,-16.5 28.2,-25.38 30.46,-31.33 43.92,-65.27 42.25,-109.3 -0.85,-22.58 -9.32,-43.64 -22.36,-61.87 -0.86,-1.18 -1.75,-2.4 -2.7,-3.64 4.1,22.51 4.81,47.42 -0.78,66.78 -7.33,25.43 -45.9,50.67 -67.21,64.31 -14.06,9.02 -28.42,17.53 -42.56,26.37 -8.61,5.39 -20.66,12.68 -27.81,19.82 -8.12,8.13 -11.44,18.19 -10.52,29.52 0.41,5.02 1.89,11.67 4.15,16.27 2.63,5.87 -4.92,12.03 -9.76,9.74 -7.41,-3.71 -17.45,-10.44 -21.87,-17.38 -4.39,-6.89 -4.84,-18.39 -4.2,-26.3 0.97,-11.82 4.72,-23.78 11.32,-33.68 4.66,-7.01 12.01,-14.06 18.05,-19.92 8.2,-7.96 16.57,-15.7 24.66,-23.76 10.31,-10.28 27.07,-27.54 31.41,-41.61 6.51,-21 -8.92,-50.81 -21.68,-66.78 -9.82,-12.26 -8.79,-27.17 -4.04,-41.31 2.97,-8.82 12.46,-22.13 17.58,-30.24 8.9,-14.13 17.46,-28.63 24,-44.03 6.41,-15.14 11.4,-32.46 9.77,-49.05 -1.96,-19.67 -8.16,-37.81 -20.13,-53.63 -8.3,-10.98 -17.7,-18.72 -28.54,-26.94 -1.98,-1.51 -4.7,-3.43 -7.69,-5.32 4.12,13.18 5.27,27.2 2.41,40.77 -3.94,18.66 -8.82,33.52 -16.36,50.86 -0.84,1.97 -1.7,3.92 -2.53,5.89 -3.68,8.71 -6.11,20.61 -6.72,30.09l-2.71 43.21 -11.54 -41.71c-2.38,-8.48 -7.1,-18.37 -11.28,-26 -10.18,-18.56 -23.94,-35.25 -40.93,-47.93 -17.41,-12.99 -35.11,-27.57 -44.2,-47.84 -5.35,-11.9 -7.91,-25.45 -10.62,-38.18 -4.2,-19.57 3.9,-42.87 15.39,-62.54 -12.12,7.77 -23.58,17.15 -31.45,26.62 -8.57,10.32 -14.74,22.35 -15.24,35.98 -0.85,22.65 5.17,44.32 14.79,64.64 3.9,8.21 8.3,16.07 12.85,23.94 3.3,5.69 7.19,11.94 9.66,18.03 2.18,5.31 3.94,10.88 5.45,16.42 2.36,8.72 9.7,35.02 -2.01,39.89 -1.98,0.83 -2.34,0.84 -4.36,0.64 -6.05,-0.61 -18.6,-11.35 -23.17,-15.23 -11.56,-9.87 -22.67,-20.97 -32.37,-32.68 -11.43,-13.79 -23.95,-32.22 -26.61,-50.26 -2.14,-14.4 -0.7,-30.5 1.49,-44.84 2.11,-13.8 5.2,-27.58 8.86,-41.08 -2.39,2.42 -4.73,4.88 -7.03,7.39 -16.58,18.17 -31.28,39.62 -39.53,62.92 -5.77,16.34 -22.82,66.55 -19.29,84.24 2.55,12.77 -0.46,45.88 -18.22,45.88 -12.66,0 -19.12,-17.67 -21.21,-27.8 -1.71,-8.21 -2.29,-18.93 1.73,-26.57 4.14,-7.88 3.99,-30.44 3.58,-39.38 -0.44,-10 -1.53,-21.33 -4.17,-31.01 -4.29,-15.73 -33.16,-34.8 -47.4,-40.9 -3.12,-1.34 -6.94,-2.49 -10.87,-3.45 4.99,14.89 7.82,32.49 5.03,46.36 -4.71,23.57 -17.27,56.91 -9.89,80.53 3.97,12.7 11.98,24.86 18.88,36.19 8.96,14.7 16.84,28.96 21.61,45.66 3.32,11.62 8.32,27.35 7.89,39.56 -0.12,3.51 -0.53,7.03 -0.75,10.53l-0.04 0.75 -0.2 0.73c-3.33,12.19 -9.23,24.13 -12.98,36.44 -3.9,12.81 -6.21,26.71 -2.16,39.79 4.39,14.17 22.77,32.12 33.41,42.21 8.49,8.09 17.27,15.84 25.84,23.85 6.2,5.77 13.94,12.94 18.64,19.98 6.59,9.9 10.34,21.86 11.3,33.68 0.66,7.91 0.21,19.41 -4.18,26.3 -4.43,6.94 -14.47,13.67 -21.87,17.38 -7.3,3.34 -13.59,-3.21 -9.77,-9.74 2.25,-4.6 3.73,-11.25 4.14,-16.27 0.93,-11.33 -2.39,-21.39 -10.5,-29.52 -7.16,-7.14 -19.21,-14.43 -27.81,-19.82 -14.16,-8.84 -28.52,-17.35 -42.58,-26.37 -21.3,-13.64 -59.87,-38.88 -67.21,-64.31 -5.58,-19.4 -4.87,-44.28 -0.77,-66.78 -0.83,1.08 -1.63,2.18 -2.43,3.28 -13.21,18.31 -21.78,39.49 -22.64,62.23 -1.67,44.03 11.8,77.97 42.25,109.3 8.66,8.88 18.78,17.31 28.21,25.38 12.97,11.1 26.03,22.1 38.77,33.47 19.01,16.93 44.35,40.09 57.17,62.08 9.35,16.01 13.52,34.16 7.94,52.21 -2.08,6.73 -6.4,15.25 -11.5,20.35l-0.58 0.58c-8.93,7.79 -17.61,4.91 -18.23,-0.87 -0.79,-6.72 -3.73,-15.24 -6.39,-21.37 -6.81,-15.64 -17.36,-29.06 -31.18,-39.08 -39.51,-28.7 -103.54,-49.69 -131.77,-90.17 -14.91,-21.39 -23.08,-56.79 -26.23,-87.59zm223.31 376.8l11.68 7.27 246.66 0 11.69 -7.27 -270.03 0zm-150.95 -67.6c-11.36,19.22 -20.76,38.76 -15.98,58.74 4.18,17.47 17.54,29.42 34.64,33.83 10.82,2.8 28.94,2.92 36.4,-7.1 3.19,-4.3 6.44,-9.7 9.29,-15.67l0 -18.01 6.5 0c2.67,-11.21 2.63,-22.53 -2.72,-31.11 -8.55,-13.69 -14.4,-18.47 -29.69,-21.35 -6.44,-1.22 -14.71,-1.82 -21.3,-1.14l-17.14 1.81zm571.93 0l-17.15 -1.81c-6.57,-0.68 -14.86,-0.08 -21.29,1.14 -15.28,2.88 -21.15,7.66 -29.69,21.35 -5.37,8.58 -5.38,19.88 -2.71,31.11l6.48 0 0 18.01c2.84,5.97 6.12,11.37 9.31,15.67 7.44,10.02 25.57,9.9 36.38,7.1 17.11,-4.41 30.46,-16.36 34.65,-33.83 4.78,-19.98 -4.62,-39.52 -15.98,-58.74zm28.43 48.34c0.1,-16.85 -6.95,-33.09 -15.61,-48.63l171.58 41.75c-7.56,8.78 -15.75,16.92 -24.5,24.5 -9.62,8.31 -19.95,15.99 -30.86,23.11l-100.61 -40.73zm-35.56 -82.67c-4.92,-9.08 -8.66,-17.72 -9.65,-25.71 -0.64,-5.13 1.36,-10.25 5.19,-15.47l248.06 2.74c-1.22,10.67 -3.3,21.22 -6.36,31.58 -3.22,10.93 -7.55,21.67 -13.13,32.1l-224.11 -25.24zm40.14 -79.21c18.6,-14.39 38.3,-31.08 51.9,-52.38l134.36 -36.21c3.7,11.68 6.99,23.48 9.74,35.28 2.72,11.62 4.92,23.22 6.43,34.74l-202.43 18.57zm68.62 -100.23c2.31,-22.09 -1.26,-44.8 -6.73,-64.71l77.47 -42.78 2.08 4.82c9.17,21.21 18.7,43.27 27.39,65.44l-100.21 37.23zm-20.65 -103.66c-5.97,-13.63 -10.89,-22.08 -10.95,-22.16l-7.36 1.96c0,0.09 -0.04,14.6 -2.35,33.88l-78.02 51.62c1.56,-1.49 3,-2.9 4.3,-4.25 12.58,-12.93 24.46,-28.07 32.95,-47.11 6.74,-15.11 11.29,-32.66 12.38,-53.44l99.05 -82.01c1.74,10.88 4.75,22.58 8.69,34.94 3.92,12.25 8.71,25.09 14.06,38.42l-72.75 48.15zm-56.65 -93.54c-10.56,-27.58 -28.98,-46.46 -36.68,-53.53l152.27 -204.93c5.46,6.05 11.17,12.01 17.1,17.9 6.17,6.1 12.61,12.12 19.25,18.01 -6.94,10.29 -34.25,53.54 -44.35,112.93l-107.59 109.62zm-122.43 -9.43c-5.67,-10.88 -11.8,-19.2 -14.2,-22.21 -2.41,-3 -4.24,-6.69 -4.86,-11.47 -0.64,-5.01 0.02,-11.3 2.7,-19.29 1.43,-4.21 6.18,-11.68 12.2,-21.15 16.93,-26.6 43.47,-68.34 39.67,-106.83 -0.83,-8.42 -2.32,-16.1 -4.32,-23.08l76.28 -179.1c8.7,-0.22 17.37,-0.56 25.99,-1.02 8.67,-0.47 17.24,-1.05 25.73,-1.72 3.45,11.5 7.5,22.71 12.1,33.62 4.68,11.13 9.97,21.97 15.78,32.48l-187.07 319.77zm-14.08 -266.69l-2.91 -2.24 -0.54 -0.42c-16.98,-12.87 -27.81,-14.7 -27.84,-14.7l-9.03 -2.01 4.81 7.91c0.04,0.06 14.85,23.34 9.02,50.88 -5.22,24.67 -10.43,36.69 -15.67,48.7l-2.56 5.99c-2.53,5.98 -4.24,12.47 -5.4,18.15 -6.12,-13.92 -17.88,-35.48 -37.98,-54.42l35.24 -190.5c14.64,3.35 29.43,6.18 44.33,8.48 14.71,2.26 29.55,4.02 44.51,5.31l-35.98 118.87zm-133.85 -112.53c-20.6,10.08 -69.45,38.52 -71.06,82.29 -1.54,41.63 17.6,74.68 29.93,95.94 3.61,6.23 6.61,11.42 8.19,15.3 3.82,9.35 7.24,22.25 8.53,31.93 0.48,3.56 0.67,6.64 0.46,8.8 -0.01,0.1 0.02,0.18 0.06,0.26 -6.65,-3.47 -28.8,-21.82 -46.97,-43.91 -4.21,-5.11 -8.15,-10.41 -11.6,-15.75l-2.6 -107.46c4.15,-15.68 7.95,-26.69 7.98,-26.78l-6.11 -4.41 -2.57 2.06 -2.04 -84.07c7.08,-2.79 14.2,-5.8 21.34,-8.98 7.26,-3.23 14.5,-6.65 21.71,-10.25 7.76,3.87 15.46,7.5 23.13,10.88 7.48,3.3 15.06,6.45 22.74,9.46l-1.12 44.69zm-143.99 109.27c-3.17,6.21 -6.02,12.7 -8.41,19.47 -8.33,23.56 -13.53,41.65 -16.59,55.4 -4.01,18.05 -4.32,28.85 -3.14,34.77 0.34,1.71 0.52,4.1 0.52,6.86 0,5.43 -0.71,12.01 -2.28,17.35 -1.27,4.28 -2.92,7.61 -4.91,8.18l-10.88 -35.95c0.22,-0.69 0.48,-1.33 0.78,-1.9 3.49,-6.63 5.12,-20.3 5.12,-35.09 0,-15.27 -1.7,-32.05 -4.81,-43.47 -2.46,-8.99 -9.51,-17.56 -17.88,-24.97 -6.21,-5.5 -13.18,-10.39 -19.44,-14.3l-30.92 -102.18c14.86,-1.33 29.69,-3.15 44.49,-5.49 14.9,-2.35 29.68,-5.23 44.3,-8.65l24.05 129.97zm-126.31 55.96c-4.7,19.43 -8.57,40.53 -2.95,58.49 3.82,12.23 10.66,23.39 17.91,35.24 8.38,13.68 17.36,28.34 22.5,46.34 8.16,28.56 7.88,31.94 7.13,41.02l-0.37 4.94c-1.23,4.39 -3.26,9.63 -5.48,15.35 -1.38,3.54 -2.82,7.23 -4.2,11.09l-187.5 -320.47c5.54,-10.22 10.58,-20.7 15.07,-31.46 4.36,-10.5 8.24,-21.3 11.59,-32.42 8.92,0.72 17.93,1.31 27.02,1.79 9.06,0.47 18.15,0.81 27.26,1.02l72.02 169.07zm-47.38 173.86c-9.58,9.62 -25.76,28.71 -34.43,54.84l-115.86 -118.06c-10.53,-57.79 -37.01,-99.72 -43.81,-109.77 6.93,-6.14 13.6,-12.4 19.99,-18.77 6.19,-6.13 12.11,-12.37 17.76,-18.67l156.35 210.43zm-39.72 109.83c1.59,18.11 5.89,33.62 11.95,47.21 8.49,19.04 20.36,34.18 32.96,47.11 5.84,6.02 14.45,13.64 24.52,22.31l-97.6 -64.59c-2.94,-21.76 -2.99,-38.87 -2.99,-38.97l-7.38 -1.96c-0.04,0.09 -5.83,10.07 -12.5,25.8l-80.26 -53.12c5.24,-13.14 9.93,-25.76 13.72,-37.69 4.04,-12.76 7.09,-24.83 8.75,-36.11l0.01 -0.1 108.82 90.11zm-64.3 75.63c-5.16,19.93 -8.28,42.34 -5.53,64.04l-109.81 -40.78c8.53,-21.73 17.87,-43.33 26.85,-64.13l2.78 -6.47 85.71 47.34zm12.39 111.45c13.77,20.57 33.14,36.79 51.34,50.83l-212.95 -19.54c1.52,-11.59 3.73,-23.26 6.49,-34.95 2.79,-11.88 6.12,-23.72 9.84,-35.49l145.28 39.15zm94.95 88.03c3.88,5.25 5.89,10.39 5.23,15.55 -0.96,7.76 -4.51,16.12 -9.19,24.86l-234.03 26.36c-5.65,-10.53 -10.03,-21.33 -13.27,-32.36 -3.07,-10.35 -5.14,-20.9 -6.36,-31.56l257.62 -2.85zm-23.23 73.29c-8.65,15.26 -15.99,31.19 -16.68,47.74l-109.31 44.26c-10.99,-7.1 -21.43,-14.79 -31.17,-23.17 -8.8,-7.57 -17.07,-15.74 -24.71,-24.57l181.87 -44.26zm546.98 -10.02l-16.32 -3.99c-5.99,1.25 -11.08,3.58 -15.28,6.31 -6.73,4.36 -11.21,9.79 -13.55,13.69l9.17 3.73c4.54,-5.95 8.89,-9.89 13.3,-12.64 6.12,-3.79 12.12,-5.22 18.81,-6.48l3.87 -0.62zm-106.99 -85l17.49 -1.6c1.75,-3.78 3.83,-7.77 6.34,-11.86l-24.88 6.71c0.18,2.41 0.56,4.66 1.05,6.75zm1.25 -25.82l53.87 -20c12.05,-8.28 26.98,-16.41 42.52,-24.89 31.82,-17.36 66.33,-36.19 82.93,-60 5.07,-7.28 9.16,-16.01 12.43,-25.31l-167.58 92.55c-7.35,8.14 -13.49,15.98 -17.69,23.19 -2.97,5.1 -5.07,9.92 -6.48,14.46zm98.77 -218.61l22.71 -23.14c2.37,-3.53 4.11,-7.02 5.1,-10.43 8.26,-28.64 0.61,-63.71 -3.74,-79.49l-72.76 97.94c-4.38,8.31 -11.18,16.95 -18.95,25.5l-62.51 84.12c-0.46,8.03 0.66,14.62 2.61,17.66 1.82,2.88 5.19,5.69 8.46,7.99 -2.93,-11.93 -4.2,-31.71 12.15,-48.05 8.3,-8.32 25.81,-19.02 45.72,-31.21 20.46,-12.51 43.56,-26.64 61.21,-40.89zm-205.53 -333.27l2.58 -103.47c-10.14,15.83 -21.37,39.02 -17.06,59.18l0.45 2.1c3.86,17.98 6.48,30.22 14.03,42.19zm-149.24 437.01l-13.34 -17.96c5.89,12.72 4.62,25.65 2.48,34.37 3.27,-2.3 6.64,-5.11 8.47,-7.99 1.13,-1.75 1.97,-4.7 2.39,-8.42zm-24.74 -33.3l-131.1 -176.44c-4.25,17.73 -9.09,47.51 -1.91,72.43 7.01,24.3 52.25,51.98 89.01,74.46 18.63,11.4 35.15,21.48 44,29.55zm-24.11 118.02l-172.23 -95.13c2.92,7.45 6.42,14.42 10.59,20.39 16.6,23.81 51.12,42.65 82.94,60 17.17,9.37 33.6,18.33 46.23,27.51l3.57 2.7 47.42 17.62c-1.36,-5.38 -3.7,-11.2 -7.33,-17.41 -2.89,-4.96 -6.69,-10.22 -11.19,-15.68zm19.79 51.08l-23.34 -6.3c2.07,3.53 3.82,6.98 5.3,10.26l17.04 1.57c0.43,-1.74 0.77,-3.57 1,-5.53zm-95.83 85.23l-16.85 4.1c2.72,0.24 5.67,0.61 8.7,1.18 6.7,1.26 12.7,2.69 18.8,6.48 3.86,2.41 7.66,5.71 11.59,10.46l9.39 -3.8c-2.56,-3.58 -6.55,-7.87 -12.05,-11.45 -4.95,-3.2 -11.09,-5.83 -18.49,-6.84l-1.09 -0.13zm430.72 41.38l0 35.29 12.2 0c1.99,6.66 4.74,13.26 8.09,19.49l0 21.98 19.53 0c1.71,0.81 3.52,1.51 5.4,2.1l0 39.47 -477.27 0 0 -39.48c1.89,-0.58 3.68,-1.28 5.39,-2.09l19.54 0 0 -21.98c3.34,-6.21 6.11,-12.83 8.08,-19.49l12.2 0 0 -35.29c6.7,13.31 13.9,27.93 13.93,28l1.48 1.67 50.52 31.42 2.08 0.6 250.82 0 2.08 -0.6 50.53 -31.42 1.48 -1.67c0.04,-0.07 7.21,-14.67 13.92,-28z"/>
+                                          <path class="fil4" d="M1385.24 4667.62c67.99,-50.06 151.12,-77.03 231.52,-103.1 115.17,-37.34 224.63,-72.84 271.09,-171.85l0.21 -0.43c50.06,-91.63 0.32,-206.8 -41.74,-304.17 -20.4,-47.25 -39.05,-90.42 -44.28,-125.92 -13.84,-93.82 30.27,-171.26 44.05,-192.71 -26.49,-23.88 -49.45,-49.64 -68.32,-77.53 -18.96,-28.03 -33.83,-58.28 -44.07,-91.01 -61.37,4.7 -120.98,3.58 -178.69,-5.26 -58.56,-8.98 -115.2,-25.94 -169.77,-52.87 -54.57,26.93 -111.21,43.89 -169.77,52.87 -57.71,8.84 -117.33,9.96 -178.7,5.26 -10.23,32.73 -25.1,62.98 -44.06,91.01 -18.88,27.89 -41.83,53.65 -68.33,77.53 13.79,21.45 57.9,98.89 44.06,192.71 -5.24,35.5 -23.88,78.67 -44.29,125.92 -42.05,97.37 -91.79,212.54 -41.74,304.17l0.22 0.43c46.45,99.01 155.92,134.51 271.09,171.85 80.39,26.07 163.52,53.04 231.52,103.1zm236.34 -88.09c-81.05,26.28 -164.92,53.48 -231.58,104.18l-4.76 3.62 -4.76 -3.62c-66.67,-50.7 -150.53,-77.9 -231.58,-104.18 -118.43,-38.4 -230.97,-74.9 -280.42,-179.92 -53.6,-98.36 -2.26,-217.26 41.16,-317.78 19.98,-46.27 38.24,-88.55 43.17,-121.96 15.38,-104.23 -45.02,-186.9 -45.2,-187.14l-4.18 -5.8 5.39 -4.73c27.63,-24.25 51.44,-50.52 70.79,-79.13 19.3,-28.52 34.14,-59.34 43.9,-92.75l1.81 -6.21 6.41 0.53c62.43,5.18 122.95,4.32 181.39,-4.64 58.32,-8.94 114.58,-25.95 168.6,-53.06l3.52 -1.77 3.52 1.77c54.02,27.12 110.28,44.12 168.59,53.06 58.45,8.96 118.96,9.82 181.4,4.64l6.4 -0.53 1.82 6.21c9.75,33.41 24.6,64.23 43.89,92.75 19.36,28.61 43.17,54.88 70.8,79.13l5.39 4.73 -4.19 5.8c-0.17,0.24 -60.57,82.91 -45.19,187.14 4.92,33.41 23.19,75.69 43.17,121.96 43.41,100.52 94.76,219.42 41.15,317.78 -49.44,105.02 -161.99,141.52 -280.41,179.92z"/>
+                                          <rect class="fil3" x="1270.28" y="3842.15" width="239.52" height="28.84"/>
+                                          <path class="fil4" d="M1270.28 3834.25l247.43 0 0 44.65 -255.33 0 0 -44.65 7.9 0zm231.62 15.81l-223.71 0 0 13.03 223.71 0 0 -13.03z"/>
+                                          <rect class="fil3" x="1251.89" y="3871" width="276.3" height="30.93"/>
+                                          <path class="fil4" d="M1259.8 3894.02l260.49 0 0 -15.12 -260.49 0 0 15.12zm268.4 15.82l-284.22 0 0 -46.75 292.12 0 0 46.75 -7.9 0z"/>
+                                          <rect class="fil3" x="1272.37" y="3901.93" width="235.34" height="25.49"/>
+                                          <path class="fil4" d="M1272.37 3894.02l243.25 0 0 41.31 -251.15 0 0 -41.31 7.9 0zm227.43 15.82l-219.52 0 0 9.67 219.52 0 0 -9.67z"/>
+                                          <polygon class="fil3" points="1293.27,3952.93 1486.81,3952.93 1486.81,3927.42 1293.27,3927.42 "/>
+                                          <path class="fil4" d="M1301.18 3945.02l177.73 0 0 -9.69 -177.73 0 0 9.69zm185.63 15.81l-201.44 0 0 -41.32 209.35 0 0 41.32 -7.91 0z"/>
+                                          <polygon class="fil3" points="1309.54,3952.93 1470.55,3952.93 1506.9,4337.44 1273.19,4337.44 "/>
+                                          <path class="fil4" d="M1309.54 3945.02l168.17 0c12.66,133.44 25.25,266.88 37.85,400.32l-251.03 0c12.59,-133.44 25.19,-266.88 37.85,-400.32l7.16 0zm153.84 15.81l-146.67 0 -34.86 368.7 216.39 0 -34.86 -368.7z"/>
+                                          <path class="fil4" d="M1362.41 3945.02l63.17 0 0 400.32 -71.08 0 0 -400.32 7.91 0zm47.36 15.81l-39.45 0 0 368.7 39.45 0 0 -368.7z"/>
+                                          <path class="fil4" d="M1254.39 4371.1l271.3 0 0 -25.75 -271.3 0 0 25.75zm279.21 15.82l-295.02 0 0 -57.39 302.93 0 0 57.39 -7.91 0z"/>
+                                          <path class="fil4" d="M1233.52 4412.57l313.04 0 0 -25.76 -313.04 0 0 25.76zm320.95 15.82l-336.76 0 0 -57.39 344.67 0 0 57.39 -7.91 0z"/>
+                                          <path class="fil4" d="M1204.53 4454.04l371.02 0 0 -25.76 -371.02 0 0 25.76zm378.93 15.81l-394.74 0 0 -57.38 402.64 0 0 57.38 -7.9 0z"/>
+                                          <path class="fil4" d="M1159.31 4536.97l461.46 0 0 -25.75 -461.46 0 0 25.75zm469.37 15.82l-485.18 0 0 -57.39 493.09 0 0 57.39 -7.91 0z"/>
+                                          <path class="fil2" d="M1735.69 4573.8c39.1,-0.95 74.14,3.33 92.78,14.28 34.18,20.08 53.42,70.08 53.42,70.08l4.58 7.2 15.47 -38.68 9.14 29.53c0,0 15.48,-18.28 19.7,-23.91 4.21,-5.62 11.96,-14.76 11.96,-14.76l-0.71 17.58c0,0 28.84,-45.72 45.01,-70.34 16.18,-24.61 35.87,-40.09 35.87,-40.09l-1.4 28.14 21.8 -23.91 7.73 15.47c0,0 18.43,-29.48 27.45,-46.03 9.03,-16.56 21.81,-31.6 24.07,-36.11 2.27,-4.52 10.54,-27.09 23.33,-45.14 12.78,-18.06 23.32,-31.59 23.32,-31.59l3.01 55.66c0,0 25.58,-16.55 27.09,-23.31 1.49,-6.78 -12.04,-42.89 -24.08,-58.68 -12.03,-15.8 -43.64,-21.82 -43.64,-21.82 0,0 4.16,-9.96 12.22,-12.8 8.07,-2.84 9.48,-2.84 9.48,-2.84 0,0 -3.31,-4.26 3.33,-6.64 6.63,-2.36 16.59,-1.89 16.59,-1.89 0,0 -5.69,-13.28 -9.49,-17.08 -3.79,-3.79 -15.63,-17.06 -15.63,-17.06 0,0 14.21,-6.63 20.38,-5.69 6.16,0.95 22.28,3.79 22.28,3.79 0,0 -9.01,-14.69 -9.01,-18.48 0,-3.8 -0.95,-9.96 -0.95,-9.96 0,0 -24.75,-22.28 -33.04,-40.71 -8.29,-18.42 5.07,-42.85 5.07,-42.85l8.74 6.91c0,0 18.44,-31.79 17.05,-37.32 -1.38,-5.53 -9.27,-6.67 -13.32,-10.23 -4.06,-3.54 -4.06,-6.59 -4.06,-6.59 0,0 -15.74,-3.05 -17.26,-6.6 -1.52,-3.54 -0.52,-19.79 -0.52,-19.79 0,0 -18.25,1.02 -20.29,-7.61 -2.03,-8.63 -1.52,-20.3 -1.52,-20.3 0,0 -10.15,3.55 -12.18,-4.06 -2.03,-7.61 -3.04,-17.25 -3.04,-17.25 0,0 -9.14,3.54 -10.15,0.5 -1.02,-3.04 -2.54,-7.11 -2.54,-7.11 0,0 -26.76,-8.75 -43.49,-26.04 -16.71,-17.3 -20.17,-35.16 -20.17,-35.16l13.26 -3.46c0,0 -3.47,-24.79 -3.47,-39.2 0,-14.41 1.74,-23.07 1.74,-23.07 0,0 -35.74,-13.24 -50.73,-25.36 -14.98,-12.11 -29.98,-23.63 -32.86,-27.09 -2.88,-3.45 -34.59,-27.09 -34.59,-27.09l15.57 -4.04 -22.48 -31.12 -2.91 -2.68 22.82 -31.12 -30.16 -26.35 0.83 -0.5c0,0 -1.77,-1.03 -4.48,-2.73 -10.64,-9.47 -20.73,-19.33 -30.19,-29.66 -1.18,-7.31 -0.05,-8.99 -0.05,-8.99 0,0 -13.1,-9.46 -22.69,-18.41 -4.01,-5.35 -7.83,-10.81 -11.48,-16.4 -3.02,-9.94 -3.52,-22.82 -3.52,-22.82 0,0 -26.18,-74.6 2.5,-115.44 28.66,-40.85 98.03,-24.6 98.03,-24.6l14.3 -20.15c0,0 23.39,13.65 30.54,24.05 7.16,10.4 11.05,16.24 11.05,16.24l3.25 -18.84 31.85 20.8 12.35 7.15c0,0 -0.66,-25.35 -0.66,-32.5 0,-7.15 5.21,-25.35 5.21,-25.35 0,0 24.68,27.94 44.83,39 20.15,11.05 29.9,21.44 42.25,37.69 12.35,16.25 17.54,33.15 17.54,33.15l11.41 3.86 9.31 -13.94c0,0 46.46,32.54 58.08,58.09 11.63,25.56 13.95,61.19 13.95,61.19 0,0 9.29,-13.94 10.07,-17.81 0.77,-3.87 3.1,-19.37 3.1,-19.37 0,0 32.52,27.11 46.47,48.8 13.94,21.68 10.07,36.41 10.07,36.41l10.84 -1.55 -0.77 22.45 0 8.52c0,0 6.19,-7.74 18.58,-13.16 12.39,-5.42 32.54,-6.97 32.54,-6.97 0,0 -14.73,34.07 -14.73,59.64 0,25.56 13.95,42.59 13.95,42.59l13.13 10.56 18.01 -15.45c0,0 7.08,36.03 10.94,41.18 3.86,5.13 19.93,19.29 45.66,40.51 25.73,21.24 32.16,37.96 32.16,37.96l10.3 -21.23c0,0 34.74,37.95 41.16,70.11 6.44,32.16 -0.05,54.94 -3.01,72.12 -2.95,17.17 -6.51,25.45 -6.51,33.14 0,7.71 -0.59,13.03 -0.59,13.03 0,0 12.58,15.6 14.51,19.46 1.95,3.87 18.36,-12.56 18.36,-12.56 0,0 4.35,17.39 4.35,22.71 0,5.31 0,10.13 0,10.13l7.73 0c0,0 3.38,20.77 3.38,23.67 0,2.9 0,7.73 0,7.73l17.39 -30.43c0,0 3.65,50.15 -3.55,72.99 -7.21,22.84 -12.62,28.25 -12.62,28.25l13.82 -6.02 -12.03 28.24 16.24 -0.59c0,0 -6.54,39.01 -13.59,53.77 -7.05,14.74 -16.03,27.56 -16.03,27.56l10.9 -0.65c0,0 0.65,27.57 -5.76,34.62 -6.41,7.05 -13.47,10.25 -13.47,10.25l12.83 1.28c0,0 -2.57,21.81 -10.26,28.21 -7.69,6.41 -10.26,7.05 -10.26,7.05l8.33 5.13c0,0 -11.53,19.88 -17.31,27.57 -5.76,7.69 -21.79,17.31 -21.79,17.31 0,0 21.75,18.99 27.42,39.29 5.66,20.28 -4.25,41.04 -4.25,41.04l19.82 0.47 -20.76 33.03 17.46 2.36c0,0 -13.33,39.4 -35.48,60.66 -22.14,21.27 -33.66,25.7 -33.66,25.7l12.42 6.53c0,0 -14.5,25.72 -18.86,28.14 -4.35,2.43 -9.66,4.85 -9.66,4.85l12.08 4.85c0,0 -10.63,14.07 -17.39,16.5 -6.77,2.42 -12.09,2.91 -12.09,2.91l7.25 5.34c0,0 -19.33,21.34 -27.06,25.23 -7.73,3.87 -25.62,10.66 -25.62,10.66 0,0 -3.47,7.49 -6.67,9.09 -3.21,1.61 -16.67,1.61 -16.67,1.61 0,0 0,11.2 -2.25,12.17 -2.24,0.96 -21.79,0.96 -21.79,0.96 0,0 5.45,8.98 -1.27,8.98 -6.74,0 -23.09,6.73 -23.09,6.73l17.95 13.94c0,0 -32.65,7.58 -35.57,7.58 -2.92,0 -4.07,11.65 -4.07,11.65l1.15 17.5c0,0 -9.32,1.17 -15.73,1.17 -6.43,0 -18.08,0.57 -18.08,0.57l3.5 9.33c0,0 -11.08,4.09 -16.33,4.09 -5.26,0 -15.16,0 -15.16,0l12.24 7.58c0,0 -7,1.74 -13.99,2.33 -7,0.58 -16.92,0.58 -16.92,0.58l7 11.09c0,0 -19.24,2.91 -25.07,2.34 -5.84,-0.59 -11.67,-1.76 -11.67,-1.76l1.76 11.66c0,0 -22.16,-2.32 -28.57,-2.32 -6.42,0 -35,0 -35,0 0,0 12.25,11.65 26.83,21.57 14.58,9.9 33.82,18.65 33.82,18.65 0,0 -55.73,3.13 -71.06,3.13 -15.34,0 -17.7,-2.37 -17.7,-2.37l1.18 9.45 -28.31 -9.45 1.18 17.71 -33.03 0 -27.13 -12.98c0,0 -82.57,54.26 -160.43,49.54 -77.85,-4.72 -110.89,-34.21 -145.1,-53.08 -34.2,-18.87 -61.19,-44.76 -84.97,-52.32 -23.81,-7.58 -31.37,-16.24 -46.52,-7.58 -15.15,8.65 -28.12,31.37 -60.58,37.86 -32.44,6.49 -77.87,2.16 -98.43,0 -20.55,-2.16 -33.53,-10.81 -33.53,-10.81 0,0 -43.27,12.97 -64.9,12.97 -21.64,0 -69.23,-1.07 -77.88,-6.48 -8.66,-5.41 -23.58,-8.17 -33.33,-18.67 -9.74,-10.5 -5.99,-24.75 -26.25,-20.25 -20.25,4.51 -55.5,18.76 -115.5,61.51 -60.01,42.76 -93.01,51 -153.77,53.25 -60.75,2.25 -111.75,-21.76 -111.75,-21.76l-51.21 -31.13c0,0 -43.92,2.58 -82.97,-13.05 -39.06,-15.62 -80.94,-51.12 -80.94,-51.12 0,0 -36.21,-14.9 -72.43,-39.04 -36.2,-24.15 -44.72,-49 -44.72,-49 0,0 -23.73,-10.05 -45.31,-32.53 -21.59,-22.47 -35.97,-44.06 -35.97,-44.06 0,0 -35.97,-21.58 -50.35,-38.67 -14.39,-17.07 -20.68,-47.66 -20.68,-47.66 0,0 -35.08,-21.57 -53.05,-53.05 -17.99,-31.46 -22.49,-63.84 -22.49,-63.84l15.29 1.8c0,0 -30.12,-35.67 -39.18,-69.81 -9.05,-34.12 -6.96,-56.42 -6.96,-56.42l18.11 7.66c0,0 -29.18,-54.14 -34.06,-95.23 -4.88,-41.11 2.7,-69.04 2.7,-69.04l20.91 21.6c0,0 -6.78,-35.46 -9.7,-62.77 -2.93,-27.31 6.48,-73.59 6.48,-73.59l8.64 1.87c0,0 -1.67,-39.03 -0.76,-62.71 0.91,-23.67 20.34,-76.62 20.34,-76.62l7.28 15.48c0,0 0.75,-55.43 10.53,-84.74 9.78,-29.34 32.36,-56.14 32.36,-56.14l3.34 15.23c0,0 12.2,-38.76 21.33,-59.75 9.13,-20.98 38.67,-43.26 38.67,-43.26l1.6 36.4c0,0 24.76,-43.37 35.09,-59.44 10.34,-16.08 25.27,-25.84 25.27,-25.84l3.44 8.61c0,0 14.93,-30.18 26.43,-45.11 11.48,-14.93 36.19,-31.63 36.19,-31.63l1.13 15.3c0,0 13,-29.91 27.72,-47.23 14.72,-17.32 48.1,-43.98 48.1,-43.98l1.19 11.47c0,0 13.3,-33.09 37.55,-55.59 24.24,-22.51 54.55,-33.18 54.55,-33.18l-2.61 19.05c0,0 27.69,-35.36 43.27,-44.02 15.59,-8.67 40.72,-13.14 40.72,-13.14 0,0 -16.45,16.46 -17.31,34.65 -0.87,18.18 -0.87,25.1 -0.87,25.1 0,0 32.31,-54.27 77.33,-64.65 45.02,-10.39 76.77,-2.01 82.85,-2.01 6.06,0 37.22,8.65 37.22,8.65l-22.51 21.64c0,0 34.4,-9.03 62.52,-2.78 28.12,6.26 45.31,13.29 45.31,13.29 0,0 -37.5,35.16 -48.43,42.97 -10.94,7.81 -50.79,49.21 -50.79,49.21 0,0 21.1,-11.71 41.41,-18.75 12.91,-4.47 29.61,-10.83 40.07,-14.88 -12.27,36.18 -31.28,68.26 -55.22,97.02 -14.64,7.16 -17.18,8.01 -17.18,8.01l7.38 3.29c-10.89,12.05 -22.65,23.5 -35.15,34.41l-21.1 18.44c-29.71,17.52 -25.19,23.12 -25.19,23.12 0,0 -10.32,24.17 -19.42,34.58 -9.11,10.39 -22.16,17.31 -22.16,17.31l16.82 0.53c0,0 -25.46,43.33 -41.9,56.91 -16.43,13.58 -30.72,19.29 -30.72,19.29l18.57 5.72c0,0 -27.86,32.14 -42.86,41.43 -15,9.3 -32.86,21.44 -32.86,21.44l36.43 -1.42c0,0 -21.44,25.71 -32.14,37.14 -10.72,11.44 -31.75,23.76 -31.75,23.76l17.21 0.01c0,0 -14.24,28.97 -22.69,42.28 -8.45,13.3 -23.45,24.35 -23.45,24.35 0,0 2.9,18.69 -4.56,40.42 -7.45,21.73 -22.35,36.01 -22.35,36.01l11.79 -4.96c0,0 3.11,46.58 -4.96,70.17 -8.08,23.6 -16.15,33.51 -16.15,33.51l6.29 1.94c0,0 15.54,47.4 10.57,73.21 -4.97,25.8 -7.09,30.53 -7.09,30.53 0,0 23.99,22.36 40.91,53.99 16.9,31.63 14.17,39.81 14.17,39.81 0,0 30.25,20.66 40.43,34.03 10.19,13.37 14,21 14,21l1.51 -7.7c0,0 58.96,33.16 69.15,49.08 10.19,15.91 17.19,32.46 17.19,32.46l7 -13.37c0,0 41.43,26.89 54.8,38.98 13.37,12.09 24.13,36.78 24.13,36.78 0,0 9.79,-56.53 66.54,-81.52 19.91,-8.76 49.06,-11.48 83.2,-9.32 109.64,43.2 235.86,66.97 324.29,133.92l26.94 20.39 26.96 -20.39c88.21,-66.79 214.04,-90.59 323.5,-133.61zm29.43 100.96c-1.44,0.34 -3.7,0.71 -6.78,1.09 -3.09,0.38 -5.11,0.85 -6.1,1.37 -1.51,0.89 -2.34,2.1 -2.47,3.65 -0.14,1.54 0.32,2.91 1.35,4.12 1.05,1.21 2.45,1.89 4.2,2.05 1.97,0.16 3.9,-0.31 5.8,-1.45 1.42,-0.86 2.38,-1.99 2.92,-3.39 0.37,-0.89 0.66,-2.66 0.89,-5.27l0.19 -2.17zm-11.41 -10.6l-9.75 -2.66c1.46,-3.89 3.63,-6.66 6.51,-8.34 2.9,-1.67 7,-2.28 12.35,-1.82 4.88,0.43 8.44,1.33 10.73,2.69 2.27,1.36 3.82,2.96 4.64,4.82 0.8,1.86 1.02,5.15 0.59,9.89l-1.23 12.72c-0.31,3.61 -0.37,6.3 -0.16,8.05 0.19,1.74 0.69,3.66 1.46,5.7l-10.78 -0.94c-0.22,-0.76 -0.48,-1.86 -0.77,-3.32 -0.12,-0.66 -0.21,-1.1 -0.27,-1.31 -2.02,1.65 -4.13,2.82 -6.33,3.55 -2.2,0.72 -4.51,0.97 -6.91,0.77 -4.24,-0.37 -7.49,-1.82 -9.73,-4.32 -2.24,-2.53 -3.21,-5.55 -2.91,-9.07 0.21,-2.32 0.95,-4.34 2.22,-6.08 1.27,-1.73 2.96,-2.98 5.04,-3.78 2.09,-0.79 5.06,-1.39 8.9,-1.78 5.17,-0.5 8.79,-1.1 10.82,-1.75l0.1 -1.09c0.18,-2.1 -0.21,-3.63 -1.17,-4.62 -0.95,-0.98 -2.85,-1.6 -5.73,-1.85 -1.95,-0.17 -3.49,0.07 -4.65,0.75 -1.14,0.67 -2.13,1.93 -2.97,3.79zm-89.15 -9.43l10.05 -0.88 0.49 5.63c3.2,-4.69 7.31,-7.25 12.28,-7.68 2.64,-0.23 4.97,0.11 7,1.03 2.03,0.91 3.77,2.41 5.21,4.5 1.61,-2.35 3.43,-4.17 5.42,-5.44 2,-1.26 4.19,-2.01 6.58,-2.21 3.02,-0.27 5.64,0.14 7.84,1.18 2.2,1.03 3.93,2.71 5.16,4.99 0.91,1.7 1.52,4.51 1.88,8.45l2.29 26.34 -10.89 0.95 -2.06 -23.54c-0.36,-4.09 -0.96,-6.7 -1.83,-7.83 -1.14,-1.45 -2.76,-2.1 -4.84,-1.93 -1.54,0.14 -2.93,0.74 -4.21,1.78 -1.25,1.05 -2.09,2.5 -2.54,4.35 -0.43,1.86 -0.49,4.73 -0.15,8.6l1.73 19.78 -10.9 0.97 -1.97 -22.58c-0.35,-4.03 -0.79,-6.58 -1.26,-7.72 -0.49,-1.13 -1.17,-1.94 -2.03,-2.45 -0.88,-0.49 -1.99,-0.69 -3.41,-0.55 -1.68,0.15 -3.15,0.72 -4.4,1.75 -1.27,1.02 -2.13,2.42 -2.56,4.17 -0.43,1.77 -0.48,4.62 -0.13,8.57l1.76 20.03 -10.91 0.95 -3.6 -41.21zm-30.23 36.14c-1.13,0.95 -2.98,2.3 -5.56,4.05 -2.55,1.74 -4.16,3.07 -4.81,3.99 -0.92,1.49 -1.11,2.94 -0.53,4.38 0.57,1.43 1.59,2.43 3.07,3.04 1.48,0.61 3.05,0.59 4.68,-0.08 1.83,-0.75 3.32,-2.05 4.51,-3.91 0.87,-1.41 1.22,-2.85 1.06,-4.35 -0.09,-0.96 -0.63,-2.68 -1.61,-5.09l-0.81 -2.03zm-14.99 -4.18l-9.89 2.05c-0.46,-4.13 0.22,-7.58 2.01,-10.39 1.82,-2.8 5.22,-5.22 10.19,-7.23 4.54,-1.84 8.13,-2.65 10.78,-2.47 2.63,0.17 4.75,0.89 6.31,2.18 1.58,1.29 3.25,4.13 5.03,8.55l4.67 11.89c1.36,3.37 2.53,5.78 3.51,7.25 0.96,1.47 2.28,2.94 3.91,4.4l-10.05 4.06c-0.53,-0.57 -1.27,-1.44 -2.19,-2.59 -0.39,-0.54 -0.68,-0.88 -0.83,-1.06 -1.06,2.39 -2.4,4.4 -4.03,6.05 -1.63,1.63 -3.58,2.9 -5.82,3.8 -3.94,1.6 -7.5,1.79 -10.62,0.57 -3.15,-1.22 -5.38,-3.48 -6.7,-6.75 -0.87,-2.16 -1.14,-4.31 -0.79,-6.43 0.34,-2.12 1.28,-3.99 2.77,-5.65 1.5,-1.64 3.89,-3.53 7.12,-5.62 4.38,-2.8 7.33,-4.98 8.85,-6.47l-0.41 -1.02c-0.79,-1.96 -1.83,-3.14 -3.14,-3.59 -1.29,-0.44 -3.27,-0.13 -5.94,0.95 -1.82,0.74 -3.08,1.66 -3.8,2.78 -0.72,1.11 -1.03,2.69 -0.94,4.74zm-26.22 -1.66l3.41 8.02 -6.87 2.92 6.51 15.35c1.31,3.11 2.16,4.89 2.51,5.35 0.35,0.46 0.81,0.75 1.43,0.9 0.61,0.12 1.25,0.05 1.91,-0.23 0.94,-0.4 2.15,-1.29 3.66,-2.69l4.17 7.44c-1.93,2 -4.36,3.63 -7.34,4.89 -1.81,0.78 -3.57,1.16 -5.28,1.18 -1.72,0 -3.13,-0.34 -4.22,-1.01 -1.1,-0.68 -2.12,-1.78 -3.09,-3.33 -0.7,-1.08 -1.81,-3.4 -3.33,-6.96l-7.04 -16.6 -4.63 1.97 -3.4 -8.03 4.62 -1.97 -3.22 -7.57 7.62 -10.16 5.71 13.44 6.87 -2.91zm-34.03 16l3.55 7.98 -6.82 3.03 6.78 15.24c1.37,3.09 2.22,4.85 2.59,5.3 0.37,0.45 0.84,0.73 1.45,0.87 0.61,0.12 1.25,0.04 1.91,-0.26 0.93,-0.41 2.13,-1.33 3.61,-2.76l4.29 7.38c-1.89,2.04 -4.28,3.7 -7.24,5.01 -1.79,0.81 -3.56,1.23 -5.27,1.28 -1.71,0.03 -3.12,-0.28 -4.23,-0.95 -1.11,-0.65 -2.14,-1.74 -3.15,-3.26 -0.72,-1.06 -1.87,-3.37 -3.45,-6.92l-7.33 -16.46 -4.58 2.05 -3.55 -7.98 4.58 -2.03 -3.34 -7.53 7.44 -10.28 5.94 13.34 6.82 -3.05zm-49.85 44.7c1.61,3.78 3.73,6.29 6.38,7.54 2.63,1.24 5.28,1.31 7.9,0.19 2.64,-1.11 4.42,-3.06 5.34,-5.81 0.93,-2.77 0.59,-6.06 -1.03,-9.89 -1.59,-3.73 -3.71,-6.23 -6.35,-7.48 -2.62,-1.25 -5.24,-1.31 -7.88,-0.2 -2.63,1.11 -4.42,3.06 -5.35,5.83 -0.95,2.77 -0.61,6.04 0.99,9.82zm-10.55 3.85c-1.43,-3.35 -1.97,-6.95 -1.66,-10.78 0.33,-3.82 1.64,-7.2 3.97,-10.13 2.32,-2.94 5.35,-5.19 9.09,-6.78 5.74,-2.45 11.26,-2.57 16.53,-0.4 5.27,2.18 9.12,6.13 11.55,11.85 2.44,5.75 2.61,11.32 0.5,16.68 -2.11,5.37 -5.98,9.24 -11.62,11.63 -3.5,1.48 -7.15,2.11 -10.99,1.88 -3.84,-0.23 -7.24,-1.52 -10.19,-3.87 -2.92,-2.35 -5.33,-5.71 -7.18,-10.08zm-35.37 36.55l-19.53 -53.66 10.3 -3.75 10.36 28.48 7.05 -18.06 12.66 -4.62 -8.11 19.04 23.21 19.49 -11.07 4.04 -16.14 -13.9 -2.97 6.75 4.54 12.45 -10.3 3.74zm-45.21 -5.59c-1.28,0.74 -3.33,1.75 -6.17,3.03 -2.84,1.26 -4.63,2.31 -5.43,3.09 -1.18,1.31 -1.62,2.71 -1.29,4.22 0.32,1.5 1.15,2.67 2.5,3.53 1.36,0.85 2.88,1.1 4.62,0.73 1.93,-0.41 3.62,-1.44 5.12,-3.07 1.1,-1.23 1.68,-2.61 1.79,-4.09 0.1,-0.98 -0.15,-2.74 -0.69,-5.31l-0.45 -2.13zm-16.17 -5.64l-10.09 0.31c0.27,-4.14 1.52,-7.43 3.79,-9.89 2.28,-2.44 6.03,-4.22 11.29,-5.34 4.78,-1.02 8.45,-1.21 11.03,-0.57 2.57,0.64 4.53,1.71 5.84,3.26 1.32,1.54 2.49,4.62 3.47,9.28l2.54 12.53c0.76,3.54 1.48,6.14 2.2,7.74 0.69,1.62 1.72,3.29 3.07,5.01l-10.6 2.26c-0.42,-0.65 -0.99,-1.63 -1.7,-2.93 -0.29,-0.62 -0.51,-1 -0.63,-1.19 -1.47,2.18 -3.13,3.92 -5.02,5.25 -1.9,1.33 -4.03,2.24 -6.4,2.74 -4.15,0.88 -7.69,0.46 -10.55,-1.28 -2.9,-1.75 -4.7,-4.36 -5.44,-7.82 -0.47,-2.27 -0.36,-4.43 0.34,-6.45 0.72,-2.03 1.96,-3.73 3.73,-5.1 1.76,-1.36 4.42,-2.8 7.98,-4.31 4.8,-1.99 8.09,-3.61 9.84,-4.83l-0.23 -1.06c-0.44,-2.07 -1.26,-3.43 -2.46,-4.09 -1.2,-0.65 -3.21,-0.69 -6.03,-0.1 -1.9,0.41 -3.32,1.1 -4.21,2.1 -0.91,0.96 -1.5,2.46 -1.76,4.48zm-65.32 26.65l-7.44 -42.64 9.88 1.29 4.1 27.85 9.7 -26.03 9.81 1.28 3.31 27.75 10.44 -25.95 10.01 1.32 -17.05 39.44 -9.77 -1.29 -3.57 -27.27 -9.54 25.55 -9.88 -1.3zm-29.78 -23.15l9.73 5.29c-2.63,3.31 -5.71,5.47 -9.25,6.47 -3.55,1 -7.46,0.74 -11.77,-0.74 -6.79,-2.33 -11.07,-6.27 -12.79,-11.86 -1.36,-4.44 -1.1,-9.39 0.76,-14.81 2.24,-6.48 5.68,-10.97 10.34,-13.47 4.64,-2.52 9.56,-2.87 14.74,-1.09 5.82,2.01 9.75,5.5 11.79,10.52 2.04,4.99 1.62,11.43 -1.25,19.31l-25.94 -8.92c-0.97,3.1 -0.97,5.77 0.04,8.01 1.01,2.26 2.71,3.81 5.09,4.62 1.63,0.56 3.13,0.59 4.55,0.08 1.41,-0.5 2.74,-1.63 3.96,-3.41zm4.2 -10.25c0.95,-3.03 0.97,-5.57 0.04,-7.64 -0.94,-2.06 -2.47,-3.46 -4.58,-4.18 -2.26,-0.78 -4.41,-0.6 -6.45,0.54 -2.02,1.13 -3.53,3.13 -4.48,5.97l15.47 5.31zm-72.22 -15.75l10.71 2.94c-0.44,2.13 -0.24,4 0.62,5.59 0.86,1.58 2.45,2.91 4.81,3.96 2.58,1.15 4.74,1.53 6.47,1.17 1.16,-0.28 2.01,-0.97 2.5,-2.08 0.35,-0.76 0.38,-1.51 0.13,-2.22 -0.28,-0.69 -1.21,-1.63 -2.76,-2.8 -7.28,-5.36 -11.67,-9.26 -13.17,-11.69 -2.08,-3.37 -2.31,-6.88 -0.7,-10.51 1.46,-3.27 3.98,-5.46 7.56,-6.53 3.58,-1.07 8.08,-0.41 13.51,2.01 5.18,2.3 8.65,4.86 10.41,7.66 1.77,2.8 2.39,6.06 1.86,9.78l-10.2 -2.45c0.26,-1.65 0,-3.12 -0.79,-4.39 -0.77,-1.29 -2.21,-2.41 -4.29,-3.33 -2.64,-1.18 -4.69,-1.65 -6.16,-1.41 -0.99,0.19 -1.67,0.69 -2.03,1.52 -0.32,0.72 -0.26,1.45 0.19,2.25 0.59,1.06 3.3,3.39 8.08,6.97 4.8,3.58 7.84,6.71 9.17,9.42 1.3,2.71 1.24,5.65 -0.18,8.83 -1.53,3.46 -4.3,5.8 -8.32,6.99 -4,1.21 -8.82,0.55 -14.5,-1.98 -5.15,-2.3 -8.75,-5.15 -10.83,-8.57 -2.08,-3.41 -2.77,-7.13 -2.09,-11.13zm-38.3 -40.5l-7.92 -6.25c2.87,-3 5.94,-4.71 9.25,-5.13 3.32,-0.41 7.34,0.64 12.08,3.16 4.32,2.3 7.26,4.51 8.82,6.66 1.56,2.13 2.36,4.23 2.39,6.25 0.01,2.02 -1.07,5.13 -3.32,9.33l-6.1 11.24c-1.71,3.19 -2.81,5.65 -3.31,7.35 -0.49,1.67 -0.79,3.63 -0.86,5.81l-9.56 -5.08c0.09,-0.79 0.28,-1.9 0.58,-3.35 0.15,-0.66 0.23,-1.09 0.26,-1.32 -2.5,0.73 -4.9,0.99 -7.21,0.8 -2.3,-0.2 -4.53,-0.87 -6.66,-2 -3.75,-2.01 -6.18,-4.6 -7.25,-7.78 -1.09,-3.19 -0.81,-6.36 0.85,-9.47 1.1,-2.07 2.57,-3.64 4.42,-4.74 1.84,-1.09 3.88,-1.59 6.11,-1.5 2.23,0.08 5.2,0.7 8.9,1.84 4.94,1.55 8.5,2.42 10.64,2.61l0.5 -0.97c0.99,-1.86 1.24,-3.42 0.75,-4.7 -0.51,-1.28 -2.01,-2.59 -4.57,-3.95 -1.71,-0.91 -3.23,-1.29 -4.56,-1.12 -1.32,0.15 -2.72,0.93 -4.23,2.31zm8.75 14.72c-1.44,-0.25 -3.67,-0.79 -6.66,-1.65 -2.99,-0.85 -5.04,-1.22 -6.15,-1.11 -1.74,0.23 -2.98,1.02 -3.71,2.39 -0.72,1.37 -0.83,2.8 -0.34,4.32 0.48,1.52 1.5,2.7 3.06,3.53 1.75,0.93 3.71,1.24 5.89,0.93 1.65,-0.25 2.98,-0.9 4.01,-1.97 0.69,-0.7 1.66,-2.21 2.88,-4.51l1.02 -1.93zm-54.7 -49.01l-3.96 7.77 -6.66 -3.39 -7.57 14.86c-1.53,3 -2.36,4.78 -2.48,5.35 -0.13,0.56 -0.04,1.1 0.23,1.67 0.3,0.55 0.76,1 1.4,1.32 0.91,0.48 2.37,0.82 4.41,1.07l-3.01 7.98c-2.77,-0.18 -5.59,-1.01 -8.47,-2.47 -1.75,-0.89 -3.18,-2 -4.3,-3.29 -1.1,-1.32 -1.74,-2.61 -1.93,-3.89 -0.19,-1.27 0.01,-2.77 0.57,-4.49 0.36,-1.24 1.42,-3.59 3.19,-7.04l8.18 -16.06 -4.47 -2.28 3.95 -7.77 4.47 2.28 3.74 -7.34 12.69 -0.69 -6.63 13.02 6.65 3.39zm-79.19 3.66l10.99 1.6c-0.17,2.17 0.26,3.99 1.31,5.47 1.03,1.47 2.78,2.59 5.24,3.35 2.72,0.83 4.91,0.95 6.56,0.36 1.15,-0.4 1.89,-1.21 2.25,-2.36 0.24,-0.8 0.19,-1.54 -0.15,-2.21 -0.37,-0.66 -1.39,-1.47 -3.07,-2.45 -7.88,-4.43 -12.71,-7.77 -14.5,-10 -2.47,-3.1 -3.12,-6.55 -1.97,-10.35 1.05,-3.41 3.27,-5.9 6.7,-7.39 3.42,-1.51 7.97,-1.4 13.65,0.34 5.42,1.65 9.17,3.77 11.28,6.34 2.09,2.57 3.1,5.72 3.03,9.48l-10.42 -1.19c0.05,-1.67 -0.38,-3.1 -1.32,-4.27 -0.94,-1.19 -2.49,-2.1 -4.67,-2.78 -2.76,-0.84 -4.85,-1.06 -6.28,-0.65 -0.95,0.31 -1.58,0.89 -1.83,1.76 -0.24,0.75 -0.09,1.48 0.46,2.22 0.73,0.99 3.68,2.96 8.87,5.93 5.19,2.97 8.6,5.71 10.26,8.22 1.61,2.54 1.91,5.46 0.89,8.79 -1.11,3.62 -3.57,6.29 -7.4,7.96 -3.83,1.69 -8.7,1.61 -14.65,-0.2 -5.38,-1.66 -9.3,-4.05 -11.79,-7.2 -2.47,-3.12 -3.61,-6.72 -3.44,-10.77zm-35.36 -19.84l-9.82 -2.31c1.32,-3.94 3.38,-6.79 6.21,-8.57 2.84,-1.77 6.91,-2.53 12.28,-2.24 4.89,0.26 8.47,1.03 10.81,2.31 2.31,1.27 3.93,2.82 4.8,4.66 0.88,1.83 1.19,5.11 0.95,9.86l-0.79 12.76c-0.19,3.61 -0.16,6.3 0.11,8.05 0.26,1.73 0.81,3.63 1.67,5.64l-10.81 -0.57c-0.25,-0.75 -0.55,-1.83 -0.89,-3.27 -0.13,-0.67 -0.24,-1.1 -0.31,-1.32 -1.97,1.72 -4.03,2.97 -6.21,3.78 -2.17,0.8 -4.45,1.12 -6.87,1 -4.25,-0.23 -7.56,-1.56 -9.88,-3.98 -2.34,-2.44 -3.4,-5.42 -3.22,-8.95 0.12,-2.33 0.79,-4.38 2.01,-6.16 1.21,-1.78 2.85,-3.08 4.91,-3.95 2.05,-0.86 5,-1.56 8.83,-2.09 5.15,-0.7 8.73,-1.42 10.74,-2.12l0.06 -1.1c0.11,-2.11 -0.33,-3.62 -1.32,-4.58 -0.99,-0.94 -2.92,-1.49 -5.8,-1.64 -1.94,-0.11 -3.48,0.2 -4.61,0.91 -1.12,0.7 -2.08,1.99 -2.85,3.88zm14.16 9.63c-1.43,0.4 -3.67,0.85 -6.76,1.34 -3.05,0.48 -5.06,1.01 -6.04,1.58 -1.47,0.94 -2.26,2.18 -2.34,3.74 -0.08,1.54 0.42,2.88 1.51,4.06 1.09,1.17 2.5,1.81 4.27,1.9 1.97,0.1 3.88,-0.46 5.74,-1.64 1.37,-0.92 2.3,-2.08 2.79,-3.49 0.34,-0.92 0.57,-2.69 0.7,-5.3l0.13 -2.19zm-42.57 24.96l-10.51 3.02 -11.43 -39.76 9.76 -2.79 1.63 5.63c0.89,-3.15 1.9,-5.33 2.98,-6.57 1.11,-1.22 2.49,-2.09 4.19,-2.58 2.4,-0.7 4.89,-0.7 7.5,0l-0.63 10.11c-2.09,-0.64 -3.91,-0.74 -5.42,-0.3 -1.49,0.42 -2.61,1.18 -3.39,2.29 -0.82,1.1 -1.19,2.8 -1.16,5.08 0.03,2.3 1.01,6.82 2.95,13.59l3.53 12.28zm148.2 26.49l-9.81 -4.85 18.32 -37.07 9.11 4.49 -2.61 5.28c2.8,-1.73 5.02,-2.67 6.64,-2.84 1.64,-0.18 3.25,0.12 4.84,0.89 2.24,1.12 4.07,2.79 5.54,5.06l-7.27 7.05c-1.11,-1.88 -2.39,-3.18 -3.8,-3.87 -1.39,-0.7 -2.73,-0.9 -4.05,-0.6 -1.35,0.27 -2.76,1.28 -4.28,2.99 -1.54,1.7 -3.86,5.72 -6.98,12.02l-5.65 11.45zm226.12 117.67c11.63,0 -2.5,0.2 45.77,-5.01 48.25,-5.22 143.01,-58.68 180.84,-70.42 37.82,-11.74 90.86,15.65 114.33,35.22 23.48,19.56 70.43,25.43 70.43,25.43l-1.3 15c0,0 -35.87,-5.22 -56.74,-17.61 -20.86,-12.39 -45.64,-30.65 -91.29,-37.17 -45.65,-6.52 -131.73,52.82 -139.55,54.12 -7.83,1.31 -18.92,-6.52 -18.92,-6.52 0,0 -5.87,-1.95 -14.34,0.66 -8.48,2.6 -20.22,11.73 -20.22,11.73 0,0 -4.56,-3.91 -11.74,-2.61 -7.17,1.31 -14.34,9.13 -14.34,9.13 0,0 -1.31,0 -5.22,-1.95 -3.91,-1.96 -9.78,-3.26 -20.22,-0.65 -10.43,2.6 -5.86,18.26 -17.49,19.56 -11.62,-1.3 -7.05,-16.96 -17.49,-19.56 -10.43,-2.61 -16.3,-1.31 -20.21,0.65 -3.92,1.95 -5.22,1.95 -5.22,1.95 0,0 -7.17,-7.82 -14.35,-9.13 -7.17,-1.3 -11.74,2.61 -11.74,2.61 0,0 -11.75,-9.13 -20.22,-11.73 -8.48,-2.61 -14.35,-0.66 -14.35,-0.66 0,0 -11.09,7.83 -18.91,6.52 -7.83,-1.3 -93.91,-60.64 -139.56,-54.12 -45.64,6.52 -70.42,24.78 -91.29,37.17 -20.87,12.39 -56.74,17.61 -56.74,17.61l-1.3 -15c0,0 46.95,-5.87 70.43,-25.43 23.47,-19.57 76.51,-46.96 114.34,-35.22 37.83,11.74 132.59,65.2 180.85,70.42 48.26,5.21 34.14,5.01 45.76,5.01zm24.07 24.73c7.66,-0.97 8.61,26.42 19.63,43.71 11.01,17.31 26.32,24.51 22.49,28.36 -3.82,3.84 -24.88,-7.2 -33.02,-22.11 -8.14,-14.89 -14.36,-45.16 -9.1,-49.96zm29.54 -1.45c7.06,-0.88 7.94,24.4 18.12,40.38 10.16,15.98 24.3,22.64 20.77,26.18 -3.54,3.55 -22.99,-6.66 -30.5,-20.4 -7.51,-13.77 -13.26,-41.71 -8.39,-46.16zm23.32 -8.65c6.62,-0.83 7.45,22.84 16.97,37.78 9.51,14.96 22.74,21.18 19.44,24.51 -3.31,3.32 -21.52,-6.22 -28.54,-19.1 -7.04,-12.88 -12.42,-39.03 -7.87,-43.19zm28.06 -2.88c5.85,-0.73 6.59,20.23 15.01,33.46 8.42,13.23 20.15,18.75 17.21,21.7 -2.92,2.93 -19.05,-5.52 -25.27,-16.92 -6.22,-11.39 -10.99,-34.56 -6.95,-38.24zm-129.07 12.98c-7.66,-0.97 -8.61,26.42 -19.62,43.71 -11.01,17.31 -26.32,24.51 -22.49,28.36 3.83,3.84 24.89,-7.2 33.02,-22.11 8.14,-14.89 14.35,-45.16 9.09,-49.96zm-29.52 -1.45c-7.08,-0.88 -7.96,24.4 -18.12,40.38 -10.18,15.98 -24.32,22.64 -20.79,26.18 3.55,3.55 22.99,-6.66 30.5,-20.4 7.53,-13.77 13.26,-41.71 8.41,-46.16zm-23.34 -8.65c-6.62,-0.83 -7.44,22.84 -16.95,37.78 -9.53,14.96 -22.76,21.18 -19.45,24.51 3.31,3.32 21.51,-6.22 28.53,-19.1 7.04,-12.88 12.42,-39.03 7.87,-43.19zm-28.05 -2.88c-5.86,-0.73 -6.59,20.23 -15.02,33.46 -8.42,13.23 -20.14,18.75 -17.21,21.7 2.93,2.93 19.05,-5.52 25.27,-16.92 6.24,-11.39 10.99,-34.56 6.96,-38.24zm552.16 -1220.37c0,0 17.28,-7.21 37.16,-15.05 19.87,-7.85 23.11,-14.97 23.11,-14.97 0,0 -19.77,-41.57 -12.96,-43.15 6.79,-1.56 41.11,-7.27 41.11,-7.27l0.53 -39.22c0,0 -53.88,-7.32 -82.13,18.3 -28.24,25.64 -6.82,101.36 -6.82,101.36zm101.43 -130.32c0,0 5.82,62.44 -0.98,62.97 -6.8,0.51 -38.7,4.7 -38.7,4.7 0,0 17.78,37.66 16.74,40.28 -1.05,2.61 -38.71,20.39 -49.7,26.15 -10.98,5.75 -27.72,12.55 -27.72,12.55 0,0 47.34,5.64 74.01,-1.16 26.68,-6.8 47.86,-23.43 47.86,-23.43 0,0 35.35,22.08 55.26,38.67 19.91,16.59 30.98,28.76 30.98,28.76l-2.21 -30.97 -66.38 -67.49c0,0 -6.76,-92.81 -39.16,-91.03zm38.57 26.14c0,0 19.61,-0.6 47.54,17.22 27.93,17.84 39.82,24.38 39.82,24.38 0,0 -18.42,-23.18 -22,-39.82 -3.56,-16.65 -3.56,-26.74 -3.56,-26.74 0,0 19.02,18.42 31.49,29.11 12.49,10.7 19.02,19.61 26.76,28.53 7.71,8.92 11.87,20.8 11.87,20.8 0,0 -43.96,4.16 -54.67,25.54 -10.69,21.4 -7.72,41.6 -7.72,41.6 0,0 -29.12,-27.92 -32.68,-30.29 -3.58,-2.38 -25.56,-32.69 -25.56,-32.69l27.93 1.78c0,0 -42.19,-47.54 -39.22,-59.42zm-128.45 136.32c0,0 33.12,8.64 41.76,7.2 8.64,-1.44 20.16,0 20.16,0l1.44 -11.53 30.23 2.89 0 -12.97c0,0 30.24,-1.44 56.16,21.61 25.93,23.04 53.29,56.16 53.29,56.16l-12.96 8.64 17.28 20.16 -31.68 1.44c0,0 -20.17,-17.28 -38.89,-34.56 -18.72,-17.28 -44.64,-28.8 -44.64,-28.8 0,0 18.72,24.48 27.36,34.56 8.64,10.08 18.72,21.6 18.72,21.6l-24.48 -7.2 5.76 27.36c0,0 -15.84,-2.88 -30.24,-5.76 -14.39,-2.88 -33.11,-18.72 -33.11,-18.72l21.6 1.44 -37.44 -21.6 17.28 -10.08 -31.68 -17.28 15.84 -7.2 -41.76 -27.36zm264.96 -15.85c5.76,-7.2 41.76,-7.2 41.76,-7.2l-1.44 -38.87c0,0 -61.92,-15.84 -83.52,14.41 -21.6,30.22 -3.53,75.25 -3.53,75.25l47.52 -8.89 -0.79 -34.7zm53.28 -40.3l3.16 48.29 -39.16 2.09 1.44 33.13 -69.12 20.16c0,0 10.08,23.04 41.76,24.48 31.68,1.44 43.2,-4.32 43.2,-4.32l10.08 -38.88c0,0 24.49,7.2 31.69,11.52 7.2,4.32 14.4,7.2 14.4,7.2l2.88 -17.28 -4.32 -18.72c0,0 -17.28,-61.91 -36.01,-67.67zm-126.72 158.39l46.08 31.68 -30.24 7.2 25.92 28.81 -8.64 15.84c0,0 24.48,11.52 43.2,14.4 18.72,2.88 59.04,47.52 59.04,47.52l5.77 -10.08 -31.69 -40.32 11.52 -1.44 27.37 23.04c0,0 0,-31.68 -4.32,-50.4 -4.32,-18.73 -24.49,-50.41 -24.49,-50.41l-30.24 -21.6c0,0 -33.12,-12.96 -43.2,-12.96 -10.08,0 -31.68,-10.08 -31.68,-10.08l23.04 27.36c0,0 -36,0 -37.44,1.44zm-116.64 11.52l56.15 5.76 -1.44 -21.6 20.16 2.88 4.32 -11.52 17.29 20.16 25.92 10.08 14.4 14.4 -23.04 -1.44 25.92 31.69 -11.52 7.2 11.52 15.84 18.72 11.52c0,0 -15.84,10.08 -28.8,17.28 -12.96,7.2 -17.28,11.52 -17.28,11.52 0,0 -40.33,-4.32 -47.53,-11.52 -7.2,-7.2 -17.28,-17.28 -17.28,-17.28l23.04 -4.32 -34.56 -7.2 -17.28 -12.96 24.48 -7.2 -27.36 -11.53 -18.71 -11.52 34.55 -1.44 -43.19 -18.72 11.52 -10.08zm360 83.53c24.48,-14.4 34,-16.33 57.04,-1.93 23.03,14.4 27.35,24.1 27.35,24.1 0,0 -6.68,26.98 -13.88,26.98 -7.2,0 -34.51,-13.53 -34.51,-13.53l-4.58 50.78c0,0 -12.66,6.31 -21.36,-1.18 -17.81,-15.31 -40.05,-53.3 -10.06,-85.22zm8.39 102.05l29.48 -7.01 6.96 -46.08 27.17 15.84 23.91 -49.95c0,0 19.29,28.35 16.41,42.75 -2.88,14.4 -15.84,20.16 -18.72,30.24 -2.88,10.08 -1.44,44.65 -1.44,44.65l-28.73 -17.72c0,0 -24.55,7.57 -31.75,7.57 -7.2,0 -23.29,-20.29 -23.29,-20.29zm-8.39 3.07l5.7 -12.09c0,0 -17.14,-13.01 -28.69,-36.82 -6.48,-13.34 -4.96,-35.52 -3.93,-44.83 2.87,-25.91 42.76,-37.3 42.76,-37.3l15.84 -2.88c0,0 10.08,-48.97 0,-48.97 -10.08,0 -31.68,17.28 -31.68,17.28l0 -47.52 -18.71 12.96 4.31 -38.88 -12.95 -37.44c0,0 -20.16,24.48 -23.04,33.12 -2.88,8.64 -4.32,24.48 -4.32,24.48l-21.6 -10.08 -34.57 -30.24 -7.2 23.04 -31.68 11.52c0,0 24.48,12.96 30.24,20.16 5.76,7.2 12.96,27.36 12.96,27.36 0,0 14.41,4.32 17.29,21.6 2.88,17.29 2.88,50.41 2.88,60.49 0,10.08 -2.88,21.6 4.32,34.56 7.2,12.96 28.8,15.84 28.8,15.84 0,0 -7.2,-2.88 -8.64,-24.48 -1.44,-21.6 -5.76,-59.04 -4.32,-69.12 1.44,-10.09 2.88,-27.37 2.88,-27.37 0,0 -1.44,25.93 4.32,43.21 5.76,17.28 8.64,48.96 15.84,64.8 7.2,15.84 44.63,54.72 43.19,57.6zm-237.6 11.52l44.64 -12.96 4.08 -44.83 31.56 4.13c0,0 11.28,-22.81 5.46,-34.18 -6.61,-12.89 -19.43,-16.98 -36.02,-15.79 -31.23,2.26 -56.54,27.93 -56.54,45.22 0,17.28 -3.26,44.01 6.82,58.41zm-5.76 15.85l61.92 -17.29 3.89 -44.2 28.66 10.51 6.71 -29.48 -2.25 -23.98c0,0 18.15,27.8 16.71,42.2 -1.44,14.4 -9.08,24.79 -1.88,31.99 7.2,7.2 25.93,29.05 25.93,29.05l-10.09 28.56 -32.68 -7.83c0,0 -17.72,-6.57 -29.24,-6.57 -11.52,0 -50.4,12.96 -67.68,-12.96zm57.6 30.24c0,0 15.84,-2.88 36,4.32 20.16,7.2 54.73,7.2 54.73,7.2l-1.44 -23.04 4.32 -14.4 -21.61 -37.45 20.17 0 -25.93 -33.12 0 -12.96c0,0 1.44,-1.44 25.93,14.4 24.48,15.84 38.88,-1.44 51.84,14.4 12.96,15.84 34.55,33.12 48.95,44.64 14.4,11.53 20.16,31.69 20.16,31.69 0,0 -4.32,14.4 -1.44,30.24 2.88,15.83 -4.32,20.15 -4.32,20.15 0,0 -41.75,-47.51 -44.63,-37.43 -2.88,10.08 33.11,53.27 33.11,53.27l10.08 18.72c0,0 1.44,10.08 -7.2,10.08 -8.64,0 -48.95,-43.2 -57.59,-48.96 -8.64,-5.76 -30.24,-11.52 -30.24,-11.52l-25.92 4.32c0,0 31.68,7.2 40.32,14.4 8.64,7.2 15.84,14.4 15.84,14.4l-43.2 12.96 -24.49 18.72 -8.64 -17.28 -15.84 -8.64 1.44 -15.84 -28.8 -14.4 5.76 -10.08 -27.36 -28.79zm316.02 -105.6c0,0 27.29,26 31.19,41.59 3.9,15.6 5.2,24.7 3.9,36.4 -1.3,11.7 -6.49,22.09 -6.49,22.09 0,0 -6.51,10.41 -7.8,19.51 -1.31,9.09 -3.9,23.4 -3.9,23.4 0,0 9.09,-3.9 7.8,3.89 -1.31,7.8 -11.71,7.8 -7.8,19.5 3.9,11.7 12.99,28.6 12.99,14.29 0,-14.29 2.6,-29.89 0,-40.29 -2.6,-10.4 -1.29,-18.19 -1.29,-18.19 0,0 18.19,27.29 22.09,14.29 3.9,-12.99 -16.9,-22.09 -13.01,-29.89 3.9,-7.8 10.41,-29.9 22.11,-36.4 11.7,-6.49 18.19,-19.49 18.19,-19.49 0,0 14.31,31.19 11.7,45.48 -2.6,14.31 -14.29,37.7 -14.29,37.7l25.98 -9.1c0,0 -6.49,23.39 -10.39,29.9 -3.9,6.5 -22.1,27.3 -22.1,27.3l16.9 -5.21 -1.29 26.01c0,0 -39.01,-9.11 -52,0 -13,9.1 -20.79,14.29 -20.79,14.29 0,0 -13.01,-57.2 -14.31,-46.79 -1.29,10.39 -1.29,9.1 -1.29,20.8 0,11.7 0,40.29 0,40.29l-13 15.6 -10.4 -32.5 -16.9 3.9c0,0 -6.5,-23.39 -13,-33.8 -6.49,-10.39 -20.8,-23.39 -23.39,-29.89 -2.6,-6.51 -10.4,-13 -10.4,-13 0,0 -9.1,-62.38 15.6,-71.49 24.69,-9.1 35.09,15.6 35.09,24.7 0,9.09 -16.9,44.2 -16.9,44.2l27.3 -22.11c0,0 5.2,13 2.6,22.11 -2.6,9.08 -10.4,37.68 -10.4,37.68 0,0 10.4,5.21 13,-6.49 2.59,-11.7 3.9,-23.4 7.8,-29.9 3.9,-6.5 9.1,-14.3 9.1,-14.3 0,0 -7.8,-11.69 -10.41,-19.49 -2.59,-7.8 -6.49,-15.6 -6.49,-15.6 0,0 -7.8,-39 1.3,-58.5 9.09,-19.49 23.4,-32.49 23.4,-32.49zm-22.11 278.16c0,0 44.2,36.4 46.81,28.6 2.59,-7.8 31.19,-48.09 31.19,-48.09l33.79 18.19 23.46 -29.35c0,0 -35.83,-44.64 -69.61,-35.55 -33.8,9.1 -65.64,66.2 -65.64,66.2zm-5.19 16.9c0,0 42.89,27.3 50.69,27.3 7.8,0 36.4,-46.79 36.4,-46.79l31.19 16.89 32.5 -40.3c0,0 -1.31,54.6 -22.11,84.49 -20.78,29.9 -45.48,44.19 -45.48,44.19l-15.6 7.8 5.19 -49.38c0,0 -9.09,0 -10.39,7.8 -1.3,7.79 -7.8,33.78 -7.8,33.78 0,0 -22.1,-16.88 -32.5,-28.59 -10.39,-11.7 -27.29,-40.29 -22.09,-57.19zm-228.77 -26l59.18 -0.79c0,0 18.63,-45.28 25.12,-45.28 6.5,0 35.76,6.39 35.76,6.39l15.12 -24.01c0,0 -44.31,-27.29 -71.61,-19.49 -27.29,7.79 -44.07,26 -63.57,83.18zm-2.6 11.7l67.6 1.3 25.2 -42.89 34.59 3.9 18.19 -40.29c0,0 18.19,2.59 18.19,24.69 0,22.1 -5.19,35.1 -14.29,41.59 -9.1,6.51 -35.09,27.29 -37.69,37.7 -2.61,10.39 -14.3,36.4 -14.3,36.4l-2.6 22.09 -10.4 -1.29c0,0 1.3,38.99 3.89,46.79 2.61,7.79 19.5,32.49 19.5,32.49l-20.79 10.4c0,0 -3.9,10.4 -3.9,19.49 0,9.1 1.3,16.9 1.3,16.9l-18.2 2.6 -22.1 7.8c0,0 -16.89,-42.89 -19.5,-54.59 -2.59,-11.7 -19.49,-32.5 -19.49,-32.5 0,0 14.3,5.2 24.7,7.8 10.39,2.61 20.8,14.31 20.8,14.31 0,0 -13,-16.91 -15.6,-26.01 -2.61,-9.1 -23.39,-29.89 -23.39,-29.89 0,0 15.59,3.9 25.99,9.09 10.39,5.21 13,9.1 13,9.1l-10.41 -25.98 -10.39 -27.31 18.19 7.8c0,0 11.71,-16.89 2.61,-23.4 -9.1,-6.49 -54.6,-16.89 -50.7,-48.09zm144.48 -128.01c0,0 29.96,16.13 41.46,30.71 11.52,14.59 16.13,29.18 19.97,36.86 3.84,7.68 6.92,21.5 6.92,21.5l13.82 -16.89c0,0 3.84,19.96 3.84,28.41 0,8.45 -10.76,32.25 -10.76,39.16 0,6.91 3.67,26.39 6.92,37.63 3.23,11.22 29.34,46.54 37.62,49.14 8.28,2.59 16.12,6.14 15.36,12.28 -0.77,6.15 -32.25,40.7 -36.86,45.31 -4.6,4.6 -22.26,23.8 -22.26,23.8 0,0 -1.54,-9.97 2.29,-24.56 3.85,-14.59 4.61,-24.58 5.38,-29.96 0.76,-5.37 -0.77,-16.13 -0.77,-16.13l-12.28 6.92c0,0 -1.54,-30.72 2.31,-45.31 3.83,-14.58 1.53,-23.03 1.53,-23.03l-12.29 4.61c0,0 -13.82,-34.56 -23.81,-41.46 -9.97,-6.92 -20.73,-9.99 -20.73,-9.99l-15.35 0c0,0 19.2,-13.82 26.11,-36.86 6.9,-23.04 3.83,-26.87 -1.55,-37.62 -5.36,-10.76 -26.87,-54.52 -26.87,-54.52zm-6.14 228.05c0,-3.83 -36.08,-19.19 -36.86,-24.56 -0.76,-5.38 22.27,-59.14 46.07,-63.74 23.8,-4.61 44.55,29.95 46.84,36.85 2.31,6.92 3.85,10.76 3.85,10.76 0,0 -23.8,42.23 -18.44,42.23 5.38,0 24.58,-29.94 24.58,-29.94 0,0 6.14,26.11 3.83,35.32 -2.3,9.21 -19.96,31.48 -19.96,31.48 0,0 -6.91,16.12 -0.77,14.59 6.15,-1.54 15.36,-13.06 19.97,-16.89 4.61,-3.84 14.59,-13.06 14.59,-13.06 0,0 -9.98,43.76 -27.65,66.81 -17.66,23.04 -21.49,34.56 -27.64,45.3 -6.14,10.75 -19.96,23.81 -19.96,23.81 0,0 -4.61,4.6 -7.68,0 -3.07,-4.61 -18.43,-27.65 -21.5,-34.55 -3.07,-6.92 -15.35,-14.59 -18.43,-23.04 -3.07,-8.45 -4.61,-24.58 -4.61,-24.58 0,0 6.91,-1.54 25.35,0 18.42,1.54 23.8,0.77 23.8,0.77l3.83 -5.38c0,0 -33.01,-22.26 -37.62,-29.94 -4.6,-7.67 -14.59,-39.17 -14.59,-43 0,-3.84 0,-4.6 0,-4.6 0,0 26.87,8.43 43,5.36zm140.33 31.51c0,0 49.34,-26.85 70.13,-41.56 20.77,-14.71 50.21,-51.95 50.21,-51.95 0,0 -6.06,34.63 -8.66,40.7 -2.6,6.06 -20.78,16.44 -20.78,16.44l27.7 -6.92c0,0 -6.06,23.37 -17.31,37.23 -11.26,13.86 -22.51,28.57 -26.84,35.5 -4.32,6.93 -25.98,32.03 -25.98,32.03 0,0 26.85,-20.78 38.09,-28.57 11.27,-7.79 35.5,-41.56 35.5,-41.56 0,0 -7.78,40.69 -12.98,46.75 -5.19,6.06 -23.37,26.85 -23.37,26.85l16.45 -3.47c0,0 -4.33,13.85 -7.8,19.05 -3.46,5.19 -17.32,21.64 -17.32,21.64l20.79 -10.39c0,0 -1.74,12.99 -8.66,19.05 -6.93,6.06 -19.04,14.72 -19.04,14.72l22.51 0c0,0 -17.32,18.18 -21.66,24.24 -4.32,6.06 -32.03,21.64 -32.03,21.64 0,0 -11.25,1.74 -20.78,5.21 -9.52,3.46 -32.9,16.45 -32.9,16.45l1.74 -25.12c0,0 20.77,-25.96 25.1,-31.17 4.32,-5.19 12.12,-14.71 5.19,-11.25 -6.92,3.47 -28.57,16.46 -28.57,16.46l1.74 -17.33c0,0 19.91,-12.98 25.96,-15.58 6.06,-2.59 16.46,-16.45 16.46,-16.45 0,0 3.46,-7.8 -15.59,2.59 -19.04,10.4 -31.16,13.86 -31.16,13.86l3.46 -18.18c0,0 27.7,-16.45 32.04,-19.91 4.32,-3.47 8.65,-15.59 8.65,-15.59l-25.97 7.79c0,0 6.06,-16.45 8.65,-20.77 2.61,-4.34 11.26,-25.98 11.26,-25.98l-24.23 7.79 0 -24.24zm-115.5 179.1c0,0 55.39,-52.59 58.21,-46.27 2.79,6.3 7.01,44.86 7.01,44.86 0,0 7.01,-3.51 9.8,4.21 2.82,7.71 -0.69,34.36 -0.69,34.36l13.32 0c0,0 -2.11,51.88 4.9,51.88 7.01,0 48.38,-32.96 54.7,-23.14 6.3,9.81 -0.71,39.25 5.59,39.96 6.32,0.71 29.46,-14.02 34.36,-19.63 4.91,-5.61 6.31,-37.87 -2.8,-55.39 -9.11,-17.53 -19.63,-28.04 -35.06,-25.94 -15.42,2.11 -47.67,25.25 -47.67,25.25l-7.71 -13.33c0,0 -2.81,-25.94 -0.7,-30.15 2.1,-4.21 14.72,-16.82 14.72,-16.82l-11.93 -7.02 3.51 -22.43 11.93 -4.21 -14.73 -3.51 -1.4 -24.53 26.64 -47.68 -23.13 10.52 9.11 -33.65c0,0 -28.74,25.93 -39.26,32.96 -10.51,7.01 -19.63,6.3 -25.24,11.2 -5.61,4.91 -29.44,37.16 -32.95,43.48 -3.52,6.3 -18.94,26.64 -18.94,26.64 0,0 8.41,8.41 9.83,16.82 1.4,8.42 -1.42,31.56 -1.42,31.56zm-195.59 149.33c0,0 10.88,-4.96 20.79,-5.95 9.91,-0.99 18.83,-0.99 18.83,-0.99 0,0 -10.9,-13.86 -12.88,-26.74 -1.99,-12.87 -2.98,-51.5 -2.98,-51.5 0,0 10.9,27.73 15.86,43.58 4.94,15.85 13.85,29.72 13.85,29.72 0,0 39.62,7.92 52.5,26.73 12.88,18.82 14.86,32.69 14.86,32.69 0,0 32.68,-26.74 37.63,-33.68 4.95,-6.93 40.61,-42.59 40.61,-42.59 0,0 23.78,-11.87 32.69,-14.85 8.91,-2.97 25.74,-19.81 25.74,-19.81l4.96 -23.77c0,0 -45.56,21.79 -40.6,13.87 4.94,-7.92 29.71,-25.76 29.71,-25.76l10.89 -12.87 2.96 -26.75 -14.84 0 -2.98 -38.62c0,0 -30.7,25.74 -37.63,29.71 -6.93,3.97 -26.74,12.88 -26.74,12.88 0,0 16.83,27.73 16.83,38.63 0,10.89 -4.96,22.78 -13.87,35.66 -8.91,12.86 -22.78,30.7 -26.73,35.65 -3.97,4.96 -24.77,20.8 -24.77,20.8 0,0 21.79,-42.59 28.72,-48.53 6.94,-5.95 15.85,-17.84 15.85,-17.84l-9.9 0.99c0,0 14.85,-11.87 15.84,-27.73 0.99,-15.84 -3.95,-24.76 -8.91,-24.76 -4.95,0 -26.74,9.91 -32.69,13.87 -5.94,3.96 -30.7,12.88 -30.7,12.88 0,0 0,6.93 0,20.8 0,13.87 -8.91,45.55 -8.91,45.55 0,0 0,-34.66 -1,-39.62 -0.97,-4.94 -6.93,-26.73 -6.93,-26.73l-7.92 -8.92c0,0 -21.79,1 -26.73,-1.98 -4.96,-2.97 -25.76,-41.6 -30.71,-53.49 -4.96,-11.88 -9.91,-65.36 -9.91,-65.36 0,0 -19.81,33.67 -19.81,44.56 0,10.9 3.97,43.59 3.97,43.59 0,0 -10.9,-7.92 -14.85,-12.88 -3.97,-4.95 -9.92,-13.86 -9.92,-13.86 0,0 0,24.75 1.98,31.68 1.99,6.95 8.91,32.69 8.91,32.69l-20.8 -19.81c0,0 -1.97,25.76 2.98,34.67 4.96,8.92 8.91,28.72 13.87,46.55 4.95,17.84 6.93,15.85 7.92,21.79 0.99,5.95 4.96,15.85 4.96,15.85zm80.22 -160.46c8.92,-6.93 32.68,-37.63 38.63,-37.63 5.93,0 16.83,-2.98 10.89,6.93 -5.95,9.9 -21.79,26.75 -26.75,32.69 -4.94,5.93 -11.87,6.92 -12.86,11.88 -0.99,4.95 7.92,19.81 9.9,28.72 1.99,8.92 -8.91,12.88 7.92,10.9 16.83,-1.98 28.72,-16.83 38.63,-18.82 9.9,-1.98 33.68,-28.72 36.65,-35.66 2.96,-6.93 5.94,-14.85 0.98,-20.8 -4.95,-5.94 -19.81,-10.89 -19.81,-10.89 0,0 -17.82,-44.57 -48.53,-45.56 -30.7,-0.99 -44.56,17.83 -53.48,25.75 -8.92,7.93 -34.66,32.68 -26.74,40.61 7.92,7.93 44.57,11.88 44.57,11.88zm-27.74 12.88c5.95,-0.99 27.74,0 27.74,0l9.91 35.66c0,0 -37.65,-10.89 -37.65,-35.66zm219.52 69.75c0,14.82 0.82,32.93 9.88,33.76 9.06,0.82 50.24,-21.41 50.24,-21.41 0,0 -3.3,37.88 9.87,37.88 13.18,0 49.41,-16.47 49.41,-16.47 0,0 -27.17,46.11 -47.76,53.53 -20.58,7.4 -74.11,23.05 -74.11,23.05l-31.29 12.35 17.28 1.66c0,0 -10.71,14.82 -27.99,23.87 -17.29,9.06 -39.53,13.18 -39.53,13.18 0,0 15.65,6.59 14.82,11.53 -0.83,4.95 -10.7,14 -17.29,18.13 -6.59,4.11 -18.94,15.63 -5.76,16.46 13.17,0.82 46.94,-36.23 64.23,-49.41 17.29,-13.18 15.65,-32.11 40.35,-37.88 24.7,-5.77 56.81,-23.06 68.35,-28.82 11.53,-5.76 26.36,-13.18 26.36,-13.18 0,0 -30.48,34.59 -39.54,39.53 -9.06,4.93 -28,12.35 -28,12.35l26.36 4.12c0,0 -15.65,15.65 -27.17,21.41 -11.54,5.76 -16.48,13.18 -16.48,13.18l30.47 0c0,0 -13.99,8.23 -20.58,9.87 -6.59,1.66 -23.06,9.07 -23.06,9.07l23.06 4.11c0,0 -16.48,14.82 -26.36,18.94 -9.88,4.12 -49.42,13.83 -70.52,15.39 -21.1,1.57 -27.35,0.78 -41.41,1.57 -14.06,0.77 -33.59,2.33 -33.59,2.33 0,0 -4.68,-18.75 -16.41,-18.75 -11.71,0 -26.56,1.57 -26.56,1.57 0,0 16.41,-33.59 28.12,-50.77 11.73,-17.2 14.85,-36.73 14.85,-36.73 0,0 14.06,5.47 15.63,11.72 1.56,6.24 3.12,17.97 7.02,15.63 3.91,-2.35 6.25,-21.1 6.25,-33.59 0,-12.5 21.1,-42.19 21.1,-42.19 0,0 6.25,23.44 12.5,25 6.25,1.56 8.6,-5.48 8.6,-5.48 0,0 0,-24.99 6.25,-35.93 6.25,-10.94 34.37,-24.21 37.49,-28.91 3.13,-4.69 24.92,-31.67 24.92,-31.67zm-282.53 102.08c0,0 1.97,55.95 7.85,55.95 5.9,0 47.12,-12.76 56.94,-5.88 9.81,6.87 3.93,48.09 3.93,48.09l25.51 -5.89c0,0 32.39,-34.35 25.53,-61.83 -6.88,-27.49 -28.48,-49.09 -51.04,-52.02 -22.58,-2.95 -51.04,5.55 -55.95,10.46 -4.92,4.92 -12.77,11.12 -12.77,11.12zm-179.62 182.57c0,0 48.1,-17.66 92.26,-1.96 44.19,15.71 51.05,33.37 56.94,42.2 5.89,8.84 19.63,23.56 27.49,25.53 7.85,1.95 64.77,-2.95 98.14,-14.73 33.38,-11.78 41.23,-7.85 41.23,-7.85l-20.61 -10.8 35.34 -4.91 -5.9 -17.66 39.27 -7.85 -22.58 -14.73c0,0 27.48,-12.75 41.23,-15.7 13.73,-2.95 51.04,-20.61 51.04,-20.61 0,0 -59.89,2.95 -76.57,2.95 -16.68,0 -29.44,2.93 -36.31,6.86 -6.88,3.92 -21.59,17.67 -29.44,17.67 -7.86,0 -13.75,-1.97 -7.86,-7.85 5.89,-5.9 22.57,-29.45 22.57,-29.45 0,0 -35.34,5.89 -43.19,12.77 -7.84,6.86 -46.12,21.58 -53,31.41 -6.87,9.8 -27.48,19.63 -27.48,28.46 0,8.83 0.98,23.56 -7.85,21.59 -8.83,-1.96 -15.71,-6.86 -18.64,-15.71 -2.95,-8.83 -10.8,-18.64 -3.93,-20.61 6.86,-1.96 35.32,0.98 35.32,-7.85 0,-8.83 -5.88,-11.78 -5.88,-11.78 0,0 15.71,-9.81 31.41,-13.74 15.71,-3.92 35.34,-13.74 35.34,-13.74 0,0 -19.63,-5.89 -42.21,-4.91 -22.58,0.98 -28.47,7.85 -32.39,0.98 -3.93,-6.87 -14.73,-19.63 -28.46,-19.63 -13.75,0 -26.51,0.98 -26.51,0.98 0,0 28.46,-30.42 41.23,-21.59 12.76,8.83 16.69,25.51 37.3,26.5 20.61,0.98 34.35,2.94 41.22,2.94 6.87,0 28.46,-4.91 28.46,-4.91l-1.96 -8.83 -34.36 0.33c0,0 10.48,-42.54 2.62,-44.49 -7.85,-1.97 -55.62,7.2 -55.62,7.2l-11.77 -54.32 12.75 -36.31 -13.73 -30.44c0,0 -9.82,-12.75 -9.82,-19.63 0,-6.87 2.94,-49.07 2.94,-63.8 0,-14.72 3.93,-29.45 3.93,-29.45 0,0 -24.54,36.33 -32.39,50.06 -7.85,13.75 -16.68,21.61 -18.65,35.34 -1.96,13.75 -6.88,30.43 4.9,40.24 11.78,9.82 21.6,13.75 21.6,22.58 0,8.83 -8.83,49.07 -8.83,49.07 0,0 0,-28.46 -2.95,-33.36 -2.94,-4.91 -16.68,-2.95 -19.63,-11.78 -2.94,-8.83 -2.94,-30.43 -2.94,-44.17 0,-13.75 0,-40.24 0,-40.24l-4.91 -12.77c0,0 -10.8,24.55 -14.73,36.33 -3.92,11.78 -3.92,14.71 -8.83,19.63 -4.9,4.9 -13.73,-2.95 -15.7,6.86 -1.96,9.82 -13.74,30.43 1.97,42.21 15.69,11.78 33.36,5.88 31.39,13.74 -1.95,7.85 -7.85,27.48 -11.77,36.32 -3.93,8.83 -12.76,32.39 -16.69,39.27 -3.92,6.86 -19.63,17.66 -19.63,17.66 0,0 17.68,-37.3 21.6,-44.17 3.93,-6.87 10.79,-37.31 10.79,-37.31 0,0 -9.81,3.93 -14.71,-0.97 -4.91,-4.91 -17.68,-32.39 -15.71,-44.17 1.96,-11.78 11.78,-36.32 17.66,-46.14 5.9,-9.81 9.83,-32.39 9.83,-32.39 0,0 -27.49,26.51 -33.39,43.19 -5.88,16.69 -15.7,43.19 -15.7,49.07 0,5.9 -17.66,0 -16.68,-16.68 0.97,-16.68 0.97,-16.68 0.97,-16.68 0,0 -10.78,27.48 -10.78,36.31 0,8.83 -4.92,33.38 -4.92,33.38 0,0 -3.93,-3.92 -8.83,-13.75 -4.91,-9.81 -14.73,-26.5 -14.73,-26.5 0,0 -1.95,38.28 -1.95,47.11 0,8.85 -6.88,40.26 -12.76,54.97 -5.9,14.73 -42.21,58.89 -42.21,58.89 0,0 32.39,0.98 69.69,-2.94 37.3,-3.93 64.78,-15.71 64.78,-15.71 0,0 -26.51,45.16 -47.12,54.97zm-50.77 40.12c9.91,1.1 25.76,3.82 34.78,10.31 13.81,9.94 20.42,24.85 46.37,40.29 25.94,15.47 42.5,20.98 48.01,22.64 5.53,1.66 10.49,1.66 10.49,1.66 0,0 -23.18,-14.91 -24.28,-19.88 -1.11,-4.96 -5.53,-17.1 -5.53,-17.1 0,0 18.78,18.76 27.05,24.83 8.29,6.07 24.3,10.49 24.3,10.49l6.61 -1.66c0,0 -9.93,-10.49 -17.1,-16 -7.18,-5.52 -8.83,-16.56 -8.83,-16.56 0,0 26.49,16 31.46,21.53 4.96,5.52 17.11,11.03 22.63,11.03 5.52,0 13.25,1.12 13.25,1.12 0,0 -9.94,-10.49 -16.56,-15.47 -6.63,-4.97 -30.36,-28.7 -30.36,-28.7 0,0 31.46,30.36 49.68,36.44 18.22,6.07 34.76,4.95 34.76,4.95l21.54 0.56c0,0 -30.37,-16.56 -40.3,-20.98 -9.93,-4.41 -30.36,-17.66 -34.22,-23.73 -3.86,-6.07 -9.93,-20.42 -14.35,-23.73 -4.41,-3.32 -24.29,-7.73 -24.29,-7.73 0,0 8.28,-3.32 16.01,-1.66 7.73,1.66 16.56,4.41 16.56,4.41 0,0 -34.23,-27.59 -41.4,-30.35 -7.17,-2.75 -50.22,-11.04 -65.13,-8.28 -9.35,1.72 -34.74,9.32 -53.35,15.42l-0.26 -0.32c0,0 -64.26,25.9 -106.46,22.7 -42.18,-3.17 -107.04,-45.15 -145.66,-53.94 -38.63,-8.78 -92.4,-2.03 -92.4,-2.03 0,0 35.08,-17.52 80.27,-14.83 45.17,2.7 85.48,29.93 105.67,39.64 20.18,9.73 54.6,20.93 112.17,8.98 57.59,-11.97 75.54,-50.85 75.54,-50.85 0,0 -25.43,4.48 -48.61,7.47 -23.19,2.99 -68.05,4.48 -68.05,4.48l-1.69 -14.76c0,0 13.54,-4.07 39.25,-27.08 25.71,-23 23.68,-100.81 23.68,-100.81 0,0 -9.47,21.78 -13.53,28.41 -4.06,6.64 -17.81,30.66 -37.89,44.41 -20.08,13.75 -68.63,8.29 -80.52,-6.52 -11.87,-14.79 -38.56,-23.68 -38.56,-23.68 0,0 27.75,0.68 36.54,6.77 8.79,6.1 29.76,27.06 70.37,15.57 40.59,-11.51 57.83,-76.36 57.83,-76.36 0,0 -9.64,-59.12 -54.88,-82.52 -45.23,-23.38 -107.44,-12.87 -165.56,6.77 -58.12,19.66 -140.77,67.66 -183.99,85.97 -43.22,18.33 -77.02,38.37 -77.02,38.37 19.35,10.74 105.59,-31.39 186.81,-68.64 54.68,-25.08 109.9,-49.44 139.35,-54.79 72.73,-13.23 122.92,23.82 130.12,52.59 7.19,28.78 -5.39,57.55 -22.49,67.44 -17.07,9.89 -19.78,6.3 -35.96,-1.79 -16.19,-8.1 -60.25,-27.88 -124.99,-9 -64.73,18.89 -202.84,102.45 -262.49,102.45 -59.64,0 -122.02,-22.62 -178.23,-48.66 -56.21,-26.06 -82.54,-45.21 -146.64,-60.05 -64.1,-14.83 -92.7,22.78 -114.95,24.37 -22.24,1.59 -60.92,-59.33 -18.54,-103.83 42.38,-44.5 125.91,-23.34 184.82,-1.71 58.89,21.61 154.33,79.02 177.45,88.72 23.11,9.69 70.83,17.15 67.85,10.44 -2.99,-6.71 -19.39,-9.69 -44.74,-20.14 -25.35,-10.43 -63.38,-31.31 -145.39,-74.55 -82.02,-43.25 -163.76,-51.9 -211.74,-39.91 -25.05,6.27 -51.46,33.56 -67.84,66.18 0.8,16.05 4.03,41.97 15.74,62.85 18.37,32.75 49.14,38.21 63.04,38.72 13.9,0.49 54.1,-23.83 66.01,-26.81 11.92,-2.97 23.82,-0.49 23.82,-0.49 0,0 -28.29,9.92 -40.69,21.84 -12.42,11.91 -48.15,26.3 -75.94,12.9 -27.8,-13.41 -44.67,-34.25 -53.11,-58.08 -3.64,-10.27 -6.07,-21.1 -7.68,-30.09 -8.3,24.17 -10.42,49.36 -2.29,70.04 2.27,5.76 4.71,11.11 7.28,16.09 -8.59,-4.87 -17.43,-9.98 -26.51,-15.29l-1.89 -7.16c0,0 21.2,-42.89 2.9,-78.65 -14.28,-27.89 -40.61,-47.62 -71.37,-54.67 0,0 9.61,14.35 17.2,29.89 7.61,15.55 5.82,40.65 15.46,61.12 9.65,20.48 25.52,37.84 28.29,41.79 0.54,0.78 1.09,1.84 1.59,3.07 -26.73,-15.83 -55.08,-33.42 -83.53,-52.67l-1.52 -7.57c0,0 24.51,-42.94 7.84,-80.94 -13.01,-29.66 -38.94,-51.63 -70.24,-60.8 0,0 9.02,15.4 15.91,31.9 6.88,16.49 3.49,42.28 12.17,64 8.69,21.71 23.98,40.6 26.6,44.84 0.52,0.83 1,1.97 1.46,3.26 -18.36,-12.62 -36.71,-25.91 -54.63,-39.85 -12.61,-9.81 -25.01,-19.94 -37.05,-30.38l-0.77 -7.51c0,0 25.29,-35.89 13.76,-70.9 -8.99,-27.32 -30.08,-48.93 -56.97,-59.7 0,0 6.68,14.39 11.38,29.55 4.68,15.17 -0.49,37.69 5.35,57.62 5.84,19.93 17.78,37.91 19.74,41.88 0.43,0.87 0.8,2.08 1.1,3.44 -28.16,-24.93 -54.19,-51.56 -76.22,-79.7l1.02 -8.26c0,0 32.11,-28.8 28.76,-64.84 -2.61,-28.12 -18.03,-53.43 -41.41,-69.65 0,0 3.24,15.23 4.39,30.78 1.16,15.56 -8.73,35.96 -7.52,56.31 1.2,20.37 8.66,40.22 9.67,44.44 0.3,1.24 0.34,3.03 0.27,4.96 -13.26,-17.56 -24.93,-35.72 -34.56,-54.41 -11.14,-21.66 -20.77,-42.89 -28.98,-63.7l0.95 -1.76c0,0 40.4,-15.1 50.43,-49.88 7.83,-27.13 2.7,-56.33 -13.14,-79.95 0,0 -2.55,15.35 -7.14,30.25 -4.61,14.9 -21.26,30.3 -27.57,49.7 -5.55,17.12 -6.42,35.63 -6.97,42.71 -12.7,-33.69 -21.71,-66.27 -27.51,-97.71l5.06 -4.62c0,0 47.6,-1.1 70.67,-33.72 18,-25.46 23.24,-57.76 15.28,-88.14 0,0 -8.22,15.08 -18.42,28.96 -10.2,13.88 -33.15,23.87 -46.76,41.82 -13.6,17.95 -21.58,39.96 -23.78,44.22 -0.64,1.24 -1.87,2.77 -3.31,4.34 -4.27,-25.15 -6.51,-49.55 -6.93,-73.19 -0.12,-6.75 -0.1,-13.45 0.07,-20.07l7.22 -3.99c0,0 46.55,9.99 76.57,-16.38 23.44,-20.57 36.05,-50.77 35.35,-82.17 0,0 -11.5,12.76 -24.64,23.88 -13.14,11.13 -37.8,15.52 -55.2,29.81 -17.4,14.29 -30.28,33.84 -33.41,37.48 -1.15,1.35 -3.35,2.92 -5.66,4.39 1.18,-29.64 5.17,-58.05 11.4,-85.17l5.8 -1.7c0,0 43.23,19.97 78.31,0.83 27.37,-14.93 46.3,-41.62 52.52,-72.41 0,0 -14.02,9.93 -29.29,17.91 -15.26,7.96 -40.28,6.83 -60.39,16.97 -20.11,10.12 -36.97,26.35 -40.81,29.22 -1.05,0.77 -2.68,1.56 -4.5,2.28 7.99,-32.47 19.18,-63.09 32.62,-91.76l4.96 -0.11c0,0 36.54,30.53 75.4,21.18 30.31,-7.29 55.54,-28.15 69.56,-56.25 0,0 -16.13,5.93 -32.95,9.65 -16.8,3.73 -40.67,-3.87 -62.72,0.67 -22.05,4.55 -42.55,15.84 -47.02,17.61 -1.06,0.42 -2.56,0.72 -4.23,0.95 3.26,-6.71 6.65,-13.33 10.14,-19.82 7.36,-13.71 16.69,-28.68 27.45,-44.47l5.9 -0.12c0,0 36.55,30.53 75.4,21.18 30.31,-7.3 59.7,-35.07 73.7,-63.17 0,0 -20.27,12.85 -37.09,16.57 -16.8,3.72 -40.67,-3.87 -62.72,0.67 -22.05,4.55 -42.55,15.84 -47.02,17.6 -0.97,0.38 -2.3,0.68 -3.78,0.9 13.38,-19.21 28.75,-39.52 45.2,-60.16l11.37 -0.24c0,0 36.55,30.52 75.39,21.18 30.32,-7.3 59.7,-35.07 73.72,-63.18 0,0 -20.29,12.87 -37.09,16.58 -16.81,3.72 -40.68,-3.87 -62.73,0.66 -22.06,4.56 -42.56,15.84 -47.02,17.61 -1.99,0.79 -5.53,1.18 -8.82,1.37 14.3,-17.75 29.32,-35.7 44.51,-53.36l6.14 -0.41c0,0 36.94,28.14 74.37,17.32 29.22,-8.42 56.61,-36.76 69.04,-64.76 0,0 -19.19,13.42 -35.4,17.78 -16.21,4.36 -39.79,-1.99 -61.08,3.4 -21.28,5.39 -40.76,17.29 -45.03,19.2 -0.61,0.27 -1.35,0.51 -2.21,0.72 20.39,-23.56 40.96,-46.45 60.35,-67.59l6.61 -0.44c0,0 36.94,28.12 74.37,17.32 29.23,-8.43 56.61,-36.77 69.05,-64.77 0,0 -19.2,13.42 -35.41,17.78 -16.21,4.36 -39.79,-2 -61.08,3.4 -21.28,5.39 -40.76,17.29 -45.02,19.21 -0.63,0.28 -1.4,0.53 -2.3,0.73 17.72,-19.22 34.28,-36.8 48.62,-51.81l11.89 -1.92c0,0 39.39,24.58 75.66,10.33 28.3,-11.12 52.94,-41.89 62.7,-70.92 0,0 -17.85,15.15 -33.6,21 -15.73,5.86 -39.79,1.73 -60.48,9.08 -20.69,7.33 -38.98,21 -43.06,23.3 -1.45,0.82 -3.87,1.52 -6.37,2.09 26.54,-27.66 43.91,-45 44.09,-45.17l-1.13 -1.13c9.14,-4.59 21.62,-11.45 32.47,-20.37 18.06,-14.82 27.5,-39.02 41.46,-50.14 13.98,-11.13 37.58,-19.09 37.58,-19.09 -31.8,-7.04 -73.37,-1.47 -99.04,18.22 -26.53,20.35 -31.15,56.43 -31.95,69.6 -9.48,9.6 -26.02,26.5 -46.68,48.23 5.28,-8.48 11.71,-19.86 16.07,-32.05 7.88,-21.98 3.57,-47.61 9.84,-64.32 6.27,-16.72 22.44,-35.67 22.44,-35.67 -4.92,1.64 -9.89,3.68 -14.82,6.07 10.19,-9.71 19.13,-19.92 28.8,-25.01 15.81,-8.3 40.48,-11.68 40.48,-11.68 -29.91,-12.9 -71.78,-15.23 -100.68,-0.72 -26.99,13.54 -38.84,43.04 -43.28,58.05 -9.35,9.64 -31.79,33 -60.68,64.01 4.32,-7.73 9.15,-17.43 12.45,-27.67 6.71,-20.87 1.86,-44.78 7.22,-60.66 5.38,-15.9 19.96,-34.18 19.96,-34.18 -28.69,10.62 -58.66,36.15 -68.9,64.73 -13.14,36.64 12.56,75.24 12.56,75.24l-0.08 0.67c-18.44,19.98 -38.69,42.26 -59.37,65.59 0.19,-0.91 0.42,-1.71 0.69,-2.37 1.99,-4.87 14.64,-27.19 19.91,-51.29 5.25,-24.12 -1.95,-42.04 2.35,-60.42 4.29,-18.37 23.16,-49.28 23.16,-49.28 -30.99,15 -67.11,47.35 -75.51,80.47 -10.74,42.47 22.23,82.92 22.23,82.92l-0.29 8.39c-22.1,25.08 -44.5,51.18 -65.48,76.73 0.14,-1.25 0.31,-2.36 0.58,-3.23 1.59,-5.01 12.35,-28.31 15.61,-52.77 3.25,-24.46 -5.4,-41.73 -2.65,-60.4 2.78,-18.67 19.01,-51.03 19.01,-51.03 -29.64,17.52 -62.97,52.73 -68.59,86.45 -7.22,43.2 28.99,80.78 28.99,80.78l0.41 8.33c-20.15,24.78 -38.76,48.91 -54.29,70.93 -0.18,-1.98 -0.22,-3.8 0,-5.12 0.85,-5.19 8.2,-29.77 7.94,-54.45 -0.25,-24.68 -11.28,-40.53 -11.2,-59.4 0.08,-18.87 11.56,-53.22 11.56,-53.22 -26.85,21.55 -54.83,61.15 -55.61,95.32 -0.99,43.79 40.17,75.84 40.17,75.84l1.73 8.83c-8.48,12.35 -15.88,23.95 -21.9,34.55 -5.01,8.83 -10.04,18.34 -14.99,28.46 0.89,-10.22 2.74,-31.14 -0.46,-51.4 -3.95,-25.16 -17.59,-39.68 -20.34,-58.96 -2.74,-19.28 3.84,-56.04 3.84,-56.04 -27.54,19.37 -46.82,70.63 -42.49,105.62 5.56,44.84 52.39,71.39 52.39,71.39l0.87 2.47c-9.39,20.48 -18.38,43.14 -26.42,67.62 -0.78,-2.12 -1.36,-4.11 -1.53,-5.64 -0.72,-6.45 1.1,-28.19 -7.4,-57.44 -8.52,-29.25 -28.16,-54.33 -34.33,-76.79 -6.18,-22.44 -3.96,-67.08 -3.96,-67.08 -10.8,11.04 -20.94,31.01 -28,52.17 -7.51,22.51 -13.46,52.63 -6.41,79.59 13.71,52.31 72.98,76.78 72.98,76.78l4.98 9.91c-9.4,30.4 -17.26,63.37 -22.6,98.22 -0.65,-1.61 -1.15,-3.09 -1.4,-4.32 -1.46,-7.3 -1.79,-32.3 -14.12,-64.81 -12.34,-32.51 -36.29,-59.15 -45.38,-84.16 -9.08,-25 -11.4,-76.15 -11.4,-76.15 -10.53,13.68 -19.43,37.48 -24.83,62.33 -5.75,26.47 -9.02,61.44 1.49,91.5 20.41,58.3 87.29,80.25 87.29,80.25l6.22 10.44c-2.66,20.44 -4.45,41.5 -5.13,63.01 -0.48,14.9 -0.43,30.03 0.19,45.33 -0.43,-0.88 -0.79,-1.71 -1.04,-2.46 -2.44,-7.47 -5.96,-33.7 -23.02,-66.32 -17.07,-32.61 -45.61,-57.58 -58.31,-82.71 -12.71,-25.14 -21.61,-78.6 -21.61,-78.6 -9.33,15.71 -15.67,41.86 -18.21,68.65 -2.71,28.53 -1.73,65.7 13.12,95.96 28.8,58.7 101.87,73.32 101.87,73.32l8.21 10.67c2.3,32.18 7.23,65.03 15.37,98.18 -1.92,-2.15 -3.55,-4.22 -4.47,-5.95 -3.71,-6.94 -11.71,-32.17 -34.17,-61.33 -22.45,-29.16 -54.9,-48.81 -71.77,-71.36 -16.86,-22.54 -34.89,-73.66 -34.89,-73.66 -6.48,17.1 -8.19,43.95 -6.04,70.78 2.28,28.55 9.68,64.99 29.54,92.23 38.55,52.81 113.04,54.56 113.04,54.56l13.33 12.15c7.39,26.48 16.87,53.1 28.77,79.66 -3.56,-2.17 -6.9,-4.48 -8.76,-6.48 -5.36,-5.77 -19.53,-28.12 -48.68,-50.6 -29.14,-22.47 -65.52,-33.21 -87.57,-50.72 -22.05,-17.5 -52.51,-62.33 -52.51,-62.33 -1.92,18.18 3.27,44.57 12.18,69.98 9.49,27.04 25.92,60.39 52.08,81.65 50.73,41.25 123.19,23.97 123.19,23.97l16.66 8.69c1.94,4.04 3.94,8.08 5.99,12.12 9.97,19.56 21.76,38.56 34.98,56.92 -3.99,-1.11 -7.81,-2.42 -10.12,-3.83 -6.72,-4.1 -26.41,-21.78 -60.56,-35.5 -34.16,-13.73 -72.08,-14.19 -98.05,-25.08 -25.98,-10.87 -67.45,-45.75 -67.45,-45.75 3.09,18.01 15.24,42 30.7,64.04 16.47,23.46 41.34,51.1 72.28,64.48 60,25.95 125.07,-10.34 125.07,-10.34l16.67 3.5c16.09,21.1 34.03,41.35 53.18,60.65 -5.65,-0.04 -12.18,-0.38 -15.81,-1.6 -7.27,-2.43 -29.81,-14.99 -65.24,-20.68 -35.42,-5.68 -76.87,10.26 -103.9,5.53 -27.02,-4.74 -68.68,-37.16 -68.68,-37.16 6.82,16.47 23.55,36.66 43,54.26 20.7,18.75 44.9,34.61 77.21,40.65 62.63,11.73 122.05,-31.76 122.05,-31.76l20.35 -0.33c7.54,7.35 15.26,14.57 23.11,21.64 13.4,12.07 27.19,23.71 41.19,34.91 -3.31,0.31 -6.42,0.39 -8.61,0.04 -7.57,-1.24 -31.84,-9.99 -67.71,-9.87 -35.88,0.11 -74.21,22.54 -101.65,22.24 -27.44,-0.3 -73.8,-25.55 -73.8,-25.55 9.41,15.15 29.17,32.36 51.22,46.6 23.46,15.15 49.9,26.88 82.75,27.63 63.72,1.44 115.33,-51.08 115.33,-51.08l12.32 -2.23c23.98,18.71 48.46,36.13 72.57,52.13 -4.38,0.94 -8.79,1.63 -11.69,1.41 -7.65,-0.58 -32.59,-7.18 -68.32,-3.96 -35.73,3.23 -71.96,28.89 -99.33,30.97 -27.36,2.08 -75.72,-19.06 -75.72,-19.06 10.66,14.27 31.86,29.71 55.05,41.98 24.68,13.07 52.06,22.46 84.84,20.35 63.59,-4.07 110.47,-60.89 110.47,-60.89l14.94 -4.06c28.42,18.5 56.14,35.02 81.7,49.37l7.73 4.24c-4.97,1.57 -10.44,3 -13.89,3 -7.67,0 -33.03,-4.73 -68.42,1.18 -35.38,5.9 -69.59,34.21 -96.73,38.34 -27.13,4.12 -89.64,-17.1 -89.64,-17.1 24.18,27.71 93.77,64.28 156.89,55.43 63.1,-8.85 105.57,-69.01 105.57,-69.01l17.24 -6.11c13.21,6.7 26.41,12.78 38.38,18.31 8.4,3.88 16.2,7.49 22.72,10.7l1.08 -2.2c5.94,2.67 12.69,5.52 19.96,8.36 -2.78,1.08 -5.42,1.91 -7.42,2.15 -7.6,0.94 -33.35,-0.61 -67.75,9.62 -34.38,10.23 -64.83,42.55 -91.24,49.99 -26.42,7.45 -91.08,-5.89 -91.08,-5.89 27.42,24.52 101,52.21 162.54,35.63 61.53,-16.57 96.24,-81.52 96.24,-81.52l10.88 -5.45c20.76,7.31 44.46,13.49 66.51,14.26 56.96,2 139.4,-51.96 179.37,-52.9 39.98,-0.94 75.45,19.73 75.45,19.73 0,0 -36.46,-4.19 -71.44,-3.18 -34.97,1 -78.31,26.04 -117.71,41.2 -39.41,15.16 -99.03,5.06 -99.03,5.06 0,0 -24.25,28.3 -56.58,48.5 -32.35,20.21 -76.8,40.42 -76.8,40.42 0,0 28.28,21.22 99.03,30.32 70.72,9.09 135.02,-17.96 184.91,-57.6 49.89,-39.65 94.42,-53.44 118.56,-55.96 24.15,-2.53 20.12,12.62 33.71,22.71 13.59,10.11 25.15,17.68 25.15,17.68 0,0 4.03,3.54 13.08,7.07 9.06,3.54 20.12,0.51 20.12,0.51 0,0 7.55,1.51 21.13,1.51 13.58,0 16.97,0.06 27.63,0.06 10.66,0 30.96,-9.67 33.5,-10.69 2.54,-1.03 4.58,7.64 11.69,7.64 7.1,0 12.18,-15.29 16.75,-16.31 4.56,-1.02 8.12,11.21 13.71,15.29 5.58,4.07 14.72,-8.67 14.72,-8.67 0,0 6.09,9.69 22.34,11.72 16.25,2.04 35.03,4.95 71.95,-3.43 36.92,-8.37 28.54,-32.35 58.62,-41.1 30.06,-8.76 87.63,20.83 122.72,47.5 35.09,26.65 79.22,53.21 147.09,65.19 67.88,11.97 150.41,-33.88 150.41,-33.88 0,0 -24.05,-9.9 -53.32,-22.55 -29.28,-12.64 -68.45,-50 -68.45,-50 0,0 4.48,-2.28 10.39,-5.47zm-1123.56 -1320.36c-32.12,33.16 -235.58,245.07 -295.93,351.36 -37.47,65.97 -75.17,170.35 -78.99,289.26 -2.82,87.73 12.84,183.37 60.73,277.32 28.99,56.85 74.11,108.88 125.09,154.8 68.48,61.67 147.52,112.26 212.55,148.78 18.74,10.53 38.63,19.71 55.94,27.7 7.76,3.58 14.99,6.93 21.62,10.15 19.1,-0.26 42.25,-0.54 54.87,-0.54 23.99,0 43.98,1 43.98,1l0.54 -15.39c0,0 -20.12,-9.4 -39.63,-35.09l-10.37 1.52c0,0 -28.2,32.88 -64.47,30.34 -28.11,-1.99 -58.41,-22.23 -75.31,-45.15 -5.77,0.42 -11.72,0.21 -17.8,-0.89 -33.28,-6 -66.84,-34.21 -83.79,-63.78 0,0 22.77,12.65 41.22,15.63 18.43,2.97 43.8,-6.75 67.97,-3.22 21.19,3.1 41.42,11.91 49.41,15.12 -26.18,-16.3 -53.22,-34.11 -79.89,-53.35l-11.53 -1.43c0,0 -46.21,31.18 -90.36,15.65 -34.16,-12.02 -64.82,-47.39 -77.98,-81.54 -4.91,-1.09 -9.8,-2.68 -14.61,-4.85 -33.28,-15.04 -60.98,-53.42 -70.96,-88.82 0,0 20.52,19.23 39.04,27.2 18.53,7.96 47.64,4.47 72.01,14.52 17.35,7.16 33.06,18.08 42.36,24.87 -18.28,-18.54 -35.17,-37.89 -50.07,-58.02l-11.31 -5.48c0,0 -55.09,15.02 -92.77,-14.59 -29.42,-23.11 -47.55,-68.06 -48.79,-105.71 0,0 15.68,24.16 32.14,36.62 16.47,12.45 46.28,16.11 68.06,32.07 21.57,15.83 38.16,38.12 42.36,42.57 -8.63,-12.71 -16.46,-25.69 -23.29,-38.97 -12.87,-25 -23.78,-49.48 -32.85,-73.44l-8.08 -6.24c0,0 -55.49,3.36 -85.51,-32.35 -23.42,-27.85 -31.79,-74.3 -25.49,-110.41 0,0 10.15,26.13 23.37,41.28 13.2,15.13 40.89,24.53 58.46,44.08 17.48,19.44 28.89,44.09 31.92,49.02 -12.36,-35.17 -20.8,-69.17 -25.86,-101.96l-2.24 -2.76c0,0 -52.72,-9.03 -73,-49.08 -15.83,-31.25 -13.45,-76.6 0.39,-109.06 0,0 3.77,26.71 12.81,43.8 9.05,17.11 32.92,32 45.1,54.17 5.81,10.6 10.05,22.01 13.08,31.59 -1.14,-12.41 -1.82,-24.62 -2.04,-36.66 -0.39,-21.75 0.68,-42.87 3.02,-63.38l-1.28 -2.4c0,0 -46.49,-17.74 -57.81,-57.96 -8.83,-31.37 1.51,-72.34 19.99,-99.49 0,0 -1.39,25.07 3.81,42.3 5.19,17.24 24.3,35.13 31.41,57.56 4.28,13.46 6.05,27.63 6.93,37.9 5.14,-31.71 13.29,-61.84 23.74,-90.34l-1.28 -4.95c0,0 -41.04,-28.16 -42.6,-69.91 -1.21,-32.56 18.45,-69.98 42.78,-92.03 0,0 -7.22,24.05 -6.23,42.02 1.01,17.98 15.38,39.85 17.04,63.33 1.21,17.22 -1.47,34.61 -3.18,44.64 7.39,-18.19 15.71,-35.68 24.71,-52.46 4.8,-8.91 10.38,-18.34 16.63,-28.15l-0.12 -4.22c0,0 -33.8,-36.53 -26.11,-77.59 6,-32.03 33.43,-64.19 62.03,-80.32 0,0 -12.35,21.86 -15.34,39.6 -2.99,17.76 6.21,42.27 2.64,65.53 -2.35,15.32 -7.8,30.09 -11.7,39.75 15.27,-22.4 33.37,-46.38 52.85,-70.73l0.05 -2.43c0,0 -31.84,-38.24 -22,-78.85 7.67,-31.67 36.76,-62.33 66.17,-76.94 0,0 -13.49,21.17 -17.4,38.74 -3.93,17.56 3.98,42.53 -0.82,65.57 -3.07,14.81 -9.04,28.94 -13.43,38.38 19.21,-23.49 39.45,-47.07 59.44,-69.7l0.32 -6.69c0,0 -30.15,-38.19 -19.51,-77.63 8.32,-30.77 37.51,-60.01 66.64,-73.54 0,0 -13.72,20.37 -18,37.43 -4.27,17.08 2.81,41.68 -2.45,64.09 -5.25,22.4 -17.37,43.04 -19.3,47.55l-0.1 0.21c24.02,-27.01 47.46,-52.42 68.09,-74.36l0.51 -3.03c0,0 -26.02,-41.98 -10.76,-80.51 5.61,-14.15 15.84,-27.43 28.34,-38.6 -11.32,4.85 -22.42,8.01 -29.82,9.97zm155.49 1201.93l-1.63 2.91 3.35 -0.38 -1.72 -2.53zm-12.04 1.82c-19.52,-11.06 -40.58,-23.24 -62.37,-36.54l-7.94 0.3c0,0 -27.36,25.67 -61.85,28.5 4.26,1.71 21.2,8.18 34.76,8.88 15.65,0.82 35.92,-9.59 56.4,-8.83 16.72,0.63 33.19,5.45 41,7.69zm-170.67 -109.15c-5.73,-4.28 -11.43,-8.62 -17.1,-13.02 -22.08,-17.18 -43.54,-35.35 -63.66,-54.44l-7.39 -1.57c0,0 -37.61,20.91 -75.65,12.92 5.2,3.93 23.55,17.26 39.78,22.64 19.14,6.34 47.85,0.35 73,8.29 23,7.24 43.82,20.93 51.02,25.18z"/>
+                                          <rect class="fil5" x="4194.5" y="5317.83" width="3999.88" height="190.65"/>
+                                          <rect class="fil6" x="194.61" y="5317.83" width="3999.89" height="190.65"/>
+                                          </g>
+                                        </g>
+                                        </svg>`,
+                        }
+                    })])],
+                    1)])], 1)])])
+            };
+            g._withStripped = !0;
+            var y = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "authorization__block"
+                }, [e("transition", {
+                    attrs: {
+                        name: "authorization-form",
+                        mode: "out-in"
+                    }
+                }, [t.authModuleStore.authManifest ? e(t.authenticationScripts.component, t._g(t._b({
+                    key: t.authMode,
+                    tag: "component"
+                }, "component", t.authenticationScripts.props, !1), t.authenticationScripts.actions)) : e("TcPreloader", {
+                    staticClass: "preloader"
+                })], 1)], 1)
+            };
+            y._withStripped = !0;
+            var A = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "authorization__block"
+                }, [e("div", {
+                    staticClass: "authorization__form-content"
+                }, [e("p", {
+                    staticClass: "authorization__heading"
+                }, [t._v("\n      " + t._s(t.headerText) + "\n    ")]), t._v(" "), t.showAuthForm ? [e("div", {
+                    staticClass: "authorization__error-container"
+                }, [e("transition", {
+                    attrs: {
+                        name: "authorization-content",
+                        mode: "out-in"
+                    }
+                }, [t.mainError && t.mainError.length > 0 ? e("p", {
+                    staticClass: "authorization__error",
+                    attrs: {
+                        title: t.mainError
+                    }
+                }, [t._v("\n            " + t._s(t.mainError) + "\n          ")]) : t._e()])], 1), t._v(" "), e("TcTextField", {
+                    ref: "authorizationInputTrueconfId",
+                    staticClass: "authorization__textfield",
+                    attrs: {
+                        type: "text",
+                        label: "Polri Connect ID",
+                        id: "authorization__input-trueconfId"
+                    },
+                    on: {
+                        keyup: function(e) {
+                            return !e.type.indexOf("key") && t._k(e.keyCode, "enter", 13, e.key, "Enter") || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey ? null : t.signInByUser.apply(null, arguments)
+                        }
+                    },
+                    model: {
+                        value: t.username,
+                        callback: function(e) {
+                            t.username = e
+                        },
+                        expression: "username"
+                    }
+                }), t._v(" "), e("TcTextField", {
+                    ref: "authorizationInputPassword",
+                    staticClass: "authorization__textfield",
+                    attrs: {
+                        type: "password",
+                        label: t.$pgettext("Hint", "Password"),
+                        id: "authorization__input-password"
+                    },
+                    on: {
+                        keyup: function(e) {
+                            return !e.type.indexOf("key") && t._k(e.keyCode, "enter", 13, e.key, "Enter") || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey ? null : t.signInByUser.apply(null, arguments)
+                        }
+                    },
+                    model: {
+                        value: t.password,
+                        callback: function(e) {
+                            t.password = e
+                        },
+                        expression: "password"
+                    }
+                }), t._v(" "), e("div", {
+                    staticClass: "authorization__right-button-container"
+                }, [t.authManagerStore.permissions.resetPassword ? e("TcButton", {
+                    staticClass: "authorization__link-button",
+                    attrs: {
+                        text: t.$pgettext("Button text", "Forgot your password?"),
+                        id: "authorization__button-reset-password"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.setModuleMode("resetPassword")
+                        }
+                    }
+                }) : t._e()], 1), t._v(" "), e("transition", {
+                    attrs: {
+                        name: "authorization-preloader",
+                        mode: "out-in"
+                    }
+                }, [t.isPending ? t._e() : e("TcButton", {
+                    staticClass: "authorization__main-button",
+                    attrs: {
+                        type: "unelevated",
+                        text: t.$pgettext("Text on the button", "Sign In"),
+                        id: "authorization__button-sing-in"
+                    },
+                    on: {
+                        click: t.signInByUser
+                    }
+                }), t._v(" "), t.isPending ? e("div", {
+                    key: "sign-in-preloader",
+                    staticClass: "authorization__preloader-container"
+                }, [e("TcPreloader", {
+                    staticClass: "authorization__preloader-container__preloader",
+                    attrs: {
+                        type: "fountain"
+                    }
+                })], 1) : t._e()], 1), t._v(" "), t.authManagerStore.permissions.accountCreation ? e("TcButton", {
+                    staticClass: "authorization__link-button",
+                    attrs: {
+                        text: t.$pgettext("Button text", "Create an account"),
+                        id: "authorization__button-create-account"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.setModuleMode("signUp")
+                        }
+                    }
+                }) : t._e()] : t._e(), t._v(" "), t.providersList.length ? e("div", {
+                    staticClass: "authorization__user-form-providers"
+                }, [t.showAuthForm ? e("span", {
+                    staticClass: "authorization__user-form-providers-text"
+                }, [t._v("\n        " + t._s(t.$pgettext("This phrase will be displayed in the authorization menu. Here, the user is asked to enter his/her email “or sign in with” one of the social network accounts. Right below this hint, there will be multiple icons for social networks like Facebook or Twitter. ", "Or sign in with")) + "\n      ")]) : t._e(), t._v(" "), e("div", {
+                    staticClass: "authorization__provider-buttons"
+                }, t._l(t.providersList, (function(r) {
+                    return e("TcButton", {
+                        key: r.id,
+                        staticClass: "authorization__provider-button",
+                        attrs: {
+                            type: "outlined",
+                            title: r.title
+                        },
+                        on: {
+                            click: function(e) {
+                                return t.authModuleStore.sendEvent({
+                                    name: "outerAuth",
+                                    payload: r
+                                })
+                            }
+                        },
+                        scopedSlots: t._u([{
+                            key: "icon",
+                            fn: function() {
+                                return [e("img", {
+                                    attrs: {
+                                        width: "24px",
+                                        height: "24px",
+                                        src: r.icon
+                                    }
+                                })]
+                            },
+                            proxy: !0
+                        }], null, !0)
+                    })
+                })), 1)]) : t._e()], 2), t._v(" "), t.authManagerStore.permissions.outerRegisterInConferenceForm ? e("div", {
+                    staticClass: "authorization__user-form-footer",
+                    on: {
+                        click: t.backToRegisterInConferenceHandler
+                    }
+                }, [e("div", {
+                    domProps: {
+                        innerHTML: t._s(t.registerInConferenсeDescription)
+                    }
+                })]) : t._e(), t._v(" "), t.authManagerStore.permissions.guestAuthorization ? e("TcButton", {
+                    staticClass: "authorization__default-button",
+                    attrs: {
+                        text: t.$pgettext("Text on the button", "Enter as a guest"),
+                        id: "authorization-select-auth"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.$emit("changeAuthMode", "guest")
+                        }
+                    }
+                }) : t._e()], 1)
+            };
+
+            function m(t) {
+                return {
+                    400: this.$pgettext("Error message", "The form has been filled incorrectly."),
+                    403: this.$pgettext("Error message", "Access denied."),
+                    500: this.$pgettext("Error message", "Internal Server Error."),
+                    invalid_grant: this.$pgettext("Error message", "Invalid username or password."),
+                    InvalidCredentials: this.$pgettext("Error message", "Invalid username or password."),
+                    UserIsBanned: this.$pgettext("User receives this notification after a number of unsuccessful login attempts.", "Your account is locked. Please try again later or contact your server administrator."),
+                    missingRequiredField: this.$pgettext("Error message", "Please fill out this field"),
+                    fieldHasInvalidLength: this.$pgettext("Error message", "Field has invalid value."),
+                    fieldIsEmpty: this.$pgettext("Error message", "You can't leave this empty."),
+                    fieldHasInvalidUrl: this.$pgettext("Error message", "Please use valid URL."),
+                    fieldHasInvalidValue: this.$pgettext("Error message", "Field has invalid value."),
+                    fieldHasInvalidType: this.$pgettext("Error message", "Field has invalid type."),
+                    uniqueValueAlreadyInUse: this.$pgettext("Error message", "Value is already in use. Please try another."),
+                    fieldMinNumber: this.$pgettext("Error message", "Value must be more."),
+                    fieldMaxNumber: this.$pgettext("Error message", "Value must be less."),
+                    UserIsDisabled: this.$pgettext("An error message displayed when a user tries to sign in.", "Your account was disabled.")
+                } [t] || null
+            }
+            A._withStripped = !0;
+            var v = (0, s.nY)("authModule", {
+                state: function() {
+                    return {
+                        event: null,
+                        fullscreen: null,
+                        authHandler: function() {},
+                        authManifest: null,
+                        adminContacts: null
+                    }
+                },
+                actions: {
+                    sendEvent: function(t) {
+                        this.event = t
+                    }
+                }
+            });
+
+            function x(t) {
+                return x = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, x(t)
+            }
+
+            function b(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function w(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? b(Object(r), !0).forEach((function(e) {
+                        S(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : b(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function S(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != x(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != x(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == x(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            var _ = {
+                computed: w(w({}, (0, s.n2)(v)), {}, {
+                    currentScreen: function() {
+                        return this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode]
+                    }
+                }),
+                methods: {
+                    setModuleMode: function(t) {
+                        this.authManagerStore.moduleScreen.mode = t, this.authManagerStore.permissions.guestAuthorization ? this.authManagerStore.moduleScreen.screen.signIn = "guest" : this.authManagerStore.moduleScreen.screen.signIn = "user", this.authManagerStore.moduleScreen.screen.signUp = "form", this.authManagerStore.moduleScreen.screen.resetPassword = "form"
+                    },
+                    setModuleScreen: function(t, e) {
+                        e && (this.authManagerStore.moduleScreen.screen[t] = e)
+                    }
+                }
+            };
+
+            function O(t) {
+                return O = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, O(t)
+            }
+
+            function k(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function E(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? k(Object(r), !0).forEach((function(e) {
+                        T(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : k(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function T(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != O(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != O(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == O(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            var M = {
+                    name: "UserForm",
+                    mixins: [_],
+                    created: function() {
+                        var t;
+                        this.showAuthForm || 1 !== (null === (t = this.providersList) || void 0 === t ? void 0 : t.length) || this.authModuleStore.sendEvent({
+                            name: "outerAuth",
+                            payload: this.providersList[0]
+                        })
+                    },
+                    mounted: function() {
+                        var t = this;
+                        this.$nextTick((function() {
+                            try {
+                                localStorage.getItem("trueconfServerUserName") && (t.username = localStorage.getItem("trueconfServerUserName")), t.$nextTick((function() {
+                                    var e;
+                                    null !== (e = t.authManagerStore.outerError) && void 0 !== e && e.reason && (t.mainError = m.call(t, t.authManagerStore.outerError.reason))
+                                }))
+                            } catch (t) {
+                                console.warn("LocalStorage is unavailable.")
+                            }
+                            t.focusOnInput()
+                        }))
+                    },
+                    methods: {
+                        signInByUser: function() {
+                            var t = this;
+                            !this.isPending && this.validation() ? (this.isPending = !0, this.authModuleStore.authHandler({
+                                username: this.username,
+                                password: this.password
+                            }).then((function(e) {
+                                try {
+                                    localStorage.setItem("trueconfServerUserName", t.username)
+                                } catch (t) {
+                                    console.warn("LocalStorage is unavailable.")
+                                }
+                                return t.authModuleStore.sendEvent({
+                                    name: "userLoginSuccess",
+                                    payload: e
+                                }), Promise.resolve()
+                            })).catch((function(e) {
+                                try {
+                                    if (e) {
+                                        var r = e.response.data,
+                                            n = r.reason,
+                                            a = r.error,
+                                            i = r.email;
+                                        if ("2FactorAuthEnabled" === n && i) return t.$emit("changeAuthMode", "code"), Promise.reject(e);
+                                        t.mainError = m.call(t, n || a), t.focusOnInput()
+                                    }
+                                    return Promise.reject(e)
+                                } catch (a) {
+                                    return Promise.reject(e)
+                                }
+                            })).finally((function() {
+                                t.isPending = !1
+                            }))) : this.focusOnInput()
+                        },
+                        validation: function() {
+                            return !(!this.username || 0 === this.username.length || !this.password || 0 === this.password.length) || (this.mainError = m.call(this, "missingRequiredField"), !1)
+                        },
+                        focusOnInput: function() {
+                            this.currentPlatform.desktop && this.showAuthForm && (0 !== this.username.length ? this.$refs.authorizationInputPassword.focus() : this.$refs.authorizationInputTrueconfId.focus())
+                        },
+                        backToRegisterInConferenceHandler: function(t) {
+                            var e = this;
+                            t.target === document.querySelector("#back-to-register") && (this.authModuleStore.sendEvent({
+                                name: "backToRegisterInConference",
+                                payload: null
+                            }), this.$nextTick((function() {
+                                e.authModuleStore.sendEvent({
+                                    name: "close",
+                                    payload: null
+                                })
+                            })))
+                        }
+                    },
+                    computed: {
+                        showAuthForm: function() {
+                            return !this.authModuleStore.authManifest || this.authModuleStore.authManifest.password
+                        },
+                        providersList: function() {
+                            var t;
+                            return ((null === (t = this.authModuleStore.authManifest) || void 0 === t ? void 0 : t.networks) || []).map((function(t) {
+                                return E(E({}, t), {}, {
+                                    title: t.name,
+                                    icon: t.icon
+                                })
+                            }))
+                        },
+                        headerText: function() {
+                            return this.authManagerStore.permissions.guestAuthorization ? this.$pgettext("Header", "Enter as a registered user") : this.$pgettext("Header", "Authorization")
+                        },
+                        "registerInConferenсeDescription": function() {
+                            return this.$pgettext("A text hint displayed to a user who wants to join a conference.", "If you don’t have an account, fill out the [a]registration form[/a] to join the conference.").replace("[a]", '<span id="back-to-register" class="authorization__register-in-conference-back-link">').replace("[/a]", "</span>")
+                        }
+                    },
+                    data: function() {
+                        return {
+                            username: "",
+                            password: "",
+                            mainError: "",
+                            isPending: !1
+                        }
+                    },
+                    watch: {
+                        username: {
+                            handler: function() {
+                                this.mainError = ""
+                            }
+                        },
+                        password: {
+                            handler: function() {
+                                this.mainError = ""
+                            }
+                        }
+                    }
+                },
+                L = r(14486),
+                P = (0, L.A)(M, A, [], !1, null, null, null).exports,
+                G = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "authorization__block"
+                    }, [e("div", {
+                        staticClass: "authorization__form-content"
+                    }, [e("p", {
+                        staticClass: "authorization__heading"
+                    }, [t._v("\n      " + t._s(t.$pgettext("Header", "Enter as a guest")) + "\n    ")]), t._v(" "), e("div", {
+                        staticClass: "authorization__error-container"
+                    }, [e("transition", {
+                        attrs: {
+                            name: "authorization-content",
+                            mode: "out-in"
+                        }
+                    }, [t.mainError && t.mainError.length > 0 ? e("p", {
+                        staticClass: "authorization__error",
+                        attrs: {
+                            title: t.mainError
+                        }
+                    }, [t._v("\n          " + t._s(t.mainError) + "\n        ")]) : t._e()])], 1), t._v(" "), e("TcTextField", {
+                        ref: "authorizationInputGuestname",
+                        staticClass: "authorization__textfield",
+                        attrs: {
+                            maxlength: "64",
+                            label: t.usernameHint,
+                            id: "authorization__input-guest-name"
+                        },
+                        on: {
+                            keyup: function(e) {
+                                return !e.type.indexOf("key") && t._k(e.keyCode, "enter", 13, e.key, "Enter") || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey ? null : t.signInByGuest.apply(null, arguments)
+                            }
+                        },
+                        model: {
+                            value: t.username,
+                            callback: function(e) {
+                                t.username = "string" == typeof e ? e.trim() : e
+                            },
+                            expression: "username"
+                        }
+                    }), t._v(" "), e("TcButton", {
+                        key: "sign-in-button",
+                        staticClass: "authorization__main-button",
+                        attrs: {
+                            type: "unelevated",
+                            text: t.$pgettext("Text on the button", "Sign In"),
+                            id: "authorization__button-sing-in"
+                        },
+                        on: {
+                            click: t.signInByGuest
+                        }
+                    }), t._v(" "), e("TermsOfUse")], 1), t._v(" "), t.authManagerStore.permissions.guestAuthorization ? e("TcButton", {
+                        staticClass: "authorization__default-button",
+                        attrs: {
+                            text: t.$pgettext("Text on the button", "Enter as a registered user"),
+                            id: "authorization-select-auth"
+                        },
+                        on: {
+                            click: function(e) {
+                                return t.$emit("changeAuthMode", "user")
+                            }
+                        }
+                    }) : t._e()], 1)
+                };
+            G._withStripped = !0;
+            var U = {
+                    name: "GuestForm",
+                    components: {
+                        TermsOfUse: r(8684).A
+                    },
+                    mixins: [_],
+                    mounted: function() {
+                        var t = this;
+                        this.$nextTick((function() {
+                            try {
+                                localStorage.getItem("trueconfServerGuestName") && (t.username = localStorage.getItem("trueconfServerGuestName"))
+                            } catch (t) {
+                                console.warn("LocalStorage is unavailable.")
+                            }
+                            t.currentPlatform.desktop && t.$refs.authorizationInputGuestname.focus()
+                        }))
+                    },
+                    methods: {
+                        signInByGuest: function() {
+                            if (!this.username || 0 === this.username.length) return this.mainError = m.call(this, "missingRequiredField"), void this.$refs.authorizationInputGuestname.focus();
+                            var t = {
+                                userInfo: {
+                                    type: "guest",
+                                    username: this.username,
+                                    display_name: this.username,
+                                    guestId: "$".concat(this.username),
+                                    userFromAnotherServer: !1
+                                }
+                            };
+                            try {
+                                localStorage.setItem("trueconfServerGuestName", this.username), localStorage.setItem("trueconfServerUserAuthorization", JSON.stringify(t))
+                            } catch (t) {
+                                console.warn("LocalStorage is unavailable.")
+                            }
+                            this.authModuleStore.sendEvent({
+                                name: "guestLoginSuccess",
+                                payload: t
+                            })
+                        }
+                    },
+                    computed: {
+                        usernameHint: function() {
+                            return this.$pgettext("Hint", "Username")
+                        }
+                    },
+                    data: function() {
+                        return {
+                            username: "",
+                            mainError: ""
+                        }
+                    },
+                    watch: {
+                        username: {
+                            handler: function() {
+                                this.mainError = ""
+                            }
+                        }
+                    }
+                },
+                Z = (0, L.A)(U, G, [], !1, null, null, null).exports,
+                j = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "authorization__block"
+                    }, [e("div", {
+                        staticClass: "one-off-code-from-email"
+                    }, [e("div", {
+                        staticClass: "one-off-code-from-email__header"
+                    }, [t._v("\n      " + t._s(t.$pgettext("The heading for a pop-up window. This window will be displayed when the user is expected to enter the confirmation code sent to his/her email.", "Enter the code from the email")) + "\n    ")]), t._v(" "), e("div", {
+                        staticClass: "one-off-code-from-email__subheader"
+                    }, [t._v("\n      " + t._s(t.$pgettext("The notification displayed to a user. when he/she requests the verification code needed for accessing the web application. Please note that %email will be replaced with an actual user email. So, do not delete or replace this part of the sentence.", "The verification code has been sent to your email %email.").replace("%email", t.email)) + "\n    ")]), t._v(" "), t.isBlockedAccount ? e("div", {
+                        staticClass: "one-off-code-from-email__account-block"
+                    }, [t._v("\n      Ваш аккаунт заблокирован. Попробуйте позже или обратитесь к администратору вашего сервера.\n    ")]) : t._e(), t._v(" "), e("TcTextField", {
+                        staticClass: "one-off-code-from-email__textfield",
+                        attrs: {
+                            label: t.$pgettext("The text hint for an input field. Here, the user will need to enter the verification code in order to sign in to the application.", "Verification code"),
+                            error: t.verifyCodeInputError
+                        },
+                        model: {
+                            value: t.verificationCode,
+                            callback: function(e) {
+                                t.verificationCode = e
+                            },
+                            expression: "verificationCode"
+                        }
+                    }), t._v(" "), e("TcButton", {
+                        staticClass: "one-off-code-from-email__button",
+                        attrs: {
+                            type: "unelevated",
+                            mode: "secondary",
+                            text: t.$pgettext("The button for entering the verification code needed for signing in to the application.", "Verify"),
+                            disabled: t.isVerificationCodeIsExpired
+                        },
+                        on: {
+                            click: t.verifyButtonHandler
+                        }
+                    }), t._v(" "), e("div", {
+                        staticClass: "one-off-code-from-email__resend"
+                    }, [t.countdownTimerStartTimeSeconds && !t.isVerificationCodeIsExpired ? e("div", {
+                        staticClass: "one-off-code-from-email__resend-timer"
+                    }, [t._v("\n        " + t._s(t.$pgettext("A text hint indicating that a user needs to wait until he/she can request the verification code. For example, it may be necessary to wait for 2 minutes.", "You can request a new code in %timer").replace("%timer", t.countdownTimerView)) + "\n      ")]) : t._e(), t._v(" "), !t.countdownTimerStartTimeSeconds || t.isVerificationCodeIsExpired ? e("TcButton", {
+                        attrs: {
+                            text: t.$pgettext("A text button. A new verification code will be sent to the users’ email address.", "Resend code")
+                        },
+                        on: {
+                            click: t.resendVerificationCodeButtonHandler
+                        }
+                    }) : t._e()], 1)], 1), t._v(" "), e("div", {
+                        staticClass: "one-off-code-from-email__cancel"
+                    }, [e("TcButton", {
+                        staticClass: "one-off-code-from-email__cancel-button",
+                        attrs: {
+                            text: t.$pgettext("Text on the button", "Cancel")
+                        },
+                        on: {
+                            click: t.cancelButtonHandler
+                        }
+                    })], 1)])
+                };
+            j._withStripped = !0;
+            var C = {
+                    name: "OneOffCodeForm",
+                    created: function() {
+                        this.countdownTimerStart()
+                    },
+                    beforeDestroy: function() {
+                        clearTimeout(this.countdownTimerId)
+                    },
+                    methods: {
+                        countdownTimerStart: function() {
+                            var t = this;
+                            this.countdownTimerId = setTimeout((function() {
+                                t.countdownTimerStartTimeSeconds--, 0 !== t.countdownTimerStartTimeSeconds ? t.countdownTimerStart() : clearTimeout(t.countdownTimerId)
+                            }), 1e3)
+                        },
+                        verifyButtonHandler: function() {
+                            this.verificationCode.length || (this.verifyCodeInputError = m.call(this, "fieldIsEmpty"))
+                        },
+                        resendVerificationCodeButtonHandler: function() {
+                            this.countdownTimerStartTimeSeconds = 120, this.countdownTimerStart()
+                        },
+                        cancelButtonHandler: function() {
+                            this.countdownTimerStartTimeSeconds = 120, this.$emit("changeAuthMode", "user")
+                        }
+                    },
+                    computed: {
+                        email: function() {
+                            var t;
+                            return null === (t = this.authManagerStore.tempData) || void 0 === t ? void 0 : t.email
+                        },
+                        isBlockedAccount: function() {
+                            return !1
+                        },
+                        isVerificationCodeIsExpired: function() {
+                            return !1
+                        },
+                        countdownTimerView: function() {
+                            var t = String(Math.floor(this.countdownTimerStartTimeSeconds / 60)).padStart(2, 0),
+                                e = String(Math.floor(this.countdownTimerStartTimeSeconds % 60)).padStart(2, 0);
+                            return "".concat(t, ":").concat(e)
+                        }
+                    },
+                    data: function() {
+                        return {
+                            verificationCode: "",
+                            countdownTimerId: null,
+                            verifyCodeInputError: null,
+                            countdownTimerStartTimeSeconds: 120
+                        }
+                    },
+                    watch: {
+                        verificationCode: {
+                            handler: function() {
+                                this.verifyCodeInputError && (this.verifyCodeInputError = null)
+                            }
+                        }
+                    }
+                },
+                I = (0, L.A)(C, j, [], !1, null, null, null).exports,
+                V = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "authorization__block"
+                    }, [e("div", {
+                        staticClass: "off-authorization-screen"
+                    }, [e("div", {
+                        staticClass: "off-authorization-screen__block-title"
+                    }, [t._v("\n      " + t._s(t.$pgettext("A notification displayed on a web page if due to some reason authentication is disabled.", "Authorization is disabled")) + "\n    ")]), t._v(" "), e("div", {
+                        staticClass: "off-authorization-screen__block-subtitle"
+                    }, [t._v("\n      " + t._s(t.$pgettext("A text hint displayed on a web page where a user tries to enter login information in order to sign in.", "Authorization from your subnet was disabled by the server administrator")) + "\n    ")])]), t._v(" "), t.authManagerStore.permissions.guestAuthorization ? e("TcButton", {
+                        staticClass: "authorization__default-button",
+                        attrs: {
+                            text: t.$pgettext("Text on the button", "Enter as a guest"),
+                            id: "authorization-select-auth"
+                        },
+                        on: {
+                            click: function(e) {
+                                return t.$emit("changeAuthMode", "guest")
+                            }
+                        }
+                    }) : t._e()], 1)
+                };
+            V._withStripped = !0;
+            var K = {
+                name: "OffAuthScreen"
+            };
+
+            function N(t) {
+                return N = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, N(t)
+            }
+            var z = {
+                    name: "SignIn",
+                    components: {
+                        UserForm: P,
+                        GuestForm: Z,
+                        OneOffCodeForm: I,
+                        OffAuthScreen: (0, L.A)(K, V, [], !1, null, null, null).exports
+                    },
+                    mixins: [_],
+                    MODE_NAME: "signIn",
+                    methods: {
+                        changeAuthMode: function(t) {
+                            var e = "object" === N(t) ? t.value : t;
+                            this.currentEntity = {
+                                value: e,
+                                payload: (null == t ? void 0 : t.payload) || null
+                            }, this.setModuleScreen(this.$options.MODE_NAME, e)
+                        },
+                        checkDisablePasswordAuth: function(t) {
+                            var e;
+                            !t || t.password || null !== (e = t.networks) && void 0 !== e && e.length || "guest" === this.authMode || this.setModuleScreen(this.$options.MODE_NAME, "offForAll")
+                        }
+                    },
+                    computed: {
+                        authenticationScripts: function() {
+                            return {
+                                user: {
+                                    component: "UserForm",
+                                    props: {},
+                                    actions: {
+                                        changeAuthMode: this.changeAuthMode
+                                    }
+                                },
+                                guest: {
+                                    component: "GuestForm",
+                                    props: {},
+                                    actions: {
+                                        changeAuthMode: this.changeAuthMode
+                                    }
+                                },
+                                code: {
+                                    component: "OneOffCodeForm",
+                                    props: {},
+                                    actions: {
+                                        changeAuthMode: this.changeAuthMode
+                                    }
+                                },
+                                offForAll: {
+                                    component: "OffAuthScreen",
+                                    props: {},
+                                    actions: {
+                                        changeAuthMode: this.changeAuthMode
+                                    }
+                                },
+                                offForGuest: "OffAuthGuestScreen"
+                            } [this.authMode]
+                        },
+                        authMode: function() {
+                            return this.authManagerStore.moduleScreen.screen[this.$options.MODE_NAME]
+                        }
+                    },
+                    data: function() {
+                        return {
+                            currentEntity: null
+                        }
+                    },
+                    watch: {
+                        "authModuleStore.authManifest": {
+                            handler: function(t) {
+                                this.checkDisablePasswordAuth(t)
+                            },
+                            immediate: !0
+                        },
+                        authMode: function() {
+                            this.checkDisablePasswordAuth(this.authModuleStore.authManifest)
+                        }
+                    }
+                },
+                D = (0, L.A)(z, y, [], !1, null, null, null).exports,
+                W = function() {
+                    return (0, this._self._c)(this.currentError, {
+                        tag: "component"
+                    })
+                };
+            W._withStripped = !0;
+            var X = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "authorization__block authorization__block--error"
+                }, [e("p", {
+                    staticClass: "authorization__heading authorization__heading--error"
+                }, [t._v("\n    " + t._s(t.$pgettext("Header", "Authorization unavailable")) + "\n  ")]), t._v(" "), e("p", {
+                    staticClass: "authorization__desc authorization__desc--error"
+                }, [t._v("\n    " + t._s(t.$pgettext("Message", "Authorization requires HTTPS to ensure your data safety.")) + "\n  ")])])
+            };
+            X._withStripped = !0;
+            var R = {
+                    name: "NoHTTPSError"
+                },
+                q = (0, L.A)(R, X, [], !1, null, null, null).exports,
+                H = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "authorization__block provider-error"
+                    }, [e("span", {
+                        staticClass: "authorization__heading"
+                    }, [t._v("\n    " + t._s(t.$pgettext("The title of a dialogue window", "Authorization error")) + "\n  ")]), t._v(" "), e("div", {
+                        staticClass: "provider-error__block"
+                    }, [e("span", [t._v(t._s("500 Internal Server Error"))])]), t._v(" "), t.adminContacts && t.adminContacts.adminName ? e("div", {
+                        staticClass: "provider-error__block"
+                    }, [e("span", {
+                        staticClass: "provider-error__block__title"
+                    }, [t._v("\n      " + t._s(t.$pgettext("Subheader", "Your administrator")) + "\n    ")]), t._v(" "), e("br"), t._v(" "), e("span", [t._v("\n      " + t._s(t.adminContacts.adminName) + "\n    ")])]) : t._e(), t._v(" "), t.adminContacts && t.adminContacts.email ? e("div", {
+                        staticClass: "provider-error__block"
+                    }, [e("span", {
+                        staticClass: "provider-error__block__title"
+                    }, [t._v("\n      " + t._s(t.$pgettext("Subheader", "Email")) + "\n    ")]), t._v(" "), e("br"), t._v(" "), e("span", [t._v("\n      " + t._s(t.adminContacts.email) + "\n    ")])]) : t._e()])
+                };
+            H._withStripped = !0;
+            var F = {
+                    name: "ProviderLoginError",
+                    mixins: [_],
+                    computed: {
+                        adminContacts: function() {
+                            return this.authModuleStore.adminContacts || null
+                        }
+                    }
+                },
+                J = {
+                    name: "AuthorizationError",
+                    components: {
+                        HTTPSError: q,
+                        ProviderLoginError: (0, L.A)(F, H, [], !1, null, null, null).exports
+                    },
+                    mixins: [_],
+                    computed: {
+                        currentError: function() {
+                            return {
+                                httpsError: "HTTPSError",
+                                providerError: "ProviderLoginError"
+                            } [this.authManagerStore.moduleScreen.screen.error]
+                        }
+                    }
+                },
+                Y = (0, L.A)(J, W, [], !1, null, null, null).exports,
+                Q = '<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="326.69" y1="180.87" x2="60.09" y2="108.85" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-736.85" y1="276.05" x2="-656.06" y2="276.05" gradientTransform="translate(868 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-6" x1="135.98" y1="112.71" x2="207.25" y2="112.71" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cddeb"/><stop offset="1" stop-color="#58d3e0"/></linearGradient><linearGradient id="linear-gradient-7" x1="153.69" y1="100.3" x2="189.22" y2="100.3" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="linear-gradient-8" x1="144.02" y1="136.29" x2="199.21" y2="136.29" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-9" x1="116.01" y1="167.42" x2="226.89" y2="167.42" xlink:href="#linear-gradient-6"/><linearGradient id="linear-gradient-10" x1="131.5" y1="167.42" x2="141.89" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="148.88" y1="167.42" x2="159.27" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="166.26" y1="167.42" x2="176.65" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-13" x1="183.63" y1="167.42" x2="194.03" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="201.01" y1="167.42" x2="211.41" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-15" x1="145.99" y1="193.79" x2="197.54" y2="193.79" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ac3b"/><stop offset="1" stop-color="#f99446"/></linearGradient><linearGradient id="linear-gradient-16" x1="186.39" y1="194" x2="157.13" y2="193.59" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-17" x1="254.39" y1="232.86" x2="263.77" y2="232.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-18" x1="254.93" y1="228.65" x2="264.36" y2="228.65" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-19" x1="258.58" y1="212.14" y2="212.14" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-20" x1="248.15" y1="236.24" x2="251.84" y2="236.24" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-21" x1="249.07" y1="224.39" x2="250.61" y2="224.39" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-22" x1="266.53" y1="274.61" x2="236.29" y2="249.19" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-23" x1="255.11" y1="246.9" x2="265.52" y2="281.1" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-24" x1="-8905.14" y1="262.76" x2="-8876.7" y2="262.76" gradientTransform="translate(-8801.62) rotate(-180) scale(1 -1)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-25" x1="76.09" y1="262" x2="102.76" y2="262" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-26" x1="-8840.99" y1="242.17" x2="-8812.69" y2="242.17" gradientTransform="translate(-8736.95) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset=".21" stop-color="#58d5e2"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-27" x1="137.13" y1="244.97" x2="170.87" y2="244.97" gradientTransform="translate(-64.43)" xlink:href="#linear-gradient-25"/><linearGradient id="linear-gradient-28" x1="85.25" y1="262" x2="93.6" y2="262" xlink:href="#linear-gradient-7"/></defs><g id="Layer_1-2"><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(-180)" style="fill:url(#linear-gradient-5);"/><g><g><path d="M207.25,112.67c0,7.05-2.07,13.94-5.99,19.81-3.91,5.87-9.47,10.44-15.99,13.15-6.51,2.7-13.68,3.42-20.59,2.05-6.92-1.37-13.27-4.76-18.26-9.74-4.99-4.98-8.39-11.33-9.77-18.25-1.38-6.91-.68-14.08,2.02-20.6,2.7-6.52,7.26-12.08,13.13-16,5.86-3.92,12.75-6.01,19.8-6.01,4.68,0,9.31,.91,13.63,2.7,4.32,1.79,8.25,4.41,11.56,7.71,3.31,3.31,5.94,7.23,7.73,11.55,1.79,4.32,2.71,8.95,2.71,13.63Z" style="fill:url(#linear-gradient-6);"/><path d="M171.45,118.07c9.81,0,17.77-7.96,17.77-17.77s-7.96-17.77-17.77-17.77-17.77,7.95-17.77,17.77,7.95,17.77,17.77,17.77Z" style="fill:url(#linear-gradient-7);"/><path d="M199.21,135.23c-3.34,4.09-7.55,7.38-12.33,9.64-4.77,2.26-9.99,3.44-15.27,3.44s-10.5-1.17-15.27-3.44c-4.77-2.26-8.98-5.56-12.33-9.64,2.45-3.4,5.67-6.16,9.4-8.07,3.73-1.91,7.86-2.9,12.04-2.89h12.31c4.19,0,8.32,.99,12.04,2.9,3.73,1.91,6.95,4.67,9.4,8.07Z" style="fill:url(#linear-gradient-8);"/></g><g><rect x="116.01" y="155.54" width="110.88" height="23.75" rx="3.81" ry="3.81" style="fill:url(#linear-gradient-9);"/><g><circle cx="136.7" cy="167.42" r="5.2" style="fill:url(#linear-gradient-10);"/><circle cx="154.07" cy="167.42" r="5.2" style="fill:url(#linear-gradient-11);"/><circle cx="171.45" cy="167.42" r="5.2" style="fill:url(#linear-gradient-12);"/><circle cx="188.83" cy="167.42" r="5.2" style="fill:url(#linear-gradient-13);"/><circle cx="206.21" cy="167.42" r="5.2" style="fill:url(#linear-gradient-14);"/></g></g><g><path d="M195.39,186.05h-47.26c-1.19,0-2.15,.96-2.15,2.15v11.18c0,1.19,.96,2.15,2.15,2.15h47.26c1.19,0,2.15-.96,2.15-2.15v-11.18c0-1.19-.96-2.15-2.15-2.15Z" style="fill:url(#linear-gradient-15);"/><path d="M184.25,195.94h-24.97c-1.19,0-2.15-.96-2.15-2.15s.96-2.15,2.15-2.15h24.97c1.19,0,2.15,.96,2.15,2.15s-.96,2.15-2.15,2.15Z" style="fill:url(#linear-gradient-16);"/></g></g></g><g><polygon points="263.77 216.53 263.49 218.8 260.93 239.15 259.58 249.83 256.92 249.5 254.39 249.18 255.73 238.49 258.29 218.15 258.58 215.88 261.11 216.19 263.77 216.53" style="fill:url(#linear-gradient-17);"/><path d="M264.35,219.84l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-18);"/><polygon points="263.77 216.53 261.11 216.19 258.58 215.88 262.12 208.17 262.31 207.76 263.77 216.53" style="fill:url(#linear-gradient-19);"/><rect x="248.15" y="225.62" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-20);"/><path d="M250.61,223.19v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-21);"/><path d="M251.84,226.22v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M262.12,208.17l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M261.15,280.59h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-22);"/><path d="M265.67,247.68l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-23); opacity:.4;"/></g><g id="Group_947" transform="translate(310.612,110.434)"><g id="Group_946" transform="translate(1.629,2.471)"><g id="Group_945"><path id="Path_1315" d="M103.52,244.92c-.32,3.53-.64,6.75-.96,9.64-.48,5.14-.96,9.64-1.45,14.78-.27,2.83-.65,5.78-.96,9.21-.1,1.15-1.07,2.03-2.23,2.03h-17.15c-1.14,0-2.1-.86-2.22-1.99-.36-3.37-.63-6.43-.9-9.26-.48-5.14-.96-9.48-1.61-14.78-.32-2.89-.64-6.11-.96-9.64h28.44Z" style="fill:url(#linear-gradient-24);"/></g></g><path id="Path_1316" d="M76.09,254.61c.48,5.14,.96,9.64,1.45,14.78h23.62c.48-5.14,.96-9.48,1.61-14.78h-26.67Z" style="fill:url(#linear-gradient-25);"/><path id="Rectangle_770" d="M75.51,240.16h27.83c.39,0,.71,.39,.71,.88v2.24c0,.49-.32,.88-.71,.88h-27.83c-.39,0-.71-.39-.71-.88v-2.24c0-.49,.32-.88,.71-.88Z" style="fill:url(#linear-gradient-26);"/><rect id="Rectangle_769" x="72.56" y="242.56" width="33.74" height="4.82" rx=".71" ry=".71" style="fill:url(#linear-gradient-27);"/><path id="Path_1317" d="M93.6,262c0-2.41-1.93-4.18-4.18-4.18-2.41,0-4.18,1.93-4.18,4.18s1.93,4.18,4.18,4.18c2.25,0,4.18-1.93,4.18-4.18h0Z" style="fill:url(#linear-gradient-28); opacity:.5;"/></g></g></g></svg>',
+                B = '<?xml version="1.0" encoding="utf-8"?>\n\x3c!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --\x3e\n<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\n\t viewBox="0 0 911.3 999.8" style="enable-background:new 0 0 911.3 999.8;" xml:space="preserve">\n<style type="text/css">\n\t.st0{clip-path:url(#SVGID_2_);fill:#0097A7;}\n\t.st1{clip-path:url(#SVGID_2_);}\n\t.st2{fill:#12323A;}\n\t.st3{fill:#F9D1C2;}\n\t.st4{fill:#3A2E32;}\n\t.st5{clip-path:url(#SVGID_4_);fill:#FFFFFF;}\n\t.st6{clip-path:url(#SVGID_4_);fill:#F89394;}\n\t.st7{fill:#F4CDC1;}\n\t.st8{fill:#FFFFFF;}\n\t.st9{fill:#CFDEE7;}\n\t.st10{fill:#163F4C;}\n\t.st11{fill:#EF993A;}\n\t.st12{fill:#E58F39;}\n\t.st13{fill:#E2F1F7;}\n\t.st14{fill:#00939F;}\n</style>\n<g>\n\t<g>\n\t\t<defs>\n\t\t\t<circle id="SVGID_1_" cx="455.7" cy="544.1" r="455.7"/>\n\t\t</defs>\n\t\t<clipPath id="SVGID_2_">\n\t\t\t<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>\n\t\t</clipPath>\n\t\t<rect x="-195" y="-20.7" class="st0" width="1436" height="1065"/>\n\t\t<g class="st1">\n\t\t\t<polygon class="st2" points="328.2,1003.6 328.2,1127.1 661.9,1121.6 656.5,964.4 420.8,961 \t\t\t"/>\n\t\t\t<path class="st3" d="M560.8,404.1c-11.9,31.4-16,30.1-42.7,26.7c-22.2-2.8-35.8-20-39.1-24.6c5.3-18.2,10.6-36.5,16-54.7\n\t\t\t\tl64.7,0.3L560.8,404.1z"/>\n\t\t\t<g>\n\t\t\t\t<path class="st3" d="M383,218c-2.1-26.3-7.3-101.9,43.2-146.9c20.1-17.9,48.5-28.7,87.9-29.9c39.4-1.2,68.4,7.9,89.6,24.5\n\t\t\t\t\tc55.5,43.6,53.1,121,52.1,144c-0.7,16.2-2.9,54.8-28.5,92.3c-4,5.8-14.2,19.9-31.2,33.9c-9.8,8-34.8,28-73.1,34.2\n\t\t\t\t\tc-15.6,2.5-35.4,5.8-57.8-3c-23-9.1-35.8-25.9-45.7-38.8c-14.9-19.5-21.1-37.8-25.8-52C390.8,267.2,385.2,245.8,383,218z"/>\n\t\t\t\t<path class="st4" d="M514.8,177.6c-3.4,0.6-6.6-1.7-7.2-5.1c-0.6-3.4,1.7-6.6,5-7.2c1.3-0.2,32-5.3,49.3,9.1\n\t\t\t\t\tc2.6,2.2,3,6.1,0.8,8.7c-1.2,1.4-2.9,2.2-4.6,2.2c-1.5,0-2.9-0.4-4.2-1.4C543.4,175.1,522.1,176.4,514.8,177.6z"/>\n\t\t\t\t<path class="st4" d="M421.6,181.5c3.4,0.8,6.6-1.4,7.4-4.7c0.7-3.3-1.4-6.6-4.7-7.4c-1.3-0.3-31.7-6.9-49.6,6.7\n\t\t\t\t\tc-2.7,2.1-3.3,6-1.2,8.7c1.1,1.5,2.8,2.3,4.5,2.4c1.5,0.1,3-0.3,4.2-1.2C393.2,177.6,414.4,179.9,421.6,181.5z"/>\n\t\t\t\t<g>\n\t\t\t\t\t<defs>\n\t\t\t\t\t\t<path id="SVGID_3_" d="M490.4,286.9c-2.9-0.2-37.2-2.8-40.1-3c-19.4-1.5-5.5,23.6,16.1,27.1c0.5,0.1,1.9,0.3,2.1,0.3\n\t\t\t\t\t\t\tc0.2,0,1.6,0.1,2.1,0.1C492.3,311.1,509.8,288.3,490.4,286.9L490.4,286.9z"/>\n\t\t\t\t\t</defs>\n\t\t\t\t\t<use xlink:href="#SVGID_3_"  style="overflow:visible;fill:#F36A6B;"/>\n\t\t\t\t\t<clipPath id="SVGID_4_">\n\t\t\t\t\t\t<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>\n\t\t\t\t\t</clipPath>\n\t\t\t\t\t<path class="st5" d="M453.5,276.1c0,0-4.7-0.3-5,4.3l-0.4,5.1c0,0-0.3,4.7,4.3,5l34.8,2.6c0,0,4.7,0.3,5-4.3l0.4-5.1\n\t\t\t\t\t\tc0,0,0.3-4.7-4.3-5L453.5,276.1L453.5,276.1z"/>\n\t\t\t\t\t<path class="st6" d="M487.8,320.7c-2.9-0.2-37.2-2.8-40.1-3c-19.4-1.5-1.9-24.2,19.9-24.4c0.5,0,1.9,0,2.1,0\n\t\t\t\t\t\tc0.2,0,1.6,0.2,2.1,0.3C493.3,297.1,507.2,322.2,487.8,320.7L487.8,320.7z"/>\n\t\t\t\t\t<path class="st5" d="M456.1,304.3c0,0-3.4-0.3-3.7,3.1l-0.3,3.7c0,0-0.3,3.4,3.1,3.7l25.4,1.9c0,0,3.4,0.3,3.7-3.1l0.3-3.7\n\t\t\t\t\t\tc0,0,0.3-3.4-3.1-3.7L456.1,304.3L456.1,304.3z"/>\n\t\t\t\t</g>\n\t\t\t\t<path class="st4" d="M422.6,219.1c-3.9-1.2-9.9-2.5-17.2-2.2c-6.2,0.3-11.2,1.7-14.7,2.9c0.6-8.1,7.2-14.5,15.2-14.9\n\t\t\t\t\tC414.1,204.6,421.5,210.7,422.6,219.1z"/>\n\t\t\t\t<path class="st4" d="M545.6,223.7c-3.8-1.5-9.6-3.3-17-3.5c-6.2-0.2-11.3,0.8-14.9,1.7c1.3-8,8.4-13.9,16.4-13.6\n\t\t\t\t\tC538.3,208.5,545.2,215.3,545.6,223.7z"/>\n\t\t\t\t<path class="st7" d="M619.5,100.4c11.3-2,37.6,52.8,36.5,109.2c-0.2,12.3-1.6,52.9-28.5,92.3c-3.1,4.5-13.4,19.1-31.2,33.9\n\t\t\t\t\tc-18.1,15-34.6,22.3-38.7,24.1c-11.7,5-21.2,7.4-26.4,8.6c-6.7,1.6-22.2,5.2-39,4.3c-8.6-0.5-15-2-16.6-2.4\n\t\t\t\t\tc-4.2-1-7.6-2.2-10.1-3.1c3.6-0.7,8.9-1.7,15.3-3.2c0,0,17.6-3.9,31.9-9.7c38.9-15.8,59.7-49.7,70-67\n\t\t\t\t\tC634.7,199.9,604.8,103,619.5,100.4z"/>\n\t\t\t\t<path class="st4" d="M314.9,91c1.4,3,5.4,10.3,13.8,15.5c8.3,5.1,16.2,5.3,19.5,5.3c11.6,0.1,20-4.8,23.4-7.1\n\t\t\t\t\tc-1.7,15.3-2.5,33-1.4,52.6c1.7,31.7,7.8,58.6,14.3,79.4c-1.3-13.8-3.2-37.3-2.9-61c0-1.6,0-11.7,2.5-24.6\n\t\t\t\t\tc2.4-12.6,4.2-21.2,10.4-25.4c8.4-5.8,20.9-0.8,26.3,1.1c0,0,56.5,20.3,147.2,1.5c10.6-2.2,21.5-2.6,32.2-4.7\n\t\t\t\t\tc9.8-1.9,15.3-3.4,17.4-0.7c3.1,3.9-5.6,10.7-7.2,24.4c-1.5,12.5,5,13.6,5.4,30.3c0.4,15.3-4,28.4-4,28.4\n\t\t\t\t\tc-2.9,8.8-6.6,14.6-3.9,18.2c1.7,2.3,5.8,3.2,8.8,2c7-2.8,5.1-16,11.3-17.8c1.8-0.5,3.5,0.1,6.4,1.6c5.1,2.6,12.5,7,20.9,14.6\n\t\t\t\t\tc6.7-10.4,16.5-28.9,18.4-53.5c0.6-7.3,1.2-14.8,0.8-23.9c-0.2-4.6-0.7-8.2-1.2-11.1c-1.5-7.7-4.5-10.1-3.7-15\n\t\t\t\t\tc0.6-3.6,2.2-3.6,4.4-8.4c3.3-7.4,2.4-14.4,1.9-18.6c-0.7-5.5-2.3-10.6-5.7-17.2c-11.2-22.1-29.6-38.3-29.6-38.3\n\t\t\t\t\tc-12.2-8.6-23.3-16.4-37.7-23c-0.6-0.3-14.1-6.2-29.5-10.1c-29-7.2-85-12-141.4,13c-18.4,8.1-34.5,15.2-49.5,31.4\n\t\t\t\t\tc-9.1,9.8-12.1,16.6-22.3,24.6C344.7,86.5,327.2,90,314.9,91z"/>\n\t\t\t\t<path class="st7" d="M677.9,233.4c4.1-22.9-6.2-44-23-47c-16.8-3-33.8,13.2-37.9,36.1c-4.1,22.9,6.2,44,23,47\n\t\t\t\t\tC656.9,272.5,673.8,256.3,677.9,233.4z"/>\n\t\t\t</g>\n\t\t\t<polygon class="st3" points="193.4,410.4 199.1,460.3 163.9,461.6 163.5,401.2 \t\t\t"/>\n\t\t\t<polygon class="st8" points="160.3,438.3 159.8,426.8 201,424.6 203.8,434.7 \t\t\t"/>\n\t\t\t<path class="st2" d="M414.3,422.6c-12.3,10.7-36.3,21.9-48.7,33.9c-54.1,52.5-96.6,106.6-129.9,157.4l-30-186l-50.4,5.2\n\t\t\t\tc0,0-29.4,183.1,37.1,283.4c0,0,49.9,37.3,222.5-186.2L414.3,422.6z"/>\n\t\t\t<path class="st9" d="M449.5,807.5c-6.2-2.7-48.8-100.6-48.8-100.6L419,474.7c2.6-9.6,10.1-32.7,31-50.2\n\t\t\t\tc12.8-10.8,25.8-15.4,34.1-17.5c3.3,1.8,6,7,12,10c7,3.5,11.7,5.8,12,5.6c6.6-3.6,61.5-19.3,61.5-19.3l21.9,33.6L449.5,807.5z"/>\n\t\t\t<path class="st10" d="M456.8,413.9c-10.6,1.7-21.1,3.4-31.7,5.1c-8.5,2.4-22.7,7.3-37,17.7c-63.6,46.5-64.7,154.6-65.3,227.2\n\t\t\t\tc-0.3,34.5-1.6,60.2-1.1,99.8c0.9,65.6,1.8,152.2,5,242.2c12.4,7.9,26.8,11.9,55.2,15.8c18.6,2.5,60.8,0.4,60.8,0.4\n\t\t\t\ts14.2-39.9,14.4-77.6c0,0,20-169.2-2.2-203.1c-1.9-2.9-2.3-6.4-2.3-6.4c-3.2,3.7-4.9,13.1-10.5,11.3c-5.2-1.7-11.8-12.6-13.4-22\n\t\t\t\tc-4.4-26.2-8.1-23.2-12.3-46.8c-4.4-24.7-1.8-36.9-0.2-87.6c1.4-43.3-0.2-42.2,1-57.3C419.3,504.9,427.4,464,456.8,413.9z"/>\n\t\t\t<path class="st10" d="M675.7,439.9c0,0-30.7-16.2-39.9-19.1c-2.1-0.7-4.1-1.4-6.1-2.3c-23-9.7-50.4-11.2-50.3-11.4\n\t\t\t\tc0,0,0.2,0,0.2,0c-12.9-3.8-7.3,3.5,6.5,21.6c11.6,15.2-4.3,38-17.1,54.7l-47.3,44l0.5,54.7c-10.6,13.1-25,31.8-40.4,55.3\n\t\t\t\tc-11,16.7-25,49.3-45.4,108.1c-3.2,79.8,7.7,239.7,6.2,276.5c29.7,8,67.6,14.1,132.2-0.7c33.7-7.7,60.8-20.2,80.7-31.4\n\t\t\t\tc0-107-3.8-192.8-7.4-252.9c-2.7-45.1-5.7-82.2-3.1-134.7C648.7,530.1,651.1,472,675.7,439.9z"/>\n\t\t\t<path class="st11" d="M488.6,434.9c-15.7,25.2-31,62.2-43.3,102.8c-27,88.9-17.7,163.6-8.9,206.8c3.6-12.2,9.2-29.2,15-54.2\n\t\t\t\tc15.6-67.2,13-85.6,29.1-142.1c8.1-28.6,17.9-56.2,20.9-64.5c7-19.5,14.4-38.5,19.9-51.7C511.3,433.5,498.7,433.4,488.6,434.9z"\n\t\t\t\t/>\n\t\t\t<path class="st12" d="M524.8,435.9c-2.7,2.3-7.5,5.8-14.3,7.4c-14.5,3.4-26.2-4.4-28.4-5.9c9.3-7,16.2-9.8,25.5-16.9L524.8,435.9\n\t\t\t\tz"/>\n\t\t\t<path class="st13" d="M507.6,420.5c-2-0.8-5.4-2.3-9.4-4.5c0,0-5.3-2.9-18.5-12.2l0,0c-3.2,1.1-9.8,17-11.1,18.8\n\t\t\t\tc7.2,15.3,11.1,18.9,11.2,18.8C481.8,437.8,507.6,420.5,507.6,420.5z"/>\n\t\t\t<path class="st13" d="M508.1,420.9l16.7,23.2c17.3-9.1,37.1-28.4,46.2-34.7c6.9-4.7-10.1-13.4-10.1-13.4\n\t\t\t\tc-7.4,4.7-13.7,8.1-18.4,10.3c-4.5,2.2-8.5,3.9-16.3,7.2C518.7,416.7,512.5,419.2,508.1,420.9z"/>\n\t\t\t<path class="st14" d="M544.2,572c-5.7-8-11.5-16-17.2-24c8.7-2.2,39.9-13,39.9-13c9.7-26.1,16.5-48.1,21-63.7\n\t\t\t\tc11.8-40.7,6.3-63.1,6.3-63.1l-21.6-2.8l0,0c-5.5,12.8-13.8,31.6-24.3,54.1c-21,45-80.6,176.4-94.6,221.1\n\t\t\t\tc-7.7,24.7-13.9,50.8-17.3,63.8C435.4,748.7,509.8,628.6,544.2,572z"/>\n\t\t\t<path class="st14" d="M383.5,521.3c7.7,5.5,15.5,10.9,23.2,16.4c-8.3,7.8-16.6,15.5-25,23.3l0,0c0.9,23.9,4.4,55.4,14.7,90.8\n\t\t\t\tc10.9,37.1,26.3,72.4,40,92.8c-10.3-30.9-22.5-80.9-21.2-135.2c2.3-98.9,42.8-171.4,64.4-204.6c-6.8,0.8-15.2,2.4-24.3,5.6\n\t\t\t\tc-6.1,2.1-11.3,4.5-15.8,6.9c-10.2,14.5-21,31.4-31.4,50.7C397.9,487,389.9,505,383.5,521.3z"/>\n\t\t\t<path class="st2" d="M675.7,439.9c30,5.9,37.4,101.9,39.5,200.9c0,0,3.1,145.6-9.6,341l0,0c-21.7,0.5-43.5,1-65.2,1.5\n\t\t\t\tc-8.6-85.3-12.2-156.2-13.8-208.3c-2.3-76.2-9.9-223,0.1-289.2c1.2-8.1,4.1-25.1,17.6-36.1C654.4,441.5,668.3,438.4,675.7,439.9z\n\t\t\t\t"/>\n\t\t\t<path class="st2" d="M436.5,744.5c-1,48.6-1,99.2,0.4,151.7c1.1,43.4,3.1,85.4,5.8,125.9C444.9,985.1,436.5,744.5,436.5,744.5z"\n\t\t\t\t/>\n\t\t\t<path class="st3" d="M105.8,300.6c1-1.3,3.1-1.2,3.4-1.1c1.6,0.1,2.7,1.1,3.8,2c0.8,0.7,2,1.9,3.1,3.8c4.1,6.1,22,33,24,34.1\n\t\t\t\tc1,0.6,1.6,0.4,1.6,0.4c0.5-0.2,0.8-0.7,1-1.2c0,0,0.4-0.9,0.5-1.7c0.2-1.3-9-24.1-22.1-55c-2.3-4.1-2.2-8-0.5-9.2\n\t\t\t\tc1.4-1,3.7-0.2,4.3,0c2.1,0.7,3.4,2.2,4.3,3.4c3.1,4,4.6,7.9,6.2,11.5c2.3,5.4,0-0.7,3.9,8.6c8.9,21.3,12.1,31.9,16.7,32.1\n\t\t\t\tc0.2,0,1.3,0.1,2.2-0.7c2.1-1.7,0.8-6.5,0.3-8.7c-4.5-16.6-7.5-33.6-12.1-50.2c-0.7-2.4-2.1-7.8,0.3-9.8c1-0.9,2.7-1.1,4-0.8\n\t\t\t\tc0.7,0.2,2,0.7,3.9,3.4c2.3,3.4,3.1,6.5,3.1,6.5c0.2,1,13.4,54.7,14.8,55.8c1,0.8,1.7,0.5,1.7,0.5c0.4-0.1,0.8-0.5,0.8-0.8\n\t\t\t\tc0.8-11.1,5.7-22.8,21.3-24.8c19.5-2.4,30.6,13.1,36,20.1c1.9,4.2,2.9,6.1-1.1,8c-0.4,0.2-1.9,0.9-3.8,0.5\n\t\t\t\tc-2.4-0.4-4-2.5-4.7-3.5c-3.5-4.5-7.3-9.4-11.7-11.5c-0.6-0.3-5.9-2.7-10.8-0.1c-4.5,2.4-5.6,7.5-6,8.9\n\t\t\t\tc-0.6,2.5-0.4,4.4,1.4,12.2c1.6,7.2,2,6.4,7.6,24.7c0.4,1.2,0.9,2.3,1.7,3.2c3,3.4,9.8,4.5,13.2,2.5c6.4-3.9,13-8.8,10.6-21.4\n\t\t\t\tc-0.9-4.6-3.2-13.5,1.9-15c4.7-1.3,7.3,2.9,8.5,7.8c3.8,15.3,0.2,27.3-7.7,39.7c-5,7.9-11.4,20.6-17.3,27.8\n\t\t\t\tc-11.1,13.5-28.3,23.2-46.2,17.2c-12.7-4.3-17.7-22.3-21.6-34.4c-0.6-1.7-1.1-3.5-1.7-5.1c-1.5-4.5-3.2-8.9-5.1-13.2\n\t\t\t\tc-4.1-9.3-11.1-20.6-13.5-24.6c-4.3-7-10.2-17.1-16.7-30.2c-1.7-2.9-2.7-5.5-3.2-7.3C105.1,302.2,105.4,301.2,105.8,300.6z"/>\n\t\t</g>\n\t</g>\n\t<path class="st4" d="M315,91.3c1.4,3,5.4,10.3,13.8,15.5c8.3,5.1,16.2,5.3,19.5,5.3c11.6,0.1,20-4.8,23.4-7.1\n\t\tc-1.7,15.3-2.5,33-1.4,52.6c1.7,31.7,7.8,58.6,14.3,79.4c-1.3-13.8-3.2-37.3-2.9-61c0-1.6,0-11.7,2.5-24.6\n\t\tc2.4-12.6,4.2-21.2,10.4-25.4c8.4-5.8,20.9-0.8,26.3,1.1c0,0,56.5,20.3,147.2,1.5c10.6-2.2,21.5-2.6,32.2-4.7\n\t\tc9.8-1.9,15.3-3.4,17.4-0.7c3.1,3.9-5.6,10.7-7.2,24.4c-1.5,12.5,5,13.6,5.4,30.3c0.4,15.3-4,28.4-4,28.4\n\t\tc-2.9,8.8-6.6,14.6-3.9,18.2c1.7,2.3,5.8,3.2,8.8,2c7-2.8,5.1-16,11.3-17.8c1.8-0.5,3.5,0.1,6.4,1.6c5.1,2.6,12.5,7,20.9,14.6\n\t\tc6.7-10.4,16.5-28.9,18.4-53.5c0.6-7.3,1.2-14.8,0.8-23.9c-0.2-4.6-0.7-8.2-1.2-11.1c-1.5-7.7-4.5-10.1-3.7-15\n\t\tc0.6-3.6,2.2-3.6,4.4-8.4c3.3-7.4,2.4-14.4,1.9-18.6c-0.7-5.5-2.3-10.6-5.7-17.2c-11.2-22.1-29.6-38.3-29.6-38.3\n\t\tc-12.2-8.6-23.3-16.4-37.7-23c-0.6-0.3-14.1-6.2-29.5-10.1c-29-7.2-85-12-141.4,13c-18.4,8.1-34.5,15.2-49.5,31.4\n\t\tc-9.1,9.8-12.1,16.6-22.3,24.6C344.8,86.8,327.4,90.3,315,91.3z"/>\n</g>\n</svg>\n',
+                $ = '<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="302.39" y1="99.94" x2="37.89" y2="179.35" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-1620.33" y1="276.05" x2="-1539.53" y2="276.05" gradientTransform="translate(1751.48 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="_езымянный_градиент_154" x1="34.35" y1="139.4" x2="309.52" y2="139.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#faaaad"/><stop offset=".63" stop-color="#f58f99"/><stop offset="1" stop-color="#f27e8c"/></linearGradient><linearGradient id="linear-gradient-6" x1="116.23" y1="138.55" x2="220.14" y2="138.55" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="_езымянный_градиент_154-2" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="_езымянный_градиент_154-3" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="linear-gradient-7" x1="84.43" y1="232.6" x2="93.81" y2="232.6" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-8" x1="84.97" y1="228.4" x2="94.4" y2="228.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-9" x1="88.62" y1="211.89" y2="211.89" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-10" x1="78.19" y1="235.99" x2="81.88" y2="235.99" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="79.11" y1="224.13" x2="80.65" y2="224.13" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="96.57" y1="274.36" x2="66.33" y2="248.94" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-13" x1="85.15" y1="246.65" x2="95.56" y2="280.85" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="252.5" y1="244.53" x2="267.16" y2="244.53" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-2" x1="304.01" y1="277.86" x2="310.43" y2="277.86" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-3" x1="310.58" y1="246.37" x2="315.55" y2="246.37" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-4" x1="306.7" y1="257.31" x2="312.12" y2="257.31" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-5" x1="305.58" y1="263.7" x2="311.8" y2="263.7" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-6" x1="304.81" y1="269.92" x2="311.83" y2="269.92" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-15" x1="234.19" y1="253.26" x2="251.01" y2="253.26" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-7" x1="125.05" y1="177.33" x2="130.03" y2="177.33" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-8" x1="128.48" y1="188.27" x2="133.91" y2="188.27" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-9" x1="128.8" y1="194.66" x2="135.02" y2="194.66" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-10" x1="128.77" y1="200.89" x2="135.8" y2="200.89" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-16" x1="-84.04" y1="889.44" x2="-81.6" y2="899.89" gradientTransform="translate(90.9 -640.25) rotate(-14.58)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-11" x1="76.34" y1="152.13" x2="79.17" y2="152.13" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-12" x1="76.88" y1="163.69" x2="82.23" y2="163.69" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-13" x1="78.81" y1="169.51" x2="84.71" y2="169.51" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-17" x1="129.62" y1="791.83" x2="124.92" y2="846.04" gradientTransform="translate(66.05 -498.5) rotate(-4.96) scale(.91 .93)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-14" x1="242.32" y1="286.75" x2="247.56" y2="286.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-15" x1="242.58" y1="293.44" x2="248.74" y2="293.44" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-16" x1="242.82" y1="301.75" x2="249.28" y2="301.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-17" x1="242.75" y1="309.1" x2="249.42" y2="309.1" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-18" x1="242.24" y1="317.46" x2="249.41" y2="317.46" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-18" x1="348.41" y1="-756.25" x2="346.98" y2="-745.97" gradientTransform="translate(-190.84 863.32) rotate(9.34) scale(1 .9)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-19" x1="263.73" y1="238.67" x2="268.79" y2="238.67" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-20" x1="259.66" y1="248.61" x2="264.85" y2="248.61" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-21" x1="258.3" y1="254.23" x2="264.28" y2="254.23" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-19" x1="254.16" y1="244.83" x2="252.04" y2="263.26" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-22" x1="251.05" y1="236.12" x2="257.02" y2="236.12" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-23" x1="249.1" y1="243.85" x2="256.05" y2="243.85" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-24" x1="247.67" y1="253.44" x2="255.04" y2="253.44" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-25" x1="246.77" y1="261.97" x2="254.34" y2="261.97" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-26" x1="245.91" y1="271.6" x2="253.92" y2="271.6" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-20" x1="236.71" y1="270.22" x2="263.32" y2="270.22" xlink:href="#linear-gradient-12"/><linearGradient id="linear-gradient-21" x1="234.37" y1="256.13" x2="265.67" y2="256.13" xlink:href="#linear-gradient-12"/></defs><g id="Layer_1-2"><g><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(180)" style="fill:url(#linear-gradient-5);"/><rect x="34.35" y="61.95" width="275.17" height="154.9" rx="3.09" ry="3.09" style="fill:url(#_езымянный_градиент_154);"/><g><circle cx="168.18" cy="138.55" r="51.96" style="fill:url(#linear-gradient-6);"/><g><path d="M188,162.6c-1.08,0-2.17-.41-3-1.24l-39.63-39.63c-1.66-1.65-1.66-4.34,0-5.99,1.65-1.66,4.34-1.66,5.99,0l39.63,39.63c1.66,1.65,1.66,4.34,0,5.99-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-2);"/><path d="M148.37,162.6c-1.08,0-2.17-.41-3-1.24-1.66-1.65-1.66-4.34,0-5.99l39.63-39.63c1.65-1.66,4.34-1.66,5.99,0,1.66,1.65,1.66,4.34,0,5.99l-39.63,39.63c-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-3);"/></g></g></g><g><polygon points="93.81 216.28 93.53 218.55 90.97 238.9 89.62 249.58 86.96 249.25 84.43 248.93 85.77 238.24 88.33 217.89 88.62 215.62 91.15 215.94 93.81 216.28" style="fill:url(#linear-gradient-7);"/><path d="M94.39,219.59l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-8);"/><polygon points="93.81 216.28 91.15 215.94 88.62 215.62 92.16 207.92 92.35 207.5 93.81 216.28" style="fill:url(#linear-gradient-9);"/><rect x="78.19" y="225.37" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-10);"/><path d="M80.65,222.94v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-11);"/><path d="M81.88,225.97v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M92.16,207.92l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M91.19,280.34h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-12);"/><path d="M95.71,247.43l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-13); opacity:.4;"/></g></g><g><g><g><path d="M257.75,266.28s-6.3,1.38-5.09-1.75c.21-.54,.4-1.23,.58-2.06,.13-.6,.26-1.27,.4-2.02,.2-1.16,.41-2.5,.65-4.03,.08-.54,.17-1.1,.25-1.68,.24-1.57,.5-3.3,.82-5.21,.1-.64,.22-1.31,.33-1.99,.21-1.21,.43-2.49,.67-3.83,.16-.87,.33-1.77,.51-2.7,.04-.2,.08-.41,.12-.62,.22-1.1,.46-2.14,.74-3.12,.28-.99,.59-1.92,.91-2.8,.99-2.66,2.17-4.81,3.33-6.52,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81-.65,2.19-1.31,4.73-1.77,7.16h0c-.14,.71-.26,1.42-.36,2.1-.2,1.33-.31,2.58-.31,3.66h0c0,.51,.02,.98,.07,1.4,.01,.09,.02,.18,.04,.27,.17,1.07,.07,2.68-.19,4.55-.12,.82-.26,1.68-.44,2.58-.35,1.84-.81,3.8-1.28,5.71-.23,.9-.46,1.79-.69,2.64-.35,1.32-.7,2.55-1.02,3.64-.17,.58-.32,1.11-.47,1.6-.49,1.66-.82,2.7-.82,2.7Z" style="fill:url(#linear-gradient-14);"/><path d="M260.05,258.35c-.78-.83-2.09-1.89-3.54-1.69-.8,.11-1.57-.02-2.24-.24,.08-.54,.17-1.1,.25-1.68,1.75,.38,4.54,.93,6.2,.96-.23,.9-.46,1.79-.69,2.64Z" style="fill:url(#_езымянный_градиент_157-2); opacity:.2;"/><path d="M264.99,228.27c-.91-.34-2.05-.38-3.03-.32,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81Z" style="fill:url(#_езымянный_градиент_157-3); opacity:.2;"/><path d="M262.86,237.53c-1.23,.18-3.08,.27-5.14-.26,.28-.99,.59-1.92,.91-2.8,.91,.7,2.6,1.61,4.58,.96-.14,.71-.26,1.41-.36,2.1Z" style="fill:url(#_езымянный_градиент_157-4); opacity:.2;"/><path d="M262.62,242.59c-1.57,.51-4.41,1.31-6.26,1.12,.16-.87,.33-1.77,.51-2.7,1.41,.7,3.71,1.45,5.68,.18,0,.51,.02,.98,.07,1.4Z" style="fill:url(#_езымянный_градиент_157-5); opacity:.2;"/><path d="M262.02,249.99c-1.14-.29-2.66-.55-3.61-.17-.96,.38-2.18,.06-3.06-.28,.1-.64,.22-1.31,.33-1.99,1.97,.09,5.39,.18,6.78-.13-.12,.82-.26,1.68-.44,2.58Z" style="fill:url(#_езымянный_градиент_157-6); opacity:.2;"/><path d="M258.57,263.59l-5.33-1.11c.13-.6,.26-1.27,.4-2.02,1.61,.52,4.01,1.27,5.4,1.54-.17,.58-.32,1.11-.47,1.6Z" style="fill:#188aa5;"/></g><g><path d="M245.82,274.81s6.36,1.06,4.99-2c-.24-.53-.46-1.21-.69-2.03-.16-.59-.33-1.25-.5-2-.26-1.15-.54-2.48-.85-3.99-.11-.53-.22-1.09-.34-1.67-.32-1.55-.67-3.27-1.08-5.16-.14-.64-.28-1.3-.43-1.97-.27-1.2-.55-2.46-.87-3.79-.2-.86-.42-1.75-.64-2.67-.05-.2-.1-.41-.15-.61-.27-1.09-.57-2.11-.9-3.08-.33-.97-.68-1.89-1.06-2.75-1.13-2.6-2.41-4.7-3.66-6.34-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69,.77,2.15,1.55,4.66,2.14,7.06h0c.18,.71,.33,1.4,.47,2.08,.26,1.32,.44,2.56,.5,3.64h0c.03,.51,.03,.98,0,1.4,0,.09-.01,.18-.02,.27-.12,1.08,.06,2.68,.43,4.53,.16,.81,.35,1.67,.57,2.55,.45,1.82,1,3.76,1.57,5.64,.27,.89,.55,1.76,.82,2.6,.42,1.3,.83,2.51,1.2,3.59,.2,.57,.38,1.1,.55,1.57,.58,1.63,.96,2.65,.96,2.65Z" style="fill:url(#linear-gradient-15);"/><path d="M243.12,267c.74-.86,1.99-1.99,3.44-1.86,.81,.07,1.57-.1,2.22-.35-.11-.53-.22-1.09-.34-1.67-1.73,.47-4.49,1.16-6.15,1.28,.27,.89,.55,1.76,.82,2.6Z" style="fill:#188aa5;"/><path d="M236.65,237.22c.89-.39,2.03-.49,3.01-.48-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69Z" style="fill:url(#_езымянный_градиент_157-7); opacity:.2;"/><path d="M239.25,246.36c1.24,.12,3.09,.11,5.12-.52-.33-.97-.68-1.89-1.06-2.75-.88,.74-2.51,1.74-4.53,1.2,.18,.7,.33,1.4,.47,2.07Z" style="fill:url(#_езымянный_градиент_157-8); opacity:.2;"/><path d="M239.75,251.4c1.6,.43,4.48,1.08,6.31,.8-.2-.86-.42-1.75-.64-2.67-1.37,.78-3.64,1.64-5.67,.47,.03,.51,.03,.98,0,1.4Z" style="fill:url(#_езымянный_градиент_157-9); opacity:.2;"/><path d="M240.72,258.76c1.12-.35,2.63-.69,3.6-.36,.98,.33,2.18-.05,3.04-.44-.14-.64-.28-1.3-.43-1.97-1.97,.19-5.38,.45-6.78,.22,.16,.81,.35,1.67,.57,2.55Z" style="fill:url(#_езымянный_градиент_157-10); opacity:.2;"/><path d="M244.87,272.16l5.26-1.39c-.16-.59-.33-1.25-.5-2-1.58,.6-3.94,1.47-5.31,1.81,.2,.57,.38,1.1,.55,1.57Z" style="fill:#188aa5;"/></g><g><path d="M253.36,274.62s-4.26,4.46-5.28,1.29c-.18-.55-.46-1.21-.85-1.98-.27-.55-.6-1.16-.98-1.84-.58-1.04-1.27-2.24-2.06-3.59-.28-.48-.57-.97-.87-1.49-.81-1.39-1.71-2.93-2.68-4.63-.33-.57-.66-1.17-1.01-1.78-.61-1.09-1.25-2.23-1.91-3.44-.43-.79-.87-1.6-1.32-2.45-.1-.19-.2-.37-.3-.56-.53-1-1-1.97-1.4-2.91-.41-.95-.76-1.86-1.05-2.74-.9-2.67-1.32-5.03-1.47-7.03-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83,.87,2.11,1.97,4.51,3.15,6.71h0c.34,.65,.7,1.28,1.05,1.89,.7,1.18,1.4,2.25,2.1,3.12h0c.32,.41,.65,.78,.96,1.09,.07,.07,.14,.14,.21,.2,.83,.77,1.78,2.12,2.76,3.77,.43,.72,.87,1.5,1.3,2.32,.89,1.67,1.79,3.5,2.62,5.29,.39,.85,.78,1.69,1.14,2.5,.56,1.25,1.07,2.43,1.51,3.48,.23,.56,.45,1.07,.65,1.54,.66,1.6,1.06,2.61,1.06,2.61Z" style="fill:url(#linear-gradient-16);"/><path d="M250.15,266.99c-1.17-.25-2.92-.42-3.97,.51-.59,.51-1.29,.82-1.98,.99-.28-.48-.57-.97-.87-1.49,1.68-.62,4.31-1.66,5.69-2.52,.39,.85,.78,1.69,1.14,2.5Z" style="fill:#188aa5;"/><path d="M234.86,240.11c-.96,.2-1.92,.78-2.68,1.34-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83Z" style="fill:url(#_езымянный_градиент_157-11); opacity:.2;"/><path d="M239.06,248.71c-.89,.8-2.34,1.85-4.37,2.51-.41-.95-.76-1.86-1.05-2.74,1.2,.08,3.16-.08,4.37-1.65,.34,.65,.7,1.28,1.05,1.88Z" style="fill:url(#_езымянный_градиент_157-12); opacity:.2;"/><path d="M242.12,252.92c-.96,1.24-2.77,3.39-4.4,4.23-.43-.79-.87-1.6-1.32-2.45,1.6-.18,3.97-.8,4.76-2.87,.32,.41,.65,.78,.96,1.09Z" style="fill:url(#_езымянный_градиент_157-13); opacity:.2;"/><path d="M246.39,259.21c-1.12,.37-2.53,.97-3.06,1.78-.54,.82-1.74,1.21-2.68,1.39-.33-.57-.66-1.17-1.01-1.78,1.67-.98,4.52-2.72,5.46-3.7,.43,.72,.87,1.5,1.3,2.32Z" style="fill:#188aa5;"/><path d="M252.3,272.01l-5.07,1.93c-.27-.55-.6-1.16-.98-1.84,1.65-.43,4.09-1.1,5.4-1.63,.23,.56,.45,1.07,.65,1.54Z" style="fill:#188aa5;"/></g><g><path d="M249.68,226.71c-.26,.63-.51,3.01-.59,6.03-.06,2.37-.01,5.13,.22,7.73,.06,.71,.14,1.41,.23,2.09,.16,1.15,.36,2.23,.61,3.2,.05,.2,.1,.41,.15,.64,.12,.6,.23,1.33,.33,2.14,.21,1.77,.35,3.97,.45,6.35,.02,.49,.04,.99,.05,1.49,.06,1.8,.1,3.67,.12,5.52,0,.52,.01,1.04,.02,1.56,.01,2.02,.01,3.98,0,5.75,0,1.05-.02,2.04-.03,2.93-.04,2.81-.08,4.65-.08,4.65,0,0-9.91,4.17-7.88,1.81,.66-.77,1.14-3.23,1.47-6.65,.07-.76,.14-1.56,.19-2.41,.12-1.74,.2-3.64,.26-5.64,.02-.68,.03-1.37,.04-2.07,.03-1.5,.03-3.03,.02-4.57,0-.72-.01-1.45-.02-2.17-.02-1.54-.06-3.08-.12-4.57-.03-.88-.07-1.74-.11-2.59-.05-.99-.11-1.96-.17-2.89-.03-.37-.04-.74-.06-1.11-.04-1.1-.02-2.15,.04-3.16h0c.17-2.92,.71-5.45,1.38-7.55,1.58-4.99,3.85-7.46,3.47-6.54Z" style="fill:url(#linear-gradient-17);"/><path d="M249.55,242.57c-1.05,.7-3.1,1.85-4.74,1.39-.04-1.1-.02-2.15,.04-3.16,1.3,.36,3.18,.63,4.48-.32,.06,.71,.14,1.41,.23,2.09Z" style="fill:url(#_езымянный_градиент_157-14); opacity:.2;"/><path d="M250.63,248.54c-1.08,.64-3.99,2.27-5.49,2-.03-.88-.07-1.74-.11-2.59,1.28,.17,4.06,.29,5.27-1.55,.12,.6,.23,1.33,.33,2.14Z" style="fill:url(#_езымянный_градиент_157-15); opacity:.2;"/><path d="M251.08,254.9c.02,.49,.04,.99,.05,1.49l-2.34,.18s-1.38,1.54-3.52,.72c0-.72-.01-1.45-.02-2.17,1.46,.16,4.61,.4,5.83-.22Z" style="fill:url(#_езымянный_градиент_157-16); opacity:.2;"/><path d="M251.26,261.92c0,.52,.01,1.04,.02,1.56-.85-.22-1.92-.37-2.04,.23-.14,.67-2.42,.6-4.02,.21,.02-.68,.03-1.37,.04-2.07,1.33,.1,4.32,.29,6,.06Z" style="fill:url(#_езымянный_градиент_157-17); opacity:.2;"/><path d="M251.27,269.23c0,1.05-.02,2.04-.03,2.93-1.57,.53-4.96,.06-6.49-.19,.07-.76,.14-1.56,.19-2.41,1.68,.89,4.82,.12,6.32-.33Z" style="fill:url(#_езымянный_градиент_157-18); opacity:.2;"/></g><g><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.66,1.98-1.32,4.3-1.76,6.53-.12,.61-.23,1.21-.31,1.8-.14,1-.23,1.95-.24,2.81,0,.17,0,.36-.02,.56-.04,.53-.12,1.16-.23,1.86-.25,1.52-.67,3.4-1.18,5.43-.11,.42-.22,.84-.33,1.27-.4,1.52-.84,3.1-1.29,4.66-.13,.44-.26,.88-.38,1.31-.5,1.7-1,3.34-1.46,4.83-.28,.88-.53,1.71-.77,2.45-.75,2.35-1.26,3.88-1.26,3.88,0,0-10.52,1.48-7.98-.09,.82-.51,1.91-2.48,3.1-5.28,.26-.62,.53-1.28,.8-1.98,.56-1.44,1.12-3.02,1.68-4.68,.19-.57,.38-1.14,.57-1.73,.41-1.25,.8-2.54,1.19-3.83,.18-.61,.36-1.22,.53-1.83,.37-1.3,.72-2.59,1.05-3.86,.2-.74,.38-1.48,.56-2.2,.2-.84,.4-1.66,.57-2.46,.07-.32,.15-.63,.23-.94,.24-.93,.52-1.81,.84-2.65h0c.91-2.42,2.07-4.43,3.23-6.05,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#linear-gradient-18);"/><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.81-.36-1.92-.31-2.88-.17,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#_езымянный_градиент_157-19); opacity:.2;"/><path d="M264.54,249.56c-1.18,.38-3.42,.92-4.88,.2,.24-.93,.52-1.81,.84-2.65,1.15,.57,2.88,1.18,4.35,.65-.12,.61-.23,1.21-.31,1.8Z" style="fill:url(#_езымянный_градиент_157-20); opacity:.2;"/><path d="M264.05,254.8c-1.19,.32-4.38,1.09-5.74,.56,.2-.74,.38-1.48,.56-2.2,1.17,.4,3.8,1.08,5.42-.22-.04,.53-.12,1.16-.23,1.86Z" style="fill:url(#_езымянный_градиент_157-21); opacity:.2;"/><path d="M262.86,260.22c-.11,.42-.22,.84-.33,1.27l-2.28-.33s-1.71,1.01-3.54-.12c.18-.61,.36-1.22,.53-1.83,1.36,.43,4.3,1.28,5.61,1.01Z" style="fill:#188aa5;"/><path d="M261.24,266.15c-.13,.44-.26,.88-.38,1.31-.75-.36-1.74-.71-2.01-.22-.3,.54-2.46,0-3.89-.64,.19-.57,.38-1.14,.57-1.73,1.24,.36,4.05,1.12,5.71,1.28Z" style="fill:#188aa5;"/><path d="M259.4,272.29c-.28,.88-.53,1.71-.77,2.45-1.63,.12-4.75-.96-6.14-1.48,.26-.62,.53-1.28,.8-1.98,1.38,1.09,4.57,1.09,6.11,1.01Z" style="fill:#188aa5;"/></g><g><path d="M252.51,216.49c.26,.8,.32,3.81,.1,7.59-.17,2.97-.51,6.41-1.06,9.65-.15,.88-.32,1.75-.5,2.59-.31,1.42-.67,2.77-1.08,3.95-.08,.24-.16,.5-.25,.78-.21,.75-.42,1.64-.62,2.65-.44,2.19-.84,4.93-1.21,7.91-.07,.61-.15,1.23-.22,1.86-.26,2.25-.5,4.59-.72,6.9-.06,.66-.12,1.31-.18,1.95-.23,2.53-.43,4.98-.59,7.19-.1,1.32-.19,2.55-.27,3.66-.25,3.51-.38,5.82-.38,5.82,0,0,11.77,5.97,9.51,2.86-.73-1.01-1.08-4.13-1.13-8.42-.01-.95,0-1.96,0-3.02,.03-2.18,.13-4.57,.26-7.07,.05-.85,.1-1.71,.16-2.59,.12-1.87,.27-3.79,.44-5.72,.08-.9,.16-1.81,.25-2.71,.19-1.93,.39-3.84,.61-5.71,.13-1.09,.26-2.18,.4-3.23,.17-1.24,.33-2.44,.51-3.6,.07-.46,.13-.92,.18-1.38,.16-1.37,.25-2.69,.28-3.95h0c.09-3.66-.32-6.87-.92-9.54-1.43-6.36-3.98-9.61-3.6-8.44Z" style="fill:url(#linear-gradient-19);"/><path d="M251.05,236.32c1.22,.96,3.62,2.55,5.7,2.1,.16-1.37,.25-2.69,.28-3.95-1.63,.35-3.98,.54-5.48-.73-.15,.88-.32,1.75-.5,2.59Z" style="fill:url(#_езымянный_градиент_157-22); opacity:.2;"/><path d="M249.1,243.71c1.26,.89,4.68,3.14,6.55,2.91,.13-1.09,.26-2.18,.4-3.23-1.59,.11-5.03,.06-6.33-2.34-.21,.75-.42,1.64-.62,2.65Z" style="fill:url(#_езымянный_градиент_157-23); opacity:.2;"/><path d="M247.89,251.62c-.07,.61-.15,1.23-.22,1.86l2.86,.4s1.55,2.02,4.25,1.16c.08-.9,.16-1.81,.25-2.71-1.82,.08-5.72,.15-7.15-.71Z" style="fill:url(#_езымянный_градиент_157-24); opacity:.2;"/><path d="M246.95,260.39c-.06,.66-.12,1.31-.18,1.95,1.06-.21,2.4-.32,2.49,.44,.1,.85,2.92,.93,4.92,.57,.05-.85,.1-1.71,.16-2.59-1.65,.02-5.35,.03-7.4-.38Z" style="fill:url(#_езымянный_градиент_157-25); opacity:.2;"/><path d="M246.17,269.53c-.1,1.32-.19,2.55-.27,3.66,1.88,.78,6.1,.45,8.01,.26-.01-.95,0-1.96,0-3.02-2.16,.98-5.95-.21-7.75-.89Z" style="fill:url(#_езымянный_градиент_157-26); opacity:.2;"/></g></g><g><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96-.79-1.27-1.25-2.78-1.25-4.39v-16.69h26.6Z" style="fill:url(#linear-gradient-20);"/><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96,17.25,.06,21.4-13.28,22.35-21.08h3.01Z" style="fill:#27494f; opacity:.08;"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95-.01-.06-.02-.13-.02-.2v-2.39c0-.64,.51-1.15,1.15-1.15h28.99c.63,0,1.15,.51,1.15,1.15Z" style="fill:url(#linear-gradient-21);"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95,26.64,.81,29.41-2.53,29.55-3.74h.58c.63,0,1.15,.51,1.15,1.15Z" style="fill:#27494f; opacity:.08;"/></g></g></g></g></svg>',
+                tt = {
+                    name: "AuthorizationModule",
+                    props: {
+                        authManifest: {
+                            type: Object,
+                            default: null
+                        },
+                        adminContacts: {
+                            type: Object,
+                            default: null
+                        },
+                        fullscreen: {
+                            type: Boolean,
+                            default: !1
+                        },
+                        disableClosingForPressEsc: {
+                            type: Boolean,
+                            default: !1
+                        },
+                        authHandler: {
+                            type: Function,
+                            required: !0
+                        },
+                        outerError: {
+                            type: Object,
+                            default: null
+                        }
+                    },
+                    components: {
+                        SignIn: D,
+                        Error: Y
+                    },
+                    mixins: [_],
+                    created: function() {
+                        -1 !== window.location.protocol.indexOf("https") ? (this.authModuleStore.fullscreen = this.fullscreen, this.authModuleStore.authHandler = this.authHandler, this.disableClosingForPressEsc || window.addEventListener("keyup", this.closeByPressKey, !1)) : this.setModuleMode("error")
+                    },
+                    beforeDestroy: function() {
+                        window.removeEventListener("keyup", this.closeByPressKey, !1), this.authModuleStore.$dispose()
+                    },
+                    methods: {
+                        closeByPressKey: function(t) {
+                            27 === t.keyCode && this.authModuleStore.sendEvent({
+                                name: "close"
+                            })
+                        }
+                    },
+                    computed: {
+                        currentGraphics: function() {
+                            return "success" === this.currentScreen ? B : {
+                                signIn: Q,
+                                error: $
+                            } [this.authManagerStore.moduleScreen.mode] || Q
+                        },
+                        isOuterScreen: function() {
+                            return "signIn" === this.authManagerStore.moduleScreen.mode && "outer" === this.currentScreen
+                        }
+                    },
+                    data: function() {
+                        return {
+                            SignInGraphics: Q,
+                            SuccessGraphics: B,
+                            ErrorGraphics: $,
+                            svgClose: '<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">\n    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>\n    <path d="M0 0h24v24H0z" fill="none"/>\n</svg>'
+                        }
+                    },
+                    watch: {
+                        authManifest: {
+                            handler: function(t) {
+                                this.authModuleStore.authManifest = t
+                            },
+                            immediate: !0
+                        },
+                        adminContacts: {
+                            handler: function(t) {
+                                this.authModuleStore.adminContacts = t
+                            },
+                            immediate: !0
+                        },
+                        "authModuleStore.event": {
+                            handler: function(t) {
+                                this.$emit(t.name, t.payload)
+                            }
+                        }
+                    }
+                },
+                et = (0, L.A)(tt, g, [], !1, null, null, null).exports,
+                rt = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("TcModal", {
+                        attrs: {
+                            headerText: t.$pgettext("Text on the button", "Contact your administrator")
+                        },
+                        on: {
+                            close: function(e) {
+                                return t.$emit("close")
+                            }
+                        },
+                        scopedSlots: t._u([{
+                            key: "content",
+                            fn: function() {
+                                return [e("div", {
+                                    staticClass: "admin-contacts-modal__container"
+                                }, [e("AdminContacts"), t._v(" "), e("div", {
+                                    staticClass: "admin-contacts-modal__img"
+                                }, [e("div", {
+                                    attrs: {
+                                        "aria-hidden": ""
+                                    },
+                                    domProps: {
+                                        innerHTML: t._s(t.Illustration)
+                                    }
+                                })])], 1)]
+                            },
+                            proxy: !0
+                        }])
+                    })
+                };
+            rt._withStripped = !0;
+            var nt = r(460),
+                at = {
+                    name: "AdminContactsModal",
+                    components: {
+                        AdminContacts: nt.A
+                    },
+                    data: function() {
+                        return {
+                            Illustration: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="6866 521.1 140 129.94">\n  <defs>\n    <style>\n      .admin-contacts-cls-1 {\n        fill: #ebf4f9;\n      }\n\n      .admin-contacts-cls-2 {\n        fill: #fff;\n      }\n\n      .admin-contacts-cls-3 {\n        fill: #45433f;\n      }\n\n      .admin-contacts-cls-4, .admin-contacts-cls-8 {\n        fill: #ffcd97;\n      }\n\n      .admin-contacts-cls-5 {\n        fill: #efc092;\n      }\n\n      .admin-contacts-cls-10, .admin-contacts-cls-6 {\n        fill: none;\n      }\n\n      .admin-contacts-cls-6, .admin-contacts-cls-8 {\n        stroke: #45433f;\n        stroke-linecap: round;\n        stroke-linejoin: round;\n        stroke-miterlimit: 10;\n      }\n\n      .admin-contacts-cls-6 {\n        stroke-width: 2px;\n      }\n\n      .admin-contacts-cls-7 {\n        fill: #0097a7;\n      }\n\n      .admin-contacts-cls-9 {\n        fill: #d3ac4a;\n      }\n\n      .admin-contacts-cls-11 {\n        fill: #6d4f19;\n      }\n\n      .admin-contacts-cls-12 {\n        fill: #656668;\n      }\n\n      .admin-contacts-cls-13 {\n        fill: #b8bed1;\n      }\n\n      .admin-contacts-cls-14 {\n        fill: #f8ebec;\n      }\n\n      .admin-contacts-cls-15 {\n        fill: #cfc4c5;\n      }\n\n      .admin-contacts-cls-16 {\n        fill: #e0d5d6;\n      }\n\n      .admin-contacts-cls-17 {\n        fill: #f7636c;\n      }\n\n      .admin-contacts-cls-18 {\n        fill: #d1474f;\n      }\n\n      .admin-contacts-cls-19 {\n        fill: #43414d;\n      }\n\n      .admin-contacts-cls-20 {\n        fill: #adadae;\n      }\n\n      .admin-contacts-cls-21 {\n        fill: #e1e1e1;\n      }\n\n      .admin-contacts-cls-22 {\n        opacity: 0.5;\n      }\n\n      .admin-contacts-cls-23 {\n        opacity: 0.2;\n      }\n\n      .admin-contacts-cls-24 {\n        fill: #858585;\n      }\n    </style>\n  </defs>\n  <g id="admin" transform="translate(6904.821 530.314)">\n    <path id="Path_1945" class="admin-contacts-cls-1" d="M102.013,151V134.936a32.057,32.057,0,0,0-64.113,0V151Z" transform="translate(-39.33 -46.517)"/>\n    <path id="Path_1946" class="admin-contacts-cls-2" d="M70.089,105.7A32.181,32.181,0,0,0,38,137.9V154.03h0v-8.263a32.057,32.057,0,0,1,64.113,0V137.9A32.21,32.21,0,0,0,70.089,105.7Z" transform="translate(-39.365 -47.447)"/>\n    <g id="Group_1273" transform="translate(-1.792 55.464)">\n      <path id="Path_1947" class="admin-contacts-cls-3" d="M-137.7-66.321H-201.81a.422.422,0,0,1-.391-.393V-82.781a32.48,32.48,0,0,1,32.154-32.92,32.472,32.472,0,0,1,32.741,32.33v16.657A.377.377,0,0,1-137.7-66.321Zm-63.721-.787h63.33V-82.781a31.707,31.707,0,0,0-31.632-31.8,31.763,31.763,0,0,0-31.7,31.8Z" transform="translate(202.203 115.703)"/>\n    </g>\n    <path id="Path_1948" class="admin-contacts-cls-4" d="M90.605,104.364l-7.37,4.984L75.8,104.364V98.2H90.605Z" transform="translate(-52.511 -44.866)"/>\n    <path id="Path_1949" class="admin-contacts-cls-5" d="M75.8,104.1a4.107,4.107,0,0,1,.587.262,18.8,18.8,0,0,0,13.631,0,4.107,4.107,0,0,0,.587-.262V98.2H75.865l-.065,5.9Z" transform="translate(-52.511 -44.866)"/>\n    <path id="Path_1950" class="admin-contacts-cls-6" d="M90.605,104.364l-7.37,4.984L75.8,104.364V98.2H90.605Z" transform="translate(-52.511 -44.866)"/>\n    <path id="Path_1951" class="admin-contacts-cls-7" d="M83.974,115.1l-6,34.166a3.548,3.548,0,0,0,.326,2.164l1.957,3.672h7.435l1.957-3.672a3.548,3.548,0,0,0,.326-2.164Z" transform="translate(-53.249 -50.683)"/>\n    <g id="Group_1274" transform="translate(23.868 61.632)">\n      <path id="Path_1952" class="admin-contacts-cls-3" d="M-160.746-64.465h-7.435a.8.8,0,0,1-.717-.459l-1.957-3.869a4.192,4.192,0,0,1-.391-2.82l6-35.936a.766.766,0,0,1,.913-.656.84.84,0,0,1,.652.656l6,36a5,5,0,0,1-.391,2.754v.066l-1.957,3.869A.993.993,0,0,1-160.746-64.465Zm-6.979-1.639h6.457l1.7-3.41a2.766,2.766,0,0,0,.261-1.771l-5.218-31.215-5.152,31.149a2.766,2.766,0,0,0,.261,1.771Zm8.87-3.082Z" transform="translate(171.335 108.215)"/>\n    </g>\n    <g id="Group_1275" transform="translate(30.337 56.791)">\n      <path id="Path_1953" class="admin-contacts-cls-2" d="M-153.086-102.449l5.544-7.935a35.451,35.451,0,0,0-7.7-3.017L-163-108.219l7.044,6.1a1.889,1.889,0,0,0,2.739-.262C-153.152-102.449-153.152-102.449-153.086-102.449Z" transform="translate(163.352 113.793)"/>\n      <path id="Path_1954" class="admin-contacts-cls-3" d="M-154.839-101.475a2.318,2.318,0,0,1-1.5-.525l-7.044-6.1a.416.416,0,0,1-.065-.59l.065-.066,7.761-5.181A.487.487,0,0,1-155.3-114a37.335,37.335,0,0,1,7.761,3.017.441.441,0,0,1,.2.525v.066l-5.544,7.935h0a2.178,2.178,0,0,1-1.565.918A1.142,1.142,0,0,1-154.839-101.475Zm-7.631-6.951,6.653,5.771a1.628,1.628,0,0,0,1.239.328,1.693,1.693,0,0,0,1.044-.59l5.283-7.607a33.4,33.4,0,0,0-6.979-2.689Zm9.2,5.705Z" transform="translate(163.539 114)"/>\n    </g>\n    <g id="Group_1276" transform="translate(14.909 56.856)">\n      <path id="Path_1955" class="admin-contacts-cls-2" d="M-175.956-102.483l-5.544-8a35.45,35.45,0,0,1,7.7-3.017l7.761,5.181-7.044,6.1a1.94,1.94,0,0,1-2.739-.2C-175.891-102.483-175.891-102.483-175.956-102.483Z" transform="translate(181.897 113.762)"/>\n      <path id="Path_1956" class="admin-contacts-cls-3" d="M-174.6-101.44h-.326a2.178,2.178,0,0,1-1.565-.918h0l-5.544-7.935a.49.49,0,0,1,.065-.59h.065a34.012,34.012,0,0,1,7.761-3.017.486.486,0,0,1,.326.066l7.761,5.181a.429.429,0,0,1,.13.59l-.065.066-7.044,6.1A5.478,5.478,0,0,1-174.6-101.44Zm-1.174-1.443a1.327,1.327,0,0,0,1.044.59,1.7,1.7,0,0,0,1.239-.328l6.587-5.705-7.174-4.787a37.48,37.48,0,0,0-6.979,2.689Z" transform="translate(182.109 113.9)"/>\n    </g>\n    <g id="Group_1277" transform="translate(50.059 89.22)">\n      <path id="Path_1957" class="admin-contacts-cls-3" d="M-139.409-59.527a.422.422,0,0,1-.391-.393V-74.807a.422.422,0,0,1,.391-.393.422.422,0,0,1,.391.393h0v14.886A.422.422,0,0,1-139.409-59.527Z" transform="translate(139.8 75.2)"/>\n    </g>\n    <g id="Group_1277_1_" transform="translate(10.6 89.22)">\n      <path id="Path_1957_1_" class="admin-contacts-cls-3" d="M-199.909-59.527a.422.422,0,0,1-.391-.393V-74.807a.422.422,0,0,1,.391-.393.422.422,0,0,1,.391.393h0v14.886C-199.452-59.724-199.648-59.527-199.909-59.527Z" transform="translate(200.3 75.2)"/>\n    </g>\n    <path id="Path_1958" class="admin-contacts-cls-8" d="M95.025,47.674V42.756a20.908,20.908,0,0,0-41.807,0v4.984A3.769,3.769,0,0,0,49.5,51.477v1.246a3.769,3.769,0,0,0,3.718,3.738h.326a20.885,20.885,0,0,0,41.155,0h.326a3.769,3.769,0,0,0,3.718-3.738V51.477a3.657,3.657,0,0,0-3.587-3.738A.2.2,0,0,0,95.025,47.674Z" transform="translate(-43.364 -18.734)"/>\n    <g id="Group_1281" transform="translate(8.438 2.254)">\n      <g id="Group_1278" transform="translate(0.413 1.326)">\n        <path id="Path_1959" class="admin-contacts-cls-9" d="M-184.7-148.388a21.03,21.03,0,0,0,.457-8.787c2.152.721,5.74-2.361,5.74-2.361v-4.984a26.078,26.078,0,0,0,22.11,0v4.984s3.522,3.082,5.739,2.361a21.03,21.03,0,0,0,.457,8.787,3.629,3.629,0,0,1,3.587-3.607,3.674,3.674,0,0,1,1.174.2c0-.066,0-.066.065-.066h0a6.794,6.794,0,0,0-1.109-.262v-4.918a20.961,20.961,0,0,0-21.458-20.46,21.05,21.05,0,0,0-20.349,20.46v4.984a2.134,2.134,0,0,0-1.109.262c0,.066,0,.066.065.066h0a3.519,3.519,0,0,1,4.435,2.361A2.2,2.2,0,0,1-184.7-148.388Z" transform="translate(189.4 177.513)"/>\n      </g>\n      <g id="Group_1279" transform="translate(1.404 0.132)">\n        <path id="Path_1960" class="admin-contacts-cls-10" d="M-167.329-173.86a21.017,21.017,0,0,1,20.936,21.05h0v-4.918A20.935,20.935,0,0,0-166.742-179.3a20.963,20.963,0,0,0-21.458,20.46v6.033A21.046,21.046,0,0,1-167.329-173.86Z" transform="translate(188.2 179.308)"/>\n      </g>\n      <g id="Group_1280" transform="translate(0 0)">\n        <path id="Path_1961" class="admin-contacts-cls-11" d="M-184.813-148.579h0a.377.377,0,0,1-.391-.393,3.031,3.031,0,0,0-1.3-2.557,3.047,3.047,0,0,0-2.8-.459.466.466,0,0,1-.587-.328v-.131a.568.568,0,0,1,.2-.393,3.722,3.722,0,0,1,.913-.262v-4.59A21.357,21.357,0,0,1-167.725-179.4a21.351,21.351,0,0,1,21.588,21.181v5.115a1.2,1.2,0,0,1,.457.131c.13.066.261.066.391.131.2.066.391.262.326.459a.341.341,0,0,1-.13.262.4.4,0,0,1-.457.131,3.452,3.452,0,0,0-3,.459,3.145,3.145,0,0,0-1.239,2.557.422.422,0,0,1-.391.393.44.44,0,0,1-.391-.262,20.294,20.294,0,0,1-.587-8.394,9.87,9.87,0,0,1-5.544-2.557.5.5,0,0,1-.13-.328v-4.394a26.262,26.262,0,0,1-21.327,0v4.394c0,.131-.065.2-.13.328a10.111,10.111,0,0,1-5.544,2.557,22.768,22.768,0,0,1-.587,8.394A.358.358,0,0,1-184.813-148.579Zm.391-.393Zm33.72-9.181a.422.422,0,0,1,.391.393v.066a20.728,20.728,0,0,0,.065,6.951,3.408,3.408,0,0,1,1.174-1.377,4.3,4.3,0,0,1,2.152-.787v-4.722A20.529,20.529,0,0,0-167.4-178.22a20.529,20.529,0,0,0-20.48,20.591v4.722a3.936,3.936,0,0,1,3.131,2.164,22.174,22.174,0,0,0,.13-6.886.385.385,0,0,1,.326-.459h.2c1.565.525,4.174-1.312,5.218-2.164v-4.787a.361.361,0,0,1,.2-.328.823.823,0,0,1,.391-.066,25.966,25.966,0,0,0,21.849,0,.443.443,0,0,1,.522.262v4.918c1.044.852,3.652,2.689,5.218,2.164-.13,0-.065-.066,0-.066Zm5.609,5.771Z" transform="translate(189.9 179.402)"/>\n      </g>\n    </g>\n    <path id="Path_1962" class="admin-contacts-cls-3" d="M89.218,84.887H79.761c-.13,0-.2-.066-.261-.2v-.328c0-.131.065-.2.2-.262h9.522c.13,0,.2.066.261.2v.328a.24.24,0,0,1-.261.262Z" transform="translate(-53.798 -40.012)"/>\n    <ellipse id="Ellipse_339" class="admin-contacts-cls-3" cx="1.37" cy="2.426" rx="1.37" ry="2.426" transform="translate(21.398 27.038)"/>\n    <ellipse id="Ellipse_340" class="admin-contacts-cls-3" cx="1.37" cy="2.426" rx="1.37" ry="2.426" transform="translate(37.377 27.038)"/>\n    <g id="Group_1291" transform="translate(0.374 -2.784)">\n      <g id="Group_1282" transform="translate(4.907 39.54)">\n        <path id="Path_1963" class="admin-contacts-cls-3" d="M-180.59-121.54h-1.239a11.946,11.946,0,0,1-11.87-11.935v-3.738a.8.8,0,0,1,.783-.787.8.8,0,0,1,.783.787v3.738a10.244,10.244,0,0,0,10.24,10.3h1.239a.8.8,0,0,1,.783.787.7.7,0,0,1-.717.853Z" transform="translate(193.7 138)"/>\n      </g>\n      <g id="Group_1283" transform="translate(2.478)">\n        <path id="Path_1964" class="admin-contacts-cls-3" d="M-141.683-154.02a.8.8,0,0,1-.783-.787v-2.426a26.32,26.32,0,0,0-26.284-26.428,26.32,26.32,0,0,0-26.284,26.428h0v2.426a.8.8,0,0,1-.783.787.8.8,0,0,1-.783-.787h0v-2.426A27.981,27.981,0,0,1-168.685-185.3a27.939,27.939,0,0,1,27.915,28.067h0v2.426A1.044,1.044,0,0,1-141.683-154.02Z" transform="translate(196.6 185.3)"/>\n      </g>\n      <g id="Group_1286" transform="translate(0 29.541)">\n        <g id="Group_1284" transform="translate(0 0.149)">\n          <path id="Path_1965" class="admin-contacts-cls-2" d="M-191.03-136.206h-7.109c-.13,0-.2-.066-.261-.2v-11.935c0-.131.065-.2.2-.262h7.174Z" transform="translate(199.183 149.387)"/>\n          <path id="Path_1966" class="admin-contacts-cls-3" d="M-191.447-135.832h-7.109a.98.98,0,0,1-1.044-.984v-11.935a.981.981,0,0,1,.978-1.049h7.174a.8.8,0,0,1,.783.787v12.328a.774.774,0,0,1-.783.853Zm-6.522-1.574h5.74v-10.689h-5.74Z" transform="translate(199.6 149.8)"/>\n        </g>\n        <g id="Group_1285" transform="translate(4.907)">\n          <path id="Path_1967" class="admin-contacts-cls-12" d="M-192.4-138.7a2.414,2.414,0,0,0,2.413,2.426,2.457,2.457,0,0,0,2.413-2.426v-7.476a2.414,2.414,0,0,0-2.413-2.426,2.457,2.457,0,0,0-2.413,2.426Z" transform="translate(193.248 149.518)"/>\n          <path id="Path_1968" class="admin-contacts-cls-3" d="M-190.439-135.967a3.322,3.322,0,0,1-3.261-3.279v-7.476A3.323,3.323,0,0,1-190.439-150a3.322,3.322,0,0,1,3.261,3.279v7.476A3.322,3.322,0,0,1-190.439-135.967Zm0-12.328a1.758,1.758,0,0,0-1.631,1.639v7.476a1.619,1.619,0,0,0,1.631,1.639h0a1.758,1.758,0,0,0,1.631-1.639v-7.476a1.707,1.707,0,0,0-1.631-1.639Z" transform="translate(193.7 150)"/>\n        </g>\n      </g>\n      <g id="Group_1289" transform="translate(49.289 29.541)">\n        <g id="Group_1287" transform="translate(2.395 0.214)">\n          <path id="Path_1969" class="admin-contacts-cls-2" d="M-136.2-136.206h7.109c.13,0,.2-.066.261-.2v-11.935c0-.131-.065-.2-.2-.262H-136.2Z" transform="translate(136.983 149.321)"/>\n          <path id="Path_1970" class="admin-contacts-cls-3" d="M-129.508-135.8h-7.109a.8.8,0,0,1-.783-.787v-12.328a.8.8,0,0,1,.783-.787h7.109a.98.98,0,0,1,1.044.984v11.935a.981.981,0,0,1-.978,1.049C-129.443-135.8-129.443-135.8-129.508-135.8Zm-6.261-1.574h5.74v-10.689h-5.74Z" transform="translate(137.4 149.7)"/>\n        </g>\n        <g id="Group_1288">\n          <path id="Path_1971" class="admin-contacts-cls-12" d="M-134.174-138.7a2.414,2.414,0,0,1-2.413,2.426A2.457,2.457,0,0,1-139-138.7v-7.476a2.414,2.414,0,0,1,2.413-2.426,2.457,2.457,0,0,1,2.413,2.426Z" transform="translate(139.848 149.518)"/>\n          <path id="Path_1972" class="admin-contacts-cls-3" d="M-137.039-135.967a3.322,3.322,0,0,1-3.261-3.279v-7.476A3.323,3.323,0,0,1-137.039-150a3.322,3.322,0,0,1,3.261,3.279v7.476A3.238,3.238,0,0,1-137.039-135.967Zm0-12.328a1.619,1.619,0,0,0-1.631,1.639h0v7.476a1.758,1.758,0,0,0,1.631,1.639,1.619,1.619,0,0,0,1.631-1.639h0v-7.476A1.758,1.758,0,0,0-137.039-148.295Z" transform="translate(140.3 150)"/>\n        </g>\n      </g>\n      <g id="Group_1290" transform="translate(17.2 50.72)">\n        <ellipse id="Ellipse_341" class="admin-contacts-cls-12" cx="3.718" cy="3.738" rx="3.718" ry="3.738" transform="translate(0.783 0.787)"/>\n        <path id="Path_1973" class="admin-contacts-cls-3" d="M-174.4-115.55a4.522,4.522,0,0,1-4.5-4.525,4.522,4.522,0,0,1,4.5-4.525,4.522,4.522,0,0,1,4.5,4.525A4.44,4.44,0,0,1-174.4-115.55Zm0-7.476a2.931,2.931,0,0,0-2.935,2.951,2.931,2.931,0,0,0,2.935,2.951,2.931,2.931,0,0,0,2.935-2.951h0a2.931,2.931,0,0,0-2.935-2.951Z" transform="translate(178.9 124.6)"/>\n      </g>\n    </g>\n    <g id="Group_1293" transform="translate(68.236 -9.214)">\n      <ellipse id="Ellipse_342" class="admin-contacts-cls-13" cx="16.472" cy="16.562" rx="16.472" ry="16.562" transform="translate(0)"/>\n      <ellipse id="Ellipse_343" class="admin-contacts-cls-14" cx="13.776" cy="13.852" rx="13.776" ry="13.852" transform="translate(2.695 2.71)"/>\n      <ellipse id="Ellipse_344" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(15.199 3.388)"/>\n      <ellipse id="Ellipse_345" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(15.199 27.025)"/>\n      <ellipse id="Ellipse_346" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(26.954 15.131)"/>\n      <path id="Ellipse_347" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(24.037 24.796) rotate(-45)"/>\n      <ellipse id="Ellipse_348" class="admin-contacts-cls-15" cx="1.273" cy="1.28" rx="1.273" ry="1.28" transform="translate(3.519 15.131)"/>\n      <path id="Ellipse_349" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(7.417 8.16) rotate(-45)"/>\n      <path id="Ellipse_350" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(7.508 24.826) rotate(-45)"/>\n      <path id="Ellipse_351" class="admin-contacts-cls-16" d="M.527,0a.522.522,0,0,1,.524.524.529.529,0,0,1-.527.527A.522.522,0,0,1,0,.527.529.529,0,0,1,.527,0Z" transform="translate(24.038 8.118) rotate(-45)"/>\n      <path id="Ellipse_352" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(20.358 27.064) rotate(-23.229)"/>\n      <path id="Ellipse_353" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(11.079 5.38) rotate(-23.229)"/>\n      <path id="Ellipse_354" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(4.999 20.795) rotate(-23.229)"/>\n      <path id="Ellipse_355" class="admin-contacts-cls-16" d="M.526,0a.527.527,0,0,1,0,1.053A.527.527,0,0,1,.526,0Z" transform="translate(26.507 11.624) rotate(-23.229)"/>\n      <path id="Ellipse_356" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 26.709, 21.086)"/>\n      <path id="Ellipse_357" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 5.015, 12.435)"/>\n      <path id="Ellipse_358" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 11.597, 27.646)"/>\n      <path id="Ellipse_359" class="admin-contacts-cls-16" d="M.528,0a.525.525,0,1,1,0,1.049A.525.525,0,1,1,.528,0Z" transform="matrix(0.371, -0.929, 0.929, 0.371, 20.187, 5.834)"/>\n      <path id="Path_1976" class="admin-contacts-cls-17" d="M-97.651-145.7h0a.433.433,0,0,1-.449-.452V-153.6h1.048v7.377A.636.636,0,0,1-97.651-145.7Z" transform="translate(114.123 170.613)"/>\n      <path id="Path_1977" class="admin-contacts-cls-17" d="M-96.129-163.2h0a.566.566,0,0,1,.374.527l-1.647,6.324-.9-.3,1.647-6.324C-96.578-163.054-96.278-163.28-96.129-163.2Z" transform="translate(114.173 172.991)"/>\n      <ellipse id="Ellipse_360" class="admin-contacts-cls-18" cx="1.572" cy="1.581" rx="1.572" ry="1.581" transform="translate(14.899 14.981)"/>\n    </g>\n    <g id="Group_1294" data-name="Group 1294" transform="translate(11.419 23.628)">\n      <path id="Path_1980" data-name="Path 1980" class="admin-contacts-cls-19" d="M96.668,53.949H92.885A10.746,10.746,0,0,0,87.667,52.9c-3.848,0-6.522.721-7.892,2.23a5.875,5.875,0,0,0-2.674-.787,6.151,6.151,0,0,0-2.674.721Q72.373,52.9,66.6,52.9a10.928,10.928,0,0,0-5.218,1.049H57.6V56.7l1.239.459a6.389,6.389,0,0,0-.2,1.508c0,4.131,1.3,6.492,7.892,6.492,5.609,0,7.827-1.574,8.8-6.361a4.682,4.682,0,0,0,.065-1.639,3.1,3.1,0,0,1,1.631-.393,3.2,3.2,0,0,1,1.7.393A4.682,4.682,0,0,0,78.8,58.8c.978,4.722,3.2,6.361,8.8,6.361,6.653,0,7.892-2.361,7.892-6.492a5.618,5.618,0,0,0-.2-1.508l1.239-.459V53.949ZM74.1,58.54c-.848,4.131-2.413,5.246-7.435,5.246-6.066,0-6.522-2.033-6.522-5.115,0-1.049,0-4.328,6.522-4.328,4.5,0,6.261,1.049,6.979,1.9A2.717,2.717,0,0,1,74.1,58.54Zm13.566,5.246c-4.957,0-6.587-1.115-7.435-5.246a2.515,2.515,0,0,1,.457-2.3c.717-.853,2.478-1.9,6.979-1.9,6.522,0,6.522,3.279,6.522,4.328C94.189,61.753,93.733,63.786,87.667,63.786Z" transform="translate(-57.6 -52.9)"/>\n    </g>\n    <g id="computer_1_" transform="translate(-6.106 63.564)">\n      <g id="Group_1295" data-name="Group 1295" transform="translate(0 50.691)">\n        <path id="Path_1981" data-name="Path 1981" class="admin-contacts-cls-20" d="M98.526,194.248H32.065a1.574,1.574,0,0,1,0-3.148H98.526a1.591,1.591,0,0,1,1.565,1.574A1.549,1.549,0,0,1,98.526,194.248Z" transform="translate(-30.5 -191.1)"/>\n      </g>\n      <g id="Group_1296" data-name="Group 1296">\n        <path id="Path_1982" data-name="Path 1982" class="admin-contacts-cls-21" d="M96.83,164.622H33.761a3.238,3.238,0,0,1-3.261-3.279V117.079a3.238,3.238,0,0,1,3.261-3.279H96.83a3.238,3.238,0,0,1,3.261,3.279v44.265A3.279,3.279,0,0,1,96.83,164.622Z" transform="translate(-30.5 -113.8)"/>\n      </g>\n      <g id="Group_1297" data-name="Group 1297" class="admin-contacts-cls-22" transform="translate(29.089 18.099)">\n        <ellipse id="Ellipse_361" data-name="Ellipse 361" class="admin-contacts-cls-2" cx="5.674" cy="5.705" rx="5.674" ry="5.705"/>\n      </g>\n      <g id="Group_1298" data-name="Group 1298" class="admin-contacts-cls-23" transform="translate(0 0.066)">\n        <path id="Path_1983" data-name="Path 1983" class="admin-contacts-cls-2" d="M84.243,113.9H33.37a2.861,2.861,0,0,0-2.87,2.885v44.986a2.861,2.861,0,0,0,2.87,2.885H43.414A57.94,57.94,0,0,1,84.243,113.9Z" transform="translate(-30.5 -113.9)"/>\n      </g>\n    </g>\n    <rect id="Rectangle_1214" data-name="Rectangle 1214" class="admin-contacts-cls-24" width="135.756" height="3.422" rx="1.711" transform="translate(-38.821 117.304)"/>\n  </g>\n</svg>\n'
+                        }
+                    },
+                    watch: {
+                        "$route.path": {
+                            handler: function() {
+                                this.$emit("close")
+                            }
+                        }
+                    }
+                },
+                it = (0, L.A)(at, rt, [], !1, null, null, null).exports,
+                ot = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("TcModal", {
+                        attrs: {
+                            headerText: t.$gettext("Warning!")
+                        },
+                        on: {
+                            close: t.closeThisWarning
+                        },
+                        scopedSlots: t._u([{
+                            key: "content",
+                            fn: function() {
+                                return [e("div", {
+                                    staticClass: "warning-ssl__container"
+                                }, [e("div", {
+                                    staticClass: "warning-ssl__manual"
+                                }, [e("p", {
+                                    staticClass: "warning-ssl-desc"
+                                }, [t._v("\n          " + t._s(t.$gettext("In order to use all the possibilities of Web configurator, you need to add website into security exception list.")) + "\n        ")]), t._v(" "), e("div", [e("p", {
+                                    staticClass: "warning-ssl__manual"
+                                }, [t._v("\n            1. " + t._s(t.$gettext("Click on %button").replace("%button", "")) + "\n          ")]), t._v(" "), e("TcButton", {
+                                    staticClass: "warning-ssl__button",
+                                    attrs: {
+                                        type: "unelevated",
+                                        text: t.$gettext("Continue"),
+                                        id: "warning-ssl"
+                                    },
+                                    on: {
+                                        click: t.continueHandler
+                                    }
+                                })], 1)]), t._v(" "), e("div", {
+                                    staticClass: "warning-ssl__imgs"
+                                }, [e("p", [t._v("2.")]), t._v(" "), e("div", {
+                                    staticClass: "warning-ssl__img-container"
+                                }, [e("img", {
+                                    staticClass: "warning-ssl__img",
+                                    attrs: {
+                                        alt: "",
+                                        src: r(89979)("./" + t.lang + "/" + t.browserName + "-security-warning-1.png")
+                                    }
+                                })]), t._v(" "), e("p", [t._v("3.")]), t._v(" "), e("div", {
+                                    staticClass: "warning-ssl__img-container"
+                                }, [e("img", {
+                                    staticClass: "warning-ssl__img",
+                                    attrs: {
+                                        alt: "",
+                                        src: r(10734)("./" + t.lang + "/" + t.browserName + "-security-warning-2.png")
+                                    }
+                                })])])])]
+                            },
+                            proxy: !0
+                        }, {
+                            key: "footer",
+                            fn: function() {
+                                return [e("div", {
+                                    staticClass: "warning-ssl__buttons"
+                                }, [e("TcCheckbox", {
+                                    staticClass: "warning-ssl__show-ssl-checkbox",
+                                    attrs: {
+                                        text: t.dontShowMessage
+                                    },
+                                    model: {
+                                        value: t.dontShowThisWarning,
+                                        callback: function(e) {
+                                            t.dontShowThisWarning = e
+                                        },
+                                        expression: "dontShowThisWarning"
+                                    }
+                                })], 1)]
+                            },
+                            proxy: !0
+                        }])
+                    })
+                };
+            ot._withStripped = !0;
+            var st = {
+                    name: "WarningSsl",
+                    methods: {
+                        closeThisWarning: function() {
+                            this.dontShowThisWarning && localStorage.setItem("trueconfDontShowWarningSsl", !0), this.$emit("close")
+                        },
+                        continueHandler: function() {
+                            window.open(this.serverInfo.url + this.$route.fullPath)
+                        }
+                    },
+                    computed: {
+                        browserName: function() {
+                            return this.browser.chrome ? "chrome" : this.browser.firefox ? "firefox" : this.browser.edge ? "edge" : this.browser.ie ? "ie" : this.browser.safari ? "safari" : "chrome"
+                        },
+                        lang: function() {
+                            return "ru" === this.appStateStore.language ? "ru" : "en"
+                        },
+                        dontShowMessage: function() {
+                            return this.$pgettext("Option to disable the warning message", "Don't show again")
+                        }
+                    },
+                    data: function() {
+                        return {
+                            dontShowThisWarning: !1
+                        }
+                    }
+                },
+                ct = (0, L.A)(st, ot, [], !1, null, null, null).exports,
+                lt = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("TcModal", {
+                        staticClass: "server-document-popup",
+                        attrs: {
+                            headerText: t.appStateStore.serverDocumentData.name
+                        },
+                        on: {
+                            close: function(e) {
+                                return t.$emit("close")
+                            }
+                        }
+                    }, [e("div", {
+                        staticClass: "server-document-popup__text",
+                        attrs: {
+                            slot: "content"
+                        },
+                        domProps: {
+                            innerHTML: t._s(t.appStateStore.serverDocumentData.content)
+                        },
+                        slot: "content"
+                    })])
+                };
+            lt._withStripped = !0;
+            var ut = {
+                    name: "ServerDocument"
+                },
+                dt = (0, L.A)(ut, lt, [], !1, null, null, null).exports,
+                ft = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", [t.errorScreen ? e("TcModal", {
+                        staticClass: "main-error-container__notification-popup",
+                        on: {
+                            close: function(e) {
+                                t.appStateStore.error = null
+                            }
+                        }
+                    }, [e("div", {
+                        attrs: {
+                            slot: "content"
+                        },
+                        slot: "content"
+                    }, [e(t.errorScreen.component, t._b({
+                        tag: "component"
+                    }, "component", t.errorScreen.props, !1))], 1)]) : e("ErrorContent", {
+                        attrs: {
+                            state: t.state,
+                            customDescription: t.customDescription
+                        }
+                    })], 1)
+                };
+            ft._withStripped = !0;
+            var pt = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "main-error"
+                }, [e("div", {
+                    staticClass: "main-error__container"
+                }, [e("transition", {
+                    attrs: {
+                        name: "main-error-animation-left",
+                        css: t.animated
+                    }
+                }, [t.showInfo ? e("div", {
+                    staticClass: "main-error__info-content"
+                }, [e("div", {
+                    staticClass: "main-error__center-info"
+                }, [e("p", {
+                    staticClass: "main-error__header"
+                }, [t._v("\n            " + t._s(t.header) + "\n          ")]), t._v(" "), e("p", {
+                    staticClass: "main-error__desc",
+                    domProps: {
+                        innerHTML: t._s(t.description)
+                    }
+                }), t._v(" "), t._l(t.getAdminContacts, (function(r) {
+                    return e("div", {
+                        directives: [{
+                            name: "show",
+                            rawName: "v-show",
+                            value: r.value,
+                            expression: "item.value"
+                        }],
+                        key: r.label,
+                        staticClass: "main-error__contact-container"
+                    }, [e("p", {
+                        staticClass: "main-error__contact-label"
+                    }, [t._v("\n              " + t._s(r.label) + "\n            ")]), t._v(" "), e("p", {
+                        staticClass: "main-error__contact-value"
+                    }, [t._v("\n              " + t._s(r.value) + "\n            ")])])
+                }))], 2)]) : t._e()]), t._v(" "), e("transition", {
+                    attrs: {
+                        name: "main-error-animation-right",
+                        css: t.animated
+                    }
+                }, [t.showInfo ? e("div", {
+                    staticClass: "main-error__img-container"
+                }, [e("div", {
+                    staticClass: "main-error__img-error",
+                    domProps: {
+                        innerHTML: t._s(t.ErrorImg)
+                    }
+                })]) : t._e()])], 1)])
+            };
+            pt._withStripped = !0;
+            var ht = r(94149),
+                gt = r(42282);
+
+            function yt(t) {
+                return {
+                    ACCESS_DENIED: this.$pgettext("This message is displayed when a user does not have access to application settings", "Try to open this window once again or contact your server administrator"),
+                    SECURITY_FLAW_FIRST_PART: this.$pgettext("Message", "This feature requires HTTPS to ensure your data safety."),
+                    SECURITY_FLAW_SECOND_PART: this.$pgettext("Message", "To solve this problem please contact your server administrator."),
+                    LOGOUT_ERROR: this.$pgettext("An error message displayed when a user tries to sign in", "Your account was disabled.<br>Please contact your server administrator.")
+                } [t] || this.$pgettext("Error message", "An error occurred. Please reload this page or contact your system administrator. Error code: %error_code").replace("%error_code", t)
+            }
+            var At = {
+                    name: "ErrorContent",
+                    props: {
+                        state: {
+                            type: String,
+                            default: "ACCESS_DENIED"
+                        },
+                        animated: {
+                            type: Boolean,
+                            default: !0
+                        },
+                        customDescription: {
+                            type: String,
+                            default: null
+                        }
+                    },
+                    mounted: function() {
+                        var t = this;
+                        this.animated ? setTimeout((function() {
+                            t.showInfo = !0
+                        }), 500) : this.showInfo = !0
+                    },
+                    computed: {
+                        adminContacts: function() {
+                            return this.$store.getters["server/getServerContacts"] || null
+                        },
+                        getAdminContacts: function() {
+                            return [{
+                                label: this.$pgettext("Subheader", "Your administrator"),
+                                value: this.adminContacts.adminName
+                            }, {
+                                label: this.$pgettext("Subheader", "Phone"),
+                                value: this.adminContacts.phone
+                            }, {
+                                label: this.$pgettext("Subheader", "Email"),
+                                value: this.adminContacts.email
+                            }]
+                        },
+                        header: function() {
+                            return {
+                                ACCESS_DENIED: this.$pgettext("Title", "Access denied"),
+                                SECURITY_FLAW: this.$pgettext("Message", "HTTPS not enabled."),
+                                LOGOUT_ERROR: this.$pgettext("Message", "Access denied."),
+                                CLIENT_ERROR: this.$pgettext("The title of a dialogue window", "Authorization error"),
+                                7: this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.", "Unable to join the conference"),
+                                5: this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.", "Unable to join the conference"),
+                                "005": this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.", "Unable to join the conference"),
+                                407: this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.", "Unable to join the conference"),
+                                411: this.$pgettext("The heading for an error message displayed when the application cannot connect to a virtual meeting due to some reason.", "Unable to join the conference")
+                            } [this.state] || null
+                        },
+                        description: function() {
+                            return this.customDescription ? this.customDescription : {
+                                ACCESS_DENIED: this.parseUserError(this.state),
+                                SECURITY_FLAW: "\n            <p>".concat(this.parseUserError("".concat(this.state, "_FIRST_PART")), "</p>\n            <p>").concat(this.parseUserError("".concat(this.state, "_SECOND_PART")), "</p>\n          "),
+                                LOGOUT_ERROR: "<p>".concat(this.parseUserError(this.state), "</p>"),
+                                7: "<p>".concat(this.parseWebrtcRejectError(this.state), "</p>"),
+                                5: "<p>".concat(this.parseWebrtcAuthError(this.state), "</p>"),
+                                "005": "<p>".concat(this.parseWebrtcAuthError(this.state), "</p>"),
+                                407: "<p>".concat(this.parseWebrtcRejectError(this.state), "</p>"),
+                                411: "<p>".concat(this.parseWebrtcRejectError(this.state), "</p>")
+                            } [this.state] || null
+                        }
+                    },
+                    data: function() {
+                        return {
+                            parseWebrtcAuthError: ht.A,
+                            parseWebrtcRejectError: gt.A,
+                            parseUserError: yt,
+                            ErrorImg: '<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="302.39" y1="99.94" x2="37.89" y2="179.35" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-1620.33" y1="276.05" x2="-1539.53" y2="276.05" gradientTransform="translate(1751.48 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="_езымянный_градиент_154" x1="34.35" y1="139.4" x2="309.52" y2="139.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#faaaad"/><stop offset=".63" stop-color="#f58f99"/><stop offset="1" stop-color="#f27e8c"/></linearGradient><linearGradient id="linear-gradient-6" x1="116.23" y1="138.55" x2="220.14" y2="138.55" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="_езымянный_градиент_154-2" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="_езымянный_градиент_154-3" x1="144.13" y1="138.55" x2="192.24" y2="138.55" xlink:href="#_езымянный_градиент_154"/><linearGradient id="linear-gradient-7" x1="84.43" y1="232.6" x2="93.81" y2="232.6" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-8" x1="84.97" y1="228.4" x2="94.4" y2="228.4" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-9" x1="88.62" y1="211.89" y2="211.89" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-10" x1="78.19" y1="235.99" x2="81.88" y2="235.99" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="79.11" y1="224.13" x2="80.65" y2="224.13" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="96.57" y1="274.36" x2="66.33" y2="248.94" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-13" x1="85.15" y1="246.65" x2="95.56" y2="280.85" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="252.5" y1="244.53" x2="267.16" y2="244.53" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-2" x1="304.01" y1="277.86" x2="310.43" y2="277.86" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-3" x1="310.58" y1="246.37" x2="315.55" y2="246.37" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-4" x1="306.7" y1="257.31" x2="312.12" y2="257.31" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-5" x1="305.58" y1="263.7" x2="311.8" y2="263.7" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-6" x1="304.81" y1="269.92" x2="311.83" y2="269.92" gradientTransform="translate(-38.67 -33.07) rotate(2.23)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-15" x1="234.19" y1="253.26" x2="251.01" y2="253.26" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-7" x1="125.05" y1="177.33" x2="130.03" y2="177.33" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-8" x1="128.48" y1="188.27" x2="133.91" y2="188.27" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-9" x1="128.8" y1="194.66" x2="135.02" y2="194.66" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-10" x1="128.77" y1="200.89" x2="135.8" y2="200.89" gradientTransform="translate(93.95 69.11) rotate(-5.16)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-16" x1="-84.04" y1="889.44" x2="-81.6" y2="899.89" gradientTransform="translate(90.9 -640.25) rotate(-14.58)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-11" x1="76.34" y1="152.13" x2="79.17" y2="152.13" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-12" x1="76.88" y1="163.69" x2="82.23" y2="163.69" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-13" x1="78.81" y1="169.51" x2="84.71" y2="169.51" gradientTransform="translate(136.32 97.01) rotate(-7.44)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-17" x1="129.62" y1="791.83" x2="124.92" y2="846.04" gradientTransform="translate(66.05 -498.5) rotate(-4.96) scale(.91 .93)" xlink:href="#linear-gradient-5"/><linearGradient id="_езымянный_градиент_157-14" x1="242.32" y1="286.75" x2="247.56" y2="286.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-15" x1="242.58" y1="293.44" x2="248.74" y2="293.44" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-16" x1="242.82" y1="301.75" x2="249.28" y2="301.75" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-17" x1="242.75" y1="309.1" x2="249.42" y2="309.1" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-18" x1="242.24" y1="317.46" x2="249.41" y2="317.46" gradientTransform="translate(23.89 -24.52) rotate(.11) scale(.91 .93) skewX(.22)" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-18" x1="348.41" y1="-756.25" x2="346.98" y2="-745.97" gradientTransform="translate(-190.84 863.32) rotate(9.34) scale(1 .9)" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-19" x1="263.73" y1="238.67" x2="268.79" y2="238.67" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-20" x1="259.66" y1="248.61" x2="264.85" y2="248.61" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-21" x1="258.3" y1="254.23" x2="264.28" y2="254.23" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-19" x1="254.16" y1="244.83" x2="252.04" y2="263.26" xlink:href="#linear-gradient-3"/><linearGradient id="_езымянный_градиент_157-22" x1="251.05" y1="236.12" x2="257.02" y2="236.12" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-23" x1="249.1" y1="243.85" x2="256.05" y2="243.85" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-24" x1="247.67" y1="253.44" x2="255.04" y2="253.44" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-25" x1="246.77" y1="261.97" x2="254.34" y2="261.97" xlink:href="#_езымянный_градиент_157"/><linearGradient id="_езымянный_градиент_157-26" x1="245.91" y1="271.6" x2="253.92" y2="271.6" xlink:href="#_езымянный_градиент_157"/><linearGradient id="linear-gradient-20" x1="236.71" y1="270.22" x2="263.32" y2="270.22" xlink:href="#linear-gradient-12"/><linearGradient id="linear-gradient-21" x1="234.37" y1="256.13" x2="265.67" y2="256.13" xlink:href="#linear-gradient-12"/></defs><g id="Layer_1-2"><g><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(180)" style="fill:url(#linear-gradient-5);"/><rect x="34.35" y="61.95" width="275.17" height="154.9" rx="3.09" ry="3.09" style="fill:url(#_езымянный_градиент_154);"/><g><circle cx="168.18" cy="138.55" r="51.96" style="fill:url(#linear-gradient-6);"/><g><path d="M188,162.6c-1.08,0-2.17-.41-3-1.24l-39.63-39.63c-1.66-1.65-1.66-4.34,0-5.99,1.65-1.66,4.34-1.66,5.99,0l39.63,39.63c1.66,1.65,1.66,4.34,0,5.99-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-2);"/><path d="M148.37,162.6c-1.08,0-2.17-.41-3-1.24-1.66-1.65-1.66-4.34,0-5.99l39.63-39.63c1.65-1.66,4.34-1.66,5.99,0,1.66,1.65,1.66,4.34,0,5.99l-39.63,39.63c-.83,.83-1.91,1.24-3,1.24Z" style="fill:url(#_езымянный_градиент_154-3);"/></g></g></g><g><polygon points="93.81 216.28 93.53 218.55 90.97 238.9 89.62 249.58 86.96 249.25 84.43 248.93 85.77 238.24 88.33 217.89 88.62 215.62 91.15 215.94 93.81 216.28" style="fill:url(#linear-gradient-7);"/><path d="M94.39,219.59l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-8);"/><polygon points="93.81 216.28 91.15 215.94 88.62 215.62 92.16 207.92 92.35 207.5 93.81 216.28" style="fill:url(#linear-gradient-9);"/><rect x="78.19" y="225.37" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-10);"/><path d="M80.65,222.94v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-11);"/><path d="M81.88,225.97v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M92.16,207.92l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M91.19,280.34h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-12);"/><path d="M95.71,247.43l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-13); opacity:.4;"/></g></g><g><g><g><path d="M257.75,266.28s-6.3,1.38-5.09-1.75c.21-.54,.4-1.23,.58-2.06,.13-.6,.26-1.27,.4-2.02,.2-1.16,.41-2.5,.65-4.03,.08-.54,.17-1.1,.25-1.68,.24-1.57,.5-3.3,.82-5.21,.1-.64,.22-1.31,.33-1.99,.21-1.21,.43-2.49,.67-3.83,.16-.87,.33-1.77,.51-2.7,.04-.2,.08-.41,.12-.62,.22-1.1,.46-2.14,.74-3.12,.28-.99,.59-1.92,.91-2.8,.99-2.66,2.17-4.81,3.33-6.52,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81-.65,2.19-1.31,4.73-1.77,7.16h0c-.14,.71-.26,1.42-.36,2.1-.2,1.33-.31,2.58-.31,3.66h0c0,.51,.02,.98,.07,1.4,.01,.09,.02,.18,.04,.27,.17,1.07,.07,2.68-.19,4.55-.12,.82-.26,1.68-.44,2.58-.35,1.84-.81,3.8-1.28,5.71-.23,.9-.46,1.79-.69,2.64-.35,1.32-.7,2.55-1.02,3.64-.17,.58-.32,1.11-.47,1.6-.49,1.66-.82,2.7-.82,2.7Z" style="fill:url(#linear-gradient-14);"/><path d="M260.05,258.35c-.78-.83-2.09-1.89-3.54-1.69-.8,.11-1.57-.02-2.24-.24,.08-.54,.17-1.1,.25-1.68,1.75,.38,4.54,.93,6.2,.96-.23,.9-.46,1.79-.69,2.64Z" style="fill:url(#_езымянный_градиент_157-2); opacity:.2;"/><path d="M264.99,228.27c-.91-.34-2.05-.38-3.03-.32,2.64-3.89,5.19-5.48,5.19-5.48-.43,.6-1.3,2.89-2.16,5.81Z" style="fill:url(#_езымянный_градиент_157-3); opacity:.2;"/><path d="M262.86,237.53c-1.23,.18-3.08,.27-5.14-.26,.28-.99,.59-1.92,.91-2.8,.91,.7,2.6,1.61,4.58,.96-.14,.71-.26,1.41-.36,2.1Z" style="fill:url(#_езымянный_градиент_157-4); opacity:.2;"/><path d="M262.62,242.59c-1.57,.51-4.41,1.31-6.26,1.12,.16-.87,.33-1.77,.51-2.7,1.41,.7,3.71,1.45,5.68,.18,0,.51,.02,.98,.07,1.4Z" style="fill:url(#_езымянный_градиент_157-5); opacity:.2;"/><path d="M262.02,249.99c-1.14-.29-2.66-.55-3.61-.17-.96,.38-2.18,.06-3.06-.28,.1-.64,.22-1.31,.33-1.99,1.97,.09,5.39,.18,6.78-.13-.12,.82-.26,1.68-.44,2.58Z" style="fill:url(#_езымянный_градиент_157-6); opacity:.2;"/><path d="M258.57,263.59l-5.33-1.11c.13-.6,.26-1.27,.4-2.02,1.61,.52,4.01,1.27,5.4,1.54-.17,.58-.32,1.11-.47,1.6Z" style="fill:#188aa5;"/></g><g><path d="M245.82,274.81s6.36,1.06,4.99-2c-.24-.53-.46-1.21-.69-2.03-.16-.59-.33-1.25-.5-2-.26-1.15-.54-2.48-.85-3.99-.11-.53-.22-1.09-.34-1.67-.32-1.55-.67-3.27-1.08-5.16-.14-.64-.28-1.3-.43-1.97-.27-1.2-.55-2.46-.87-3.79-.2-.86-.42-1.75-.64-2.67-.05-.2-.1-.41-.15-.61-.27-1.09-.57-2.11-.9-3.08-.33-.97-.68-1.89-1.06-2.75-1.13-2.6-2.41-4.7-3.66-6.34-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69,.77,2.15,1.55,4.66,2.14,7.06h0c.18,.71,.33,1.4,.47,2.08,.26,1.32,.44,2.56,.5,3.64h0c.03,.51,.03,.98,0,1.4,0,.09-.01,.18-.02,.27-.12,1.08,.06,2.68,.43,4.53,.16,.81,.35,1.67,.57,2.55,.45,1.82,1,3.76,1.57,5.64,.27,.89,.55,1.76,.82,2.6,.42,1.3,.83,2.51,1.2,3.59,.2,.57,.38,1.1,.55,1.57,.58,1.63,.96,2.65,.96,2.65Z" style="fill:url(#linear-gradient-15);"/><path d="M243.12,267c.74-.86,1.99-1.99,3.44-1.86,.81,.07,1.57-.1,2.22-.35-.11-.53-.22-1.09-.34-1.67-1.73,.47-4.49,1.16-6.15,1.28,.27,.89,.55,1.76,.82,2.6Z" style="fill:#188aa5;"/><path d="M236.65,237.22c.89-.39,2.03-.49,3.01-.48-2.84-3.75-5.46-5.21-5.46-5.21,.46,.57,1.44,2.82,2.46,5.69Z" style="fill:url(#_езымянный_градиент_157-7); opacity:.2;"/><path d="M239.25,246.36c1.24,.12,3.09,.11,5.12-.52-.33-.97-.68-1.89-1.06-2.75-.88,.74-2.51,1.74-4.53,1.2,.18,.7,.33,1.4,.47,2.07Z" style="fill:url(#_езымянный_градиент_157-8); opacity:.2;"/><path d="M239.75,251.4c1.6,.43,4.48,1.08,6.31,.8-.2-.86-.42-1.75-.64-2.67-1.37,.78-3.64,1.64-5.67,.47,.03,.51,.03,.98,0,1.4Z" style="fill:url(#_езымянный_градиент_157-9); opacity:.2;"/><path d="M240.72,258.76c1.12-.35,2.63-.69,3.6-.36,.98,.33,2.18-.05,3.04-.44-.14-.64-.28-1.3-.43-1.97-1.97,.19-5.38,.45-6.78,.22,.16,.81,.35,1.67,.57,2.55Z" style="fill:url(#_езымянный_градиент_157-10); opacity:.2;"/><path d="M244.87,272.16l5.26-1.39c-.16-.59-.33-1.25-.5-2-1.58,.6-3.94,1.47-5.31,1.81,.2,.57,.38,1.1,.55,1.57Z" style="fill:#188aa5;"/></g><g><path d="M253.36,274.62s-4.26,4.46-5.28,1.29c-.18-.55-.46-1.21-.85-1.98-.27-.55-.6-1.16-.98-1.84-.58-1.04-1.27-2.24-2.06-3.59-.28-.48-.57-.97-.87-1.49-.81-1.39-1.71-2.93-2.68-4.63-.33-.57-.66-1.17-1.01-1.78-.61-1.09-1.25-2.23-1.91-3.44-.43-.79-.87-1.6-1.32-2.45-.1-.19-.2-.37-.3-.56-.53-1-1-1.97-1.4-2.91-.41-.95-.76-1.86-1.05-2.74-.9-2.67-1.32-5.03-1.47-7.03-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83,.87,2.11,1.97,4.51,3.15,6.71h0c.34,.65,.7,1.28,1.05,1.89,.7,1.18,1.4,2.25,2.1,3.12h0c.32,.41,.65,.78,.96,1.09,.07,.07,.14,.14,.21,.2,.83,.77,1.78,2.12,2.76,3.77,.43,.72,.87,1.5,1.3,2.32,.89,1.67,1.79,3.5,2.62,5.29,.39,.85,.78,1.69,1.14,2.5,.56,1.25,1.07,2.43,1.51,3.48,.23,.56,.45,1.07,.65,1.54,.66,1.6,1.06,2.61,1.06,2.61Z" style="fill:url(#linear-gradient-16);"/><path d="M250.15,266.99c-1.17-.25-2.92-.42-3.97,.51-.59,.51-1.29,.82-1.98,.99-.28-.48-.57-.97-.87-1.49,1.68-.62,4.31-1.66,5.69-2.52,.39,.85,.78,1.69,1.14,2.5Z" style="fill:#188aa5;"/><path d="M234.86,240.11c-.96,.2-1.92,.78-2.68,1.34-.34-4.54,.71-7.18,.71-7.18,.03,.71,.8,3.02,1.97,5.83Z" style="fill:url(#_езымянный_градиент_157-11); opacity:.2;"/><path d="M239.06,248.71c-.89,.8-2.34,1.85-4.37,2.51-.41-.95-.76-1.86-1.05-2.74,1.2,.08,3.16-.08,4.37-1.65,.34,.65,.7,1.28,1.05,1.88Z" style="fill:url(#_езымянный_градиент_157-12); opacity:.2;"/><path d="M242.12,252.92c-.96,1.24-2.77,3.39-4.4,4.23-.43-.79-.87-1.6-1.32-2.45,1.6-.18,3.97-.8,4.76-2.87,.32,.41,.65,.78,.96,1.09Z" style="fill:url(#_езымянный_градиент_157-13); opacity:.2;"/><path d="M246.39,259.21c-1.12,.37-2.53,.97-3.06,1.78-.54,.82-1.74,1.21-2.68,1.39-.33-.57-.66-1.17-1.01-1.78,1.67-.98,4.52-2.72,5.46-3.7,.43,.72,.87,1.5,1.3,2.32Z" style="fill:#188aa5;"/><path d="M252.3,272.01l-5.07,1.93c-.27-.55-.6-1.16-.98-1.84,1.65-.43,4.09-1.1,5.4-1.63,.23,.56,.45,1.07,.65,1.54Z" style="fill:#188aa5;"/></g><g><path d="M249.68,226.71c-.26,.63-.51,3.01-.59,6.03-.06,2.37-.01,5.13,.22,7.73,.06,.71,.14,1.41,.23,2.09,.16,1.15,.36,2.23,.61,3.2,.05,.2,.1,.41,.15,.64,.12,.6,.23,1.33,.33,2.14,.21,1.77,.35,3.97,.45,6.35,.02,.49,.04,.99,.05,1.49,.06,1.8,.1,3.67,.12,5.52,0,.52,.01,1.04,.02,1.56,.01,2.02,.01,3.98,0,5.75,0,1.05-.02,2.04-.03,2.93-.04,2.81-.08,4.65-.08,4.65,0,0-9.91,4.17-7.88,1.81,.66-.77,1.14-3.23,1.47-6.65,.07-.76,.14-1.56,.19-2.41,.12-1.74,.2-3.64,.26-5.64,.02-.68,.03-1.37,.04-2.07,.03-1.5,.03-3.03,.02-4.57,0-.72-.01-1.45-.02-2.17-.02-1.54-.06-3.08-.12-4.57-.03-.88-.07-1.74-.11-2.59-.05-.99-.11-1.96-.17-2.89-.03-.37-.04-.74-.06-1.11-.04-1.1-.02-2.15,.04-3.16h0c.17-2.92,.71-5.45,1.38-7.55,1.58-4.99,3.85-7.46,3.47-6.54Z" style="fill:url(#linear-gradient-17);"/><path d="M249.55,242.57c-1.05,.7-3.1,1.85-4.74,1.39-.04-1.1-.02-2.15,.04-3.16,1.3,.36,3.18,.63,4.48-.32,.06,.71,.14,1.41,.23,2.09Z" style="fill:url(#_езымянный_градиент_157-14); opacity:.2;"/><path d="M250.63,248.54c-1.08,.64-3.99,2.27-5.49,2-.03-.88-.07-1.74-.11-2.59,1.28,.17,4.06,.29,5.27-1.55,.12,.6,.23,1.33,.33,2.14Z" style="fill:url(#_езымянный_градиент_157-15); opacity:.2;"/><path d="M251.08,254.9c.02,.49,.04,.99,.05,1.49l-2.34,.18s-1.38,1.54-3.52,.72c0-.72-.01-1.45-.02-2.17,1.46,.16,4.61,.4,5.83-.22Z" style="fill:url(#_езымянный_градиент_157-16); opacity:.2;"/><path d="M251.26,261.92c0,.52,.01,1.04,.02,1.56-.85-.22-1.92-.37-2.04,.23-.14,.67-2.42,.6-4.02,.21,.02-.68,.03-1.37,.04-2.07,1.33,.1,4.32,.29,6,.06Z" style="fill:url(#_езымянный_градиент_157-17); opacity:.2;"/><path d="M251.27,269.23c0,1.05-.02,2.04-.03,2.93-1.57,.53-4.96,.06-6.49-.19,.07-.76,.14-1.56,.19-2.41,1.68,.89,4.82,.12,6.32-.33Z" style="fill:url(#_езымянный_градиент_157-18); opacity:.2;"/></g><g><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.66,1.98-1.32,4.3-1.76,6.53-.12,.61-.23,1.21-.31,1.8-.14,1-.23,1.95-.24,2.81,0,.17,0,.36-.02,.56-.04,.53-.12,1.16-.23,1.86-.25,1.52-.67,3.4-1.18,5.43-.11,.42-.22,.84-.33,1.27-.4,1.52-.84,3.1-1.29,4.66-.13,.44-.26,.88-.38,1.31-.5,1.7-1,3.34-1.46,4.83-.28,.88-.53,1.71-.77,2.45-.75,2.35-1.26,3.88-1.26,3.88,0,0-10.52,1.48-7.98-.09,.82-.51,1.91-2.48,3.1-5.28,.26-.62,.53-1.28,.8-1.98,.56-1.44,1.12-3.02,1.68-4.68,.19-.57,.38-1.14,.57-1.73,.41-1.25,.8-2.54,1.19-3.83,.18-.61,.36-1.22,.53-1.83,.37-1.3,.72-2.59,1.05-3.86,.2-.74,.38-1.48,.56-2.2,.2-.84,.4-1.66,.57-2.46,.07-.32,.15-.63,.23-.94,.24-.93,.52-1.81,.84-2.65h0c.91-2.42,2.07-4.43,3.23-6.05,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#linear-gradient-18);"/><path d="M268.7,236.28c-.41,.47-1.25,2.43-2.1,4.94-.81-.36-1.92-.31-2.88-.17,2.78-3.86,5.57-5.47,4.97-4.78Z" style="fill:url(#_езымянный_градиент_157-19); opacity:.2;"/><path d="M264.54,249.56c-1.18,.38-3.42,.92-4.88,.2,.24-.93,.52-1.81,.84-2.65,1.15,.57,2.88,1.18,4.35,.65-.12,.61-.23,1.21-.31,1.8Z" style="fill:url(#_езымянный_градиент_157-20); opacity:.2;"/><path d="M264.05,254.8c-1.19,.32-4.38,1.09-5.74,.56,.2-.74,.38-1.48,.56-2.2,1.17,.4,3.8,1.08,5.42-.22-.04,.53-.12,1.16-.23,1.86Z" style="fill:url(#_езымянный_градиент_157-21); opacity:.2;"/><path d="M262.86,260.22c-.11,.42-.22,.84-.33,1.27l-2.28-.33s-1.71,1.01-3.54-.12c.18-.61,.36-1.22,.53-1.83,1.36,.43,4.3,1.28,5.61,1.01Z" style="fill:#188aa5;"/><path d="M261.24,266.15c-.13,.44-.26,.88-.38,1.31-.75-.36-1.74-.71-2.01-.22-.3,.54-2.46,0-3.89-.64,.19-.57,.38-1.14,.57-1.73,1.24,.36,4.05,1.12,5.71,1.28Z" style="fill:#188aa5;"/><path d="M259.4,272.29c-.28,.88-.53,1.71-.77,2.45-1.63,.12-4.75-.96-6.14-1.48,.26-.62,.53-1.28,.8-1.98,1.38,1.09,4.57,1.09,6.11,1.01Z" style="fill:#188aa5;"/></g><g><path d="M252.51,216.49c.26,.8,.32,3.81,.1,7.59-.17,2.97-.51,6.41-1.06,9.65-.15,.88-.32,1.75-.5,2.59-.31,1.42-.67,2.77-1.08,3.95-.08,.24-.16,.5-.25,.78-.21,.75-.42,1.64-.62,2.65-.44,2.19-.84,4.93-1.21,7.91-.07,.61-.15,1.23-.22,1.86-.26,2.25-.5,4.59-.72,6.9-.06,.66-.12,1.31-.18,1.95-.23,2.53-.43,4.98-.59,7.19-.1,1.32-.19,2.55-.27,3.66-.25,3.51-.38,5.82-.38,5.82,0,0,11.77,5.97,9.51,2.86-.73-1.01-1.08-4.13-1.13-8.42-.01-.95,0-1.96,0-3.02,.03-2.18,.13-4.57,.26-7.07,.05-.85,.1-1.71,.16-2.59,.12-1.87,.27-3.79,.44-5.72,.08-.9,.16-1.81,.25-2.71,.19-1.93,.39-3.84,.61-5.71,.13-1.09,.26-2.18,.4-3.23,.17-1.24,.33-2.44,.51-3.6,.07-.46,.13-.92,.18-1.38,.16-1.37,.25-2.69,.28-3.95h0c.09-3.66-.32-6.87-.92-9.54-1.43-6.36-3.98-9.61-3.6-8.44Z" style="fill:url(#linear-gradient-19);"/><path d="M251.05,236.32c1.22,.96,3.62,2.55,5.7,2.1,.16-1.37,.25-2.69,.28-3.95-1.63,.35-3.98,.54-5.48-.73-.15,.88-.32,1.75-.5,2.59Z" style="fill:url(#_езымянный_градиент_157-22); opacity:.2;"/><path d="M249.1,243.71c1.26,.89,4.68,3.14,6.55,2.91,.13-1.09,.26-2.18,.4-3.23-1.59,.11-5.03,.06-6.33-2.34-.21,.75-.42,1.64-.62,2.65Z" style="fill:url(#_езымянный_градиент_157-23); opacity:.2;"/><path d="M247.89,251.62c-.07,.61-.15,1.23-.22,1.86l2.86,.4s1.55,2.02,4.25,1.16c.08-.9,.16-1.81,.25-2.71-1.82,.08-5.72,.15-7.15-.71Z" style="fill:url(#_езымянный_градиент_157-24); opacity:.2;"/><path d="M246.95,260.39c-.06,.66-.12,1.31-.18,1.95,1.06-.21,2.4-.32,2.49,.44,.1,.85,2.92,.93,4.92,.57,.05-.85,.1-1.71,.16-2.59-1.65,.02-5.35,.03-7.4-.38Z" style="fill:url(#_езымянный_градиент_157-25); opacity:.2;"/><path d="M246.17,269.53c-.1,1.32-.19,2.55-.27,3.66,1.88,.78,6.1,.45,8.01,.26-.01-.95,0-1.96,0-3.02-2.16,.98-5.95-.21-7.75-.89Z" style="fill:url(#_езымянный_градиент_157-26); opacity:.2;"/></g></g><g><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96-.79-1.27-1.25-2.78-1.25-4.39v-16.69h26.6Z" style="fill:url(#linear-gradient-20);"/><path d="M263.32,257.7v16.69c0,4.61-3.74,8.35-8.35,8.35h-9.91c-2.99,0-5.63-1.58-7.1-3.96,17.25,.06,21.4-13.28,22.35-21.08h3.01Z" style="fill:#27494f; opacity:.08;"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95-.01-.06-.02-.13-.02-.2v-2.39c0-.64,.51-1.15,1.15-1.15h28.99c.63,0,1.15,.51,1.15,1.15Z" style="fill:url(#linear-gradient-21);"/><path d="M265.67,254.94v2.39c0,.63-.52,1.15-1.15,1.15h-28.99c-.57,0-1.04-.41-1.13-.95,26.64,.81,29.41-2.53,29.55-3.74h.58c.63,0,1.15,.51,1.15,1.15Z" style="fill:#27494f; opacity:.08;"/></g></g></g></g></svg>',
+                            showInfo: !1
+                        }
+                    }
+                },
+                mt = (0, L.A)(At, pt, [], !1, null, null, null).exports,
+                vt = {
+                    name: "MainError",
+                    props: {
+                        state: {
+                            type: String,
+                            default: "ACCESS_DENIED"
+                        },
+                        customDescription: {
+                            type: String,
+                            default: null
+                        }
+                    },
+                    components: {
+                        ErrorContent: mt
+                    },
+                    computed: {
+                        errorScreen: function() {
+                            return {
+                                LOGOUT_ERROR: {
+                                    component: "ErrorContent",
+                                    props: {
+                                        class: ["main-error-container__notification-error"],
+                                        state: this.state,
+                                        animated: !1
+                                    }
+                                },
+                                5: {
+                                    component: "ErrorContent",
+                                    props: {
+                                        class: ["main-error-container__notification-error"],
+                                        state: this.state,
+                                        animated: !1
+                                    }
+                                },
+                                "005": {
+                                    component: "ErrorContent",
+                                    props: {
+                                        class: ["main-error-container__notification-error"],
+                                        state: this.state,
+                                        animated: !1
+                                    }
+                                },
+                                407: {
+                                    component: "ErrorContent",
+                                    props: {
+                                        class: ["main-error-container__notification-error"],
+                                        state: this.state,
+                                        animated: !1
+                                    }
+                                },
+                                411: {
+                                    component: "ErrorContent",
+                                    props: {
+                                        class: ["main-error-container__notification-error"],
+                                        state: this.state,
+                                        animated: !1
+                                    }
+                                },
+                                ACCESS_DENIED: null
+                            } [this.state]
+                        }
+                    }
+                },
+                xt = (0, L.A)(vt, ft, [], !1, null, null, null).exports,
+                bt = r(85867),
+                wt = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "notifier__container"
+                    }, [e("transition-group", {
+                        staticClass: "transition__wrapper",
+                        attrs: {
+                            name: "list",
+                            tag: "p",
+                            duration: 600
+                        }
+                    }, t._l(t.shownNotifications, (function(r) {
+                        return e("TheNotifierItem", {
+                            key: r.notificationId,
+                            staticClass: "notifier__item",
+                            attrs: {
+                                text: r.text,
+                                duration: r.duration,
+                                icon: r.icon,
+                                actionIcon: r.actionIcon,
+                                actionText: r.actionText,
+                                actionHandler: r.actionHandler,
+                                showCloseButton: r.showCloseButton
+                            },
+                            on: {
+                                close: function(e) {
+                                    return t.closeNotify(r.notificationId)
+                                }
+                            }
+                        })
+                    })), 1)], 1)
+                };
+            wt._withStripped = !0;
+            var St = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "notifier__item-container",
+                    class: {
+                        "notifier__item-container--just-text": t.hasJustText
+                    }
+                }, [t.icon ? e("TcIcon", {
+                    staticClass: "notifier__icon",
+                    attrs: {
+                        icon: t.icon
+                    }
+                }) : t._e(), t._v(" "), e("div", {
+                    staticClass: "notifier__text-content",
+                    domProps: {
+                        innerHTML: t._s(t.text)
+                    }
+                }), t._v(" "), e("div", {
+                    staticClass: "notifier__button-wrapper"
+                }, [t.actionText || t.actionIcon ? e("TcButton", {
+                    staticClass: "notifier__action-button",
+                    attrs: {
+                        text: t.actionText,
+                        icon: t.actionIcon
+                    },
+                    on: {
+                        click: function(e) {
+                            t.actionHandler ? t.actionHandler() : t.closeHandler()
+                        }
+                    }
+                }) : t._e(), t._v(" "), t.showCloseButton ? e("TcButton", {
+                    staticClass: "notifier__close-button",
+                    attrs: {
+                        icon: "close"
+                    },
+                    on: {
+                        click: t.closeHandler
+                    }
+                }) : t._e()], 1)], 1)
+            };
+            St._withStripped = !0;
+            var _t = {
+                name: "TheNotifierItem",
+                props: {
+                    text: {
+                        type: String,
+                        default: null
+                    },
+                    duration: {
+                        type: Number,
+                        default: null
+                    },
+                    icon: {
+                        type: [String, Object],
+                        default: null
+                    },
+                    actionIcon: {
+                        type: String || Object,
+                        default: null
+                    },
+                    actionText: {
+                        type: String,
+                        default: null
+                    },
+                    actionHandler: {
+                        type: Function,
+                        default: null
+                    },
+                    showCloseButton: {
+                        type: Boolean,
+                        default: null
+                    },
+                    notificationId: {
+                        type: String,
+                        default: null
+                    }
+                },
+                created: function() {
+                    this.duration && -1 !== Math.sign(this.duration) && (this.timer = setTimeout(this.closeHandler, this.duration))
+                },
+                methods: {
+                    closeHandler: function() {
+                        clearTimeout(this.timer), this.$emit("close")
+                    }
+                },
+                computed: {
+                    hasJustText: function() {
+                        return !(this.actionIcon || this.actionText || this.showCloseButton)
+                    }
+                },
+                data: function() {
+                    return {
+                        timer: null
+                    }
+                }
+            };
+
+            function Ot(t) {
+                return Ot = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, Ot(t)
+            }
+
+            function kt(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function Et(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? kt(Object(r), !0).forEach((function(e) {
+                        Tt(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : kt(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function Tt(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != Ot(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != Ot(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == Ot(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            var Mt = {
+                    name: "TheNotifier",
+                    components: {
+                        TheNotifierItem: (0, L.A)(_t, St, [], !1, null, null, null).exports
+                    },
+                    methods: {
+                        notify: function(t) {
+                            var e, r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
+                            return t.duration || (t.duration = 5e3), t.notificationId = null !== (e = t.notificationId) && void 0 !== e ? e : Date.now().toString(36) + Math.random().toString(36).substr(2), Number.isNaN(parseInt(r, 10)) ? this.notificationList.push(t) : this.notificationList.splice(r, 1, t), Promise.resolve(t.notificationId)
+                        },
+                        closeNotify: function(t) {
+                            var e = this.notificationList.findIndex((function(e) {
+                                return e.notificationId === t
+                            })); - 1 !== e && this.notificationList.splice(e, 1)
+                        },
+                        editNotify: function(t) {
+                            var e = t.notificationId,
+                                r = t.config;
+                            this.notificationList = this.notificationList.map((function(t) {
+                                return t.notificationId === e && (t = Et(Et({}, t), r)), t
+                            }))
+                        },
+                        getNotifyList: function() {
+                            return this.notificationList
+                        }
+                    },
+                    computed: {
+                        shownNotifications: function() {
+                            return this.notificationList.slice(0, 4)
+                        }
+                    },
+                    data: function() {
+                        return {
+                            notificationList: []
+                        }
+                    }
+                },
+                Lt = Mt,
+                Pt = (0, L.A)(Lt, wt, [], !1, null, null, null).exports,
+                Gt = r(99761);
+
+            function Ut(t) {
+                ! function(t, e) {
+                    var r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {};
+                    r && r.expires instanceof Date && (r.expires = r.expires.toUTCString());
+                    var n = "".concat(encodeURIComponent(t), "=").concat(encodeURIComponent(e));
+                    for (var a in r) {
+                        n += ";".concat(a);
+                        var i = r[a];
+                        !0 !== i && (n += "=".concat(i))
+                    }
+                    document.cookie = n
+                }(t, Gt, {
+                    "max-age": -1
+                })
+            }
+            var Zt = "SESSION_IS_EXPIRED",
+                jt = "authProviderId",
+                Ct = "TrueconfUpdatingToken",
+                It = r(99761);
+
+            function Vt(t) {
+                return Vt = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, Vt(t)
+            }
+
+            function Kt(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function Nt(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? Kt(Object(r), !0).forEach((function(e) {
+                        zt(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : Kt(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function zt(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != Vt(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != Vt(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == Vt(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+
+            function Dt() {
+                Dt = function() {
+                    return e
+                };
+                var t, e = {},
+                    r = Object.prototype,
+                    n = r.hasOwnProperty,
+                    a = Object.defineProperty || function(t, e, r) {
+                        t[e] = r.value
+                    },
+                    i = "function" == typeof Symbol ? Symbol : {},
+                    o = i.iterator || "@@iterator",
+                    s = i.asyncIterator || "@@asyncIterator",
+                    c = i.toStringTag || "@@toStringTag";
+
+                function l(t, e, r) {
+                    return Object.defineProperty(t, e, {
+                        value: r,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0
+                    }), t[e]
+                }
+                try {
+                    l({}, "")
+                } catch (t) {
+                    l = function(t, e, r) {
+                        return t[e] = r
+                    }
+                }
+
+                function u(t, e, r, n) {
+                    var i = e && e.prototype instanceof A ? e : A,
+                        o = Object.create(i.prototype),
+                        s = new L(n || []);
+                    return a(o, "_invoke", {
+                        value: k(t, r, s)
+                    }), o
+                }
+
+                function d(t, e, r) {
+                    try {
+                        return {
+                            type: "normal",
+                            arg: t.call(e, r)
+                        }
+                    } catch (t) {
+                        return {
+                            type: "throw",
+                            arg: t
+                        }
+                    }
+                }
+                e.wrap = u;
+                var f = "suspendedStart",
+                    p = "suspendedYield",
+                    h = "executing",
+                    g = "completed",
+                    y = {};
+
+                function A() {}
+
+                function m() {}
+
+                function v() {}
+                var x = {};
+                l(x, o, (function() {
+                    return this
+                }));
+                var b = Object.getPrototypeOf,
+                    w = b && b(b(P([])));
+                w && w !== r && n.call(w, o) && (x = w);
+                var S = v.prototype = A.prototype = Object.create(x);
+
+                function _(t) {
+                    ["next", "throw", "return"].forEach((function(e) {
+                        l(t, e, (function(t) {
+                            return this._invoke(e, t)
+                        }))
+                    }))
+                }
+
+                function O(t, e) {
+                    function r(a, i, o, s) {
+                        var c = d(t[a], t, i);
+                        if ("throw" !== c.type) {
+                            var l = c.arg,
+                                u = l.value;
+                            return u && "object" == Vt(u) && n.call(u, "__await") ? e.resolve(u.__await).then((function(t) {
+                                r("next", t, o, s)
+                            }), (function(t) {
+                                r("throw", t, o, s)
+                            })) : e.resolve(u).then((function(t) {
+                                l.value = t, o(l)
+                            }), (function(t) {
+                                return r("throw", t, o, s)
+                            }))
+                        }
+                        s(c.arg)
+                    }
+                    var i;
+                    a(this, "_invoke", {
+                        value: function(t, n) {
+                            function a() {
+                                return new e((function(e, a) {
+                                    r(t, n, e, a)
+                                }))
+                            }
+                            return i = i ? i.then(a, a) : a()
+                        }
+                    })
+                }
+
+                function k(e, r, n) {
+                    var a = f;
+                    return function(i, o) {
+                        if (a === h) throw new Error("Generator is already running");
+                        if (a === g) {
+                            if ("throw" === i) throw o;
+                            return {
+                                value: t,
+                                done: !0
+                            }
+                        }
+                        for (n.method = i, n.arg = o;;) {
+                            var s = n.delegate;
+                            if (s) {
+                                var c = E(s, n);
+                                if (c) {
+                                    if (c === y) continue;
+                                    return c
+                                }
+                            }
+                            if ("next" === n.method) n.sent = n._sent = n.arg;
+                            else if ("throw" === n.method) {
+                                if (a === f) throw a = g, n.arg;
+                                n.dispatchException(n.arg)
+                            } else "return" === n.method && n.abrupt("return", n.arg);
+                            a = h;
+                            var l = d(e, r, n);
+                            if ("normal" === l.type) {
+                                if (a = n.done ? g : p, l.arg === y) continue;
+                                return {
+                                    value: l.arg,
+                                    done: n.done
+                                }
+                            }
+                            "throw" === l.type && (a = g, n.method = "throw", n.arg = l.arg)
+                        }
+                    }
+                }
+
+                function E(e, r) {
+                    var n = r.method,
+                        a = e.iterator[n];
+                    if (a === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, E(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+                    var i = d(a, e.iterator, r.arg);
+                    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+                    var o = i.arg;
+                    return o ? o.done ? (r[e.resultName] = o.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : o : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y)
+                }
+
+                function T(t) {
+                    var e = {
+                        tryLoc: t[0]
+                    };
+                    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e)
+                }
+
+                function M(t) {
+                    var e = t.completion || {};
+                    e.type = "normal", delete e.arg, t.completion = e
+                }
+
+                function L(t) {
+                    this.tryEntries = [{
+                        tryLoc: "root"
+                    }], t.forEach(T, this), this.reset(!0)
+                }
+
+                function P(e) {
+                    if (e || "" === e) {
+                        var r = e[o];
+                        if (r) return r.call(e);
+                        if ("function" == typeof e.next) return e;
+                        if (!isNaN(e.length)) {
+                            var a = -1,
+                                i = function r() {
+                                    for (; ++a < e.length;)
+                                        if (n.call(e, a)) return r.value = e[a], r.done = !1, r;
+                                    return r.value = t, r.done = !0, r
+                                };
+                            return i.next = i
+                        }
+                    }
+                    throw new TypeError(Vt(e) + " is not iterable")
+                }
+                return m.prototype = v, a(S, "constructor", {
+                    value: v,
+                    configurable: !0
+                }), a(v, "constructor", {
+                    value: m,
+                    configurable: !0
+                }), m.displayName = l(v, c, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+                    var e = "function" == typeof t && t.constructor;
+                    return !!e && (e === m || "GeneratorFunction" === (e.displayName || e.name))
+                }, e.mark = function(t) {
+                    return Object.setPrototypeOf ? Object.setPrototypeOf(t, v) : (t.__proto__ = v, l(t, c, "GeneratorFunction")), t.prototype = Object.create(S), t
+                }, e.awrap = function(t) {
+                    return {
+                        __await: t
+                    }
+                }, _(O.prototype), l(O.prototype, s, (function() {
+                    return this
+                })), e.AsyncIterator = O, e.async = function(t, r, n, a, i) {
+                    void 0 === i && (i = Promise);
+                    var o = new O(u(t, r, n, a), i);
+                    return e.isGeneratorFunction(r) ? o : o.next().then((function(t) {
+                        return t.done ? t.value : o.next()
+                    }))
+                }, _(S), l(S, c, "Generator"), l(S, o, (function() {
+                    return this
+                })), l(S, "toString", (function() {
+                    return "[object Generator]"
+                })), e.keys = function(t) {
+                    var e = Object(t),
+                        r = [];
+                    for (var n in e) r.push(n);
+                    return r.reverse(),
+                        function t() {
+                            for (; r.length;) {
+                                var n = r.pop();
+                                if (n in e) return t.value = n, t.done = !1, t
+                            }
+                            return t.done = !0, t
+                        }
+                }, e.values = P, L.prototype = {
+                    constructor: L,
+                    reset: function(e) {
+                        if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(M), !e)
+                            for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t)
+                    },
+                    stop: function() {
+                        this.done = !0;
+                        var t = this.tryEntries[0].completion;
+                        if ("throw" === t.type) throw t.arg;
+                        return this.rval
+                    },
+                    dispatchException: function(e) {
+                        if (this.done) throw e;
+                        var r = this;
+
+                        function a(n, a) {
+                            return s.type = "throw", s.arg = e, r.next = n, a && (r.method = "next", r.arg = t), !!a
+                        }
+                        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                            var o = this.tryEntries[i],
+                                s = o.completion;
+                            if ("root" === o.tryLoc) return a("end");
+                            if (o.tryLoc <= this.prev) {
+                                var c = n.call(o, "catchLoc"),
+                                    l = n.call(o, "finallyLoc");
+                                if (c && l) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0);
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                } else if (c) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0)
+                                } else {
+                                    if (!l) throw new Error("try statement without catch or finally");
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                }
+                            }
+                        }
+                    },
+                    abrupt: function(t, e) {
+                        for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                            var a = this.tryEntries[r];
+                            if (a.tryLoc <= this.prev && n.call(a, "finallyLoc") && this.prev < a.finallyLoc) {
+                                var i = a;
+                                break
+                            }
+                        }
+                        i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+                        var o = i ? i.completion : {};
+                        return o.type = t, o.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(o)
+                    },
+                    complete: function(t, e) {
+                        if ("throw" === t.type) throw t.arg;
+                        return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y
+                    },
+                    finish: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), M(r), y
+                        }
+                    },
+                    catch: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.tryLoc === t) {
+                                var n = r.completion;
+                                if ("throw" === n.type) {
+                                    var a = n.arg;
+                                    M(r)
+                                }
+                                return a
+                            }
+                        }
+                        throw new Error("illegal catch attempt")
+                    },
+                    delegateYield: function(e, r, n) {
+                        return this.delegate = {
+                            iterator: P(e),
+                            resultName: r,
+                            nextLoc: n
+                        }, "next" === this.method && (this.arg = t), y
+                    }
+                }, e
+            }
+
+            function Wt(t, e, r, n, a, i, o) {
+                try {
+                    var s = t[i](o),
+                        c = s.value
+                } catch (t) {
+                    return void r(t)
+                }
+                s.done ? e(c) : Promise.resolve(c).then(n, a)
+            }
+            var Xt = {
+                    name: "RouterContainer",
+                    components: {
+                        Authorization: et,
+                        AdminContactsModal: it,
+                        WarningSsl: ct,
+                        ServerDocument: dt,
+                        MainError: xt,
+                        CommonWarningModal: bt.A,
+                        TheNotifier: Pt
+                    },
+                    outerWindow: null,
+                    mounted: function() {
+                        this.isMounted = !0;
+                        var t = this.$refs["notifier-main"],
+                            e = t.notify,
+                            r = t.closeNotify,
+                            n = t.editNotify,
+                            a = t.getNotifyList;
+                        this.appStateStore.notifier = {
+                            notify: e,
+                            close: r,
+                            editNotify: n,
+                            getNotifyList: a
+                        }
+                    },
+                    methods: {
+                        closeAuthHandler: function() {
+                            this.authManagerStore.visibility = !1, "providerError" === this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode] && (this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode] = "user")
+                        },
+                        afterSignInHandler: function(t) {
+                            var e, r = this;
+                            return (e = Dt().mark((function e() {
+                                var n, a;
+                                return Dt().wrap((function(e) {
+                                    for (;;) switch (e.prev = e.next) {
+                                        case 0:
+                                            if (t && t.anotherServer && (!t.anotherServer || -1 === (null === (n = r.$route.name) || void 0 === n ? void 0 : n.search(/^conference\./)))) {
+                                                e.next = 4;
+                                                break
+                                            }
+                                            return r.authManagerStore.visibility = !1, r.redirectTo(r.authManagerStore.actionsAfterAuthorization.signIn), e.abrupt("return");
+                                        case 4:
+                                            a = {
+                                                conferenceMain: "/user/general",
+                                                conferenceWebRTC: "/user/general",
+                                                conferenceScheduler: "/user/conference/create",
+                                                personalArea: "/user/general"
+                                            } [r.authManagerStore.actionsAfterAuthorization.signIn] || window.location.pathname, window.location.assign("".concat(t.url).concat(a, "?call_id=").concat(t.call_id, "&k=").concat(t.k));
+                                        case 6:
+                                        case "end":
+                                            return e.stop()
+                                    }
+                                }), e)
+                            })), function() {
+                                var t = this,
+                                    r = arguments;
+                                return new Promise((function(n, a) {
+                                    var i = e.apply(t, r);
+
+                                    function o(t) {
+                                        Wt(i, n, a, o, s, "next", t)
+                                    }
+
+                                    function s(t) {
+                                        Wt(i, n, a, o, s, "throw", t)
+                                    }
+                                    o(void 0)
+                                }))
+                            })()
+                        },
+                        authorization: function(t) {
+                            var e = this;
+                            return this.$store.dispatch("auth/authorization", Nt(Nt({}, {
+                                grant_type: "password",
+                                client_id: "trueconf_server_users"
+                            }), t)).catch((function(t) {
+                                try {
+                                    var r = t.response.data;
+                                    return "2FactorAuthEnabled" === r.reason && r.email && (e.authManagerStore.tempData = r), Promise.reject(t)
+                                } catch (e) {
+                                    return Promise.reject(t)
+                                }
+                            }))
+                        },
+                        authorizationAsGuest2: function(t) {
+                            var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+                                r = {
+                                    conferenceMain: !0,
+                                    conferenceWebRTC: !0,
+                                    conferenceScheduler: !1,
+                                    personalArea: !1
+                                } [this.authManagerStore.actionsAfterAuthorization.signIn];
+                            if (t && t.anotherServer && r) {
+                                var n = t.display_name || e.username,
+                                    a = {
+                                        userInfo: {
+                                            type: "guest",
+                                            username: n,
+                                            display_name: n,
+                                            guestId: "2$".concat(t.call_id, "*").concat(n),
+                                            userFromAnotherServer: !0,
+                                            k: t.k,
+                                            call_id: t.call_id
+                                        }
+                                    };
+                                try {
+                                    localStorage.setItem("trueconfServerGuestName", n), localStorage.setItem("trueconfServerUserAuthorization", JSON.stringify(a))
+                                } catch (t) {
+                                    console.warn("LocalStorage is unavailable.")
+                                }
+                                return this.$store.dispatch("auth/checkAuthorization", a), t
+                            }
+                            return t
+                        },
+                        authHandler: function(t) {
+                            var e = this;
+                            return this.authorization(t).then((function(r) {
+                                return e.authorizationAsGuest2(r, t)
+                            }))
+                        },
+                        outerAuthHandler: function(t) {
+                            this.currentAuthProvider = t;
+                            var e = window,
+                                r = e.innerWidth,
+                                n = e.innerHeight,
+                                a = Math.round(r - r / 100 * 50),
+                                i = Math.round(n - n / 100 * 25),
+                                o = n > i ? Math.round((n - i) / 2) : 0,
+                                s = r > a ? Math.round((r - a) / 2) : 0;
+                            this.$options.outerWindow = window.open(t.features.login, It, "popup=true".concat(this.browser.chrome ? "" : ",width=".concat(a, ",height=").concat(i, ",top=").concat(o, ",left=").concat(s))), this.browser.chrome && (this.$options.outerWindow.resizeTo(a, i), this.$options.outerWindow.moveBy(s, o)), window.addEventListener("message", this.postMessageHandler), this.authManagerStore.visibility = !1
+                        },
+                        postMessageHandler: function(t) {
+                            var e = this;
+                            try {
+                                var r = JSON.parse(t.data),
+                                    n = r.login,
+                                    a = r.password;
+                                if (r.error) return this.$options.outerWindow.close(), this.$options.outerWindow = null, this.authManagerStore.moduleScreen.mode = "error", this.authManagerStore.moduleScreen.screen[this.authManagerStore.moduleScreen.mode] = "providerError", void(this.authManagerStore.visibility = !0);
+                                var i = {
+                                    username: n,
+                                    password: a,
+                                    grant_type: "trusted_password"
+                                };
+                                this.authorization(i, "outer").then((function(t) {
+                                    e.authorizationAsGuest2(t, i), localStorage.setItem(jt, e.currentAuthProvider.id), e.afterSignInHandler(t)
+                                })).catch((function(t) {
+                                    var r;
+                                    if (e.currentAuthProvider) {
+                                        var n, a = null === (r = e.authManifest) || void 0 === r ? void 0 : r.networks.find((function(t) {
+                                            return t.id === e.currentAuthProvider.id
+                                        }));
+                                        if (a) e.authManagerStore.outerLogoutSrc = a.features.logout, localStorage.setItem(jt, null), e.authManagerStore.outerError = null === (n = t.response) || void 0 === n ? void 0 : n.data, e.authManagerStore.visibility = !0
+                                    }
+                                })).finally((function() {
+                                    window.removeEventListener("message", e.postMessageHandler), e.$options.outerWindow.close(), e.$options.outerWindow = null
+                                }))
+                            } catch (t) {}
+                        },
+                        loadOuterLogoutUrl: function() {
+                            this.authManagerStore.outerLogoutSrc && (this.authManagerStore.outerLogoutSrc = null, Ut("ATID"))
+                        }
+                    },
+                    computed: {
+                        showWarningSsl: function() {
+                            try {
+                                return this.appStateStore.warningSslIsVisible && (!localStorage.getItem("trueconfDontShowWarningSsl") || "true" !== localStorage.getItem("trueconfDontShowWarningSsl"))
+                            } catch (t) {
+                                return this.appStateStore.warningSslIsVisible
+                            }
+                        },
+                        showServerDocument: function() {
+                            return this.appStateStore.serverDocumentIsVisible
+                        },
+                        rippleDisabled: function() {
+                            var t, e;
+                            return (null === (t = this.system) || void 0 === t ? void 0 : t.ios) && this.system.majorVersion >= 13 || (null === (e = this.system) || void 0 === e ? void 0 : e.mac) && "ontouchstart" in window
+                        },
+                        authManifest: function() {
+                            return this.$store.getters["auth/getAuthManifest"]
+                        }
+                    },
+                    data: function() {
+                        return {
+                            currentAuthProvider: null,
+                            isMounted: !1
+                        }
+                    },
+                    watch: {
+                        "authManagerStore.visibility": {
+                            handler: function(t) {
+                                !t && this.authManagerStore.outerError && (this.authManagerStore.outerError = null), t && this.$store.dispatch("auth/updateAuthManifest", {
+                                    version: this.serverInfo.version,
+                                    lang: this.serverInfo.lang
+                                })
+                            }
+                        },
+                        "appStateStore.language": {
+                            handler: function(t, e) {
+                                e && (this.$store.dispatch("server/updateDocumentation", {
+                                    parameters: {
+                                        lang: t
+                                    }
+                                }), this.$store.dispatch("serverDocuments/updateDocuments", {
+                                    lang: t
+                                }), this.$store.dispatch("server/updateServerInfo", {
+                                    parameters: {
+                                        lang: t
+                                    }
+                                }), this.$store.dispatch("server/updateGuestPageInfo", {
+                                    force: !0,
+                                    parameters: {
+                                        lang: t
+                                    }
+                                }))
+                            }
+                        }
+                    }
+                },
+                Rt = Xt,
+                qt = (0, L.A)(Rt, h, [], !1, null, null, null).exports,
+                Ht = (r(92245), {
+                    bind: function(t) {
+                        setTimeout((function() {
+                            return window.componentHandler.upgradeElement(t)
+                        }))
+                    }
+                });
+            var Ft = {
+                    bind: function(t) {
+                        t._blurHandler = function() {
+                            var e, r, n;
+                            e = document, r = "pointerup", n = function() {
+                                t.blur()
+                            }, e.addEventListener(r, (function t(a) {
+                                e.removeEventListener(r, t), n(a)
+                            }))
+                        }, t.addEventListener("pointerdown", t._blurHandler)
+                    },
+                    unbind: function(t) {
+                        t.removeEventListener("pointerdown", t._blurHandler), delete t._blurHandler
+                    }
+                },
+                Jt = [{
+                    path: "/",
+                    component: function() {
+                        return Promise.all([r.e(860), r.e(96), r.e(839), r.e(553)]).then(r.bind(r, 18065))
+                    },
+                    beforeEnter: function(t, e, r) {
+                        Re.app.$store.dispatch("server/updateGuestPageInfo", {
+                            parameters: {
+                                lang: Re.app.appStateStore.language
+                            }
+                        }).finally(r)
+                    },
+                    children: [{
+                        name: "guest.main",
+                        path: "/",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(553)]).then(r.bind(r, 88012))
+                        }
+                    }, {
+                        name: "guest.clients",
+                        path: "guest/clients",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(553)]).then(r.bind(r, 71760))
+                        },
+                        beforeEnter: function(t, e, r) {
+                            Re.app.$store.dispatch("softwareClients/updateSoftwareClients", {
+                                parameters: {
+                                    lang: Re.app.appStateStore.language,
+                                    call_id: t.params.id,
+                                    case: "download",
+                                    user: Re.app.me ? "guest" === Re.app.me.type ? Re.app.me.guestId : Re.app.me.id : null
+                                }
+                            }), Re.app.$store.dispatch("server/updateConferencePublicInfo").then(r)
+                        }
+                    }, {
+                        name: "guest.adminLogin",
+                        path: "guest/login",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(553)]).then(r.bind(r, 80204))
+                        }
+                    }, {
+                        name: "guest.notFound",
+                        path: "guest/404",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(553)]).then(r.bind(r, 69414))
+                        }
+                    }, {
+                        name: "guest.forbidden",
+                        path: "guest/403",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(553)]).then(r.bind(r, 45084))
+                        }
+                    }, {
+                        path: "/guest/auth/login",
+                        redirect: {
+                            name: "guest.adminLogin"
+                        }
+                    }, {
+                        path: "/guest",
+                        redirect: {
+                            name: "guest.main"
+                        }
+                    }]
+                }],
+                Yt = r(9579),
+                Qt = function(t, e) {
+                    var r, n = {
+                        analytics: function() {
+                            return document.URL.replace(/(.*list\/)+/, "").replace(/\/analytics/, "")
+                        },
+                        recordings: function() {
+                            return document.URL.replace(/(.*list\/)+/, "").replace(/\/recordings/, "")
+                        }
+                    } [e]();
+                    return Re.app.$store.dispatch("conference/updateConference", {
+                        accessToken: Re.app.$store.getters["auth/getAccessToken"],
+                        conferenceId: null !== (r = t.params.id) && void 0 !== r ? r : n
+                    })
+                },
+                Bt = function() {
+                    return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 88593))
+                },
+                $t = function() {
+                    return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 19741))
+                },
+                te = "conference|room|template",
+                ee = [{
+                    path: "/user",
+                    component: function() {
+                        return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 68644))
+                    },
+                    beforeEnter: function(t, e, r) {
+                        Promise.all([Re.app.$store.dispatch("server/updateConferenceEditInfo", {
+                            accessToken: Re.app.$store.getters["auth/getAccessToken"]
+                        }), Re.app.$store.dispatch("licenseSlots/updateSettings", {
+                            accessToken: Re.app.$store.getters["auth/getAccessToken"]
+                        })]).finally(r)
+                    },
+                    children: [{
+                        name: "user.general",
+                        path: "general/:id?",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 76010))
+                        },
+                        beforeEnter: function(t, e, r) {
+                            Re.app.authManagerStore.moduleScreen.screen.signIn = "user", r()
+                        }
+                    }, {
+                        name: "user.conferenceList",
+                        path: ":type(".concat(te, ")/list/:id?"),
+                        components: {
+                            default: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 3169))
+                            },
+                            header: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 19375))
+                            }
+                        },
+                        beforeEnter: function(t, e, r) {
+                            Re.app.$store.getters["auth/getClientAppList"].length ? r() : Re.app.$store.dispatch("auth/updateClientAppList", {
+                                accessToken: Re.app.$store.getters["auth/getAccessToken"]
+                            }).finally(r)
+                        }
+                    }, {
+                        name: "user.conferenceAnalytics",
+                        path: ":type(".concat(te, ")/list/:id/analytics"),
+                        components: {
+                            default: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 88802))
+                            },
+                            header: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 86958))
+                            }
+                        },
+                        beforeEnter: function(t, e, r) {
+                            Qt.bind(null, t)("analytics").then((function() {
+                                r()
+                            })).catch((function() {
+                                Re.push({
+                                    path: "/guest/404"
+                                })
+                            }))
+                        }
+                    }, {
+                        name: "user.conferenceRecordings",
+                        path: ":type(".concat(te, ")/list/:id/recordings"),
+                        components: {
+                            default: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 49516))
+                            },
+                            header: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 24966))
+                            }
+                        },
+                        beforeEnter: function(t, e, r) {
+                            Qt.bind(null, t)("recordings").then((function() {
+                                r()
+                            })).catch((function() {
+                                Re.push({
+                                    path: "/guest/404"
+                                })
+                            }))
+                        }
+                    }, {
+                        name: "user.account",
+                        path: "account",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 73411))
+                        }
+                    }, {
+                        name: "user.contacts",
+                        path: "contacts/:contact?",
+                        components: {
+                            default: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 74505))
+                            },
+                            header: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 71858))
+                            }
+                        }
+                    }, {
+                        name: "user.createConference",
+                        path: ":type(".concat(te, ")/create"),
+                        components: {
+                            default: Bt,
+                            header: $t
+                        },
+                        beforeEnter: function(t, e, r) {
+                            Yt.A.call(Re.app, "create_group_conference") ? r() : Re.app.redirectTo("conferenceList")
+                        }
+                    }, {
+                        name: "user.editConference",
+                        path: ":type(".concat(te, ")/edit/:id"),
+                        components: {
+                            default: Bt,
+                            header: $t
+                        },
+                        beforeEnter: function(t, e, r) {
+                            "template" !== t.params.type ? Re.app.$store.dispatch("conference/updateConferenceMe", {
+                                accessToken: Re.app.$store.getters["auth/getAccessToken"],
+                                conferenceId: t.params.id
+                            }).then((function(t) {
+                                t.owner ? r() : r({
+                                    name: "user.general"
+                                })
+                            })) : r()
+                        }
+                    }, {
+                        name: "user.callHistory",
+                        path: "call-history/:id?",
+                        components: {
+                            default: function() {
+                                return Promise.all([r.e(860), r.e(96), r.e(101), r.e(806)]).then(r.bind(r, 12117))
+                            }
+                        }
+                    }, {
+                        path: "/user",
+                        redirect: {
+                            name: "user.general"
+                        }
+                    }, {
+                        path: "/user/*",
+                        redirect: {
+                            name: "user.general"
+                        }
+                    }, {
+                        path: ":type(".concat(te, ")/view/:id/*"),
+                        redirect: ":type(".concat(te, ")/view/:id")
+                    }, {
+                        path: ":type(".concat(te, ")/create/*"),
+                        redirect: ":type(".concat(te, ")/create")
+                    }, {
+                        path: ":type(".concat(te, ")/edit/:id/*"),
+                        redirect: ":type(".concat(te, ")/edit/:id")
+                    }]
+                }],
+                re = r(61465),
+                ne = ["auth"];
+
+            function ae(t) {
+                return ae = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, ae(t)
+            }
+
+            function ie() {
+                ie = function() {
+                    return e
+                };
+                var t, e = {},
+                    r = Object.prototype,
+                    n = r.hasOwnProperty,
+                    a = Object.defineProperty || function(t, e, r) {
+                        t[e] = r.value
+                    },
+                    i = "function" == typeof Symbol ? Symbol : {},
+                    o = i.iterator || "@@iterator",
+                    s = i.asyncIterator || "@@asyncIterator",
+                    c = i.toStringTag || "@@toStringTag";
+
+                function l(t, e, r) {
+                    return Object.defineProperty(t, e, {
+                        value: r,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0
+                    }), t[e]
+                }
+                try {
+                    l({}, "")
+                } catch (t) {
+                    l = function(t, e, r) {
+                        return t[e] = r
+                    }
+                }
+
+                function u(t, e, r, n) {
+                    var i = e && e.prototype instanceof A ? e : A,
+                        o = Object.create(i.prototype),
+                        s = new L(n || []);
+                    return a(o, "_invoke", {
+                        value: k(t, r, s)
+                    }), o
+                }
+
+                function d(t, e, r) {
+                    try {
+                        return {
+                            type: "normal",
+                            arg: t.call(e, r)
+                        }
+                    } catch (t) {
+                        return {
+                            type: "throw",
+                            arg: t
+                        }
+                    }
+                }
+                e.wrap = u;
+                var f = "suspendedStart",
+                    p = "suspendedYield",
+                    h = "executing",
+                    g = "completed",
+                    y = {};
+
+                function A() {}
+
+                function m() {}
+
+                function v() {}
+                var x = {};
+                l(x, o, (function() {
+                    return this
+                }));
+                var b = Object.getPrototypeOf,
+                    w = b && b(b(P([])));
+                w && w !== r && n.call(w, o) && (x = w);
+                var S = v.prototype = A.prototype = Object.create(x);
+
+                function _(t) {
+                    ["next", "throw", "return"].forEach((function(e) {
+                        l(t, e, (function(t) {
+                            return this._invoke(e, t)
+                        }))
+                    }))
+                }
+
+                function O(t, e) {
+                    function r(a, i, o, s) {
+                        var c = d(t[a], t, i);
+                        if ("throw" !== c.type) {
+                            var l = c.arg,
+                                u = l.value;
+                            return u && "object" == ae(u) && n.call(u, "__await") ? e.resolve(u.__await).then((function(t) {
+                                r("next", t, o, s)
+                            }), (function(t) {
+                                r("throw", t, o, s)
+                            })) : e.resolve(u).then((function(t) {
+                                l.value = t, o(l)
+                            }), (function(t) {
+                                return r("throw", t, o, s)
+                            }))
+                        }
+                        s(c.arg)
+                    }
+                    var i;
+                    a(this, "_invoke", {
+                        value: function(t, n) {
+                            function a() {
+                                return new e((function(e, a) {
+                                    r(t, n, e, a)
+                                }))
+                            }
+                            return i = i ? i.then(a, a) : a()
+                        }
+                    })
+                }
+
+                function k(e, r, n) {
+                    var a = f;
+                    return function(i, o) {
+                        if (a === h) throw new Error("Generator is already running");
+                        if (a === g) {
+                            if ("throw" === i) throw o;
+                            return {
+                                value: t,
+                                done: !0
+                            }
+                        }
+                        for (n.method = i, n.arg = o;;) {
+                            var s = n.delegate;
+                            if (s) {
+                                var c = E(s, n);
+                                if (c) {
+                                    if (c === y) continue;
+                                    return c
+                                }
+                            }
+                            if ("next" === n.method) n.sent = n._sent = n.arg;
+                            else if ("throw" === n.method) {
+                                if (a === f) throw a = g, n.arg;
+                                n.dispatchException(n.arg)
+                            } else "return" === n.method && n.abrupt("return", n.arg);
+                            a = h;
+                            var l = d(e, r, n);
+                            if ("normal" === l.type) {
+                                if (a = n.done ? g : p, l.arg === y) continue;
+                                return {
+                                    value: l.arg,
+                                    done: n.done
+                                }
+                            }
+                            "throw" === l.type && (a = g, n.method = "throw", n.arg = l.arg)
+                        }
+                    }
+                }
+
+                function E(e, r) {
+                    var n = r.method,
+                        a = e.iterator[n];
+                    if (a === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, E(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+                    var i = d(a, e.iterator, r.arg);
+                    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+                    var o = i.arg;
+                    return o ? o.done ? (r[e.resultName] = o.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : o : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y)
+                }
+
+                function T(t) {
+                    var e = {
+                        tryLoc: t[0]
+                    };
+                    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e)
+                }
+
+                function M(t) {
+                    var e = t.completion || {};
+                    e.type = "normal", delete e.arg, t.completion = e
+                }
+
+                function L(t) {
+                    this.tryEntries = [{
+                        tryLoc: "root"
+                    }], t.forEach(T, this), this.reset(!0)
+                }
+
+                function P(e) {
+                    if (e || "" === e) {
+                        var r = e[o];
+                        if (r) return r.call(e);
+                        if ("function" == typeof e.next) return e;
+                        if (!isNaN(e.length)) {
+                            var a = -1,
+                                i = function r() {
+                                    for (; ++a < e.length;)
+                                        if (n.call(e, a)) return r.value = e[a], r.done = !1, r;
+                                    return r.value = t, r.done = !0, r
+                                };
+                            return i.next = i
+                        }
+                    }
+                    throw new TypeError(ae(e) + " is not iterable")
+                }
+                return m.prototype = v, a(S, "constructor", {
+                    value: v,
+                    configurable: !0
+                }), a(v, "constructor", {
+                    value: m,
+                    configurable: !0
+                }), m.displayName = l(v, c, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+                    var e = "function" == typeof t && t.constructor;
+                    return !!e && (e === m || "GeneratorFunction" === (e.displayName || e.name))
+                }, e.mark = function(t) {
+                    return Object.setPrototypeOf ? Object.setPrototypeOf(t, v) : (t.__proto__ = v, l(t, c, "GeneratorFunction")), t.prototype = Object.create(S), t
+                }, e.awrap = function(t) {
+                    return {
+                        __await: t
+                    }
+                }, _(O.prototype), l(O.prototype, s, (function() {
+                    return this
+                })), e.AsyncIterator = O, e.async = function(t, r, n, a, i) {
+                    void 0 === i && (i = Promise);
+                    var o = new O(u(t, r, n, a), i);
+                    return e.isGeneratorFunction(r) ? o : o.next().then((function(t) {
+                        return t.done ? t.value : o.next()
+                    }))
+                }, _(S), l(S, c, "Generator"), l(S, o, (function() {
+                    return this
+                })), l(S, "toString", (function() {
+                    return "[object Generator]"
+                })), e.keys = function(t) {
+                    var e = Object(t),
+                        r = [];
+                    for (var n in e) r.push(n);
+                    return r.reverse(),
+                        function t() {
+                            for (; r.length;) {
+                                var n = r.pop();
+                                if (n in e) return t.value = n, t.done = !1, t
+                            }
+                            return t.done = !0, t
+                        }
+                }, e.values = P, L.prototype = {
+                    constructor: L,
+                    reset: function(e) {
+                        if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(M), !e)
+                            for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t)
+                    },
+                    stop: function() {
+                        this.done = !0;
+                        var t = this.tryEntries[0].completion;
+                        if ("throw" === t.type) throw t.arg;
+                        return this.rval
+                    },
+                    dispatchException: function(e) {
+                        if (this.done) throw e;
+                        var r = this;
+
+                        function a(n, a) {
+                            return s.type = "throw", s.arg = e, r.next = n, a && (r.method = "next", r.arg = t), !!a
+                        }
+                        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                            var o = this.tryEntries[i],
+                                s = o.completion;
+                            if ("root" === o.tryLoc) return a("end");
+                            if (o.tryLoc <= this.prev) {
+                                var c = n.call(o, "catchLoc"),
+                                    l = n.call(o, "finallyLoc");
+                                if (c && l) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0);
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                } else if (c) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0)
+                                } else {
+                                    if (!l) throw new Error("try statement without catch or finally");
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                }
+                            }
+                        }
+                    },
+                    abrupt: function(t, e) {
+                        for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                            var a = this.tryEntries[r];
+                            if (a.tryLoc <= this.prev && n.call(a, "finallyLoc") && this.prev < a.finallyLoc) {
+                                var i = a;
+                                break
+                            }
+                        }
+                        i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+                        var o = i ? i.completion : {};
+                        return o.type = t, o.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(o)
+                    },
+                    complete: function(t, e) {
+                        if ("throw" === t.type) throw t.arg;
+                        return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y
+                    },
+                    finish: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), M(r), y
+                        }
+                    },
+                    catch: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.tryLoc === t) {
+                                var n = r.completion;
+                                if ("throw" === n.type) {
+                                    var a = n.arg;
+                                    M(r)
+                                }
+                                return a
+                            }
+                        }
+                        throw new Error("illegal catch attempt")
+                    },
+                    delegateYield: function(e, r, n) {
+                        return this.delegate = {
+                            iterator: P(e),
+                            resultName: r,
+                            nextLoc: n
+                        }, "next" === this.method && (this.arg = t), y
+                    }
+                }, e
+            }
+
+            function oe(t, e, r, n, a, i, o) {
+                try {
+                    var s = t[i](o),
+                        c = s.value
+                } catch (t) {
+                    return void r(t)
+                }
+                s.done ? e(c) : Promise.resolve(c).then(n, a)
+            }
+
+            function se(t) {
+                return function() {
+                    var e = this,
+                        r = arguments;
+                    return new Promise((function(n, a) {
+                        var i = t.apply(e, r);
+
+                        function o(t) {
+                            oe(i, n, a, o, s, "next", t)
+                        }
+
+                        function s(t) {
+                            oe(i, n, a, o, s, "throw", t)
+                        }
+                        o(void 0)
+                    }))
+                }
+            }
+
+            function ce(t, e) {
+                if (null == t) return {};
+                var r, n, a = function(t, e) {
+                    if (null == t) return {};
+                    var r, n, a = {},
+                        i = Object.keys(t);
+                    for (n = 0; n < i.length; n++) r = i[n], e.indexOf(r) >= 0 || (a[r] = t[r]);
+                    return a
+                }(t, e);
+                if (Object.getOwnPropertySymbols) {
+                    var i = Object.getOwnPropertySymbols(t);
+                    for (n = 0; n < i.length; n++) r = i[n], e.indexOf(r) >= 0 || Object.prototype.propertyIsEnumerable.call(t, r) && (a[r] = t[r])
+                }
+                return a
+            }
+
+            function le(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function ue(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? le(Object(r), !0).forEach((function(e) {
+                        de(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : le(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function de(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != ae(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != ae(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == ae(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            var fe = function() {
+                return Promise.all([r.e(860), r.e(96), r.e(839), r.e(101), r.e(521)]).then(r.bind(r, 69414))
+            };
+
+            function pe(t) {
+                var e = (0, re.A)(),
+                    r = {
+                        "conference.info": "join_conference_button",
+                        "conference.how-to-join": "download",
+                        "conference.conference": "join_conference_button"
+                    } [t.name],
+                    n = {
+                        user: Re.app.me ? Re.app.me.id : null,
+                        guest: Re.app.me && Re.app.me.guestId ? Re.app.me.guestId : null
+                    } [Re.app.me && Re.app.me.type ? Re.app.me.type : null] || null;
+                n || Re.app.me || !e.randomGuestName || (n = "$".concat(e.randomGuestName));
+                var a = {
+                    lang: Re.app.appStateStore.language,
+                    call_id: t.params.id,
+                    case: r,
+                    user: n
+                };
+                return Re.app.system.linux && "conference.how-to-join" === t.name && (a = {
+                    case: "join_conference_button",
+                    call_id: t.params.id,
+                    lang: Re.app.appStateStore.language
+                }), !Re.app.$store.getters["conference/getConference"].registration.enabled && Re.app.me && "guest" === Re.app.me.type && Re.app.me.guestId.match(/^2\$/) && (a.user = "$".concat(Re.app.me.username)), Re.app.$store.dispatch("softwareClients/updateSoftwareClients", {
+                    accessToken: Re.app.$store.getters["auth/getAccessToken"],
+                    parameters: a
+                })
+            }
+
+            function he(t, e) {
+                return Re.app.$store.dispatch("conference/updateConference", {
+                    accessToken: Re.app.$store.getters["auth/getAccessToken"],
+                    conferenceId: t.params.id
+                }).catch((function() {
+                    return e({
+                        name: "conference.not-found",
+                        params: t.params
+                    }), Promise.reject()
+                }))
+            }
+            var ge = [{
+                    path: "/c",
+                    component: function() {
+                        return Promise.all([r.e(860), r.e(96), r.e(839), r.e(101), r.e(521)]).then(r.bind(r, 83993))
+                    },
+                    children: [{
+                        name: "conference.main",
+                        path: ":id",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(101), r.e(521)]).then(r.bind(r, 69480))
+                        },
+                        beforeEnter: function(t, e, r) {
+                            if (null != t && t.query.auth) return Re.app.authManagerStore.permissions = ue(ue({}, Re.app.authManagerStore.permissions), {}, {
+                                userAuthorization: !0,
+                                guestAuthorization: !0,
+                                accountCreation: !1,
+                                resetPassword: !1
+                            }), Re.app.authManagerStore.moduleScreen.mode = "signIn", Re.app.authManagerStore.visibility = !0, void r({
+                                name: t.name,
+                                params: t.params,
+                                query: function(t) {
+                                    t.auth;
+                                    return ce(t, ne)
+                                }(t.query)
+                            });
+                            Promise.all([Re.app.$store.dispatch("server/updateConferencePublicInfo"), Re.app.$store.dispatch("server/updateServerInfo")]).finally(r)
+                        }
+                    }, {
+                        name: "conference.conference",
+                        path: ":id/conference",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(101), r.e(521)]).then(r.bind(r, 6132))
+                        },
+                        beforeEnter: function(t, e, r) {
+                            return se(ie().mark((function e() {
+                                return ie().wrap((function(e) {
+                                    for (;;) switch (e.prev = e.next) {
+                                        case 0:
+                                            if (Re.app.$store.getters["conference/getConference"]) {
+                                                e.next = 9;
+                                                break
+                                            }
+                                            return e.prev = 1, e.next = 4, he(t, r);
+                                        case 4:
+                                            e.next = 9;
+                                            break;
+                                        case 6:
+                                            return e.prev = 6, e.t0 = e.catch(1), e.abrupt("return");
+                                        case 9:
+                                            return e.next = 11, pe(t);
+                                        case 11:
+                                            r();
+                                        case 12:
+                                        case "end":
+                                            return e.stop()
+                                    }
+                                }), e, null, [
+                                    [1, 6]
+                                ])
+                            })))()
+                        }
+                    }, {
+                        name: "conference.info",
+                        path: ":id/info",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(101), r.e(521)]).then(r.bind(r, 11018))
+                        },
+                        beforeEnter: function(t, e, r) {
+                            return se(ie().mark((function e() {
+                                return ie().wrap((function(e) {
+                                    for (;;) switch (e.prev = e.next) {
+                                        case 0:
+                                            if (Re.app.$store.getters["conference/getConference"]) {
+                                                e.next = 9;
+                                                break
+                                            }
+                                            return e.prev = 1, e.next = 4, he(t, r);
+                                        case 4:
+                                            e.next = 9;
+                                            break;
+                                        case 6:
+                                            return e.prev = 6, e.t0 = e.catch(1), e.abrupt("return");
+                                        case 9:
+                                            return e.next = 11, pe(t);
+                                        case 11:
+                                            Re.app.$store.dispatch("server/updateConferencePublicInfo").then(r);
+                                        case 12:
+                                        case "end":
+                                            return e.stop()
+                                    }
+                                }), e, null, [
+                                    [1, 6]
+                                ])
+                            })))()
+                        }
+                    }, {
+                        name: "conference.how-to-join",
+                        path: ":id/how-to-join",
+                        component: function() {
+                            return Promise.all([r.e(860), r.e(96), r.e(839), r.e(101), r.e(521)]).then(r.bind(r, 79216))
+                        },
+                        beforeEnter: function(t, e, r) {
+                            return se(ie().mark((function e() {
+                                return ie().wrap((function(e) {
+                                    for (;;) switch (e.prev = e.next) {
+                                        case 0:
+                                            if (Re.app.$store.getters["conference/getConference"]) {
+                                                e.next = 9;
+                                                break
+                                            }
+                                            return e.prev = 1, e.next = 4, he(t, r);
+                                        case 4:
+                                            e.next = 9;
+                                            break;
+                                        case 6:
+                                            return e.prev = 6, e.t0 = e.catch(1), e.abrupt("return");
+                                        case 9:
+                                            return e.next = 11, pe(t);
+                                        case 11:
+                                            Re.app.$store.dispatch("server/updateConferencePublicInfo").then(r);
+                                        case 12:
+                                        case "end":
+                                            return e.stop()
+                                    }
+                                }), e, null, [
+                                    [1, 6]
+                                ])
+                            })))()
+                        }
+                    }, {
+                        name: "conference.is-missing",
+                        path: ":id/404",
+                        component: fe
+                    }, {
+                        name: "conference.not-found",
+                        path: "/",
+                        component: fe
+                    }, {
+                        path: ":id/help",
+                        redirect: {
+                            name: "conference.how-to-join"
+                        }
+                    }, {
+                        path: "*",
+                        redirect: {
+                            name: "conference.not-found"
+                        }
+                    }]
+                }],
+                ye = r(33611),
+                Ae = r(76233),
+                me = r.n(Ae),
+                ve = r(72505),
+                xe = r.n(ve);
+
+            function be(t) {
+                var e = this,
+                    r = t.to;
+                if (-1 !== window.location.host.indexOf("localhost") || -1 !== window.location.protocol.indexOf("https")) return Promise.resolve();
+                if (!this.serverInfo.sslEnabled) return this.isInAppMode && (this.appStateStore.error = "SECURITY_FLAW"), Promise.resolve();
+                var n = !1;
+                return xe().get(this.serverInfo.url).then((function() {
+                    return n = !0, window.location.replace("".concat(e.serverInfo.url).concat(r.fullPath)), Promise.reject()
+                })).catch((function() {
+                    return n ? Promise.reject() : (e.appStateStore.warningSslIsVisible = !0, Promise.resolve())
+                }))
+            }
+            var we = r(67596),
+                Se = r.n(we);
+
+            function _e(t) {
+                return _e = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, _e(t)
+            }
+
+            function Oe() {
+                Oe = function() {
+                    return e
+                };
+                var t, e = {},
+                    r = Object.prototype,
+                    n = r.hasOwnProperty,
+                    a = Object.defineProperty || function(t, e, r) {
+                        t[e] = r.value
+                    },
+                    i = "function" == typeof Symbol ? Symbol : {},
+                    o = i.iterator || "@@iterator",
+                    s = i.asyncIterator || "@@asyncIterator",
+                    c = i.toStringTag || "@@toStringTag";
+
+                function l(t, e, r) {
+                    return Object.defineProperty(t, e, {
+                        value: r,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0
+                    }), t[e]
+                }
+                try {
+                    l({}, "")
+                } catch (t) {
+                    l = function(t, e, r) {
+                        return t[e] = r
+                    }
+                }
+
+                function u(t, e, r, n) {
+                    var i = e && e.prototype instanceof A ? e : A,
+                        o = Object.create(i.prototype),
+                        s = new L(n || []);
+                    return a(o, "_invoke", {
+                        value: k(t, r, s)
+                    }), o
+                }
+
+                function d(t, e, r) {
+                    try {
+                        return {
+                            type: "normal",
+                            arg: t.call(e, r)
+                        }
+                    } catch (t) {
+                        return {
+                            type: "throw",
+                            arg: t
+                        }
+                    }
+                }
+                e.wrap = u;
+                var f = "suspendedStart",
+                    p = "suspendedYield",
+                    h = "executing",
+                    g = "completed",
+                    y = {};
+
+                function A() {}
+
+                function m() {}
+
+                function v() {}
+                var x = {};
+                l(x, o, (function() {
+                    return this
+                }));
+                var b = Object.getPrototypeOf,
+                    w = b && b(b(P([])));
+                w && w !== r && n.call(w, o) && (x = w);
+                var S = v.prototype = A.prototype = Object.create(x);
+
+                function _(t) {
+                    ["next", "throw", "return"].forEach((function(e) {
+                        l(t, e, (function(t) {
+                            return this._invoke(e, t)
+                        }))
+                    }))
+                }
+
+                function O(t, e) {
+                    function r(a, i, o, s) {
+                        var c = d(t[a], t, i);
+                        if ("throw" !== c.type) {
+                            var l = c.arg,
+                                u = l.value;
+                            return u && "object" == _e(u) && n.call(u, "__await") ? e.resolve(u.__await).then((function(t) {
+                                r("next", t, o, s)
+                            }), (function(t) {
+                                r("throw", t, o, s)
+                            })) : e.resolve(u).then((function(t) {
+                                l.value = t, o(l)
+                            }), (function(t) {
+                                return r("throw", t, o, s)
+                            }))
+                        }
+                        s(c.arg)
+                    }
+                    var i;
+                    a(this, "_invoke", {
+                        value: function(t, n) {
+                            function a() {
+                                return new e((function(e, a) {
+                                    r(t, n, e, a)
+                                }))
+                            }
+                            return i = i ? i.then(a, a) : a()
+                        }
+                    })
+                }
+
+                function k(e, r, n) {
+                    var a = f;
+                    return function(i, o) {
+                        if (a === h) throw new Error("Generator is already running");
+                        if (a === g) {
+                            if ("throw" === i) throw o;
+                            return {
+                                value: t,
+                                done: !0
+                            }
+                        }
+                        for (n.method = i, n.arg = o;;) {
+                            var s = n.delegate;
+                            if (s) {
+                                var c = E(s, n);
+                                if (c) {
+                                    if (c === y) continue;
+                                    return c
+                                }
+                            }
+                            if ("next" === n.method) n.sent = n._sent = n.arg;
+                            else if ("throw" === n.method) {
+                                if (a === f) throw a = g, n.arg;
+                                n.dispatchException(n.arg)
+                            } else "return" === n.method && n.abrupt("return", n.arg);
+                            a = h;
+                            var l = d(e, r, n);
+                            if ("normal" === l.type) {
+                                if (a = n.done ? g : p, l.arg === y) continue;
+                                return {
+                                    value: l.arg,
+                                    done: n.done
+                                }
+                            }
+                            "throw" === l.type && (a = g, n.method = "throw", n.arg = l.arg)
+                        }
+                    }
+                }
+
+                function E(e, r) {
+                    var n = r.method,
+                        a = e.iterator[n];
+                    if (a === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, E(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+                    var i = d(a, e.iterator, r.arg);
+                    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+                    var o = i.arg;
+                    return o ? o.done ? (r[e.resultName] = o.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : o : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y)
+                }
+
+                function T(t) {
+                    var e = {
+                        tryLoc: t[0]
+                    };
+                    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e)
+                }
+
+                function M(t) {
+                    var e = t.completion || {};
+                    e.type = "normal", delete e.arg, t.completion = e
+                }
+
+                function L(t) {
+                    this.tryEntries = [{
+                        tryLoc: "root"
+                    }], t.forEach(T, this), this.reset(!0)
+                }
+
+                function P(e) {
+                    if (e || "" === e) {
+                        var r = e[o];
+                        if (r) return r.call(e);
+                        if ("function" == typeof e.next) return e;
+                        if (!isNaN(e.length)) {
+                            var a = -1,
+                                i = function r() {
+                                    for (; ++a < e.length;)
+                                        if (n.call(e, a)) return r.value = e[a], r.done = !1, r;
+                                    return r.value = t, r.done = !0, r
+                                };
+                            return i.next = i
+                        }
+                    }
+                    throw new TypeError(_e(e) + " is not iterable")
+                }
+                return m.prototype = v, a(S, "constructor", {
+                    value: v,
+                    configurable: !0
+                }), a(v, "constructor", {
+                    value: m,
+                    configurable: !0
+                }), m.displayName = l(v, c, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+                    var e = "function" == typeof t && t.constructor;
+                    return !!e && (e === m || "GeneratorFunction" === (e.displayName || e.name))
+                }, e.mark = function(t) {
+                    return Object.setPrototypeOf ? Object.setPrototypeOf(t, v) : (t.__proto__ = v, l(t, c, "GeneratorFunction")), t.prototype = Object.create(S), t
+                }, e.awrap = function(t) {
+                    return {
+                        __await: t
+                    }
+                }, _(O.prototype), l(O.prototype, s, (function() {
+                    return this
+                })), e.AsyncIterator = O, e.async = function(t, r, n, a, i) {
+                    void 0 === i && (i = Promise);
+                    var o = new O(u(t, r, n, a), i);
+                    return e.isGeneratorFunction(r) ? o : o.next().then((function(t) {
+                        return t.done ? t.value : o.next()
+                    }))
+                }, _(S), l(S, c, "Generator"), l(S, o, (function() {
+                    return this
+                })), l(S, "toString", (function() {
+                    return "[object Generator]"
+                })), e.keys = function(t) {
+                    var e = Object(t),
+                        r = [];
+                    for (var n in e) r.push(n);
+                    return r.reverse(),
+                        function t() {
+                            for (; r.length;) {
+                                var n = r.pop();
+                                if (n in e) return t.value = n, t.done = !1, t
+                            }
+                            return t.done = !0, t
+                        }
+                }, e.values = P, L.prototype = {
+                    constructor: L,
+                    reset: function(e) {
+                        if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(M), !e)
+                            for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t)
+                    },
+                    stop: function() {
+                        this.done = !0;
+                        var t = this.tryEntries[0].completion;
+                        if ("throw" === t.type) throw t.arg;
+                        return this.rval
+                    },
+                    dispatchException: function(e) {
+                        if (this.done) throw e;
+                        var r = this;
+
+                        function a(n, a) {
+                            return s.type = "throw", s.arg = e, r.next = n, a && (r.method = "next", r.arg = t), !!a
+                        }
+                        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                            var o = this.tryEntries[i],
+                                s = o.completion;
+                            if ("root" === o.tryLoc) return a("end");
+                            if (o.tryLoc <= this.prev) {
+                                var c = n.call(o, "catchLoc"),
+                                    l = n.call(o, "finallyLoc");
+                                if (c && l) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0);
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                } else if (c) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0)
+                                } else {
+                                    if (!l) throw new Error("try statement without catch or finally");
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                }
+                            }
+                        }
+                    },
+                    abrupt: function(t, e) {
+                        for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                            var a = this.tryEntries[r];
+                            if (a.tryLoc <= this.prev && n.call(a, "finallyLoc") && this.prev < a.finallyLoc) {
+                                var i = a;
+                                break
+                            }
+                        }
+                        i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+                        var o = i ? i.completion : {};
+                        return o.type = t, o.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(o)
+                    },
+                    complete: function(t, e) {
+                        if ("throw" === t.type) throw t.arg;
+                        return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y
+                    },
+                    finish: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), M(r), y
+                        }
+                    },
+                    catch: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.tryLoc === t) {
+                                var n = r.completion;
+                                if ("throw" === n.type) {
+                                    var a = n.arg;
+                                    M(r)
+                                }
+                                return a
+                            }
+                        }
+                        throw new Error("illegal catch attempt")
+                    },
+                    delegateYield: function(e, r, n) {
+                        return this.delegate = {
+                            iterator: P(e),
+                            resultName: r,
+                            nextLoc: n
+                        }, "next" === this.method && (this.arg = t), y
+                    }
+                }, e
+            }
+
+            function ke(t, e, r, n, a, i, o) {
+                try {
+                    var s = t[i](o),
+                        c = s.value
+                } catch (t) {
+                    return void r(t)
+                }
+                s.done ? e(c) : Promise.resolve(c).then(n, a)
+            }
+
+            function Ee(t) {
+                var e, r = t.to,
+                    n = null === (e = this.$store.getters["auth/getAuthorizationUserInfo"]) || void 0 === e ? void 0 : e.type;
+                return n && "guest" !== n || !this.isInAppMode ? n && "guest" !== n || -1 === r.name.indexOf("user.") ? Promise.resolve() : Promise.reject() : (this.appStateStore.error = "ACCESS_DENIED", Promise.reject())
+            }
+
+            function Te(t) {
+                return Me.apply(this, arguments)
+            }
+
+            function Me() {
+                var t;
+                return t = Oe().mark((function t(e) {
+                    var r, n, a, i, o, s, c, l = this;
+                    return Oe().wrap((function(t) {
+                        for (;;) switch (t.prev = t.next) {
+                            case 0:
+                                r = e.to, n = new(Se())(window.location.search), a = n.get("call_id"), i = n.get("k"), o = null;
+                                try {
+                                    o = this.appStateStore.callIdParser.createCallId(a).getLogin()
+                                } catch (t) {
+                                    console.warn("Parameter `call_id` is not valid")
+                                }
+                                if (!i && !a) {
+                                    t.next = 22;
+                                    break
+                                }
+                                if ((c = n.get("record_id")) && o === (null === (s = localStorage) || void 0 === s ? void 0 : s.getItem("trueconfServerUserName"))) {
+                                    t.next = 11;
+                                    break
+                                }
+                                return t.next = 11, this.$store.dispatch("auth/logout").catch((function(t) {
+                                    console.warn("Dispatch auth/logout:", t), l.$store.commit("auth/logout")
+                                }));
+                            case 11:
+                                if (t.t1 = c, !t.t1) {
+                                    t.next = 16;
+                                    break
+                                }
+                                return t.next = 15, this.$store.dispatch("auth/checkAuthorization").then((function() {
+                                    return !0
+                                })).catch((function() {
+                                    return !1
+                                }));
+                            case 15:
+                                t.t1 = t.sent;
+                            case 16:
+                                if (t.t0 = t.t1, !t.t0) {
+                                    t.next = 19;
+                                    break
+                                }
+                                t.t0 = (0, Ae.userAuthorizationIsRelevant)({
+                                    userInfo: this.$store.getters["auth/getAuthorizationUserInfo"],
+                                    tokenInfo: this.$store.getters["auth/getAuthorizationTokenInfo"]
+                                });
+                            case 19:
+                                if (!t.t0) {
+                                    t.next = 21;
+                                    break
+                                }
+                                return t.abrupt("return", Ee.call(this, {
+                                    to: r
+                                }));
+                            case 21:
+                                return t.abrupt("return", this.$store.dispatch("auth/authorization", {
+                                    grant_type: "client_secretkey",
+                                    client_id: "trueconf_client_secret_key",
+                                    call_id: a,
+                                    k: i
+                                }).then((function() {
+                                    var t;
+                                    return null === (t = localStorage) || void 0 === t || t.setItem("trueconfServerUserName", o), Ee.call(l, {
+                                        to: r
+                                    })
+                                })));
+                            case 22:
+                                return t.abrupt("return", this.$store.dispatch("auth/checkAuthorization", "conference.conference" === r.name ? "sync" : null).then((function() {
+                                    return Ee.call(l, {
+                                        to: r
+                                    })
+                                })));
+                            case 23:
+                            case "end":
+                                return t.stop()
+                        }
+                    }), t, this)
+                })), Me = function() {
+                    var e = this,
+                        r = arguments;
+                    return new Promise((function(n, a) {
+                        var i = t.apply(e, r);
+
+                        function o(t) {
+                            ke(i, n, a, o, s, "next", t)
+                        }
+
+                        function s(t) {
+                            ke(i, n, a, o, s, "throw", t)
+                        }
+                        o(void 0)
+                    }))
+                }, Me.apply(this, arguments)
+            }
+            var Le = r(22911),
+                Pe = ["replaceIndex"];
+
+            function Ge(t, e) {
+                if (null == t) return {};
+                var r, n, a = function(t, e) {
+                    if (null == t) return {};
+                    var r, n, a = {},
+                        i = Object.keys(t);
+                    for (n = 0; n < i.length; n++) r = i[n], e.indexOf(r) >= 0 || (a[r] = t[r]);
+                    return a
+                }(t, e);
+                if (Object.getOwnPropertySymbols) {
+                    var i = Object.getOwnPropertySymbols(t);
+                    for (n = 0; n < i.length; n++) r = i[n], e.indexOf(r) >= 0 || Object.prototype.propertyIsEnumerable.call(t, r) && (a[r] = t[r])
+                }
+                return a
+            }
+
+            function Ue(t) {
+                return Ue = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, Ue(t)
+            }
+            var Ze = (0, s.nY)("appState", {
+                state: function() {
+                    return {
+                        notifier: null,
+                        language: null,
+                        warningSslIsVisible: !1,
+                        serverDocumentIsVisible: !1,
+                        serverDocumentData: {
+                            name: null,
+                            content: null
+                        },
+                        adminContactsAreVisible: !1,
+                        companyName: "TrueConf",
+                        launchMode: null,
+                        clientVersion: null,
+                        qtWindowCompactMode: null,
+                        callIdParser: new Le.zM.v,
+                        error: null,
+                        warning: null,
+                        currentMode: null,
+                        showRegistrationPopup: !1
+                    }
+                },
+                actions: {
+                    setLanguage: function(t) {
+                        this.language = t, this.$app.$setLocale(t), (0, ye.saveLanguage)("trueconfServerLang", t)
+                    },
+                    setServerDocumentData: function(t) {
+                        var e = t.name,
+                            r = t.content;
+                        this.serverDocumentData.name = e, this.serverDocumentData.content = r
+                    },
+                    notify: function() {
+                        var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
+                        if (!this.notifier) throw new Error("Notifier is not setup");
+                        if ("object" !== Ue(t)) throw new Error('Incorrect argument type for call "notify" method');
+                        var e = t.replaceIndex,
+                            r = Ge(t, Pe);
+                        this.notifier.notify(r, e)
+                    },
+                    closeNotify: function(t) {
+                        if (!this.notifier) throw new Error("Notifier is not setup");
+                        this.notifier.close(t)
+                    },
+                    getNotifyList: function() {
+                        if (!this.notifier) throw new Error("Notifier is not setup");
+                        return this.notifier.getNotifyList()
+                    }
+                }
+            });
+
+            function je(t) {
+                var e = this,
+                    r = t.to,
+                    n = t.next,
+                    a = this.appStateStore || Ze();
+                if (!a.launchMode) {
+                    var i, o = new(Se())(window.location.search);
+                    a.launchMode = o.get("mode") || "default", a.clientVersion = o.get("version"), this.$store.dispatch("device/updateInfo");
+                    var s = (0, ye.getPriorityLanguage)("trueconfServerLang");
+                    return "ua" === s && (s = "uk"), "az" === s && (s = "en"), JSON.parse(null === (i = localStorage) || void 0 === i ? void 0 : i.getItem(Ct)) && localStorage.removeItem(Ct), this.$store.dispatch("server/updateServerInfo", {
+                        parameters: {
+                            lang: s
+                        }
+                    }).then((function() {
+                        return a.setLanguage(s), e.serverInfo.id || "guest.adminLogin" === r.name ? be.call(e, {
+                            to: r
+                        }).then((function() {
+                            return Te.call(e, {
+                                to: r
+                            }).catch((function() {
+                                return -1 !== r.name.indexOf("user.") ? (e.isInAppMode ? a.error = "ACCESS_DENIED" : n({
+                                    name: "guest.main",
+                                    hash: a.warning === Zt ? void 0 : "#auth-personal-area"
+                                }), Promise.reject()) : Promise.resolve()
+                            }))
+                        })) : (n({
+                            name: "guest.adminLogin"
+                        }), Promise.reject())
+                    }))
+                }
+                return (0, Ae.authorizationIsRelevant)({
+                    userInfo: this.$store.getters["auth/getAuthorizationUserInfo"],
+                    tokenInfo: this.$store.getters["auth/getAuthorizationTokenInfo"]
+                }) || this.$store.dispatch("auth/checkAuthorization"), Promise.resolve()
+            }
+            var Ce = function() {
+                return (0, this._self._c)("MainError", {
+                    attrs: {
+                        state: "CLIENT_ERROR",
+                        customDescription: this.errorDescription
+                    }
+                })
+            };
+            Ce._withStripped = !0;
+            var Ie = {
+                    name: "ClientError",
+                    components: {
+                        MainError: xt
+                    },
+                    created: function() {
+                        this.$store.dispatch("server/updateServerInfo");
+                        var t = new(Se())(window.location.search);
+                        this.errorCode = t.get("error_code")
+                    },
+                    computed: {
+                        errorDescription: function() {
+                            return this.$pgettext("A text hint. The word will be followed by an error code such as 402.", "Error code: %error_code").replace("%error_code", this.errorCode)
+                        }
+                    },
+                    data: function() {
+                        return {
+                            errorCode: null
+                        }
+                    }
+                },
+                Ve = (0, L.A)(Ie, Ce, [], !1, null, null, null).exports,
+                Ke = ["k", "call_id", "lang", "version", "utm_content"];
+
+            function Ne(t, e) {
+                if (null == t) return {};
+                var r, n, a = function(t, e) {
+                    if (null == t) return {};
+                    var r, n, a = {},
+                        i = Object.keys(t);
+                    for (n = 0; n < i.length; n++) r = i[n], e.indexOf(r) >= 0 || (a[r] = t[r]);
+                    return a
+                }(t, e);
+                if (Object.getOwnPropertySymbols) {
+                    var i = Object.getOwnPropertySymbols(t);
+                    for (n = 0; n < i.length; n++) r = i[n], e.indexOf(r) >= 0 || Object.prototype.propertyIsEnumerable.call(t, r) && (a[r] = t[r])
+                }
+                return a
+            }
+
+            function ze(t) {
+                return function(t) {
+                    if (Array.isArray(t)) return De(t)
+                }(t) || function(t) {
+                    if ("undefined" != typeof Symbol && null != t[Symbol.iterator] || null != t["@@iterator"]) return Array.from(t)
+                }(t) || function(t, e) {
+                    if (!t) return;
+                    if ("string" == typeof t) return De(t, e);
+                    var r = Object.prototype.toString.call(t).slice(8, -1);
+                    "Object" === r && t.constructor && (r = t.constructor.name);
+                    if ("Map" === r || "Set" === r) return Array.from(t);
+                    if ("Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)) return De(t, e)
+                }(t) || function() {
+                    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+                }()
+            }
+
+            function De(t, e) {
+                (null == e || e > t.length) && (e = t.length);
+                for (var r = 0, n = new Array(e); r < e; r++) n[r] = t[r];
+                return n
+            }
+            var We = [].concat([{
+                    path: "/client-error",
+                    name: "client-error",
+                    component: Ve
+                }, {
+                    path: "*",
+                    redirect: {
+                        name: "guest.notFound"
+                    }
+                }], ze(Jt), ze(ge), ze(ee)),
+                Xe = new c.Ay({
+                    mode: "history",
+                    routes: We
+                });
+            Xe.beforeEach((function(t, e, r) {
+                je.call(Xe.app, {
+                    to: t,
+                    from: e,
+                    next: r
+                }).then((function() {
+                    t.query && t.query.k && t.query.call_id ? r({
+                        name: t.name,
+                        params: t.params,
+                        query: function(t) {
+                            t.k, t.call_id, t.lang, t.version, t.utm_content;
+                            return Ne(t, Ke)
+                        }(t.query),
+                        replace: !0
+                    }) : r()
+                }))
+            }));
+            var Re = Xe,
+                qe = r(69407),
+                He = r.n(qe),
+                Fe = new(i())({
+                    methods: {
+                        gettext: function(t) {
+                            return this.jed ? (this.cache.gettext[t] || (this.cache.gettext[t] = this.jed.gettext(t)), this.cache.gettext[t]) : t
+                        },
+                        pgettext: function(t, e) {
+                            return this.jed ? (this.cache.pgettext[e] || (this.cache.pgettext[e] = {}), this.cache.pgettext[e][t] || (this.cache.pgettext[e][t] = this.jed.pgettext(t, e)), this.cache.pgettext[e][t]) : e
+                        },
+                        npgettext: function(t, e, r, n) {
+                            return this.jed ? (this.cache.npgettext[e] || (this.cache.npgettext[e] = {}), this.cache.npgettext[e][t] || (this.cache.npgettext[e][t] = {}), this.cache.npgettext[e][t][n] || (this.cache.npgettext[e][t][n] = this.jed.npgettext(t, e, r, n)), this.cache.npgettext[e][t][n]) : r
+                        },
+                        clearCache: function() {
+                            this.cache = {
+                                gettext: {},
+                                pgettext: {},
+                                npgettext: {}
+                            }
+                        },
+                        importLocale: function(t) {
+                            var e = {
+                                be: function() {
+                                    return r.e(939).then(r.t.bind(r, 69734, 19))
+                                },
+                                de: function() {
+                                    return r.e(977).then(r.t.bind(r, 61382, 19))
+                                },
+                                en: function() {
+                                    return r.e(337).then(r.t.bind(r, 53513, 19))
+                                },
+                                es: function() {
+                                    return r.e(76).then(r.t.bind(r, 79752, 19))
+                                },
+                                fa: function() {
+                                    return r.e(147).then(r.t.bind(r, 86384, 19))
+                                },
+                                fr: function() {
+                                    return r.e(384).then(r.t.bind(r, 3920, 19))
+                                },
+                                it: function() {
+                                    return r.e(991).then(r.t.bind(r, 12290, 19))
+                                },
+                                ja: function() {
+                                    return r.e(783).then(r.t.bind(r, 63933, 19))
+                                },
+                                pl: function() {
+                                    return r.e(340).then(r.t.bind(r, 34628, 19))
+                                },
+                                pt: function() {
+                                    return r.e(804).then(r.t.bind(r, 75732, 19))
+                                },
+                                ru: function() {
+                                    return r.e(523).then(r.t.bind(r, 74242, 19))
+                                },
+                                uk: function() {
+                                    return r.e(980).then(r.t.bind(r, 25938, 19))
+                                },
+                                vi: function() {
+                                    return r.e(91).then(r.t.bind(r, 39071, 19))
+                                },
+                                zh: function() {
+                                    return r.e(478).then(r.t.bind(r, 46911, 19))
+                                },
+                                zht: function() {
+                                    return r.e(678).then(r.t.bind(r, 14351, 19))
+                                },
+                                he: function() {
+                                    return r.e(861).then(r.t.bind(r, 40535, 19))
+                                },
+                                ko: function() {
+                                    return r.e(918).then(r.t.bind(r, 13711, 19))
+                                },
+                                tr: function() {
+                                    return r.e(558).then(r.t.bind(r, 21156, 19))
+                                },
+                                cs: function() {
+                                    return r.e(578).then(r.t.bind(r, 22835, 19))
+                                }
+                            };
+                            return e[t] ? e[t]() : e.en()
+                        },
+                        addLang: function(t) {
+                            var e = this;
+                            return this.importLocale(t).then((function(r) {
+                                var n = new(He())(r);
+                                e.jeds[t] = n
+                            }))
+                        },
+                        setLocale: function(t) {
+                            var e = this;
+                            if (t !== this.lang) return this.jeds[t] ? (this.lang = t, void this.clearCache()) : void this.addLang(t).then((function() {
+                                e.lang = t, e.clearCache()
+                            }))
+                        }
+                    },
+                    computed: {
+                        jed: function() {
+                            return this.jeds[this.lang]
+                        }
+                    },
+                    data: function() {
+                        return {
+                            lang: null,
+                            jeds: {},
+                            cache: {
+                                gettext: {},
+                                pgettext: {},
+                                npgettext: {}
+                            }
+                        }
+                    }
+                }),
+                Je = {
+                    install: function(t) {
+                        t.prototype.$gettext = function(t) {
+                            return Fe.gettext(t)
+                        }, t.prototype.$pgettext = function(t, e) {
+                            return Fe.pgettext(t, e)
+                        }, t.prototype.$npgettext = function(t, e, r, n) {
+                            return Fe.npgettext(t, e, r, n)
+                        }, t.prototype.$setLocale = function(t) {
+                            return Fe.setLocale(t)
+                        }
+                    }
+                },
+                Ye = Je,
+                Qe = r(7973),
+                Be = r.n(Qe),
+                $e = r(12449),
+                tr = r.n($e),
+                er = r(30547),
+                rr = r.n(er),
+                nr = r(33456),
+                ar = r.n(nr),
+                ir = r(97856),
+                or = r.n(ir),
+                sr = r(74200),
+                cr = r.n(sr),
+                lr = r(52594),
+                ur = r.n(lr),
+                dr = r(21921),
+                fr = r.n(dr),
+                pr = r(53674),
+                hr = r.n(pr),
+                gr = r(66001),
+                yr = r.n(gr),
+                Ar = r(97556),
+                mr = r.n(Ar),
+                vr = r(40172),
+                xr = r.n(vr),
+                br = r(88808),
+                wr = r.n(br),
+                Sr = r(53143),
+                _r = r.n(Sr),
+                Or = r(66155),
+                kr = r.n(Or),
+                Er = r(69674),
+                Tr = r.n(Er),
+                Mr = r(25768),
+                Lr = r.n(Mr),
+                Pr = r(38157),
+                Gr = r.n(Pr),
+                Ur = r(86048),
+                Zr = r.n(Ur),
+                jr = r(88422),
+                Cr = r.n(jr),
+                Ir = r(52320),
+                Vr = r.n(Ir),
+                Kr = r(79569),
+                Nr = r.n(Kr),
+                zr = r(32475),
+                Dr = r.n(zr),
+                Wr = r(93402),
+                Xr = r.n(Wr),
+                Rr = r(12836),
+                qr = r.n(Rr),
+                Hr = r(53162),
+                Fr = r.n(Hr),
+                Jr = r(85904);
+
+            function Yr() {
+                var t = {};
+                return t.promise = new Promise((function(e, r) {
+                    t.resolve = e, t.reject = r
+                })), t
+            }
+
+            function Qr(t) {
+                return Qr = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, Qr(t)
+            }
+
+            function Br() {
+                Br = function() {
+                    return e
+                };
+                var t, e = {},
+                    r = Object.prototype,
+                    n = r.hasOwnProperty,
+                    a = Object.defineProperty || function(t, e, r) {
+                        t[e] = r.value
+                    },
+                    i = "function" == typeof Symbol ? Symbol : {},
+                    o = i.iterator || "@@iterator",
+                    s = i.asyncIterator || "@@asyncIterator",
+                    c = i.toStringTag || "@@toStringTag";
+
+                function l(t, e, r) {
+                    return Object.defineProperty(t, e, {
+                        value: r,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0
+                    }), t[e]
+                }
+                try {
+                    l({}, "")
+                } catch (t) {
+                    l = function(t, e, r) {
+                        return t[e] = r
+                    }
+                }
+
+                function u(t, e, r, n) {
+                    var i = e && e.prototype instanceof A ? e : A,
+                        o = Object.create(i.prototype),
+                        s = new L(n || []);
+                    return a(o, "_invoke", {
+                        value: k(t, r, s)
+                    }), o
+                }
+
+                function d(t, e, r) {
+                    try {
+                        return {
+                            type: "normal",
+                            arg: t.call(e, r)
+                        }
+                    } catch (t) {
+                        return {
+                            type: "throw",
+                            arg: t
+                        }
+                    }
+                }
+                e.wrap = u;
+                var f = "suspendedStart",
+                    p = "suspendedYield",
+                    h = "executing",
+                    g = "completed",
+                    y = {};
+
+                function A() {}
+
+                function m() {}
+
+                function v() {}
+                var x = {};
+                l(x, o, (function() {
+                    return this
+                }));
+                var b = Object.getPrototypeOf,
+                    w = b && b(b(P([])));
+                w && w !== r && n.call(w, o) && (x = w);
+                var S = v.prototype = A.prototype = Object.create(x);
+
+                function _(t) {
+                    ["next", "throw", "return"].forEach((function(e) {
+                        l(t, e, (function(t) {
+                            return this._invoke(e, t)
+                        }))
+                    }))
+                }
+
+                function O(t, e) {
+                    function r(a, i, o, s) {
+                        var c = d(t[a], t, i);
+                        if ("throw" !== c.type) {
+                            var l = c.arg,
+                                u = l.value;
+                            return u && "object" == Qr(u) && n.call(u, "__await") ? e.resolve(u.__await).then((function(t) {
+                                r("next", t, o, s)
+                            }), (function(t) {
+                                r("throw", t, o, s)
+                            })) : e.resolve(u).then((function(t) {
+                                l.value = t, o(l)
+                            }), (function(t) {
+                                return r("throw", t, o, s)
+                            }))
+                        }
+                        s(c.arg)
+                    }
+                    var i;
+                    a(this, "_invoke", {
+                        value: function(t, n) {
+                            function a() {
+                                return new e((function(e, a) {
+                                    r(t, n, e, a)
+                                }))
+                            }
+                            return i = i ? i.then(a, a) : a()
+                        }
+                    })
+                }
+
+                function k(e, r, n) {
+                    var a = f;
+                    return function(i, o) {
+                        if (a === h) throw new Error("Generator is already running");
+                        if (a === g) {
+                            if ("throw" === i) throw o;
+                            return {
+                                value: t,
+                                done: !0
+                            }
+                        }
+                        for (n.method = i, n.arg = o;;) {
+                            var s = n.delegate;
+                            if (s) {
+                                var c = E(s, n);
+                                if (c) {
+                                    if (c === y) continue;
+                                    return c
+                                }
+                            }
+                            if ("next" === n.method) n.sent = n._sent = n.arg;
+                            else if ("throw" === n.method) {
+                                if (a === f) throw a = g, n.arg;
+                                n.dispatchException(n.arg)
+                            } else "return" === n.method && n.abrupt("return", n.arg);
+                            a = h;
+                            var l = d(e, r, n);
+                            if ("normal" === l.type) {
+                                if (a = n.done ? g : p, l.arg === y) continue;
+                                return {
+                                    value: l.arg,
+                                    done: n.done
+                                }
+                            }
+                            "throw" === l.type && (a = g, n.method = "throw", n.arg = l.arg)
+                        }
+                    }
+                }
+
+                function E(e, r) {
+                    var n = r.method,
+                        a = e.iterator[n];
+                    if (a === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, E(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+                    var i = d(a, e.iterator, r.arg);
+                    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+                    var o = i.arg;
+                    return o ? o.done ? (r[e.resultName] = o.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : o : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y)
+                }
+
+                function T(t) {
+                    var e = {
+                        tryLoc: t[0]
+                    };
+                    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e)
+                }
+
+                function M(t) {
+                    var e = t.completion || {};
+                    e.type = "normal", delete e.arg, t.completion = e
+                }
+
+                function L(t) {
+                    this.tryEntries = [{
+                        tryLoc: "root"
+                    }], t.forEach(T, this), this.reset(!0)
+                }
+
+                function P(e) {
+                    if (e || "" === e) {
+                        var r = e[o];
+                        if (r) return r.call(e);
+                        if ("function" == typeof e.next) return e;
+                        if (!isNaN(e.length)) {
+                            var a = -1,
+                                i = function r() {
+                                    for (; ++a < e.length;)
+                                        if (n.call(e, a)) return r.value = e[a], r.done = !1, r;
+                                    return r.value = t, r.done = !0, r
+                                };
+                            return i.next = i
+                        }
+                    }
+                    throw new TypeError(Qr(e) + " is not iterable")
+                }
+                return m.prototype = v, a(S, "constructor", {
+                    value: v,
+                    configurable: !0
+                }), a(v, "constructor", {
+                    value: m,
+                    configurable: !0
+                }), m.displayName = l(v, c, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+                    var e = "function" == typeof t && t.constructor;
+                    return !!e && (e === m || "GeneratorFunction" === (e.displayName || e.name))
+                }, e.mark = function(t) {
+                    return Object.setPrototypeOf ? Object.setPrototypeOf(t, v) : (t.__proto__ = v, l(t, c, "GeneratorFunction")), t.prototype = Object.create(S), t
+                }, e.awrap = function(t) {
+                    return {
+                        __await: t
+                    }
+                }, _(O.prototype), l(O.prototype, s, (function() {
+                    return this
+                })), e.AsyncIterator = O, e.async = function(t, r, n, a, i) {
+                    void 0 === i && (i = Promise);
+                    var o = new O(u(t, r, n, a), i);
+                    return e.isGeneratorFunction(r) ? o : o.next().then((function(t) {
+                        return t.done ? t.value : o.next()
+                    }))
+                }, _(S), l(S, c, "Generator"), l(S, o, (function() {
+                    return this
+                })), l(S, "toString", (function() {
+                    return "[object Generator]"
+                })), e.keys = function(t) {
+                    var e = Object(t),
+                        r = [];
+                    for (var n in e) r.push(n);
+                    return r.reverse(),
+                        function t() {
+                            for (; r.length;) {
+                                var n = r.pop();
+                                if (n in e) return t.value = n, t.done = !1, t
+                            }
+                            return t.done = !0, t
+                        }
+                }, e.values = P, L.prototype = {
+                    constructor: L,
+                    reset: function(e) {
+                        if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(M), !e)
+                            for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t)
+                    },
+                    stop: function() {
+                        this.done = !0;
+                        var t = this.tryEntries[0].completion;
+                        if ("throw" === t.type) throw t.arg;
+                        return this.rval
+                    },
+                    dispatchException: function(e) {
+                        if (this.done) throw e;
+                        var r = this;
+
+                        function a(n, a) {
+                            return s.type = "throw", s.arg = e, r.next = n, a && (r.method = "next", r.arg = t), !!a
+                        }
+                        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                            var o = this.tryEntries[i],
+                                s = o.completion;
+                            if ("root" === o.tryLoc) return a("end");
+                            if (o.tryLoc <= this.prev) {
+                                var c = n.call(o, "catchLoc"),
+                                    l = n.call(o, "finallyLoc");
+                                if (c && l) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0);
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                } else if (c) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0)
+                                } else {
+                                    if (!l) throw new Error("try statement without catch or finally");
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                }
+                            }
+                        }
+                    },
+                    abrupt: function(t, e) {
+                        for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                            var a = this.tryEntries[r];
+                            if (a.tryLoc <= this.prev && n.call(a, "finallyLoc") && this.prev < a.finallyLoc) {
+                                var i = a;
+                                break
+                            }
+                        }
+                        i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+                        var o = i ? i.completion : {};
+                        return o.type = t, o.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(o)
+                    },
+                    complete: function(t, e) {
+                        if ("throw" === t.type) throw t.arg;
+                        return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y
+                    },
+                    finish: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), M(r), y
+                        }
+                    },
+                    catch: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.tryLoc === t) {
+                                var n = r.completion;
+                                if ("throw" === n.type) {
+                                    var a = n.arg;
+                                    M(r)
+                                }
+                                return a
+                            }
+                        }
+                        throw new Error("illegal catch attempt")
+                    },
+                    delegateYield: function(e, r, n) {
+                        return this.delegate = {
+                            iterator: P(e),
+                            resultName: r,
+                            nextLoc: n
+                        }, "next" === this.method && (this.arg = t), y
+                    }
+                }, e
+            }
+
+            function $r(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function tn(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? $r(Object(r), !0).forEach((function(e) {
+                        en(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : $r(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function en(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != Qr(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != Qr(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == Qr(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+
+            function rn(t, e, r, n, a, i, o) {
+                try {
+                    var s = t[i](o),
+                        c = s.value
+                } catch (t) {
+                    return void r(t)
+                }
+                s.done ? e(c) : Promise.resolve(c).then(n, a)
+            }
+
+            function nn(t) {
+                return function() {
+                    var e = this,
+                        r = arguments;
+                    return new Promise((function(n, a) {
+                        var i = t.apply(e, r);
+
+                        function o(t) {
+                            rn(i, n, a, o, s, "next", t)
+                        }
+
+                        function s(t) {
+                            rn(i, n, a, o, s, "throw", t)
+                        }
+                        o(void 0)
+                    }))
+                }
+            }
+            var an = null,
+                on = null,
+                sn = null,
+                cn = null,
+                ln = null,
+                un = (new Date).getTime(),
+                dn = null,
+                fn = 30;
+
+            function pn() {
+                ln = setTimeout((function() {
+                    if (dn) return ln = null, cn = null, void(dn = null);
+                    var t = 100 * Math.round(((new Date).getTime() - un) / 100);
+                    cn -= t > 1e3 ? t / 1e3 : 1, un = (new Date).getTime(), cn > fn && pn()
+                }), 1e3)
+            }
+
+            function hn(t) {
+                t && t.tokenInfo ? (Re.app.$store.commit("auth/setUserInfo", t.userInfo), Re.app.$store.commit("auth/setTokenInfo", t.tokenInfo)) : Promise.reject(new Error("No authData.tokenInfo"))
+            }
+
+            function gn() {
+                return gn = nn(Br().mark((function t(e) {
+                    var r, n, a, i, o, s, c, l, u, d, f, p, h;
+                    return Br().wrap((function(t) {
+                        for (;;) switch (t.prev = t.next) {
+                            case 0:
+                                if (n = (r = ["^/oauth2/v1/token", "^/api/v[\\d.]+/server", "^[^/].+"]).find((function(t) {
+                                        return new RegExp(t).test(e.url)
+                                    })), a = Re.app.$store.getters["auth/getAuthorizationTokenInfo"], i = Re.app.$store.getters["server/getServerInfo"], !new RegExp(r[0]).test(e.url) || a) {
+                                    t.next = 8;
+                                    break
+                                }
+                                return t.next = 7, Re.app.$store.dispatch("server/updateServerInfo");
+                            case 7:
+                                un = (new Date).getTime();
+                            case 8:
+                                if (!n || /^https?:\/\/localhost\/.+/.test(e.url)) {
+                                    t.next = 10;
+                                    break
+                                }
+                                return t.abrupt("return", e);
+                            case 10:
+                                if (!/^\/oauth2\/v1\/logout/.test(e.url)) {
+                                    t.next = 13;
+                                    break
+                                }
+                                return dn = !0, t.abrupt("return", e);
+                            case 13:
+                                if (!an) {
+                                    t.next = 19;
+                                    break
+                                }
+                                return t.next = 16, an.promise;
+                            case 16:
+                                o = t.sent, a = o.tokenInfo, e.url = e.url.replace(/access_token=.+?(?=$|&)/, "access_token=".concat(a.access_token));
+                            case 19:
+                                if (!on) {
+                                    t.next = 24;
+                                    break
+                                }
+                                return t.next = 22, on.promise;
+                            case 22:
+                                a = t.sent, e.url = e.url.replace(/access_token=.+?(?=$|&)/, "access_token=".concat(a.access_token));
+                            case 24:
+                                if (!an && i && a && !ln && (cn = (a.expires_at || a.receipt_time + a.expires_in) - i.timestamp, dn && (dn = null), un = (new Date).getTime(), pn(), sn || (window.addEventListener("storage", function() {
+                                        var t = nn(Br().mark((function t(e) {
+                                            var r, n, o;
+                                            return Br().wrap((function(t) {
+                                                for (;;) switch (t.prev = t.next) {
+                                                    case 0:
+                                                        if (e.key !== Re.app.$store.state.auth.localStorageParamName || !e.newValue) {
+                                                            t.next = 13;
+                                                            break
+                                                        }
+                                                        if (t.prev = 1, r = JSON.parse(localStorage.getItem(Re.app.$store.state.auth.localStorageParamName)), n = r.tokenInfo, o = r.userInfo, !(a.access_token && n.access_token === a.access_token || an)) {
+                                                            t.next = 5;
+                                                            break
+                                                        }
+                                                        return t.abrupt("return");
+                                                    case 5:
+                                                        a = n, hn({
+                                                            userInfo: tn(tn({}, o), "inapp" === Re.app.appStateStore.launchMode ? Re.app.$store.state.auth.userInfo : {}),
+                                                            tokenInfo: n
+                                                        }), on && on.resolve(n), t.next = 13;
+                                                        break;
+                                                    case 10:
+                                                        t.prev = 10, t.t0 = t.catch(1), console.warn(t.t0);
+                                                    case 13:
+                                                        if (e.key !== Ct || !e.newValue || an) {
+                                                            t.next = 24;
+                                                            break
+                                                        }
+                                                        return on = Yr(), clearTimeout(ln), ln = null, t.next = 19, on.promise;
+                                                    case 19:
+                                                        return on = null, t.next = 22, Re.app.$store.dispatch("server/updateServerInfo");
+                                                    case 22:
+                                                        i = Re.app.$store.getters["server/getServerInfo"], cn = (a.expires_at || a.receipt_time + a.expires_in) - i.timestamp;
+                                                    case 24:
+                                                    case "end":
+                                                        return t.stop()
+                                                }
+                                            }), t, null, [
+                                                [1, 10]
+                                            ])
+                                        })));
+                                        return function(e) {
+                                            return t.apply(this, arguments)
+                                        }
+                                    }()), sn = !0)), !(!an && a && null !== cn && cn <= fn && Re.app.appStateStore.warning !== Zt)) {
+                                    t.next = 59;
+                                    break
+                                }
+                                if (t.prev = 26, !(JSON.parse(null === (s = localStorage) || void 0 === s ? void 0 : s.getItem(Ct)) && cn > 0)) {
+                                    t.next = 41;
+                                    break
+                                }
+                                return on = Yr(), clearTimeout(ln), ln = null, t.next = 33, on.promise;
+                            case 33:
+                                return on = null, t.next = 36, Re.app.$store.dispatch("server/updateServerInfo");
+                            case 36:
+                                i = Re.app.$store.getters["server/getServerInfo"], cn = (a.expires_at || a.receipt_time + a.expires_in) - i.timestamp, e.url = e.url.replace(/access_token=.+?(?=$|&)/, "access_token=".concat(a.access_token)), t.next = 53;
+                                break;
+                            case 41:
+                                return an = Yr(), null === (c = localStorage) || void 0 === c || c.setItem(Ct, !0), clearTimeout(ln), ln = null, an.promise.finally(nn(Br().mark((function t() {
+                                    return Br().wrap((function(t) {
+                                        for (;;) switch (t.prev = t.next) {
+                                            case 0:
+                                                return an = null, t.next = 3, Re.app.$store.dispatch("server/updateServerInfo");
+                                            case 3:
+                                                i = Re.app.$store.getters["server/getServerInfo"], cn = (a.expires_at || a.receipt_time + a.expires_in) - i.timestamp;
+                                            case 5:
+                                            case "end":
+                                                return t.stop()
+                                        }
+                                    }), t)
+                                })))), t.next = 48, Re.app.$store.dispatch("auth/authorization", {
+                                    client_id: null !== (l = a.client_id) && void 0 !== l ? l : "inapp" === Re.app.appStateStore.launchMode ? "trueconf_client_secret_key" : "trueconf_server_users",
+                                    refresh_token: a.refresh_token,
+                                    grant_type: "refresh_token"
+                                });
+                            case 48:
+                                d = t.sent, null === (u = localStorage) || void 0 === u || u.removeItem(Ct), an.resolve(d), e.url = e.url.replace(/access_token=.+?(?=$|&)/, "access_token=".concat(d.tokenInfo.access_token)), a = tn(tn({}, d.tokenInfo), {}, {
+                                    client_id: a.client_id
+                                });
+                            case 53:
+                                t.next = 59;
+                                break;
+                            case 55:
+                                t.prev = 55, t.t0 = t.catch(26), null === (f = localStorage) || void 0 === f || f.removeItem(Ct), (null === t.t0 || void 0 === t.t0 ? void 0 : t.t0.message) === Zt && "inapp" !== Re.app.appStateStore.launchMode && Re.app.appStateStore.warning !== Zt ? (Re.app.$store.commit("auth/logout"), Re.app.appStateStore.warning = Zt, -1 === (null === (p = Re.history.current.name) || void 0 === p ? void 0 : p.search(/^conference\\./)) && Re.replace({
+                                    name: "guest.main"
+                                }), an.reject(Zt)) : (Re.app.$store.commit("auth/logout"), "inapp" === Re.app.appStateStore.launchMode && (Re.app.appStateStore.error = "ACCESS_DENIED"), null === (h = an) || void 0 === h || h.reject(t.t0));
+                            case 59:
+                                return t.abrupt("return", e);
+                            case 60:
+                            case "end":
+                                return t.stop()
+                        }
+                    }), t, null, [
+                        [26, 55]
+                    ])
+                }))), gn.apply(this, arguments)
+            }
+
+            function yn(t) {
+                return yn = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, yn(t)
+            }
+
+            function An() {
+                An = function() {
+                    return e
+                };
+                var t, e = {},
+                    r = Object.prototype,
+                    n = r.hasOwnProperty,
+                    a = Object.defineProperty || function(t, e, r) {
+                        t[e] = r.value
+                    },
+                    i = "function" == typeof Symbol ? Symbol : {},
+                    o = i.iterator || "@@iterator",
+                    s = i.asyncIterator || "@@asyncIterator",
+                    c = i.toStringTag || "@@toStringTag";
+
+                function l(t, e, r) {
+                    return Object.defineProperty(t, e, {
+                        value: r,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0
+                    }), t[e]
+                }
+                try {
+                    l({}, "")
+                } catch (t) {
+                    l = function(t, e, r) {
+                        return t[e] = r
+                    }
+                }
+
+                function u(t, e, r, n) {
+                    var i = e && e.prototype instanceof A ? e : A,
+                        o = Object.create(i.prototype),
+                        s = new L(n || []);
+                    return a(o, "_invoke", {
+                        value: k(t, r, s)
+                    }), o
+                }
+
+                function d(t, e, r) {
+                    try {
+                        return {
+                            type: "normal",
+                            arg: t.call(e, r)
+                        }
+                    } catch (t) {
+                        return {
+                            type: "throw",
+                            arg: t
+                        }
+                    }
+                }
+                e.wrap = u;
+                var f = "suspendedStart",
+                    p = "suspendedYield",
+                    h = "executing",
+                    g = "completed",
+                    y = {};
+
+                function A() {}
+
+                function m() {}
+
+                function v() {}
+                var x = {};
+                l(x, o, (function() {
+                    return this
+                }));
+                var b = Object.getPrototypeOf,
+                    w = b && b(b(P([])));
+                w && w !== r && n.call(w, o) && (x = w);
+                var S = v.prototype = A.prototype = Object.create(x);
+
+                function _(t) {
+                    ["next", "throw", "return"].forEach((function(e) {
+                        l(t, e, (function(t) {
+                            return this._invoke(e, t)
+                        }))
+                    }))
+                }
+
+                function O(t, e) {
+                    function r(a, i, o, s) {
+                        var c = d(t[a], t, i);
+                        if ("throw" !== c.type) {
+                            var l = c.arg,
+                                u = l.value;
+                            return u && "object" == yn(u) && n.call(u, "__await") ? e.resolve(u.__await).then((function(t) {
+                                r("next", t, o, s)
+                            }), (function(t) {
+                                r("throw", t, o, s)
+                            })) : e.resolve(u).then((function(t) {
+                                l.value = t, o(l)
+                            }), (function(t) {
+                                return r("throw", t, o, s)
+                            }))
+                        }
+                        s(c.arg)
+                    }
+                    var i;
+                    a(this, "_invoke", {
+                        value: function(t, n) {
+                            function a() {
+                                return new e((function(e, a) {
+                                    r(t, n, e, a)
+                                }))
+                            }
+                            return i = i ? i.then(a, a) : a()
+                        }
+                    })
+                }
+
+                function k(e, r, n) {
+                    var a = f;
+                    return function(i, o) {
+                        if (a === h) throw new Error("Generator is already running");
+                        if (a === g) {
+                            if ("throw" === i) throw o;
+                            return {
+                                value: t,
+                                done: !0
+                            }
+                        }
+                        for (n.method = i, n.arg = o;;) {
+                            var s = n.delegate;
+                            if (s) {
+                                var c = E(s, n);
+                                if (c) {
+                                    if (c === y) continue;
+                                    return c
+                                }
+                            }
+                            if ("next" === n.method) n.sent = n._sent = n.arg;
+                            else if ("throw" === n.method) {
+                                if (a === f) throw a = g, n.arg;
+                                n.dispatchException(n.arg)
+                            } else "return" === n.method && n.abrupt("return", n.arg);
+                            a = h;
+                            var l = d(e, r, n);
+                            if ("normal" === l.type) {
+                                if (a = n.done ? g : p, l.arg === y) continue;
+                                return {
+                                    value: l.arg,
+                                    done: n.done
+                                }
+                            }
+                            "throw" === l.type && (a = g, n.method = "throw", n.arg = l.arg)
+                        }
+                    }
+                }
+
+                function E(e, r) {
+                    var n = r.method,
+                        a = e.iterator[n];
+                    if (a === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, E(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+                    var i = d(a, e.iterator, r.arg);
+                    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+                    var o = i.arg;
+                    return o ? o.done ? (r[e.resultName] = o.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : o : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y)
+                }
+
+                function T(t) {
+                    var e = {
+                        tryLoc: t[0]
+                    };
+                    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e)
+                }
+
+                function M(t) {
+                    var e = t.completion || {};
+                    e.type = "normal", delete e.arg, t.completion = e
+                }
+
+                function L(t) {
+                    this.tryEntries = [{
+                        tryLoc: "root"
+                    }], t.forEach(T, this), this.reset(!0)
+                }
+
+                function P(e) {
+                    if (e || "" === e) {
+                        var r = e[o];
+                        if (r) return r.call(e);
+                        if ("function" == typeof e.next) return e;
+                        if (!isNaN(e.length)) {
+                            var a = -1,
+                                i = function r() {
+                                    for (; ++a < e.length;)
+                                        if (n.call(e, a)) return r.value = e[a], r.done = !1, r;
+                                    return r.value = t, r.done = !0, r
+                                };
+                            return i.next = i
+                        }
+                    }
+                    throw new TypeError(yn(e) + " is not iterable")
+                }
+                return m.prototype = v, a(S, "constructor", {
+                    value: v,
+                    configurable: !0
+                }), a(v, "constructor", {
+                    value: m,
+                    configurable: !0
+                }), m.displayName = l(v, c, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+                    var e = "function" == typeof t && t.constructor;
+                    return !!e && (e === m || "GeneratorFunction" === (e.displayName || e.name))
+                }, e.mark = function(t) {
+                    return Object.setPrototypeOf ? Object.setPrototypeOf(t, v) : (t.__proto__ = v, l(t, c, "GeneratorFunction")), t.prototype = Object.create(S), t
+                }, e.awrap = function(t) {
+                    return {
+                        __await: t
+                    }
+                }, _(O.prototype), l(O.prototype, s, (function() {
+                    return this
+                })), e.AsyncIterator = O, e.async = function(t, r, n, a, i) {
+                    void 0 === i && (i = Promise);
+                    var o = new O(u(t, r, n, a), i);
+                    return e.isGeneratorFunction(r) ? o : o.next().then((function(t) {
+                        return t.done ? t.value : o.next()
+                    }))
+                }, _(S), l(S, c, "Generator"), l(S, o, (function() {
+                    return this
+                })), l(S, "toString", (function() {
+                    return "[object Generator]"
+                })), e.keys = function(t) {
+                    var e = Object(t),
+                        r = [];
+                    for (var n in e) r.push(n);
+                    return r.reverse(),
+                        function t() {
+                            for (; r.length;) {
+                                var n = r.pop();
+                                if (n in e) return t.value = n, t.done = !1, t
+                            }
+                            return t.done = !0, t
+                        }
+                }, e.values = P, L.prototype = {
+                    constructor: L,
+                    reset: function(e) {
+                        if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(M), !e)
+                            for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t)
+                    },
+                    stop: function() {
+                        this.done = !0;
+                        var t = this.tryEntries[0].completion;
+                        if ("throw" === t.type) throw t.arg;
+                        return this.rval
+                    },
+                    dispatchException: function(e) {
+                        if (this.done) throw e;
+                        var r = this;
+
+                        function a(n, a) {
+                            return s.type = "throw", s.arg = e, r.next = n, a && (r.method = "next", r.arg = t), !!a
+                        }
+                        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                            var o = this.tryEntries[i],
+                                s = o.completion;
+                            if ("root" === o.tryLoc) return a("end");
+                            if (o.tryLoc <= this.prev) {
+                                var c = n.call(o, "catchLoc"),
+                                    l = n.call(o, "finallyLoc");
+                                if (c && l) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0);
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                } else if (c) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0)
+                                } else {
+                                    if (!l) throw new Error("try statement without catch or finally");
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                }
+                            }
+                        }
+                    },
+                    abrupt: function(t, e) {
+                        for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                            var a = this.tryEntries[r];
+                            if (a.tryLoc <= this.prev && n.call(a, "finallyLoc") && this.prev < a.finallyLoc) {
+                                var i = a;
+                                break
+                            }
+                        }
+                        i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+                        var o = i ? i.completion : {};
+                        return o.type = t, o.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(o)
+                    },
+                    complete: function(t, e) {
+                        if ("throw" === t.type) throw t.arg;
+                        return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y
+                    },
+                    finish: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), M(r), y
+                        }
+                    },
+                    catch: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.tryLoc === t) {
+                                var n = r.completion;
+                                if ("throw" === n.type) {
+                                    var a = n.arg;
+                                    M(r)
+                                }
+                                return a
+                            }
+                        }
+                        throw new Error("illegal catch attempt")
+                    },
+                    delegateYield: function(e, r, n) {
+                        return this.delegate = {
+                            iterator: P(e),
+                            resultName: r,
+                            nextLoc: n
+                        }, "next" === this.method && (this.arg = t), y
+                    }
+                }, e
+            }
+
+            function mn(t, e, r, n, a, i, o) {
+                try {
+                    var s = t[i](o),
+                        c = s.value
+                } catch (t) {
+                    return void r(t)
+                }
+                s.done ? e(c) : Promise.resolve(c).then(n, a)
+            }
+            var vn = !1;
+
+            function xn() {
+                var t;
+                return t = An().mark((function t(e) {
+                    return An().wrap((function(t) {
+                        for (;;) switch (t.prev = t.next) {
+                            case 0:
+                                if ("get" === e.config.method) {
+                                    t.next = 2;
+                                    break
+                                }
+                                return t.abrupt("return", e);
+                            case 2:
+                                try {
+                                    new Map([
+                                        [/^\/api\/v\d+(\.\d+)?\/conferences\/\?/, {
+                                            responseField: "conferences",
+                                            patchField: "topic"
+                                        }],
+                                        [/^\/api\/v\d+(\.\d+)?\/conferences\/\d+\?/, {
+                                            responseField: "conference",
+                                            patchField: "topic"
+                                        }]
+                                    ]).forEach((function(t, r) {
+                                        -1 !== e.config.url.search(r) && (Array.isArray(e.data[t.responseField]) ? e.data[t.responseField] : [e.data[t.responseField]]).forEach((function(e) {
+                                            e[t.patchField] || (e[t.patchField] = Re.app.$root.$pgettext("A text indicating that a file has no title. It will be displayed in the table.", "(no title)"))
+                                        }))
+                                    }))
+                                } catch (t) {}
+                                return t.abrupt("return", e);
+                            case 4:
+                            case "end":
+                                return t.stop()
+                        }
+                    }), t)
+                })), xn = function() {
+                    var e = this,
+                        r = arguments;
+                    return new Promise((function(n, a) {
+                        var i = t.apply(e, r);
+
+                        function o(t) {
+                            mn(i, n, a, o, s, "next", t)
+                        }
+
+                        function s(t) {
+                            mn(i, n, a, o, s, "throw", t)
+                        }
+                        o(void 0)
+                    }))
+                }, xn.apply(this, arguments)
+            }
+            xe().interceptors.request.use((function(t) {
+                return gn.apply(this, arguments)
+            })), xe().interceptors.response.use(null, (function(t) {
+                var e, r, n = Re.history.current.name;
+                if (["^guest\\.", "^conference\\."].find((function(t) {
+                        return new RegExp(t).test(n)
+                    })) || Re.app.appStateStore.warning === Zt) return Promise.reject(t);
+                var a, i = Re.app.serverInfo.url,
+                    o = null === (e = t.config) || void 0 === e ? void 0 : e.url;
+                try {
+                    a = new URL(o).origin
+                } catch (t) {
+                    a = i
+                }
+                return a !== i || 403 !== (null === (r = t.response) || void 0 === r ? void 0 : r.status) || vn || (vn = !0, Re.app.$store.dispatch("auth/checkAuthorization", {
+                    userInfo: Re.app.$store.getters["auth/getAuthorizationUserInfo"],
+                    tokenInfo: Re.app.$store.getters["auth/getAuthorizationTokenInfo"]
+                }).catch((function() {
+                    Re.app.appStateStore.warning = "USER_IS_DISABLED", Re.push({
+                        name: "guest.main"
+                    })
+                })).finally((function() {
+                    vn = !1
+                }))), Promise.reject(t)
+            })), xe().interceptors.response.use((function(t) {
+                return xn.apply(this, arguments)
+            })), xe().interceptors.response.use((function(t) {
+                try {
+                    var e = localStorage.getItem(jt);
+                    if (!e) return t;
+                    if ("post" === t.config.method && -1 !== t.config.url.search(/^\/oauth2\/v1\/logout/)) {
+                        var r = Re.app.$store.getters["server/getServerInfo"];
+                        Re.app.$store.dispatch("auth/updateAuthManifest", {
+                            version: r.version,
+                            lang: r.lang
+                        }).then((function(t) {
+                            var r = null == t ? void 0 : t.networks.find((function(t) {
+                                return t.id === e
+                            }));
+                            r && (Re.app.authManagerStore.outerLogoutSrc = r.features.logout, localStorage.setItem(jt, null))
+                        }))
+                    }
+                } catch (t) {}
+                return t
+            }));
+            var bn = {
+                    modules: {
+                        auth: me()({
+                            axios: xe()
+                        }),
+                        addressBook: yr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        conferenceList: ar()({
+                            axios: xe()
+                        }),
+                        conferenceLayout: ur()({
+                            axios: xe()
+                        }),
+                        conferenceRole: xr()({
+                            axios: xe()
+                        }),
+                        conferenceEditor: fr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        conferenceAnalytics: hr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        template: cr()({
+                            axios: xe()
+                        }),
+                        templateList: or()({
+                            axios: xe()
+                        }),
+                        templateEditor: Nr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        server: Be()({
+                            axios: xe()
+                        }),
+                        logs: tr()({
+                            axios: xe()
+                        }),
+                        softwareClients: rr()({
+                            axios: xe()
+                        }),
+                        serverDocuments: Dr()({
+                            axios: xe()
+                        }),
+                        user: Gr()({
+                            axios: xe()
+                        }),
+                        deeplinks: _r()({
+                            axios: xe()
+                        }),
+                        license: kr()({
+                            axios: xe()
+                        }),
+                        addressBookEditor: mr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        conference: wr()({
+                            axios: xe()
+                        }),
+                        userEditor: Zr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        users: Lr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        broadcasts: Cr()({
+                            Vue: i(),
+                            axios: xe()
+                        }),
+                        callHistory: Vr()({
+                            axios: xe()
+                        }),
+                        device: (0, Jr.device)(),
+                        mediaDevices: (0, Jr.mediaDevices)(),
+                        browserPermissionDevices: (0, Jr.browserPermissionDevices)(),
+                        conferenceSchemes: Xr()({
+                            axios: xe()
+                        }),
+                        userSettings: qr()({
+                            axios: xe()
+                        }),
+                        registrationInConference: Fr()({
+                            axios: xe()
+                        }),
+                        licenseSlots: Tr()({
+                            axios: xe()
+                        })
+                    }
+                },
+                wn = r(3047),
+                Sn = r.n(wn),
+                _n = r(44929),
+                On = r.n(_n),
+                kn = (0, s.nY)("authManager", {
+                    state: function() {
+                        return {
+                            visibility: !1,
+                            moduleScreen: {
+                                mode: "signIn",
+                                screen: {
+                                    signIn: "user",
+                                    signUp: "form",
+                                    resetPassword: "form",
+                                    error: "httpsError"
+                                }
+                            },
+                            tempData: null,
+                            outerLogoutSrc: null,
+                            outerError: null,
+                            permissions: {
+                                userAuthorization: !0,
+                                guestAuthorization: !0,
+                                accountCreation: !0,
+                                resetPassword: !0,
+                                accountCreationEnabled: !0,
+                                outerRegisterInConferenceForm: !1
+                            },
+                            actionsAfterAuthorization: {
+                                signIn: null,
+                                signUp: null,
+                                resetPassword: null
+                            }
+                        }
+                    }
+                });
+
+            function En(t) {
+                return En = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, En(t)
+            }
+
+            function Tn() {
+                Tn = function() {
+                    return e
+                };
+                var t, e = {},
+                    r = Object.prototype,
+                    n = r.hasOwnProperty,
+                    a = Object.defineProperty || function(t, e, r) {
+                        t[e] = r.value
+                    },
+                    i = "function" == typeof Symbol ? Symbol : {},
+                    o = i.iterator || "@@iterator",
+                    s = i.asyncIterator || "@@asyncIterator",
+                    c = i.toStringTag || "@@toStringTag";
+
+                function l(t, e, r) {
+                    return Object.defineProperty(t, e, {
+                        value: r,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0
+                    }), t[e]
+                }
+                try {
+                    l({}, "")
+                } catch (t) {
+                    l = function(t, e, r) {
+                        return t[e] = r
+                    }
+                }
+
+                function u(t, e, r, n) {
+                    var i = e && e.prototype instanceof A ? e : A,
+                        o = Object.create(i.prototype),
+                        s = new L(n || []);
+                    return a(o, "_invoke", {
+                        value: k(t, r, s)
+                    }), o
+                }
+
+                function d(t, e, r) {
+                    try {
+                        return {
+                            type: "normal",
+                            arg: t.call(e, r)
+                        }
+                    } catch (t) {
+                        return {
+                            type: "throw",
+                            arg: t
+                        }
+                    }
+                }
+                e.wrap = u;
+                var f = "suspendedStart",
+                    p = "suspendedYield",
+                    h = "executing",
+                    g = "completed",
+                    y = {};
+
+                function A() {}
+
+                function m() {}
+
+                function v() {}
+                var x = {};
+                l(x, o, (function() {
+                    return this
+                }));
+                var b = Object.getPrototypeOf,
+                    w = b && b(b(P([])));
+                w && w !== r && n.call(w, o) && (x = w);
+                var S = v.prototype = A.prototype = Object.create(x);
+
+                function _(t) {
+                    ["next", "throw", "return"].forEach((function(e) {
+                        l(t, e, (function(t) {
+                            return this._invoke(e, t)
+                        }))
+                    }))
+                }
+
+                function O(t, e) {
+                    function r(a, i, o, s) {
+                        var c = d(t[a], t, i);
+                        if ("throw" !== c.type) {
+                            var l = c.arg,
+                                u = l.value;
+                            return u && "object" == En(u) && n.call(u, "__await") ? e.resolve(u.__await).then((function(t) {
+                                r("next", t, o, s)
+                            }), (function(t) {
+                                r("throw", t, o, s)
+                            })) : e.resolve(u).then((function(t) {
+                                l.value = t, o(l)
+                            }), (function(t) {
+                                return r("throw", t, o, s)
+                            }))
+                        }
+                        s(c.arg)
+                    }
+                    var i;
+                    a(this, "_invoke", {
+                        value: function(t, n) {
+                            function a() {
+                                return new e((function(e, a) {
+                                    r(t, n, e, a)
+                                }))
+                            }
+                            return i = i ? i.then(a, a) : a()
+                        }
+                    })
+                }
+
+                function k(e, r, n) {
+                    var a = f;
+                    return function(i, o) {
+                        if (a === h) throw new Error("Generator is already running");
+                        if (a === g) {
+                            if ("throw" === i) throw o;
+                            return {
+                                value: t,
+                                done: !0
+                            }
+                        }
+                        for (n.method = i, n.arg = o;;) {
+                            var s = n.delegate;
+                            if (s) {
+                                var c = E(s, n);
+                                if (c) {
+                                    if (c === y) continue;
+                                    return c
+                                }
+                            }
+                            if ("next" === n.method) n.sent = n._sent = n.arg;
+                            else if ("throw" === n.method) {
+                                if (a === f) throw a = g, n.arg;
+                                n.dispatchException(n.arg)
+                            } else "return" === n.method && n.abrupt("return", n.arg);
+                            a = h;
+                            var l = d(e, r, n);
+                            if ("normal" === l.type) {
+                                if (a = n.done ? g : p, l.arg === y) continue;
+                                return {
+                                    value: l.arg,
+                                    done: n.done
+                                }
+                            }
+                            "throw" === l.type && (a = g, n.method = "throw", n.arg = l.arg)
+                        }
+                    }
+                }
+
+                function E(e, r) {
+                    var n = r.method,
+                        a = e.iterator[n];
+                    if (a === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, E(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+                    var i = d(a, e.iterator, r.arg);
+                    if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+                    var o = i.arg;
+                    return o ? o.done ? (r[e.resultName] = o.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : o : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y)
+                }
+
+                function T(t) {
+                    var e = {
+                        tryLoc: t[0]
+                    };
+                    1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e)
+                }
+
+                function M(t) {
+                    var e = t.completion || {};
+                    e.type = "normal", delete e.arg, t.completion = e
+                }
+
+                function L(t) {
+                    this.tryEntries = [{
+                        tryLoc: "root"
+                    }], t.forEach(T, this), this.reset(!0)
+                }
+
+                function P(e) {
+                    if (e || "" === e) {
+                        var r = e[o];
+                        if (r) return r.call(e);
+                        if ("function" == typeof e.next) return e;
+                        if (!isNaN(e.length)) {
+                            var a = -1,
+                                i = function r() {
+                                    for (; ++a < e.length;)
+                                        if (n.call(e, a)) return r.value = e[a], r.done = !1, r;
+                                    return r.value = t, r.done = !0, r
+                                };
+                            return i.next = i
+                        }
+                    }
+                    throw new TypeError(En(e) + " is not iterable")
+                }
+                return m.prototype = v, a(S, "constructor", {
+                    value: v,
+                    configurable: !0
+                }), a(v, "constructor", {
+                    value: m,
+                    configurable: !0
+                }), m.displayName = l(v, c, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+                    var e = "function" == typeof t && t.constructor;
+                    return !!e && (e === m || "GeneratorFunction" === (e.displayName || e.name))
+                }, e.mark = function(t) {
+                    return Object.setPrototypeOf ? Object.setPrototypeOf(t, v) : (t.__proto__ = v, l(t, c, "GeneratorFunction")), t.prototype = Object.create(S), t
+                }, e.awrap = function(t) {
+                    return {
+                        __await: t
+                    }
+                }, _(O.prototype), l(O.prototype, s, (function() {
+                    return this
+                })), e.AsyncIterator = O, e.async = function(t, r, n, a, i) {
+                    void 0 === i && (i = Promise);
+                    var o = new O(u(t, r, n, a), i);
+                    return e.isGeneratorFunction(r) ? o : o.next().then((function(t) {
+                        return t.done ? t.value : o.next()
+                    }))
+                }, _(S), l(S, c, "Generator"), l(S, o, (function() {
+                    return this
+                })), l(S, "toString", (function() {
+                    return "[object Generator]"
+                })), e.keys = function(t) {
+                    var e = Object(t),
+                        r = [];
+                    for (var n in e) r.push(n);
+                    return r.reverse(),
+                        function t() {
+                            for (; r.length;) {
+                                var n = r.pop();
+                                if (n in e) return t.value = n, t.done = !1, t
+                            }
+                            return t.done = !0, t
+                        }
+                }, e.values = P, L.prototype = {
+                    constructor: L,
+                    reset: function(e) {
+                        if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(M), !e)
+                            for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t)
+                    },
+                    stop: function() {
+                        this.done = !0;
+                        var t = this.tryEntries[0].completion;
+                        if ("throw" === t.type) throw t.arg;
+                        return this.rval
+                    },
+                    dispatchException: function(e) {
+                        if (this.done) throw e;
+                        var r = this;
+
+                        function a(n, a) {
+                            return s.type = "throw", s.arg = e, r.next = n, a && (r.method = "next", r.arg = t), !!a
+                        }
+                        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                            var o = this.tryEntries[i],
+                                s = o.completion;
+                            if ("root" === o.tryLoc) return a("end");
+                            if (o.tryLoc <= this.prev) {
+                                var c = n.call(o, "catchLoc"),
+                                    l = n.call(o, "finallyLoc");
+                                if (c && l) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0);
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                } else if (c) {
+                                    if (this.prev < o.catchLoc) return a(o.catchLoc, !0)
+                                } else {
+                                    if (!l) throw new Error("try statement without catch or finally");
+                                    if (this.prev < o.finallyLoc) return a(o.finallyLoc)
+                                }
+                            }
+                        }
+                    },
+                    abrupt: function(t, e) {
+                        for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                            var a = this.tryEntries[r];
+                            if (a.tryLoc <= this.prev && n.call(a, "finallyLoc") && this.prev < a.finallyLoc) {
+                                var i = a;
+                                break
+                            }
+                        }
+                        i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+                        var o = i ? i.completion : {};
+                        return o.type = t, o.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(o)
+                    },
+                    complete: function(t, e) {
+                        if ("throw" === t.type) throw t.arg;
+                        return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y
+                    },
+                    finish: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), M(r), y
+                        }
+                    },
+                    catch: function(t) {
+                        for (var e = this.tryEntries.length - 1; e >= 0; --e) {
+                            var r = this.tryEntries[e];
+                            if (r.tryLoc === t) {
+                                var n = r.completion;
+                                if ("throw" === n.type) {
+                                    var a = n.arg;
+                                    M(r)
+                                }
+                                return a
+                            }
+                        }
+                        throw new Error("illegal catch attempt")
+                    },
+                    delegateYield: function(e, r, n) {
+                        return this.delegate = {
+                            iterator: P(e),
+                            resultName: r,
+                            nextLoc: n
+                        }, "next" === this.method && (this.arg = t), y
+                    }
+                }, e
+            }
+
+            function Mn(t, e, r, n, a, i, o) {
+                try {
+                    var s = t[i](o),
+                        c = s.value
+                } catch (t) {
+                    return void r(t)
+                }
+                s.done ? e(c) : Promise.resolve(c).then(n, a)
+            }
+
+            function Ln(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function Pn(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? Ln(Object(r), !0).forEach((function(e) {
+                        Gn(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : Ln(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function Gn(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != En(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != En(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == En(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            i().use(o.Ay), i().use(s.R2), i().use(c.Ay), i().use(d()), i().use(f.A), i().use(p.Ay), i().use(Ye), i().use(Sn()), i().use(On()), i().directive("mdl", Ht), i().directive("pointer-auto-blur", Ft);
+            var Un = new o.Ay.Store(bn);
+            (0, l.O)(Un, Re);
+            var Zn = (0, s.Ey)();
+            Zn.use((function(t) {
+                var e = t.store,
+                    r = t.app,
+                    n = e.$dispose;
+                e.$app = r, e.$dispose = function() {
+                    e.$reset(), n()
+                }
+            })), i().mixin({
+                created: function() {
+                    this.console = window.console
+                },
+                methods: {
+                    notify: function() {
+                        var t;
+                        return (t = this.appStateStore).notify.apply(t, arguments)
+                    },
+                    closeNotify: function() {
+                        var t;
+                        return (t = this.appStateStore).closeNotify.apply(t, arguments)
+                    },
+                    getNotifyList: function() {
+                        var t;
+                        return (t = this.appStateStore).getNotifyList.apply(t, arguments)
+                    },
+                    authorizationHandler: function() {
+                        var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null,
+                            e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
+                        if (this.me && "user" === this.me.type) this.redirectTo(t);
+                        else {
+                            var r = "conferenceMain" === t;
+                            (!this.currentConference || this.currentConference && !this.currentConference.allow_guests) && (r = !1), e && (this.authManagerStore.moduleScreen.screen.signIn = e), this.authManagerStore.actionsAfterAuthorization.signIn = t, this.authManagerStore.moduleScreen.mode = "signIn", this.authManagerStore.permissions = Pn(Pn({}, this.authManagerStore.permissions), {}, {
+                                userAuthorization: !0,
+                                guestAuthorization: r,
+                                accountCreation: !1,
+                                resetPassword: !1
+                            }), this.authManagerStore.visibility = !0
+                        }
+                    },
+                    redirectTo: function(t) {
+                        var e, r = this;
+                        return (e = Tn().mark((function e() {
+                            return Tn().wrap((function(e) {
+                                for (;;) switch (e.prev = e.next) {
+                                    case 0:
+                                        if (t) {
+                                            e.next = 2;
+                                            break
+                                        }
+                                        return e.abrupt("return");
+                                    case 2:
+                                        if ("conferenceMain" !== t) {
+                                            e.next = 6;
+                                            break
+                                        }
+                                        return e.next = 5, r.$store.dispatch("auth/checkAuthorization", "sync");
+                                    case 5:
+                                        r.$router.push({
+                                            name: "conference.main",
+                                            params: {
+                                                id: r.$route.params.id
+                                            }
+                                        });
+                                    case 6:
+                                        if ("conferenceWebRTC" !== t) {
+                                            e.next = 10;
+                                            break
+                                        }
+                                        return e.next = 9, r.$store.dispatch("auth/checkAuthorization", "sync");
+                                    case 9:
+                                        r.$router.push({
+                                            name: "conference.conference",
+                                            params: {
+                                                id: r.$route.params.id
+                                            }
+                                        });
+                                    case 10:
+                                        "conferenceScheduler" === t && r.$router.push({
+                                            name: "user.createConference",
+                                            params: {
+                                                type: "conference"
+                                            }
+                                        }), "conferenceList" === t && r.$router.push({
+                                            name: "user.conferenceList",
+                                            params: {
+                                                type: "conference"
+                                            }
+                                        }), "personalArea" === t && r.$router.push({
+                                            name: "user.general"
+                                        });
+                                    case 13:
+                                    case "end":
+                                        return e.stop()
+                                }
+                            }), e)
+                        })), function() {
+                            var t = this,
+                                r = arguments;
+                            return new Promise((function(n, a) {
+                                var i = e.apply(t, r);
+
+                                function o(t) {
+                                    Mn(i, n, a, o, s, "next", t)
+                                }
+
+                                function s(t) {
+                                    Mn(i, n, a, o, s, "throw", t)
+                                }
+                                o(void 0)
+                            }))
+                        })()
+                    }
+                },
+                computed: Pn(Pn(Pn({}, (0, s.n2)(kn, Ze)), (0, o.L8)({
+                    me: "auth/getAuthorizationUserInfo",
+                    serverInfo: "server/getServerInfo",
+                    storageType: "server/getStorageType",
+                    serverContacts: "server/getServerContacts",
+                    appDocumentation: "server/getDocumentation",
+                    softwareClients: "softwareClients/getSoftwareClients",
+                    deeplinks: "softwareClients/getDeeplinks",
+                    currentConference: "conference/getConference",
+                    browser: "device/getBrowser",
+                    system: "device/getSystem",
+                    platform: "device/getPlatform",
+                    currentPlatform: "device/getPlatform",
+                    window: "device/getWindow",
+                    enableDirectoryState: "users/getEnableDirectoryState"
+                })), {}, {
+                    isMobile: function() {
+                        return this.platform.mobile || this.window.width <= 450
+                    },
+                    isInAppMode: function() {
+                        return "inapp" === this.appStateStore.launchMode
+                    },
+                    newQtVersion: function() {
+                        return /8\.[0-9]+\.[0-9]+/.test(this.appStateStore.clientVersion)
+                    }
+                })
+            });
+            var jn = new(i())({
+                el: "#root",
+                store: Un,
+                pinia: Zn,
+                created: function() {
+                    var t = this;
+                    if (this.isInAppMode) {
+                        var e = document.querySelector("body"),
+                            r = document.createElement("script");
+                        r.src = "qrc:///qtwebchannel/qwebchannel.js", e.appendChild(r)
+                    } else window.addEventListener("storage", (function(e) {
+                        if (e.key === t.$store.state.auth.localStorageParamName) {
+                            var r = null;
+                            try {
+                                r = JSON.parse(e.newValue)
+                            } catch (t) {
+                                console.warn(t)
+                            }
+                            t.$store.dispatch("auth/checkAuthorization", r).catch((function(e) {
+                                xe().isCancel(e) || t.$router.push({
+                                    name: "guest.main"
+                                })
+                            }))
+                        }
+                    }))
+                },
+                router: Re,
+                render: function(t) {
+                    return t(qt)
+                }
+            });
+            Un.$app = jn
+        },
+        61465: function(t, e, r) {
+            "use strict";
+            var n = r(91563);
+            e.A = (0, n.nY)("conferenceState", {
+                state: function() {
+                    return {
+                        randomGuestName: "",
+                        registrationErrors: null,
+                        localeTimestampInSeconds: Math.round(Date.now() / 1e3),
+                        description: {
+                            text: ""
+                        }
+                    }
+                }
+            })
+        },
+        460: function(t, e, r) {
+            "use strict";
+            r.d(e, {
+                A: function() {
+                    return i
+                }
+            });
+            var n = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "admin-contacts"
+                }, [t._l(t.contacts, (function(r) {
+                    return e("div", {
+                        key: r.type,
+                        staticClass: "admin-contacts__item"
+                    }, [e("p", {
+                        staticClass: "admin-contacts__label"
+                    }, [t._v("\n      " + t._s(r.label) + "\n    ")]), t._v(" "), "email" !== r.type ? e("p", {
+                        staticClass: "admin-contacts__desc",
+                        attrs: {
+                            title: r.value
+                        }
+                    }, [t._v("\n      " + t._s(r.value) + "\n    ")]) : t._e(), t._v(" "), "email" === r.type ? e("a", {
+                        staticClass: "admin-contacts__desc",
+                        attrs: {
+                            href: "mailto:".concat(r.value),
+                            title: r.value
+                        }
+                    }, [t._v(t._s(r.value))]) : t._e()])
+                })), t._v(" "), !t.contacts.length && t.emptyMessage ? e("div", {
+                    staticClass: "admin-contacts__content-is-empty"
+                }, [e("p", {
+                    staticClass: "admin-contacts__content-is-empty__desc"
+                }, [t._v("\n      " + t._s(t.$pgettext("Error message", "Unfortunately, your administrator did not leave any contact details.")) + "\n    ")])]) : t._e()], 2)
+            };
+            n._withStripped = !0;
+            var a = {
+                    name: "AdminContacts",
+                    props: {
+                        emptyMessage: {
+                            type: Boolean,
+                            default: !0
+                        }
+                    },
+                    computed: {
+                        contacts: function() {
+                            return [{
+                                label: this.$pgettext("Subheader", "Your administrator"),
+                                value: this.serverContacts.adminName,
+                                type: "name"
+                            }, {
+                                label: this.$pgettext("Subheader", "Phone"),
+                                value: this.serverContacts.phone,
+                                type: "tel"
+                            }, {
+                                label: this.$pgettext("Subheader", "Email"),
+                                value: this.serverContacts.email,
+                                type: "email"
+                            }].filter((function(t) {
+                                return t.value
+                            }))
+                        }
+                    }
+                },
+                i = (0, r(14486).A)(a, n, [], !1, null, null, null).exports
+        },
+        85867: function(t, e, r) {
+            "use strict";
+            r.d(e, {
+                A: function() {
+                    return A
+                }
+            });
+            var n = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("TcModal", {
+                    ref: "warningModal",
+                    staticClass: "warning-modal",
+                    on: {
+                        close: function(e) {
+                            return t.$emit("close")
+                        }
+                    },
+                    scopedSlots: t._u([{
+                        key: "header",
+                        fn: function() {
+                            return [e("div")]
+                        },
+                        proxy: !0
+                    }, {
+                        key: "content",
+                        fn: function() {
+                            return [t.reasonDescription ? e(t.reasonDescription.component, t._g(t._b({
+                                tag: "component"
+                            }, "component", t.reasonDescription.props, !1), t.reasonDescription.actions)) : t._e()]
+                        },
+                        proxy: !0
+                    }])
+                })
+            };
+            n._withStripped = !0;
+            var a = function() {
+                var t = this,
+                    e = t._self._c;
+                return e("div", {
+                    staticClass: "warning-modal__content"
+                }, [e("div", {
+                    staticClass: "warning-modal__info",
+                    class: {
+                        "warning-modal__info--center": "EDIT_IS_UNAVAILABLE" !== t.content.reason
+                    }
+                }, [e("div", {
+                    staticClass: "warning-modal__title-block"
+                }, [e("p", {
+                    staticClass: "warning-modal__title"
+                }, [t._v("\n        " + t._s(t.content.header) + "\n      ")])]), t._v(" "), e("div", {
+                    staticClass: "warning-modal__desc-block"
+                }, [e("p", {
+                    staticClass: "warning-modal__desc"
+                }, [t._v("\n        " + t._s(t.content.description) + "\n      ")]), t._v(" "), "EDIT_IS_UNAVAILABLE" === t.content.reason ? e("div", {
+                    staticClass: "warning-modal__admin-contacts"
+                }, [e("AdminContacts", {
+                    attrs: {
+                        emptyMessage: !1
+                    }
+                })], 1) : t._e(), t._v(" "), t.content.subButton ? e("TcButton", {
+                    staticClass: "warning-modal__auth-button",
+                    attrs: {
+                        type: "unelevated",
+                        mode: "secondary",
+                        text: t.$pgettext("A button", "Authorization"),
+                        id: "warning-authorization"
+                    },
+                    on: {
+                        click: function(e) {
+                            t.authorizationHandler(t.$route.name && -1 !== t.$route.name.search(/^conference\./) ? "conferenceMain" : null)
+                        }
+                    }
+                }) : t._e()], 1)]), t._v(" "), e("div", {
+                    staticClass: "warning-modal__picture-container"
+                }, [e("div", {
+                    staticClass: "warning-modal__picture",
+                    domProps: {
+                        innerHTML: t._s(t.content.image || t.illustrationerror)
+                    }
+                })]), t._v(" "), e("TcButton", {
+                    staticClass: "warning-modal__close-button",
+                    attrs: {
+                        icon: "close",
+                        id: "warning-close"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.$emit("close")
+                        }
+                    }
+                })], 1)
+            };
+            a._withStripped = !0;
+            var i = r(460),
+                o = {
+                    props: {
+                        content: {
+                            type: Object,
+                            required: !0
+                        }
+                    },
+                    components: {
+                        AdminContacts: i.A
+                    },
+                    data: function() {
+                        return {
+                            illustrationerror: '<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="326.69" y1="180.87" x2="60.09" y2="108.85" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-736.85" y1="276.05" x2="-656.06" y2="276.05" gradientTransform="translate(868 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-6" x1="135.98" y1="112.71" x2="207.25" y2="112.71" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cddeb"/><stop offset="1" stop-color="#58d3e0"/></linearGradient><linearGradient id="linear-gradient-7" x1="153.69" y1="100.3" x2="189.22" y2="100.3" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="linear-gradient-8" x1="144.02" y1="136.29" x2="199.21" y2="136.29" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-9" x1="116.01" y1="167.42" x2="226.89" y2="167.42" xlink:href="#linear-gradient-6"/><linearGradient id="linear-gradient-10" x1="131.5" y1="167.42" x2="141.89" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="148.88" y1="167.42" x2="159.27" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="166.26" y1="167.42" x2="176.65" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-13" x1="183.63" y1="167.42" x2="194.03" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="201.01" y1="167.42" x2="211.41" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-15" x1="145.99" y1="193.79" x2="197.54" y2="193.79" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ac3b"/><stop offset="1" stop-color="#f99446"/></linearGradient><linearGradient id="linear-gradient-16" x1="186.39" y1="194" x2="157.13" y2="193.59" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-17" x1="254.39" y1="232.86" x2="263.77" y2="232.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-18" x1="254.93" y1="228.65" x2="264.36" y2="228.65" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-19" x1="258.58" y1="212.14" y2="212.14" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-20" x1="248.15" y1="236.24" x2="251.84" y2="236.24" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-21" x1="249.07" y1="224.39" x2="250.61" y2="224.39" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-22" x1="266.53" y1="274.61" x2="236.29" y2="249.19" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-23" x1="255.11" y1="246.9" x2="265.52" y2="281.1" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-24" x1="-8905.14" y1="262.76" x2="-8876.7" y2="262.76" gradientTransform="translate(-8801.62) rotate(-180) scale(1 -1)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-25" x1="76.09" y1="262" x2="102.76" y2="262" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-26" x1="-8840.99" y1="242.17" x2="-8812.69" y2="242.17" gradientTransform="translate(-8736.95) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset=".21" stop-color="#58d5e2"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-27" x1="137.13" y1="244.97" x2="170.87" y2="244.97" gradientTransform="translate(-64.43)" xlink:href="#linear-gradient-25"/><linearGradient id="linear-gradient-28" x1="85.25" y1="262" x2="93.6" y2="262" xlink:href="#linear-gradient-7"/></defs><g id="Layer_1-2"><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(-180)" style="fill:url(#linear-gradient-5);"/><g><g><path d="M207.25,112.67c0,7.05-2.07,13.94-5.99,19.81-3.91,5.87-9.47,10.44-15.99,13.15-6.51,2.7-13.68,3.42-20.59,2.05-6.92-1.37-13.27-4.76-18.26-9.74-4.99-4.98-8.39-11.33-9.77-18.25-1.38-6.91-.68-14.08,2.02-20.6,2.7-6.52,7.26-12.08,13.13-16,5.86-3.92,12.75-6.01,19.8-6.01,4.68,0,9.31,.91,13.63,2.7,4.32,1.79,8.25,4.41,11.56,7.71,3.31,3.31,5.94,7.23,7.73,11.55,1.79,4.32,2.71,8.95,2.71,13.63Z" style="fill:url(#linear-gradient-6);"/><path d="M171.45,118.07c9.81,0,17.77-7.96,17.77-17.77s-7.96-17.77-17.77-17.77-17.77,7.95-17.77,17.77,7.95,17.77,17.77,17.77Z" style="fill:url(#linear-gradient-7);"/><path d="M199.21,135.23c-3.34,4.09-7.55,7.38-12.33,9.64-4.77,2.26-9.99,3.44-15.27,3.44s-10.5-1.17-15.27-3.44c-4.77-2.26-8.98-5.56-12.33-9.64,2.45-3.4,5.67-6.16,9.4-8.07,3.73-1.91,7.86-2.9,12.04-2.89h12.31c4.19,0,8.32,.99,12.04,2.9,3.73,1.91,6.95,4.67,9.4,8.07Z" style="fill:url(#linear-gradient-8);"/></g><g><rect x="116.01" y="155.54" width="110.88" height="23.75" rx="3.81" ry="3.81" style="fill:url(#linear-gradient-9);"/><g><circle cx="136.7" cy="167.42" r="5.2" style="fill:url(#linear-gradient-10);"/><circle cx="154.07" cy="167.42" r="5.2" style="fill:url(#linear-gradient-11);"/><circle cx="171.45" cy="167.42" r="5.2" style="fill:url(#linear-gradient-12);"/><circle cx="188.83" cy="167.42" r="5.2" style="fill:url(#linear-gradient-13);"/><circle cx="206.21" cy="167.42" r="5.2" style="fill:url(#linear-gradient-14);"/></g></g><g><path d="M195.39,186.05h-47.26c-1.19,0-2.15,.96-2.15,2.15v11.18c0,1.19,.96,2.15,2.15,2.15h47.26c1.19,0,2.15-.96,2.15-2.15v-11.18c0-1.19-.96-2.15-2.15-2.15Z" style="fill:url(#linear-gradient-15);"/><path d="M184.25,195.94h-24.97c-1.19,0-2.15-.96-2.15-2.15s.96-2.15,2.15-2.15h24.97c1.19,0,2.15,.96,2.15,2.15s-.96,2.15-2.15,2.15Z" style="fill:url(#linear-gradient-16);"/></g></g></g><g><polygon points="263.77 216.53 263.49 218.8 260.93 239.15 259.58 249.83 256.92 249.5 254.39 249.18 255.73 238.49 258.29 218.15 258.58 215.88 261.11 216.19 263.77 216.53" style="fill:url(#linear-gradient-17);"/><path d="M264.35,219.84l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-18);"/><polygon points="263.77 216.53 261.11 216.19 258.58 215.88 262.12 208.17 262.31 207.76 263.77 216.53" style="fill:url(#linear-gradient-19);"/><rect x="248.15" y="225.62" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-20);"/><path d="M250.61,223.19v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-21);"/><path d="M251.84,226.22v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M262.12,208.17l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M261.15,280.59h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-22);"/><path d="M265.67,247.68l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-23); opacity:.4;"/></g><g id="Group_947" transform="translate(310.612,110.434)"><g id="Group_946" transform="translate(1.629,2.471)"><g id="Group_945"><path id="Path_1315" d="M103.52,244.92c-.32,3.53-.64,6.75-.96,9.64-.48,5.14-.96,9.64-1.45,14.78-.27,2.83-.65,5.78-.96,9.21-.1,1.15-1.07,2.03-2.23,2.03h-17.15c-1.14,0-2.1-.86-2.22-1.99-.36-3.37-.63-6.43-.9-9.26-.48-5.14-.96-9.48-1.61-14.78-.32-2.89-.64-6.11-.96-9.64h28.44Z" style="fill:url(#linear-gradient-24);"/></g></g><path id="Path_1316" d="M76.09,254.61c.48,5.14,.96,9.64,1.45,14.78h23.62c.48-5.14,.96-9.48,1.61-14.78h-26.67Z" style="fill:url(#linear-gradient-25);"/><path id="Rectangle_770" d="M75.51,240.16h27.83c.39,0,.71,.39,.71,.88v2.24c0,.49-.32,.88-.71,.88h-27.83c-.39,0-.71-.39-.71-.88v-2.24c0-.49,.32-.88,.71-.88Z" style="fill:url(#linear-gradient-26);"/><rect id="Rectangle_769" x="72.56" y="242.56" width="33.74" height="4.82" rx=".71" ry=".71" style="fill:url(#linear-gradient-27);"/><path id="Path_1317" d="M93.6,262c0-2.41-1.93-4.18-4.18-4.18-2.41,0-4.18,1.93-4.18,4.18s1.93,4.18,4.18,4.18c2.25,0,4.18-1.93,4.18-4.18h0Z" style="fill:url(#linear-gradient-28); opacity:.5;"/></g></g></g></svg>'
+                        }
+                    }
+                },
+                s = r(14486),
+                c = (0, s.A)(o, a, [], !1, null, null, null).exports,
+                l = function() {
+                    var t = this,
+                        e = t._self._c;
+                    return e("div", {
+                        staticClass: "auth-expired"
+                    }, [e("div", {
+                        staticClass: "auth-expired__header"
+                    }, [e("TcButton", {
+                        staticClass: "auth-expired__header-close",
+                        attrs: {
+                            icon: "close",
+                            id: "warning-close"
+                        },
+                        on: {
+                            click: function(e) {
+                                return t.$emit("close")
+                            }
+                        }
+                    })], 1), t._v(" "), e("div", {
+                        staticClass: "auth-expired__container"
+                    }, [e("div", {
+                        staticClass: "auth-expired__icon",
+                        domProps: {
+                            innerHTML: t._s(t.expireTokenErrorIllistration)
+                        }
+                    }), t._v(" "), e("p", {
+                        staticClass: "auth-expired__title"
+                    }, [t._v("\n      " + t._s(t.content.header) + "\n    ")]), t._v(" "), e("p", {
+                        staticClass: "auth-expired__description"
+                    }, [t._v("\n      " + t._s(t.content.description) + "\n    ")])]), t._v(" "), e("div", {
+                        staticClass: "auth-expired__footer"
+                    }, [e("TcButton", {
+                        staticClass: "auth-expired__button",
+                        attrs: {
+                            text: t.$pgettext("The button that will close the dialogue window.", "Cancel")
+                        },
+                        on: {
+                            click: function(e) {
+                                return t.$emit("close")
+                            }
+                        }
+                    }), t._v(" "), e("TcButton", {
+                        attrs: {
+                            type: "unelevated",
+                            mode: "secondary",
+                            text: t.$pgettext("The button that enables a user to sign in to his/her personal area.", "Sign in")
+                        },
+                        on: {
+                            click: function(e) {
+                                return t.$emit("apply")
+                            }
+                        }
+                    })], 1)])
+                };
+            l._withStripped = !0;
+            var u = {
+                    name: "ExpiredTokenWarningModalContent",
+                    props: {
+                        content: {
+                            type: Object,
+                            required: !0
+                        }
+                    },
+                    data: function() {
+                        return {
+                            expireTokenErrorIllistration: '<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 344.79 344.78"><defs><linearGradient id="linear-gradient" x1="71.99" y1="193.9" x2="269.91" y2="329.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#50d8e0"/><stop offset="1" stop-color="#00858a"/></linearGradient><linearGradient id="linear-gradient-2" x1="326.69" y1="180.87" x2="60.09" y2="108.85" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".28" stop-color="#38b6c4"/><stop offset=".54" stop-color="#44bcca"/><stop offset=".74" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-3" x1="154.07" y1="277.29" x2="187.62" y2="224.76" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cdceb"/><stop offset=".48" stop-color="#57d8e7"/><stop offset=".94" stop-color="#4bcedc"/><stop offset="1" stop-color="#4acddb"/></linearGradient><linearGradient id="linear-gradient-4" x1="286.76" y1="196.04" x2="40.06" y2="74.14" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#99eaf6"/><stop offset="1" stop-color="#c2f0f6"/></linearGradient><linearGradient id="_езымянный_градиент_157" x1="132.6" y1="249.64" x2="210.31" y2="249.64" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45bac2"/><stop offset="1" stop-color="#0d9ba1"/></linearGradient><linearGradient id="_езымянный_градиент_192" x1="131.15" y1="276.05" x2="211.94" y2="276.05" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#17849e"/><stop offset="1" stop-color="#157087"/></linearGradient><linearGradient id="linear-gradient-5" x1="-736.85" y1="276.05" x2="-656.06" y2="276.05" gradientTransform="translate(868 552.11) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".3" stop-color="#38b6c4"/><stop offset=".6" stop-color="#44bcca"/><stop offset=".82" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-6" x1="135.98" y1="112.71" x2="207.25" y2="112.71" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cddeb"/><stop offset="1" stop-color="#58d3e0"/></linearGradient><linearGradient id="linear-gradient-7" x1="153.69" y1="100.3" x2="189.22" y2="100.3" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ffff"/><stop offset="1" stop-color="#e8feff"/></linearGradient><linearGradient id="linear-gradient-8" x1="144.02" y1="136.29" x2="199.21" y2="136.29" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-9" x1="116.01" y1="167.42" x2="226.89" y2="167.42" xlink:href="#linear-gradient-6"/><linearGradient id="linear-gradient-10" x1="131.5" y1="167.42" x2="141.89" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-11" x1="148.88" y1="167.42" x2="159.27" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-12" x1="166.26" y1="167.42" x2="176.65" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-13" x1="183.63" y1="167.42" x2="194.03" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-14" x1="201.01" y1="167.42" x2="211.41" y2="167.42" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-15" x1="145.99" y1="193.79" x2="197.54" y2="193.79" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f7ac3b"/><stop offset="1" stop-color="#f99446"/></linearGradient><linearGradient id="linear-gradient-16" x1="186.39" y1="194" x2="157.13" y2="193.59" xlink:href="#linear-gradient-7"/><linearGradient id="linear-gradient-17" x1="254.39" y1="232.86" x2="263.77" y2="232.86" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#23bccf"/><stop offset="1" stop-color="#268a96"/></linearGradient><linearGradient id="linear-gradient-18" x1="254.93" y1="228.65" x2="264.36" y2="228.65" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-19" x1="258.58" y1="212.14" y2="212.14" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-20" x1="248.15" y1="236.24" x2="251.84" y2="236.24" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-21" x1="249.07" y1="224.39" x2="250.61" y2="224.39" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-22" x1="266.53" y1="274.61" x2="236.29" y2="249.19" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34b4c2"/><stop offset=".32" stop-color="#38b6c4"/><stop offset=".63" stop-color="#44bcca"/><stop offset=".87" stop-color="#52c4d1"/></linearGradient><linearGradient id="linear-gradient-23" x1="255.11" y1="246.9" x2="265.52" y2="281.1" xlink:href="#linear-gradient-17"/><linearGradient id="linear-gradient-24" x1="-8905.14" y1="262.76" x2="-8876.7" y2="262.76" gradientTransform="translate(-8801.62) rotate(-180) scale(1 -1)" xlink:href="#linear-gradient-5"/><linearGradient id="linear-gradient-25" x1="76.09" y1="262" x2="102.76" y2="262" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-26" x1="-8840.99" y1="242.17" x2="-8812.69" y2="242.17" gradientTransform="translate(-8736.95) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ad8e6"/><stop offset=".21" stop-color="#58d5e2"/><stop offset="1" stop-color="#56cedb"/></linearGradient><linearGradient id="linear-gradient-27" x1="137.13" y1="244.97" x2="170.87" y2="244.97" gradientTransform="translate(-64.43)" xlink:href="#linear-gradient-25"/><linearGradient id="linear-gradient-28" x1="85.25" y1="262" x2="93.6" y2="262" xlink:href="#linear-gradient-7"/></defs><g id="Layer_1-2"><g><path d="M344.79,172.39c0,27.83-6.59,54.11-18.3,77.38-28.36,56.35-86.72,95.01-154.1,95.01S46.66,306.12,18.3,249.77C6.59,226.5,0,200.22,0,172.39,0,77.18,77.19,0,172.39,0s172.4,77.18,172.4,172.39Z" style="fill:#cff1f6;"/><path d="M326.1,249.64c-28.36,56.35-86.72,95.01-154.1,95.01S46.27,305.99,17.91,249.64H326.1Z" style="fill:url(#linear-gradient); opacity:.15;"/><g><g><g><rect x="24.54" y="51.11" width="294.92" height="175.94" rx="6.03" ry="6.03" style="fill:url(#linear-gradient-2);"/><rect x="132.6" y="227.06" width="77.71" height="46.03" style="fill:url(#linear-gradient-3);"/><rect x="34.35" y="61.95" width="275.17" height="154.7" rx="3.01" ry="3.01" style="fill:url(#linear-gradient-4);"/><path d="M210.31,227.06v45.17h-4.05c-9.23-40.41-61.26-41.75-73.65-40.53v-4.65h77.7Z" style="fill:url(#_езымянный_градиент_157); opacity:.2;"/><g style="opacity:.7;"><rect x="301.38" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="288.53" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/><rect x="275.69" y="220.64" width="10.13" height="4.36" rx=".63" ry=".63" style="fill:#268b98; opacity:.8;"/></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" style="fill:url(#_езымянный_градиент_192);"/></g><g style="opacity:.42;"><path d="M175.06,56.72c0,1.69-1.37,3.06-3.06,3.06s-3.06-1.37-3.06-3.06,1.37-3.06,3.06-3.06,3.06,1.37,3.06,3.06Z" style="fill:#268b98;"/></g></g><rect x="131.15" y="271.6" width="80.8" height="8.91" rx="3.3" ry="3.3" transform="translate(343.09 552.11) rotate(-180)" style="fill:url(#linear-gradient-5);"/><g><g><path d="M207.25,112.67c0,7.05-2.07,13.94-5.99,19.81-3.91,5.87-9.47,10.44-15.99,13.15-6.51,2.7-13.68,3.42-20.59,2.05-6.92-1.37-13.27-4.76-18.26-9.74-4.99-4.98-8.39-11.33-9.77-18.25-1.38-6.91-.68-14.08,2.02-20.6,2.7-6.52,7.26-12.08,13.13-16,5.86-3.92,12.75-6.01,19.8-6.01,4.68,0,9.31,.91,13.63,2.7,4.32,1.79,8.25,4.41,11.56,7.71,3.31,3.31,5.94,7.23,7.73,11.55,1.79,4.32,2.71,8.95,2.71,13.63Z" style="fill:url(#linear-gradient-6);"/><path d="M171.45,118.07c9.81,0,17.77-7.96,17.77-17.77s-7.96-17.77-17.77-17.77-17.77,7.95-17.77,17.77,7.95,17.77,17.77,17.77Z" style="fill:url(#linear-gradient-7);"/><path d="M199.21,135.23c-3.34,4.09-7.55,7.38-12.33,9.64-4.77,2.26-9.99,3.44-15.27,3.44s-10.5-1.17-15.27-3.44c-4.77-2.26-8.98-5.56-12.33-9.64,2.45-3.4,5.67-6.16,9.4-8.07,3.73-1.91,7.86-2.9,12.04-2.89h12.31c4.19,0,8.32,.99,12.04,2.9,3.73,1.91,6.95,4.67,9.4,8.07Z" style="fill:url(#linear-gradient-8);"/></g><g><rect x="116.01" y="155.54" width="110.88" height="23.75" rx="3.81" ry="3.81" style="fill:url(#linear-gradient-9);"/><g><circle cx="136.7" cy="167.42" r="5.2" style="fill:url(#linear-gradient-10);"/><circle cx="154.07" cy="167.42" r="5.2" style="fill:url(#linear-gradient-11);"/><circle cx="171.45" cy="167.42" r="5.2" style="fill:url(#linear-gradient-12);"/><circle cx="188.83" cy="167.42" r="5.2" style="fill:url(#linear-gradient-13);"/><circle cx="206.21" cy="167.42" r="5.2" style="fill:url(#linear-gradient-14);"/></g></g><g><path d="M195.39,186.05h-47.26c-1.19,0-2.15,.96-2.15,2.15v11.18c0,1.19,.96,2.15,2.15,2.15h47.26c1.19,0,2.15-.96,2.15-2.15v-11.18c0-1.19-.96-2.15-2.15-2.15Z" style="fill:url(#linear-gradient-15);"/><path d="M184.25,195.94h-24.97c-1.19,0-2.15-.96-2.15-2.15s.96-2.15,2.15-2.15h24.97c1.19,0,2.15,.96,2.15,2.15s-.96,2.15-2.15,2.15Z" style="fill:url(#linear-gradient-16);"/></g></g></g><g><polygon points="263.77 216.53 263.49 218.8 260.93 239.15 259.58 249.83 256.92 249.5 254.39 249.18 255.73 238.49 258.29 218.15 258.58 215.88 261.11 216.19 263.77 216.53" style="fill:url(#linear-gradient-17);"/><path d="M264.35,219.84l-2.33,18.51c-.06,.51-.53,.87-1.03,.8h-.06l-2.66-.34-2.53-.32h0c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8h0l2.53,.32,2.66,.34h.06c.51,.07,.87,.54,.8,1.04Z" style="fill:url(#linear-gradient-18);"/><polygon points="263.77 216.53 261.11 216.19 258.58 215.88 262.12 208.17 262.31 207.76 263.77 216.53" style="fill:url(#linear-gradient-19);"/><rect x="248.15" y="225.62" width="3.7" height="21.25" rx=".61" ry=".61" style="fill:url(#linear-gradient-20);"/><path d="M250.61,223.19v2.4s0,.02,0,.03c-.02,.17-.16,.31-.34,.31h-.86c-.18,0-.32-.14-.34-.31,0,0,0-.02,0-.03v-2.4c0-.19,.15-.34,.34-.34h.86c.19,0,.34,.15,.34,.34Z" style="fill:url(#linear-gradient-21);"/><path d="M251.84,226.22v20.04c0,.34-.27,.61-.61,.61h-1.4v-24.02h.43c.19,0,.34,.15,.34,.34v2.4s0,.02,0,.03h.63c.34,0,.61,.27,.61,.61Z" style="fill:#f9f9f9; opacity:.12;"/><path d="M262.12,208.17l-1.01,8.02-.29,2.27-2.56,20.35-1.35,10.68-2.53-.32,1.35-10.69c-.51-.07-.86-.53-.8-1.03l2.33-18.51c.06-.51,.52-.87,1.03-.8l.29-2.27,3.54-7.71Z" style="fill:#f9f9f9; opacity:.08;"/><path d="M261.15,280.59h-19.47c-1.3,0-2.37-1-2.46-2.3l-2.12-30.8c-.1-1.42,1.03-2.63,2.46-2.63h23.49c1.53,0,2.73,1.29,2.63,2.81l-2.11,30.67c-.09,1.26-1.14,2.24-2.4,2.24Z" style="fill:url(#linear-gradient-22);"/><path d="M265.67,247.68l-2.12,30.66c-.09,1.27-1.14,2.25-2.41,2.25h-6.29c.18-.34,.3-.74,.33-1.15l2.38-34.58h5.47c1.52,0,2.73,1.29,2.63,2.81Z" style="fill:url(#linear-gradient-23); opacity:.4;"/></g><g id="Group_947" transform="translate(310.612,110.434)"><g id="Group_946" transform="translate(1.629,2.471)"><g id="Group_945"><path id="Path_1315" d="M103.52,244.92c-.32,3.53-.64,6.75-.96,9.64-.48,5.14-.96,9.64-1.45,14.78-.27,2.83-.65,5.78-.96,9.21-.1,1.15-1.07,2.03-2.23,2.03h-17.15c-1.14,0-2.1-.86-2.22-1.99-.36-3.37-.63-6.43-.9-9.26-.48-5.14-.96-9.48-1.61-14.78-.32-2.89-.64-6.11-.96-9.64h28.44Z" style="fill:url(#linear-gradient-24);"/></g></g><path id="Path_1316" d="M76.09,254.61c.48,5.14,.96,9.64,1.45,14.78h23.62c.48-5.14,.96-9.48,1.61-14.78h-26.67Z" style="fill:url(#linear-gradient-25);"/><path id="Rectangle_770" d="M75.51,240.16h27.83c.39,0,.71,.39,.71,.88v2.24c0,.49-.32,.88-.71,.88h-27.83c-.39,0-.71-.39-.71-.88v-2.24c0-.49,.32-.88,.71-.88Z" style="fill:url(#linear-gradient-26);"/><rect id="Rectangle_769" x="72.56" y="242.56" width="33.74" height="4.82" rx=".71" ry=".71" style="fill:url(#linear-gradient-27);"/><path id="Path_1317" d="M93.6,262c0-2.41-1.93-4.18-4.18-4.18-2.41,0-4.18,1.93-4.18,4.18s1.93,4.18,4.18,4.18c2.25,0,4.18-1.93,4.18-4.18h0Z" style="fill:url(#linear-gradient-28); opacity:.5;"/></g></g></g></svg>'
+                        }
+                    }
+                },
+                d = (0, s.A)(u, l, [], !1, null, null, null).exports;
+
+            function f(t) {
+                return f = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, f(t)
+            }
+
+            function p(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function h(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? p(Object(r), !0).forEach((function(e) {
+                        g(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : p(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function g(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != f(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != f(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == f(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            var y = {
+                    name: "CommonWarningModal",
+                    props: {
+                        reason: {
+                            type: [String, Boolean],
+                            default: null
+                        }
+                    },
+                    components: {
+                        DefaultWarningModalContent: c,
+                        ExpiredTokenWarningModalContent: d
+                    },
+                    methods: {
+                        redirectUserToAuthorizationPage: function() {
+                            this.appStateStore.error = null, this.authManagerStore.moduleScreen.mode = "signIn", this.authManagerStore.permissions = h(h({}, this.authManagerStore.permissions), {}, {
+                                userAuthorization: !0,
+                                guestAuthorization: !1,
+                                accountCreation: !1,
+                                resetPassword: !1
+                            }), this.authManagerStore.actionsAfterAuthorization.signIn || -1 !== this.$route.name.search(/^conference\./) || (this.authManagerStore.actionsAfterAuthorization.signIn = "personalArea"), this.authManagerStore.visibility = !0, this.$emit("close")
+                        }
+                    },
+                    computed: {
+                        reasonDescription: function() {
+                            var t = this;
+                            return {
+                                participantsConnectionIsLocked: {
+                                    component: c,
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("The heading for a pop-up. The heading indicates that users are unable to join the ongoing meeting.", "The conference is locked"),
+                                            description: this.$pgettext("A text hint indicating that new participants will not be able to join an ongoing meeting. Please note that the owner is the user who created the conference. He/she has additional rights in comparison with other users.", "The conference is currently locked for all participants except the owner and moderators."),
+                                            subButton: !1
+                                        }
+                                    },
+                                    actions: {
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                },
+                                unavailableForNonParticipant: {
+                                    component: c,
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("A pop-up heading", "Access is denied"),
+                                            description: this.$pgettext("A notification in the pop-up window", "Only invited users can join the conference"),
+                                            subButton: !1
+                                        }
+                                    },
+                                    actions: {
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                },
+                                unavailableForGuest: {
+                                    component: c,
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("A pop-up heading", "Restricted access"),
+                                            description: this.$pgettext("A notification in the pop-up window", "Only invited users can join the conference"),
+                                            subButton: !0
+                                        }
+                                    },
+                                    actions: {
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                },
+                                unavaliableCookies: {
+                                    component: c,
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("A heading indicating that some features of a web page may be unavailable because cookies are disabled in the browser settings", "Cookies disabled"),
+                                            description: this.$pgettext("A text hint in the pop-up window", "Please enable cookies in your browser settings to access this page"),
+                                            subButton: !1
+                                        }
+                                    },
+                                    actions: {
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                },
+                                USER_IS_DISABLED: {
+                                    component: c,
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("A pop-up heading", "Access is denied"),
+                                            description: this.$pgettext("An error message displayed when a user tries to sign in.", "Your account was disabled. Please contact your server administrator")
+                                        }
+                                    },
+                                    actions: {
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                },
+                                SESSION_IS_EXPIRED: {
+                                    component: "ExpiredTokenWarningModalContent",
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("The heading for the notification displayed to a user when he/she is logged out of the web application. The user could be logged out because he/she stayed inactive for a certain time.", "Your session has expired"),
+                                            description: this.$pgettext("A text hint displayed to a user who wants to access the web application.", "Please sign in again to access the personal area.")
+                                        }
+                                    },
+                                    actions: {
+                                        apply: this.redirectUserToAuthorizationPage,
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                },
+                                EDIT_IS_UNAVAILABLE: {
+                                    component: c,
+                                    props: {
+                                        content: {
+                                            header: this.$pgettext("An error message displayed when a user tries to  edit his/her profile", "Profile editing is not available"),
+                                            description: this.$pgettext("Text in the pop-up window", "Your personal details cannot be updated. If you need to make changes, please contact your server administrator."),
+                                            image: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="239.948" viewBox="0 0 240 239.948"><defs><style>.a{fill:#99d6db;}.b{fill:#323232;}.c{fill:#ffbfa6;}.d{fill:#f0b49c;opacity:0.58;}.e{fill:#703c27;}.f{fill:#898889;}.g{fill:#8a898a;}.h{fill:#555350;}.i{fill:#eaa494;}.j{fill:#36261f;}.k{fill:#e0f1ff;}.l{fill:#d4005f;}.m{fill:#6c6b6a;}.n{fill:#b20d60;}.o{fill:#fff;}.p{fill:#c88a57;}.q{fill:#b3723e;}.r{fill:url(#a);}.s{fill:#b5b3b2;}.t{fill:#b0ddeb;opacity:0.25;}.u{fill:#f7f7f7;}.v{fill:#ededed;}.w{fill:#828282;}.x{fill:#4a4a4a;}.y{fill:none;stroke:#828282;stroke-miterlimit:10;stroke-width:3px;}</style><linearGradient id="a" x1="-1.195" y1="-2.079" x2="0.754" y2="0.887" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#e3e3e3"/><stop offset="0.21" stop-color="#dfdfdf"/><stop offset="0.43" stop-color="#d3d3d3"/><stop offset="0.64" stop-color="#bfbfbf"/><stop offset="0.84" stop-color="#a4a4a4"/><stop offset="1" stop-color="#8a8a8a"/></linearGradient></defs><g transform="translate(-67 -134)"><g transform="translate(67 134)"><path class="a" d="M240,119.979v.044a119.826,119.826,0,0,1-49.388,97q-4.5,3.28-9.291,6.132l-.145.089a119.389,119.389,0,0,1-59.584,16.708h-3.325a118.947,118.947,0,0,1-12.854-.852c-.852-.1-1.664-.206-2.492-.327A119.57,119.57,0,0,1,58.81,223.246l-.149-.089q-4.8-2.852-9.291-6.132A120,120,0,1,1,240,119.979Z" transform="translate(0.003 -0.006)"/><path class="b" d="M276.589,397.171v14.215a86.851,86.851,0,0,1-41.939,11.408h-2.424a85.179,85.179,0,0,1-9.291-.618c-.618-.069-1.212-.149-1.806-.234h0a86.369,86.369,0,0,1-30.66-10.5V397.22a29.557,29.557,0,0,1,17.584-27.053h0a28.9,28.9,0,0,1,6.383-1.992c.541-.105,1.095-.19,1.644-.267h0A29.447,29.447,0,0,1,220,367.65h27.041c.828,0,1.652.036,2.468.1h.032c.832.069,1.737.186,2.593.335.291.04.574.1.856.154l.719.154a28.964,28.964,0,0,1,3.749,1.143A29.6,29.6,0,0,1,276.577,397.2Z" transform="translate(-113.527 -219.138)"/><rect class="c" width="27.582" height="26.564" transform="translate(106.21 135.271)"/><path class="d" d="M290.522,338.9v5.328c-4.444,3.123-10.4,6.9-13.827,6.9-3.361-.032-9.408-3.983-13.735-7.376v-4.116Z" transform="translate(-156.734 -202.002)"/><path class="c" d="M282.417,190.452c.537,9.893-1.971,23.765-9.768,31.274a52.176,52.176,0,0,1-8.548,6.314c-5.457,3.264-8.3,4.944-12.119,4.944-4.1-.036-7.271-2.181-13.6-6.463a62.69,62.69,0,0,1-7.477-5.773c-10.192-9.824-9.465-28.875-9.4-30.3.885-18.025,13.234-42.52,30.462-42.512S281.436,172.44,282.417,190.452Z" transform="translate(-132.007 -88.181)"/><path class="e" d="M221.369,147.813s20.6,10.3,41.547,0c0,0,10.349,20.719,10.733,28.992s12.729-32.054-4.141-46.213c0,0,4.157-4.326,1.309-5.975s-5.655,2.593-5.655,2.593-4.633-6.059-8.2-4.8,2.165,5.106,2.165,5.106-14.542-9.937-38.138-6.924c0,0-5.308.254-.259,7.772,0,0-6.8-2.472-8.887,1.107s1.1,4.755,1.1,4.755a31.618,31.618,0,0,0-4.629,8.919,34.219,34.219,0,0,0-1.5,7.974,47.054,47.054,0,0,0,.174,9.6,97.112,97.112,0,0,0,3.842,18.36c.969,1.426,1.539,1.616,1.854,1.539,1.729-.4.1-8.657,2.472-19.39a33.268,33.268,0,0,1,1.983-6.29,32.406,32.406,0,0,1,4.229-7.122Z" transform="translate(-123.17 -71.54)"/><path class="f" d="M277.585,182.3h-.061a1.551,1.551,0,0,1-1.491-1.616h0c.683-17.31-12.486-32.317-29.364-33.419a31.509,31.509,0,0,0-23.833,9.053,32.466,32.466,0,0,0-9.941,24.375,1.559,1.559,0,1,1-3.078.481,1.462,1.462,0,0,1,0-.376,35.621,35.621,0,0,1,10.907-26.714,34.567,34.567,0,0,1,26.184-9.889c18.546,1.236,33.011,17.653,32.264,36.639a1.551,1.551,0,0,1-1.588,1.466Z" transform="translate(-125.05 -85.914)"/><path class="g" d="M371.633,258.455l-1.317-.073a2.02,2.02,0,0,1-1.891-2.121h0l1.212-20.986a2.02,2.02,0,0,1,2.121-1.891l1.313.073a9.291,9.291,0,0,1,8.713,9.788h0l-.368,6.463a9.291,9.291,0,0,1-9.78,8.738Z" transform="translate(-219.595 -139.109)"/><path class="h" d="M370.524,258.089h0A2.678,2.678,0,0,1,368,255.261l1.184-20.767a2.674,2.674,0,0,1,2.828-2.521h0a2.674,2.674,0,0,1,2.521,2.828l-1.184,20.767a2.674,2.674,0,0,1-2.828,2.521Z" transform="translate(-219.342 -138.266)"/><path class="f" d="M217.812,301.359a1.539,1.539,0,0,1-.618-.125c-10.963-4.617-12.248-12.664-12.276-13.011a1.563,1.563,0,1,1,3.07-.461c.044.3,1.188,6.714,10.43,10.608a1.555,1.555,0,0,1-.618,2.989Z" transform="translate(-122.105 -170.617)"/><path class="g" d="M202.2,233.311l1.317-.077a2.02,2.02,0,0,1,2.137,1.878h0l1.26,21.006a2.02,2.02,0,0,1-1.891,2.129l-1.321.081a9.291,9.291,0,0,1-9.828-8.717h0l-.4-6.483a9.291,9.291,0,0,1,8.717-9.828h0Z" transform="translate(-115.308 -139.018)"/><path class="h" d="M213.274,231.893h0a2.67,2.67,0,0,1,2.828,2.521l1.184,20.767a2.67,2.67,0,0,1-2.521,2.828h0a2.674,2.674,0,0,1-2.828-2.517l-1.184-20.771a2.682,2.682,0,0,1,2.521-2.828Z" transform="translate(-125.614 -138.218)"/><rect class="h" width="4.864" height="14.244" rx="2.432" transform="translate(94.217 131.29) rotate(-65.94)"/><g transform="translate(117.298 109.172)"><path class="i" d="M294.809,281.7a.9.9,0,0,1-.295-.048c-2.759-.982-4.076-2.064-4.145-3.413a2.908,2.908,0,0,1,1.107-2.145,10.275,10.275,0,0,0,1.095-1.309,8.334,8.334,0,0,0,1.361-3.821.885.885,0,0,1,1.749.206,10.1,10.1,0,0,1-1.664,4.646,12.007,12.007,0,0,1-1.264,1.519c-.343.36-.618.671-.618.84,0,.081.121.836,2.973,1.858a.881.881,0,0,1-.291,1.709Z" transform="translate(-290.37 -270.263)"/></g><g transform="translate(102.041 100.449)"><ellipse class="j" cx="3.377" cy="4.334" rx="3.377" ry="4.334"/></g><g transform="translate(130.415 100.449)"><ellipse class="j" cx="3.377" cy="4.334" rx="3.377" ry="4.334"/></g><g transform="translate(97.515 92.754)"><path class="e" d="M255.35,233.251c1.66.158,1.987-.808,1.81-1.676s-.7-1.773-1.672-1.814c-.372,0-10.689-1.361-13.415,4.359-.541,1.123-1.038,2.913-.315,2.545.525-.254,1.212-1.785,2.286-2.517C247.137,232.1,252.546,233,255.35,233.251Z" transform="translate(-241.395 -229.62)"/></g><g transform="translate(125.889 92.754)"><path class="e" d="M313.492,233.251c-1.664.158-1.987-.808-1.814-1.676s.7-1.773,1.672-1.814c.372,0,10.689-1.361,13.419,4.359.537,1.123,1.038,2.913.311,2.545-.525-.254-1.188-1.785-2.286-2.517C321.7,232.1,316.3,233,313.492,233.251Z" transform="translate(-311.637 -229.62)"/></g><path class="k" d="M285.365,371.75l-19.951,47.667L245.49,371.75h11.392a66.653,66.653,0,0,0,8.7,3.413,70.321,70.321,0,0,0,8.956-3.413Z" transform="translate(-146.321 -221.582)"/><path class="l" d="M286.621,393.989l5.841-4.242-2.23-6.867H283.01l-2.23,6.867Z" transform="translate(-167.356 -228.216)"/><path class="l" d="M280.354,432.9h-1.281a85.3,85.3,0,0,1-9.291-.618c-.121-1.026-.957-2.06-.7-3.09q1.236-4.952,2.424-9.893.808-3.312,1.616-6.629c.036-.158.081-.327.125-.493q2.258-9.271,4.544-18.5c.21-.873.4-1.745.618-2.618l1.394-5.676h0c.053-.214.109-.424.158-.618l.057-.214.105.4h0l1.495,6.088.513,2.1,4.262,17.326.1.4,5.062,20.634c-.2.267-.4.521-.618.755a88.123,88.123,0,0,1-9.457.618Z" transform="translate(-160.353 -229.211)"/><path class="m" d="M258.265,423.2a85.241,85.241,0,0,1-9.291-.618c-.618-.065-1.212-.145-1.806-.234h0c-5.183-6.059-7.546-21.187-7.546-21.187l6.419-3.8-8.544-2.157-3.377-24.641a28.9,28.9,0,0,1,6.383-1.991c.541-.105,1.095-.19,1.644-.267h0l.4,1.422,1.341,4.577,7.675,26.055.763,2.622,5.95,20.2Z" transform="translate(-139.544 -219.531)"/><path class="m" d="M317.091,394.967l-8.544,2.157,6.419,3.8s-2.238,14.357-7.134,20.691a7.7,7.7,0,0,1-.578.707l-.04.048a85.664,85.664,0,0,1-9.436.618H296.34v-.024L302.723,401l.683-2.282,6.253-21.006,2.476-8.208.465-1.575h.032c.832.069,1.737.186,2.593.335.291.04.574.1.856.154l.719.154a28.972,28.972,0,0,1,3.749,1.143Z" transform="translate(-176.63 -219.305)"/><g transform="translate(100.93 144.937)"><g transform="translate(1.03 1.474)"><path class="n" d="M273,370.347l-.848,1.212-12.014,13.048L252.4,366.126l4.819-3.676c.271,1.5,3.123,2.755,5.87,4.1a71.042,71.042,0,0,0,9.073,3.563Z" transform="translate(-252.4 -362.45)"/></g><g transform="translate(16.09 1.773)"><path class="n" d="M310.254,366.632l-.3.521-8.831,18.069-10.588-13.048-.852-1.212s.315-.089.864-.263a74.993,74.993,0,0,0,9.339-3.547c2.828-1.361,5.8-2.46,6.088-3.963Z" transform="translate(-289.68 -363.19)"/></g><g transform="translate(0 0.085)"><path class="o" d="M270.464,367.239l-.848,1.212-12.03,13.036-7.736-18.465,5.251-4.011c.271,1.5,2.678,3.09,5.425,4.444a70.8,70.8,0,0,0,9.073,3.563Z" transform="translate(-249.85 -359.01)"/></g><g transform="translate(17.099)"><path class="o" d="M312.762,362.779l-.3.517-8.839,18.073-10.588-13.052-.852-1.212s.315-.085.864-.259a75.005,75.005,0,0,0,9.344-3.563c2.828-1.357,5.251-2.981,5.55-4.484Z" transform="translate(-292.18 -358.8)"/></g></g><path class="i" d="M287,322.577a13.917,13.917,0,0,1-7.271-2,1.112,1.112,0,0,1,1.24-1.846,12.25,12.25,0,0,0,12.341-.052,1.112,1.112,0,1,1,1.058,1.955A15.322,15.322,0,0,1,287,322.577Z" transform="translate(-166.433 -189.867)"/><path class="p" d="M131.461,543.372q-4.8-2.852-9.291-6.132H263.43q-4.5,3.28-9.291,6.132l-.145.089h-122.4Z" transform="translate(-72.817 -320.221)"/><path class="q" d="M145.17,552.42H267.844l-.145.089a119.389,119.389,0,0,1-59.58,16.708h-3.325a118.951,118.951,0,0,1-12.854-.852c-.852-.1-1.664-.206-2.492-.327a119.57,119.57,0,0,1-44.108-15.528Z" transform="translate(-86.526 -329.269)"/><g transform="translate(73.913 162.343)"><path class="r" d="M272.66,456.682H185.442a2.424,2.424,0,0,1-2.472-2.391V404.277a2.424,2.424,0,0,1,2.472-2.387H272.66a2.424,2.424,0,0,1,2.472,2.387h0v50.018a2.424,2.424,0,0,1-2.472,2.387Z" transform="translate(-182.97 -401.889)"/></g><circle class="s" cx="5.203" cy="5.203" r="5.203" transform="translate(114.798 184.537)"/><path class="t" d="M488.608,181.528v.044a120.483,120.483,0,0,1-.646,12.494L426.1,146.857h-.024l-5.567-4.25-.028-.02-3.381-2.581.642-.743,9.929-11.489,10.1-11.658,11.1-12.846,7.368,5.546h0L472,120.628A119.571,119.571,0,0,1,488.608,181.528Z" transform="translate(-248.608 -61.556)"/><circle class="u" cx="24.597" cy="24.597" r="24.597" transform="translate(164.836 39.198)"/><path class="v" d="M452.131,103.23a24.6,24.6,0,0,1-29.541,38.041,24.6,24.6,0,1,0,29.541-38.041Z" transform="translate(-251.881 -61.532)"/><path class="u" d="M446.382,122.41l2.783,16.106-16.106.877" transform="translate(-258.121 -72.964)"/><path class="w" d="M446.295,122.4c.323,1.329.594,2.662.893,4s.549,2.67.808,4.007c.529,2.674,1.01,5.352,1.478,8.039l.081.448-.456.02c-2.682.141-5.369.271-8.079.351q-2.02.069-4.04.1c-1.345,0-2.69.04-4.04.024,1.337-.166,2.674-.275,4.015-.4s2.678-.234,4.019-.335c2.682-.21,5.365-.376,8.047-.529l-.376.473c-.456-2.686-.9-5.373-1.3-8.079-.2-1.345-.4-2.694-.578-4.04S446.452,123.761,446.295,122.4Z" transform="translate(-258.05 -72.958)"/><path class="x" d="M469.722,157.911a2.161,2.161,0,1,1-2.161-2.161A2.161,2.161,0,0,1,469.722,157.911Z" transform="translate(-277.397 -92.836)"/><circle class="y" cx="24.597" cy="24.597" r="24.597" transform="translate(164.836 39.198)"/></g></g></svg>',
+                                            reason: this.reason
+                                        }
+                                    },
+                                    actions: {
+                                        close: function() {
+                                            return t.$emit("close")
+                                        }
+                                    }
+                                }
+                            } [this.reason]
+                        }
+                    },
+                    data: function() {
+                        return {
+                            openModal: !1
+                        }
+                    }
+                },
+                A = (0, s.A)(y, n, [], !1, null, null, null).exports
+        },
+        8684: function(t, e, r) {
+            "use strict";
+            r.d(e, {
+                A: function() {
+                    return u
+                }
+            });
+            var n = function() {
+                var t = this,
+                    e = t._self._c;
+                return t.termsOfUseDocument ? e("div", {
+                    staticClass: "user-area__terms-of-use",
+                    class: {
+                        "user-area__terms-of-use--white": t.whiteText
+                    },
+                    domProps: {
+                        innerHTML: t._s(t.termsOfUseText)
+                    },
+                    on: {
+                        click: t.openHandler
+                    }
+                }) : t._e()
+            };
+            n._withStripped = !0;
+            var a = r(95353);
+
+            function i(t) {
+                return i = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+                    return typeof t
+                } : function(t) {
+                    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+                }, i(t)
+            }
+
+            function o(t, e) {
+                var r = Object.keys(t);
+                if (Object.getOwnPropertySymbols) {
+                    var n = Object.getOwnPropertySymbols(t);
+                    e && (n = n.filter((function(e) {
+                        return Object.getOwnPropertyDescriptor(t, e).enumerable
+                    }))), r.push.apply(r, n)
+                }
+                return r
+            }
+
+            function s(t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var r = null != arguments[e] ? arguments[e] : {};
+                    e % 2 ? o(Object(r), !0).forEach((function(e) {
+                        c(t, e, r[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : o(Object(r)).forEach((function(e) {
+                        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+                    }))
+                }
+                return t
+            }
+
+            function c(t, e, r) {
+                var n;
+                return n = function(t, e) {
+                    if ("object" != i(t) || !t) return t;
+                    var r = t[Symbol.toPrimitive];
+                    if (void 0 !== r) {
+                        var n = r.call(t, e || "default");
+                        if ("object" != i(n)) return n;
+                        throw new TypeError("@@toPrimitive must return a primitive value.")
+                    }
+                    return ("string" === e ? String : Number)(t)
+                }(e, "string"), (e = "symbol" == i(n) ? n : String(n)) in t ? Object.defineProperty(t, e, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : t[e] = r, t
+            }
+            var l = {
+                    name: "TermsOfUse",
+                    props: {
+                        whiteText: {
+                            type: Boolean,
+                            default: !1
+                        }
+                    },
+                    methods: {
+                        openHandler: function(t) {
+                            t.target.classList.contains("user-area__content-link") && (this.appStateStore.setServerDocumentData({
+                                name: this.termsOfUseDocument.name,
+                                content: this.termsOfUseDocument.content
+                            }), this.appStateStore.serverDocumentIsVisible = !0)
+                        }
+                    },
+                    computed: s(s({}, (0, a.L8)({
+                        reservedDocuments: "serverDocuments/getReservedDocuments"
+                    })), {}, {
+                        termsOfUseText: function() {
+                            return this.$pgettext("Notification", "By using this website, you agree to the [a]%docName[/a] set by the site owner.").replace("%docName", this.termsOfUseDocument.name).replace(/\[a\]/g, "<a href='javascript:void(0)' class='user-area__content-link user-area__terms-of-use__content-link ".concat(this.whiteText && "user-area__terms-of-use__content-link--white", "'>")).replace(/\[\/a\]/g, "</a>")
+                        },
+                        termsOfUseDocument: function() {
+                            return this.reservedDocuments.find((function(t) {
+                                var e = t.id,
+                                    r = t.enabled;
+                                return "terms_of_use" === e && r
+                            })) || null
+                        }
+                    })
+                },
+                u = (0, r(14486).A)(l, n, [], !1, null, null, null).exports
+        },
+        89979: function(t, e, r) {
+            var n = {
+                "./en/chrome-security-warning-1.png": 93556,
+                "./en/edge-security-warning-1.png": 56827,
+                "./en/firefox-security-warning-1.png": 33741,
+                "./en/opera-security-warning-1.png": 95627,
+                "./en/safari-security-warning-1.png": 90638,
+                "./ru/chrome-security-warning-1.png": 55426,
+                "./ru/edge-security-warning-1.png": 42329,
+                "./ru/firefox-security-warning-1.png": 58419,
+                "./ru/ie-security-warning-1.png": 34402,
+                "./ru/opera-security-warning-1.png": 72873,
+                "./ru/safari-security-warning-1.png": 67668
+            };
+
+            function a(t) {
+                var e = i(t);
+                return r(e)
+            }
+
+            function i(t) {
+                if (!r.o(n, t)) {
+                    var e = new Error("Cannot find module '" + t + "'");
+                    throw e.code = "MODULE_NOT_FOUND", e
+                }
+                return n[t]
+            }
+            a.keys = function() {
+                return Object.keys(n)
+            }, a.resolve = i, t.exports = a, a.id = 89979
+        },
+        10734: function(t, e, r) {
+            var n = {
+                "./en/chrome-security-warning-2.png": 15023,
+                "./en/edge-security-warning-2.png": 59264,
+                "./en/firefox-security-warning-2.png": 18326,
+                "./en/opera-security-warning-2.png": 25776,
+                "./en/safari-security-warning-2.png": 62437,
+                "./ru/chrome-security-warning-2.png": 69433,
+                "./ru/edge-security-warning-2.png": 94146,
+                "./ru/firefox-security-warning-2.png": 46456,
+                "./ru/ie-security-warning-2.png": 48409,
+                "./ru/opera-security-warning-2.png": 7730,
+                "./ru/safari-security-warning-2.png": 90127
+            };
+
+            function a(t) {
+                var e = i(t);
+                return r(e)
+            }
+
+            function i(t) {
+                if (!r.o(n, t)) {
+                    var e = new Error("Cannot find module '" + t + "'");
+                    throw e.code = "MODULE_NOT_FOUND", e
+                }
+                return n[t]
+            }
+            a.keys = function() {
+                return Object.keys(n)
+            }, a.resolve = i, t.exports = a, a.id = 10734
+        },
+        93556: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/06e59e80327940b23591.png"
+        },
+        15023: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/414a5a6b2890d03fa703.png"
+        },
+        56827: function(t) {
+            "use strict";
+            t.exports = "data:image/png;base64,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"
+        },
+        59264: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/82271246e3946a9095d2.png"
+        },
+        33741: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/54c3532f4bb01667c4a6.png"
+        },
+        18326: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/363b2ef2f4d2c7375426.png"
+        },
+        95627: function(t) {
+            "use strict";
+            t.exports = "data:image/png;base64,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"
+        },
+        25776: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/9e2da50f13ef89037f5e.png"
+        },
+        90638: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/7884956bc2af9d698794.png"
+        },
+        62437: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/3f9c5808b67804d2ba68.png"
+        },
+        55426: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/cccb3f8dac7eb69ef757.png"
+        },
+        69433: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/0a6975e068cd8a79dd0b.png"
+        },
+        42329: function(t) {
+            "use strict";
+            t.exports = "data:image/png;base64,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"
+        },
+        94146: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/f72fda4c5ae3d69c340f.png"
+        },
+        58419: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/f24f5dd03ecc82232d6d.png"
+        },
+        46456: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/a791a6a7186e47be17df.png"
+        },
+        34402: function(t) {
+            "use strict";
+            t.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsMAAADsCAMAAACmN1u6AAAAkFBMVEX////rfHxXV1eQkJDCwsI4ODiqqqoZGRnGAAD/OS3b29t1dXX4tbUAg+DdPz/96Ofyk5L8xMP7pKG14vf91NTUISEAp+kAmuXnZGSEzfNZvu7MBgcgsuwAjuP/bmX/Ukj/iYL39vcAlwxlnc8Aegye2O6yw7bN6/eWvN8ArDkMwlvZ9vsAAGR+z5RQv3HN1M/pXg5EAAAY3klEQVR42uxci66sKgxV8RUxPiaamPj//3mhLVAUZ5yZffbNubcrOXMcBVrKopTK7CwTCAQCgUAgEAgEAoFAIBAIBAKB4F/FPIkNBF+jn3KDaf5tucuUD3s7fFh7Xd3V1D5kEP/XyPeWsObjLxI4X63MYVs+1bt1NYddRvH/jWGbgAz9trb7rzm0aW/X7bF80cK4rzjlNnHDAk6sX4pOp3b9OnSZ933q+2n9LZ0Ff8cG65dIPLfrD4Qty2bCoH3oZdwEMYmXXxAz/IoUwf80nPg4T/COA203sbTgj2FtrwLVecrz/sMQwNSdepZSuBUMz49IoPn6s/m/frpocOkjdf+I8Eje43PLClKO2PjIvmXAwcRUWNsOC0UDAZHn9lWHEFn3WHd1+QNIhi3T85z0RALRZY8k328FByY1tzrmXOeopTZn18Oh/WE+RdkkePepxpNw32Lf9lyH6I5NnQz0LDtpHRRZBhLnWzr0TPD2Or/a5K1Fu8J/lrTjaji52ATcvgM34bXI0G7wdiTmMNzLzX5rC0kIU3cMGQQzfjRwZwq54R/a4QECB4rTt8doeL/v84nDPcyzHqS2A0h/zWFT0jaY+wY9bfbNTq3lMbiyZ+E3OexaeMrhed9z06wRtwmHfyyYOLuKMSSwljWYNWVhP4ajKzi5wXF3TDg87ytOiXZPkng8ZMx65wJnp1Rgw7i3Xo++zc+NpTi8ufYNheJVfBkDBacL4fc4nLc3ODy7NLdRKRcO/1TOYD5xeGOMGvf1FofNiAN3lz2smtiicdX7NnofnQoEt0OOb2RP5gMbjLd7m8OPcG9KVYm2nmfhtzjct3f88BqmEF0Khz9CzhAI4Tm8RCHv5Pn1nMNUf2N5NLzuW5aXyFMUepK4eJB0z4a8nfK3ORwOW8TXh4rDhfA7HLbvEV9z+MEmKxlWOPwR2va8iWNDGB+qGdvhFocXHOl95Rx4oO/NUm49O3A9nUwg/jg2GG+Xvc3hmc+RrR2v/HB+IfwOh+169prDAxM+olbC4c+yTAzbmcNDPMrrfovDSMSZEwE5ELtejF0WL3986ho9sYgNcGribQ5PXPFLngz7ciH8Bodz61Rfc3gfTn5fOPw1tnM8PKyHiPkGh2cKaR+UKUAkOJyDb86jVSAZSsxTPthsRsRhmAFvc3ij5AlmUJI8maeBn4CKhb/mcA+CXnJ4pNwPYhUO/9Se7hQOHuLC/DmH3UnOyW3OOfLTLgq/RX54PjNxtGcj2mHIp4jD4O1ecrg9JrOHdPDEEgpR2u8k/CWH6VDdSw737Vm5/Klugjux8fAlhyk/vLaQe0iUiYmWoN351mPfbYqW8QfY0LtRf85hthI4Dj8PragDw3gh/CWHKblzg8Nnfc0yldhgC+6DbZQ9ddcPYgl39OJxPt0b7ah4musyLbH4JKpZfQOH3RHiD2KJO292ae+ZEP6Kw7nLX7yOJbYEhyWW+DKUCPlKtqeLinhKv8itQWSdYlXk11ONHJNaLE/B8xIulf02h29SA6mYEP6Cw71/F/JyT5c4YiUc/jZDwQb8Mre23ePwA/dnQyLkHi++XNxjm0oWDztv9z6H+8v3Gok0REL4cw77X5jcyq0Jh38YwfzZ5TuO/DRuTzmcOCvMN3VL6rDndHhNxzJQq+dwn8hT333Hsa+3rAE1E8Kfc/j0pvMJh6fzjw6Ew19hXvnxhfS7Zvbu+GUssYR9VzxTdnYoITFK4xqnZoNfnjyH1zDd3udwfuv3Krg3SAh/yuHhtKN4wuHIaQiHP40emPuLD3FdnPkJZe7s6SAZ65pxB8oe/pTElH6r3LerI/HCHffUurzb0LYJPe5ymHfo8GOm8G3BAwwJ4U85zObsjfMS7MDINAiHP93EDZPNyz623R0OPu+s7NnLB529nLPsRm4tX9twIIsOqe0+rp7a3R7HtOcbx4ucwL719pAxjvrabjMcc5t8bo150vc5jB0ajQZbe3gbN+DvrcfQ1bNwn60LL0vgHCrOvvHMYf8Ww7/SsC83emeK2b5EWWk6C4ffT6b5hP/x15U8CBjdn6Hgfw/i+TuO8NcqJqy7s7qPNT74fQ5rSC08OD9u/rXD4bzEhxx2LZ7/qIa3h1f3LLy9AGgwJyKXNLCxfo3NLxz+KJx45Pn08scw8AOdD38xc/5xz+HnSamsQJ/n4S9QLD/+Y6DRtj9f24Orckt43r6ngJ9b8xeWFQh+EB9zWCAQDgsEwmGBQDgsEA4LBP86+jc5mUveTCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCD4oygbg0Ls8CWa6q/vQlH+tRxW5kM3wsJvRr/5L9jv7+UwQosn/hzqv2G8v53DXdMpG1Q0pbls/MKomhIeavDVTVPjolnbf/ZmZcOQDipqmgxYqsZGbEH46LBE2dD3DAOYBgOZqo7X5TJSCErRI1tXNapqsH1bRPlqFBWRCuGeaaNsKHCCp03TWdUr8qFVXLcE7U2RKNQqSAkVWq+p21XpwjLQpQr9g66YjxqqVpos1QS2lBW0mWXO7lpBSXwK/QRxKKquStKsBkWVvS40KGcbLcEeoHOjOjB209XYSMnWCmXbL4yChZUGH5WT5OxnRgAvWLdoGDsr1n44ETimzDRQwbKlCR0jwzt+aa3gotBgug48Ado/snwYuleoaipW2jZ05Tis3aftcWdVLCqrcWkvK0UqeBK6UqoD03gOa/Pd3PYcViXWJvslOUwKgVDVeA6DgsYCGakZSEwj4hTNAociQ6BSNapu/8EiBHVtg2XZwUzuQg2jnw25bDmrSFeTcZBtprgb7CqjT9c/J7+pQ1PZkcMlzI6yQktZQc4jQGngAlq7bkgFOynMuFsz2EpWefjfdr30JgT+dNyYjMOq4Rw2VjR+2NrS2a9rGmQD6xYNY8RhEAFjWjnpXvmi4ISqK84vTcJgfpt+WA7rArsVWf4Oh3GeKioGvXJWVhAoV2agsQmYK1VRV0CSusj4yHhBtLaam57DML8V45B3Bi85DGx1RUgy3kWe1VXE4UiFaw5DYwW6QWjH1iXilk0Wc5isYQuzMYJL87xEb2GsXViPrAvWPyffqqv0BYcrsLLRhjhcNvrAYahqnpI/r9H1G5WNmvbSKu+6XNSMw4W+4rBZXBmHbeWixN6Q/TrnKw7d0irmMIiwmsPAOM1BTWBuIFQdfQXPYRuxj4wELxJLeMvf98OFdxSlN4Tpiirs0NjZXviVD5YdRWsHrrCOhKFUCQ4Ap0dFi4RmHFJuifbr2BWHURWtiMPkYa2tUJuugWXH2Ycryjl8kE/RDiroOIx1s9gP0+oGF75dlAsSOj/qZQG05f3jsQxYtqLAwIVrpkFVQVNKOw5XSh04rMmOqLpRtXF+B1fKwuWWChoa4rDhPONwiPhM+4W2vS2oHWteGw+byMPZDy1w6BYOI+cwivDRF/MoVYVs8YSCZ/4rsh3nd0lxIfc/JYuP3NC9yA2VaQ6bLuk65nDXGO0K50izLMlhXGa9H7bG0+SX7Oy09VXB/TCbwECnCw43FCpGHI4qXnAY/g8cLjBar4tzXYzgohVNQeamTHMYL2yUU9gx1TXrn1/Yq5Lmv/OSztsYApfQglbEYbMmnziswnYALELaWYMobzGjkqKGicNNncV+2K+vpnTN/LDncHnksObdomHkHEYR8LDLMmZQw2G484LDnZWlFbn+LNDKWZ4P3fOtdZUlYwkz403DOoolGtsd3GEcORwt5HXlOQzjZ0NPO1+LCpXVEYdrzg5T6CqWyNCXfBJLFIrtKTvodLBMqEt0YBw2wqzp2W0eS2TBYZmxKcqa9c9zWBluRhx23sYGah3RCzis7V7tGEsUXjEs6aOvhgdCQKAqcBg0iDhMM8fEiHXE4ctYwjwL3XLDyDhMImDenmIJ5XS7jCXIbVYdm/I8lnDMo6F7lh8GYXxPRzYzdtfG8Wm/pythLsIoKZyWnTrv6YyC2FnPYVhutHcmHdDq6IfZHD7t6SpWV8V7ujq1pytf+GHYmZDDzDSvWwJDuoMfhg1agyKjPZ1C5WDzYyPaKupf2GBVVZf0w7hzp1xPRfu5I4ehz2WNNsStZQdqO/qhH7YUVyyWsIXSftjqVj/b05VoHtg7+m65YWQcJhFOe+h45ZXXDScU29NBCoiyAqYHBbkdddrT3fPDlQ/OsFjJ3tspBTK1i7loZFBbCve6aFOGpSBuKlhuzXzXWvP8WFOoYzys6xSHo2RfDXQp3HzXcTYHeVGE/Mx1PGwWhArXNiod6iJPeTys8X/0DD7MCJk9ygiVBXCB989zGKiRiocxjZXBuoOWyv5p70yYE1WiKEwBkhJiOQYLCkpc4ppk1P//717fvr2BuDxiZuLkfFVZVECF4/V006c51TC7G1ogUGsG8mUlqmvE16ZevCDHSwSed8YPy2c77Vtz95+oHbxR522pw8i9qU9kgtRTmDZAKEVjXryv9r1vnZC+mSS+ej3cTDd9a7F3sudv88PfgV78D58IafS9dCP6yjPajXMcrm0685bCz5wrsa4j/HfOEse9f1jC0V2O00No+MZ3ajXsJzjX+/0Jn57if0/DnxzeYM7sYpwDAAAAAAAAAAAAwJfinmR6PJxz1+AHa9irjYx4LOL6KXHwczWc4HwOaEcNXVGRMj0q2sSpdJLMd0eD+3aMciwXD8xgbxs3a4TpGJ9HdfTUNmLeSKS9glpfh63qGg7McC8/cF68HPNXT4O5qT897kad5NLnumoRNPkEtLAfJE4SjrNwMmlWG3XZFhDTN3Xh9T2d2evxCBo3d2gG8+igHL/4Jz3uxX1roU309Tyv/nbMWJvgR0vYhtJ895eNU6kkmc5s0XgnOSQrkruSx2PaNF5sBj42w3QsPhrNFuskXsjj+9S4J/kR4PV12MrVsDsA1miYYg+RG6LzI77Dpv7aNRzXI2jhk0oLyhGBiaNhJwJpPvVqMGg9IGbPBPNwUZPZIw1z/sQM/GkNyvFvObSyZ9+a3t86+Xei4Waq8OfhDCRvaDi0X99hz8lsBQkPkY55KDOPAHVDF2qlZpjO1FObxOOxoio8SlvU65uwldumi1o0zJJ1035qgLhJ/Z2rw14tgia2wJ/jRL3KSxpW6zQGddstO6aH3imFxXp+q4ZNUE7m3nxfZxnkCGP+NKr9bZJ/TQ2fJAF+oNO0gZ6GhmMjTvnlZjJbSeDWYf/JzVD3nO/LZpjO88zAWJ3EY+3R8PcnYzF4YKwOW7lewtcBsNhquBfL7KkNID3FSik69WcybRGbJHO0e3a4LA2T7gXmwyGlwq/d0bAzrlptux6ucbasXreaoaBHSemGhlXo3gTlEopa9kir+uWqt6b3t0n+1d7OU+80kQUNNzSc6CSZzgrIw8WZJLkr/ciVmTsc7yRM52g4cdbRSTL6VOj1TdjK3XisxCueXWs45AyM1TC9EXnkTeqvVrgosOPUYRtBExr2HQ2brEW9DvfqmZErGlaZPXGTpoBorcMmKJdQODTQ9dZ5a3p/m5BLsw5Dw1e8hPhHJclMeJ1+dGZEZzxsqQxONWzCdPYrLzIpBpUC0c+v17dhqxYNixtmucCrewn64baSTv3VD3ovcr91VQSSEy9SxH6iP3iceatr2DEJTxe8hHp1KrPH2fszXkIH5RKZKtMezXlren+bnQEvca5NF51qWMWpdJJM12GtFD9QrTA6mDoVHclDH9c17IbpqLkk2nQqiSdjRUHPZtz0+jpspSc7sV6iVodNcTQhOroh20pO6q+1DodRLYImLXDC4Rltk87VYWoO+o02ne/qSN4V2MyebCy2atgE5RKyzLxfpfuyz2c+mSr5d6ZNF6nJY36oiHW3VEPDOk6lkmS+nuOJK16gI4Z6cgcuFJF1ja1hOt3fxBsL5ZNo7xzY9XXYymrYmTLK+GGd6wps2o/nIaml/sxBr/nhsB5B43lRemLDPTVDwwU/rOe5qgfEnFrIHXY6s8cFvr1fQgflEp4eSb/FyLw1vb9N8u+0by3R0wyFHjj1GH/i1EXr5yq57TWyrb1jv5IffJfdf/e3Bg1Dw9AwNHx/DX8BPkQDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAl7EIoyhcYD+AhyUOw8PbJhpiT4DHrMFxeNzs399eD5sNrnwCHpBjPIw3UsOr180mwqRd4OEI94f9Zk8afl2tVu+Y6AY8HJv3w35/IAm/xZvVChehAg+o4XehYCHh1zAOViu3Dk8GghS7CHx/DVMRfl3t43BVr8O51DF2EXgADZMVfouPq1WLlxgU2Efgm7fphJPYbF5Xx/ggJHxo1TCZioz+L0VxFr8GZSbuEXdkuVwmHRQF+Y5B7uWZU8fFPWKNSj5Uyg9Dyd6ElxZ30OIT2naqfItaR2yan3NS0dIVfx1kFY4XaOuXeHs7Do/74UaW4U3j4TxXpoKUJX4yEpOUWV65Gha/K9Keq2Ep+wkZErkR+i/jhwuSK8lTLM7iLgZiK6mXZupBL5uwwCtx/0R9HchnAKDpJY7CDG9i4STIFIc1DedcflmQGWmY66EUJgn3soZZrVrDZWWdCWs4p8ULvquopIYlvKFSa3igxV/Am4M24oh6hjfHQEj49S1onqnjKlnxF/ugYhXxt31Vyi988YCrYbpnonWvDILUMOm3zLWylTvJK6VqsYjUsPQUtCFxgzXMWyP9ZhMcLtBGtBcafg2oDL9Gp93DGX3bl6oO56xeq2F2GY06nDrtwNRqmNxB6dk6XA7IqqhKLx6kRTN6gDZUVtos52yCq8JDPx9oZ7E5UN8aVeF9tGjTsDSxufQSXJaVl0hZw/mk6SUc3zoxXoLswsBzNJzKUptynRVboNtyTem2J572EpVce5IVOQ4WONOq27y/MfXREsVEeQnqDiillyiFJgtq01G1zL0rdVhaWNOmEwtkmdeswxkvQu07qeGMHEjJ1ldpWJR/+ZHJ0KIDZ0V8PBze398Px0anhOwA89gOZ9ymI4Vl4m/FdvayH850P5nS8MR4DO5bS1mm5aCqdF0mO1xWotwPVF8di5t73XCkwFk3EW32h8N+E906Cn7QrSKWN3fvqrZfmddNDQDnK3EYH0+6hu+u4bz8jIbRogMXGcbx/0hxdNPw57p3J2jRgTvSRcPpp4bACc+M3Q4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA2O6Wy+Vu+9dfx/BlhIMBOrDYLbcLb7Fd7v7qpZGGz9P+C44G6MDHcq3+2y0//trnSAi435/jaIAu7NYfi4/Fgn7Wu09sp+oeeRvN+8QUBwN08sLLdLv9kGy3S/bEEzVHye1J5Kp75HM8n0kF92e4yiPoVoZ3QsNblvB2x4VYBeHLmzWcd52ScvxLCVgwxsEAnViu0/Q3s03Xy04aLrrZiOGLFTDMMPiMhrdblvB2m7ZoWF12gG4OBvLSAmk1kPP46XvE8hNeiGdek5NfqnvkFGpZq4CnfRc4CdBZw7s1V+I0TdendVjOrVrIWVHKXF0eg6yvvFgG/UNXN8jk3JVy/lWtYZoSk6a3lFNcVpPWboga6FYDnf3wsiiK9fr3er0uiuWJH+bLFcg7JpnScKEes3Npy0KbZ1bD6UDZZDnJWmO2wNGJgAW44jno3i9BEmYK3S9hNczzYUtXIeTIGk6lRUjVBGq5mmWbr/8y4OlcS/1PSwfHS4uC+7Pp/OV5DCGDboV4TW5COgnVP9yqYZof+LqGVR02zcG2udnGs/5ZZlMh5hHEDP4Pi+VOCFi059LdcnGiYSXPXP1YL1HpqxwJlbNiXS9RmIsctfa6vfSvIgvzaIiWHrhFxLtl+vHxkdrxEqdtukJdbZEveaju5jYdeV26sEEp53HXbTp5KZgs5QsrFSdCHk/7twKXAW7xxI1xa27fmrqCZ2pO3QlBm4sUDFQnm7z6V1rrW8tVn1p55nxfoxSPx6OX+XR60WXMf8FlgO5wRwP9Ke40I/uwVor1oMvFcPQsxDyDywDfX8Oe9+wI8/lE4qIw/7osZjT/QDfup2G3FM/PLzS+oTCTy0BhBn9ew04pvj7u8rrLmH1Z8+8FpxHB9VJ8u/KGNzT/pndt/g1xKhxcLMWzruMlbnIZd2j+DWfQMLgskfknQxyLq82/T7kMknD/F44TuMRodp8h8FyY79zJPMKwOnBLJZ3fNU13ayfzDVqWXxJTaBjcVIq/IIskm3/zafcxRrIIP4+gYXBTKf7KWHPX5p9Q73RIv+GHwQ2M/0AolFzGleZfvdNkOmIlow6Db9cZcq6TedbuKKBh8G0tTLP5N4WGwQMXZnIZ83YNww+DhwZ1GEDDAEDDAHxSw/DDAHUYAGgYAGgYwA8DgDoMADQMADQM4IcBQB0GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE3+Az88p52aVKFMAAAAAElFTkSuQmCC"
+        },
+        48409: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/48f048f511b9faebccc6.png"
+        },
+        72873: function(t) {
+            "use strict";
+            t.exports = "data:image/png;base64,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"
+        },
+        7730: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/fa0fc528520dc6647a5f.png"
+        },
+        67668: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/5f7b69a8fd19a4e92072.png"
+        },
+        90127: function(t, e, r) {
+            "use strict";
+            t.exports = r.p + "assets/images/a4efe04e933bc62a2b2b.png"
+        }
+    },
+    o = {};
+
+function s(t) {
+    var e = o[t];
+    if (void 0 !== e) return e.exports;
+    var r = o[t] = {
+        id: t,
+        loaded: !1,
+        exports: {}
+    };
+    return i[t].call(r.exports, r, r.exports, s), r.loaded = !0, r.exports
+}
+s.m = i, s.amdD = function() {
+        throw new Error("define cannot be used indirect")
+    }, t = [], s.O = function(e, r, n, a) {
+        if (!r) {
+            var i = 1 / 0;
+            for (u = 0; u < t.length; u++) {
+                r = t[u][0], n = t[u][1], a = t[u][2];
+                for (var o = !0, c = 0; c < r.length; c++)(!1 & a || i >= a) && Object.keys(s.O).every((function(t) {
+                    return s.O[t](r[c])
+                })) ? r.splice(c--, 1) : (o = !1, a < i && (i = a));
+                if (o) {
+                    t.splice(u--, 1);
+                    var l = n();
+                    void 0 !== l && (e = l)
+                }
+            }
+            return e
+        }
+        a = a || 0;
+        for (var u = t.length; u > 0 && t[u - 1][2] > a; u--) t[u] = t[u - 1];
+        t[u] = [r, n, a]
+    }, s.n = function(t) {
+        var e = t && t.__esModule ? function() {
+            return t.default
+        } : function() {
+            return t
+        };
+        return s.d(e, {
+            a: e
+        }), e
+    }, r = Object.getPrototypeOf ? function(t) {
+        return Object.getPrototypeOf(t)
+    } : function(t) {
+        return t.__proto__
+    }, s.t = function(t, n) {
+        if (1 & n && (t = this(t)), 8 & n) return t;
+        if ("object" == typeof t && t) {
+            if (4 & n && t.__esModule) return t;
+            if (16 & n && "function" == typeof t.then) return t
+        }
+        var a = Object.create(null);
+        s.r(a);
+        var i = {};
+        e = e || [null, r({}), r([]), r(r)];
+        for (var o = 2 & n && t;
+            "object" == typeof o && !~e.indexOf(o); o = r(o)) Object.getOwnPropertyNames(o).forEach((function(e) {
+            i[e] = function() {
+                return t[e]
+            }
+        }));
+        return i.default = function() {
+            return t
+        }, s.d(a, i), a
+    }, s.d = function(t, e) {
+        for (var r in e) s.o(e, r) && !s.o(t, r) && Object.defineProperty(t, r, {
+            enumerable: !0,
+            get: e[r]
+        })
+    }, s.f = {}, s.e = function(t) {
+        return Promise.all(Object.keys(s.f).reduce((function(e, r) {
+            return s.f[r](t, e), e
+        }), []))
+    }, s.u = function(t) {
+        return "chunks/" + ({
+            76: "locale/es",
+            91: "locale/vi",
+            147: "locale/fa",
+            205: "DragDropQT",
+            337: "locale/en",
+            340: "locale/pl",
+            384: "locale/fr",
+            478: "locale/zh",
+            521: "conference",
+            523: "locale/ru",
+            553: "guest",
+            558: "locale/tr",
+            578: "locale/cs",
+            678: "locale/zht",
+            783: "locale/ja",
+            804: "locale/pt",
+            806: "user",
+            861: "locale/he",
+            918: "locale/ko",
+            939: "locale/be",
+            977: "locale/de",
+            980: "locale/uk",
+            991: "locale/it"
+        } [t] || t) + ".bundle-5.4.3.5.js"
+    }, s.miniCssF = function(t) {
+        return "chunks/" + {
+            521: "conference",
+            553: "guest",
+            806: "user"
+        } [t] + ".styles-5.4.3.5.css"
+    }, s.g = function() {
+        if ("object" == typeof globalThis) return globalThis;
+        try {
+            return this || new Function("return this")()
+        } catch (t) {
+            if ("object" == typeof window) return window
+        }
+    }(), s.o = function(t, e) {
+        return Object.prototype.hasOwnProperty.call(t, e)
+    }, n = {}, a = "@tc-server/user-area:", s.l = function(t, e, r, i) {
+        if (n[t]) n[t].push(e);
+        else {
+            var o, c;
+            if (void 0 !== r)
+                for (var l = document.getElementsByTagName("script"), u = 0; u < l.length; u++) {
+                    var d = l[u];
+                    if (d.getAttribute("src") == t || d.getAttribute("data-webpack") == a + r) {
+                        o = d;
+                        break
+                    }
+                }
+            o || (c = !0, (o = document.createElement("script")).charset = "utf-8", o.timeout = 120, s.nc && o.setAttribute("nonce", s.nc), o.setAttribute("data-webpack", a + r), o.src = t), n[t] = [e];
+            var f = function(e, r) {
+                    o.onerror = o.onload = null, clearTimeout(p);
+                    var a = n[t];
+                    if (delete n[t], o.parentNode && o.parentNode.removeChild(o), a && a.forEach((function(t) {
+                            return t(r)
+                        })), e) return e(r)
+                },
+                p = setTimeout(f.bind(null, void 0, {
+                    type: "timeout",
+                    target: o
+                }), 12e4);
+            o.onerror = f.bind(null, o.onerror), o.onload = f.bind(null, o.onload), c && document.head.appendChild(o)
+        }
+    }, s.r = function(t) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, {
+            value: "Module"
+        }), Object.defineProperty(t, "__esModule", {
+            value: !0
+        })
+    }, s.nmd = function(t) {
+        return t.paths = [], t.children || (t.children = []), t
+    }, s.p = "/user-area/",
+    function() {
+        if ("undefined" != typeof document) {
+            var t = function(t) {
+                    return new Promise((function(e, r) {
+                        var n = s.miniCssF(t),
+                            a = s.p + n;
+                        if (function(t, e) {
+                                for (var r = document.getElementsByTagName("link"), n = 0; n < r.length; n++) {
+                                    var a = (o = r[n]).getAttribute("data-href") || o.getAttribute("href");
+                                    if ("stylesheet" === o.rel && (a === t || a === e)) return o
+                                }
+                                var i = document.getElementsByTagName("style");
+                                for (n = 0; n < i.length; n++) {
+                                    var o;
+                                    if ((a = (o = i[n]).getAttribute("data-href")) === t || a === e) return o
+                                }
+                            }(n, a)) return e();
+                        ! function(t, e, r, n, a) {
+                            var i = document.createElement("link");
+                            i.rel = "stylesheet", i.type = "text/css", s.nc && (i.nonce = s.nc), i.onerror = i.onload = function(r) {
+                                if (i.onerror = i.onload = null, "load" === r.type) n();
+                                else {
+                                    var o = r && r.type,
+                                        s = r && r.target && r.target.href || e,
+                                        c = new Error("Loading CSS chunk " + t + " failed.\n(" + o + ": " + s + ")");
+                                    c.name = "ChunkLoadError", c.code = "CSS_CHUNK_LOAD_FAILED", c.type = o, c.request = s, i.parentNode && i.parentNode.removeChild(i), a(c)
+                                }
+                            }, i.href = e, r ? r.parentNode.insertBefore(i, r.nextSibling) : document.head.appendChild(i)
+                        }(t, a, null, e, r)
+                    }))
+                },
+                e = {
+                    792: 0
+                };
+            s.f.miniCss = function(r, n) {
+                e[r] ? n.push(e[r]) : 0 !== e[r] && {
+                    521: 1,
+                    553: 1,
+                    806: 1
+                } [r] && n.push(e[r] = t(r).then((function() {
+                    e[r] = 0
+                }), (function(t) {
+                    throw delete e[r], t
+                })))
+            }
+        }
+    }(),
+    function() {
+        var t = {
+            792: 0
+        };
+        s.f.j = function(e, r) {
+            var n = s.o(t, e) ? t[e] : void 0;
+            if (0 !== n)
+                if (n) r.push(n[2]);
+                else {
+                    var a = new Promise((function(r, a) {
+                        n = t[e] = [r, a]
+                    }));
+                    r.push(n[2] = a);
+                    var i = s.p + s.u(e),
+                        o = new Error;
+                    s.l(i, (function(r) {
+                        if (s.o(t, e) && (0 !== (n = t[e]) && (t[e] = void 0), n)) {
+                            var a = r && ("load" === r.type ? "missing" : r.type),
+                                i = r && r.target && r.target.src;
+                            o.message = "Loading chunk " + e + " failed.\n(" + a + ": " + i + ")", o.name = "ChunkLoadError", o.type = a, o.request = i, n[1](o)
+                        }
+                    }), "chunk-" + e, e)
+                }
+        }, s.O.j = function(e) {
+            return 0 === t[e]
+        };
+        var e = function(e, r) {
+                var n, a, i = r[0],
+                    o = r[1],
+                    c = r[2],
+                    l = 0;
+                if (i.some((function(e) {
+                        return 0 !== t[e]
+                    }))) {
+                    for (n in o) s.o(o, n) && (s.m[n] = o[n]);
+                    if (c) var u = c(s)
+                }
+                for (e && e(r); l < i.length; l++) a = i[l], s.o(t, a) && t[a] && t[a][0](), t[a] = 0;
+                return s.O(u)
+            },
+            r = self.webpackChunk_tc_server_user_area = self.webpackChunk_tc_server_user_area || [];
+        r.forEach(e.bind(null, 0)), r.push = e.bind(null, r.push.bind(r))
+    }();
+var c = s.O(void 0, [860, 717, 96], (function() {
+    return s(13698)
+}));
+c = s.O(c);
+// Custom JS)
+window.onload = (event) => {
+    // Footer Custom
+    // let pAllFooter = document.querySelectorAll(
+    //   ".conference-screen-footer__desc"
+    // );
+    // pAllFooter[3].innerText = "© 2024 Polri Connect. All rights reserved.";
+    // pAllFooter[4].innerHTML = "Video Conferencing System by Polri Connect";
+
+    // setTimeout(displayFunctionQuery, 100);
+    // function displayFunctionQuery() {
+    //   let triggerSign = document.getElementById("main-header__buttons-login");
+    //   console.log("old", triggerSign);
+    // }
+    document.title = "Polri Connect Guest Page";
+  };
+}();
