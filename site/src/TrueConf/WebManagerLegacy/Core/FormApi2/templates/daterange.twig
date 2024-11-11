@@ -1,0 +1,26 @@
+<script type='text/javascript'>
+  $(function () {
+    $('#{{ id }}_from, #{{ id }}_to').datepicker('option', $.datepicker.regional['{{ lang }}']);
+    var dates = $('#{{ id }}_from, #{{ id }}_to').datepicker({
+      defaultDate: '+1w', changeMonth: true, numberOfMonths: 3, dateFormat: 'yy-mm-dd', maxDate: 0,
+      onSelect: function (selectedDate) {
+        var option = this.id == '{{ id }}_from' ? 'minDate' : 'maxDate',
+          instance = $(this).data('datepicker'),
+          date = $.datepicker.parseDate(
+            instance.settings.dateFormat ||
+            $.datepicker._defaults.dateFormat,
+            selectedDate, instance.settings);
+        dates.not(this).datepicker('option', option, date);
+      }
+    });
+
+  });
+</script>
+
+<div class='formFieldDateRange'>
+    <label for='{{ id }}_from'>{{ label_from }}</label>&nbsp;<input type='text' id='{{ id }}_from'
+                                                                    name='{{ name_from }}' value='{{ date_from }}'
+                                                                    readonly='readonly'/>&nbsp;&nbsp;
+    <label for='{{ id }}_to'>{{ label_to }}</label>&nbsp;<input type='text' id='{{ id }}_to' name='{{ name_to }}'
+                                                                value='{{ date_to }}' readonly='readonly'/>
+</div>

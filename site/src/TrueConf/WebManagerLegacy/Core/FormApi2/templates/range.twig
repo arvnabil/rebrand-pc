@@ -1,0 +1,21 @@
+<div id='{{ id }}-block' class="{{ class }}">
+    <span id='{{ id }}-value' class='value'>{{ value }} {{ unit }}</span>
+    <div id='{{ id }}'>&nbsp;</div>
+    <input type='hidden' name='{{ id }}' value='{{ value }}'/>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#{{ id }}').slider({
+      range: '{{ range }}',
+      min: {{ min }},
+      max: {{ max }},
+      step: {{ step }},
+      value: {{ value ? value : '0' }},
+      slide: function (event, ui) {
+        $('#{{ id }}-value').text(ui.value + ' {{ unit }}');
+        $('input[name={{ id }}]').val(ui.value);
+      }
+    });
+  });
+</script>

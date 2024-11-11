@@ -1,0 +1,235 @@
+
+/**
+------------------------------------------------------------------------------------------------------------------------
+*/
+
+.usp_participantsPlugin {
+    height : 92%;
+}
+
+.usp_participantsPlugin span {
+    font-size: inherit;
+}
+
+.usp_participantsPlugin a {
+    color: #0088CC;
+    font-weight: bold;
+}
+
+.usp_participantsPlugin hr {
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #B3B3B3;
+}
+
+.usp_participantsPlugin table {
+    border: none;
+    margin: 0px;
+}
+
+.usp_participantsPlugin table tr td {
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    table-layout: fixed;
+    
+}
+
+.usp_participantsPlugin table tr td.usp_rightPanel {
+    vertical-align: top; 
+    width: 320px; 
+    height: 100%;
+}
+
+.usp_participantsPlugin table tr td.usp_leftPanel {
+    vertical-align: top; 
+    height: 100%;
+    max-width:0;
+}
+
+
+
+.usp_participantsPlugin .usp_userList {
+    border: 2px solid #B3B3B3;
+    padding: 5px;
+    display: table;
+    height: 100%;
+    width:100%;
+    
+}
+
+.usp_participantsPlugin .usp_userList .usp_inner {
+    position: relative;
+    height: 100%;
+    width:100%;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock {
+    border-bottom: 2px solid #B3B3B3;
+    padding: 4px 8px 4px 25px;
+    display:table-cell;
+    position: relative;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock:before {
+    content: "";
+    height: 100%;
+    width: 20px;
+    top: -2px;
+    left: 5px;
+    position: absolute;
+    background: url("/images/gray_search.png") no-repeat;
+    background-position: center;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock  input {
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock  input.lightGray {
+    color: #CCC;
+    font-size : 11px;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock ul.cmpl_searchMethodSelect {
+    list-style-type: none;
+    margin: 5px 0px 8px 0px;
+    width: 100%;
+    border-top: 2px solid #B3B3B3;
+    padding-top: 5px;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock ul.cmpl_searchMethodSelect li {
+    float: left;
+    font-size: 11px;
+    width: 25%;
+    margin: 2px 3%;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    text-align: center;
+}
+
+.usp_participantsPlugin .usp_userList .searchBlock ul.cmpl_searchMethodSelect li.selected {
+    background-color: #DFDFDF;
+    border-radius: 4px;
+    border: 1px solid #B3B3B3;
+    cursor: default;
+}
+
+.usp_participantsPlugin .usp_userList .limit, .usp_userList .limit span {
+    float: right;
+    color: #E06818;
+    padding-top: 2px;
+}
+
+.usp_participantsPlugin .usp_userList .usp_members {
+    overflow-y: scroll;
+    position:absolute;
+    height: 100%;
+    width:100%;
+}
+
+.usp_userList .usp_listInfo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display : none;
+    text-align: center;
+}
+
+.usp_userList .usp_listInfo .usp_wait {
+    margin-top: 150px;
+    
+}
+
+.usp_userList .usp_listInfo .usp_notFound {
+    vertical-align: middle;
+    font-size: 14px;
+    display:table-cell;
+}
+
+
+.usp_participantsPlugin .usp_inviteGuests {
+    border: 2px solid #B3B3B3;
+    padding : 5px;
+    width: 90%;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_title {
+    padding: 2px 0px 8px 2px;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_inner {
+    display : table;
+    margin: 5px 0px;
+    width: 90%;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_inner .usp_tr {
+    display : table-row;
+    width: 100%;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_inner .usp_td {
+    display: table-cell;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_td.usp_filed {
+    width: 75%;
+    padding: 8px 0px;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_inner .usp_filed input {
+    outline: none;
+    border: 1px solid  #B3B3B3;
+}
+
+.usp_participantsPlugin .usp_inviteGuests .usp_inner .usp_filed input.usp_error {
+    border: 1px solid  #DD2A2A;
+    color: #AA2020;
+    
+}
+
+.usp_participantsPlugin .usp_inviteGuests .grayButton {
+    margin: 15px auto 5px auto;
+}
+
+
+.usp_participantsPlugin .usp_inviteMessage {
+    margin: 5px auto;
+    width: 90%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.usp_inviteMessageDialog {
+
+}
+.usp_inviteMessageDialog input, .usp_inviteMessageDialog textarea {
+    border: 2px solid #B3B3B3;
+    width: 98%;
+    padding: 2px 4px;
+}
+
+.usp_inviteMessageDialog textarea {
+    resize:vertical;
+}
+
+.usp_inviteMessageDialog .usp_error {
+    border: 2px solid #DD2A2A;
+    padding: 2px;
+    margin: 2px 10px 2px 2px;
+    text-align : center;
+}
+
+.usp_found {
+    color : red;
+    line-height: inherit;
+}
+

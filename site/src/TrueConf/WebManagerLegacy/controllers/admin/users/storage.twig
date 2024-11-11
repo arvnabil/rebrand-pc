@@ -1,0 +1,124 @@
+{% extends template.base %}
+
+{% block js %}
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var currnet_type = "{{ flag ? storage_ldap : storage_register }}";
+
+
+        $(document).bind('onStorageChange', function () {
+          if (currnet_type === 'Registry') {
+            $.post('{{ site.getInsideUrl('ldap', 'trueconf-ldap-init') }}');
+          } else {
+            $.post('{{ site.getInsideUrl('ldap', 'trueconf-ldap-deinit') }}');
+          }
+        });
+
+        $('input[name="mode"][value="' + currnet_type + '"]').attr('checked', 'checked');
+
+        $('input[name="mode"]').change({type: currnet_type}, function (event) {
+          if ($(this).val() != event.data.type) {
+
+            if ($(this).val() === 'LDAP') {
+              $.ajax({
+                url: "{{ site.getInsideUrl('ldap', 'get-ldap-status') }}",
+                data: {
+                  current_ldap: true
+                },
+                beforeSend: function () {
+                  Server.showLoadEffect();
+                },
+                success: function (data) {
+                  Server.removeLoadEffect();
+                  if (!data.error) {
+                    $('#switch').removeClass('button-lock').click(function () {
+                      Server.storage.changeStorage();
+                    });
+                  }
+                },
+                dataType: 'json'
+              });
+            } else {
+              $('#switch').removeClass('button-lock').click(function () {
+                Server.storage.changeStorage();
+              });
+            }
+
+          } else {
+            $('#switch').addClass('button-lock').unbind('click');
+          }
+
+          if (currnet_type === 'LDAP' && $(this).val() === 'Registry') {
+            $("#import-ldap-users-checkbox").show();
+          } else {
+            $("#import-ldap-users-checkbox").hide();
+          }
+
+          if ($(this).val() === 'LDAP') {
+            $('.cent_cont_s').show();
+          } else {
+            $('.cent_cont_s').hide();
+          }
+        });
+
+        $("#import-ldap-users-flag").change(function () {
+          var check = ($("#import-ldap-users-flag").attr("checked") == 'checked') ? 1 : 0;
+          $("#import-ldap-users").val(check);
+        });
+
+        $("#import-ldap-users-checkbox").hide();
+      });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <b>{{ site._('Current status:') }}</b>&nbsp;{{ flag ? site._('Server is in LDAP mode.') : site._('Server is in registry mode.') }}
+    </p>
+
+    <fieldset>
+        <legend>Registry</legend>
+        <label><input type="radio" name="mode" value="{{ storage_register }}"/>&nbsp;{{ site._('Enable') }}</label>
+        <br/>
+        <p class="fl">{{ site._('Description:') }}</p>
+        <p class="server-mode-description">
+            {{ site._("Local data storage is the source of user account information." ) }}
+            <br/>
+            {{ site._("In this mode, the server administrator is allowed to create user accounts.") }}
+            <br/>
+            {{ site._('If TrueConf Server is moved to another computer, user accounts can be exported from the settings file.') }}
+        </p>
+    </fieldset>
+    <fieldset>
+        <legend>LDAP</legend>
+        <label><input id="mode" type="radio" name="mode" value="{{ storage_ldap }}"/>&nbsp;{{ site._('Enable') }}
+        </label>
+        <br/>
+        <p class="fl">{{ site._('Description:') }}</p>
+        <p class="server-mode-description">
+            {{ site._('A third-party LDAP directory service such as Microsoft® Active Directory or 389 Directory is the source of user account information.') }}
+            <br/>
+            {{ site._('User accounts will be organized and processed with the help of LDAP tools. TrueConf Server automatically synchronizes all changes made in the LDAP directory.') }}
+            <br/>
+            {{ site._('You can import user accounts from LDAP to a local data storage when switching to Registry Mode (please note that passwords cannot be imported).') }}
+        </p>
+        {% block ldap_buttons %}
+            <div class="cent_cont_s" {{ not(flag) ? 'style="display: none;"' : '' }}>
+                <div class="cent_wrap">
+                    <a class="button"
+                       href="{{ site.getInsideUrl('ldap', 'settings') }}">{{ site._('LDAP settings') }}</a>
+                </div>
+            </div>
+        {% endblock %}
+    </fieldset>
+    <div id="import-ldap-users-checkbox">
+        <label><input type="checkbox" id="import-ldap-users-flag"
+                      class="m-top-3 fl"/>&nbsp;{{ site._('Import user information') }}</label>
+        <input type="hidden" id="import-ldap-users" name="import-ldap-users"/>
+    </div>
+    <div class="fr m-top-10">
+        <a id="switch" class="button button-lock">{{ site._('Switch') }}</a>
+    </div>
+
+{% endblock %}

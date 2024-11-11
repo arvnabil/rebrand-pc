@@ -1,0 +1,447 @@
+{% extends template.base %}
+
+
+{% block content %}
+
+    <fieldset>
+        <legend>{{ site._('HTTPS configuration') }}</legend>
+        <form method="post" id="ssl_config">
+          <input title="csrf" name="{{ csrf_param }}" value="{{ csrf_token }}" hidden>
+          <label class="m-bottom-10" style="display: block">
+            {{ site._('HTTPS mode') }}:
+            <select id="ssl_mode" name="ssl_mode">
+              <option value="0" {{ ssl_mode == constant('\\Classes\\SSLCertificate::SSL_MODE_OFF') ? 'selected="selected"' : '' }}>{{ site._('Disable HTTPS') }}</option>
+              <option value="1" {{ ssl_mode == constant('\\Classes\\SSLCertificate::SSL_MODE_SELF_SIGNED_CERTIFICATE') ? 'selected="selected"' : '' }}>{{ site._('Use self-signed certificate') }}</option>
+              <option value="2" {{ ssl_mode == constant('\\Classes\\SSLCertificate::SSL_MODE_CUSTOM_CERTIFICATE') ? 'selected="selected"' : '' }}>{{ site._('Use custom certificate') }}</option>
+            </select>
+            <a style="margin-left: 2em"
+               href="{{ company_site_url }}/tcs/manual/https/?lang={{ settings.lang }}&version={{ server_version }}"
+               target="_blank"
+               rel="noopener">{{ site._('Why HTTPS is important and how to properly configure it') }}</a>
+          </label>
+          <label style="display: none;" class="m-bottom-10">
+            {{ site._('HTTPS port') }}: <input type="text" id="ssl_port" name="ssl_port" value="{{ ssl_port }}"
+                                               size="5"
+                                               maxlength="5"/>
+            <div id="port-error" class="error"></div>
+          </label>
+          <label id="protocols-set">
+            {{ site._('Usable TLS protocol versions') }}:
+            <label><input class="ssl-protocol" id="TLSv1" name="ssl_protocol[TLSv1]" type="checkbox"
+                              style="display: none"></label>
+                <label><input class="ssl-protocol" id="TLSv1.1" name="ssl_protocol[TLSv1_1]" type="checkbox"
+                              style="display: none"></label>
+                <label><input type="checkbox" style="margin: 0 5px 0 5px;" disabled checked>TLSv1.2</label>
+                <input class="ssl-protocol" type="hidden" id="TLSv1.2" name="ssl_protocol[TLSv1_2]" checked/>
+                {% if TLSv1_3_supported %}
+              <label><input class="ssl-protocol" id="TLSv1.3" name="ssl_protocol[TLSv1_3]"
+                            type="checkbox">TLSv1.3</label>
+                {% endif %}
+              <div id="protocol-error" class="error"></div>
+            </label>
+            <buttun class="button btn_green m-right-10" id="check-config">{{ site._('Test configuration') }}</buttun>
+            <input type="submit" class="button" id="btn-apply" value="{{ site._('Apply') }}" disabled="disabled"
+                   onClick={{ '"' }}!$(this).hasClass('button-lock') ?
+                   Confirm.func({{ "'" ~ site._('After saving the settings the server will restart automatically')|escape('js') ~ ".'" }},
+                   function () {
+                   var sslConfigForm=$('form#ssl_config');
+                   refreshLocaleStorage();
+                   refreshFormAction(sslConfigForm);
+                   sslConfigForm.submit();
+                   }) : '';
+            return false;{{ '"' }}/>
+        </form>
+    </fieldset>
+    <br/>
+
+    <fieldset>
+        <legend>{{ site._('Self-signed certificate') }}</legend>
+        {% if ca_cert %}
+            <table>
+                <caption style="background-color: #EDF2F6;padding: 5px;border-bottom: #FFF 1px solid;">
+                    {{ site._('Root Certificate Authority') }}
+                    (<a href="/downloads/ca.crt">{{ site._('Download %ca_cert_name')|replace({'%ca_cert_name': 'ca.crt'}) }}
+                        <img src="/images/download_16.png" style="margin-bottom: -4px;">
+                    </a>)
+                </caption>
+                <tr>
+                    <th>{{ site._('Subject[cert]')|replace({'[cert]' : ''}) }}</th>
+                    <th>{{ site._('Valid after') }}</th>
+                    <th>{{ site._('Valid until') }}</th>
+                </tr>
+                <tr>
+                    <td class="subject">
+                        {% for key,item in ca_cert.subject %}
+                            {% if item is iterable %}
+                                {{ key }}={{ item|join(', ') }}<Br/>
+                            {% else %}
+                                {{ key }}={{ key }}<Br/>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td><p class="cert-date">{{ ca_cert.validFrom_time_t }}</p></td>
+                    <td><p class="cert-date">{{ ca_cert.validTo_time_t }}</p></td>
+                </tr>
+            </table>
+        {% endif %}
+        {% if self_cert %}
+            <table>
+                <caption style="background-color: #EDF2F6;padding: 5px;border-bottom: #FFF 1px solid;">
+                    {{ site._('Certificate for %server_name server')|replace({'%server_name': self_cert.subject.commonName}) }}
+                </caption>
+                <tr>
+                    <th>{{ site._('Subject[cert]')|replace({'[cert]' : ''}) }}</th>
+                    <th>{{ site._('Valid after') }}</th>
+                    <th>{{ site._('Valid until') }}</th>
+                </tr>
+                <tr>
+                    <td class="subject">
+                        {% for key,item in self_cert.subject %}
+                            {% if item is iterable %}
+                                {{ key }}={{ item|join(', ') }}<Br/>
+                            {% else %}
+                                {{ key }}={{ key }}<Br/>
+                            {% endif %}
+                        {% endfor %}
+                        {{ self_cert.extensions.subjectAltName ? 'subjectAltName=' ~ self_cert.extensions.subjectAltName : '' }}
+                    </td>
+                    <td><p class="cert-date">{{ self_cert.validFrom_time_t }}</p></td>
+                    <td><p class="cert-date">{{ self_cert.validTo_time_t }}</p></td>
+                </tr>
+            </table>
+        {% else %}
+            <p>{{ site._('The self-signed certificate is missing') }}</p><br/>
+        {% endif %}
+        <form method="post" action="/admin/web/newcrt">
+            <input title="csrf" name="{{ csrf_param }}" value="{{ csrf_token }}" hidden>
+            <input type="submit" class="button" value="{{ site._('Create a new SSL certificate') }}"
+                   onclick="localStorage.setItem('selfSignedCertificateWasRefreshed', true)"/>
+        </form>
+    </fieldset>
+
+    <br/>
+    <fieldset>
+        <legend>{{ site._('Custom certificate') }}</legend>
+          <form action="/admin/web/uploadcert" method="post" enctype="multipart/form-data">
+            <input title="csrf" name="{{ csrf_param }}" value="{{ csrf_token }}" hidden>
+
+            {% if custom_cert %}
+                <table>
+                    <tr>
+                        <th>{{ site._('Subject[cert]')|replace({'[cert]' : ''}) }}</th>
+                        <th>{{ site._('Valid after') }}</th>
+                        <th>{{ site._('Valid until') }}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% for key,item in custom_cert.subject %}
+                                {% if item is iterable %}
+                                    {{ key }}={{ item|join(', ') }}<Br/>
+                                {% else %}
+                                    {{ key }}={{ key }}<Br/>
+                                {% endif %}
+                            {% endfor %}
+                            {{ custom_cert.extensions.subjectAltName ? 'subjectAltName=' ~ custom_cert.extensions.subjectAltName : '' }}
+                        </td>
+                        <td><p class="cert-date">{{ custom_cert.validFrom_time_t }}</p></td>
+                        <td><p class="cert-date">{{ custom_cert.validTo_time_t }}</p></td>
+                    </tr>
+                </table>
+            {% else %}
+                <p>{{ site._('The certificate is not loaded') }}.</p><br/>
+            {% endif %}
+
+            <p class="m-top-10">
+                {{ site._('Certificate') }}: <input name="crtfile" type="file" accept=".crt"/><br/><br/>
+                {{ site._('Private key') }}: <input name="pkeyfile" type="file"/><br/><br/>
+            </p>
+            <input id="load" type="submit" class="button button-lock" disabled="disabled"
+                   value="{{ site._('Upload') }}"/>
+        </form>
+
+    </fieldset>
+    {% autoescape 'js' %}
+        <script type="application/javascript">
+            {% if settings.lang == 'zh' %} {
+                {% set moment_lang = 'zh_CN' %}
+            {% elseif settings.lang == 'zht' %}
+                {% set moment_lang = 'zh_TW' %}
+            {% else %}
+                {% set moment_lang = settings.lang %}
+            {% endif %}
+
+            moment.locale("{{ moment_lang|e('js') }}");
+
+            $(document).ready(onDocumentReady);
+
+            function refreshLocaleStorage() {
+              var sslMode = $('#ssl_mode').val();
+              var sslPort = $('#ssl_port').val();
+              var sslPortWasChanged = sslPort !== "{{ ssl_port }}";
+              localStorage.setItem("sslMode", sslMode);
+              localStorage.setItem("selfSignedCertificateWasRefreshed", sslMode === "1"
+                && localStorage.getItem("selfSignedCertificateWasRefreshed") === "true");
+              localStorage.setItem("sslWasDisabled", sslMode === "0");
+              localStorage.setItem("sslPortWasChanged", sslPortWasChanged);
+              // localStorage.setItem("sslModeIsSelfCert", sslMode === "1");
+              localStorage.apacheListenedHttpPort = {{ apache_listened_http_port }};
+              localStorage.apacheListenedHttpsPort = sslPort;
+              $.ajax({
+                url: "/public/images/timepicker/ui-icons_222222_256x240.png",
+                cache: true
+              });
+            }
+
+            function refreshFormAction(form) {
+              var hostName = document.location.hostname;
+              if (document.location.protocol === 'http:') {
+                return;
+              }
+
+              var sslWasDisabled = localStorage.getItem("sslWasDisabled") === "true";
+              var sslPortWasChanged = localStorage.getItem("sslPortWasChanged") === "true";
+              var selfSignedCertWasRefreshed = localStorage.getItem("selfSignedCertificateWasRefreshed") === "true";
+
+              if (!sslWasDisabled && !sslPortWasChanged && !selfSignedCertWasRefreshed) {
+                return;
+              }
+
+              if (sslWasDisabled === true) {
+                  var httpServerUrl = 'http://' + hostName + ":" + {{ apache_listened_http_port }};
+                  localStorage.setItem("httpServerUrl", httpServerUrl)
+              }
+
+              localStorage.removeItem("sslWasDisabled");
+              localStorage.removeItem("sslPortWasChanged");
+              localStorage.removeItem("selfSignedCertificateWasRefreshed");
+            }
+
+            function onDocumentReady() {
+              $(window).load(onWindowLoad);
+            }
+
+            function onWindowLoad() {
+              $(".cert-date").each(onCertDateEach);
+            }
+
+            function onCertDateEach(index, element) {
+              var el, text, date, timestamp;
+
+              el = $(element);
+              text = el.text();
+
+              if (text === "") {
+                return;
+              }
+
+              timestamp = text * 1000;
+              date = moment(timestamp).format('ddd, DD MMM YYYY HH:mm:ss Z');
+              el.text(date).show();
+            }
+
+            var ssl_protocols = getTrueProtocolsArray("{{ ssl_protocol }}");
+            var protocol_checkboxes = $('.ssl-protocol');
+            protocol_checkboxes.ready(renderSSLProtocol_list);
+
+            /**
+             *
+             * @param ssl_protocol
+             * @returns {Array}
+             */
+            function getTrueProtocolsArray(ssl_protocol) {
+              var protocols = ssl_protocol.split(' ');
+              var first_protocol = protocols[0];
+              var protocols_count = protocols.length;
+
+              if (protocols_count === 1) {
+                return [
+                  first_protocol[0] === "+"
+                    ? first_protocol
+                    : "+" + first_protocol
+                ];
+              }
+
+              for (var i = protocols_count - 1; i >= 0; i--) {
+                var protocol = protocols[i];
+                if (protocol[0] === '+') {
+                  continue;
+                }
+
+                protocols[i] = "+" + protocol;
+
+                return protocols.splice(i);
+              }
+
+              return protocols;
+            }
+
+            function renderSSLProtocol_list() {
+              for (var number = 0; number < protocol_checkboxes.length; number++) {
+                var item = protocol_checkboxes[number];
+                var searched_protocol = "+" + item.id;
+                if (ssl_protocols.indexOf(searched_protocol) > -1) {
+                  item.checked = true
+                }
+              }
+            }
+
+            function setSSLProtocol_list() {
+              ssl_protocols = [];
+              for (var number = 0; number < protocol_checkboxes.length; number++) {
+                var item = protocol_checkboxes[number];
+                if (item.checked) {
+                  ssl_protocols.push(item.id);
+                }
+              }
+            }
+
+            protocol_checkboxes.change(setSSLProtocol_list);
+
+            $(function () {
+
+                {% if apache_restart %}
+              Server.apache.restart();
+                {% endif %}
+
+              var i_port = $('input[name=ssl_port]');
+              var protocol_block = $('#protocols-set');
+              var s_mode = $('select[name=ssl_mode]');
+              var class_lock = "button-lock";
+
+              if (s_mode.val() * 1) {
+                i_port.parents('label').css('display', 'block');
+                protocol_block.css('display', 'block');
+              } else {
+                i_port.parents('label').hide();
+                protocol_block.hide();
+                $('#check-config').hide();
+                $('#btn-apply').show().addClass(class_lock);
+              }
+
+              s_mode.change(function () {
+                $('#check-config').show();
+                if (s_mode.val() * 1) {
+                  i_port.parents('label').css('display', 'block');
+                  protocol_block.css('display', 'block');
+                  $('#btn-apply').show().addClass(class_lock);
+                } else {
+                  i_port.parents('label').hide();
+                  protocol_block.hide();
+                  $('#check-config').hide();
+                  $('#btn-apply').show().removeClass(class_lock).prop('disabled', false);
+                }
+              });
+
+              function displayErrors(errors) {
+                for (counter = 0; counter < errors.length; counter++) {
+                  var error = errors[counter];
+                  switch (error.code) {
+                    case 1:
+                      $("#protocol-error").text(error.message);
+                      break;
+                    case 2:
+                      $("#port-error").text(error.message);
+                      break;
+                    default:
+                      Server.setServerMessage(data.error.message, Server.MESSAGE_TYPE.ERROR, 10000);
+                  }
+                }
+              }
+
+              function clearErrors() {
+                $('.error').text('');
+              }
+
+              $('#check-config').click(function () {
+                var btn_check = $(this);
+                btn_check.addClass(class_lock);
+                clearErrors();
+
+                $.ajax({
+                  url: '/admin/web/checksslconf',
+                  method: 'POST',
+                  data: {
+                    port: i_port.val(),
+                    ssl_mode: s_mode.val(),
+                    ssl_protocol: ssl_protocols
+                  }
+                }).done(function (data) {
+                  btn_check.removeClass(class_lock);
+
+                  if (data.ssl) {
+                    $('#btn-apply').show().removeClass(class_lock).prop('disabled', false);
+                    Server.setServerMessage('{{ site._('The configuration has been successfully tested') }}', Server.MESSAGE_TYPE.NOTE, 10000);
+                  } else if (data.errors) {
+                    displayErrors(data.errors);
+                  }
+                }).fail(function () {
+                  Server.setServerMessage('{{ site._('Error while checking configuration') }}', Server.MESSAGE_TYPE.ERROR, 10000);
+                  btn_check.removeClass(class_lock);
+                });
+              });
+
+              $('input[name=ssl_port]').change(function () {
+                $('#btn-apply').show().addClass(class_lock);
+              });
+
+              i_port.keyup(function () {
+                $(this).val($(this).val().replace(/\D/, ''));
+                $('#btn-apply').show().addClass(class_lock);
+              });
+
+
+              var i_crtfile = $('input[name=crtfile]'),
+                i_pkeyfile = $('input[name=pkeyfile]');
+
+              var changeFile = function () {
+                if (i_crtfile.val() !== '' && i_pkeyfile.val() !== '')
+                  $('#load').removeClass(class_lock).prop('disabled', false);
+                else
+                  $('#load').addClass(class_lock).prop('disabled', true);
+              };
+
+              i_crtfile.change(changeFile);
+              i_pkeyfile.change(changeFile);
+            });
+        </script>
+    {% endautoescape %}
+
+    <style type="text/css">
+        .cert-date {
+            display: none;
+        }
+
+        #check-config {
+            float: left;
+            clear: both;
+        }
+
+        #check-config, #btn-apply {
+            margin-top: 10px;
+        }
+
+        #protocols-set {
+            display: none;
+            float: left;
+        }
+
+        #protocols-set > label, .ssl-protocol {
+            margin: 0 5px 0 5px;
+        }
+
+        #btn-apply {
+            float: left;
+            display: none;
+        }
+
+        .error {
+            display: inline;
+            padding-left: 15px;
+            color: red;
+        }
+
+        .subject {
+            width: 640px;
+        }
+    </style>
+{% endblock %}

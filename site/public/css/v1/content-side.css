@@ -1,0 +1,1450 @@
+
+#content-side {
+    float: left;
+    position: absolute;
+    height: 100%;
+    left: 250px;
+    right: 0px;
+}
+
+#license-block {
+    position: absolute;
+    float: left;
+    background: #DDDDDD;
+    width: 100%;
+    bottom: 0px;
+    font-size: 10px;
+    line-height: 10px;
+
+}
+
+#license-block span {
+    line-height: 25px;
+    margin-left: 10px;
+    font-size: inherit;
+   /*float: left;*/
+}
+
+#license-title {
+    margin-bottom: 0px;
+}
+
+#license-title td {
+    padding: 0px;
+    border: none;
+}
+
+#license-agreement a {
+    float: left;
+    line-height: 25px;
+    margin-right: 10px;
+    font-size: inherit;
+}
+
+#license-agreement {
+    vertical-align: bottom;
+}
+
+.content-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 25px;
+    right: 0px;
+
+    padding: 10px 20px 10px 20px;
+
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: auto;
+
+}
+
+/* registration form */
+
+form#reg input {
+    width: 250px;
+}
+
+form#reg .field {
+    margin-top: 10px;
+}
+
+form#reg .field span.server-name-info {
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #999;
+}
+
+form#reg .field > div:first-child {
+    width: 150px;
+    float: left;
+}
+
+form#reg .field > .error {
+    background: #E56B4D;
+    width: 302px;
+    height: 20px;
+}
+
+form#reg .field > .error > div {
+    margin: 2px 2px 2px 5px; 
+    color: white;
+}
+
+
+
+form#create-group-form {
+    margin-bottom: 10px;
+}
+
+form#create-group-form input{
+    height: 22px;
+    margin-right: 5px;
+    width: 300px;
+}
+
+form#group-list-form select {
+    width: 200px;
+    margin-left: 5px;
+}
+
+div.disable-block {
+    z-index: 101; 
+    background-color: #DDD; 
+    left: 13px; 
+    right: 14px; 
+    height: 213px; 
+    position: absolute; 
+    opacity: 0.5; 
+}
+
+#inside-disabled-block {
+    top: 112px;
+}
+
+#external-disabled-block {
+    top: 382px;
+}
+
+.entire-table {
+    position: absolute;
+    top: 80px;
+    bottom: 0px;
+    left: 10px;
+    right: 10px;
+}
+
+.entire-table-user-edit {
+    height: 300px;
+}
+
+.entire-table-user-list {
+    height: 550px;
+}
+
+table.ab-user-func-tb {
+    margin-bottom: 0px;
+}
+
+#federation-type {
+    display: block;
+}
+
+.ab-user-func-tb>tbody>tr>td,
+.federation-tb>tbody>tr>td,
+.network-tb>tbody>tr>td,
+.network-settings>table>tbody>tr>td,
+.group-tb>tbody>tr>td {
+    border: none;
+}
+
+.network-tb, .federation-tb {
+    margin-bottom: 0px;
+}
+
+div.address-entire-table, div.restrictions-table {
+    width: 100%;
+    height: 165px;
+}
+
+#save-federation-block {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+div.button-block {
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px;
+}
+
+div.add-host-block {
+    position: absolute;
+    left: 540px;
+    top: 60px;
+}
+
+.div-header-wrapper {
+    overflow: auto;
+}
+
+.group-div-header-wrapper {
+    padding-right: 17px;
+    background: #EDF2F6;
+}
+
+.div-header-wrapper::-webkit-scrollbar {
+    background-color: #EDF2F6;
+}
+
+.table-header {
+    position: relative;
+}
+
+.table-header, 
+.table-body, 
+.address-table-body {
+    margin-bottom: 0px;
+}
+
+.entire-table-group-list div.div-header-wrapper .table-header,
+.entire-table-group-list div.block-table-wrapper .table-body,
+.group-div-header-wrapper.group-block-table-wrapper {
+    min-width: 975px;
+}
+
+.block-table-wrapper {
+    clear: both;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+.group-block-table-wrapper {
+    clear: both;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    overflow-y: scroll;
+}
+
+.entire-table-group-list {
+    height: 600px;
+}
+
+.table-body,
+.address-table-body {
+    border: solid 1px #E4EEF3;
+}
+
+#fieldset-user-accounts-list #user-delete {
+    position: absolute;
+    bottom : 10px;
+    left: 10px;
+}
+
+#fieldset-user-accounts-list #user-list {
+    width: 200px;
+}
+
+.server-mode-description {
+    margin-left: 90px;
+}
+
+#import-ldap-users-checkbox {
+    margin-top: 10px;
+    float: left;
+}
+
+#conferences-list {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 60px;
+    bottom: 30px;
+    min-width: 975px;
+}
+
+#conferences-list.license-margin {
+    top: 100px;
+}
+
+#conferences-list .block-table-wrapper.group-block-table-wrapper {
+    height: 300px;
+}
+
+fieldset.fieldset-block {
+    padding: 10px;
+}
+
+fieldset#smtp-settings div > span {
+    width: 50px;
+    display: block;
+    float: left;
+}
+
+fieldset#smtp-settings .error {    
+    background: #E56B4D;
+    margin-right: 10px;
+}
+
+fieldset#admin-email .error {
+    background: #E56B4D;
+    width: inherit;
+}
+
+.error > div {
+    background: #E56B4D;
+    margin: 2px 2px 2px 5px; 
+    color: white;
+    padding-left: 5px;
+}
+
+fieldset#admin-email > input {
+    width: 300px;
+}
+
+fieldset.mail-group > div > span {
+    display: block;
+    float: left;
+    width: 50px;
+}
+
+fieldset.mail-group > div {
+    width: 100%;
+    margin-top: 10px;
+
+
+}
+
+fieldset.mail-group textarea {
+    padding-left: 4px;
+    position: relative;
+    width: 100%;
+    border: 1px solid black;
+    height: 180px;
+    resize: none;
+    border: 1px black solid;
+}
+
+fieldset.mail-group input {
+    width: 100%;
+    border: 1px black solid;
+}
+
+fieldset.sip label {
+    display: block;
+    width: 80px;
+    float: left;
+}
+
+fieldset.sip input, fieldset.sip select  {
+    float: left;
+    width: 150px;
+}
+
+fieldset.sip #tel td, fieldset.sip #default td {
+    padding-bottom: 9px;
+}
+
+fieldset#multicast {
+    position: absolute;
+    height: 50px;
+    top: 600px;
+    left: 10px;
+    right: 10px;
+}
+
+fieldset#conference-create #gconf-edit-select, 
+#gconf-edit-name, #gconf-edit-conf-types
+{
+    width: 150px;
+}
+
+/* ldap settings */
+td.value:hover {
+    background: url(/public/images/edit-pencil.png) no-repeat 450px 10px;
+}
+
+td.value > input {
+    border: 0;
+    width: 435px;
+}
+
+td.value > input:focus {
+    outline: none;
+}
+/* -- --*/
+
+#create-group-form .button {
+    margin-left: 20px;
+}
+
+#smtp-settings > legend + div + div {
+    left: 50%;
+}
+
+div.can-be-long-m {
+    width: 100%;
+    overflow: hidden;
+}
+
+.tb-fix {
+    table-layout: fixed;
+}
+
+div.can-be-long {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+div.can-be-long>div {
+    height: 100%;
+    width: 35px;
+    position: absolute;
+    background:url(/public/images/fade.png) repeat;
+    right: 0px;
+    bottom: 0px;
+}
+
+.w-150 {
+    width: 150px;
+}
+
+.user-info-block {
+    min-height: 20px;
+}
+
+#dialog-result, #dialog-result select {
+    height: 200px;
+    width: 320px;
+}
+
+
+#changeLdapGroups {
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+#changeLdapGroups a {
+    color: #FFF;
+}
+
+#changeLdapGroups .listWrapper {
+    box-sizing: border-box;
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    right: 5px;
+    bottom: 40px;
+}
+
+#changeLdapGroups .listWrapper > div {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 50%;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+#changeLdapGroups .listWrapper .allLdapGroupsWrapper {
+    left: 0px;
+}
+
+#changeLdapGroups .listWrapper .existsLdapGroupsWrapper {
+    right: 0px;
+}
+
+#changeLdapGroups .list {
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: absolute;
+    top: 30px;
+    bottom: 0px;
+    left: 2px;
+    right: 2px;
+    border: 1px solid #EDF2F6;
+}
+
+#changeLdapGroups .listHeader {
+    padding-left: 5px;
+    background: #EDF2F6;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+#changeLdapGroups .applyBtnWrapper {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 35px;
+    box-sizing: border-box;
+    padding-top: 5px;
+    padding-right: 10px;
+    border-top: #E4EEF3 1px solid;
+}
+
+#changeLdapGroups .list table {
+    margin-bottom: 0px;
+    table-layout: fixed;
+}
+
+#changeLdapGroups .list table tr td {
+    padding: 0px;
+    height: 30px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: #E4EEF3 1px solid;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+#changeLdapGroups .list table tr td:first-child {
+   text-align: center;
+   width: 32px;
+   text-overflow: clip;
+   overflow: visible;
+   border-left: none;
+}
+
+#changeLdapGroups .list table tr td:last-child {
+    padding-left: 5px;
+    border-right: none;
+}
+
+
+#changeLdapGroups .list span.highlighted {
+    font-weight: bold;
+    color: #000;
+}
+
+#changeLdapGroups .list table tr td:first-child span {
+   color: #99A;
+   cursor: pointer;
+   font-size: 20px;
+}
+
+#changeLdapGroups .list table tr td:first-child span:hover {
+    font-weight: bold;
+}
+
+#allLdapGroups.list table tr td:first-child span:after {
+    content: "+";
+}
+
+#existsLdapGroups.list table tr td:first-child span:after {
+    content: "×";
+}
+
+#changeLdapGroups .list table tr.exists td * {
+    color: #AAA;
+}
+
+#changeLdapGroups .list table tr.exists td:first-child span {
+    display: none;
+}
+
+#changeLdapGroups .searchField {
+    position:absolute;
+    top: 0px;
+    left: 5px;
+    right: 5px;
+    height: 35px;
+}
+
+#changeLdapGroups .searchField > div {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#changeLdapGroups .searchField > div > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#changeLdapGroups .searchField > div > div:first-child {
+    width: 100%;
+    padding-right: 10px;
+}
+
+#changeLdapGroups .searchField input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#changeLdapGroups .searchField input.placeholder {
+    color: #AAA;
+}
+
+#changeLdapGroups .verticalAlign {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+#changeLdapGroups .verticalAlign > div {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#changeLdapGroups .verticalAlign > div > div {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#changeLdapGroups .progressBar > div > div {
+    background-image: url("/img/spinner.gif");
+    width: 48px;
+    height: 48px;    
+}
+
+
+
+#advanced-options #apply-btns a {
+    width: 140px;
+}
+
+#advanced-options>legend {
+    cursor: pointer;
+}
+
+td.overflow-f {
+    overflow: hidden;
+}
+
+td.overflow-e {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#about-block {
+    width: 70%;
+}
+
+#about-block table *, #ext-block table *, #info-block table * {
+    border: none;
+}
+
+#about-block table td, #info-block table td {
+    padding: 5px 5px;
+}
+
+@media (max-width: 1200px){
+    #info-block table td, #ext-block table td {
+        display: block;
+        text-align: left;
+    }
+}
+
+#ext-block table td {
+    padding: 2px;
+}
+
+#license, #license>tr {
+    border-width: 0;
+    border-collapse: collapse;
+}
+
+#license>tbody>tr>td {
+    border-width: 0;
+    vertical-align: top;
+    height: 100%;
+    padding:0;
+    margin:0;
+}
+
+fieldset#license_info, fieldset#extensions {
+    height: 100%;
+}
+
+fieldset#license_info {
+    margin-right: 20px;
+}
+
+#conferences-list div#conf-func-block {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+}
+
+#conferences-list div#conf-func-block div#get-form-invite-users {
+    float: right;
+    margin-right: 30px;
+    min-width: 200px;
+}
+
+#endpoint-block table tr.endpoint-str:hover {
+    background-color: ghostwhite;
+    cursor: pointer;
+}
+
+#endpoint-block table td {
+    overflow: hidden;
+}
+
+#fieldset-group-list legend {
+    z-index: 1;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+select#ldap_server_type,
+select#auth-type {
+    width: 150px;
+}
+
+#manual-settings div#ldap_port_name {
+    width: 45px;
+}
+
+#manual-settings input#ldap_server {
+    width: 132px;
+}
+
+#manual-settings input#ldap_port {
+    width: 40px;
+}
+
+.ldap-field-width-1 {
+    width: 233px;
+}
+
+.ldap-field-name-width-1 {
+    width: 90px;
+}
+
+#ldap-group-block input {
+    width: 300px;
+}
+
+#ldap-group-block table {
+    margin-bottom: 0;
+}
+
+#ldap-group-block td {
+    vertical-align: top;
+    padding: 0 10px 0 0;
+    margin: 0;
+    border: none;
+}
+
+#ldap-group-block>div:first-child {
+    width: 60px;
+}
+
+#dialog-form a#ldap-group-select {
+    color: white;
+    margin-top: 10px;
+}
+
+#property-block table {
+    width: 700px;
+}
+
+#aliases-fieldset {
+    min-height: 300px;
+    min-width: 525px;
+}
+
+#sip-connections>div.entire-table {
+    width: 300px;
+    float: left;
+    top: 50px;
+}
+
+#sip-connections, #sip-from-domain {
+    width: 40%;
+    min-width: 600px;
+}
+
+#aliases-fieldset legend + div {
+    width: 500px;
+}
+
+#aliases-fieldset>div {
+    float: left;
+    margin: 10px;
+}
+
+#aliases-fieldset div>div.entire-table {
+    position: inherit;
+    min-height: 220px;
+}
+
+#sip-connections div.endpoint-accept-block {
+    position: absolute;
+    left: 340px;
+    top: 50px;
+}
+
+#aliases-fieldset div>div.endpoint-func-block {
+    margin-top: 10px;
+}
+
+#aliases-fieldset td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#sip-connections div.endpoint-func-block {
+    position: absolute;
+    bottom: 5px;
+}
+
+input#restart_notification,
+input#suppress_missed_call_mail {
+    margin-top: 3px;
+}
+
+.none-list-marks {
+    list-style-type: none;
+}
+
+.table-width-1 {
+    width: 700px;
+}
+
+table#report-head, table.report-body {
+    margin-bottom: 0px;
+}
+
+table#report-head, table.report-body,
+table#report-conf {
+    width: 1500px;
+}
+
+table#report-head th {
+    overflow: hidden;
+}
+
+textarea#log-text {
+    height: 80%;
+    width: 100%;
+}
+
+#fieldset-user-create {
+    z-index: 2;
+}
+
+#user-create-func-block a {
+    width: 90px;
+}
+
+#fieldset-user-create-ab {
+    height: 380px;
+    z-index: 1;
+}
+
+#fieldset-user-create-ab div#add-user-to-ab {
+    margin: -5px 0px 5px 20px;
+    float: left;
+    width: 370px;
+}
+
+#form-add-tc-id-in-ab .field {
+    float: left;
+    margin-right: 15px;
+}
+
+#fieldset-user-create-ab div#user-delete {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+
+#ab-list {
+    position: relative;
+}
+
+#fieldset-user-accounts-list a#refresh-btn {
+    margin-left: 20px;
+}
+
+#groupScopeForm > div {
+    padding: 2px 0px;
+}
+
+#groupScopeForm > div > input {
+    margin-right: 5px;
+}
+
+div#import-ldap-users-checkbox {
+    width: 50%;
+}
+
+div#journal-block {
+    padding-left: 110px;
+}
+
+div#journal-block>span {
+    display: block;
+    float: left;
+    width: 110px;
+    line-height: 25px;
+}
+
+div#journal-block>a,
+div#work-stats-block>a,
+#system-conf-block>div a {
+    width: 150px;
+}
+
+div#work-stats-block {
+    margin-left: 100px;
+}
+
+div#work-stats-block>span {
+    display: block;
+    float: left;
+    width: 125px;
+    line-height: 25px;
+}
+
+#system-conf-block>p {
+    margin-bottom: 5px;
+}
+
+#system-conf-block>div a#restore-file,
+div#work-stats-block {
+    margin-left: 225px;
+}
+
+#client-installer-block {
+    margin-top: 10px;
+}
+
+#client-installer-block>div a {
+    width: 141px;
+    margin-right: 30px;
+}
+
+#client-installer-block>div input,
+input#shared-key,
+input#shared-key-prefix-3,
+input#guest-page-info-company-name
+{
+    width: 350px;
+	margin-right: 10px;
+}
+
+div#maxbw .slider {
+    width: 325px;
+}
+
+.ui-slider-horizontal {
+    height: 10px;
+}
+
+#cb_maxbw {
+    float: left;
+    margin-top: 10px;
+}
+
+#maxbw {
+    float: left;
+    margin-left: 15px;
+    margin-top: -10px;
+}
+
+#client-installer-block div.label {
+    margin-bottom: 5px;
+}
+
+#client-installer-block div.label div {
+    float: left;
+    width: 80px;
+}
+
+div#app-settings-block label {
+    margin-left: 20px;
+    display: block;
+}
+
+a#reg-btn,
+a#buy-ext-btn {
+    width: 130px;
+}
+
+a.ui-slider-handle.ui-state-default.ui-corner-all.ui-state-hover,
+a.ui-slider-handle.ui-state-default.ui-corner-all.ui-state-focus {
+    border: 1px solid #d3d3d3;
+    background: #e6e6e6 url(/public/images/timepicker/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50%; 
+}
+
+#gconf-edit-day.mselect .option-list > ul {
+    max-height: none;
+}
+
+#user-mails .mail-tb {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+#user-mails .mail-tb td {
+    overflow: hidden;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#user-mails .mail-tb td {
+    border: none;
+}
+
+table.borderless-table {
+    margin-bottom: 0px;
+}
+
+table.borderless-table td {
+    border: none;
+    padding: 3px 5px;
+}
+
+table.borderless-table td:first-child{
+    white-space: nowrap;
+}
+
+table.borderless-table tr.imput-cell {
+    height: 30px;
+}
+
+table.first-right-table td:first-child{
+    max-width: 180px;
+    white-space: normal;
+    text-align: right;
+}
+
+table.webrtc-tb {
+    margin-bottom: 0;
+}
+
+table.webrtc-tb td {
+    border: none;
+    padding: 10px 0 0;
+
+}
+
+.webrtc {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.features-cell {
+    vertical-align: top;
+}
+
+table.general-buttons td {
+    border: none;
+    text-align: center;
+    padding: 0;
+}
+
+#reg-block p, .big-text {
+    font-size: 14px;
+}
+
+#reg-block a {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#reg-tutor {
+    color: #0679B8;
+}
+
+#reg-block .field p {
+    font-weight:bold
+}
+
+#reg-block>.field {
+    margin-top: 20px;
+}
+
+#reg-block p a {
+    font-size: 14px;
+}
+
+input#security-mask,
+input#api-status-security {
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+h1.error-bloc {
+    text-align: center;
+    margin-top: 10%;
+    color: red;
+}
+
+#dialog-form label, #dialog-form input {
+    display: block;
+}
+#dialog-form input.text, #dialog-form select {
+    margin-bottom: 12px;
+    width: 95%;
+    padding: .4em;
+}
+#dialog-form select {
+    width: 99%;
+    height:35px;
+}
+#dialog-form fieldset {
+    padding:0;
+    border:0;
+    margin-top:10px;
+}
+
+.ui-dialog .ui-state-error {
+    padding: .3em;
+}
+
+.validateTips {
+    border: 1px solid transparent;
+    padding: 0.3em;
+}
+
+.network-settings, .federation-settings {
+    width: 49%;
+    border: none;
+    margin-right: 5px;
+    float: left;
+}
+
+#app-tb td {
+    overflow: hidden;
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#strpos-block {
+    position: relative;
+}
+
+#strpos-block #pre-text {
+    position: absolute; 
+    padding: 3px 5px 5px 5px;  
+    z-index: 90;
+    font-weight: bold;
+}
+
+#search-str {
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#close-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+#outside-msg {
+    margin: 0 10px 11px 10px;
+    padding: 5px;
+    border: solid red 1px;
+}
+
+.waning-msg {
+    border: 1px solid red;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+#restart-server-on-slots-change-msg {
+    display: none;
+    border: 1px solid #FFAD45;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+#progressbar.ui-progressbar {
+    height: 3px;
+}
+
+table.add-ldap-group, table.group-tb {
+    margin: 0px;
+}
+
+table.add-ldap-group td {
+    padding: 5px;
+}
+
+table.search-tb td {
+    border: none;
+    padding: 0px;
+}
+
+table.search-tb {
+    margin-bottom: 0px;
+}
+
+.sort.current-sort.desc a {
+    background: url(/public/images/arrow_up.gif) no-repeat right center;
+    padding-right: 15px;
+}
+
+.sort.current-sort a {
+    background: url(/public/images/arrow_down.gif) no-repeat right center;
+    padding-right: 15px;
+}
+
+table.borderless-table {
+    width: auto;
+}
+
+.network-width {
+    width: 40%;
+}
+
+.help-notify {
+    color: gray;
+    font-size: smaller;
+}
+
+table.smtp-server-tb td {
+    padding: 0px;
+    border: none;
+    vertical-align: top;
+}
+
+table.smtp-server-tb {
+    margin-bottom: 0px;
+}
+
+#smtp-server-tb td {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+#schedule-tb {
+    width: 630px;
+    margin-bottom: 5px;
+}
+
+#schedule-tb td {
+    padding-bottom: 0px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: none;
+}
+
+img.ui-datepicker-trigger {
+    margin-left: -23px;
+    margin-bottom: -3px;
+    cursor: pointer;
+}
+
+div#wr-reg-srv_name {
+    display: none;
+}
+
+div#server-name-prompt {
+    margin-top: 10px;
+}
+
+div#server-name-prompt a {
+    margin-left: 10px;
+    color: #0679b8;
+}
+
+#date-block input,
+#schedule-tb input#gconf-edit-time{
+    width: 232px;
+}
+
+#sip-settings-tb td {
+    vertical-align: top;
+}
+
+.formFieldDateRange span.star {
+    display: none;
+}
+
+a#disconnect-button {
+    margin-left: 75px;
+}
+
+#gfk-dialog hr {
+    height: 1px;
+    background-color: #DDDDDD;
+    margin: 10px 0;
+}
+
+#gfk-dialog>p>a {
+    text-decoration: underline;
+}
+
+#gfk-dialog>p>a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a#disconnect-button {
+    margin-left: 75px;
+}
+
+tr#status {
+    /*display: table;*/
+}
+
+tr#status td:first-child {
+    padding-right: 10px;
+}
+
+tr#status td div#default-status span {
+    width: auto;
+}
+
+#wr-group-ab-groups {
+    margin-top: 10px;
+}
+
+#group-ab table.borderless-table label {
+    margin-left: 5px;
+}
+
+#workdirectory input {width:100% !important;}
+
+ul.status-connect li {
+    display: inline;
+    position: absolute;
+}
+
+#status-message {
+    margin-left: 60px;
+}
+
+#admin-email {
+    margin-bottom: 15px;
+}
+
+#restart_notification_block {
+    margin-top: 7px;
+}
+
+
+.selectList {}
+
+.selectList .searchBlock {
+    display : table;
+     width: 100%;
+}
+
+.selectList .searchBlock > div {
+    display: table-cell;
+    box-sizing: border-box;
+}
+
+.selectList .searchBlock > div:first-child {
+    width: 100%;
+    padding-right: 12px;
+    box-sizing: border-box;
+}
+
+.selectList .searchBlock > div:last-child {
+    text-align: right;
+}
+
+.selectList .searchBlock input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.selectList .searchBlock input[type=button] {
+    padding: 2px 12px;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #1b9ee0 0%, #00679b 100%);
+    background-color: #1b9ee0;
+    border: 1px solid #000000;
+    color: #ffffff;
+}
+
+.selectList .searchBlock input[type=button]:not(.disabled):hover {
+    background: linear-gradient(to top, #1b9ee0 0%, #00679b 100%);
+}
+
+.selectList .searchBlock input.disabled {
+    background: #CDCDCD;
+    border-color: lightgrey;
+    cursor: default;
+}
+
+
+.selectList .list {
+    position: absolute;
+    bottom: 0px;
+    top: 40px;
+    left: 12px;
+    right: 12px;
+    overflow: auto;
+}
+
+.selectList .list ul {
+    list-style-type: none;
+    border: #E4EEF3 1px solid;
+}
+
+.selectList .list li {
+    border-bottom: #E4EEF3 1px solid;
+    padding: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.selectList .list li:hover {
+    background-color: #E4EEF3;
+} 
+
+.selectList .list li:last-child {
+    border-bottom: none;
+}
+
+.selectList .list .tooltip {
+    display: table;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    box-sizing: border-box;
+}
+
+.selectList .list .tooltip > div {
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.selectList .list .tooltip > div.progressBar {
+    background: url("/img/spinner.gif") center no-repeat;
+}

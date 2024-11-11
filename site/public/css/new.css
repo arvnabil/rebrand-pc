@@ -1,0 +1,667 @@
+.tc-plugin-ui * {
+    font-size: 14px;
+}
+.tc-plugin-ui span {
+    font-size: inherit;
+}
+
+.tc-plugin-ui a {
+    color: #0088CC;
+    font-weight: bold;
+}
+
+.tc-plugin-ui hr {
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #B3B3B3;
+    margin: 4px 0px;
+}
+
+.tc-plugin-ui table {
+    border: none;
+    margin: 0px;
+}
+
+.tc-plugin-ui table tr td {
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.tc-plugin-ui input[type=text], .tc-plugin-ui select {
+    border-radius: 4px;
+    border: 2px solid #B3B3B3;
+    padding: 2px 6px;
+}
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui.wrapper {
+    width: 100%;
+    max-width: 640px;
+}
+
+.tc-plugin-ui .title {    
+    margin: 10px 2px;
+    font-size: 16px;
+}
+
+.tc-plugin-ui .smallTitle {
+    font-size: 14px;
+    margin: 5px 0px;
+}
+
+.tc-plugin-ui .smallText {
+    font-size: 12px;
+}
+
+.tc-plugin-ui .blueText {
+    color: #0088CC;
+}
+
+.tc-plugin-ui .greenText {
+    color: #008200;
+    font-weight: bold;
+}
+
+.tc-plugin-ui .halfLeftBlock {
+    float: left;
+    width: 45%;
+}
+
+.tc-plugin-ui .halfRightBlock {
+    float: right;
+    width: 45%;
+}
+
+.tc-plugin-ui .contentPadding {
+    padding: 12px 8px;
+}
+
+.tc-plugin-ui .contentMargin {
+    margin: 12px 8px;
+}
+
+.tc-plugin-ui .leftMargin {
+    margin-left: 20px;
+}
+
+.tc-plugin-ui .leftMarginBig {
+    margin-left: 100px;
+}
+
+.tc-plugin-ui .fullBlock {
+    width: 100%;
+}
+
+.tc-plugin-ui .fullInput input {
+    width: 100%;
+}
+
+.tc-plugin-ui .hidden {
+    display: none;
+}
+
+
+.tc-plugin-ui .error {
+    font-size: 11px;
+    color: #b43d3d;
+    padding-left: 5px;
+}
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .grayButtonBlock {
+    border: 2px solid #686868;
+}
+
+.tc-plugin-ui .grayButtonBlock .content {
+    padding: 8px 10px;
+    min-height: 90px;
+}
+
+.tc-plugin-ui .grayButtonBlock .button_new {
+    background: none;
+    border: none;
+    width: 100%;
+    color: #FFF;
+    background-color: #0088CC;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .grayButtonBlock .button_new a{
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    text-decoration: none;
+}
+
+
+.tc-plugin-ui .grayButtonBlock .button_new.disabled {
+    background-color: #686868;
+    cursor: default;
+}
+
+.tc-plugin-ui .grayButtonBlock .button_new:hover:not(.disabled) {
+    background-color: #2895CC;
+}
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .grayBlock {
+    border: 2px solid #77BBDD;
+    background-color: #EEE;
+}
+
+
+.tc-plugin-ui .whiteBlock {
+    border: 2px solid #77BBDD;
+    background-color: #FFF;
+}
+
+.tc-plugin-ui .selectableBlock {
+    border: 2px solid #686868;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .selectableBlock:hover {
+    border: 2px solid #0088CC;
+    outline: 2px solid #0088CC;
+}
+
+.tc-plugin-ui .selectableBlock.selected {
+    background-color: #EEE;
+}
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .grayButton {
+    color: #0088cc;
+    background-color: #E5E5E5;
+    border: 2px solid #DFDFDF;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .grayButton.disabled {
+    color:#B3B3B3;
+    background-color: #EEE;
+    cursor: default;
+}
+.tc-plugin-ui .grayButton.small {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.tc-plugin-ui .grayButton:hover:not(.disabled) {
+    border: 2px solid #40A5D9;
+    color: #FFF;
+    background-color: #0088CC;
+}
+.tc-plugin-ui .blueButton {
+    color: #FFF;
+    background-color: #0088CC;
+    border: 2px solid #40A5D9;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .blueButton:hover {
+    background-color: #2895CC;
+    border: 2px solid #3D9CCC;
+}
+
+.tc-plugin-ui .stbtn  {
+    
+    padding: 1px 4px;
+    height: 48px;
+    overflow: hidden;
+}
+.tc-plugin-ui .stbtn img {
+    float : left;
+    display: block;
+    margin-right:5px;
+}
+
+.tc-plugin-ui .stbtn .buttonData {
+    padding-top: 14px;
+}
+
+.tc-plugin-ui .stbtn .buttonData a span {
+    
+    color: #0088CC;
+    font-weight: bold;
+}
+
+.tc-plugin-ui .stbtn .buttonData span {
+    font-size: 14px;
+}
+
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .menu {
+    width: 100%;
+}
+
+.tc-plugin-ui .menu ul {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}
+
+.tc-plugin-ui .menu ul li {
+    display: block;
+    float: left;
+    width: 30%;
+    margin: 10px 1% 10px 2%;
+    padding: 5px 0px;
+    cursor: pointer;
+    color: #0679B8;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.tc-plugin-ui .menu ul li.selected {
+    background-color: #DDD;
+    border: 1px solid #CDCDCD;
+    color: #555;
+    cursor: default;
+}
+
+/*
+*
+*/
+
+.tc-plugin-ui.inviteMessage {
+    text-align: center;
+    font-weight: bold;
+}
+
+.tc-plugin-ui.inviteMessage a {
+    color: #0088CC;
+    margin-left: 30px;
+}
+
+.tc-plugin-ui.inviteMessageDialog textarea {
+    border: 2px solid #B3B3B3;
+    width: 100%;
+}
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .member, .tc-plugin-ui .singleMember {
+    width: 210px;
+    height: 70px;
+    overflow: hidden;
+    margin: 2px 2px;
+    padding: 3px;
+    border: 2px solid #CCCCCC;
+    float: left;
+}
+
+.tc-plugin-ui .member:hover {
+    border: 2px solid #0088CC;
+}
+
+.tc-plugin-ui .member .memberIcon, .tc-plugin-ui .singleMember .memberIcon {
+    width: 36px;
+    float: left;
+    margin-top: 2px;
+    margin-right : 16px;
+}
+
+.tc-plugin-ui .member .memberActionsIcon {
+    width: 20px;
+    float: right;
+    margin: 27px 0px 0px 0px;
+}
+
+.tc-plugin-ui .member .memberActionsIcon img {
+    cursor: pointer;
+    display: none;
+}
+
+.tc-plugin-ui .member:hover .memberActionsIcon img.activeIcon {
+    display: block;
+}
+
+.tc-plugin-ui .member .memberData, .tc-plugin-ui .singleMember .memberData {
+    margin-right: 30px;
+}
+
+.tc-plugin-ui .member .memberData .cmpl_uid, .tc-plugin-ui .singleMember .memberData .cmpl_uid{
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.tc-plugin-ui .member .memberData .cmpl_name, .tc-plugin-ui .singleMember .memberData .cmpl_name {
+    font-size : 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tc-plugin-ui .member .cmpl_groups, .tc-plugin-ui .singleMember .cmpl_groups  {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #3D9CCC;
+    margin-left: 5px;
+    line-height: 11px;
+}
+
+
+
+
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .userList {
+    
+    border: 2px solid #B3B3B3;
+    padding: 5px;
+    
+}
+
+.tc-plugin-ui .userList .searchBlock {
+    border-bottom: 2px solid #B3B3B3;
+    padding: 5px 8px;
+    margin: 0px 0px 10px 0px;
+}
+
+.tc-plugin-ui .userList .searchBlock  input {
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+.tc-plugin-ui .userList .searchBlock  input.lightGray {
+    color: #CCC;
+    font-size : 11px;
+}
+
+.tc-plugin-ui .userList .searchBlock ul.cmpl_searchMethodSelect {
+    list-style-type: none;
+    margin: 5px 0px 8px 0px;
+    width: 100%;
+    border-top: 2px solid #B3B3B3;
+    padding-top: 5px;
+}
+
+.tc-plugin-ui .userList .searchBlock ul.cmpl_searchMethodSelect li {
+    float: left;
+    font-size: 11px;
+    width: 25%;
+    margin: 2px 3%;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    text-align: center;
+}
+
+.tc-plugin-ui .userList .searchBlock ul.cmpl_searchMethodSelect li.selected {
+    background-color: #DFDFDF;
+    border-radius: 4px;
+    border: 1px solid #B3B3B3;
+    cursor: default;
+}
+
+.tc-plugin-ui .userList .limit, .userList .limit span {
+    float: right;
+    color: #E06818;
+}
+
+.tc-plugin-ui .userList .members {
+    overflow-y: scroll;
+    height: 280px;
+}
+
+.tc-plugin-ui .userList .members.full {
+    height: 350px;
+}
+
+.tc-plugin-ui .groupList {
+    border: 2px solid #B3B3B3;
+    padding: 5px;
+}
+
+.tc-plugin-ui .groupList .groups_module {
+    height: 320px;
+    overflow-y: scroll;
+}
+
+.tc-plugin-ui .groupList .group {
+    border-bottom: 1px solid #B3B3B3;
+    margin: 0px 0px 5px 0px;
+    padding: 5px 5px 10px 5px;
+}
+
+.tc-plugin-ui .groupList .group input[type=checkbox] {
+    margin-right: 5px;
+}
+
+.tc-plugin-ui .groupList .group .groupName {
+    cursor: pointer;
+}
+
+.tc-plugin-ui .cmpl_wait img {
+    display: block;
+    margin: 10px auto;
+}
+
+
+.tc-plugin-ui .waitDialog {
+    overflow: hidden;
+    max-width: 240px;
+    max-height: 70px;
+}
+
+.tc-plugin-ui .waitDialog img {
+    margin-right: 20px;
+    float: left;
+}
+
+.tc-plugin-ui .waitDialog .waitText {
+    margin-top: 16px;
+    font-size : 14px;
+    font-weight: bold;
+}
+
+.tc-plugin-ui .addById {
+    border: 2px solid #B3B3B3;
+    padding: 5px;
+}
+
+.tc-plugin-ui .addById .userData {
+    height: 80px;
+    position: relative;
+}
+
+.tc-plugin-ui .addById .userData .status {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.tc-plugin-ui .addGuests {
+    overflow: hidden;
+    border: 2px solid #B3B3B3;
+    padding: 0px 10px 10px 10px;
+}
+
+.tc-plugin-ui .addGuests .field {
+    margin: 10px 0px;
+}
+
+
+.tc-plugin-ui .schemaTable .confTypeSelectionSide  {
+    height: 120px;
+    overflow:  hidden;
+}
+
+.tc-plugin-ui .schemaTable .schemaEntry .schemaTitle {
+    font-size:14px;
+    color: #3D9CCC;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tc-plugin-ui .schemaTable .schemaEntry .schemaDescription {
+    font-size : 12px;
+}
+
+.tc-plugin-ui .schemaTable .schemaEntry img {
+    float: left;
+    margin-right: 10px;
+    display: block;
+}
+
+.tc-plugin-ui .schemaTable .schemaEntry .sizeDescription {
+    text-align: right;
+    color: #3D9CCC;
+    font-size : 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.tc-plugin-ui .scheduleTable input{
+    width: 320px;
+}
+
+.tc-plugin-ui .scheduleTable select{
+    width: 330px;
+}
+
+.ui-weekpicker-wrapper {
+    width: 100%;
+}
+
+.ui-weekpicker {
+    position: absolute;
+    border: 2px solid #B3B3B3;
+    border-radius: 4px;
+    height: 30px;
+    width: 330px;
+}
+
+.ui-weekpicker  .btn-arrow {
+    float: right;
+    background: white;
+    border-left: 2px solid #B3B3B3;
+    height: 28px;
+    width: 25px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.ui-weekpicker  .btn-arrow:hover {
+    background: lightblue;
+}
+
+.ui-weekpicker  .up-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #555;
+}
+
+.ui-weekpicker  .down-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #555;
+}
+
+
+.ui-weekpicker .descr {
+    padding-left: 5px;
+    padding-top: 4px;
+    width: 100%;
+}
+
+.ui-weekpicker  .option-list {
+    clear: both;
+    background-color: white;
+    z-index: 100;
+    border-width: 0px 2px 2px 2px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-color: #B3B3B3;
+    border-style: solid;
+}
+
+.ui-weekpicker  .option-list  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 100%;
+
+}
+.ui-weekpicker  .option-list  ul li {
+    border-top: solid 1px #ddd;
+    width: inherit;
+    padding: 5px;
+    cursor: pointer;
+    height: 21px;
+    line-height: 21px;
+    white-space: nowrap;
+}
+
+.ui-weekpicker  .option-list ul li:hover {
+    background-color: #DDDDDD;
+}
+
+.ui-weekpicker  .option-list  ul li input[type=checkbox] {
+    width: auto;
+    margin: 0px 10px;
+}
+

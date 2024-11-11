@@ -1,0 +1,227 @@
+div#manual {
+    width: 92%;
+}
+
+#manual ol {
+    list-style: none;
+    padding-left: 40px;
+}
+
+#manual ol.nested > li {
+    position: relative;
+}
+
+#manual ol.first {
+    counter-reset: list1;
+}
+
+#manual ol.second {
+    counter-reset: list2;
+}
+
+#manual ol.third {
+    counter-reset: list3;
+}
+
+#manual ol.fourth {
+    counter-reset: list4;
+}
+
+#manual ol.first > li:before {
+    counter-increment: list1;
+    content: counter(list1) ". ";
+}
+
+#manual ol.second > li:before {
+    counter-increment: list2;
+    content: counter(list1) "." counter(list2) ". ";
+}
+
+#manual ol.third li:before {
+    counter-increment: list3;
+    content: counter(list1) "." counter(list2) "." counter(list3) ". ";
+}
+
+#manual ol.fourth li:before {
+    counter-increment: list4;
+    content: counter(list1) "." counter(list2) "." counter(list3) "." counter(list4) ". ";
+}
+
+#manual {
+    counter-reset: list-h3;
+}
+
+#manual h3 {
+    counter-reset: list-h4;
+}
+
+#manual h4 {
+    counter-reset: list-h5;
+}
+
+#manual h5 {
+    counter-reset: list-h6;
+}
+
+#manual h3:before {
+    counter-increment: list-h3;
+}
+
+#manual h3 span:before {
+    content: counter(list-h3) ". ";
+}
+
+#manual h4:before {
+    counter-increment: list-h4;
+    content: counter(list-h3) "." counter(list-h4) ". ";
+}
+
+#manual h5:before {
+    counter-increment: list-h5;
+    content: counter(list-h3) "." counter(list-h4) "." counter(list-h5) ". ";
+}
+
+#manual h6:before {
+    counter-increment: list-h6;
+    content: counter(list-h3) "." counter(list-h4) "." counter(list-h5) "." counter(list-h6) ". ";
+}
+
+.note {
+    background: #eee;
+    padding: 5px 7px;
+    margin: 10px 0;
+}
+
+.question {
+	border-left: 4px solid #aaa;
+    padding: 5px 10px;
+    margin-left: 20px;
+}
+.call_strings{
+    font-family: monospace;
+    font-weight: bold;
+}
+.buttons{
+    font-weight: bold;
+}
+.tabs{
+    font-weight: bold;	
+}
+.email{
+    font-style: italic;
+}
+.telephone{
+    font-weight: bold;
+}
+	
+div.nbox {
+}
+
+#manual h3 {
+	overflow: hidden;
+	padding-left: 20px;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+#manual h3 span {
+    font-size: 24px;
+	font-weight: normal;
+    color: #0679B8;
+}
+#manual h3:before, #manual h3:after {
+	background-color: #333;
+	content: "";
+	display: inline-block;
+	height: 3px;
+	margin-bottom: 8px;
+	position: relative;
+	vertical-align: middle;
+	width: 100%;
+}
+#manual h3:before {
+	right: 0.5em;
+	margin-left: -100%;
+}
+#manual h3:after {
+	left: 0.5em;
+	margin-right: -100%;
+}
+
+#manual h4 {
+    font-size: 18px;
+    padding-top: 55px;
+    padding-bottom: 35px;
+    color: #0679B8;
+}
+
+#manual h3+h4 {
+    padding-top: 25px;
+    padding-bottom: 35px;
+}
+
+#manual h5 {
+    font-size: 16px;
+    padding-top: 55px;
+    padding-bottom: 35px;
+    color: #0679B8;
+}
+
+#manual h4+h5 {
+    padding-top: 0px;
+    padding-bottom: 35px;
+}
+
+#manual h6 {
+    font-size: 15px;
+    padding-top: 55px;
+    padding-bottom: 35px;
+    color: #0679B8;
+}
+
+#manual h5+h6 {
+    padding-top: 0px;
+    padding-bottom: 35px;
+}
+
+#manual ul {
+    margin-left: 25px;
+}
+
+#scroll-up {
+    width: 70px;
+    position: fixed;
+    right: 0;
+    height: 100%;
+    background: #eee;
+    display: none;
+    top:71px;
+    right: 16px;
+    cursor: pointer;
+}
+#scroll-up > div {
+    width: 65px;
+    position: fixed;
+    top: 50%;
+    text-align: center;
+    color: black;
+}
+#scroll-up img
+{
+    margin: 0 0 -5px 5px;
+}
+div#manual table {
+    margin: 15px 0;
+}
+
+#manual ol.snoska {
+    counter-reset: item;
+}
+#manual ol.snoska li {
+    display: block;
+}
+
+#manual ol.snoska li:before {
+    content: counter(item) " - ";
+    counter-increment: item;
+    font-weight: bold;
+}

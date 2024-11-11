@@ -1,0 +1,32 @@
+{% extends template.base %}
+
+{% block head %}
+  {{ parent() }}
+
+  <link rel="stylesheet" type="text/css" href="/admin-area/styles.css?version={{ server_version }}">
+{% endblock %}
+
+{% block content %}
+  <div id='admin-area-screen'></div>
+
+  <script src="/admin-area/bundle.js?version={{ server_version }}"></script>
+
+  <script type="text/javascript">
+    $('#admin-area-screen').ready(function () {
+      setTimeout(function () {
+        $('#dlg-autonomy').extensionsPopup('autonomy');
+      }, 1000)
+    });
+
+    if ({{ slots_changed_time ?: 'false' }}) {
+      var restartServerOnSlotsChangeMsg = $("#restart-server-on-slots-change-msg");
+      var message = "{{ site._('The next redistribution of permanent licenses is scheduled on %date at %time. To apply changes now, please restart the server.')
+      |replace({'%date': (slots_last_redistribute + preferences_offset + 86400)
+      |date('d.m.Y'), '%time': (slots_last_redistribute + preferences_offset + 86400)
+      |date('H:i')}) }}";
+
+      restartServerOnSlotsChangeMsg.show()
+      restartServerOnSlotsChangeMsg.html('<span class="error-msg">' + message + '</span>').show(200);
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,11 @@
+
+#footer {
+    height: 20px;
+    width: 100%;
+    background: lightblue url(/img/header/topmenu-bg.png);
+    position: absolute;
+    bottom: 0;
+    
+    min-width:  inherit;
+    z-index: -1;
+}

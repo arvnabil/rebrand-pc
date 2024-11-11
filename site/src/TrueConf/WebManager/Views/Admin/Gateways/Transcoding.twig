@@ -1,0 +1,20 @@
+{% extends template.base %}
+
+{% block head %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="/admin-area/styles.css?version={{ server_version }}">
+{% endblock %}
+
+{% block content %}
+    <div id='admin-area-screen'></div>
+
+    <script src="/admin-area/bundle.js?version={{ server_version }}"></script>
+    <script type="text/javascript">
+      $('#admin-area-screen').ready(function () {
+        setTimeout(function () {
+            $('#dlg-autonomy').extensionsPopup('autonomy');
+        }, 1000)
+      });
+  </script>
+{% endblock %}

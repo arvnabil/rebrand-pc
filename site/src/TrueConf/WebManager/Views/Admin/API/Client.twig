@@ -1,0 +1,749 @@
+{% extends template.base %}
+
+{% block js %}
+    {% set vee_lang = settings.lang == 'pt' ?  'pt_BR' : settings.lang %}
+    <link href="/public/css/admin/api/clients.css?version={{ current_version|e('html') }}" rel="stylesheet"
+          type="text/css"/>
+
+    {% if debug %}
+        <script src="/public/js/vue/vue/vue.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-router/vue-router.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.js?version={{ current_version|e('html') }}"></script>
+    {% else %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-router/vue-router.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.min.js?version={{ current_version|e('html') }}"></script>
+    {% endif %}
+    <script src="/public/js/moment-with-locales.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vee-validate/locale/{{ vee_lang }}.js?version={{ current_version|e('html') }}"></script>
+{% endblock %}
+
+{% block main_container %}
+    {% set display_license_expired_warning = ('admin' == user_type) and (days_left != null) and (days_left <= 14) %}
+    {% set client_name_placeholder = site._("Enter application name") %}
+    <div id="app" class="content-container">
+        <div id="error-message-container">
+            <p class="error-text">
+                {% if error_msg %}
+                    {{ error_msg }}
+                {% endif %}
+            </p>
+        </div>
+        {% if display_license_expired_warning %}
+            <div class="waning-msg">{{ (days_left > 0) ? site.ngettext(
+                    "Your license will expire soon. %d day left until expiration. [a]Renew the license[/a]",
+                    "Your license will expire soon. %d days left until expiration. [a]Renew the license[/a]",
+                    days_left) | replace({'%d': '<b>'~days_left~'</b>', '[a]': '<a href="" id="dlg-expire">', '[/a]': '</a>'}):
+                site._("Your license has expired. [a]Renew the license[/a]") | replace({'[a]': '<a href="" id="dlg-expire">', '[/a]': '</a>'}) }}</div>
+        {% endif %}
+        {% autoescape 'html' %}
+        <h1>{{ title |e('html') }}
+            {% block help %}
+                <p class="help" align="right">
+                    <a href="{{ site.getInsideUrl('help', 'show')~help_section |e('html') }}"
+                       target="_blank" rel="noopener">{{ site._('Help')|e('html') }}</a>
+                    <label class="help-icon">?</label>
+                </p>
+            {% endblock %}
+        </h1>
+        <router-view class="view" :clients="clients" :client="client"></router-view>
+
+        <div id="create-new-client-dialog" class="dialog" title="{{ site._("Create a new application")|e('html') }}">
+            <div v-if="error" class="error-message">
+                ${error.message}
+            </div>
+
+            <form>
+                <div class="field">
+                    <label for="new_client_name"
+                           :class="{'field-label': true, 'error': errors.has('new_client_name') }">{{ site._("Name")|e('html') }}
+                        *</label>
+                    <input type="text" name="new_client_name" id="new_client_name" v-model="new_client.client_name"
+                           placeholder="{{ client_name_placeholder }}"
+                           :class="{'field-input': true, 'error': errors.has('new_client_name') }"
+                           data-vv-as='"{{ site._("Name")|e('html') }}"'
+                           v-validate="{ rules: { required: true, min:8, max:128 } }"
+                           minlength="8" maxlength="128" autocomplete="off">
+                    <span v-show="errors.has('new_client_name')" class="field-error">${ errors.first('new_client_name') }</span>
+                </div>
+
+                <div class="field">
+                    <label for="new_redirect_uri"
+                           :class="{'field-label': true, 'error': errors.has('new_redirect_uri') }">{{ site._("Redirect URL")|e('html') }}
+                        *</label>
+                    <input v-validate="{ rules: { required: true, url: true } }" type="text" name="new_redirect_uri"
+                           id="new_redirect_uri" v-model="new_client.redirect_uri"
+                           :class="{'field-input': true, 'error': errors.has('new_redirect_uri') }"
+                           placeholder="https://server.name/handler" maxlength="512" autocomplete="off"
+                           data-vv-as='"{{ site._("Redirect URL")|e('html') }}"'>
+                    <span v-show="errors.has('new_redirect_uri')" class="field-error">${ errors.first('new_redirect_uri') }</span>
+                </div>
+
+                <div class="permissions">
+                    <label>{{ site._("Permissions")|e('html') }}</label>
+                    <div class="permission" v-for="permission of permissions" :key="permission">
+                        <input type="checkbox" :name="permission" :id="permission" :value="permission"
+                               v-model="new_client.permissions" class="checkbox">
+                        <label class="checkbox-label" for="permission">${permission}</label>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <div id="confirm-delete-client-dialog" class="dialog warning-dialog"
+             title="{{ site._('Warning!')|e('html') }}"></div>
+        <div id="confirm-delete-client-access-token-dialog" class="dialog warning-dialog"
+             title="{{ site._('Warning!')|e('html') }}"></div>
+    </div>
+
+    <style>
+        .long_values {
+            max-width: 300px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        #regenerete-btn {
+            position: relative;
+            bottom: 0.05em;
+            margin-top: 0;
+        }
+
+        #app * table td:before {
+            padding-right: 10px;
+        }
+
+        .list-bar > button {
+            float: left;
+        }
+
+        .list-bar {
+            height: 42px;
+        }
+
+    </style>
+
+    <script type="text/x-template" id="client-list">
+        <div>
+            <fieldset id="clients-list">
+                <legend>{{ site._("Applications")|e('html') }}</legend>
+
+                <div class="list-bar">
+                    <button class="button" @click="$parent.openCreateNewClientDialog">
+                        {{ site._("Create a new application")|e('html') }}
+                    </button>
+                </div>
+
+                <table id="table-clients">
+                    <thead>
+                    <tr>
+                        <th>{{ site._("Name")|e('html') }}</th>
+                        <th>{{ site._("Application ID")|e('html') }}</th>
+                        <th>{{ site._("Secret")|e('html') }}</th>
+                        <th>{{ site._("Permissions")|e('html') }}</th>
+                        <th>{{ site._("Actions")|e('html') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="client of clients" :key="client.id">
+                        <td data-label="{{ site._("Name")|e('html') }}">
+                            <router-link :to="{ path: '/' + client.id}">${ client.client_name }</router-link>
+                        </td>
+                        <td class="long_values" data-label="{{ site._("Application ID")|e('html') }}"
+                            :title="client.id">${client.id}
+                        </td>
+                        <td class="long_values" data-label="{{ site._("Secret")|e('html') }}" :title="client.id">
+                            ${client.client_secret}
+                        </td>
+                        <td data-label="{{ site._("Permissions")|e('html') }}">${client.scope}</td>
+                        <td data-label="{{ site._("Actions")|e('html') }}">
+                            <button class="button" v-show="client.is_undeletable === false"
+                                    @click="$parent.openConfirmDeleteClientDialog(client)">{{ site._("Delete")|e('html') }}</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+        </div>
+    </script>
+    <script type="text/x-template" id="client">
+        <div>
+            <div v-if="client === null">
+                ${ $parent.messages.client_id_not_found.replace("%client_id%", $parent.$route.params.id) }
+            </div>
+
+            <div v-else>
+                <fieldset class="fieldset-wrapper">
+                    <legend>{{ site._("Application")|e('html') }}</legend>
+
+                    <div v-if="$parent.error" class="error-message">
+                        ${$parent.error.message}
+                    </div>
+
+                    <div class="field">
+                        <label for="client_id" class="field-label">{{ site._("Application ID")|e('html') }}</label>
+                        <input type="text" name="client_id" id="client_id" v-model="client.id"
+                               class="field-input" maxlength="255" autocomplete="off" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label for="client_secret" class="field-label">{{ site._("Secret")|e('html') }}</label>
+                        <input type="text" name="client_secret" id="client_secret" v-model="client.client_secret"
+                               class="field-input" maxlength="255" autocomplete="off" disabled>
+
+                        <button id="regenerete-btn" @click="$parent.generateClientSecret"
+                                class="button">{{ site._("Regenerate")|e('html') }}</button>
+                    </div>
+
+                    <div class="field">
+                        <label for="client_name"
+                               :class="{'field-label': true, 'error': errors.has('client_name') }">{{ site._("Name")|e('html') }}
+                            *</label>
+                        <input type="text" name="client_name" id="client_name" v-model="client.client_name"
+                               placeholder="{{ client_name_placeholder }}"
+                               :class="{'field-input': true, 'error': errors.has('client_name') }"
+                               data-vv-as='"{{ site._("Name")|e('html') }}"'
+                               v-validate="{ rules: { required: true, min:8, max:128 } }"
+                               minlength="8" maxlength="128" autocomplete="off">
+                        <span v-show="errors.has('client_name')"
+                              class="field-error">${ errors.first('client_name') }</span>
+                    </div>
+
+                    <div class="field">
+                        <label for="redirect_uri"
+                               :class="{'field-label': true, 'error': errors.has('redirect_uri') }">{{ site._("Redirect URL")|e('html') }}
+                            *</label>
+                        <input v-validate="{ rules: { required: true, url: true } }" type="text" name="redirect_uri"
+                               id="redirect_uri" v-model="client.redirect_uri"
+                               :class="{'field-input': true, 'error': errors.has('redirect_uri') }"
+                               placeholder="https://server.name/handler" maxlength="512" autocomplete="off"
+                               data-vv-as='"{{ site._("Redirect URL")|e('html') }}"'>
+                        <span v-show="errors.has('redirect_uri')"
+                              class="field-error">${ errors.first('redirect_uri') }</span>
+                    </div>
+
+                    <div class="permissions">
+                        <label>{{ site._("Permissions")|e('html') }}</label>
+                        <div class="permission" v-for="permission of $parent.permissions" :key="permission">
+                            <input type="checkbox" :name="permission" :id="permission" :value="permission"
+                                   v-model="$parent.selected_permissions" class="checkbox">
+                            <label class="checkbox-label" :for="permission">${permission}</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button :class="{'button': true, 'button-lock': errors.has('redirect_uri') || errors.has('client_name') }"
+                                @click="$parent.updateClient(client, function() {}, function() {})">{{ site._("Save")|e('html') }}</button>
+                        <button class="button"
+                                @click="$parent.openConfirmDeleteClientDialog(client)">{{ site._("Delete")|e('html') }}</button>
+                        <router-link :to="{ path: '/'}">
+                            <button class="button">{{ site._("Back")|e('html') }}</button>
+                        </router-link>
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset v-if="client.access_tokens" class="fieldset-wrapper">
+                    <legend>{{ site._("Access Tokens")|e('html') }}</legend>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>{{ site._("User ID")|e('html') }}</th>
+                            <th>{{ site._("Access Token")|e('html') }}</th>
+                            <th>{{ site._("Permissions")|e('html') }}</th>
+                            <th>{{ site._("Expires")|e('html') }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="access_token of client.access_tokens" :key="access_token.id">
+                            <td data-label="{{ site._("User ID")|e('html') }}">${access_token.user_id}</td>
+                            <td data-label="{{ site._("Access Token")|e('html') }}">${access_token.id}</td>
+                            <td data-label="{{ site._("Permissions")|e('html') }}">${access_token.scope}</td>
+                            <td data-label="{{ site._("Expires")|e('html') }}">${access_token.expires}</td>
+                            <td>
+                                <button @click="$parent.openConfirmDeleteClientAccessTokenDialog(client, access_token.id)"
+                                        class="button">{{ site._("Delete")|e('html') }}</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </script>
+    {% endautoescape %}
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+            {% if display_license_expired_warning %}
+            $(document).ready(function () {
+              $('#dlg-expire').extensionsPopup('renewal');
+            });
+            {% endif %}
+
+            {% set moment_lang = settings.lang == 'zh' ? 'zh-cn' : settings.lang %}
+            {% set vee_lang = settings.lang == 'pt' ?  'pt_BR' : settings.lang %}
+            moment.locale("{{ moment_lang|e('js') }}");
+            Vue.use(VueResource);
+            Vue.use(VueRouter);
+            Vue.use(VeeValidate, {
+              locale: '{{ vee_lang|e('js') }}'
+            });
+
+            Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+            var ClientList = Vue.component('client-list', {
+              delimiters: ["${", "}"],
+              template: '#client-list',
+              props: ['clients']
+            });
+
+            var ClientId = Vue.component('client-id', {
+              delimiters: ["${", "}"],
+              template: '#client',
+              props: ['client']
+            });
+
+            var router = new VueRouter({
+              routes: [
+                {
+                  path: '/',
+                  component: ClientList
+                },
+                {
+                  path: '/:id',
+                  component: ClientId
+                }
+              ]
+            });
+
+            var App = new Vue({
+              router: router,
+              delimiters: ["${", "}"],
+              components: {
+                'client-list': ClientList,
+                'client-id': ClientId
+              },
+              watch: {
+                '$route': function () {
+                  this.error = null;
+                },
+                '$route.params.id': function (id) {
+                  if (id === undefined) {
+                    this.$set(this, 'client', null);
+                    return;
+                  }
+
+                  var client = this.searchClientById(this.$route.params.id);
+
+                  if (client !== null) {
+                    client = Vue.util.extend({}, client);
+                  }
+
+                  this.$set(this, 'client', client);
+                },
+                'client': function (client) {
+                  if (client === null) {
+                    return;
+                  }
+
+                  this.selected_permissions = client.scope.split(' ');
+
+                  if (client.access_tokens !== undefined) {
+                    return;
+                  }
+
+                  this.getClientAccessTokens(client.id).then(this.onSuccessGetClientAccessTokens, function (response) {
+                    this.setErrorServerMessageByResponse(response);
+                  });
+                }
+              },
+              data: {
+                error: null,
+                permissions: {{ permissions|json_encode|raw }},
+                selected_permissions: [],
+                new_client: {
+                  client_name: "",
+                  redirect_uri: "",
+                  permissions: []
+                },
+                client_index: null,
+                clients: [],
+                client: null,
+                messages: {
+                  internal_server_error: '{{ site._('Internal Server Error')|e('js') }}',
+                  client_id_not_found: '{{ site._('Client %client_id% is not found')|e('js') }}',
+                  client_created_successfully: '{{ site._('Client "%client_name%" created successfully')|e('js') }}',
+                  client_saved_successfully: '{{ site._('Client "%client_name%" saved successfully')|e('js') }}',
+                  client_deleted_successfully: '{{ site._('Client "%client_name%" deleted successfully')|e('js') }}',
+                  access_token_deleted_successfully: '{{ site._('Access Token "%access_token%" deleted successfully')|e('js') }}',
+                  client_will_be_deleted: '{{ site._('The Application "%client_name%" will be [b]deleted[/b].[br]Are you sure?')|e('js') }}',
+                  access_token_will_be_deleted: '{{ site._('The Access Token "%access_token%" will be [b]deleted[/b].[br]Are you sure?')|e('js') }}'
+                }
+              },
+                methods: {
+                    getClients: function (onSuccess, onFail) {
+                        this.error = null;
+                        Server.showLoadEffect();
+
+                        this.$http.get("/api/v3/api-clients?show_private=false").then(function (response) {
+                            this.$set(this, 'clients', response.body.clients);
+
+                            Server.removeLoadEffect();
+                            onSuccess(response);
+                        }, function (response) {
+                            this.setErrorServerMessageByResponse(response);
+
+                            Server.removeLoadEffect();
+                            onFail(response);
+                        });
+                },
+                createClient: function (client, onSuccess, onFail) {
+                  this.error = null;
+                  this.$validator.validateAll();
+
+                  if (this.errors.first('new_client_name') || this.errors.first('new_redirect_uri')) {
+                    return;
+                  }
+
+                  Server.showLoadEffect();
+
+                  var scope = client.permissions.length === 0 ? '' : client.permissions.join(' ');
+                  var redirect_uri = prepareURL(client.redirect_uri);
+
+                  this.$http.post("/api/v3/api-clients", {
+                    client_name: client.client_name,
+                    redirect_uri: redirect_uri,
+                    scope: scope
+                  }).then(function (response) {
+                    var client = response.body.client;
+                    this.$data.clients.push(client);
+
+                    Server.removeLoadEffect();
+                    Server.setServerMessage(this.$data.messages.client_created_successfully
+                      .replace("%client_name%", client.client_name), Server.MESSAGE_TYPE.NOTE, 2000);
+
+                    onSuccess(response);
+                  }, function (response) {
+                    Server.removeLoadEffect();
+                    this.setErrorServerMessageByResponse(response);
+
+                    onFail(response);
+                  });
+                },
+                updateClient: function (client, onSuccess, onFail) {
+                  this.error = null;
+                  this.$validator.validateAll();
+
+                  if ($('#redirect_uri+.field-error').css('display') !== 'none' || $('#redirect_uri+.field-error').css('display') !== 'none') {
+                    return;
+                  }
+
+                  if (this.errors.has('client_name') || this.errors.has('redirect_uri')) {
+                    return;
+                  }
+
+                  Server.showLoadEffect();
+
+                  var scope = this.$data.selected_permissions.length === 0 ? '' : this.$data.selected_permissions.join(' ');
+                  var redirect_uri = prepareURL(client.redirect_uri);
+
+
+                  this.$http.put('/api/v3/api-clients/' + client.id, {
+                    client_name: client.client_name,
+                    client_secret: client.client_secret,
+                    redirect_uri: redirect_uri,
+                    scope: scope
+                  }).then(function (response) {
+                    var client = response.body.client;
+
+                    for (var index = 0; index < this.$data.clients.length; index++) {
+                      if (this.$data.clients[index].id === client.id) {
+                        this.$data.clients[index] = client;
+                        break;
+                      }
+                    }
+
+                    Server.removeLoadEffect();
+                    Server.setServerMessage(this.$data.messages.client_saved_successfully
+                      .replace("%client_name%", client.client_name), Server.MESSAGE_TYPE.NOTE, 2000);
+
+                    onSuccess(response);
+                  }, function (response) {
+                    Server.removeLoadEffect();
+                    this.setErrorServerMessageByResponse(response);
+
+                    onFail(response);
+                  });
+                },
+                deleteClient: function (client, onSuccess, onFail) {
+                  this.error = null;
+                  Server.showLoadEffect();
+
+                  this.$http.delete("/api/v3/api-clients/" + client.id).then(function (response) {
+                    for (var index = 0; index < this.$data.clients.length; index++) {
+                      var item = this.$data.clients[index];
+                      if (item.id === client.id) {
+                        this.$delete(this.$data.clients, index);
+                        break;
+                      }
+                    }
+
+                    Server.removeLoadEffect();
+                    Server.setServerMessage(this.$data.messages.client_deleted_successfully
+                      .replace("%client_name%", client.client_name), Server.MESSAGE_TYPE.NOTE, 2000);
+
+                    onSuccess(response);
+                  }, function (response) {
+                    Server.removeLoadEffect();
+                    this.setErrorServerMessageByResponse(response);
+
+                    onFail(response);
+                  });
+                },
+                getClientAccessTokens: function (client_id) {
+                  return this.$http.get('/api/v3/api-clients/' + client_id + '/api-access-tokens');
+                },
+                deleteClientAccessToken: function (client, access_token, onSuccess, onFail) {
+                  if (undefined === client.access_tokens) {
+                    return;
+                  }
+
+                  Server.showLoadEffect();
+
+                  this.$http.delete('/api/v3/api-clients/' + client.id + '/api-access-tokens/' + access_token).then(function (response) {
+                    for (var index = 0; index < client.access_tokens.length; index++) {
+                      var item = client.access_tokens[index];
+                      if (item.id === access_token) {
+                        this.$delete(client.access_tokens, index);
+                        break;
+                      }
+                    }
+
+                    Server.removeLoadEffect();
+                    Server.setServerMessage(this.$data.messages.access_token_deleted_successfully
+                      .replace("%access_token%", access_token), Server.MESSAGE_TYPE.NOTE, 2000);
+
+                    onSuccess(response);
+                  }, function (response) {
+                    Server.removeLoadEffect();
+                    this.setErrorServerMessageByResponse(response);
+
+                    onFail(response);
+                  });
+                },
+                onSuccessGetClientAccessTokens: function (response) {
+                  if (this.$data.client === null) {
+                    return;
+                  }
+
+                  for (var key in response.data.access_tokens) {
+                    response.data.access_tokens[key].expires = moment(response.data.access_tokens[key].expires * 1000).format('LLLL');
+                  }
+                  this.$set(this.$data.client, 'access_tokens', response.body.access_tokens);
+                },
+                searchClientById: function (id) {
+                  var client = null;
+
+                  for (var index = 0; index < this.$data.clients.length; index++) {
+                    var item = this.$data.clients[index];
+
+                    if (item.id !== id) {
+                      continue;
+                    }
+                    this.client_index = index;
+                    client = item;
+                  }
+
+
+                  return client;
+                },
+                generateClientSecret: function () {
+                  this.$set(this.$data.client, 'client_secret', generateId(40));
+                },
+
+                setErrorServerMessageByResponse: function (response) {
+                  if (undefined === response.body ||
+                    undefined === response.body.error ||
+                    undefined === response.body.error.message) {
+                    this.error = {
+                      message: this.messages.internal_server_error
+                    };
+                    return;
+                  }
+
+                  if (undefined === response.body.error.errors ||
+                    undefined === response.body.error.errors[0]) {
+                    this.error = response.body.error;
+                    return;
+                  }
+
+                  this.error = response.body.error.errors[0];
+                },
+                openCreateNewClientDialog: function () {
+                  this.$validator.clean();
+                  var el = $('#create-new-client-dialog');
+
+                  var self = this;
+                  var client = this.$data.new_client;
+
+                  el.dialog({
+                    resizable: false,
+                    height: $(window).height() * 0.95,
+                    width: 540,
+                    modal: true,
+                    buttons: [
+                      {
+                        text: _("Create"),
+                        mousedown: function () {
+                          App.$validator.validateAll();
+                        },
+                        click: function () {
+                          self.error = null;
+                          self.createClient(client, function () {
+                            el.dialog('close');
+                            self.$data.new_client = {
+                              client_name: "",
+                              redirect_uri: "",
+                              permissions: []
+                            };
+                          }, function () {
+                          })
+                        }
+                      },
+                      {
+                        text: _("Cancel"),
+                        mousedown: function () {
+                          App.$validator.pause();
+                        },
+                        click: function () {
+                          App.$validator.resume();
+                          self.error = null;
+                          el.dialog('close');
+                        }
+                      }
+                    ]
+                  });
+                },
+                openConfirmDeleteClientAccessTokenDialog: function (client, access_token) {
+                  var self = this;
+                  var el = $('#confirm-delete-client-dialog');
+
+                  el.html("<p>" + self.$data.messages.access_token_will_be_deleted
+                    .replace('%access_token%', access_token)
+                    .replace('[b]', '<b>')
+                    .replace('[/b]', '</b>')
+                    .replace('[br]', '<br />') + "</p>");
+
+                  el.dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: "auto",
+                    modal: true,
+                    buttons: [
+                      {
+                        text: _("OK"),
+                        click: function () {
+                          self.error = null;
+                          self.deleteClientAccessToken(client, access_token, function () {
+                            el.dialog("close");
+                          }, function () {
+                            el.dialog("close");
+                          });
+                        }
+                      },
+                      {
+                        text: _("Cancel"),
+                        click: function () {
+                          self.error = null;
+                          $(this).dialog("close");
+                        }
+                      }
+                    ]
+                  });
+                },
+                openConfirmDeleteClientDialog: function (client) {
+                  var self = this;
+                  var el = $('#confirm-delete-client-dialog');
+
+                  el.html("<p>" + self.$data.messages.client_will_be_deleted
+                    .replace('%client_name%', client.client_name)
+                    .replace('[b]', '<b>')
+                    .replace('[/b]', '</b>')
+                    .replace('[br]', '<br />') + "</p>");
+
+                  el.dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: "auto",
+                    modal: true,
+                    buttons: [
+                      {
+                        text: _("OK"),
+                        click: function () {
+                          self.error = null;
+                          self.deleteClient(client, function () {
+                            el.dialog('close');
+                            self.$router.push({path: "/"});
+                          }, function () {
+                            el.dialog('close');
+                          });
+                        }
+                      },
+                      {
+                        text: _("Cancel"),
+                        click: function () {
+                          self.error = null;
+                          $(this).dialog("close");
+                        }
+                      }
+                    ]
+                  });
+                }
+              },
+              mounted: function () {
+                var self = this;
+                this.getClients(function (response) {
+                  if (self.$route.params.id === undefined) {
+                    return;
+                  }
+
+                  var client = self.searchClientById(self.$route.params.id);
+
+                  if (client !== null) {
+                    client = Vue.util.extend({}, client);
+                  }
+
+                  self.$set(self, 'client', client);
+                }, function (response) {
+                });
+              }
+            }).$mount('#app');
+
+            function byteToHex(byte) {
+              return ('0' + byte.toString(16)).slice(-2);
+            }
+
+            function prepareURL(url) {
+              if (url.search(/^https?:\/\/.*/i) === -1) {
+                url = "http://" + url;
+              }
+
+              return url;
+            }
+
+            function generateId(len) {
+              var arr = new Uint8Array((len || 40) / 2);
+              var crypto = window.crypto || window.msCrypto;
+              crypto.getRandomValues(arr);
+              return [].map.call(arr, byteToHex).join("");
+            }
+        </script>
+    {% endautoescape %}
+{% endblock %}

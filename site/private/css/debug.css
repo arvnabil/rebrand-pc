@@ -1,0 +1,35 @@
+#debugForm {
+    border: 2px solid #000;
+    word-wrap: break-word;
+    height: 80%;
+    margin:5px;
+    padding: 5px;
+    overflow: scroll;
+    width: 32%;
+    position: fixed;
+    top: 5px;
+    left: 65%;
+    z-index: 99;
+    background-color: #FFF;
+    color: #000;
+    opacity: 0.9;
+}
+
+#debugForm input {
+    margin: 5px 5px;
+}
+
+#debugForm .hideLink {
+    padding: 10px;
+    border-bottom: 1px solid #888;
+}
+
+#debugForm .debugControl {
+    padding: 10px;
+    border-bottom: 1px solid #888;
+}
+
+#debugForm #debugData {
+    padding: 20px;
+}
+

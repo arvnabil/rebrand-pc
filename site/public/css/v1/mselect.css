@@ -1,0 +1,116 @@
+.mselect > div:first-child {
+    border-top: 1px;
+    border-right: 0px;
+    border-left: 1px;
+    border-bottom: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 212px;
+    height: 25px;
+    background-color: #fff;
+    float: left;
+    line-height: 25px;
+    padding-left: 8px;
+}
+
+.mselect .btn-arrow-ms {
+    float: left;
+    background: white;
+
+    border: 1px solid black;
+    height: 25px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.mselect .triangle-up-ms {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #555;
+}
+
+.mselect .triangle-down-ms {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #555;
+}
+
+.mselect .btn-arrow-ms:hover {
+    background: lightblue;
+}
+
+.mselect .btn-arrow-ms > div {
+    margin: 8px 2px;
+}
+
+.none {
+    display: none;
+}
+
+
+.mselect .option-list {
+    clear: both;
+    float: left;
+    background-color: white;
+    z-index: 10000;
+
+    border-top: 0px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-color: black;
+    border-style: solid;
+    
+    width: 236px;
+}
+
+.mselect .option-list > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    max-height: 133px;
+    overflow: hidden;
+    overflow-y: auto;
+
+}
+.mselect .option-list > ul li {
+    border-top: solid 1px #ddd;
+    width: auto;
+    padding-left: 5px;
+    cursor: pointer;
+    height: 21px;
+    line-height: 21px;
+    white-space: nowrap;
+}
+
+.mselect .option-list > ul li input {
+    margin-right: 7px;
+}
+
+.mselect .option-list > ul li:hover {
+    background-color: #DDDDDD;
+}
+
+.mselect .top-display {
+    margin-top: -160px;
+    border-top: solid 1px black;
+}
+
+.mselect-locked {
+    background: #AAAAAA;
+    opacity: 0.5;
+}
+
+.mselect-locked .btn-arrow-ms:hover {
+    background: white;
+    cursor: default;
+}
+
+.mselect .option-list > ul li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

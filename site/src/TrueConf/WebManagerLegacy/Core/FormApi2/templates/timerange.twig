@@ -1,0 +1,14 @@
+<script type='text/javascript'>
+  $(function () {
+    $('#{{ id }}_from, #{{ id }}_to').timepicker({});
+    $.timepicker.setDefaults($.timepicker.regional['{{ lang }}']);
+  });
+</script>
+<div class='formFieldDateRange'>
+    <label for='{{ id }}_from'>{{ label_from }}{{ required }}</label>&nbsp;<input type='text' id='{{ id }}_from'
+                                                                                  name='{{ name_from }}'
+                                                                                  value='{{ date_from }}'
+                                                                                  readonly='readonly'/>&nbsp;&nbsp;
+    <label for='{{ id }}_to'>{{ label_to }}</label>&nbsp;<input type='text' id='{{ id }}_to' name='{{ name_to }}'
+                                                                value='{{ date_to }}' readonly='readonly'/>
+</div>

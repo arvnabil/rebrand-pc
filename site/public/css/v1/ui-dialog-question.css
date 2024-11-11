@@ -1,0 +1,20 @@
+
+.dialog-question-form div.ui-dialog-buttonset {
+    width: 180px;
+    margin: 0 auto;
+    float: none!important;
+}
+
+.dialog-question-form button.ui-button {
+    width: 80px;
+}
+
+.dialog-question-form div.ui-dialog-content {
+    
+    display: table-cell!important;
+    vertical-align: middle;
+}
+
+.dialog-question-form div.ui-widget-content {
+    border: none;
+}

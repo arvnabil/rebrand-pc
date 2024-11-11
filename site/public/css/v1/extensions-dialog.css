@@ -1,0 +1,37 @@
+
+.extDialog {
+	padding: 1.5em;
+	text-align: center;
+}
+.extDialog p {
+	text-align: left;
+	padding-bottom: 10px;
+}
+.extDialog img {
+	float: right;
+	margin: 1ex 0 0 1.5em
+}
+.extDialog .buttons {
+	margin: 20px 0;
+	display:inline-block;
+}
+.extDialog .button {
+	color: #FFF;
+}
+
+.extDialog .button + a {display:block;}
+
+#info-block a, #ext-block a[id^=dlg] {
+	text-decoration: none;
+	border-bottom: 1px dashed;
+}
+
+.extDialog ol {
+        padding-left: 8ex;
+        padding-right: 4ex;
+}
+
+.extDialog ol li {
+    margin: 1ex;
+    text-align: left;
+}

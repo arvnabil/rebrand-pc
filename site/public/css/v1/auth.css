@@ -1,0 +1,15 @@
+#auth-form {
+    width:450px;
+    margin:0 auto;
+    border:1px solid #ccc;
+    padding:20px;
+}
+
+#auth-form .auth-field {
+    margin: 0 auto 12px;
+    width: 263px;
+}
+
+#auth-form .auth-field input {
+    width: 250px;
+}

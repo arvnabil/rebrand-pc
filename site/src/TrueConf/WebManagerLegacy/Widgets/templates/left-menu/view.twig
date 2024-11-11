@@ -1,0 +1,11 @@
+{% import "Widgets/templates/left-menu/macro.twig" as  m %}
+
+{{ m.display_left_menu(menu, site, true, area, is_localhost, is_deny_admins_from_localhost) }}
+
+{% if bannedItems|length > 0 %}
+    <script>
+        {% for item in bannedItems %}
+        $('#dlg_{{ item }}').extensionsPopup('{{ extPopups[item] }}');
+        {% endfor %}
+    </script>
+{% endif %}

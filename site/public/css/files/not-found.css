@@ -1,0 +1,7 @@
+.layout {
+    -js-display: flex;
+    -js-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+}

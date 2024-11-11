@@ -1,0 +1,202 @@
+{% extends template.base %}
+
+{% block js %}
+    {% autoescape 'js' %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ server_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ server_version }}"></script>
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+    {% set bandwidth_min = constant('\\TrueConf\\WebManager\\Classes\\ApplicationSettings\\Parameters\\BandwidthInParameter::VALUE_MIN') %}
+    {% set bandwidth_max = constant('\\TrueConf\\WebManager\\Classes\\ApplicationSettings\\Parameters\\BandwidthInParameter::VALUE_MAX') %}
+    <div id="app" style="height: auto; display:none">
+        <label>{{ site._("Group:") }}
+            <select id="groups-list" v-model="group_id">
+                <option v-for="group of groups" :value="group.id">
+                    ${ group.id === no_group_id ? "{{ site._("Users without group") }}" : group.display_name }
+                </option>
+            </select></label>
+        <fieldset>
+            <legend class="app__title">{{ site._('Application settings') }}</legend>
+            <table class="app__content">
+                <tr>
+                    <td class="param-name">{{ site._('Inbound bandwidth limit (kbit/s)') }}</td>
+                    <td>
+                        <div id="bandwidth-in">
+                            <input class="app__checkbox" type="checkbox"
+                                   v-model="bandwidth_in_value_enable" @click="focus_input">
+                            <input class="app__input" type="number"
+                                   :disabled="!bandwidth_in_value_enable" v-model="bandwidth_in_value"
+                                   min="{{ bandwidth_min }}"
+                                   max="{{ bandwidth_max }}">
+                            <label id="port-error" class="error"
+                                   v-if="!bandWidthInIsValid" title="[ {{ bandwidth_min }} - {{ bandwidth_max }} ]"
+                                   for="port">[ {{ bandwidth_min }} - {{ bandwidth_max }} ]</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param-name">{{ site._('Outbound bandwidth limit (kbit/s)') }}</td>
+                    <td>
+                        <div id="bandwidth-out">
+                            <input class="app__checkbox" type="checkbox"
+                                   v-model="bandwidth_out_value_enable" @click="focus_input">
+                            <input class="app__input" type="number"
+                                   :disabled="!bandwidth_out_value_enable" v-model="bandwidth_out_value"
+                                   min="{{ bandwidth_min }}"
+                                   max="{{ bandwidth_max }}">
+                            <label id="port-error" class="error" v-if="!bandWidthOutIsValid"
+                                   title="[ {{ bandwidth_min }} - {{ bandwidth_max }} ]"
+                                   for="port">[ {{ bandwidth_min }} - {{ bandwidth_max }} ]</label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button v-bind:class="{ 'button-lock': !formIsValid}" :disabled="!formIsValid" class="button"
+                    @click="change_bandwidths">{{ site._('Apply') }}</button>
+        </fieldset>
+    </div>
+
+    <style type="text/css">
+        .app__input {
+            margin: 0 12px;
+            padding: 0 6px;
+            width: 56px;
+            height: 28px;
+            border: 1px solid gray;
+        }
+
+        .app__checkbox {
+            background: #fff;
+            border: 1px solid black;
+        }
+
+        .param-name {
+            width: 310px;
+        }
+
+        #groups-list {;
+            width: 256px;
+            height: 28px;
+            margin-left: 12px;
+            margin-bottom: 36px;
+        }
+
+        label.error {
+            background: #E56B4D;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+        }
+    </style>
+
+    <script type="text/javascript">
+      Vue.use(VueResource);
+      Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+      var parameters = {{ parameters }};
+      var vm = new Vue({
+        el: '#app',
+        delimiters: ["${", "}"],
+        data: {
+          parameters: parameters,
+          bandwidth_in_value_enable: false,
+          bandwidth_out_value_enable: false,
+          bandwidth_in_value: parameters.bandwidth_in_value,
+          bandwidth_out_value: parameters.bandwidth_out_value,
+          last_bandwidth_in_value: parameters.bandwidth_in_value,
+          last_bandwidth_out_value: parameters.bandwidth_out_value,
+          group_id: '{{ group_id }}',
+          groups: {},
+          no_group_id: '{{ constant('\\Classes\\Group::NO_GROUP_ID') }}'
+        },
+        methods: {
+          get_all_groups: function () {
+            this.$http.get('/api/v3/groups', {
+              params: {
+                page_size: 1000
+              }
+            }).then(function (response) {
+              this.$set(this, 'groups', response.body.groups);
+            }, function (error) {
+
+            });
+          },
+          render_checkboxes: function () {
+            this.bandwidth_in_value_enable = this.bandwidth_in_value !== null;
+            this.bandwidth_out_value_enable = this.bandwidth_out_value !== null;
+          },
+          change_bandwidths: function () {
+            this.$http.post('/admin/group/change-bandwidths', {
+              bandwidth_in_value: this.bandwidth_in_value,
+              bandwidth_out_value: this.bandwidth_out_value
+            }, {
+              params: {
+                key: this.group_id,
+                reg: 1
+              }
+            }).then(function (response) {
+              Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+            }, function (error) {
+              $(document).trigger('display-header-error', {message: _('Request error') + ':' + data.error});
+            });
+          },
+          focus_input: function (e) {
+            if (!this.bandwidth_in_value_enable) {
+              return;
+            }
+            setTimeout(function () {
+              var elems = e.toElement.parentNode.childNodes;
+              if (elems.length < 2) {
+                return;
+              }
+
+              elems[1].focus();
+            }, 0);
+          }
+        },
+        computed: {
+          bandWidthInIsValid: function () {
+            return !this.bandwidth_in_value_enable
+              || this.bandwidth_in_value >= {{ bandwidth_min }}
+              && this.bandwidth_in_value <= {{ bandwidth_max }};
+          },
+          bandWidthOutIsValid: function () {
+            return !this.bandwidth_out_value_enable
+              || this.bandwidth_out_value >= {{ bandwidth_min }}
+              && this.bandwidth_out_value <= {{ bandwidth_max }};
+          },
+          formIsValid: function () {
+            return this.bandWidthInIsValid && this.bandWidthOutIsValid;
+          }
+        },
+        watch: {
+          bandwidth_in_value_enable: function () {
+            if (this.bandwidth_in_value_enable) {
+              this.bandwidth_in_value = this.last_bandwidth_in_value;
+              return;
+            }
+            this.last_bandwidth_in_value = this.bandwidth_in_value;
+            this.bandwidth_in_value = null;
+          },
+          bandwidth_out_value_enable: function () {
+            if (this.bandwidth_out_value_enable) {
+              this.bandwidth_out_value = this.last_bandwidth_out_value;
+              return;
+            }
+            this.last_bandwidth_out_value = this.bandwidth_out_value;
+            this.bandwidth_out_value = null;
+          },
+          group_id: function () {
+            document.location.search = "?key=" + this.group_id + '&reg=1';
+          }
+        },
+        mounted: function () {
+          this.$el.style.display = 'block';
+          this.get_all_groups();
+          this.render_checkboxes();
+        }
+      });
+    </script>
+{% endblock %}

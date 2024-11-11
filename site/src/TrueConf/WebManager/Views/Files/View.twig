@@ -1,0 +1,362 @@
+{% extends template.base_filestorage %}
+
+{% block head %}
+
+    <meta property="og:description" content="{{ ogDescriptionContent }}"/>
+    <meta property="og:url" content="{{ site.getCurrentFullURL()|escape }}"/>
+    <meta property="og:site_name" content="{{ host }}"/>
+
+    <meta property="og:image" content="{{ url ? url : secure_url }}/public/images/opengraph/file.png"/>
+    {% if secure_url %}
+        <meta property="og:image:secure_url" content="{{ secure_url }}/public/images/opengraph/file.png"/>
+    {% endif %}
+    <meta property="og:image:type" content="image/png"/>
+    <meta property="og:image:width" content="300"/>
+    <meta property="og:image:height" content="300"/>
+
+    <meta property="twitter:description" content="{{ ogDescriptionContent }}"/>
+
+    <link rel="stylesheet" href="/public/fonts/material-design-icons/material-icons.css?version={{ current_version }}"/>
+    <link rel="stylesheet" type="text/css" href="/public/css/files/view.css?version={{ current_version }}">
+
+    {% if debug %}
+        <script src="/public/js/vue/vue/vue.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-router/vue-router.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version }}"></script>
+    {% else %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-router/vue-router.min.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version }}"></script>
+    {% endif %}
+{% endblock %}
+
+{% block layout %}
+    {% autoescape 'html' %}
+        <div id="filestorage" class="layout" style="display:none">
+            <div class="file-list">
+                <div v-for="folder in folders" class="file" @click="openFile(folder)" style="cursor: pointer;">
+                    <div class="profile">
+                        <div class="icon">
+                            <i v-if="folder === '..' " class="material-icons md-48 md-amber-300">&#xE2C8;</i>
+                            <i v-else class="material-icons md-48 md-amber-300">&#xE2C7;</i>
+                        </div>
+                        <div class="data">
+                            <div class="name">${folder}</div>
+                            <div class="desc"></div>
+                        </div>
+                    </div>
+                    <div class="actions"></div>
+                </div>
+
+                <div v-for="(file, index) in files" class="file">
+                    <div class="profile" @click="openFile(file.short_name)"
+                         :style="{cursor: isFile(location) ? 'default' : 'pointer'  }">
+                        <div class="icon">
+                            <img v-if="isImage(file) && isUploaded(file)" :src="getFilePreviewLink(file.short_name)"
+                                 :alt="file.short_name">
+                            <i v-else class="material-icons md-48 md-grey-300">&#xE24D;</i>
+                        </div>
+                        <div class="data">
+                            <div class="name">${file.short_name}</div>
+                            <div class="desc">${getHumanFileSize(file.size)}</div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <div v-if="isUploaded(file)" class="action" @click="downloadFile(file.short_name)"
+                             style="cursor: pointer;">
+                            <div class="icon"><i class="material-icons md-18">&#xE2C4;</i></div>
+                            <div class="text">{{ site._('Download') }}</div>
+                        </div>
+                        <div v-else class="status">
+                            <div class="progress"><span :style="{width: getUploadPercentage(file) + '%' }"></span></div>
+                            <div class="text">${getHumanFileSize(file.done)}/${getHumanFileSize(file.size)}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="isFile(location) && isImage(location)" class="preview">
+                <img @click=originalFile(location.short_name) style="cursor: pointer"
+                     :src="getFilePreviewLink(location.short_name)" :alt="location.short_name">
+            </div>
+
+            <div v-if="isFile(location)" class="author">
+                <div class="owner">${owner.display_name} <${owner.uid}></div>
+                <div v-if="isUploaded(location)" class="date">${getFileDate(location)}</div>
+            </div>
+        </div>
+    {% endautoescape %}
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+
+          Vue.use(VueRouter);
+
+          var router = new VueRouter({
+            mode: 'history',
+            routes: [
+              {name: 'files', path: '/files/:hash/:path*'}
+            ]
+          });
+
+          var app = new Vue({
+            router: router,
+            delimiters: ["${", "}"],
+            data: {
+              hash: "{{ hash }}",
+              path: "{{ path }}",
+              tree: {{ tree|json_encode|raw }},
+              location: [],
+              folders: [],
+              files: [],
+              count: {{ count }},
+              owner: {{ owner|json_encode|raw }}
+            },
+            watch: {
+              '$route': function (to, from) {
+                this.$data.hash = to.params.hash;
+                this.$data.path = to.params.path ? to.params.path : "";
+                this.update();
+              }
+            },
+            mounted: function () {
+              this.update();
+
+              if (this.isSingleFile() && this.files[0] !== this.location) {
+                this.openFile(this.files[0].short_name);
+              }
+
+              this.$el.style.display = "flex";
+
+              var self = this;
+
+              var onSuccessTree = function () {
+                setTimeout(function () {
+                  self.getTree(onSuccessTree, onFailTree);
+                }, 5000);
+              };
+
+              var onFailTree = function () {
+                setTimeout(function () {
+                  self.getTree(onSuccessTree, onFailTree);
+                }, 30000);
+              };
+
+              self.getTree(onSuccessTree, onFailTree);
+            },
+            methods: {
+              update: function () {
+                this.location = this.getLocation();
+                this.folders = this.getFolders();
+                this.files = this.getFiles();
+              },
+              isRoot: function () {
+                this.path = this.path.trim();
+
+                return this.path === "";
+              },
+              isFile: function (file) {
+                return file.type !== undefined && file.type === "file"
+              },
+              isImage: function (file) {
+                return ["jpg", "jpeg", "png", "gif"].indexOf(this.getExtension(file)) !== -1
+              },
+              isUploaded: function (file) {
+                return file.done === file.size;
+              },
+              isSingleFile: function () {
+                return this.count === 1;
+              },
+              getExtension: function (file) {
+                return file.short_name.split('.').pop();
+              },
+              getUploadPercentage: function (file) {
+                return Math.floor(file.done / (file.size / 100));
+              },
+              getUploadSpeed: function (file) {
+                return this.getHumanFileSize(file.speed);
+              },
+              getFilePreviewLink: function (name) {
+                if (this.isFile(this.location)) {
+                  return this.$route.path + "?mode=preview";
+                }
+
+                return this.$route.path.replace(/\/$/, '') + "/" + encodeURIComponent(name) + "?mode=preview";
+              },
+              getFileDownloadLink: function (name) {
+                if (this.isFile(this.location)) {
+                  return this.$route.path + "?mode=download";
+                }
+
+                return this.$route.path.replace(/\/$/, '') + "/" + encodeURIComponent(name) + "?mode=download";
+              },
+              getFileOriginalLink: function (name) {
+                if (this.isFile(this.location)) {
+                  return this.$route.path + "?mode=original";
+                }
+
+                return this.$route.path.replace(/\/$/, '') + "/" + name + "?mode=original";
+              },
+              getHumanFileSize: function (size) {
+                if (size === 0) {
+                  return 0 + 'B'
+                }
+
+                var i = Math.floor(Math.log(size) / Math.log(1024));
+                return (size / Math.pow(1024, i)).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+              },
+              getLocation: function () {
+                if (this.hash === "") {
+                  return [];
+                }
+
+                if (this.path === "") {
+                  return this.tree;
+                }
+
+                var parts = this.path.split("/");
+
+                var context = this.tree;
+
+                for (var i = 0; i < parts.length; i++) {
+                  var part = parts[i];
+
+                  if (undefined === context[part]) {
+                    return [];
+                  }
+
+                  var item = context[part];
+
+                  if (item.type !== undefined && item.type === "folder") {
+                    context = item["files"];
+                  } else {
+                    context = item;
+                  }
+                }
+
+                return context;
+              },
+              getFolders: function () {
+                var directories = [];
+
+                if (!this.isRoot() && !this.isSingleFile()) {
+                  directories.push("..");
+                }
+
+
+                for (name in this.location) {
+                  var item = this.location[name];
+
+                  if (item.type === "folder") {
+                    directories.push(name);
+                  }
+                }
+
+                return directories;
+              },
+              getFiles: function () {
+                var files = [];
+
+                if (this.isFile(this.location)) {
+                  files.push(this.$data.location);
+                  return files;
+                }
+
+                for (name in this.location) {
+                  var item = this.location[name];
+
+                  if (item.type === "file") {
+                    files.push(item);
+                  }
+                }
+
+                return files;
+              },
+              getFileDate: function (file) {
+                if (file.date !== undefined) {
+                  return file.date;
+                }
+
+                var date = new Date(file.completion_time * 1000);
+
+                var h = date.getHours();
+                var m = date.getMinutes();
+                var dd = date.getDate();
+                var mm = date.getMonth() + 1;
+                var yyyy = date.getFullYear();
+
+                if (h < 10) {
+                  h = '0' + h
+                }
+
+                if (m < 10) {
+                  m = '0' + m
+                }
+
+                if (dd < 10) {
+                  dd = '0' + dd
+                }
+
+                if (mm < 10) {
+                  mm = '0' + mm
+                }
+
+                date = h + ":" + m + " " + dd + "." + mm + "." + yyyy;
+
+                file.date = date;
+
+                return file.date;
+              },
+              getTree: function (onSuccess, onFail) {
+                this.$http.get(this.$route.path).then(function (response) {
+                  this.$set(this, 'tree', response.body.tree);
+                  this.$set(this, 'count', response.body.count);
+                  this.update();
+                  onSuccess();
+                }, function (error) {
+                });
+              },
+              getUrlLevelUp: function (url) {
+                if (url === "/") {
+                  return url;
+                }
+
+                var length = url.length;
+
+                var last = url.lastIndexOf("/");
+                if (last === -1) {
+                  return url;
+                }
+
+                  if (last === length) {
+                      this.getUrlUpLevel(url.substr(0, last));
+                  }
+
+                  return url.substr(0, last);
+              },
+                downloadFile: function (name) {
+                    window.location.assign(this.getFileDownloadLink(name));
+                },
+                originalFile: function (name) {
+                    const newWindow = window.open(this.getFileOriginalLink(name), "_blank", "noopener");
+                    if (newWindow) newWindow.opener = null;
+                },
+                openFile: function (name) {
+                    var url;
+
+                    if (this.isFile(this.location) && name !== "..") {
+                        return;
+                    }
+
+                    if (name === "..") {
+                        url = this.getUrlLevelUp(this.$route.path);
+                } else {
+                  url = this.$route.path.replace(/\/$/, '') + "/" + encodeURIComponent(name);
+                }
+
+                return router.push({path: url});
+              }
+            }
+          }).$mount('#filestorage');
+        </script>
+    {% endautoescape %}
+{% endblock %}

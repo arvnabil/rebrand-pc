@@ -1,0 +1,181 @@
+{% extends template.base %}
+
+{% block content %}
+
+  {% set vue_lang = settings.lang == 'pt' ?  'pt_BR' : settings.lang %}
+
+  {% if debug %}
+    <script src="/public/js/vue/vue/vue.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vee-validate/vee-validate.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version|e('html') }}"></script>
+  {% else %}
+    <script src="/public/js/vue/vue/vue.min.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vee-validate/vee-validate.min.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version|e('html') }}"></script>
+  {% endif %}
+
+  <script src="/public/js/vue/vee-validate/locale/{{ vue_lang|e('html') }}.js?version={{ current_version|e('html') }}"></script>
+
+  <div id="app">
+    <fieldset class="m-top-10">
+      <legend>{{ site._("UDP port range")|e('html') }}</legend>
+      <div class="main-container">
+        <div class="rtp-input-container">
+          <label class="rtp-input__label">{{ site._("From")|e('html') }}</label>
+          <input v-cloak v-model="rtpMinPort" class="rtp-input" onkeyup="this.value = this.value.replace(/\D/ig, '');"
+                 v-validate.immediate="{ rules: {required: true, isPortInRange: true, lessThanMaxPort: rtpMaxPort} }"
+                 type="number" ref="rtpMinPort" name="rtpMinPort" />
+          <label class="error">${ errors.first('rtpMinPort') }</label>
+        </div>
+        <span>&nbsp;&nbsp;—&nbsp;&nbsp;</span>
+        <div class="rtp-input-container">
+          <label class="rtp-input__label">{{ site._("To")|e('html') }}</label>
+          <input v-cloak v-model="rtpMaxPort" class="rtp-input" onkeyup="this.value = this.value.replace(/\D/ig, '');"
+                 v-validate.immediate="{ rules: {required: true, isPortInRange: true, greaterThanMinPort: rtpMinPort} }"
+                 name="rtpMaxPort" ref="rtpMaxPort" type="number" />
+          <label class="error">${ errors.first('rtpMaxPort') }</label>
+        </div>
+      </div>
+      <button v-on:click="submitRtp" :disabled="currentDataEqualToSavedData || errors.any()"
+              :class="{'button': true, 'button-lock': currentDataEqualToSavedData || errors.any() }">{{ site._('Apply') }}</button>
+    </fieldset>
+  </div>
+  {% autoescape 'js' %}
+    <script>
+      var MIN_UDP_PORT = {{ constant(global_namespace ~ '::MIN_RTP_PORT')|e('js') }};
+      var MAX_UDP_PORT = {{ constant(global_namespace ~ '::MAX_RTP_PORT')|e('js') }};
+
+      var INVALID_PORT_RANGE_MESSAGE = "[ " + MIN_UDP_PORT + " - " + MAX_UDP_PORT + " ]"
+
+      Vue.use(VeeValidate, {
+          locale: '{{ vue_lang }}',
+          dictionary: {
+              '{{ vue_lang }}': {
+                  messages: {
+                      required: function () {
+                          return INVALID_PORT_RANGE_MESSAGE;
+                      }
+                  }
+              }
+          }
+      });
+      Vue.use(VueResource);
+
+      var rtpValidator = new VeeValidate.Validator();
+
+      var greaterThanMinPort = function (value, params) {
+          var otherValue = params[0];
+          return {
+          valid: (otherValue < MIN_UDP_PORT || otherValue > MAX_UDP_PORT) ? true : Number(value) >= Number(otherValue),
+          data: {
+            minPort: otherValue
+          }
+        };
+      };
+
+      var lessThanMaxPort = function (value, params) {
+        var otherValue = params[0];
+        return {
+          valid: (otherValue < MIN_UDP_PORT || otherValue > MAX_UDP_PORT) ? true : Number(value) <= Number(otherValue),
+          data: {
+            maxPort: otherValue
+          }
+        };
+      };
+
+      rtpValidator.extend('isPortInRange', {
+        getMessage: function () {
+          return INVALID_PORT_RANGE_MESSAGE;
+        },
+        validate: function validate(value) {
+          return (value !== undefined) && (value >= MIN_UDP_PORT && value <= MAX_UDP_PORT);
+        }
+      });
+
+      rtpValidator.extend("greaterThanMinPort", {
+        validate: greaterThanMinPort,
+        getMessage: function (field, params, data) {
+          return "[ " + data.minPort + " - " + MAX_UDP_PORT + " ]";
+        }
+      }, {
+        hasTarget: true
+      });
+
+      rtpValidator.extend("lessThanMaxPort", {
+        validate: lessThanMaxPort,
+        getMessage: function (field, params, data) {
+            return "[ " + MIN_UDP_PORT + " - " + data.maxPort + " ]";
+        }
+      }, {
+        hasTarget: true
+      });
+
+
+      var app = new Vue({
+        el: "#app",
+        delimiters: ["${", "}"],
+        data: {
+          savedRtpMinPort: {{ rtp_min_port }},
+          savedRtpMaxPort: {{ rtp_max_port }},
+          rtpMinPort: {{ rtp_min_port }},
+          rtpMaxPort: {{ rtp_max_port }}
+        },
+        methods: {
+          submitRtp: function submitRtp() {
+            this.$http.put("{{ rtp_controller|e('js') }}", {
+              min_port: Number(this.rtpMinPort),
+              max_port: Number(this.rtpMaxPort)
+            }).then(function (response) {
+              this.$set(this, "savedRtpMinPort", response.body.RTP.min_port);
+              this.$set(this, "savedRtpMaxPort", response.body.RTP.max_port);
+              Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}",
+                  Server.MESSAGE_TYPE.NOTE, 2000);
+            }, function (error) {
+              console.log(error);
+            });
+          }
+        },
+        computed: {
+          currentDataEqualToSavedData: function () {
+            return (Number(this.savedRtpMinPort) === Number(this.rtpMinPort))
+              && (Number(this.savedRtpMaxPort) === Number(this.rtpMaxPort))
+          }
+        }
+      });
+    </script>
+  {% endautoescape %}
+  <style>
+    input {
+      border: 1px solid black;
+      width: 110px;
+    }
+
+    .rtp-input__label {
+      display: block;
+    }
+
+    .rtp-input-container {
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .main-container {
+      margin-top: 5px;
+      margin-left: 10px;
+      margin-bottom: 17px;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+
+    label.error {
+      display: block;
+      background: #E56B4D;
+      color: white;
+      padding-left: 5px;
+      width: 107px;
+      position: absolute;
+    }
+  </style>
+{% endblock %}

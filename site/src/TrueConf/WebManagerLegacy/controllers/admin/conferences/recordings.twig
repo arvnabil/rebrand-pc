@@ -1,0 +1,294 @@
+{% extends template.base %}
+
+{% set recording_disabled = configuration.conference_recording == 0 and configuration.call_recording == 0 %}
+
+{% block js %}
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+          $(document).ready(function () {
+            $('#expiration_date_enable').change(function () {
+              $('#expiration_date_value').attr('disabled', !this.checked)
+            });
+
+            function updateRecIndicatorState(disabled, checkbox) {
+                if (!checkbox.prop('disabled') && !checkbox.prop('checked') && !disabled) {
+                    return;
+                }
+
+                checkbox.prop('disabled', disabled);
+                checkbox.prop('checked', !disabled);
+                checkbox.css({
+                    'cursor': disabled ? 'initial' : 'pointer',
+                    'text-decoration': 'none'
+                });
+
+                var recLabel = checkbox.next('.rec_indicator_checkbox_label');
+                recLabel.css('color', disabled ? 'rgba(0, 0, 0, 0.28)' : '#555555');
+                recLabel.find('a').css({
+                    'pointer-events': disabled ? 'none' : 'auto',
+                    'color': disabled ? 'rgba(0, 0, 0, 0.28)' : '#555555',
+                    'text-decoration': disabled ? 'none' : 'underline',
+                });
+            }
+
+            $('#call_recording').change(function () {
+                let rec_indicator_disabled = this.value === '0' && $('#conference_recording').val() === '0';
+                updateRecIndicatorState(rec_indicator_disabled, $('#recording_indication_enabled'));
+                $('#call_recording_hint').css('display', this.value === '1' ? 'block' : 'none')
+            });
+            $('#conference_recording').change(function () {
+                let rec_indicator_disabled = this.value === '0' && $('#call_recording').val() === '0';
+                let transceiver_rec_indicator_disabled = this.value === '0';
+
+                updateRecIndicatorState(rec_indicator_disabled, $('#recording_indication_enabled'));
+                updateRecIndicatorState(transceiver_rec_indicator_disabled, $('#transceiver_recording_indication_enabled'));
+                $('#conference_recording_hint').css('display', this.value === '3' ? 'block' : 'none')
+            });
+            $('#expiration_date_value').change(function () {
+              this.value = this.value > 0
+                ? this.value
+                : 1;
+            });
+            $('#apply_btn').click(function () {
+              var expiration_date_value = $('#expiration_date_value').val();
+              var max_recordings_expire_days = {{ max_recordings_expire_days }};
+              $('#expiration_date_value').val(expiration_date_value > max_recordings_expire_days
+                ? max_recordings_expire_days
+                : expiration_date_value);
+              $.ajax({
+                type: 'POST',
+                url: '{{ recordings_action_path }}',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  path: $('#recordings-path-path').val(),
+                  call_recording: $('#call_recording').val(),
+                  conference_recording: $('#conference_recording').val(),
+                  recording_indication_enabled: $('#recording_indication_enabled').is(":checked") ? '1' : '0',
+                  transceiver_recording_indication_enabled: $('#transceiver_recording_indication_enabled').is(":checked") ? '1' : '0',
+                  webrtc_video_quality: $('#webrtc_video_quality').val(),
+                  enable_recording_download_for_owner: $('#enable_recording_download_for_owner').val(),
+                  conf_record_file_type: $('#conf_record_file_type').val(),
+                  recordings_expire_days: $('#expiration_date_enable').prop('checked')
+                    ? $('#expiration_date_value').val()
+                    : null
+                }),
+                success: function (data) {
+                  if ($('#path_exists_error').length !== 0) {
+                    $('#path_exists_error').css('display', 'none');
+                  }
+                  if ($('#path_invalid').length !== 0) {
+                      $('#path_invalid').css('display', 'none');
+                  }
+                  Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+                  if ('{{ configuration.recordings_path }}' !== $('#recordings-path-path').val()) {
+                    Confirm.func(t._server_restart_is_required, function () {
+                      Server.apache.restart();
+                      if (typeof (update_status_timer) !== "undefined") {
+                          clearInterval(update_status_timer);
+                      }
+                    });
+                  }
+                },
+                error: function (error) {
+                  if (error.responseJSON.code === 2) {
+                    if ($('#path_exists_error').length === 0) {
+                      var error = $('<div id="path_exists_error" class="error" style="width: 600px;"><div>' + '{{ site._('Current recording path is inaccessible. The recording path must be accessible for the TrueConf Server user.')|escape('js') }}' + '</div></div>');
+                      $('#wr-recordings-path-path').append(error);
+                    }
+
+                    $('#path_exists_error').css('display', 'block');
+                    return;
+                  }
+                  else if (error.responseJSON.code === 3) {
+                    if ($('#path_invalid').length === 0) {
+                        var error = $('<div id="path_invalid" class="error" style="width: 600px;"><div>' + '{{ site._('Path can contain letters (a-z, A-Z), numbers, spaces, and special characters `!@#%$&+._-=~,;()[]{}')|escape('js') }}' + '</div></div>');
+                        $('#wr-recordings-path-path').append(error);
+                    }
+
+                    $('#path_invalid').css('display', 'block');
+                    return;
+                  }
+                  $(document).trigger('display-header-error', {message: _('Request error')});
+                }
+              });
+            });
+          });
+      {% endautoescape %}
+    </script>
+{% endblock %}
+{% block content %}
+    {% autoescape 'html' %}
+        <fieldset>
+            <legend>{{ site._('Settings') }}</legend>
+            <div class="m-top-3 m-bottom-5">
+                {{ recordings_path_form|raw }}
+            </div>
+            <form id="recording_settings">
+                <label>{{ site._('Record video calls') }}:</label>
+                <select id="call_recording" name="call_recording" class="m-bottom-10">
+                    <option value="0" {{ configuration.call_recording == 0 ? 'selected' : '' }}>{{ site._('disabled') }}
+                        &nbsp;
+                    </option>
+                    <option value="1" {{ configuration.call_recording== 1 ? 'selected' : '' }}>{{ site._('enabled') }}
+                        &nbsp;
+                    </option>
+                </select>
+                <span id="call_recording_hint">{{ site._('This option forces endpoints to connect through the server.') }}</span>
+                <label>{{ site._('Record multipoint conferences') }}:</label>
+                <select id="conference_recording" name="conference_recording" class="m-bottom-10">
+                    <option value="0" {{ configuration.conference_recording == 0 ? 'selected' : '' }}>{{ site._('disabled') }}
+                        &nbsp;
+                    </option>
+                    <option value="1" {{ configuration.conference_recording == 1 or configuration.conference_recording == 2 ? 'selected' : '' }}>{{ site._('enabled') }}
+                        &nbsp;
+                    </option>
+                    <option value="3" {{ configuration.conference_recording == 3 ? 'selected' : '' }}>{{ site._('on demand') }}
+                        &nbsp;
+                    </option>
+                </select>
+                <span id="conference_recording_hint">{{ site._('Determined by settings when scheduling a conference') }}</span>
+                <label class="m-bottom-10">{{ site._('Recording indicator') }}:</label>
+                <div style="float:left; position: relative; top: 10px;">
+                  <div class="input-container" style="display: flex; flex-direction: column;">
+                    <div style="margin-bottom: 8px;">
+                      <input type="checkbox" class="rec_indicator_checkbox" id="recording_indication_enabled"
+                              {{ configuration.recording_indication_enabled == 1 and not recording_disabled ? 'checked' : '' }}
+                              {% if recording_disabled %} disabled {% endif %}
+                      />
+                      <label for="recording_indication_enabled" class="rec_indicator_checkbox_label">{{ site._('Show indicator in client applications') }}</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" class="rec_indicator_checkbox" id="transceiver_recording_indication_enabled"
+                              {{ configuration.transceiver_recording_indication_enabled == 1 and not configuration.conference_recording == 0 ? 'checked' : '' }}
+                              {% if configuration.conference_recording == 0 %} disabled {% endif %}
+                      />
+                      <label for="transceiver_recording_indication_enabled" id="transceiver_recording_indication_label" class="rec_indicator_checkbox_label">{{ site._('Show indicator in [a]mixed video stream[/a]')
+                        |replace({'[a]': '<a href="' ~ site.getInsideUrl('gateways', 'transcoding') ~ '"target="_blank" rel="noopener">', '[/a]': '</a>'})|raw }}</label>
+                    </div>
+                  </div>
+                  &nbsp;
+                </div>
+                <label>{{ site._('Recording downloading by the owner') }}:</label>
+                <select id="enable_recording_download_for_owner" name="enable_recording_download_for_owner" class="m-bottom-10">
+                    <option value="0" {{ configuration.enable_recording_download_for_owner == 0 ? 'selected' : '' }}>
+                      {{ site.pgettext('An option in the drop-down list. The word “enabled” is a part of the phrase “downloading is enabled”.', 'disabled') }}
+                        &nbsp;
+                    </option>
+                    <option value="1" {{ configuration.enable_recording_download_for_owner != 0 ? 'selected' : '' }}>
+                      {{ site.pgettext('An option in the drop-down list. The word “enabled” is a part of the phrase “downloading is enabled”.', 'enabled') }}
+                        &nbsp;
+                    </option>
+                </select>
+                <label>{{ site._('Video container') }}:</label>
+                <select id="conf_record_file_type" name="conf_record_file_type" class="m-bottom-10">
+                    <option value="1" {{ configuration.conf_record_file_type == 1 ? 'selected' : '' }}>{{ site._('MKV') }}
+                        &nbsp;
+                    </option>
+                    <option value="2" {{ configuration.conf_record_file_type== 2 ? 'selected' : '' }}>{{ site._('MP4') }}
+                        &nbsp;
+                    </option>
+                    <option value="3" {{ configuration.conf_record_file_type == 3 ? 'selected' : '' }}>{{ site._('WebM') }}
+                        &nbsp;
+                    </option>
+                </select>
+                <label>{{ site._('Set video records expiration date (days)') }}:</label>
+                <input id="expiration_date_enable" type="checkbox"
+                       {% if configuration.recordings_expire_days != null %}checked{% endif %}>
+                <input id="expiration_date_value" type="number" min="1" max="{{ max_recordings_expire_days }}"
+                       value="{{ configuration.recordings_expire_days?: 7 }}"
+                       {% if configuration.recordings_expire_days == null %}disabled{% endif %}>
+                <a id="apply_btn" class="button">{{ site._('Apply') }}</a>
+            </form>
+        </fieldset>
+        <br/>
+    {% endautoescape %}
+    <style>
+        #recording_settings > label, #recording_settings > select {
+            margin-top: 10px;
+        }
+
+        #recording_settings > label {
+            float: left;
+            clear: both;
+            margin-right: 10px;
+            min-width: 280px;
+        }
+
+        #recording_settings > select {
+            float: left;
+            border: 1px solid gray;
+            margin-right: 10px;
+            margin-top: 5px;
+            padding-left: 4px;
+        }
+
+        #conference_recording_hint, #call_recording_hint {
+            float: left;
+            padding-top: 10px;
+        }
+
+        #conference_recording_hint {
+            display: {{ configuration.conference_recording == 3 ? 'block' : 'none'}}
+
+        }
+
+        #call_recording_hint {
+            display: {{ configuration.call_recording == 1 ? 'block' : 'none'}}
+        }
+
+        #recording_settings > input {
+            float: left;
+            border: 1px solid gray;
+        }
+
+        #expiration_date_enable {
+            margin-top: 15px !important;
+            margin-right: 10px;
+        }
+
+        #expiration_date_value {
+            width: 56px;
+            height: 25px;
+            padding: 0 6px;
+            margin-top: 6px;
+        }
+
+        #apply_btn {
+            margin-top: 10px;
+            float: left;
+            clear: both;
+        }
+
+        fieldset {
+            min-width: 820px;
+        }
+
+        .rec_indicator_checkbox {
+            position: relative;
+            top: 2px;
+            {% if recording_disabled %} cursor: initial;{% endif %}
+        }
+
+        .rec_indicator_checkbox_label {
+            margin-left: 8px;
+            {% if recording_disabled %} color: #00000047;{% endif %}
+        }
+
+        {% if configuration.conference_recording == 0 %}
+        #transceiver_recording_indication_enabled {
+            cursor: initial;
+        }
+
+        #transceiver_recording_indication_label {
+            color: #00000047;
+        }
+
+        #transceiver_recording_indication_label > a {
+            pointer-events: none;
+            color: rgba(0, 0, 0, 0.28);
+            text-decoration: none;
+        }
+        {% endif %}
+    </style>
+{% endblock %}

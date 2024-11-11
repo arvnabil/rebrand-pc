@@ -1,0 +1,486 @@
+{% extends template.base %}
+
+{% block js %}
+    <script>
+      var F_DISABLED = '1',
+        F_WHITELIST_ENABLED = '2',
+        F_BLACKLIST_ENABLED = '3';
+
+      var g_list = true;      // true - blacklist, false - whitelist
+      var g_action = true;    // true - add, false - edit
+      var hostVal = '';
+
+      var current_blacklist = [
+          {% for blist in blacklist %}
+        '{{ blist|e('js') }}' {{ not(loop.last) ? ',' : '' }}
+          {% endfor %}
+      ];
+      var blacklist = current_blacklist.slice(0);
+
+      var current_whitelist = [
+          {% for wlist in whitelist %}
+        '{{ wlist|e('js') }}' {{ not(loop.last) ? ',' : '' }}
+          {% endfor %}
+      ];
+      var whitelist = current_whitelist.slice(0);
+
+      function updateCSSOnPage() {
+        $(".block-table-wrapper").height($(".restrictions-table").height() - $(".div-header-wrapper").height());
+      }
+
+      $(document).ready(function () {
+
+        var host = $("#host"),
+          identifier = $("#identifier"),
+          allFields = $([]).add(host);
+
+        $(document).bind('AfterStart', function () {
+          Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+        });
+
+        $("#dialog-form").dialog({
+          autoOpen: false,
+          height: 325,
+          width: 350,
+          modal: true,
+          minHeight: 325,
+          minWidth: 350,
+          draggable: true,
+          resizable: false,
+          buttons: [
+            {
+              text: "{{ site._('Delete') }}",
+              click: function () {
+                deleteItem(hostVal, g_list);
+                $(this).dialog("close");
+              }
+            },
+            {
+              text: "{{ site._('Cancel') }}",
+              click: function () {
+                $(this).dialog("close");
+              }
+            },
+            {
+              text: "{{ site._('Save') }}",
+              click: function () {
+                var bValid = true;
+                pageEdit = true;
+                host.val($.trim(host.val()));
+                allFields.removeClass("ui-state-error");
+                bValid = bValid && checkLength(host, "{{ site._('Host')|e('js') }}", 1, 255);
+                bValid = bValid && checkRegexp(host, /^[\._*\-a-z0-9:]+(%[a-z0-9]+)?$/i, "<b>{{ site._('Host') }}</b>: {{ site._('Hostname or IP invalid')|e('js') }}", punycode.toASCII);
+                bValid = bValid && checkExistence((g_list ? blacklist : whitelist), host.val());
+                if (bValid) {
+                  if (g_list) {
+                    showBlacklistBtns();
+                    add('blacklist-fieldset-block', blacklist, host.val(), identifier.val());
+                  } else {
+                    showWhitelistBtns();
+                    add('whitelist-fieldset-block', whitelist, host.val(), identifier.val());
+                  }
+                  $("#dialog-form").dialog("close");
+                }
+              },
+              id: "saveHost"
+            }
+          ],
+
+          close: function () {
+            $(".validateTips").text("");
+            allFields.val("").removeClass("ui-state-error");
+            identifier.val('none');
+          }
+        });
+
+        $('.ui-dialog').keyup(function (event) {
+          if (event.keyCode == 13 && $('#host').val != "") {
+            $('#saveHost').click();
+          }
+        });
+
+        $('#add-blacklist-federation').click(function () {
+          if (!$(this).hasClass('button-lock')) {
+            g_list = true;
+            g_action = true;
+            var buttons = $("#dialog-form").dialog("option", "buttons");
+            $("#dialog-form").dialog("option", "open", function () {
+              addButtonsStyleAdd();
+            });
+            $("#dialog-form").dialog("option", "title", "{{ site._('Add Server')|e('js') }}");
+            $('#dialog-form').dialog('open');
+          }
+          return false;
+        });
+
+        $('#add-whitelist-federation').click(function () {
+          if (!$(this).hasClass('button-lock')) {
+            g_list = false;
+            g_action = true;
+            var buttons = $("#dialog-form").dialog("option", "buttons");
+            $("#dialog-form").dialog("option", "open", function () {
+              addButtonsStyleAdd();
+            });
+            $("#dialog-form").dialog("option", "title", "{{ site._('Add Server')|e('js') }}");
+            $('#dialog-form').dialog('open');
+          }
+          return false;
+        });
+
+        $('#blacklist-fieldset-block .restrictions-table a').click(editBlacklist);
+        $('#whitelist-fieldset-block .restrictions-table a').click(editWhitelist);
+
+        $('#reset-blacklist-federation').click(function () {
+          if ($(this).hasClass('button-lock')) {
+            return;
+          }
+          resetBlacklist();
+          return false;
+        });
+
+        $('#reset-whitelist-federation').click(function () {
+          if ($(this).hasClass('button-lock')) {
+            return;
+          }
+          resetWhitelist();
+          return false;
+        });
+
+        $('#federation-type').change(function () {
+          lists_enable_handler(this.value);
+        });
+
+      });
+
+      function lists_enable_handler(federation_type) {
+        federation_type = federation_type === null
+          ? $('#federation-type').val()
+          : federation_type;
+
+        switch (federation_type) {
+          case '1':
+            disable_whitelist();
+            disable_blacklist();
+            break;
+          case '2':
+            disable_blacklist();
+            enable_whitelist();
+            break;
+          case '3':
+            disable_whitelist();
+            enable_blacklist();
+            break;
+        }
+      }
+
+      function disable_whitelist() {
+        var items_elements = $('#whitelist-fieldset-block .table-body .left');
+
+        for (var index = 0; index < items_elements.length; index++) {
+          var item_element = $(items_elements[index]);
+          var elem_text = item_element.text();
+          var new_elem_html = "<p title='" + elem_text + "'>" + elem_text + "</p>";
+          item_element.html(new_elem_html);
+        }
+        $('#whitelist-fieldset-block #add-whitelist-federation').addClass('button-lock');
+        $('#whitelist-fieldset-block #reset-whitelist-federation').addClass('button-lock');
+      }
+
+      function disable_blacklist() {
+        var items_elements = $('#blacklist-fieldset-block .table-body .left');
+
+        for (var index = 0; index < items_elements.length; index++) {
+          var item_element = $(items_elements[index]);
+          var elem_text = item_element.text();
+          var new_elem_html = "<p title='" + elem_text + "'>" + elem_text + "</p>";
+          item_element.html(new_elem_html);
+        }
+        $('#blacklist-fieldset-block #add-blacklist-federation').addClass('button-lock');
+        $('#blacklist-fieldset-block #reset-blacklist-federation').addClass('button-lock');
+      }
+
+      function enable_whitelist() {
+        var items_elements = $('#whitelist-fieldset-block .table-body .left');
+
+        for (var index = 0; index < items_elements.length; index++) {
+          var item_element = $(items_elements[index]);
+          var elem_text = item_element.text();
+          var new_elem_html = "<a href='#' title='" + elem_text + "'>" + elem_text + "</a>";
+          item_element.html(new_elem_html);
+        }
+        $('#whitelist-fieldset-block #add-whitelist-federation').removeClass('button-lock');
+        $('#whitelist-fieldset-block #reset-whitelist-federation').removeClass('button-lock');
+        $('#whitelist-fieldset-block .restrictions-table a').click(editWhitelist);
+      }
+
+      function enable_blacklist() {
+        var items_elements = $('#blacklist-fieldset-block .table-body .left');
+
+        for (var index = 0; index < items_elements.length; index++) {
+          var item_element = $(items_elements[index]);
+          var elem_text = item_element.text();
+          var new_elem_html = "<a href='#' title='" + elem_text + "'>" + elem_text + "</a>";
+          item_element.html(new_elem_html);
+        }
+        $('#blacklist-fieldset-block #add-blacklist-federation').removeClass('button-lock');
+        $('#blacklist-fieldset-block #reset-blacklist-federation').removeClass('button-lock');
+        $('#blacklist-fieldset-block .restrictions-table a').click(editBlacklist);
+      }
+
+
+      function editBlacklist() {
+        editItem($(this).text(), true);
+        return false;
+      }
+
+      function editWhitelist() {
+        editItem($(this).text(), false);
+        return false;
+      }
+
+      function add(id, arr, host, key) {
+        var key = (key != 'none') ? key : false;
+        (key) ? arr[key] = host : arr.push(host);
+        $('#identifier').val('none');
+        renderHostsTable(id, arr);
+      }
+
+      function checkExistence(arr, host) {
+        for (var k in arr) {
+          if (arr[k] == host) {
+            updateTips("{{ site._('Address already exists')|e('js') }}");
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function saveAll() {
+        var status = $('#federation-type').val();
+
+        $.ajax({
+          url: "{{ site.getInsideUrl('network', 'update-federation')|e('js') }}",
+          type: 'POST',
+          data: {'fStatus': status, 'white_list': whitelist, 'black_list': blacklist},
+          success: function () {
+            window.location.reload();
+          },
+          error: function () {
+            $(document).trigger('display-header-error', t._error);
+          }
+        });
+        return false;
+      }
+
+      function editItem(host, key) {
+        var arr;
+        g_action = false;
+
+        if (key) {
+          g_list = true;
+          arr = blacklist;
+        } else {
+          g_list = false;
+          arr = whitelist;
+        }
+
+        hostVal = host;
+
+        if (arr.length > 0) {
+          for (var k in arr) {
+            if (arr[k] == host) {
+              $("#identifier").val(k);
+              $("#host").val(host);
+              var buttons = $("#dialog-form").dialog("option", "buttons");
+
+              $("#dialog-form").dialog("option", "open", function () {
+                $('.ui-dialog-buttonset').css('float', 'none');
+                $('.ui-dialog-buttonset>.ui-button:first').css('float', 'left').show();
+                $('.ui-dialog-buttonset>.ui-button:not(:first)').css('float', 'right');
+              });
+              $("#dialog-form").dialog("option", "title", "{{ site._('Edit')|e('js') }}");
+              $("#dialog-form").dialog("open");
+            }
+          }
+        }
+      }
+
+      function deleteItem(host, key) {
+        var arr;
+        key ? arr = blacklist : arr = whitelist;
+        if (arr.length > 0) {
+          for (var k in arr) {
+            if (arr[k] == host) {
+              arr.splice(k, 1);
+              renderHostsTable((key ? 'blacklist-fieldset-block' : 'whitelist-fieldset-block'), arr);
+            }
+          }
+        }
+
+        if (arr.length == 0) {
+          key ? $("#reset-blacklist-federation").hide() : $("#reset-whitelist-federation").hide();
+        }
+      }
+
+      function resetBlacklist() {
+        blacklist = current_blacklist.slice(0);
+        renderHostsTable('blacklist-fieldset-block', blacklist);
+        $("#reset-blacklist-federation").hide();
+      }
+
+      function resetWhitelist() {
+        whitelist = current_whitelist.slice(0);
+        renderHostsTable('whitelist-fieldset-block', whitelist);
+        $("#reset-whitelist-federation").hide();
+      }
+
+      function showBlacklistBtns() {
+        $('#reset-blacklist-federation').show();
+        $('#add-blacklist-federation').removeClass('button-lock');
+      }
+
+      function showWhitelistBtns() {
+        $('#reset-whitelist-federation').show();
+        $('#add-whitelist-federation').removeClass('button-lock');
+      }
+
+      function addButtonsStyleAdd() {
+        $('.ui-dialog-buttonset').css('float', 'none');
+        $('.ui-dialog-buttonset>.ui-button:first').hide();
+        $('.ui-dialog-buttonset>.ui-button:not(:first)').css('float', 'right');
+      }
+
+      function renderHostsTable(id, arr) {
+        var html = '';
+
+        if (arr.length > 0) {
+          for (var k in arr) {
+            html += '<tr><td class="left">' + '<a title="' + arr[k] + '" href="#">' +
+              arr[k] + '</a></td></tr>';
+          }
+
+          $('#' + id + ' .restrictions-table table tbody').html(html);
+        } else {
+          $('#' + id + ' .restrictions-table table tbody').html('<tr class="empty-tr"><td></td></tr>');
+        }
+        prepare_table();
+
+        $('#' + id + ' .restrictions-table a').click(g_list ? editBlacklist : editWhitelist);
+      }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <select id="federation-type" class="m-bottom-10">
+        <option value="1" {{ status == 1 ? 'selected=selected' : '' }}>{{ site._('Disabled')|e('html') }}</option>
+        <option value="2" {{ status == 2 ? 'selected=selected' : '' }}>{{ site._('Allowed for whitelisted servers')|e('html') }}</option>
+        <option value="3" {{ status == 3 ? 'selected=selected' : '' }}>{{ site._('Allowed for all but blacklisted servers')|e('html') }}</option>
+    </select>
+
+    <div class="federation-settings">
+        <fieldset id="blacklist-fieldset-block" class="fieldset-block">
+            <legend>{{ site._('Blacklist')|e('html') }}</legend>
+            <table class="federation-tb">
+                <tr>
+                    <td>
+                        <div class="restrictions-table">
+                            <div class="block-table-wrapper">
+                                <table class="table-body">
+                                    {% for item in blacklist %}
+                                        <tr>
+                                            <td class="left">
+                                                {% if status == 3 %}
+                                                    <a title="{{ item|e('html') }}" href="#">{{ item|e('html') }}</a>
+                                                {% else %}
+                                                    <p title="{{ item|e('html') }}">{{ item|e('html') }}</p>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr class="empty-tr">
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a id="add-blacklist-federation" class="button {% if status != 3 %}button-lock{% endif %}"
+                           style="margin-right: 20px;">{{ site._('Add')|e('html') }}</a>
+                        <a id="reset-blacklist-federation" class="button {% if status != 3 %}button-lock{% endif %}"
+                           style="margin-right: 20px; display: none;">{{ site._('Reset')|e('html') }}</a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <div class="federation-settings">
+        <fieldset id="whitelist-fieldset-block" class="fieldset-block">
+            <legend>{{ site._('Whitelist') }}</legend>
+            <table class="federation-tb">
+                <tr>
+                    <td>
+                        <div class="restrictions-table">
+                            <div class="block-table-wrapper">
+                                <table class="table-body">
+                                    {% for item in whitelist %}
+                                        <tr>
+                                            <td class="left">
+                                                {% if status == 2 %}
+                                                    <a title="{{ item|e('html') }}" href="#">{{ item|e('html') }}</a>
+                                                {% else %}
+                                                    <p title="{{ item|e('html') }}">{{ item|e('html') }}</p>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr class="empty-tr">
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a id="add-whitelist-federation" class="button {% if status != 2 %}button-lock{% endif %}"
+                           style="margin-right: 20px;">{{ site._('Add')|e('html') }}</a>
+                        <a id="reset-whitelist-federation" class="button {% if status != 2 %}button-lock{% endif %}"
+                           style="margin-right: 20px; display: none;">{{ site._('Reset')|e('html') }}</a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <div id="save-federation-block">
+        {{ design.btn({'text': site._('Apply')|e('html'), 'onclick': "saveAll();" }) }}
+    </div>
+
+    <div id="dialog-form">
+        <p class="validateTips"></p>
+        <form onsubmit="return false">
+            <fieldset>
+                <input type="hidden" id="identifier" name="identifier" value="none"/>
+                <label for="host">{{ site._('Server Name')|e('html') }}</label>
+                <input type="text" name="host" id="host" placeholder="videoserver.your-company.com"
+                       title="videoserver.your-company.com" class="text ui-widget-content ui-corner-all"
+                       maxlength="255"/>
+            </fieldset>
+        </form>
+    </div>
+    <style>
+        table td {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+{% endblock %}
+    

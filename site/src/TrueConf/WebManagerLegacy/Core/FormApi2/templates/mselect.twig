@@ -1,0 +1,118 @@
+<script language="javascript">
+
+  var MSelect = {};
+
+  MSelect.Display = function (obj) {
+    if ($(obj).next().find('li').length == 0) {
+      $(obj).next().hide();
+      //MSelect.Lock( $(obj).parent(), true );
+    } else {
+      $(obj).next().toggle();
+      if ($(obj).next(':visible').length > 0) {
+        $(document).click(function (e) {
+          var target = $(e.target);
+          var parent_id = $(obj).parent().attr('id');
+
+          if (target.is('#' + parent_id + '.mselect') || target.parents('#' + parent_id + '.mselect').length || target.parents().length == 0) return;
+          $(document).unbind('click', arguments.callee);
+          if ($(obj).next(':visible').length > 0) {
+            $(obj).next().hide();
+            MSelect.ArrowChange(obj);
+          }
+        });
+      }
+    }
+    MSelect.ArrowChange(obj);
+  };
+
+  MSelect.Lock = function (obj, flag) {
+    if (flag) {
+      $(obj).addClass('mselect-locked');
+      MSelect.removeActions();
+    } else {
+      $(obj).removeClass('mselect-locked');
+      MSelect.addActions('{{ id }}', '{{ this.note }}');
+    }
+  };
+
+  MSelect.SmoothText = function () {
+    $(".mselect .option-list li").each(function () {
+      var currentHtml = $(this).html();
+      if ($(this).text().length > 0) {
+        $(this).html("<div class='can-be-long-m'><span>" + currentHtml + "</span></div>");
+        ($(this).find("span").width() > $(this).children("div").width()) ? $(this).find("span").attr('title', $.trim($(this).text())) : $(this).html(currentHtml);
+      }
+    });
+  };
+
+  MSelect.ArrowChange = function (obj) {
+    var triangle = $(obj).find('> div:first-child');
+    if (triangle.attr('class') == 'triangle-down-ms' && $(obj).next().find('li').length)
+      triangle.removeClass('triangle-down-ms').addClass('triangle-up-ms');
+    else
+      triangle.removeClass('triangle-up-ms').addClass('triangle-down-ms');
+  };
+
+  MSelect.addActions = function (id, note) {
+
+    if (!$('#' + id + '.mselect').hasClass('mselect-locked')) {
+      $('#' + id + '.mselect .btn-arrow-ms, #' + id + '.mselect > div').bind('click', function () {
+        if (!$(this).attr('class'))
+          MSelect.Display($(this).next());
+        else
+          MSelect.Display(this);
+      });
+
+
+      $('#' + id + '.mselect .option-list ul li').bind('click', function () {
+        var checked = $(this).find('input').prop('checked');
+        $(this).find('input').prop('checked', !checked);
+
+        var count = $(this).parent().find("li input:checked").length;
+
+
+        $(this).parents('#' + id + '.mselect').find('> div:first-child span').text(count ? '{{ site._("selected item(s): %count") }}'.replace('%count', count) : note);
+      });
+    }
+  };
+
+  MSelect.removeActions = function () {
+    $('#{{ id }}.mselect .btn-arrow-ms, #{{ id }}.mselect > div').unbind('click');
+    $('#{{ id }}.mselect .option-list ul li').unbind('click');
+  };
+
+  $(document).ready(function () {
+
+    MSelect.addActions('{{ id }}', '{{ this.note }}');
+
+    $('#{{ id }}.mselect').bind('counted', function () {
+      var count = $(this).find("li input:checked").length;
+      $(this).find('> div:first-child span').text(count ? '{{ site._("selected item(s): %count") }}'.replace('%count', count) : '{{ this.note }}');
+
+      if ($(this).find('li').length == 0)
+        MSelect.Display($(this).find('.btn-arrow-ms')[0]);
+    });
+
+    $('#{{ id }}.mselect').trigger('counted');
+  });
+</script>
+
+<div id="{{ id }}" class="mselect" style="position: absolute; z-index: {{ z_index }};">
+    <div>
+        <span>{{ this.note }}</span>
+    </div>
+    <div class="btn-arrow-ms">
+        <div class="triangle-down-ms">&nbsp;</div>
+    </div>
+    <div class="option-list none">
+        <ul>
+            {% for key in this.options|keys %}
+                {% set groupName = this.options[key]|escape('html') %}
+                <li><input type="checkbox" name="{{ this.name }}[]" onclick="this.checked = !this.checked"
+                           value="{{ key }}" {{ this.value[key] ? 'checked="checked"' : '' }}/><span
+                            title="{{ groupName }}">{{ groupName }}</span></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<br class="clear"/>

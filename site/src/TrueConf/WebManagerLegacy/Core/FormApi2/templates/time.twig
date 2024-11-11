@@ -1,0 +1,13 @@
+<script type='text/javascript'>
+  $(function () {
+    $.timepicker.setDefaults($.timepicker.regional['{{ lang }}']);
+    $('#{{ id }}').timepicker({});
+  });
+</script>
+<div class='formFieldDateRange m-top-10'>
+    <label for='{{ id }}'>{{ label }}{{ required }}</label>{{ site._('Time') }}&nbsp;<br/><input type='text'
+                                                                                                 id='{{ id }}'
+                                                                                                 name='{{ name }}'
+                                                                                                 value='{{ time }}'
+                                                                                                 readonly='readonly'/>
+</div>

@@ -1,0 +1,95 @@
+.presetManager td, .presetForm td {border:none;}
+.presetManager .CDNvideoLogo {width:100%;}
+.presetForm a {outline:none;}
+.presetManager .btn {
+    padding:8px;
+    background:none;
+    border:2px solid #555;
+    width:230px;
+    cursor:pointer;
+    font-weight:bold;
+    /*transition: all .7s ease;*/
+    color:#555;
+    outline:none;
+}
+.presetManager .btn.cdnvideo {color:#0088cc;border:2px solid #0088cc;}
+.presetManager .btn:hover {/*background-color:#0088cc;color:#fff;*/}
+.presetManager .stream-block {border:1px solid #999999;padding:5px 5px 5px 13px;}
+.presetManager .stream-block .cdn-already-exist {text-align:center;margin-top:5px;}
+.presetManager .stream-block .cdn-already-exist a {color:#555;}
+.presetManager .stream-block + .stream-block {margin-top:10px;}
+
+.table-body span[id^='preset-'] {float:right;}
+
+#other-stream-form .zmdi-youtube {display:block;text-align:center;}
+
+.presetForm .cdn-already-exist {display:inline-block;text-align:center;width:220px;}
+.presetForm .ui-state-error{padding:0 0 0 4px;}
+.presetForm .validateTips{text-align:center;}
+.presetForm .ui-dialog-content{
+    border: 1px solid #999;
+    /*padding-bottom: 35px;*/  
+    /*min-height: 200px;*/
+    margin: 20px 20px 15px;
+}
+
+.presetForm .preset-body table {margin-bottom:0;}
+#presetForm .preset-body .add-settings {margin-left:10px;}
+
+.presetForm .ui-dialog-buttonpane {
+    border-top: none;
+}
+.presetForm .ui-dialog-buttonpane button, .presetForm .ui-dialog-buttonpane button:hover{
+    border: none;
+    padding:5px 45px;
+}
+.presetForm .ui-dialog-buttonpane button span {color:#fff;}
+#addSettings {display:none;}
+
+/*.presetForm .ui-dialog-buttonset {float:none !important;}*/
+.presetForm .btnDelete {background:#999;float:left;margin-left:15px !important;}
+.presetForm .btnCancel {background:#999;float:right;}
+.presetForm .btnApply {background:#0088cc;float:right;}
+.presetForm .btnCreate {background:#0088cc;}
+.presetForm .btnSave {background:#0088cc;float:right;}
+.presetForm button:disabled  {background: #CDCDCD;cursor:default;}
+/*.presetForm .btnBack  {float:right;}*/
+
+#presetForm .btn_block {margin-top: 25px;}
+
+.presetForm select:disabled {
+    background-color: #EEE;
+    color: #BBB;
+    
+}
+.presetForm input[type="text"], .presetForm input[type="password"], .presetForm select {height: 28px;width:250px;border: 1px solid #999;box-sizing:border-box;}
+.presetForm input[type="checkbox"] {height:18px;width:18px;vertical-align: bottom;margin-right: 5px;}
+#presetForm .announceUrl, #presetEditForm .announceUrl {width:530px !important;}
+/*#presetForm .cdnlogin {margin:10px 0;}*/
+#presetForm td p {margin: 5px 0;}
+/*.presetForm label {padding-left: 7px;}*/
+.presetForm h2 {margin-left: 10px; color:#333333;}
+.presetForm a {font-weight:bold;color:#0088cc;}
+.presetForm #btnBack {margin: 10px 0 0 15px;display: inline-block;cursor:pointer;}
+
+#presetForm #btn_create:active {position:relative;}
+
+#fieldset-preset-list .preset-list{
+    margin-bottom: 15px;
+}
+
+#fieldset-preset-list a {margin-top: 10px;}
+#fieldset-preset-list {
+    padding:10px;
+}
+
+#presetSelect select, #presetSelect .announceUrl {width:370px;}
+
+.presetForm .ui-dialog-buttonpane .btnDisable span {color:#555;background:#fff;}
+.presetForm .ui-dialog-buttonpane .btnDisable,.presetForm .ui-dialog-buttonpane .btnDisable:hover {background:#fff;border:1px solid #000;padding: 5px 20px;margin-left: 15px;}
+.presetForm .youtubeLogo {width:60px;float:left;}
+.presetForm .youtubeLink {margin-left:10px;}
+.presetForm .CDNvideoLogo {width:100%;position:relative;top:5px;}
+.createCDN {width:220px;display:inline-block;text-align:center;}
+.selectService {margin-bottom:0;}
+.CDNvideoRegForm h2, .CDNvideoAuthForm h2 {margin:0;}

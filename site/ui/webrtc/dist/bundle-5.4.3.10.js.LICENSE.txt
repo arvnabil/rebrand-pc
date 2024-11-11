@@ -1,0 +1,359 @@
+/*! ../../../Util/Observable */
+
+/*! ../../Devices/src/TCMediaCapture */
+
+/*! ../../Event/TCEventTarget */
+
+/*! ../../Exception/TCDuplicateInstanceException */
+
+/*! ../../Media/Audio/TCAudioMediaTrack */
+
+/*! ../../Media/Video/TCVideoMediaTrack */
+
+/*! ../AbstractAudioProcessor */
+
+/*! ../Event/TCEventTarget */
+
+/*! ../Event/TCEventTargetInterface */
+
+/*! ../Exception/TCDuplicateInstanceException */
+
+/*! ../Exception/TCException */
+
+/*! ../Logging/TCLogger */
+
+/*! ../Media/Audio/Processor/AbstractAudioProcessor */
+
+/*! ../Media/Audio/Processor/FrequencyObserver/TCFrequencyObserver */
+
+/*! ../Media/Audio/Processor/TCAudioMediaTrackInfo */
+
+/*! ../Media/Audio/Processor/VUMeter/TCVUMeter */
+
+/*! ../Media/Audio/TCAudioMediaTrack */
+
+/*! ../Media/TCMediaTrack */
+
+/*! ../Media/TCMediaTrackDOMPlayer */
+
+/*! ../Media/TCMediaTrackPlayer */
+
+/*! ../Media/TCMediaTrackType */
+
+/*! ../Media/Video/ImageCapture/TCAbstractImageCapture */
+
+/*! ../Media/Video/ImageCapture/TCVideoFrame */
+
+/*! ../Media/Video/TCVideoMediaTrack */
+
+/*! ../Media/Video/TCVideoMediaTrackInfo */
+
+/*! ../TCMediaTrack */
+
+/*! ../Util/Color/Color */
+
+/*! ../Util/Observable */
+
+/*! ../Util/Random/Random */
+
+/*! ./Capabilities/TCAudioCaptureCapabilities */
+
+/*! ./Capabilities/TCVideoCaptureCapabilities */
+
+/*! ./Configuration/TCAudioCaptureConfiguration */
+
+/*! ./Configuration/TCVideoCaptureConfiguration */
+
+/*! ./Configuration/TCVideoCaptureResolutionConfiguration */
+
+/*! ./Exception/TCMediaDeviceCaptureException */
+
+/*! ./ImageCapture/TCNativeImageCapture */
+
+/*! ./Processor/FrequencyObserver/TCFrequencyObserver */
+
+/*! ./Processor/TCAudioMediaTrackInfo */
+
+/*! ./Processor/VUMeter/TCVUMeterFactory */
+
+/*! ./TCAbstractImageCapture */
+
+/*! ./TCAudioConstraintsBuilder */
+
+/*! ./TCCaptureRangeConfiguration */
+
+/*! ./TCException */
+
+/*! ./TCLoggerInterface */
+
+/*! ./TCMediaCapture */
+
+/*! ./TCMediaCaptureCapabilities */
+
+/*! ./TCMediaCaptureConfiguration */
+
+/*! ./TCMediaConstraintsBuilder */
+
+/*! ./TCMediaDevice */
+
+/*! ./TCMediaDeviceCaptureRequest */
+
+/*! ./TCMediaDeviceList */
+
+/*! ./TCMediaTrackDOMPlayer */
+
+/*! ./TCMediaTrackDOMPlayerBuilder */
+
+/*! ./TCMediaTrackPlayer */
+
+/*! ./TCMediaTrackType */
+
+/*! ./TCNativeLogger */
+
+/*! ./TCProcessVUMeter */
+
+/*! ./TCVUCalculator */
+
+/*! ./TCVUMeter */
+
+/*! ./TCVideoConstraintsBuilder */
+
+/*! ./TCVideoFrame */
+
+/*! ./TCVideoMediaTrackInfo */
+
+/*! ./TCWorkletVUMeter */
+
+/*! ./src/Capabilities/TCAudioCaptureCapabilities */
+
+/*! ./src/Capabilities/TCMediaCaptureCapabilities */
+
+/*! ./src/Capabilities/TCVideoCaptureCapabilities */
+
+/*! ./src/Configuration/TCAudioCaptureConfiguration */
+
+/*! ./src/Configuration/TCCaptureRangeConfiguration */
+
+/*! ./src/Configuration/TCMediaCaptureConfiguration */
+
+/*! ./src/Configuration/TCVideoCaptureConfiguration */
+
+/*! ./src/Configuration/TCVideoCaptureFrameRateConfiguration */
+
+/*! ./src/Configuration/TCVideoCaptureResolutionConfiguration */
+
+/*! ./src/Exception/TCMediaDeviceCaptureException */
+
+/*! ./src/TCMediaCapture */
+
+/*! ./src/TCMediaDevice */
+
+/*! ./src/TCMediaDeviceList */
+
+/*! exports provided: TCLoggerLevel */
+
+/*! exports provided: TCMediaTrackTypeEnum */
+
+/*! exports provided: default */
+
+/*! exports provided: default, TCDeviceCaptureErrorCode */
+
+/*! exports provided: default, TCImageFormat */
+
+/*! exports provided: default, TCMediaDeviceCaptureRequestReadyState */
+
+/*! exports provided: default, TCMediaDeviceType */
+
+/*! exports provided: default, TCVideoCaptureFacingMode */
+
+/*! exports provided: default, getTCMediaTrackDOMPlayerBuilderStaticInstance */
+
+/*! no static exports found */
+
+/*!******************!*\
+      !*** ./index.js ***!
+      \******************/
+
+/*!*****************************!*\
+      !*** ../Util/Observable.ts ***!
+      \*****************************/
+
+/*!******************************!*\
+      !*** ../Logging/TCLogger.ts ***!
+      \******************************/
+
+/*!******************************!*\
+      !*** ../Util/Color/Color.ts ***!
+      \******************************/
+
+/*!******************************!*\
+      !*** ./src/TCMediaDevice.ts ***!
+      \******************************/
+
+/*!*******************************!*\
+      !*** ./src/TCMediaCapture.ts ***!
+      \*******************************/
+
+/*!********************************!*\
+      !*** ../Media/TCMediaTrack.ts ***!
+      \********************************/
+
+/*!********************************!*\
+      !*** ../Util/Random/Random.ts ***!
+      \********************************/
+
+/*!*********************************!*\
+      !*** ../Event/TCEventTarget.ts ***!
+      \*********************************/
+
+/*!**********************************!*\
+      !*** ./src/TCMediaDeviceList.ts ***!
+      \**********************************/
+
+/*!***********************************!*\
+      !*** ../Exception/TCException.ts ***!
+      \***********************************/
+
+/*!************************************!*\
+      !*** ../Logging/TCNativeLogger.ts ***!
+      \************************************/
+
+/*!************************************!*\
+      !*** ../Media/TCMediaTrackType.ts ***!
+      \************************************/
+
+/*!**************************************!*\
+      !*** ../Media/TCMediaTrackPlayer.ts ***!
+      \**************************************/
+
+/*!***************************************!*\
+      !*** ../Logging/TCLoggerInterface.ts ***!
+      \***************************************/
+
+/*!*****************************************!*\
+      !*** ../Media/TCMediaTrackDOMPlayer.ts ***!
+      \*****************************************/
+
+/*!******************************************!*\
+      !*** ../Event/TCEventTargetInterface.ts ***!
+      \******************************************/
+
+/*!******************************************!*\
+      !*** ./src/TCAudioConstraintsBuilder.ts ***!
+      \******************************************/
+
+/*!******************************************!*\
+      !*** ./src/TCMediaConstraintsBuilder.ts ***!
+      \******************************************/
+
+/*!******************************************!*\
+      !*** ./src/TCVideoConstraintsBuilder.ts ***!
+      \******************************************/
+
+/*!*******************************************!*\
+      !*** ../Media/Audio/TCAudioMediaTrack.ts ***!
+      \*******************************************/
+
+/*!*******************************************!*\
+      !*** ../Media/Video/TCVideoMediaTrack.ts ***!
+      \*******************************************/
+
+/*!********************************************!*\
+      !*** ./src/TCMediaDeviceCaptureRequest.ts ***!
+      \********************************************/
+
+/*!***********************************************!*\
+      !*** ../Media/Video/TCVideoMediaTrackInfo.ts ***!
+      \***********************************************/
+
+/*!************************************************!*\
+      !*** ../Media/TCMediaTrackDOMPlayerBuilder.ts ***!
+      \************************************************/
+
+/*!***************************************************!*\
+      !*** ../Media/Video/ImageCapture/TCVideoFrame.ts ***!
+      \***************************************************/
+
+/*!****************************************************!*\
+      !*** ../Exception/TCDuplicateInstanceException.ts ***!
+      \****************************************************/
+
+/*!*****************************************************!*\
+      !*** ../Media/Audio/Processor/VUMeter/TCVUMeter.ts ***!
+      \*****************************************************/
+
+/*!********************************************************!*\
+      !*** ./src/Capabilities/TCAudioCaptureCapabilities.ts ***!
+      \********************************************************/
+
+/*!********************************************************!*\
+      !*** ./src/Capabilities/TCMediaCaptureCapabilities.ts ***!
+      \********************************************************/
+
+/*!********************************************************!*\
+      !*** ./src/Capabilities/TCVideoCaptureCapabilities.ts ***!
+      \********************************************************/
+
+/*!********************************************************!*\
+      !*** ./src/Exception/TCMediaDeviceCaptureException.ts ***!
+      \********************************************************/
+
+/*!*********************************************************!*\
+      !*** ../Media/Audio/Processor/TCAudioMediaTrackInfo.ts ***!
+      \*********************************************************/
+
+/*!**********************************************************!*\
+      !*** ../Media/Audio/Processor/AbstractAudioProcessor.ts ***!
+      \**********************************************************/
+
+/*!**********************************************************!*\
+      !*** ../Media/Audio/Processor/VUMeter/TCVUCalculator.ts ***!
+      \**********************************************************/
+
+/*!**********************************************************!*\
+      !*** ./src/Configuration/TCAudioCaptureConfiguration.ts ***!
+      \**********************************************************/
+
+/*!**********************************************************!*\
+      !*** ./src/Configuration/TCCaptureRangeConfiguration.ts ***!
+      \**********************************************************/
+
+/*!**********************************************************!*\
+      !*** ./src/Configuration/TCMediaCaptureConfiguration.ts ***!
+      \**********************************************************/
+
+/*!**********************************************************!*\
+      !*** ./src/Configuration/TCVideoCaptureConfiguration.ts ***!
+      \**********************************************************/
+
+/*!***********************************************************!*\
+      !*** ../Media/Video/ImageCapture/TCNativeImageCapture.ts ***!
+      \***********************************************************/
+
+/*!************************************************************!*\
+      !*** ../Media/Audio/Processor/VUMeter/TCProcessVUMeter.ts ***!
+      \************************************************************/
+
+/*!************************************************************!*\
+      !*** ../Media/Audio/Processor/VUMeter/TCVUMeterFactory.ts ***!
+      \************************************************************/
+
+/*!************************************************************!*\
+      !*** ../Media/Audio/Processor/VUMeter/TCWorkletVUMeter.ts ***!
+      \************************************************************/
+
+/*!*************************************************************!*\
+      !*** ../Media/Video/ImageCapture/TCAbstractImageCapture.ts ***!
+      \*************************************************************/
+
+/*!*******************************************************************!*\
+      !*** ./src/Configuration/TCVideoCaptureFrameRateConfiguration.ts ***!
+      \*******************************************************************/
+
+/*!********************************************************************!*\
+      !*** ./src/Configuration/TCVideoCaptureResolutionConfiguration.ts ***!
+      \********************************************************************/
+
+/*!*************************************************************************!*\
+      !*** ../Media/Audio/Processor/FrequencyObserver/TCFrequencyObserver.ts ***!
+      \*************************************************************************/

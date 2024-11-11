@@ -1,0 +1,11 @@
+<form id='{{ id }}' action='{{ action }}' method='{{ method }}'>
+    {% if autofocus %}
+        <script type="text/javascript">
+          $(document).ready(function () {
+            $('html, body').animate({scrollLeft: 0, scrollTop: $('#{{ id }}').offset().top}, 0);
+          });
+        </script>
+    {% endif %}
+    <div class="question" class="none">{{ question }}</div>
+    {{ fields }}
+</form>

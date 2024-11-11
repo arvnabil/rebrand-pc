@@ -1,0 +1,181 @@
+{% extends template.base %}
+
+{% block js %}
+    <link href="/public/css/admin/api/clients.css?version={{ current_version|e('html') }}" rel="stylesheet"
+          type="text/css"/>
+
+    {% if debug %}
+        <script src="/public/js/vue/vue/vue.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-router/vue-router.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.js?version={{ current_version|e('html') }}"></script>
+    {% else %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-router/vue-router.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.min.js?version={{ current_version|e('html') }}"></script>
+    {% endif %}
+    <script src="/public/js/moment-with-locales.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vee-validate/locale/{{ settings.lang|e('html') }}.js?version={{ current_version|e('html') }}"></script>
+{% endblock %}
+
+{% block main_container %}
+    {% autoescape 'html' %}
+        <div id="app" class="content-container">
+            <div id="error-message-container">
+                <p class="error-text">
+                    {% if error_msg %}
+                        {{ error_msg }}
+                    {% endif %}
+                </p>
+            </div>
+            <h1>{{ title|e('html') }}
+                {% block help %}
+                    <p class="help" align="right">
+                        <a href="{{ site.getInsideUrl('help', 'show')~help_section |e('html') }}"
+                           target="_blank" rel="noopener">{{ site._('Help')|e('html') }}</a>
+                        <label id="helpIcon">?</label>
+                    </p>
+                {% endblock %}
+            </h1>
+
+            <fieldset id="access-tokens-list">
+                <legend>{{ site._("Access Tokens")|e('html') }}</legend>
+                <table id="table-clients">
+                    <thead>
+                    <tr>
+                        <th>{{ site._("Access Token")|e('html') }}</th>
+                        <th>{{ site._("Application ID")|e('html') }}</th>
+                        <th>{{ site._("User ID")|e('html') }}</th>
+                        <th>{{ site._("Expires")|e('html') }}</th>
+                        <th>{{ site._("Permissions")|e('html') }}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="access_token of access_tokens" :key="access_token.id">
+                        <td data-label="{{ site._("Access Token")|e('html') }}">${access_token.id}</td>
+                        <td data-label="{{ site._("Application ID")|e('html') }}">${access_token.client_id}</td>
+                        <td data-label="{{ site._("User ID")|e('html') }}">${access_token.user_id}</td>
+                        <td data-label="{{ site._("Expires")|e('html') }}">${access_token.expires}</td>
+                        <td data-label="{{ site._("Permissions")|e('html') }}">${access_token.scope}</td>
+                        <td>
+                            <button class="button"
+                                    @click="openConfirmDeleteAccessTokenDialog(access_token)">{{ site._("Delete")|e('html') }}</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <div id="confirm-delete-access-token-dialog" class="dialog warning-dialog"
+                 title="{{ site._('Warning!')|e('html') }}"></div>
+        </div>
+    {% endautoescape %}
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+            {% set moment_lang = settings.lang == 'zh' ? 'zh-cn' : settings.lang %}
+            moment.locale("{{ moment_lang|e('js') }}");
+
+            var App = new Vue({
+              delimiters: ["${", "}"],
+              data: {
+                access_tokens: [],
+                messages: {
+                  internal_server_error: '{{ site._('Internal Server Error')|e('html') }}',
+                  access_token_will_be_deleted: '{{ site._('The Access Token "%access_token%" will be [b]deleted[/b].[br]Are you sure?')|e('html') }}'
+                }
+              },
+              methods: {
+                getAccessTokens: function () {
+                  Server.showLoadEffect();
+
+                  this.$http.get('/api/v3/api-access-tokens').then(function (response) {
+                    for (var key in response.data.access_tokens) {
+                      response.data.access_tokens[key].expires = moment(response.data.access_tokens[key].expires * 1000).format('LLLL');
+                    }
+
+                    this.$set(this, 'access_tokens', response.body.access_tokens);
+
+                    Server.removeLoadEffect();
+                  }, function (response) {
+
+                    Server.removeLoadEffect();
+                  });
+                },
+                deleteAccessToken: function (access_token, onSuccess, onFail) {
+                  Server.showLoadEffect();
+
+                  this.$http.delete('/api/v3/api-access-tokens/' + access_token.id).then(function (response) {
+                    for (var index = 0; index < this.$data.access_tokens.length; index++) {
+                      if (this.$data.access_tokens[index].id === access_token.id) {
+                        this.$delete(this.access_tokens, index);
+                        break;
+                      }
+                    }
+
+                    Server.removeLoadEffect();
+                    onSuccess(response);
+                  }, function (response) {
+                    this.setErrorServerMessageByResponse(response);
+                    Server.removeLoadEffect();
+                    onFail(response);
+                  });
+                },
+                setErrorServerMessageByResponse: function (response) {
+                  if (undefined === response.body ||
+                    undefined === response.body.error ||
+                    undefined === response.body.error.message) {
+                    Server.setServerMessage(this.$data.messages.internal_server_error, Server.MESSAGE_TYPE.ERROR, 7000);
+                  }
+
+                  if (undefined === response.body.error.errors ||
+                    undefined === response.body.error.errors[0]) {
+                    Server.setServerMessage(response.body.error.message, Server.MESSAGE_TYPE.ERROR, 7000);
+                  }
+
+                  Server.setServerMessage(response.body.error.errors[0].message, Server.MESSAGE_TYPE.ERROR, 7000);
+                },
+                openConfirmDeleteAccessTokenDialog: function (access_token) {
+                  var self = this;
+                  var el = $('#confirm-delete-access-token-dialog');
+
+                  el.html("<p>" + this.$data.messages.access_token_will_be_deleted
+                    .replace('%access_token%', access_token.id)
+                    .replace('[b]', '<b>')
+                    .replace('[/b]', '</b>')
+                    .replace('[br]', '<br />') + "</p>");
+
+                  el.dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: "auto",
+                    modal: true,
+                    buttons: [
+                      {
+                        text: _("OK"),
+                        click: function () {
+                          self.deleteAccessToken(access_token, function () {
+                            el.dialog("close");
+                          }, function () {
+                            el.dialog("close");
+                          });
+                        }
+                      },
+                      {
+                        text: _("Cancel"),
+                        click: function () {
+                          $(this).dialog("close");
+                        }
+                      }
+                    ]
+                  });
+                }
+              },
+              mounted: function () {
+                this.getAccessTokens();
+              }
+            }).$mount('#app');
+        </script>
+    {% endautoescape %}
+{% endblock %}

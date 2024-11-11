@@ -1,0 +1,5 @@
+{% extends template.base_guest %}
+
+{% block content %}
+    <h1>{{ site._('403 Access Denied.<br />Access to %server_name admin area from the network is limited. You can manage the access settings from a local computer.')|replace({'%server_name' : settings.config.server_name}) }}</h1>
+{% endblock %}

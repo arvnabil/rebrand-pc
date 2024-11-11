@@ -1,0 +1,49 @@
+<table class="borderless-table">
+    <col width="180px">
+    <col>
+    <tr class="imput-cell">
+        <td>{{ site._('Status:') }}</td>
+        <td>{{ (user.status) ? '<span class="green">'~site._('Active')~'</span>' : '<span class="red">'~site._('Inactive')~'</span>' }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ settings.config.client_id_name }}:</td>
+        <td>{{ user.login_name }}<span>@{{ server_name }}</span></td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('Digest password') }}:</td>
+        <td>{{ form_digest_pwd }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('E-mail') }}:</td>
+        <td>{{ user.email }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('Display name') }}:</td>
+        <td>{{ user.display_name }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('First name') }}:</td>
+        <td>{{ user.first_name }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('Last name') }}:</td>
+        <td>{{ user.last_name }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('Company') }}:</td>
+        <td>{{ user.company }}</td>
+    </tr>
+    <tr class="imput-cell">
+        <td>{{ site._('Groups') }}:</td>
+        <td>
+            {% if groups %}
+                {% for group in groups %}
+                    <a
+                    href="{{ site.getInsideUrl('users', 'list', 'group_id='~group.id | escape('html')) }}">{{ group.displayName|escape('html') }}</a>{{ not(loop.last)?', ':'' }}
+                {% endfor %}
+            {% else %}
+                <a href="{{ site.getInsideURL("group", "ab", "key="~no_group_id) }}">{{ site._('Users without group') }}</a>
+            {% endif %}
+        </td>
+    </tr>
+</table>

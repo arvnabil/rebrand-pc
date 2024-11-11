@@ -1,0 +1,92 @@
+<script type='text/javascript'>
+  $(function () {
+    $('#jstree_block').jstree({
+      'plugins': ['sort', 'types', 'contextmenu', 'wholerow'],
+      'core': {
+        'check_callback': true,
+        'data': {
+          'url': function (node) {
+            return node.id === '#' ?
+              "/handlers/widget.php?widget=JsTreeButton&method=get_node" :
+              "/handlers/widget.php?widget=JsTreeButton&method=get_child";
+          },
+          'data': function (node) {
+            return {'id': node.id, 'parent': node.parents[node.parents.length - 2]};
+          }
+        }
+      },
+      'types': {
+        'default': {'icon': 'folder'},
+        'file': {'valid_children': [], 'icon': 'file'}
+      },
+      'contextmenu': false
+    })
+      .on('create_node.jstree', function (e, data) {
+        $.get('/handlers/widget.php?widget=JsTreeButton&method=create_node', {
+          'type': data.node.type,
+          'id': data.node.parent,
+          'text': data.node.text
+        })
+          .done(function (d) {
+            if (d.error)
+              data.instance.refresh();
+            else {
+              data.instance.set_id(data.node, d.id);
+            }
+          })
+          .fail(function () {
+            data.instance.refresh();
+          });
+      })
+      .on('rename_node.jstree', function (e, data) {
+        $.get('/handlers/widget.php?widget=JsTreeButton&method=rename_node', {'id': data.node.id, 'text': data.text})
+          .done(function (d) {
+            if (d.error)
+              data.instance.refresh();
+            else
+              data.instance.set_id(data.node, d.id);
+          })
+          .fail(function () {
+            data.instance.refresh();
+          });
+      }).on('select_node.jstree', function (e, data) {
+      $('#workdirectory input').val(data.node.id.replace(/[/]+/g, '\\'));
+    });
+
+    $('#workdirectory').dialog({
+      autoOpen: false,
+      title: t._set_the_path,
+      height: 350,
+      width: 400,
+      minHeight: 279,
+      minWidth: 460,
+      modal: true,
+      draggable: true,
+      resizable: true,
+      buttons: {
+        "{{ site._('Save') }}": function () {
+          var disk = $('.jstree-anchor.jstree-disabled').text();
+          var selected = $('#jstree_block').jstree().get_top_selected(true);
+          $("#{{ id }}").val(selected[0] ? selected[0].id.replace(/[/]+/g, '\\') : $('#workdirectory input').val() ? $('#workdirectory input').val() : '');
+          $(this).dialog('close');
+        },
+        "{{ site._('Cancel') }}": function () {
+          $(this).dialog('close');
+        }
+      }
+    });
+
+    $("#{{ id }}").click(function () {
+      $('#workdirectory').dialog('open');
+    });
+
+    $(".f-jstree input[name=path]").clone().prependTo($('#workdirectory'));
+  });
+</script>
+
+{{ input }}
+
+<div id="workdirectory">
+    <div id="jstree_block">
+    </div>
+</div>

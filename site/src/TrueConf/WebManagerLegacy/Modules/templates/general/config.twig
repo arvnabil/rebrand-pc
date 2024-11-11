@@ -1,0 +1,1361 @@
+{% extends template.base %}
+
+{% block js %}
+    {% autoescape 'js' %}
+
+      <script type="text/javascript">
+
+        function saveLoginEnabled(login_enabled, app_name) {
+            $.ajax({
+                url: '{{ site.getInsideUrl('general', 'login_enabled') }}',
+                data: {
+                    'app_name': app_name,
+                    'app_login_enabled': login_enabled
+                },
+                success: function (data) {
+                    $(document).trigger('display-header-messages', {
+                      message: "{{ site._('The settings are saved')|e('js') }}"
+                    });
+                },
+                type: 'POST'
+            });
+        }
+
+        $(document).ready(function () {
+          $(document).bind('AfterStart', function () {
+            Server.setServerMessage("{{ site._('The settings are saved')|e('html') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+          });
+
+          var versionRegExp = /^\d+(\.\d+)+$/;
+
+          $('#server-debug').change(function () {
+            if ($(this).is(':checked')) {
+              $.post('{{ site.getInsideUrl('general', 'enable-debug', NULL, 'admin') }}', function () {
+                $(document).trigger('display-header-messages', {message: "{{ site._('The settings are saved')|e('js') }}"});
+              });
+            } else {
+              $.post('{{ site.getInsideUrl('general', 'disable-debug', NULL, 'admin') }}', function () {
+                $(document).trigger('display-header-messages', {message: "{{ site._('The settings are saved')|e('js') }}"});
+              });
+            }
+          });
+
+          var sharedKeyPrefix3Elem = $('#shared-key-prefix-3');
+          var sharedKeyPrefix3 = sharedKeyPrefix3Elem.val();
+
+          var sharedKeyElem = $('#shared-key');
+          var sharedKey = sharedKeyElem.val();
+
+          {% block save_app_properties_js %}
+
+          function saveApplicationSettings() {
+            var sharedKeyMinLength = {{ shared_key_min_length }};
+            var sharedKeyPrefix3MinLength = {{ shared_key_with_prefix_3_min_length }};
+            var sharedKeyErrorElem = $('#shared-key-error');
+            var sharedKeyPrefix3ErrorElem = $('#shared-key-prefix-3-error');
+            var error_message = '<div style="margin: 0px">' + '{{ site._("<b>%field</b> can not be less than %min symbols")|e('js') }}' + '</div>';
+            var sharedKeyErrorExists = $('#shared-key-prefix-3').val().length < sharedKeyMinLength;
+            var sharedKeyPrefix3ErrorExists = $('#shared-key').val().length < sharedKeyPrefix3MinLength;
+
+            sharedKeyPrefix3ErrorElem.html(sharedKeyErrorExists ? error_message.replace('%field', '{{ site._("User connections authentication key")|e('js') }}').replace('%min', sharedKeyMinLength) : "");
+            sharedKeyErrorElem.html(sharedKeyPrefix3ErrorExists ? error_message.replace('%field', '{{ site._("Guest connections authentication key")|e('js') }}').replace('%min', sharedKeyPrefix3MinLength) : "");
+
+            if (sharedKeyErrorExists || sharedKeyPrefix3ErrorExists) {
+              return
+            }
+
+            var total = 4;
+            var eventName = "onAppPropertySend";
+            var saved = 0;
+
+            $(document).bind(eventName, function () {
+              saved++;
+              if (saved < total) {
+                return;
+              }
+
+              $(document).unbind(eventName);
+
+              var res = $.post("{{ site.getInsideUrl('general', 'update_app_props')|e('js') }}");
+
+              if ($('#shared-key').val() !== sharedKey || $('#shared-key-prefix-3').val() !== sharedKeyPrefix3) {
+                res.done(function () {
+                  Server.enableRestartMessage();
+                });
+                $(document).trigger('display-header-messages', {message: '<script>Server.showRestartDialog()<\/script>'});
+              } else {
+                $(document).trigger('display-header-messages', {message: "{{ site._('The settings are saved')|e('js') }}"});
+              }
+
+              Server.removeLoadEffect();
+            });
+
+            Server.showLoadEffect();
+            send({
+              model: '\\Classes\\Configuration',
+              point: $('#shared-key-prefix-3').attr('name'),
+              value: $('#shared-key-prefix-3').val()
+            }, eventName, "shared-key-prefix-3");
+            send({
+              model: '\\Classes\\Configuration',
+              point: $('#shared-key').attr('name'),
+              value: $('#shared-key').val()
+            }, eventName, "shared-key");
+            send({
+              model: '\\Classes\\AppProperty',
+              point: 'lstatus_set',
+              value: $('#lstatus_set').is(':checked') ? 1 : 0,
+              remove: $('#lstatus_set').is(':checked') ? 0 : 1
+            }, eventName, "lstatus_set");
+            send({
+              model: '\\Classes\\Configuration',
+              point: 'autologin_lifetime',
+              value: unitValToSeconds($('#autologinlifetime').val(), $('#autologinlifetimeinput').val())
+            }, eventName, "autologin_lifetime");
+          }
+
+
+            let autologinLifetime = secondsToUnitVal({{ config.autologin_lifetime ? config.autologin_lifetime : 60 * 24 * 60 * 60 }});
+
+            $('#autologinlifetime').val(autologinLifetime.substring(0, 1));
+            $('#autologinlifetimeinput').val((autologinLifetime.substring(1)));
+            $('#autologinlifetimeinput').on('input', function() {
+                this.value = this.value.replace(/\D|^0|^$/ig, '1');
+                this.value = this.value.replace(/.{5,}/ig, '9999');
+            });
+
+
+            $("#save-application-settings").bind('click', saveApplicationSettings);
+
+          {% endblock %}
+
+          var identifier = $("#identifier"),
+                  app_name = $("#app-name"),
+                  app_min_version = $("#app-min-version"),
+                  app_current_version = $("#app-current-version"),
+                  app_last_version = $("#app-last-version"),
+                  /*app_setup_url = $( "#app-setup-url" ),
+                  app_update_url = $( "#app-update-url" ),
+                  app_search_url = $( "#app-search-url" ),*/
+                  allFields = $([]).add(identifier).add(app_name).add(app_min_version).add(app_current_version).add(app_last_version)/*.add( app_setup_url ).add( app_update_url )*/,
+                  tips = $(".validateTips");
+
+          function updateTips(t) {
+            tips
+                    .text(t)
+                    .addClass("ui-state-highlight");
+            setTimeout(function () {
+              tips.removeClass("ui-state-highlight", 1500);
+            }, 500);
+          }
+
+          function isVersionCorrect(minVersionParts, maxVersionParts) {
+            var partCount = Math.max(minVersionParts.length, maxVersionParts.length);
+            for (var i = 0; i < partCount; i++) {
+              minVersionParts[i] = typeof (minVersionParts[i]) === "undefined"
+                      ? 0
+                      : parseInt(minVersionParts[i]);
+              maxVersionParts[i] = typeof (maxVersionParts[i]) === "undefined"
+                      ? 0
+                      : parseInt(maxVersionParts[i]);
+              if (minVersionParts[i] < maxVersionParts[i]) {
+                return true;
+              }
+              if (minVersionParts[i] > maxVersionParts[i]) {
+                return false;
+              }
+            }
+
+            return true;
+          }
+
+          $("#dialog-form").dialog({
+            autoOpen: false,
+            height: 350,
+            width: 400,
+            modal: true,
+            draggable: true,
+            resizable: true,
+            buttons: {
+              "{{ site._('Save')|e('js') }}": function () {
+                var bValid = true;
+                $('#app-min-version + div.ui-state-error, #app-current-version + div.ui-state-error, #app-last-version + div.ui-state-error').remove();
+                var app_version_names = [app_min_version, app_current_version, app_last_version];
+                var focused = false;
+
+                for (var i = 0; i < app_version_names.length; i++) {
+                  if (!versionRegExp.test(app_version_names[i].val())) {
+                    bValid = false;
+                    app_version_names[i].after('<div class="ui-state-error">{{ application_version_error|escape('js') }}</div>');
+                    if (!focused) {
+                      app_version_names[i].focus();
+                      focused = true;
+                    }
+                  } else {
+                    app_version_names[i].next('.ui-state-error').remove();
+                  }
+                }
+
+                  var minVersionParts = app_min_version.val().split('.');
+                  var maxVersionParts = app_last_version.val().split('.');
+                  var curVersionParts = app_current_version.val().split('.');
+
+                  if (!isVersionCorrect(minVersionParts, maxVersionParts)) {
+                      bValid = false;
+                      app_min_version.focus();
+                      app_min_version.after('<div class="ui-state-error">' + "{{ site._('Please specify a version less than or equal to the last version')|e('js') }}"
+                          + '</div>');
+                      focused = true;
+                  }
+
+                  if (!isVersionCorrect(curVersionParts, maxVersionParts)) {
+                      bValid = false;
+                      app_current_version.focus();
+                      app_current_version.after('<div class="ui-state-error">' + "{{ site._('Please specify a version less than or equal to the last version')|e('js') }}"
+                          + '</div>');
+                      focused = true;
+                  }
+
+                  if (!isVersionCorrect(minVersionParts, curVersionParts)) {
+                      bValid = false;
+                      app_current_version.focus();
+                      app_current_version.after('<div class="ui-state-error">' + "{{ site._('Please specify a version more than or equal to the minimal version')|e('js') }}"
+                          + '</div>');
+                      focused = true;
+                  }
+
+                  if (bValid) {
+
+                      $.ajax({
+                          url: '{{ site.getInsideUrl('general', 'save-app') }}',
+                          data: {
+                              'app_name': app_name.val(),
+                      'app_min_version': app_min_version.val(),
+                      'app_current_version': app_current_version.val(),
+                      'app_last_version': app_last_version.val()/*,
+                                    'app_setup_url' : app_setup_url.val(),
+                                    'app_update_url' : app_update_url.val(),
+                                    'app_search_url' : app_search_url.val()*/
+                    },
+                    type: 'POST',
+                          beforeSend: function () {
+                              Server.showLoadEffect();
+                          },
+                          success: function (data) {
+                              if (data.result == 'success') {
+                                  var app = data.app;
+                                  html = '<td class="app-name"> <a href="#" onclick="EditApp(\'' + app.identifier + '\'); return !1;">' + app.name + '</a></td>' +
+                                      '<td class="app-current-version">' + app.current_version + '</td>' +
+                                      '<td class="app-min-version">' + app.min_version + '</td>' +
+                                      '<td class="app-last-version">' + app.last_version + '</td>' +
+                                      '<td class="app-login-enabled"><input type=checkbox onchange="saveLoginEnabled(this.checked, \'' + app.name + '\')" ' + ((app.forbid_login_by_app_name==0)? "checked": "") + ' /></td>' +
+                                      '<td class="app-setup-url"><a href="' + app.setup_url + '" target="_blank" rel="noopener">' + app.setup_url + '</a></td>' +
+                                      '<td class="app-update-url" style="display: none;">' + app.update_url + '</td>' +
+                                      '<td class="app-search-url" style="display: none;">' + app.search_url + '</td>';
+                                  $('.' + app.identifier).html(html);
+                                  $(document).trigger('display-header-messages', {message: "{{ site._('The settings are saved')|e('js') }}"});
+                      } else {
+                        $(document).trigger('display-header-error', {message: "{{ site._("Error")|e('js') }}"});
+                      }
+                      $("#dialog-form").dialog("close");
+                      Server.removeLoadEffect();
+                    },
+                    error: function () {
+                      $(document).trigger('display-header-error', {message: "{{ site._("Error")|e('js') }}"});
+                      $("#dialog-form").dialog("close");
+                      Server.removeLoadEffect();
+                    },
+                    dataType: 'json'
+                  });
+                }
+              },
+              "{{ site._('Cancel')|e('js') }}": function () {
+                $(this).dialog("close");
+              }
+            },
+            close: function () {
+              $('#app-min-version + div.ui-state-error, #app-current-version + div.ui-state-error, #app-last-version + div.ui-state-error').remove();
+              tips.text("");
+              allFields.val("").removeClass("ui-state-error");
+            }
+          });
+
+          $('#save-config').click(function () {
+            $.ajax({
+              type: 'POST',
+              url: '{{ site.getInsideUrl('general', 'create-backup') }}',
+              dataType: 'json',
+              beforeSend: function () {
+                Server.showLoadEffect('{{ site._('Please wait. This may take a few minutes')|e('js') }}');
+              },
+              success: function (data) {
+                if (data.result === "success") {
+                  location.href = '{{ site.getInsideUrl('general', 'download-backup') }}' + "?filename=" + data.filename;
+                }
+                Server.removeLoadEffect();
+              },
+              error: function () {
+                Server.removeLoadEffect();
+              }
+            });
+          });
+
+          $('#restore-file').change(function () {
+              var fileData = new FormData();
+              fileData.append('filename', $('#restore-file').prop('files')[0]);
+              $.ajax({
+                  type: 'POST',
+                  name: 'filename',
+                  url: '{{ site.getInsideUrl('general', 'restore_backup') }}',
+                  data: fileData,
+                  enctype: 'multipart/form-data',
+                  processData: false,
+                  contentType: false,
+                  dataType: 'json',
+                  beforeSend: function () {
+                      Server.showLoadEffect('');
+                  },
+                  success: function (data) {
+                      Server.removeLoadEffect();
+                      Server.startServer();
+                      $(document).one('AfterStart', function () {
+                          /**
+                           * https://bug-tracking.trueconf.com/show_bug.cgi?id=54923
+                           */
+                        Server.apache.restart(function () {
+                          setTimeout(function () {
+                            var date = new Date();
+                            date.setTime(date.getTime() + 2000);
+                            $.cookie('successfully_restored', 1, {expires: date});
+                            location.reload();
+                          }, 2000);
+                        });
+                      });
+                  },
+                  error: function (data) {
+                      Server.removeLoadEffect();
+                      if (data.responseJSON.result === 2) {
+                          $(document).trigger('display-header-error', {message: "{{ site._('Settings file error')|e('js') }}"});
+                      }
+                      else {
+                          $(document).trigger('display-header-error', {message: "{{ site._('Settings file uploading error')|e('js') }}"});
+                      }
+                  },
+              });
+          });
+
+          $('#app-min-version, #app-current-version, #app-last-version').keyup(function (event) {
+            nextElement = $(this).next(".ui-state-error");
+            if (!versionRegExp.test($(this).val())) {
+              if (nextElement.length == 0)
+                $(this).after('<div class="ui-state-error">{{ application_version_error|escape('js') }}</div>');
+            } else {
+              nextElement.remove();
+            }
+          });
+
+        });
+
+        function EditApp(id) {
+          var app = $('.' + id);
+          $("#identifier").val(id);
+          $("#app-name").val(app.find('.app-name').text());
+          $("#app-min-version").val(app.find('.app-min-version').text());
+          $("#app-current-version").val(app.find('.app-current-version').text());
+          $("#app-last-version").val(app.find('.app-last-version').text());
+          /*$( "#app-setup-url" ).val(app.find('.app-setup-url').text());
+          $( "#app-update-url" ).val(app.find('.app-update-url').text());
+          $( "#app-search-url" ).val(app.find('.app-search-url').text());*/
+          $("#dialog-form").dialog({
+            title: "{{ site._('Settings') }}" + " " + app.find('.app-name').text(),
+            resizable: false
+          }).dialog("open");
+        }
+
+        function unitValToSeconds(unit, value) {
+            switch (unit) {
+                case 'm':
+                    value *= 60;
+                    break;
+                case 'h':
+                    value *= 3600;
+                    break;
+                case 'd':
+                    value *= 86400;
+                    break;
+            }
+
+            return value;
+        }
+
+        function secondsToUnitVal(seconds) {
+            let unitVal = 'm0';
+
+            switch (true) {
+                case seconds % 86400 === 0:
+                    unitVal = 'd' + seconds / 86400;
+                    break;
+                case seconds % 3600 === 0:
+                    unitVal = 'h' + seconds / 3600;
+                    break;
+                case seconds % 60 === 0:
+                    unitVal = 'm' + seconds / 60;
+                    break;
+            }
+
+            return unitVal;
+        }
+      </script>
+
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+
+    <fieldset id="work-path-panel">
+        <legend>{{ site._('Work path')|e('html') }}</legend>
+    {% if system_os == constant('TCS\\Application\\Service\\System\\Qualifier\\SystemQualifierInterface::OS_WIN') %}
+        <form id="workingdirectory">
+            <input type="hidden" name="workingdirectory" value="ok">
+            <div class="field f-jstree" id="wr-workingdirectory-path" style="float: left; margin-right: 10px;">
+                <div><span style="margin-right: 30px;"><b>{{ site._("Path") }}:</b></span>&nbsp;<script
+                          type="text/javascript">
+                    $(function () {
+                      $('#jstree_block').jstree({
+                        'plugins': ['sort', 'types', 'contextmenu', 'wholerow'],
+                        'core': {
+                          'check_callback': true,
+                          'data': {
+                            'url': function (node) {
+                              return node.id === '#' ?
+                                      "/handlers/widget.php?widget=JsTreeButton&method=get_node" :
+                                      "/handlers/widget.php?widget=JsTreeButton&method=get_child";
+                            },
+                            'data': function (node) {
+                              return {'id': node.id, 'parent': node.parents[node.parents.length - 2]};
+                            }
+                          }
+                        },
+                        'types': {
+                          'default': {'icon': 'folder'},
+                          'file': {'valid_children': [], 'icon': 'file'}
+                        },
+                        'contextmenu': false
+                      })
+                              .on('create_node.jstree', function (e, data) {
+                                $.get('/handlers/widget.php?widget=JsTreeButton&method=create_node', {
+                                  'type': data.node.type,
+                                  'id': data.node.parent,
+                                  'text': data.node.text
+                                })
+                                        .done(function (d) {
+                                          if (d.error)
+                                            data.instance.refresh();
+                                          else {
+                                            data.instance.set_id(data.node, d.id);
+                                          }
+                                        })
+                                        .fail(function () {
+                                          data.instance.refresh();
+                                        });
+                              })
+                              .on('rename_node.jstree', function (e, data) {
+                                $.get('/handlers/widget.php?widget=JsTreeButton&method=rename_node', {
+                                  'id': data.node.id,
+                                  'text': data.text
+                                })
+                                        .done(function (d) {
+                                          if (d.error)
+                                            data.instance.refresh();
+                                          else
+                                            data.instance.set_id(data.node, d.id);
+                                        })
+                                        .fail(function () {
+                                          data.instance.refresh();
+                                        });
+                              }).on('select_node.jstree', function (e, data) {
+                        $('#workdirectory input').val(data.node.id.replace(/[/]+/g, '\\'));
+                      });
+
+                      function setResponseWaitingState() {
+                        Server.showLoadEffect();
+                        lockApplyBtn();
+                      }
+
+                      function resetResponseWaitingState(with_apply_btn_unlock) {
+                        with_apply_btn_unlock = typeof (with_apply_btn_unlock) === 'undefined'
+                                ? false
+                                : with_apply_btn_unlock;
+                        Server.removeLoadEffect();
+                        if (!with_apply_btn_unlock) {
+                          return;
+                        }
+                        unlockApplyBtn();
+
+                      }
+
+
+                      function lockApplyBtn() {
+                        $('#apply-btn').unbind('click');
+                        $('#apply-btn').addClass('button-lock');
+                      }
+
+                      function unlockApplyBtn() {
+                        $('#apply-btn').removeClass('button-lock');
+                        $('#apply-btn').click(displayConfirmWindow);
+                      }
+
+                      function belongsToInterval(number, base, _dispersion) {
+                        var dispersion = typeof (_dispersion) === 'undefined' ? 99 : _dispersion;
+                        return Math.abs(number - base) < dispersion;
+                      }
+
+                      /**
+                       * @param {object} data
+                       */
+                      function send_request(data) {
+                        setResponseWaitingState();
+                        $.ajax({
+                          method: 'POST',
+                          url: "{{ site.getInsideUrl('general', 'set_working_dir') }}",
+                          data: data,
+                          success: working_dir_success_change_handler,
+                          error: working_dir_wrong_change_handler
+                        });
+                      }
+
+                      var work_dir_field = $('#workingdirectory-path');
+                      var current_working_directory_path = "{{ config.working_directory|e('js') }}";
+                        var work_dir_error_container = $('#work-path-error-message');
+
+
+                        function validateWorkDir(work_dir_path) {
+                            if (work_dir_path === current_working_directory_path) {
+                                return -1;
+                            }
+
+                            var systemOS = {{ system_os }};
+
+                            work_dir_path = systemOS === {{ constant('TCS\\Application\\Service\\System\\Qualifier\\SystemQualifierInterface::OS_WIN') }}
+                                ? work_dir_path.substr(2)
+                                : work_dir_path;
+
+                            if (work_dir_path.match({{ work_dir_path_regexp }}) === null) {
+                                return -2
+                            }
+
+                            return 0;
+                        }
+
+                        function displayErrorMessage(error_message) {
+                            work_dir_error_container.text(error_message);
+                        }
+
+                        function clearErrorMessage() {
+                            work_dir_error_container.text("");
+                        }
+
+                        function onChangeWorkDirHandler() {
+                            var error_message = "{{ site._('Unknown error') }}";
+                        switch (validateWorkDir(work_dir_field.val())) {
+                          case 0:
+                            unlockApplyBtn();
+                            clearErrorMessage();
+                            return;
+                          case -1:
+                            lockApplyBtn();
+                            clearErrorMessage();
+                            return;
+                          case -2:
+                            error_message = "{{ site._('Path can contain letters (a-z, A-Z), numbers, spaces, and special characters `!@#%$&+._-=~,;()[]{}')|e('js') }}";
+                            break;
+                        }
+                        displayErrorMessage(error_message);
+                        lockApplyBtn();
+                      }
+
+                      function displayConfirmWindow() {
+                        var warning_dialog = $('#warning-dialog');
+                        var path = work_dir_field.val();
+                        var new_folder = path.substr(path.lastIndexOf("\\") + 1);
+                        var message = "{{ site._('All files in "%folder_name" folder will be erased.')|e('js') }}"
+                                .replace('%folder_name', new_folder);
+                        $("#warning-changes>li:first-child").text(message);
+                        warning_dialog.dialog({
+                          modal: true,
+                          resizable: false,
+                          width: '480px',
+                          buttons: {
+                            "{{ site._('Continue')|e('js') }}": function () {
+                              send_request({
+                                ignore_checking: true,
+                                path: work_dir_field.val()
+                              });
+                              $(this).dialog('close');
+                            },
+                            "{{ site._('Cancel')|e('js') }}": function () {
+                              $(this).dialog('close');
+                            }
+                          }
+                        });
+                      }
+
+                        /**
+                         * @param data
+                         */
+                        function working_dir_success_change_handler(data) {
+                            try {
+                                var response = JSON.parse(data)
+                                var result = response.result;
+                                var required_size_in_mb = Math.round(response.req_size / 1024 / 1024);
+                            } catch (ex) {
+                                console.log(ex);
+                                return;
+                            }
+
+                            switch (result) {
+                                case {{ result_success }}:
+                            resetResponseWaitingState(true);
+                            Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 10000);
+                            Confirm.func(t._server_restart_is_required, function () {
+                              Server.apache.restart();
+                              if (typeof (update_status_timer) !== "undefined") {
+                                clearInterval(update_status_timer);
+                              }
+                            });
+                            current_working_directory_path = work_dir_field.val();
+                            lockApplyBtn();
+                            return;
+                          case {{ result_error_old_dir_includes_new_dir }}:
+                            displayErrorMessage("{{ site._('New directory cannot be nested in the current directory.')|e('js') }}");
+                            console.log('Inner error code: ' + result);
+                            break;
+                                case {{ result_error_new_dir_includes_old_dir }}:
+                                    displayErrorMessage("{{ site._('Current directory cannot be nested in the new directory.')|e('js') }}");
+                                    console.log('Inner error code: ' + result);
+                                    break;
+                                case {{ result_error_new_dir_is_unavailable }}:
+                                    displayErrorMessage("{{ site._('The specified path does not exist.')|e('js') }}");
+                                    console.log('Inner error code: ' + result);
+                                    break;
+                                case {{ result_working_dir_has_small_size }}:
+                                    displayErrorMessage("{{ site._('Not enough free space on %disk_name disk, at least %workpath_size MB required.')
+                                    |replace({'[b]':'<b>', '[/b]':'</b>'})
+                                    |escape('js') }}".replace('%disk_name', work_dir_field.val().substr(0, 1)).replace('%workpath_size', required_size_in_mb))
+                                    console.log('Inner error code: ' + result);
+                                    break;
+                                case {{ result_error_tool_is_missing }}:
+                                    Server.setServerMessage("{{ site._('Work path cannot be changed, because [b]%robocopy[/b] utility does not exist in the system.')
+                                    |replace({'%robocopy':copy_utility_name, '[b]':'<b>', '[/b]':'</b>'})
+                                    |escape('js') }}", Server.MESSAGE_TYPE.ERROR, false, true);
+                                    console.log('Inner error code: ' + result);
+                                    break;
+                                case {{ result_error_on_start_db }}:
+                                    Server.setServerMessage("{{ site._('Work path cannot be changed, because TrueConf Database is not running.')|escape('js') }}".replace('%code', code), Server.MESSAGE_TYPE.ERROR);
+                            console.log('Inner error code: ' + result);
+                            break;
+                          default:
+                            var base_copy_error_code = {{ result_error_on_dir_copy }};
+                            var code = belongsToInterval(result, base_copy_error_code) ? result - base_copy_error_code : result;
+                            Server.setServerMessage("{{ site._('Error occurred while copying files into new folder. Error code: %code.')|escape('js') }}".replace('%code', code), Server.MESSAGE_TYPE.ERROR);
+                            console.log('Inner error code: ' + result);
+                            break;
+                        }
+
+                        resetResponseWaitingState();
+
+                      }
+
+                      /**
+                       *
+                       * @param data
+                       */
+                      function working_dir_wrong_change_handler(data) {
+                        resetResponseWaitingState();
+                        console.log("Error object:", data);
+                        Server.setServerMessage("{{ site._('Request error')|escape('js') }}", Server.MESSAGE_TYPE.ERROR);
+                      }
+
+                      $('#apply-btn').click(displayConfirmWindow);
+
+                      $('#workdirectory').dialog({
+                        title: t._set_the_path,
+                        autoOpen: false,
+                        height: 350,
+                        width: 400,
+                        minHeight: 279,
+                        minWidth: 460,
+                        modal: true,
+                        draggable: true,
+                        resizable: true,
+                        buttons: {
+                          "{{ site._('Save')|e('js') }}": function () {
+                            var disk = $('.jstree-anchor.jstree-disabled').text();
+                            var selected = $('#jstree_block').jstree().get_top_selected(true);
+                            $("#workingdirectory-path").val(selected[0] ? selected[0].id.replace(/[/]+/g, '\\') : $('#workdirectory input').val() ? $('#workdirectory input').val() : '');
+                            onChangeWorkDirHandler();
+                            $(this).dialog('close');
+                          },
+                          "{{ site._('Cancel')|e('js') }}": function () {
+                            $(this).dialog('close');
+                          }
+                        }
+                      });
+
+                      $("#workingdirectory-path").click(function () {
+                        $('#workdirectory').dialog('open');
+                      });
+
+                      $(".f-jstree input[name=path]").clone().prependTo($('#workdirectory'));
+                      lockApplyBtn();
+                    });
+
+
+                  </script>
+
+                  <input type="text" id="workingdirectory-path" name="path" value="{{ config.working_directory }}"
+                           style="width: 500px;" maxlength="255" class="text" autocomplete="off">
+
+                    <div id="workdirectory">
+                        <div id="jstree_block">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="warning-dialog" style="display: none" title="{{ site._("Warning")|e('html') }}">
+                    <span>{{ site._("By pressing the [b]Continue[/b] button, work path will start to change.")|replace({'[b]':'<b>', '[/b]':'</b>'}) }}</span>
+                    <ul id="warning-changes">
+                        <li></li>
+                        <li>{{ site._("All the conferences running at the moment will be stopped.")|e('html') }}</li>
+                    </ul>
+                </div>
+
+            </div>
+            <a id="apply-btn" class="button">{{ site._("Apply") }}</a><br class="clear">
+            <span id="work-path-error-message"></span>
+        </form>
+    {% else %}
+        <span style="margin-right: 30px;"><b>{{ site._("Path") }}:</b></span>
+        <input type="text" value="{{ config.working_directory }}"
+               style="width: 500px;" class="text" disabled>
+    {% endif %}
+    </fieldset>
+    <br/>
+    {% if enterprise_slave %}
+        <fieldset id="master-server-fieldset">
+            <legend>{{ site._("Shared licenses source")|e('html') }}</legend>
+            <div id="master-server-form">
+                <span id="master-server-name-label"><b>{{ site._("Server name")|e('html') }}:</b></span>
+                <input type="text" id="master-server" name="master_server"
+                       value="{{ config.licensemasterserver }}"
+                       onkeyup="masterServerValidate()" onchange="masterServerValidate()"
+                       class="text" autocomplete="off" maxlength="255">
+                <a id="master-server-apply" class="button">{{ site._("Apply")|e('html') }}</a>
+                <a id="master-server-reset" class="button">{{ site._("Reset")|e('html') }}</a>
+                <span id="master-server-status-label">{{ localization.status|e('html') }}:</span>
+                <span id="master-server-status"></span>
+                <br class="clear">
+            </div>
+        </fieldset>
+        <br/>
+        <div id="question-dialog" style="display: none" title="{{ site._("Warning")|e('html') }}">
+            <span>{{ site._("Connection with shared licenses source will be lost")|e('html') }}.</span>
+        </div>
+        <style type="text/css">
+            #master-server {
+                width: 450px;
+                float: left;
+                margin-right: 10px;
+            }
+
+            #master-server-name-label {
+                margin-right: 30px;
+                float: left;
+                margin-top: 2px;
+            }
+
+            #master-server-form > a {
+                margin-right: 10px;
+            }
+
+            #master-server-fieldset, #work-path-panel {
+                min-width: 820px;
+            }
+
+            #master-server-status {
+                float: left;
+                margin-top: 4px;
+                padding-left: 4px;
+            }
+
+            #master-server-status-label {
+              float: left;
+              clear: left;
+              margin-top: 4px;
+            }
+
+            #master-server-fieldset, #work-path-panel {
+              min-width: 820px;
+            }
+        </style>
+      <script type="application/javascript">
+        var master_server_status = null;
+        var master_server_status_code = null;
+        var status_checking = "{{ localization.checking|e('js') }}";
+
+        var status_update_timeout_long = 30000;
+        var status_update_timeout_fast = 5000;
+        var status_update_timeout = status_update_timeout_fast;
+        var update_status_timer = null;
+
+        var master_server_form_input = $('#master-server');
+        var master_server_reset_button = $('#master-server-reset');
+        var master_server_apply_button = $('#master-server-apply');
+
+        function startUpdateStatusTimer() {
+          if (update_status_timer !== null) {
+            clearInterval(update_status_timer);
+          }
+          update_status_timer = setInterval(updateMasterServerStatus, status_update_timeout);
+        }
+
+        function stopUpdateStatusTimer() {
+          // console.log('update master status timer was stopped');
+          if (update_status_timer !== null) {
+            clearInterval(update_status_timer);
+          }
+        }
+
+        function renderMasterServerStatus(status, status_code) {
+          if (status_code === master_server_status_code) {
+            return;
+          }
+
+          master_server_status = status;
+          master_server_status_code = status_code;
+
+          var statusElem = $('#master-server-status');
+          statusElem.text(status);
+          var color = status_code < 1
+                  ? $('#master-server-status-label').css('color')
+                  : (status_code === 3 ? 'green' : 'red');
+          statusElem.css('color', color);
+        }
+
+        function updateMasterServerStatus() {
+          $.ajax({
+            type: 'GET',
+            url: '{{ site.getInsideUrl('general', 'get-master-server-status') }}',
+            dataType: 'json',
+            success: function (data) {
+              var status = typeof (data.status) === 'undefined' ? master_server_status : data.status;
+              var status_code = typeof (data.status_code) === 'undefined'
+                      ? master_server_status_code
+                      : data.status_code;
+
+              if (status_code === -1) {
+                clearInterval(update_status_timer);
+                master_server_status = status;
+                master_server_status_code = status_code;
+                return;
+              }
+              var last_status_update_timeout = status_update_timeout;
+              status_update_timeout = [0, 1].indexOf(status_code) !== -1
+                      ? status_update_timeout_fast
+                      : status_update_timeout_long;
+              if (last_status_update_timeout !== status_update_timeout) {
+                startUpdateStatusTimer();
+              }
+
+              renderMasterServerStatus(status, status_code);
+              master_server_status = status;
+              master_server_status_code = status_code;
+            },
+            error: displayErrorMessage
+          });
+        }
+
+        function displaySuccessMessage(data) {
+          if (data.result === 'success') {
+            Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}",
+                    Server.MESSAGE_TYPE.NOTE, 2000);
+            return;
+          }
+          $(document).trigger('display-header-error', {message: _('Request error')});
+        }
+
+        function displayErrorMessage(data) {
+          $(document).trigger('display-header-error', {message: _('Request error')});
+        }
+
+        function onMasterServerResetSuccess(data) {
+          displaySuccessMessage(data);
+          enableMasterServerForm();
+          var status = typeof (data.status) === 'undefined' ? master_server_status : data.status;
+          var status_code = typeof (data.status_code) === 'undefined' ? master_server_status_code : data.status_code;
+          renderMasterServerStatus(status, status_code);
+          startUpdateStatusTimer();
+        }
+
+        function onMasterServerResetError(data) {
+          displayErrorMessage(data);
+          enableMasterServerForm();
+        }
+
+        function onMasterServerResetClick() {
+          disableMasterServerForm();
+          $('#question-dialog').dialog('close');
+          var status = status_checking;
+          var status_code = 0;
+          renderMasterServerStatus(status, status_code);
+          startUpdateStatusTimer();
+          masterServerReset(onMasterServerResetSuccess, onMasterServerResetError);
+        }
+
+        function onMasterServerApplySuccess(data) {
+          displaySuccessMessage(data);
+          enableMasterServerForm();
+          last_master_server_name = $('#master-server').val();
+          masterServerValidate();
+          var status = typeof (data.status) === 'undefined' ? master_server_status : data.status;
+          var status_code = typeof (data.status_code) === 'undefined' ? master_server_status_code : data.status_code;
+          renderMasterServerStatus(status, status_code);
+          startUpdateStatusTimer();
+        }
+
+        function onMasterServerApplyError(data) {
+          displayErrorMessage(data);
+          enableMasterServerForm();
+        }
+
+        function onMasterServerApplyClick() {
+          disableMasterServerForm();
+          var master_server = $('#master-server').val();
+          if (master_server.length === 0) {
+            displayMasterServerResetConfirmWindow();
+            return;
+          }
+          var status = status_checking;
+          var status_code = 0;
+          renderMasterServerStatus(status, status_code);
+          startUpdateStatusTimer();
+          masterServerApply({
+            "server_name": master_server
+          }, onMasterServerApplySuccess, onMasterServerApplyError);
+        }
+
+        function disableMasterServerForm() {
+          $('#master-server').addClass('button-lock');
+          $('#master-server').off();
+          disableMasterServerResetBtn();
+          disableMasterServerApplyBtn();
+        }
+
+        function enableMasterServerForm() {
+          $('#master-server-apply,#master-server').removeClass('button-lock');
+          enableMasterServerApplyBtn();
+
+          if ($('#master-server').val().length > 0) {
+            enableMasterServerResetBtn();
+          } else {
+            disableMasterServerResetBtn();
+          }
+
+          $('#master-server').keypress(function (e) {
+            if (e.charCode === 13) {
+              onMasterServerApplyClick();
+            }
+          });
+        }
+
+        function toggleMasterServerResetBtnEnabled(enable) {
+          if (enable) {
+            disableMasterServerResetBtn()
+          } else {
+            enableMasterServerResetBtn();
+          }
+        }
+
+        function disableMasterServerResetBtn() {
+          $('#master-server-reset').addClass('button-lock');
+          $('#master-server-reset').off();
+
+        }
+
+        function enableMasterServerResetBtn() {
+          $('#master-server-reset').removeClass('button-lock');
+          $('#master-server-reset').off();
+          $('#master-server-reset').click(displayMasterServerResetConfirmWindow);
+        }
+
+        function disableMasterServerApplyBtn() {
+          $('#master-server-apply').addClass('button-lock');
+          $('#master-server-apply').off();
+
+        }
+
+        function enableMasterServerApplyBtn() {
+          $('#master-server-apply').removeClass('button-lock');
+          $('#master-server-apply').off();
+          $('#master-server-apply').click(onMasterServerApplyClick);
+        }
+
+        function masterServerValidate() {
+          var master_server = $('#master-server').val();
+
+          if (master_server.length === 0 || master_server === this_server_name || master_server === last_master_server_name || !validateMasterServerName(master_server)) {
+            disableMasterServerApplyBtn();
+            enableMasterServerResetBtn();
+            return;
+          }
+
+          toggleMasterServerResetBtnEnabled(master_server.length === 0);
+          enableMasterServerApplyBtn();
+
+        }
+
+        function validateMasterServerName(server_name) {
+          if (server_name.length > 255) {
+            return false;
+          }
+
+          var url_hash_position = server_name.indexOf("#");
+          if (url_hash_position !== -1) {
+            if (server_name.match(/^(.*[^#])?#(vcs|as)$/i) == null) {
+              return false;
+            }
+
+            server_name = server_name.substring(0, url_hash_position);
+
+            if (server_name.match(/^((?=[a-z0-9-]{1,63}\.)[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}$/i) == null) {
+              return false;
+            }
+          }
+
+          var valid_pattern = {{ master_server_regexp }};
+
+
+          if (server_name.match(valid_pattern) != null) {
+            return true;
+          }
+
+          var position = server_name.lastIndexOf(':');
+
+          if (position === -1) {
+            return false;
+          }
+
+          var hostname = server_name.substring(0, position);
+          var port = server_name.substring(position + 1);
+
+          if (server_name.match(/^\[.*[^\[^\]]\](?:.*)$/i) != null) {
+            var valid_ipv6_pattern = /^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/;
+            var ipv6 = server_name.replace("[", "").replace("]", "");
+            if (null != ipv6.match(valid_ipv6_pattern)) {
+              return true;
+            }
+
+            if (!validateMasterServerPort(port)) {
+              return false;
+            }
+
+            var hostname_without_brackets = hostname.replace("[", "").replace("]", "");
+
+            if (null != hostname_without_brackets.match(valid_ipv6_pattern)) {
+              console.log(hostname_without_brackets, 'MACHED');
+              return true;
+            } else {
+              console.error(hostname_without_brackets, 'NOT MACHED');
+              return false;
+            }
+          }
+
+          if (!validateMasterServerPort(port)) {
+            return false;
+          }
+
+          if (hostname.match(valid_pattern) != null) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+        /**
+         *
+         * @param port
+         * @returns {boolean}
+         */
+        function validateMasterServerPort(port) {
+          if (port.match(/^[0-9]+$/) == null) {
+            return false;
+          }
+
+          port = parseInt(port);
+
+          if (port < 0 || port > 65535) {
+            return false;
+          }
+
+          return true;
+        }
+
+        function masterServerReset(onSuccess, onError) {
+          $.ajax({
+            type: 'POST',
+            url: '{{ site.getInsideUrl('general', 'reset-licensor') }}',
+            dataType: 'json',
+            success: function (data) {
+              $('#master-server').val("");
+              if (onSuccess) {
+                onSuccess(data)
+              }
+            },
+            error: function (error) {
+
+              if (onError) {
+                onError(error);
+              }
+            }
+
+          });
+        }
+
+        function masterServerApply(data, onSuccess, onError) {
+          $.ajax({
+            type: 'POST',
+            url: '{{ site.getInsideUrl('general', 'edit-licensor') }}',
+            dataType: 'json',
+            data: data,
+            success: onSuccess,
+            error: onError
+          });
+        }
+
+        function displayMasterServerResetConfirmWindow() {
+          $('#question-dialog').dialog(
+                  {
+                    width: '500px',
+                    resizable: false,
+                    modal: true,
+                    buttons: [
+                      {
+                        text: "{{ site._("Cancel")|e('js') }}",
+                        click: function () {
+                          $(this).dialog("close");
+                        }
+                      },
+                      {
+                        text: "{{ site._("Reset")|e('js') }}",
+                        id: "reset-btn",
+                        click: onMasterServerResetClick
+                      }
+                    ]
+                  }
+          );
+        }
+
+        $(document).ready(function () {
+          enableMasterServerForm();
+          disableMasterServerApplyBtn();
+          var status = "{{ master_server_status|e('js') }}";
+          var status_code = {{ master_server_status_code|e('js') }};
+          renderMasterServerStatus(status, status_code);
+          startUpdateStatusTimer();
+        });
+
+        var this_server_name = "{{ server_name }}";
+        var last_master_server_name = "{{ config.licensemasterserver }}";
+
+      </script>
+    {% endif %}
+    <fieldset>
+        <legend>{{ site._('Reports')|e('html') }}</legend>
+        <table class="general-buttons">
+            <tr>
+                <td colspan="2" style="text-align: left;">
+                    <input id="server-debug" class="m-top-3 fl"
+                           type="checkbox" {{ (server_debug) ? 'checked="checked"' : '' }} /><label for="server-debug"
+                                                                                                    class="m-left-5">{{ site._('Enable detailed logging')|e('html') }}</label>
+                </td>
+            </tr>
+            {#<tr>
+                <td><a class="button" href="{{ site.getInsideUrl('general', 'log')|e('html') }}" target="_blank">{{ site._("View Log")|e('html') }}</a></td>
+                <td>
+                    <a class="button" href="{{ site.getInsideUrl('report', 'list')|e('html') }}" target="_blank">{{ site._("Usage report")|e('html') }}</a>
+                </td>
+            </tr>#}
+        </table>
+    </fieldset>
+    <br/>
+    <fieldset id="system-conf-block">
+        <legend>{{ site._('Configuration')|e('html') }}</legend>
+        <p>{{ site._('Save the settings to a file or use a previously saved configuration file to restore the settings.')|e('html') }}</p>
+        <table class="general-buttons">
+            <tr>
+                <td>
+                    <a id="save-config" class="button">{{ site._("Backup settings")|e('html') }}</a>
+                </td>
+                <td>
+                  <label class="button" for="restore-file">{{ site._("Restore settings")|e('html') }}</label>
+                  <div style="display:none;">
+                    <input id="restore-file" type="file" name="restore-file" accept=".tcb"/>
+                  </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <h1>{{ site._('Application')|e('html') }}</h1>
+    {% if (apps|length) %}
+        <table id="app-tb" class="tb-fix">
+            <col width="20%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="40%">
+            <tr>
+                <th>{{ site._('Application')|e('html') }}</th>
+                <th>{{ site._('Current version')|e('html') }}</th>
+                <th>{{ site._('Min. ver')|e('html') }}</th>
+                <th>{{ site._('Last ver')|e('html') }}</th>
+                <th>{{ site.pgettext('A table column header. Here, the admin can check if login (authorization) is enabled for certain types of client applications (e.g for mobile and desktop apps).', 'Authorization')|e('html') }}</th>
+                <th>{{ site._('Setup URL')|e('html') }}</th>
+            </tr>
+          {% for app in apps %}
+            <tr class="{{ app.identifier }}">
+              <td class="app-name"><a href="#"
+                                      onclick="EditApp('{{ app.identifier }}'); return !1;">{{ app.name }}</a>
+              </td>
+              <td class="app-current-version">{{ app.current_version }}</td>
+              <td class="app-min-version">{{ app.min_version }}</td>
+              <td class="app-last-version">{{ app.last_version }}</td>
+              <td class="app-login-enabled"><input type=checkbox onchange="saveLoginEnabled(this.checked, '{{ app.name }}')"
+                  {% if app.forbid_login_by_app_name != 1 %}
+                  checked
+                  {% endif %}
+              /></td>
+              <td class="app-setup-url"><a href="{{ app.setup_url }}" target="_blank"
+                                           rel="noopener">{{ app.setup_url }}</a></td>
+              <td class="app-update-url" style="display: none;">{{ app.update_url }}</td>
+              <td class="app-search-url" style="display: none;">{{ app.search_url }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+    {% endif %}
+    <fieldset>
+        <legend>{{ site._('Application settings')|e('html') }}</legend>
+        <table>
+            <col width="300px"/>
+            {% block application_properties_user_password %}
+                <tr>
+                    <td>
+                        <label for="shared-key-prefix-3">{{ site._('User connections authentication key')|e('html') }}</label>
+                    </td>
+                    <td>
+                        <input id="shared-key-prefix-3" type="text" value="{{ config.shared_key_with_prefix_3 }}"
+                               model="\Classes\Configuration" name="Shared Key With Prefix 3" maxlength="64"
+                               readonly="true"/>
+                        <a class="button btn_green" href="#" style="margin-top: 5px;"
+                           onclick="generateSecretKey('#shared-key-prefix-3'); return !1;"> {{ site._("Generate a new key")|e('html') }}</a>
+                    </td>
+                </tr>
+            {% endblock %}
+            {% block application_properties_guest_password %}
+                <tr>
+                    <td><label for="shared-key">{{ site._('Guest connections authentication key')|e('html') }}</label>
+                    </td>
+                    <td>
+                        <input id="shared-key" type="text" value="{{ config.shared_key }}"
+                               model="\Classes\Configuration" name="Shared Key" maxlength="64" readonly="true"/>
+                        <a class="button btn_green" href="#" style="margin-top: 5px;"
+                           onclick="generateSecretKey('#shared-key'); return !1;"> {{ site._("Generate a new key")|e('html') }}</a>
+                    </td>
+                </tr>
+            {% endblock %}
+            {% block advanced_application_properties %}
+                <tr>
+                  <td><label for="autologinlifetimeinput">{{ site._('Authorization token lifetime on a device')|e('html') }}</label></td>
+                  <td>
+                    <input type="number" min="1" max="9999" id="autologinlifetimeinput" />
+                    <select id="autologinlifetime">
+                      <option value="d">{{ site._('days')|e('html') }}</option>
+                      <option value="h">{{ site._('hours')|e('html') }}</option>
+                      <option value="m">{{ site._('minutes')|e('html') }}</option>
+                    </select>
+                  </td>
+                </tr>
+            {% endblock %}
+          <tr>
+            <td>
+              <label for="lstatus_set">{{ site._('Display the %reactions panel in multipoint conferences')|replace({'%reactions' : site._('Reactions')}) |e('html') }}</label>
+            </td>
+            <td><input id="lstatus_set" type="checkbox" name="lstatus_set"
+                       model="\Classes\AppProperty" {{ app_property.lstatus_set == '1' ?  'checked="checked"' : '' }}
+                       class="fl m-top-3"/></td>
+          </tr>
+        </table>
+    </fieldset>
+
+  <div id="app-settings-block" class="m-top-10">
+
+
+    <div class="m-top-10">
+            <a class="button" id="save-application-settings">{{ site._("Save application settings")|e('html') }}</a>
+        </div>
+    </div>
+
+    <div id="dialog-form">
+        <p class="validateTips"></p>
+        <form>
+            <fieldset>
+                <input type="hidden" id="identifier" name="identifier" value=""/>
+                <input type="hidden" id="app-name" name="app-name" value=""/>
+                <label for="app-min-version">{{ site._('Minimal version')|e('html') }}</label>
+                <input type="text" name="app-min-version" id="app-min-version"
+                       class="text ui-widget-content ui-corner-all" maxlength="255"/>
+                <label for="app-current-version">{{ site._('Current version')|e('html') }}</label>
+                <input type="text" name="app-current-version" id="app-current-version" value=""
+                       class="text ui-widget-content ui-corner-all" maxlength="255"/>
+                <label for="app-last-version">{{ site._('Last version')|e('html') }}</label>
+                <input type="text" name="app-last-version" id="app-last-version" value=""
+                       class="text ui-widget-content ui-corner-all" maxlength="255"/>
+                {#<label for="app-setup-url">{{ site._('Setup URL')|e('html') }}</label>
+                <input type="text" name="app-setup-url" id="app-setup-url" value="" class="text ui-widget-content ui-corner-all" maxlength="255" />
+                <label for="app-update-url">{{ site._('Update URL')|e('html') }}</label>
+                <input type="text" name="app-update-url" id="app-update-url" value="" class="text ui-widget-content ui-corner-all" maxlength="255" />
+                <label for="app-search-url">{{ site._('Search URL')|e('html') }}</label>
+                <input type="text" name="app-search-url" id="app-search-url" value="" class="text ui-widget-content ui-corner-all" maxlength="255" />#}
+            </fieldset>
+        </form>
+
+
+    </div>
+
+    <style>
+        #warning-changes > li {
+            margin-left: 40px;
+            margin-top: 6px;
+        }
+
+        #work-path-panel {
+            height: 70px;
+        }
+
+        #work-path-error-message {
+            margin-top: 4px;
+            float: left;
+            color: red;
+        }
+
+        #autologinlifetimeinput {
+            width: 80px;
+            padding: 0 6px;
+            height: 27px;
+            border: 1px solid gray;
+            margin-right: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}

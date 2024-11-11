@@ -1,0 +1,101 @@
+#header {
+    width: 100%;
+    height: 86px;
+    z-index: 1;
+}
+
+#header #line-1 {
+    height: 28px;
+}
+
+#header #line-2 {
+    background: url(/img/header/topmenu-bg.png);
+    width: 100%; 
+    height: 42px;
+    position: relative;
+}
+
+#header #line-2 img#logo {
+    position: absolute;
+    float: left;
+    padding: 3px 9px 0 18px;
+    cursor: pointer;
+}
+
+img#logo {
+    width: 128px;
+    height: 36px;
+}
+
+
+#header #line-2 #server-info {
+    position: absolute;
+    right: 0px;
+    margin: 9px 20px 0px 0px;
+}
+
+#header #line-1 #server-status {
+    position: absolute;
+    right: 0px;
+    margin: 5px 20px 0px 0px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#header #line-2 #server-name {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 42px;
+    margin: 0 auto;
+}
+
+#header #line-1 #message {
+    position: absolute;
+    text-align: center;
+    right: 0;
+    left: 0;
+    top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#header #line-1 #message span,
+#header #line-1 #message span a {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#header #line-1 #message span.error-msg,
+#header #line-1 #message span.error-msg a {
+    color: red;
+}
+
+#header #line-1 #message span.note-msg,
+#header #line-1 #message span.note-msg a {
+    color: green;
+}
+
+#header #line-1 #message span.note-msg a {
+    text-decoration: underline;
+}
+
+#header #line-1 #message span.note-msg a:hover {
+    cursor: pointer;
+}
+
+#header #line-1 #server-status #spinner {
+    margin-right: 50px;
+}
+
+#header #line-1 #admin-enter {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+}
+
+#header #server-info:hover {
+    z-index: 1;
+}

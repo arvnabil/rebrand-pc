@@ -1,0 +1,16 @@
+{% extends template.base %}
+
+{% block content %}
+
+    <div id='presetManagerPlugin'></div>
+
+    {% include 'preset.twig' %}
+    {% autoescape 'js' %}
+        <script type="text/javascript" defer>
+          $(document).ready(function () {
+            $('#presetManagerPlugin').presetManagerPlugin();
+          });
+        </script>
+    {% endautoescape %}
+
+{% endblock %}

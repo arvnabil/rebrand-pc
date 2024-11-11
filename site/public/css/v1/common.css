@@ -1,0 +1,135 @@
+
+#loading-background
+{
+    position: absolute;
+    left: 0;
+    top:  0;
+    width:  100%;
+    height: 100%;
+    background-color: #DDD;
+    opacity: 0.5;
+    
+    z-index: 1004;
+}
+
+#loading-background + div
+{
+    position: absolute;
+    top:  50%;
+    z-index: 1005;
+    
+    width: 100%;
+    text-align: center;
+    margin-top: -50px;
+}
+
+#loading-background + div.cont *
+{
+    color: #0679B8;
+    font-size:   14px;
+    font-weight: bold;
+    line-height: 48px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.text-c {
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.empty-tr, 
+.address-empty-tr {
+    height: 41px;
+}
+
+form .question {
+    display: none;
+}
+
+.cent_cont {
+	float: left;
+	padding-left: 110px;
+}
+
+.cent_cont_s {
+    float: left;
+    left: 50%;
+    position: relative;
+    text-align: center;
+}
+
+.cent_wrap {
+	float: left;
+	position: relative;
+	left: -50%;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.silver {
+    color: #C0C0C0;
+}
+
+.brown {
+    color: #e2aa00
+}
+
+#conferences-list-form table td.overflow-f input {
+    width: 100%;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #d1d1d1;
+}
+
+table.dataTable thead th {
+    border-left: none;
+    border-right: none;
+}
+
+span#type-desc {
+    position: absolute;
+    margin: 2px 0px 0px 5px;
+}
+
+div.icon_qst {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 1px 1px 9px;
+    float: right;
+    font-weight: bold;
+    height: 21px;
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+}
+
+div.icon_qst:after {
+    content: "?";
+}
+
+div.icon_qst {
+    cursor: pointer;
+}
+
+#storageSettings > div {margin:20px 0;}
+#storageSettings .table{display:table;}
+#storageSettings .cell {display: table-cell;padding:5px;vertical-align:middle;}
+#storageSettings .range {display:none;position:relative;width:250px;}
+#storageSettings .value {position:absolute;right:-85px;top:5px;}

@@ -1,0 +1,151 @@
+* {
+    font-family: Roboto, Noto Sans, Noto, sans-serif;
+}
+
+html, body {
+    margin:0;
+    padding:0;
+    background-color: #fff;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+#app > .appbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    background-color: #ffffff;
+}
+
+#app > .appbar > .title {
+    display: flex;
+    margin-left: 16px;
+}
+
+#app > .appbar > .title > .company {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#app > .appbar > .title > .product {
+    margin-left: 4px;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+#app > .appbar > .server {
+    display: flex;
+    margin-right: 16px;
+    font-size: 16px;
+}
+
+#app > .appbar > .user {
+    display: flex;
+    max-width: 500px;
+    margin-right: 16px;
+}
+
+#app > .appbar > .user > .profile {
+    display: flex;
+}
+
+#app > .appbar > .user > .profile > .avatar {
+    display: none;
+}
+
+#app > .appbar > .user > .profile > .avatar > img {
+    display: flex;
+    max-width: 38px;
+    max-height: 38px;
+    border-radius: 100%;
+}
+
+#app > .appbar > .user > .profile > .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 16px;
+    max-width: 320px;
+    min-width: 0;
+}
+
+#app > .appbar > .user > .profile > .data > .display-name {
+    font-size:16px;
+    overflow: hidden;
+    text-overflow: clip;
+    min-width: 0;
+    max-width: 320px;
+    white-space: nowrap;
+}
+
+#app > .appbar > .user > .profile > .data > .user-id{
+    font-size:13px;
+    overflow: hidden;
+    text-overflow: clip;
+    min-width: 0;
+    max-width: 320px;
+    white-space: nowrap;
+}
+
+#app > .appbar > .user > .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 540px) {
+    #app > .appbar > .user > .profile > .data {
+        display: none;
+    }
+}
+
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.material-icons.md-amber-300 {
+    color: #FFD54F;
+}
+
+.material-icons.md-grey-300 {
+    color: #e0e0e0;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}

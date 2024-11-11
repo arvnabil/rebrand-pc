@@ -1,0 +1,12 @@
+{% extends template.base_filestorage %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/public/css/files/not-found.css?version={{ current_version }}">
+    <meta property="og:description" content="{{ site._("This file is not available.") }}"/>
+{% endblock %}
+
+{% block layout %}
+    <div class="layout">
+        <div>{{ site._("File is not found") }}</div>
+    </div>
+{% endblock %}

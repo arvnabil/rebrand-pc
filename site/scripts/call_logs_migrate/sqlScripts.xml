@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    
+    <sql id="create_conference_table">
+        create table if not exists "TB_CONFERENCE_LOG" (
+            conference       integer                     not null default 0,
+            broker_id        character varying(128)      not null default 0,
+            owner            character varying(256)      not null,
+            start_time       timestamp without time zone not null,
+            end_time         timestamp without time zone,
+            term_reason      smallint                    not null default 0,
+            type             smallint                    not null default 0,
+            subtype          smallint                    not null default 0,
+            app_id           character(32),
+            is_public        boolean,
+            named_conf_id    character varying(256),
+            max_participants integer                     not null default 0,
+            topic            character varying(256),
+            record_file      character varying(64),
+            guest_flags      integer                              default 0,
+            primary key (conference, broker_id)
+        );
+
+        create index if not exists "IX_TB_CONFERENCE_LOG_owner_type"
+            on "TB_CONFERENCE_LOG" (owner, type);
+    </sql>
+    
+    <sql id="create_participant_table">
+        create table if not exists "TB_PARTICIPANT_LOG" (
+            part_id          integer primary key autoincrement not null,
+            call_id          character varying(256)            not null,
+            invited_call_id  character varying(256),
+            app_id           character(32),
+            type             smallint                          not null default 0,
+            invite_time      timestamp without time zone,
+            join_time        timestamp without time zone,
+            leave_time       timestamp without time zone,
+            leave_reason     smallint                          not null default 0,
+            reject_cause     smallint,
+            conference       integer                           not null,
+            broker_id        character varying(128)            not null,
+            display_name     character varying(256),
+            bytes_sent       integer                           not null default 0,
+            bytes_received   integer                           not null default 0,
+            reconnect_snd    integer                           not null default 0,
+            reconnect_rcv    integer                           not null default 0,
+            participant_time int,
+            broadcast_time   int,
+            video_w          int,
+            video_h          int,
+            loss_rcv_packets int,
+            avg_cpu_load     int,
+            avg_jitter       int,
+            avg_send_fps     double precision
+        );
+
+        create index if not exists "IX_TB_PARTICIPANT_LOG_call_id_conference_broker"
+            on "TB_PARTICIPANT_LOG" (conference, broker_id, call_id);
+
+        create index if not exists "IX_TB_PARTICIPANT_LOG_invited_call_id"
+            on "TB_PARTICIPANT_LOG" (invited_call_id, join_time);
+
+        create index if not exists "IX_TB_PARTICIPANT_LOG_call_id_invited_call_id"
+            on "TB_PARTICIPANT_LOG" (call_id, invited_call_id);
+    </sql>
+    
+    <sql id="create_temp_table">
+        CREATE TABLE t AS SELECT
+            conf_id,
+            MIN(invite_time) AS invite_time,
+            MAX(leave_time) AS leave_time,
+            COUNT(*) AS max_participants,
+            MIN(rowid) AS row_id
+            FROM calls
+            GROUP BY conf_id
+    </sql>
+    
+    <sql id="select_conferences_from_temp">
+        SELECT
+            c.callid AS owner,
+            t.conf_id,
+            t.invite_time,
+            t.leave_time,
+            t.max_participants
+            FROM calls c
+            JOIN t ON c.rowid = t.row_id
+        
+    </sql>
+    
+    <sql id="delete_temp_table">
+        DROP TABLE t
+    </sql>
+    
+    <sql id="get_all_calls">
+        SELECT * FROM Calls;
+    </sql>
+    
+    <sql id="is_tables_exists">
+        SELECT 
+                SUM(participant_log) AS participant_log, 
+                SUM(conference_log) as conference_log, 
+                SUM(calls) as calls 
+            FROM 
+                (SELECT CASE WHEN name = 'TB_PARTICIPANT_LOG' THEN 1 ELSE 0 END AS participant_log,
+                CASE WHEN name = 'TB_CONFERENCE_LOG' THEN 1 ELSE 0 END AS conference_log,
+                CASE WHEN name = 'Calls' THEN 1 ELSE 0 END AS calls
+                FROM sqlite_master 
+                WHERE type='table')
+    </sql>
+    
+    <sql id="count_entries">
+        SELECT (
+                SELECT COUNT(*) FROM TB_CONFERENCE_LOG
+            ) AS conference_log,
+            (
+                SELECT COUNT(*) FROM TB_PARTICIPANT_LOG
+            ) AS participant_log,
+            (
+                SELECT COUNT(*) FROM Calls
+            ) AS calls
+    </sql>
+    
+    <sql id="count_entries">
+        SELECT (
+                SELECT COUNT(*) FROM TB_CONFERENCE_LOG
+            ) AS conference_log,
+            (
+                SELECT COUNT(*) FROM TB_PARTICIPANT_LOG
+            ) AS participant_log,
+            (
+                SELECT COUNT(*) FROM Calls
+            ) AS calls
+    </sql>
+    
+    <sql id="count_entries">
+        SELECT (
+                SELECT COUNT(*) FROM TB_CONFERENCE_LOG
+            ) AS conference_log,
+            (
+                SELECT COUNT(*) FROM TB_PARTICIPANT_LOG
+            ) AS participant_log,
+            (
+                SELECT COUNT(*) FROM Calls
+            ) AS calls
+    </sql>
+    
+    
+    <sql id="add_conference">
+        INSERT INTO "TB_CONFERENCE_LOG" (
+                conference,
+                broker_id,
+                owner,
+                start_time,
+                end_time,
+                term_reason,
+                is_public,
+                max_participants,
+                guest_flags)
+        VALUES (:conference, 
+                :broker_id, 
+                :owner, 
+                :start_time, 
+                :end_time, 
+                :term_reason, 
+                :is_public, 
+                :max_participants, 
+                :guest_flags)
+    </sql>
+    
+    <sql id="add_participant">
+        INSERT OR IGNORE INTO "TB_PARTICIPANT_LOG" (call_id,
+                                type,
+                                invited_call_id,
+                                invite_time,
+                                join_time,
+                                leave_time,
+                                leave_reason,
+                                reject_cause,
+                                conference,
+                                broker_id)
+        VALUES (:call_id, 
+                :type, 
+                :invited_call_id, 
+                :invite_time, 
+                :join_time, 
+                :leave_time, 
+                :leave_reason, 
+                :reject_cause, 
+                :conference, 
+                :broker_id);
+    </sql>
+</root>

@@ -1,0 +1,163 @@
+.debugMainTable > tbody > tr, .debugMainTable > tbody > tr > td {
+    border : none;
+    outline: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.debugMainTable > tbody > tr > td  {
+    vertical-align: top;
+    height: 480px;
+}
+
+#debugActions ul {
+    list-style-type: none;
+    
+}
+
+#debugActions .debugActionsFill {
+    border-right: 1px solid #AAA;
+    height: 100%;
+}
+
+#debugActions ul li {
+    color: #555;
+    background-color: #F9F9F9;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 9px 2px 9px 6px;
+    border-bottom: 1px solid #E9E9E9;
+    cursor: pointer;
+    border: 1px solid #AAA;
+    border-bottom: 1px solid #F9F9F9;;
+}
+
+#debugActions ul li.last {
+    border-bottom: 1px solid #AAA;
+}
+
+#debugActions ul li:hover:not(.selected) {
+    color: #FFF;
+    background-color: #999;
+    border: 1px solid #666;
+}
+
+#debugActions ul li.selected {
+    cursor: default;
+    color: #999;
+    background-color: #FFF;
+    border-bottom: 1px solid #F9F9F9;
+    border-right: none;
+}
+
+#debugActions ul li.selected.last {
+    border-bottom: 1px solid #AAA;
+}
+
+#debugMethods {
+    height: 480px;
+}
+
+#debugMethods > div {
+    border: 1px solid #AAA;
+    border-left: none;
+    height: 100%;
+    padding: 3px 10px;
+}
+
+#debugDialog .debugMethodEntry {
+}
+
+#debugDialog .debugMethodMenu {
+    margin: 2px auto 20px auto;
+    display: table;
+    width: 90%;
+    padding: 5px;
+}
+
+#debugDialog .debugMethodMenu ul {
+    list-style-type:  none;
+    display: table-row;
+    color: #FFF;
+    background-color: #EEE;
+    border: 1px solid #BBB;
+}
+
+
+#debugDialog .debugMethodMenu ul li {
+    cursor: pointer;
+    padding: 3px 6px;
+    display: table-cell;
+    color: #555;
+    text-align: center;
+    border-left: 1px solid #BBB;
+}
+
+#debugDialog .debugMethodMenu ul li.selected {
+    color: #999;
+    background-color: #F9F9F9;
+    cursor: default;
+}
+
+#debugDialog .debugMethodMenu ul li:hover:not(.selected) {
+    background-color: #999;
+    border: 1px solid #666;
+    color: #FFF;
+}
+
+#debugMethods .debugMethodPanel {
+    margin: 5px 5px 5px 20px;
+    overflow-y: auto;
+}
+
+.contentPadding {
+    padding: 5px 2px;
+}
+
+.fullinput input, .fullinput textarea {
+    width: 90%;
+    border: 1px solid #DCDCDC;
+    resize:none;
+}
+
+#debugDialog input[type="button"] {
+    padding: 5px;
+    border: 1px solid #666;
+    cursor: pointer;
+}
+
+#debugDialog input[type="button"]:hover {
+    border: 1px solid #000;
+    background-color: #EEE;
+}
+
+#debugDialog input[type="button"][disabled="disabled"] {
+    color: #999;
+    background-color: #F9F9F9;
+    border: 1px solid #DCDCDC;
+    cursor: default;
+}
+
+.debugFn_delete {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('/public/images/timepicker/ui-icons_454545_256x240.png') -96px -128px;
+    margin: 0 auto;
+}
+
+.debugFn_edit {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('/public/images/timepicker/ui-icons_454545_256x240.png') -64px -112px;
+    margin: 0 auto;
+}
+
+.debugFn_show {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('/public/images/timepicker/ui-icons_454545_256x240.png') -32px -96px;
+    margin: 0 auto;
+}

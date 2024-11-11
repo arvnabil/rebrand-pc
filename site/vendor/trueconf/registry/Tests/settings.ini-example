@@ -1,0 +1,28 @@
+[configuration]
+unitprefix = "_testunit_"
+
+[connect]
+url = "https://192.168.61.31"
+scheme = "https"
+host = "192.168.61.31"
+port = 443
+content_type = "application/x-www-form-urlencoded"
+
+[server]
+name = "autotest.trueconf.net"
+user = "apiv3_unittest_user"
+token = "Scw7zMBc2ffByIq1IYPd8XEZiX9Kg"
+user2 = "apiv3_unittest_user_2"
+user_token = "eba293f4fb8fe27b52a0800a07dd364f1a3534cf"
+storage = "registry"
+time_offset = 420
+
+[ldap_testing]
+user = "test_user"
+user2 = "kt1"
+user_token = "b84b1696d62853ec6cb065cec7dd4f7d55d68cb1"
+group = "0001"
+group2 = "0002"
+
+[api]
+token_scope = "conferences conferences.records conferences.participants conferences.invitations users users.addressbook groups groups.users"

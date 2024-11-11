@@ -1,0 +1,190 @@
+{% extends template.base %}
+
+{% block js %}
+  {% autoescape 'js' %}
+    <script type="text/javascript">
+        $().ready(function () {
+            var table = $('#endpoint-t').DataTable({
+                autoWidth: false,
+                processing: true,
+                deferRender: true,
+                ajax: {
+                    url: '/admin/connections/endpoints',
+                    type: "GET",
+                    error: function (e) {
+                        $(document).trigger('display-header-error', {message: e.message});
+                        document.getElementById('endpoint-t_processing').remove();
+                    }
+                },
+                columnDefs: [
+                    { targets: '_all', className: 'endpoint-str' },
+                    {
+                        targets: 0,
+                        width: "34%",
+                        render: function (data) {
+                            return '<a href="{{ site.getInsideUrl('endpoints', 'view', 'key=') }}'
+                                + encodeURIComponent(data) + '" target="_blank">'
+                                + data
+                                + '</a>';
+                        }
+                    },
+                    {
+                        targets: 1,
+                        width: "33%",
+                        render: function (data) {
+                            return data.lastIndexOf("@" + '{{ server_name }}'.replace('#vcs', '')) !== -1
+                                ? '<a href="{{ site.getInsideUrl('users', 'edit', 'login=') }}'
+                                  + encodeURIComponent(data.substring(0, data.lastIndexOf("@"))) + '" target="_blank">'
+                                  + data
+                                  + '</a>'
+                                : data;
+                        }
+                    },
+                    { targets: 2, width: "33%" },
+                    { targets: 3, width: "120px" }
+                ],
+                language: {
+                    "url": "{{ settings.lang == 'en' or settings.lang == 'fa'  ? '' : "/public/js/common/datatable/" ~ settings.lang ~ '.lang' }}"
+                }
+            });
+
+            table.on('init.dt', function () {
+              {% if false == isSecurityAdmin %}
+                $('#endpoint-t_filter')
+                    .append('<i title="{{ site._("Deleting data")|e('html') }}" id="deleteConnectionsBtn" class="material-icons">delete</i>');
+              {% endif %}
+
+                let connectionsNumPicker = '<input id="connectionsNumPicker" type="number" min="0" value="180" '
+                    + 'onkeyup="this.value = Math.floor(Math.abs(this.value));">';
+                let deletionProcessNotification = $('<div>'
+                    + "{{ site._('It may take a few minutes to delete records.')|e('js') }}"
+                    + '<br><br>'
+                    + "{{ site._('The records can be deleted in the background mode. You can leave this page.')|e('js') }}"
+                    + '</div>');
+
+                deletionProcessNotification.dialog({
+                    title: "{{ site._("Deleting data")|e('js') }}",
+                    width: '400px',
+                    autoOpen: false,
+                    modal: true,
+                    draggable: true,
+                    resizable: false,
+                    dialogClass: 'deletion-process-notification',
+                    buttons: [
+                        {
+                            text: '{{ site._("OK")|e('js') }}',
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        },
+                    ]
+                });
+
+                let deleteConfirmationDialog = $('<div id="deleteConnectionsDialog">' +
+                    '{{ site._('Delete connection logs older than %n days.')|e('js') }}'.replace("%n", connectionsNumPicker)
+                    + '</div>');
+
+                deleteConfirmationDialog.dialog({
+                    title: "{{ site._("Deleting data")|e('js') }}",
+                    width: '400px',
+                    autoOpen: false,
+                    height: 'auto',
+                    modal: true,
+                    draggable: true,
+                    resizable: false,
+                    buttons: [
+                        {
+                            text: _("Delete"),
+                            click: function () {
+                                let todayDate = new Date();
+                                let daysToSubtract = parseInt($('#connectionsNumPicker').val(), 10);
+                                todayDate.setDate(todayDate.getDate() - daysToSubtract);
+
+                                $.ajax({
+                                    method: 'DELETE',
+                                    url: "/api/v4/logs/connections?date_to=" + Math.floor(todayDate.getTime() / 1000)
+                                });
+
+                                deletionProcessNotification.dialog("open");
+                                $(this).dialog("close");
+                            }
+                        },
+                        {
+                            text: _("Cancel"),
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    ]
+                });
+
+                $('#deleteConnectionsBtn').on('click', function () {
+                    deleteConfirmationDialog.dialog("open");
+                });
+            });
+        });
+    </script>
+  {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+
+  {% autoescape 'html' %}
+    <link rel="stylesheet" type="text/css" href="/public/fonts/material-design-icons/material-icons.css?version={{ current_version }}"/>
+    <div id="endpoint-block">
+      <table id="endpoint-t" class="tb-fix display">
+        <thead>
+        <tr>
+          <th>{{ site._("Endpoint") }}</th>
+          <th>{{ site._("Logged User") }}</th>
+          <th>{{ site._("Application") }}</th>
+          <th>{{ site._("IP") }}</th>
+        </tr>
+        </thead>
+      </table>
+    </div>
+  {% endautoescape %}
+
+  <style>
+      #deleteConnectionsBtn {
+          color: #e85d4e;
+          margin-left: 12px;
+          vertical-align: top;
+          font-size: 26px;
+          position: relative;
+          bottom: 2px;
+      }
+
+      #deleteConnectionsBtn:hover {
+          cursor: pointer;
+      }
+
+      #connectionsNumPicker {
+          box-sizing: border-box;
+          padding-left: 3px;
+          width: 50px;
+          border: 1px solid;
+      }
+
+      .deletion-process-notification div.ui-dialog-buttonset {
+          display: flex;
+          justify-content: center;
+          float: none !important;
+          margin: 0;
+      }
+
+      .deletion-process-notification div.ui-dialog-buttonset > .ui-button {
+          width: 55px;
+          margin: .5em .4em .5em .4em;
+      }
+
+      .deletion-process-notification div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix {
+          padding: .3em .4em .3em .4em;
+      }
+
+      .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background: linear-gradient(to bottom, #1b9ee0 0%, #00679b 100%);
+      }
+  </style>
+
+{% endblock %}

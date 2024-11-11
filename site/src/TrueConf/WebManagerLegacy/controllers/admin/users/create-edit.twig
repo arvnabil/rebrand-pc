@@ -1,0 +1,741 @@
+{% extends template.base %}
+
+{% block js %}
+    {% autoescape 'js' %}
+        <link href="/public/css/memberList.css?version={{ server_version }}" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/user.css?version={{ server_version }}" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/addToAddressBook.css?version={{ server_version }}" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript"
+                src="/public/js/common/addressBook/jquery.addressBookAddContact.js?version={{ server_version }}"></script>
+      <script src="/public/js/vue/vue/vue.min.js?version={{ server_version }}"></script>
+      <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ server_version }}"></script>
+      <script type="text/javascript">
+          $(document).ready(function () {
+
+              $('#user-create').ready(function () {
+                  $("#user-create :input").change(function () {
+                      $("#user-create").data("changed", true);
+                  });
+
+                  let passwordRulesPopUp = $('<div>'
+                      + "<div style='margin-bottom: 4px;'>{{ site._('The password has to contain:')|e('js') }}</div>"
+                      + '<ul class="pass-rules-list">'
+                      + '<li>{{ site.ngettext('At least %n character', 'At least %n characters', password_min_length)|e('js') }}</li>'
+                          .replace("%n", "{{ password_min_length }}")
+                      + '{{ letters_required
+                          ? ("<li>" ~ site._('Letters in upper and lower cases ( A – Z, a – z )') ~ "</li>")|e('js')
+                          : '' }}'
+                      + '{{ digits_required ? ("<li>" ~ site._('Digits ( 0 - 9 )') ~ "</li>")|e('js') : '' }}'
+                      + '{{ special_chars_required
+                          ? ("<li>" ~ site._('Special characters ( `"^\'?!*@#%$&+._-=~,:;()[]<>{}/|\ )') ~ "</li>")|e('js')
+                          : '' }}'
+                      + '</ul>'
+                      + '</div>');
+
+                  passwordRulesPopUp.dialog({
+                      title: "{{ site._("Password requirements")|e('js') }}",
+                      width: '450px',
+                      autoOpen: false,
+                      modal: true,
+                      draggable: true,
+                      resizable: false,
+                      dialogClass: 'password-rules-popup',
+                      buttons: [
+                          {
+                              text: '{{ site._("OK")|e('js') }}',
+                              click: function () {
+                                  $(this).dialog("close");
+                              }
+                          },
+                      ]
+                  });
+
+                  $('#passRules').on('click', function () {
+                      passwordRulesPopUp.dialog("open");
+                  });
+
+                  var error_div = '<div class="regexp_error">{{ site._('The field has invalid value.') }}</div>';
+                  var text = $('.text');
+                  text.parent().append(error_div);
+                  $('#saveBtn').click(saveBtnHandler);
+
+                  function displayError(el) {
+                      var display = 'none';
+                      if (el.value.match(/^[^<]*$/i) === null) {
+                          display = 'block';
+                  disableSaveBtn();
+                } else {
+                  enableSaveBtn();
+                }
+                $(el).parent().children('div').css('display', display);
+              }
+
+              text.keyup(function () {
+                displayError(this);
+              });
+
+              text.change(function () {
+                displayError(this);
+              });
+            });
+
+            function saveBtnHandler() {
+              var referrer_search = document.referrer.split('?');
+              var form = $('#user-create');
+              var user_is_changed = form.data("changed");
+              form = form[0];
+              form.action = form.action.replace(/&parameters=.+(&.+)?/, "");
+
+              form.action += "&parameters=" + JSON.stringify({
+                bandwidth_in_value: vm.bandwidth_in_value,
+                bandwidth_out_value: vm.bandwidth_out_value,
+                user_is_changed: !!user_is_changed
+              });
+              if (referrer_search.length === 2 && referrer_search[1].search('group_id=') > -1) {
+                var group_id = referrer_search[1].split('group_id=')[1].split('&')[0];
+                form.action += "&redirect_to_groups=1&group_id=" + group_id;
+              }
+              Server.showLoadEffect('');
+              setTimeout(function () {
+                form.submit();
+              }, 300);
+              return !1;
+            }
+
+            function disableSaveBtn() {
+              var btSave = $('#saveBtn');
+
+              if (btSave.prop('disabled') === true) {
+                return;
+              }
+
+              btSave.addClass('button-lock');
+              btSave.unbind('click');
+              btSave.prop('disabled', true);
+
+              $('.error').prop('title', function () {
+                return this.innerText
+              });
+            }
+
+            function enableSaveBtn(event) {
+              var btSave = $('#saveBtn');
+
+              if (btSave.prop('disabled') === false) {
+                return;
+              }
+
+              btSave.unbind('click');
+              btSave.click(saveBtnHandler);
+              btSave.removeClass('button-lock');
+              btSave.prop('disabled', false);
+            }
+
+            var pass_id = 'user-create-password_conf';
+            var pass_digest_id = 'digest-pwd-password_conf';
+            var re_pass_id = 'password_conf2';
+
+            sessionStorage.setItem(pass_id, $('#' + pass_id).val());
+            sessionStorage.setItem(pass_digest_id, $('#' + pass_digest_id).val());
+            sessionStorage.setItem(re_pass_id, $('#' + re_pass_id).val());
+
+            $("#user-create-password_conf, #digest-pwd-password_conf, #password_conf2").focus(function () {
+              if (this.value == sessionStorage.getItem(this.id))
+                this.value = '';
+            });
+
+            $("#user-create-password_conf, #digest-pwd-password_conf, #password_conf2").blur(function () {
+              if (this.value == '')
+                this.value = sessionStorage.getItem(this.id);
+            });
+
+            $('#back-button').attr('href', document.referrer !== ""
+              ? document.referrer
+              : "{{ site.getInsideUrl('users', 'list', 'group_id='~group_id)|e('js') }}");
+
+          });
+
+          function removeUser() {
+            Confirm.func(
+              t._user_will_be_deleted,
+              function () {
+                Server.showLoadEffect();
+                $.ajax({url: '/api/v4/users/{{ user.login_name |escape('js') }}', type: 'DELETE' })
+                  .done(function (data) {
+                    document.location.href = '/admin/users/';
+                    Server.setServerMessage(obj.locale.userHasBeenDeleted, Server.MESSAGE_TYPE.NOTE, 2000);
+                  })
+                  .fail(function (error) {
+                    Server.setServerMessage(obj.locale.unableToDeleteUser, Server.MESSAGE_TYPE.ERROR, 3000);
+                    Server.removeLoadEffect();
+                  })
+                  .always(function () {
+                  });
+              }
+            );
+          }
+        </script>
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        {% if user.status == false %}
+            <div class="account-inactive-msg" style="border: 1px solid #FF9900; padding: 8px; margin-bottom: 10px">
+                <span class="material-icons" style="color: #0000008A; font-size: 24px; vertical-align: middle; margin: 0 6px 0 4px;">info_outline</span>
+                <span style="position: relative; top: 3px; font-size: 14px;">{{ site._('User account is inactive') }}</span>
+            </div>
+        {% endif %}
+        <fieldset id="fieldset-user-create">
+            <legend>{{ site._('Account information') }}</legend>
+            {% if ban_info.expire_timestamp > ban_info.current_timestamp %}
+                <div id="banned-block">
+                <span class="locked-text">
+                    {{ site._("Authentication is locked for this user (IP address: %ip) until %time due to a number (%count) of failed login attempts")|replace({'%count': ban_info.fail_count})|replace({'%time': ban_info.expire_time})|replace({'%ip': ban_info.ip})|e('html') }}
+                </span>
+                    <a id='unlock-button' class='button'> {{ site._('Unlock') }}</a>
+                </div>
+            {% endif %}
+            {{ form }}
+        </fieldset>
+    </div>
+
+    <div id="user-create-func-block" class="m-top-10 m-left-2 m-bottom-10">
+        {% if (storage_type) %}
+            <a href="#  " id="saveBtn" class="button">{{ (act == 'edit') ? site._("Save") : site._("Add") }}</a>&nbsp;
+            <!--<a href="{{ site.getInsideUrl('users', 'create', 'group_id='~group_id) }}" class="button">{{ site._("New") }}</a>&nbsp;-->
+            {% if act == 'edit' %}
+                <form id="user-delete-form" class="none">
+                    <div class="question"></div>
+                    <input class="radio login" type="checkbox" name="selected-user[]"
+                           value='{{ user.login_name | escape('html') }}' checked="checked"/></form>
+                <a class="button" onclick="removeUser();">{{ site._("Delete") }}</a>&nbsp;
+            {% endif %}
+        {% endif %}
+        <a id="back-button" class="button">{{ site._("Back") }}</a>
+    </div>
+
+    {% if is_edit %}
+      <fieldset id="fieldset-user-links" class="m-top-10">
+        <legend>{{ site._('Calls and conferences') }}</legend>
+          <a href="/admin/users/calls?login={{ user.login_name|escape('html') }}" target="_blank" rel="noopener" style="display: inline-block; margin: 5px;">{{ site._('Call history')}}</a><br>
+          <a href="/admin/conferences/list?user={{ user.login_name|escape('html') }}" target="_blank" rel="noopener" style="display: inline-block; margin: 5px;">{{ site._('Scheduled conferences')}}</a>
+      </fieldset>
+    {% endif %}
+
+    {% set bandwidth_min = constant('\\TrueConf\\WebManager\\Classes\\ApplicationSettings\\Parameters\\BandwidthInParameter::VALUE_MIN') %}
+    {% set bandwidth_max = constant('\\TrueConf\\WebManager\\Classes\\ApplicationSettings\\Parameters\\BandwidthInParameter::VALUE_MAX') %}
+
+    <div id="app" style="height: auto; display:none">
+        <fieldset>
+            <legend class="app__title">{{ site._('Application settings') }}</legend>
+            <p>
+                {{ site._("User's group settings are formed by the following groups:")|e('html') }}
+                <label id="groups-list">
+                    {% for group in groups %}
+                        <a
+                        href="{{ site.getInsideURL("group", "app", "key="~(group.distinguishedName ? group.distinguishedName|url_encode : group.id) | escape('html')) }}">{{ group.displayName|escape('html') }}</a>{{ not(loop.last) ? ',' : '' }}
+                    {% else %}
+                        <a href="{{ site.getInsideURL("group", "app", "key="~no_group_id) }}">{{ site._('Users without group') }}</a>
+                    {% endfor %}
+                </label>
+            </p>
+            <table class="app__content">
+                <tr>
+                    <th></th>
+                    <th>{{ site._("User")|e('html') }}</th>
+                    <th>{{ site._("Group settings")|e('html') }}</th>
+                </tr>
+                <tr>
+                    <td class="param-name">{{ site._('Inbound bandwidth limit (kbit/s)') }}</td>
+                    <td class="user-param-value">
+                        <div id="bandwidth-in">
+                            <input class="app__checkbox" title="{{ site._("enable")|e('html') }}" type="checkbox"
+                                   v-model="bandwidth_in_value_enable" @click="focus_input">
+                            <input class="app__input" title="{{ site._("enable")|e('html') }}" type="number"
+                                   :disabled="!bandwidth_in_value_enable" v-model="bandwidth_in_value"
+                                   min="{{ bandwidth_min }}"
+                                   max="{{ bandwidth_max }}">
+                            <label id="port-error" class="error"
+                                   v-if="!bandWidthInIsValid" title="[ {{ bandwidth_min }} - {{ bandwidth_max }} ]"
+                                   for="port">[ {{ bandwidth_min }} - {{ bandwidth_max }} ]</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="group-bandwidth-in">
+                            <input class="app__input" title="{{ site._("enable")|e('html') }}" type="number"
+                                   disabled v-model="group_bandwidth_in_value"
+                                   min="{{ bandwidth_min }}"
+                                   max="{{ bandwidth_max }}">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param-name">{{ site._('Outbound bandwidth limit (kbit/s)') }}</td>
+                    <td class="user-param-value">
+                        <div id="bandwidth-out">
+                            <input class="app__checkbox" title="{{ site._("enable")|e('html') }}" type="checkbox"
+                                   v-model="bandwidth_out_value_enable" @click="focus_input">
+                            <input class="app__input" title="{{ site._("enable")|e('html') }}" type="number"
+                                   :disabled="!bandwidth_out_value_enable" v-model="bandwidth_out_value"
+                                   min="{{ bandwidth_min }}"
+                                   max="{{ bandwidth_max }}">
+                            <label id="port-error" class="error" v-if="!bandWidthOutIsValid"
+                                   title="[ {{ bandwidth_min }} - {{ bandwidth_max }} ]"
+                                   for="port">[ {{ bandwidth_min }} - {{ bandwidth_max }} ]</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="group-bandwidth-out">
+                            <input class="app__input" title="{{ site._("enable")|e('html') }}" type="number"
+                                   disabled v-model="group_bandwidth_out_value"
+                                   min="{{ bandwidth_min }}"
+                                   max="{{ bandwidth_max }}">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {% if is_edit %}
+                <button v-bind:class="{ 'button-lock': !formIsValid}" class="button"
+                        @click="change_bandwidths">{{ site._('Apply') }}</button>
+            {% endif %}
+        </fieldset>
+    </div>
+
+    <style type="text/css">
+        .app__input {
+            margin: 0 12px;
+            padding: 0px 6px;
+            width: 56px;
+            height: 28px;
+            border: 1px solid gray;
+        }
+
+        .app__checkbox {
+            background: #fff;
+            border: 1px solid black;
+        }
+
+        .param-name {
+            width: 310px;
+        }
+
+        .user-param-value {
+            min-width: 200px;
+        }
+
+        div#bandwidth-in, div#bandwidth-out {
+            min-width: 200px;
+        }
+
+        #app > fieldset {
+            margin: 16px 0;
+        }
+
+        #app > fieldset > p {
+            margin: 8px 0;
+        }
+
+        label.error {
+            background: #E56B4D;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+        }
+    </style>
+
+    <script>
+      Vue.use(VueResource);
+      Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+      var parameters = {{ parameters }};
+      var groups_bandwidths = {{ groups_bandwidths }};
+      var vm = new Vue({
+        el: '#app',
+        delimiters: ["${", "}"],
+        data: {
+          parameters: parameters,
+          bandwidth_in_value_enable: parameters.bandwidth_in_value !== null,
+          bandwidth_out_value_enable: parameters.bandwidth_out_value !== null,
+          bandwidth_in_value: parameters.bandwidth_in_value,
+          bandwidth_out_value: parameters.bandwidth_out_value,
+          last_bandwidth_in_value: parameters.bandwidth_in_value,
+          last_bandwidth_out_value: parameters.bandwidth_out_value,
+          group_bandwidth_in_value: groups_bandwidths.group_bandwidth_in,
+          group_bandwidth_out_value: groups_bandwidths.group_bandwidth_out,
+          user_id: '{{ user.login_name }}',
+          groups: [],
+          no_group_id: '{{ constant('\\Classes\\Group::NO_GROUP_ID') }}'
+        },
+        methods: {
+          render_checkboxes: function () {
+            this.bandwidth_in_value_enable = this.bandwidth_in_value !== null;
+            this.bandwidth_out_value_enable = this.bandwidth_out_value !== null;
+          },
+          change_bandwidths: function () {
+            this.$http.post('/admin/users/change-bandwidths', {
+              bandwidth_in_value: this.bandwidth_in_value,
+              bandwidth_out_value: this.bandwidth_out_value
+            }, {
+              params: {
+                login: this.user_id
+              }
+            }).then(function (response) {
+              Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+            }, function (error) {
+              $(document).trigger('display-header-error', {message: _('Request error') + ':' + data.error});
+            });
+          },
+          get_group_bandwidths: function () {
+            $('#groups-list').html();
+
+            this.$http.get('/admin/users/get-groups-bandwidths', {
+              params: {
+                groups: this.groups.length === 0 ? [{id: this.no_group_id, name: null}] : this.groups
+              }
+            }).then(function (response) {
+              this.$set(this, 'group_bandwidth_in_value', response.body.group_bandwidth_in);
+              this.$set(this, 'group_bandwidth_out_value', response.body.group_bandwidth_out);
+            }, function (error) {
+              $(document).trigger('display-header-error', {message: _('Request error') + ':' + data.error});
+            });
+          },
+          focus_input: function (e) {
+            if (!this.bandwidth_in_value_enable) {
+              return;
+            }
+            setTimeout(function () {
+              var elems = e.toElement.parentNode.childNodes;
+              if (elems.length < 2) {
+                return;
+              }
+
+              elems[1].focus();
+            }, 0);
+          }
+        },
+        computed: {
+          bandWidthInIsValid: function () {
+            return !this.bandwidth_in_value_enable
+              || this.bandwidth_in_value >= {{ bandwidth_min }}
+              && this.bandwidth_in_value <= {{ bandwidth_max }};
+          },
+          bandWidthOutIsValid: function () {
+            return !this.bandwidth_out_value_enable
+              || this.bandwidth_out_value >= {{ bandwidth_min }}
+              && this.bandwidth_out_value <= {{ bandwidth_max }};
+          },
+          formIsValid: function () {
+            return this.bandWidthInIsValid && this.bandWidthOutIsValid;
+          }
+        },
+        watch: {
+          bandwidth_in_value_enable: function () {
+            if (this.bandwidth_in_value_enable) {
+              this.bandwidth_in_value = this.last_bandwidth_in_value;
+              return;
+            }
+            this.last_bandwidth_in_value = this.bandwidth_in_value;
+            this.bandwidth_in_value = null;
+          },
+          bandwidth_out_value_enable: function () {
+            if (this.bandwidth_out_value_enable) {
+              this.bandwidth_out_value = this.last_bandwidth_out_value;
+              return;
+            }
+            this.last_bandwidth_out_value = this.bandwidth_out_value;
+            this.bandwidth_out_value = null;
+          },
+          group_id: function () {
+            document.location.search = "?key=" + this.group_id;
+          }
+        },
+        mounted: function () {
+          this.$el.style.display = 'block';
+          this.render_checkboxes();
+
+          var groups = $("#user-create-mselect li");
+          var groups_count = groups.length;
+          for (var counter = 0; counter < groups_count; counter++) {
+            var group = groups[counter];
+            if (!group.firstElementChild.checked) {
+              continue;
+            }
+
+            this.groups.push({
+              id: group.firstElementChild.value,
+              name: group.lastElementChild.innerText
+            });
+          }
+
+        }
+      });
+
+      $().ready(function () {
+
+        function render_groups_list() {
+          var elems = [];
+
+          var groups = vm.groups.length === 0
+            ? [
+              {
+                id: vm.no_group_id,
+                name: "{{ site._('Users without group')|e('js') }}"
+              }
+            ]
+            : vm.groups;
+
+          groups.forEach(function (group) {
+            elems.push('<a href="/admin/group/app/?key=%group_id">%name</a>'.replace('%group_id', group.id).replace('%name', group.name));
+          });
+
+          $('#groups-list').html(elems.join(', '));
+        }
+
+        $("#user-create-mselect li").click(function () {
+          var group_id = this.firstElementChild.value;
+          var group_name = this.lastElementChild.innerText;
+          if (this.firstElementChild.checked) {
+            vm.groups.push({
+              id: group_id,
+              name: group_name
+            });
+            vm.get_group_bandwidths();
+            render_groups_list();
+            return;
+          }
+
+          vm.groups = vm.groups.filter(function (value) {
+            return value.id !== group_id;
+          });
+
+          vm.get_group_bandwidths();
+          render_groups_list();
+        });
+      });
+
+    </script>
+
+    {% if act == 'edit' %}
+
+        {% autoescape 'js' %}
+            <!-- <link rel="stylesheet" type="text/css" href="/admin-area/mdl-set.css?version={{ server_version }}"> -->
+            <link rel="stylesheet" type="text/css" href="/admin-area/styles.css?version={{ server_version }}">
+            <script type="text/javascript">
+
+              function lockButton(name) {
+                $('#' + name + ' input[name^="selected-user"]').on('change', function () {
+                  if ($('#' + name + ' input[name^="selected-user"]:checked').length) {
+                    $('#' + name + '-del').removeClass('button-lock').click(function () {
+                      $('#' + name).submit();
+                      return !1;
+                    });
+                  } else {
+                    $('#' + name + '-del').addClass('button-lock').unbind('click');
+                  }
+                });
+              }
+
+                $(document).ready(function () {
+                    var currentUserLoginName = '{{ user.login_name | e('js') }}'.toLowerCase();
+                    var disconnectBtn = $("<a id='disconnect-button' class='button button-lock'>" + '{{ site._('Disconnect') }}' + "</a>");
+                    $(".borderless-table tr:first-child td:last-child").append(disconnectBtn);
+
+                    $("#unlock-button").click(function () {
+                        $.ajax({
+                            type: "POST",
+                            url: '{{ site.getInsideUrl('users', 'disable_ban') }}',
+                            data: {'login': '{{ user.login_name | e('js') }}'},
+                            dataType: 'json',
+                            success: function () {
+                                $("#banned-block").css("display", "none");
+                            }
+                        });
+                    });
+
+                $("#disconnect-dialog").dialog({
+                  title: t._question,
+                  position: ['center', 'center'],
+                  autoOpen: false,
+                  resizable: false,
+                  dialogClass: 'dialog-question-form',
+                  width: 400,
+                  height: 150,
+                  modal: true,
+                  buttons: [
+                    {
+                      text: t._ok,
+                      click: function () {
+                        $.ajax({
+                          type: "POST",
+                          url: '{{ site.getInsideUrl('users', 'disconnect') }}',
+                          data: {'login': '{{ user.login_name | e('js') }}'},
+                          dataType: 'json',
+                          success: function (data) {
+                            if (data.result == 'success') {
+                              $('#disconnect-button').addClass('button-lock');
+                            }
+                          }
+                        });
+                        $(this).dialog("close");
+                      }
+                    },
+                    {
+                      text: t._cancel,
+                      click: function () {
+                        $(this).dialog("close");
+                      }
+                    }
+                  ]
+                });
+
+                disconnectBtn.click(function () {
+                  if (!disconnectBtn.hasClass("button-lock")) {
+                    $('#disconnect-dialog').dialog('open');
+                  }
+                });
+
+
+                lockButton('address-book-list');
+
+
+                var user = new User({
+                  debug: {{ web_manager.debug ? 'true' : 'false' }},
+                  locale: {
+                    name: '{{ site._("User name") }}',
+                    noGroup: '{{ site._("Without group") }}',
+                    statusOnline: '{{ site._("Online") }}',
+                    statusOffline: '{{ site._("Offline") }}',
+                    statusNotActive: '{{ site._("Inactive") }}',
+                    statusInvalid: '{{ site._("Invalid user") }}',
+                    statusBusy: '{{ site._("Busy") }}',
+                    statusMultihost: '{{ site._("Group conference owner") }}'
+                  }
+                });
+
+                if (Server.getCurrentServerStatus() === Server.STATUSES_LIST.RUNNING && !user.statusSeviceStarted) {
+                  user.start();
+                }
+
+                $(document).bind('server-status-updated', function (event) {
+                  if (Server.getCurrentServerStatus() === Server.STATUSES_LIST.RUNNING && !user.statusSeviceStarted) {
+                    user.start();
+                  } else if (user.statusSeviceStarted && Server.getCurrentServerStatus() !== Server.STATUSES_LIST.RUNNING) {
+                    user.stop();
+                  }
+                });
+
+                user.addUpdateListener(function (obj, data, eventData) {
+                  if (data.hasOwnProperty(currentUserLoginName)) {
+                    disconnectBtn.removeClass('button-lock');
+                  } else {
+                    disconnectBtn.addClass('button-lock');
+                  }
+                });
+
+                $('#add-trueconf-id-to-ab').addContactPlugin({
+                  locale: "{{ settings.lang }}",
+                  userPlugin: user,
+                  getApplyXHRObject: function (contactLogin, contactDisplayName, originalXHR) {
+                    return {
+                      url: '{{ site.getInsideUrl('users', 'addContactToAb') }}' + document.location.search,
+                      data: {
+                        login: '{{ user.login_name | escape('js') }}',
+                        contactLoginName: contactLogin,
+                        contactDisplayName: contactDisplayName
+                      }
+                    };
+                  },
+                  searchDelay: {{ isLdap ? 4000 : 2000 }}
+                });
+              });
+            </script>
+        {% endautoescape %}
+        <div id="disconnect-dialog">
+            <p>{{ site._('Are you sure?') }}</p>
+        </div>
+        <fieldset id="fieldset-user-create-ab" style="height: auto;">
+            <legend>{{ site._('Address book') }}</legend>
+            <table class="ab-user-func-tb">
+                <tr>
+                    <td>
+                        <div id="add-trueconf-id-to-ab">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="ab-user-groups">
+                            {{ site._('User will have address book of these groups combined:') }}
+                            {% for group in groups %}
+                                <a
+                                href="{{ site.getInsideURL("group", "ab", "key="~(group.distinguishedName ? group.distinguishedName|url_encode : group.id) | escape('html')) }}&group_id={{ group.id| escape('html') }}">{{ group.displayName|escape('html') }}</a>{{ not(loop.last) ? ',' : '' }}
+                            {% else %}
+                                <a href="{{ site.getInsideURL("group", "ab", "key="~no_group_id) }}">{{ site._('Users without group') }}</a>
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='admin-area-screen'></div>
+
+                        <script src="/admin-area/bundle.js?version={{ server_version }}"></script>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    {% endif %}
+
+    <style>
+        .regexp_error {
+            background: #E56B4D;
+            color: white;
+            padding-left: 5px;
+            display: none;
+        }
+
+        .ui-button-text-only .ui-button-text {
+            padding: .4em 0;
+        }
+
+        .locked-text {
+            margin-left: 4px;
+        }
+
+        #unlock-button {
+            margin-left: 25px;
+        }
+
+        #banned-block {
+            margin-bottom: 4px;
+        }
+
+        .password-rules-popup div.ui-dialog-buttonset {
+            display: flex;
+            justify-content: center;
+            float: none !important;
+            margin: 0;
+        }
+
+        .password-rules-popup div.ui-dialog-buttonset > .ui-button {
+            width: 55px;
+            margin: .5em .4em .5em .4em;
+        }
+
+        .password-rules-popup div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix {
+            padding: .3em .4em .3em .4em;
+        }
+
+        .pass-rules-list {
+            list-style: none;
+        }
+
+        .pass-rules-list li:before {
+            content: "•";
+            font-size: 120%;
+            padding-right: 7px;
+        }
+    </style>
+{% endblock %}

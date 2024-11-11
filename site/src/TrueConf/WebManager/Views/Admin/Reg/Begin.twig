@@ -1,0 +1,553 @@
+{% extends template.base %}
+{% block main_container %}
+
+    {% if debug %}
+        <script src="/public/js/vue/vue/vue.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.js?version={{ current_version|e('html') }}"></script>
+    {% else %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version|e('html') }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.min.js?version={{ current_version|e('html') }}"></script>
+    {% endif %}
+
+    {% set vue_lang = settings.lang == 'pt' ? 'pt_BR' : settings.lang %}
+    <script src="/public/js/vue/vee-validate/locale/{{ vue_lang|e('html') }}.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/jquery.form.min.js?version={{ current_version|e('html') }}"></script>
+
+
+    <div class="content-container">
+        <div id="error-message-container">
+            <p class="error-text">
+                {% if error_msg %}
+                    {{ error_msg }}
+                {% endif %}
+            </p>
+        </div>
+        <div id="app-registration" style="display:none">
+            <div v-if="showMessageAboutRegistrationServiceStatus" class="registration-service-unavailable">
+                <p class="text-notification">{{ site._("There is no connection to the registration server. It may have happened because the computer is"
+                    ~" currently not connected to the Internet or TCP 4310 outbound connections are limited on your network"
+                    ~" equipment. You can continue with the registration offline, but in this case free license period will"
+                    ~" be limited. [a]Offline registration guide.[/a]")|replace({"[a]": "<a href='#{offline_registration_guide}' class='link' target='_blank' rel='noopener'>", "[/a]": '</a>'}) }}
+                </p>
+            </div>
+
+            <div v-if="ui_step === 0">
+                <h1>{{ site._("TrueConf Server Registration") }}</h1>
+
+                {% autoescape 'html' %}
+                    <div class="app-registration-block">
+                        <div class="app-registration-input" style="height: 110px;">
+                            <label for="registration-key" style="font-weight: normal;" :class="{'label': true, 'is-danger': errors.has('registration_key') }">
+                              {{ site._('Enter the registration key that has been sent to your [b]email address[/b].')|replace({"[b]":"<b>", "[/b]":"</b>"})|raw }}
+                            </label>
+                          <input id="registration-key" type="text"
+                                 v-validate="{ rules: {required: true, min: 3, max: 64, regex: /^[\w-]+$/i} }"
+                                 :class="{'input': true, 'is-danger': errors.has('registration_key') }"
+                                 name="registration_key" v-model="registration_key"
+                                 minlength="3" maxlength="64" autocomplete="off"
+                                 placeholder="XXXXX-XXXXX-XXXXX-XXXXX">
+                          <span v-show="errors.has('registration_key')" class="field-error">${ errors.first('registration_key')}</span>
+                          <a href="{{ company_site_url }}/tcs/key/?lang={{ settings.lang }}&version={{ server_version }}"
+                             class="link" target="_blank" rel="noopener"
+                             style="display: table;">{{ site._('Where do I get the key?') }}</a>
+                        </div>
+
+                      <div v-if="ui_edit_server_name === true" class="app-registration-input">
+                        <label for="server_name"
+                               :class="{'label': true, 'is-danger': errors.has('server_name') }">{{ site._('Server Name') }}
+                          *</label>
+                        <input id="server_name" type="text"
+                               v-validate="{ rules: {required: true, min: 2, max: 60, regex: /^((?=[a-z0-9-]{1,59}\.)[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,59}$/ } }"
+                               :class="{'input': true, 'is-danger': errors.has('server_name') }" name="server_name"
+                               v-model="server_name" data-vv-as='"{{ site._("Server Name") }}"'
+                                   maxlength="250" autocomplete="off" placeholder="videoserver.your-company.com">
+                            <label>#vcs</label>
+                            <span v-show="errors.has('server_name')"
+                                  class="field-error">${ errors.first('server_name') }</span>
+                        </div>
+
+                        <div v-else="ui_edit_server_name === false" class="preview-server-name">
+                            <p class="server-name-label text-bold">{{ site._("Public name of this server:") }}</p>
+                            <p class="server-name">${ server_name }</p>&nbsp;
+                            <a class="link" href="#" @click="ui_edit_server_name = true">{{ site._("Edit") }}</a>
+                        </div>
+
+                        <div class="action">
+                            <button class="button" @click="registerServer">{{ site._('Registration') }}</button>
+                        </div>
+                    </div>
+                {% endautoescape %}
+            </div>
+            <div v-if="ui_step === 1">
+                <h1>{{ site._("TrueConf Server Offline Registration. Step %step")|replace({'%step': 1}) }}</h1>
+
+                <div class="app-registration-block">
+                    <p>{{ site._('To start offline registration process please click on [b]Create registration file[/b] button to create offline key file. Once created it will downloaded automatically, please save it.')|replace({'[b]': '<b>', '[/b]': '</b>' }) }}</p>
+                </div>
+
+                <div class="app-registration-block">
+                    <p>{{ site._("[b]Please note:[/b] you won't be able to return and download this file again.")|replace({"[b]":"<b>", "[/b]":"</b>"}) }}</p>
+                </div>
+
+                <div class="app-registration-block">
+                    <button class="button btn_green"
+                            @click="downloadRegistrationFile">{{ site._('Create registration file') }} →
+                    </button>
+                </div>
+
+                <div class="app-registration-block">
+                    <button class="link"
+                            @click="ui_step = 0">{{ site._('Start registration process from the beginning') }}</button>
+                </div>
+
+            </div>
+            <div v-if="ui_step === 2">
+                <h1>{{ site._("TrueConf Server Offline Registration. Step %step")|replace({'%step': 2}) }}</h1>
+
+                <div class="app-registration-block">
+                    <p>{{ site._('Please send [b]offlinereg.vrg[/b] file generated during step #1 to %mail%.')|replace({'[b]': '<b>', '[/b]': '</b>', '%mail%': attribute(settings.config.sales_email, settings.lang) }) }}</p>
+                </div>
+
+                <div class="app-registration-block">
+                    <p>{{ site._("Browse to the registration confirmation file you've received from the sales department and click [b]Continue[/b].")|replace({"[b]":"<b>", "[/b]":"</b>"}) }}</p>
+                </div>
+
+                {#<form id="upload-activation-file" action="/admin/reg/upload-activation-file" target="_blank" method="post" enctype="multipart/form-data" class="upload-form">#}
+                {#<input id="activation_file" type="file" name="activation_file" @change="onUploadActivationFile"/>#}
+
+                {#</form>#}
+
+                <form id="upload-activation-file" action="/admin/reg/upload-activation-file" target="_blank"
+                      method="post" enctype="multipart/form-data" class="upload-form">
+                    <input title="csrf" name="{{ csrf_param }}" value="{{ csrf_token }}" hidden>
+                    {#<label>#}
+                    {#<input id="activation_file" type="file" name="activation_file"#}
+                    {#@change="onUploadActivationFile"/>#}
+                    {#<span>{{ site._("Select file") }}</span>#}
+                    {#</label>#}
+                    <input id="activation_file" type="file"
+                           name="activation_file"{# @change="onUploadActivationFile"#}/>
+                </form>
+
+                {#<div v-if="!activation_file" class="file-name">{{ site._("The file is not selected") }}</div>#}
+                {#<div v-else class="file-name">${ getActivationFileName() }</div>#}
+
+                <div class="app-registration-block">
+                    <button class="button"
+                            v-bind:class="{ 'btn_green': isUploadedActivationFile(), 'button-lock': !isUploadedActivationFile() }"
+                            @click="registerServerViaActivationFile">{{ site._('Continue') }}</button>
+                </div>
+
+                <div class="app-registration-block">
+                    <button class="link"
+                            @click="ui_step = 0">{{ site._('Start registration process from the beginning') }}</button>
+                </div>
+
+                <div class="app-registration-block">
+                    <p>{{ site._("If you close this page, the registration process can be resumed at any moment from here on.") }}</p>
+                </div>
+            </div>
+            <p>
+              {{ site._('See the <a href="%help_url" target="_blank" rel="noopener" class="link">help</a> section or contact %company_name support by phone %phone or write us at <a href="mailto:%mail" class="link">%mail</a>')
+              |replace({'%phone' : '<span dir="ltr" style="font-size:inherit;">' ~ phone ~ '</span>',
+                  '%mail' : attribute(settings.config.sales_email, settings.lang)|default(settings.config.sales_email.def),
+                  '%help_url' : site.getInsideUrl('help', 'show', 'path=registration'), '%company_name' : settings.config.company_name }) }}
+            </p>
+        </div>
+    </div>
+
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+            Vue.use(VueResource);
+            Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+          var server_name_postfix = "{{ server_name_postfix }}";
+          var messages_this = {
+            registration_please_wait: "{{ site._("Processing may take a few minutes. Please wait...") }}"
+          };
+
+          var handlers = {
+            register_server_via_online: "/admin/reg/register-via-online",
+            register_server_via_activation_file: "/admin/reg/register-via-activation-file",
+            generate_registration_file: "/admin/reg/generate-registration-file",
+            download_registration_file: "/admin/reg/download-registration-file",
+            upload_activation_file: "/admin/reg/upload-activation-file",
+            ping_registration_service: "/admin/reg/ping-registration-service"
+          };
+
+            Vue.use(VeeValidate, {
+                locale: '{{ vue_lang }}',
+                dictionary: {
+                    '{{ vue_lang }}': {
+                        messages: {
+                            required: function () {
+                                return "{{ site._('Please fill out this field') }}";
+                            },
+                            min: function (field_name, min_length) {
+                                return "{{ site._('Min length is %n characters') }}".replace("%n", min_length);
+                            },
+                            regex: function () {
+                                return "{{ site._('Invalid format') }}";
+                            }
+                        }
+                    }
+                }
+            });
+
+          var ui_step = localStorage.getItem('offlineReg_ui_step') ? parseInt(localStorage.getItem('offlineReg_ui_step')) : 0;
+
+          var app = new Vue({
+            el: "#app-registration",
+            delimiters: ['${', '}'],
+            data: {
+              registration_service_status: true,
+              registration_key: '{{ registration_key }}',
+              server_name: '{{ current_server_name }}',
+              ui_step: ui_step,
+              ui_edit_server_name: false,
+              activation_file: ''
+            },
+            computed: {
+              showMessageAboutRegistrationServiceStatus: function () {
+                if (this.$data.registration_service_status === true) {
+                  return false;
+                }
+
+                if (this.$data.ui_step === 0 || this.$data.ui_step === 1) {
+                  return true;
+                }
+
+                return false;
+              }
+            },
+            watch: {
+              ui_step: function (value) {
+                if (value == 0) {
+                  $(document).trigger('display-header-messages');
+                }
+                localStorage.setItem('offlineReg_ui_step', value);
+                setTimeout(function () {
+                  renderFileButtons();
+                  app.setFileChangeHandler();
+                }, 0);
+              },
+              registration_key: function (value) {
+                value = value.toUpperCase().trim();
+                this.$set(this, 'registration_key', value);
+
+                if (this.$data.registration_key.length === 0 || '{{ current_server_name }}' !== '') {
+                  return;
+                }
+
+                var current_server_name = this.$data.server_name;
+
+                if (current_server_name === '' || current_server_name.indexOf(server_name_postfix) !== -1) {
+                  var server_id = this.getServerIdByRegistrationKey();
+                  var valid_server_name = server_id + server_name_postfix;
+
+                  if (valid_server_name !== current_server_name) {
+                    this.$set(this, 'server_name', valid_server_name);
+                  }
+                }
+              },
+              server_name: function (value) {
+                value = value.toLowerCase().trim();
+                this.$set(this, 'server_name', value);
+              }
+            },
+            methods: {
+              isUploadedActivationFile: function () {
+                return (this.activation_file !== '');
+              },
+              onUploadActivationFile: function (event) {
+                var target = event.target || event.srcElement;
+                this.activation_file = target.value;
+              },
+              getActivationFileName: function () {
+                return this.activation_file.replace(/\\/g, "/").split('/').pop();
+              },
+              pingRegistrationService: function (onSuccess, onFail) {
+                this.$http.post(handlers.ping_registration_service).then(function (response) {
+                  this.$set(this, 'registration_service_status', response.body.status);
+
+                  onSuccess();
+                }, function (error) {
+                  console.error(error);
+
+                  onFail();
+                });
+              },
+              registerServer: function () {
+                var value = this.$data.server_name;
+                value = value.toLowerCase().trim().replace(/#.*$/i, '');
+                this.$set(this, 'server_name', value);
+
+                var self = this;
+                this.$validator.validateAll().then(function (result) {
+                  if (!result) {
+                    return;
+                  }
+
+                  return self.registration_service_status
+                      ? self.registerServerViaOnline()
+                      : self.generateRegistrationFile();
+                });
+
+              },
+                registerServerViaOnline: function () {
+                    Server.showLoadEffect(messages_this.registration_please_wait);
+                    Server.stopServer();
+
+                    $(document).off('AfterStop').on('AfterStop', function () {
+                        Server.showLoadEffect(messages_this.registration_please_wait);
+                        app.$http.post(handlers.register_server_via_online, {
+                            registration_key: app.$data.registration_key,
+                            server_name: app.$data.server_name
+                        }).then(function (response) {
+                            Server.removeLoadEffect();
+                            if (typeof (response.body.error) == "object" && typeof (response.body.error) == "object"
+                                && response.body.error.code === 'change_computer_is_not_allowed') {
+                                app.$set(app, 'ui_step', 2);
+                                return;
+                            }
+                    Server.startServer();
+
+                    $(document).off('AfterStart').on('AfterStart', function () {
+                      $(document).trigger('display-header-messages', '{{ site._("Server was registered successfully") }}');
+                      window.location.href = "{{ site.getInsideUrl('general', 'info') }}"
+                    });
+
+                  }, function (response) {
+                    Server.removeLoadEffect();
+
+                    if (typeof (response.body) === "undefined") {
+                      return;
+                    }
+
+                    if (typeof (response.body.error) === "undefined") {
+                      return;
+                    }
+
+                    if (response.body.error.code === 'registration_service_is_not_available') {
+                      app.$set(app, 'ui_step', 1);
+                      return;
+                    }
+
+                    $(document).trigger('display-header-error', {message: response.body.error.message});
+                  });
+                });
+
+
+              },
+              generateRegistrationFile: function () {
+                Server.showLoadEffect(messages_this.registration_please_wait);
+
+                this.$http.post(handlers.generate_registration_file, {
+                  registration_key: this.registration_key,
+                  server_name: this.server_name
+                }).then(function (response) {
+                  Server.removeLoadEffect();
+                  this.$set(this, 'ui_step', 1);
+                }).catch(function (response) {
+                  Server.removeLoadEffect();
+                  $(document).trigger('display-header-error', {message: '{{ site._("Failed to generate the file offline registration.") }}'});
+                });
+              },
+              registerServerViaActivationFile: function () {
+                if (!this.isUploadedActivationFile()) {
+                  return;
+                }
+
+                Server.showLoadEffect(messages_this.registration_please_wait);
+
+                var form = $('#upload-activation-file').ajaxSubmit({
+                  error: function () {
+                    $(document).trigger('display-header-error', {message: "{{ site._('Error upload file') }}"});
+                    Server.removeLoadEffect();
+
+                  }
+                });
+                var xhr = form.data('jqxhr');
+
+                var self = this;
+                xhr.done(function () {
+                  self.$http.post(handlers.register_server_via_activation_file).then(function (response) {
+                    Server.removeLoadEffect();
+                      {#if (response.body.reg_result !== 1) {#}
+                      {#$(document).trigger('display-header-error', {message: "{{ site._('File error') }}"});#}
+                      {#return;#}
+                      {#}#}
+
+                    if (response.data.reg_result === 1) {
+                      Server.restartServer();
+                      $(document).off('AfterStart').on('AfterStart', function () {
+                        $(document).trigger('display-header-messages', '{{ site._("Offline registration successfully finished") }}');
+                        self.$set(self, 'ui_step', 0);
+                        window.location.href = "{{ site.getInsideUrl('general', 'info') }}";
+
+                      });
+                    }
+                  }).catch(function (response) {
+                    Server.removeLoadEffect();
+
+                    if (typeof (response.body) === "undefined") {
+                      return;
+                    }
+
+                    if (typeof (response.body.error) === "undefined") {
+                        return;
+                    }
+
+                      $(document).trigger('display-header-error', {message: response.body.error.message});
+                  });
+                });
+
+
+              },
+                downloadRegistrationFile: function () {
+                    const newWindow = window.open(handlers.download_registration_file, "_blank");
+                    if (newWindow) newWindow.opener = null;
+                    this.$set(this, 'ui_step', 2);
+                },
+                getServerIdByRegistrationKey: function () {
+                    var regex = /^[\w]+/i;
+                    var match = regex.exec(this.$data.registration_key);
+
+                    if (match === null || match[0] === null || match[0] === undefined || match[0] === "undefined") {
+                        return null;
+                    }
+
+                return match[0];
+              },
+              setFileChangeHandler: function () {
+                $('input#activation_file').bind('change', function (event) {
+                  app.onUploadActivationFile(event);
+                });
+              }
+            },
+            created: function () {
+              var self = this;
+
+              if (this.$data.server_name.trim().length < 3) {
+                this.$set(this, 'ui_edit_server_name', true);
+              }
+
+              var pingSuccess = function () {
+                setTimeout(function () {
+                  self.pingRegistrationService(pingSuccess, pingFailed);
+                }, 10000);
+              };
+
+              var pingFailed = function () {
+                setTimeout(function () {
+                  self.pingRegistrationService(pingSuccess, pingFailed);
+                }, 30000);
+              };
+
+              this.pingRegistrationService(pingSuccess, pingFailed);
+
+            },
+            mounted: function () {
+              $('#app-registration').show();
+            },
+            beforeUpdate: function () {
+              this.setFileChangeHandler();
+            }
+          });
+
+        </script>
+    {% endautoescape %}
+
+    <style type="text/css">
+        .registration-service-unavailable {
+            border: 1px solid red;
+            padding: 8px;
+        }
+
+        .link {
+            color: #0679B8;
+            text-decoration: underline;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        .link:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .app-registration-block {
+            margin: 16px 0;
+        }
+
+        .app-registration-block > .action {
+            margin-top: 16px;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .text-bold {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .text-notification {
+            font-size: 13px;
+        }
+
+        .app-registration-input {
+            margin: 12px 0 4px 0;
+            height: 64px;
+        }
+
+        .app-registration-input > .label {
+            display: block;
+            font-weight: 700;
+        }
+
+        .app-registration-input > .input {
+            max-width: 220px;
+            width: 100%;
+        }
+
+        .app-registration-input > .field-error {
+            display: block;
+            color: #F44336;
+        }
+
+        .preview-server-name {
+
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        div#server-info {
+            display: none;
+        }
+
+        .file-name {
+            display: inline-block;
+            margin: 4px 16px 0 16px;
+        }
+
+        .server-name-label {
+            display: inline-block;
+        }
+
+        .server-name {
+            font-size: 13px;
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+    </style>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<script type="text/javascript">
+  function LdapGroup(index, id, name, dn) {
+    this.index = index;
+    this.id = id;
+    this.name = name;
+    this.dn = dn;
+
+    this.render = function (search_str) {
+      var html = '<tr>';
+
+      var str = search_str || null;
+      var rgx = new RegExp(str, 'i');
+
+      var cut_name = cutLongString(this.name);
+
+      html += '<td><input id="group' + this.index + '" type="checkbox" class="key add-group" name="groups[]" value="' + this.dn + '" ' + ((this.id) ? 'checked="checked"' : '') + ' /></td>';
+      html += '<td id = "group-ldap-label"><label for="group' + this.index + '" title="' + this.name + '">' + cut_name.replace(rgx, '<b>$&</b>') + '</label></td>';
+      html += '</tr>';
+
+      return html;
+    };
+  }
+
+  var g_ldap_groups = [
+      {% for group in groups %}
+    new LdapGroup('{{ loop.index|e('js') }}', '{{ group.identifier|e('js') }}', '{{ group.groupname|e('js') }}', '{{ group.ldap_dn|e('js') }}'){{ not(loop.last) ? ',' : '' }}
+      {% endfor %}
+  ];
+
+  $('#dialog-result').elementsList({
+    elements: g_ldap_groups,
+    height: 150,
+    header: false,
+    columns: {
+      selector: {
+        enabled: true,
+        width: '10%'
+      },
+      fields: {
+        name: {
+          label: 'group name',
+          width: '90%'
+        }
+      }
+    },
+    search: {
+      enabled: true,
+      placeholder: '{{ site._('Search: enter group name') }}',
+      close_img: 'images/ab-cross.png',
+      fields: ['name']
+    },
+    filter: {
+      enabled: false
+    },
+    no_elements_text: '{{ site._('no groups') }}'
+  });
+</script>

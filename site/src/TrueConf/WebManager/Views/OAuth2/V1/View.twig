@@ -1,0 +1,303 @@
+{% extends template.base_oauth %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/public/css/oauth/view.css">
+    {% if debug %}
+        <script src="/public/js/vue/vue/vue.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.js?version={{ current_version }}"></script>
+    {% else %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vee-validate/vee-validate.min.js?version={{ current_version }}"></script>
+    {% endif %}
+    <script src="/public/js/vue/vee-validate/locale/{{ settings.lang }}.js?version={{ current_version }}"></script>
+{% endblock %}
+
+{% block actions %}
+    <div v-if="user.is_user" class="user">
+        <div class="profile">
+            <div class="avatar">
+                <img :src="'/api/v4/users/' + user.username + '/avatar'
+                + (localStorageAccessToken ? ('?access_token=' + localStorageAccessToken) : '')" alt="avatar"/>
+            </div>
+            <div class="data">
+                <div class="display-name">${user.display_name}</div>
+                <div class="user-id">${getUserId()}</div>
+            </div>
+        </div>
+        <div class="actions">
+            <i @click=logout class="material-icons">&#xE879;</i>
+        </div>
+    </div>
+    <div v-else class="server">{{ server_name }}</div>
+
+{% endblock %}
+
+{% block layout %}
+    {% autoescape 'html' %}
+        <div id="oauth">
+            <div v-if="!user.is_user" class="authorization">
+                <div class="title">{{ site._("Enter your account") }}</div>
+                <div class="fields">
+                    <div class="field">
+                        <input name="username" type="text" placeholder="{{ config.client_id_name }}"
+                               v-model="user.username" v-validate="{ rules: {required: true, min: 1, max: 255} }"
+                               ref="username" @keyup.enter="inputUsernameHandler"
+                               data-vv-as='"{{ config.client_id_name }}"' autofocus>
+                        <span v-show="errors.has('username')" class="error">${ errors.first('username') }</span>
+                    </div>
+
+                    <div class="field">
+                        <input name="password" type="password" placeholder="{{ site._("Password") }}"
+                               v-model="user.password" v-validate="{ rules: {required: true, min: 1, max: 255} }"
+                               ref="password" @keyup.enter="inputPasswordHandler"
+                               data-vv-as='"{{ site._("Password") }}"'>
+                        <span v-show="errors.has('password')" class="error">${ errors.first('password') }</span>
+                    </div>
+                </div>
+                <span class="clear error">${ loginError.error.message }</span>
+                <button @click="login(user.username, user.password)"
+                        class="button primary">{{ site._("Sign in") }}</button>
+            </div>
+
+            <div v-if="user.is_user && !error && client" class="block">
+                <div class="logo">
+                    <i class="material-icons md-48">&#xE5C3;</i>
+                </div>
+                <div class="title">
+                    ${getClientName()}
+                </div>
+                <div class="scopes">
+                    <scope v-if="isPermissionExists('users')">
+                        <i slot="icon" class="material-icons">&#xE7FD;</i>
+                        <span slot="description">{{ site._("Access to your profile") }}</span>
+                    </scope>
+
+                    <scope v-if="isPermissionExists('users.addressbook')">
+                        <i slot="icon" class="material-icons">&#xE0BA;</i>
+                        <span slot="description">{{ site._("Access to the list of your contacts") }}</span>
+                    </scope>
+
+                    <scope v-if="isPermissionExists('groups')">
+                        <i slot="icon" class="material-icons">&#xE7EF;</i>
+                        <span slot="description">{{ site._("Access to the list of your groups") }}</span>
+                    </scope>
+
+                    <scope v-if="isPermissionExists('conferences')">
+                        <i slot="icon" class="material-icons">&#xE886;</i>
+                        <span slot="description">{{ site._("Access to the list of your conferences") }}</span>
+                    </scope>
+
+                    <scope v-if="isPermissionExists('conferences.records')">
+                        <i slot="icon" class="material-icons">&#xE02C;</i>
+                        <span slot="description">{{ site._("Access to the list of records of my conferences") }}</span>
+                    </scope>
+
+                    <scope v-if="isPermissionExists('conferences.participants')">
+                        <i slot="icon" class="material-icons">&#xE8D3;</i>
+                        <span slot="description">{{ site._("Access to the list of participants of my conferences") }}</span>
+                    </scope>
+                </div>
+                <div class="actions">
+                    <button @click="cancelAuthorizeApp" class="button">{{ site._("Cancel") }}</button>
+                    <button @click="authorizeApp" class="button primary">{{ site._("Authorize") }}</button>
+                </div>
+            </div>
+
+            <div v-if="user.is_user && error" class="block">
+                <span class="error">${error}</span>
+                <span class="error">${error_description}</span>
+            </div>
+        </div>
+
+    {% endautoescape %}
+{% endblock %}
+
+{% block scripts %}
+    {% autoescape 'js' %}
+        <script type="text/x-template" id="scope-template">
+            <transition name="scope">
+                <div class="scope">
+                    <div class="item">
+                        <div class="profile">
+                            <div class="icon">
+                                <slot name="icon"></slot>
+                            </div>
+                            <div class="name">
+                                <slot name="description"></slot>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+        </script>
+
+        <script type="text/javascript">
+          Vue.use(VeeValidate, {
+            locale: '{{ settings.lang }}'
+          });
+
+          Vue.component('scope', {
+            template: '#scope-template',
+            data: function () {
+              return {
+                isExpanded: false
+              };
+            },
+            methods: {
+              expand: function () {
+                this.isExpanded = !this.isExpanded;
+              }
+            }
+          });
+
+          var app = new Vue({
+            delimiters: ["${", "}"],
+            data: {
+              error: '{{ error }}',
+              error_description: '{{ error_description }}',
+              server_name: '{{ server_name }}',
+              user: {
+                is_user: {{ isUser }},
+                username: '{{ user['user_id'] }}',
+                password: '',
+                display_name: '{{ user['display_name'] }}'
+              },
+              client: {{ client|json_encode|raw }},
+              scope: "{{ scope }}",
+              permissions: [],
+              loginError: {error: {}},
+              localStorageAccessToken: null
+            },
+            created: function () {
+              this.parseScope();
+              this.localStorageAccessToken = this.getLocalStorageAccessToken();
+            },
+            watch: {
+              'user.username': function () {
+                this.loginError = {error: {}}
+              },
+              'user.password': function () {
+                this.loginError = {error: {}}
+              }
+            },
+            methods: {
+              login: function (username, password) {
+                this.error = '';
+                this.error_description = '';
+                this.loginError = {error: {}};
+
+                this.$validator.validateAll();
+
+                if (this.errors.any()) {
+                  return;
+                }
+
+                this.$http.post('/oauth2/v1/login', {
+                  username: username,
+                  password: password
+                }).then(function (response) {
+                  this.user.is_user = 1;
+                  this.user.username = response.body.user_id;
+                  this.user.password = '';
+                  this.user.display_name = response.body.display_name;
+                  location.reload();
+                }).catch(function (error) {
+                  this.loginError = error.body;
+                });
+              },
+              logout: function () {
+                this.$http.post('/oauth2/v1/logout').then(function (response) {
+                  this.user.is_user = 0;
+                  this.user.display_name = '';
+                }).catch(function (error) {
+                  console.log(error);
+                });
+              },
+              authorizeApp: function () {
+                this.$http.post('/oauth2/v1/authorize', {
+                  client_id: this.client.id,
+                  scope: this.scope
+                }).then(function (response) {
+                  window.location.reload();
+                }).catch(function (error) {
+                  this.error = error.body.error;
+                  this.error_descriprion = error.body.error_description;
+                });
+              },
+              cancelAuthorizeApp: function () {
+                window.location = app.$data.client.redirect_uri + encodeURI('?error=' + 'user_canceled_scope' + "&error_description=" + "User canceled scope");
+              },
+              getUserId: function () {
+                if (this.user.username.indexOf("@") === -1) {
+                  return this.user.username + '@' + this.server_name;
+                }
+
+                return this.user.username;
+              },
+              isPermissionExists: function (permission) {
+                return (this.$data.permissions[permission] !== undefined);
+              },
+
+              isScopeExists: function (scope) {
+                return (this.scopeMapIndexes[scope] !== undefined)
+              },
+              isScopePermissionExists: function (scope, permission) {
+                if (!this.isScopeExists(scope)) {
+                  return false;
+                }
+
+                return (this.scopeMap[this.scopeMapIndexes[scope]].permissions.indexOf(permission) !== -1)
+              },
+              inputUsernameHandler: function () {
+                if (this.user.password === "") {
+                  this.$refs.password.focus();
+                  return;
+                }
+
+                this.login(this.user.username, this.user.password);
+              },
+              inputPasswordHandler: function () {
+                this.login(this.user.username, this.user.password);
+              },
+              getClientName: function () {
+                var string = '{{ site._("This will allow %client_name% to") }}';
+
+                var name = '';
+
+                if (this.client !== null && this.client.name !== null) {
+                  name = this.client.name;
+                }
+
+                return string.replace("%client_name%", name);
+              },
+              parseScope: function () {
+                if (this.client === null || this.client === undefined) {
+                  return;
+                }
+
+                if (this.$data.scope.trim() === '') {
+                  return;
+                }
+
+                var permissions = this.$data.scope.split(' ');
+
+                for (var index = 0; index < permissions.length; index++) {
+                  var permission = permissions[index];
+
+                  this.$data.permissions[permission] = [];
+                }
+              },
+              getLocalStorageAccessToken: function () {
+                  if (localStorage.getItem('get')) {
+                      return JSON.parse(localStorage.getItem('get')).tokenInfo.access_token
+                  }
+
+                  return null;
+              }
+            }
+          }).$mount('#app');
+        </script>
+    {% endautoescape %}
+{% endblock %}
