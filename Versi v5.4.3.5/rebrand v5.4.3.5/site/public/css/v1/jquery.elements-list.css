@@ -1,0 +1,77 @@
+#elements-list .tools table td {
+    border: none;
+}
+
+#elements-list .tools td {
+    padding: 0px;
+}
+
+#elements-list .tools td label {
+    font-size: 14px;
+}
+
+#elements-list .tools, #elements-list .list {
+    width: 100%;
+}
+
+#elements-list .tools {
+    margin-bottom: 10px;
+}
+
+#elements-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#elements-list .tb-fix {
+    table-layout: fixed;
+}
+
+#elements-list #search-str {
+    width: 100%;
+}
+
+#elements-list #strpos-block {
+    position: relative;
+}
+
+#elements-list #strpos-block #pre-text {
+    position: absolute;
+    padding: 3px 5px 5px 5px;
+    z-index: 90;
+    font-weight: bold;
+}
+
+#elements-list #close-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+#elements-list .body-wrapper {
+    clear: both;
+    overflow: auto;
+}
+
+#elements-list .text-c {
+    text-align: center;
+}
+
+#elements-list #filter {
+    margin-left: 20px;
+}
+
+#elements-list #progressbar.ui-progressbar {
+    height: 3px;
+}
+
+#elements-list .sort.current-sort.desc a {
+    background: url(/public/images/arrow_up.gif) no-repeat right center;
+    padding-right: 15px;
+}
+
+#elements-list .sort.current-sort a {
+    background: url(/public/images/arrow_down.gif) no-repeat right center;
+    padding-right: 15px;
+}

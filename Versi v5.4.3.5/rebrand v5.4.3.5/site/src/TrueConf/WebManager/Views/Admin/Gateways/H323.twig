@@ -1,0 +1,1470 @@
+{% extends 'controllers/admin/network/networkSettings.twig' %}
+
+{% block content %}
+
+    {#Блок Network settings#}
+    {{ parent('content') }}
+
+    <fieldset id="fieldset-preset-list" class="m-top-10">
+        <legend>{{ site._("Rules for H.323 connections")|e('html') }}</legend>
+        <table id="peerList" class="table-body clean-table">
+            <thead>
+            <tr>
+                <td><b>{{ site._("Name")|e('html') }}</b></td>
+                <td><b>{{ site._("Role")|e('html') }}</b></td>
+                <td><b>{{ site._("Host")|e('html') }}</b></td>
+                <td style="float: right"><b>{{ site._("Status")|e('html') }}</b></td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <a id="addConfig" class="button">{{ site._("Add a configuration")|e('html') }}</a>
+    </fieldset>
+
+    <fieldset id="global-h323-settings" class="m-top-10">
+        <legend>{{ site._('Global H.323 settings')|e('html') }}</legend>
+
+        <table class="clean-table">
+            <tbody>
+            <tr>
+                <td>
+                    <form id="globalForm">
+                        <div class="global-settings-block">
+                            <label>{{ site.pgettext('A text hint in the section where the administrator can configure call routing', 'Action on incoming call to the %server_name IP address')
+                                |replace({"%server_name": settings.config["server_name"]})|e('html') }}<br>
+                                <div>
+                                    <input type="radio" value="2"
+                                           id="default_call_destination_reject"
+                                           name="default-call-destination"
+                                           class="default_call_destination-radio" />
+                                    <label for="default_call_destination_reject">{{ site.pgettext('The title of a radio button in the section where the administrator can configure call routing', 'Reject call')|e('html') }}</label>
+                                </div>
+                                <div>
+                                    <input type="radio" value="1"
+                                           id="default_call_destination_allow_enter_cid"
+                                           name="default-call-destination"
+                                           class="default_call_destination-radio" />
+                                    <label for="default_call_destination_allow_enter_cid">{{ site.pgettext('The title of a radio button. An user will be able to join the conference by its ID.', 'Forward to menu for entering a conference ID')|e('html') }}</label>
+                                </div>
+                                <div>
+                                    <input type="radio" value="0"
+                                           id="default_call_destination_str"
+                                           name="default-call-destination"
+                                           class="default_call_destination-radio" />
+                                    <label for="default_call_destination_str">{{ site.pgettext('A text hint for an input field. The administrator can specify a user ID or conference ID.', 'Forward to a user or conference by the specified ID')|e('html') }}</label>
+                                </div>
+                                <input id="default_call_destination-input"
+                                       type="text"
+                                       name="default_call_destination_h323"
+                                       value=""
+                                       minlength="{{ constant(global_namespace ~ '::LENGTH_DEFAULT_CALL_DESTINATION_H323_MIN')|e('html') }}"
+                                       maxlength="{{ constant(global_namespace ~ '::LENGTH_DEFAULT_CALL_DESTINATION_H323_MAX')|e('html') }}"
+                                       class="text h323-value-param with-errors global-settings-block_input-text"
+                                       autocomplete="off">
+                            </label>
+                        </div>
+                        <div class="global-settings-block">
+                            <label>{{ site._('External NAT IP address')|e('html') }} <br>
+                                <input id="external_address_input" type="text"
+                                       name="external_address_input" value=""
+                                       class="text h323-value-param global-settings-block_input-text"
+                                       autocomplete="off">
+                                <p class="global-settings-block__description">
+                                    {{ site._('This address will be used in SDP to send and receive audio and video when calling external users.')|e('html') }}
+                                </p>
+                            </label>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="global-settings-block" id="additionalOptionsBlock">
+                        <p><b>{{ site._('Advanced setting')|e('html') }}</b></p>
+                        <label><input id="enable-h235-checkbox" name="h235"
+                                      class="checkbox global-settings h323-checkbox-param"
+                                      type="checkbox">&nbsp;<span>{{ site._('Enable H.235 encryption')|e('html') }}</span></label><br>
+                        <label><input id="enable-h239-checkbox" name="h239"
+                                      class="checkbox global-settings h323-checkbox-param"
+                                      type="checkbox">&nbsp;<span>{{ site._('Enable content sharing via H.239')|e('html') }}</span></label><br>
+                        <label><input id="enable-h224-checkbox" name="h224" value="1"
+                                      class="checkbox global-settings h323-checkbox-param"
+                                      type="checkbox">&nbsp;<span>{{ site._('Enable far end camera control via Q.922/H.224/H.281')|e('html') }}</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="global-settings-block" id="availableCodecs">
+                        <p><b>{{ site._('Available codecs')|e('html') }}</b></p>
+                        <div>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H264HP"
+                                                                 id="H264HP">
+                                <div>H.264 High Profile</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H264MP"
+                                                                 id="H264MP">
+                                <div>H.264 Main Profile</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H264"
+                                                                 id="H264">
+                                <div>H.264 Baseline Profile</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H263plus2" id="H263plus2">
+                                <div>H.263++</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H263plus"
+                                                                 id="H263plus">
+                                <div>H.263+</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H263"
+                                                                 id="H263">
+                                <div>H.263</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="H261"
+                                                                 id="H261">
+                                <div>H.261</div>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="SIREN14_32" id="SIREN14_32">
+                                <div>G.722.1C 32 kbit/s</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="SIREN14_48" id="SIREN14_48">
+                                <div>G.722.1C 48 kbit/s</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="SIREN14_24" id="SIREN14_24">
+                                <div>G.722.1C 24 kbit/s</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G722132"
+                                                                 id="G722132">
+                                <div>G.722.1 32 kbit/s</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G722124"
+                                                                 id="G722124">
+                                <div>G.722.1 24 kbit/s</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G722_64k"
+                                                                 id="G722_64k">
+                                <div>G.722</div>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G723"
+                                                                 id="G723">
+                                <div>G.723</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G728"
+                                                                 id="G728">
+                                <div>G.728</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G729a"
+                                                                 id="G729a">
+                                <div>G.729A</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G711Ulaw64k" id="G711Ulaw64k">
+                                <div>G.711 ulaw</div>
+                            </label>
+                            <label class="enabled-codecs"><input class="enabled-codecs-checkbox" type="checkbox"
+                                                                 name="G711Alaw64k" id="G711Alaw64k">
+                                <div>G.711 alaw</div>
+                            </label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button id="h323-domain-btn" href="#" class="button button-lock" disabled>{{ site._("Apply") }}</button>
+    </fieldset>
+
+    {#Модальные окна#}
+    <div>
+        <div id="peerModal" style="display: none; ">
+            <div id="peerModalBody">
+                <form id="peerModalForm">
+                    <table class="clean-table">
+                        <tbody>
+                        <tr>
+                            <td class="with-errors peer-param" colspan="2">
+                                <label>{{ site._('Name')|e('html') }}*<br>
+                                    <input class="peer-value-param valid" id="name"
+                                           name="name" type="text" value=""
+                                           aria-required="true" aria-invalid="false"
+                                           style="width: 100%;"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="with-errors peer-param">
+                                <label>{{ site._('Host')|e('html') }}*<br>
+                                    <input class="peer-value-param valid" id="hostname"
+                                           name="hostname" type="text" value=""
+                                           aria-required="true"></label>
+                            </td>
+                            <td class="with-errors peer-param">
+                                <label>{{ site._('Port')|e('html') }}*<br>
+                                    <input class="peer-value-param error"
+                                           id="port" name="port"
+                                           min="{{ constant(namespace ~ '::MIN_VALUE_PORT')|e('html') }}"
+                                           max="{{ constant(namespace ~ '::MAX_VALUE_PORT')|e('html') }}"
+                                           type="number"
+                                           style="border: 1px solid grey;"
+                                           value="" aria-required="true"
+                                           aria-invalid="true"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="with-errors peer-param" colspan="2">
+                                <label>{{ site._('External NAT IP address')|e('html') }}<br>
+                                    <input class="peer-value-param valid"
+                                           id="externalAddress" name="externalAddress" type="text" value=""
+                                           aria-invalid="false"
+                                           style="width: 100%;"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="with-errors peer-param"><label>{{ site._('H323-ID')|e('html') }}<input
+                                            class="peer-value-param valid" id="login"
+                                            name="login" type="text" value=""></label></td>
+                            <td class="with-errors peer-param"><label>{{ site._('Password')|e('html') }}<input
+                                            class="peer-value-param valid" id="password"
+                                            name="password" type="password" value=""></label></td>
+                        </tr>
+                        <tr>
+                            <td class="with-errors peer-param" colspan="2">
+                                <label title="{{ site._('Enter E.164 as dialedDigits here. Only "0123456789#*," characters are allowed')|e('html') }}"
+                                       style="border-bottom: 1px dashed;
+    cursor: help;">{{ site._('DialedDigit')|e('html') }}<br>
+                                    <input class="peer-value-param valid" id="dialedDigit" name="dialedDigit"
+                                           type="text" value="">
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="without-errors" colspan="2">
+                                <label>
+                                    {{ site._('Registration')|e('html') }}:
+                                    <select class="peer-value-param"
+                                            id="registerStrategy"
+                                            name="registerStrategy"
+                                            aria-required="true">
+                                        <option value="0">{{ site._('off')|e('html') }}</option>
+                                        <option value="1">{{ site._('on')|e('html') }}</option>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 0; padding-bottom: 0" colspan="2">
+                                <p class="peer-codecs-section"><b>{{ site._('Advanced setting')|e('html') }}</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="peer-advanced-settings" colspan="2">
+                                <label><input id="h235Enabled" name="h235"
+                                              class="peer-checkbox-param"
+                                              type="checkbox">&nbsp;<span>{{ site._('Enable H.235 encryption')|e('html') }}</span></label><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="peer-advanced-settings" colspan="2">
+                                <label><input id="h239Enabled" name="h239"
+                                              class="peer-checkbox-param"
+                                              type="checkbox">&nbsp;<span>{{ site._('Enable content sharing via H.239')|e('html') }}</span></label><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="peer-advanced-settings" colspan="2">
+                                <label><input id="h224Enabled" name="h224"
+                                              class="peer-checkbox-param"
+                                              type="checkbox">&nbsp;<span>{{ site._('Enable far end camera control via Q.922/H.224/H.281')|e('html') }}</span></label><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" id="peerEnabledCodecs">
+                                <div class="enabled-codecs-block" id="peerAvailableCodecs">
+                                    <p class="peer-codecs-section"><b>{{ site._('Available codecs')|e('html') }}</b></p>
+                                    <div>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="H264HP"
+                                                                                  id="peerH264HP">
+                                            <div>H.264 High Profile</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="H264MP"
+                                                                                  id="peerH264MP">
+                                            <div>H.264 Main Profile</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="H264"
+                                                                                  id="peerH264">
+                                            <div>H.264 Baseline Profile</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox"
+                                                                                  name="H263plus2" id="peerH263plus2">
+                                            <div>H.263++</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="H263plus"
+                                                                                  id="peerH263plus">
+                                            <div>H.263+</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="H263"
+                                                                                  id="peerH263">
+                                            <div>H.263</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="H261"
+                                                                                  id="peerH261">
+                                            <div>H.261</div>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox"
+                                                                                  name="SIREN14_32" id="peerSIREN14_32">
+                                            <div>G.722.1C 32 kbit/s</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox"
+                                                                                  name="SIREN14_48" id="peerSIREN14_48">
+                                            <div>G.722.1C 48 kbit/s</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox"
+                                                                                  name="SIREN14_24" id="peerSIREN14_24">
+                                            <div>G.722.1C 24 kbit/s</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="G722132"
+                                                                                  id="peerG722132">
+                                            <div>G.722.1 32 kbit/s</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="G722124"
+                                                                                  id="peerG722124">
+                                            <div>G.722.1 24 kbit/s</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="G722_64k"
+                                                                                  id="peerG722_64k">
+                                            <div>G.722</div>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="G723"
+                                                                                  id="peerG723">
+                                            <div>G.723</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="G728"
+                                                                                  id="peerG728">
+                                            <div>G.728</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox" name="G729a"
+                                                                                  id="peerG729a">
+                                            <div>G.729A</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox"
+                                                                                  name="G711Ulaw64k"
+                                                                                  id="peerG711Ulaw64k">
+                                            <div>G.711 ulaw</div>
+                                        </label>
+                                        <label class="peer-enabled-codecs"><input class="peer-enabled-codecs-checkbox"
+                                                                                  type="checkbox"
+                                                                                  name="G711Alaw64k"
+                                                                                  id="peerG711Alaw64k">
+                                            <div>G.711 alaw</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" id="roleSpan">
+                                <label><b>{{ site._('Role')|e('html') }} </b></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 0px">
+                                <label><input id="defaultH323Gatekeeper" name="defaultH323Gatekeeper" type="checkbox"
+                                              class="connection-role"> {{ default_h323_gatekeeper_role |e('html') }}
+                                </label>
+                            </td>
+                            <td style="padding-top: 0px">
+                                <label><input id="defaultVoIPServer" name="defaultVoIPServer" type="checkbox"
+                                              class="connection-role"> {{ default_voip_server_role |e('html') }}</label>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <div id="questionDialog" style="display: none" title="{{ site._("Question") |e('html') }}">
+            <span>{{ site._("H.323 connection configuration <b>will be removed</b>. Are you sure?") }}</span>
+            <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" style="text-align: center">
+                <button id="deleteBtnInModal" onclick="deletePeer()" type="button"
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"
+                        aria-disabled="false">
+                    <span class="ui-button-text">{{ site._('Delete')|e('html') }}</span>
+                </button>
+                <button id="cancelBtnInModal" onclick="dialogQuestionWindow.dialog('close');" type="button"
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"
+                        aria-disabled="false">
+                    <span class="ui-button-text">{{ site._('Cancel')|e('html') }}</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="dialog-form" style="display: none">
+            <p class="validateTips"></p>
+            <form>
+                <fieldset>
+                    <input type="hidden" id="accept-identifier" name="identifier" value="none"/>
+                    <label for="host">
+                        {{ site._('Host')|e('html') }}
+                        <input type="text" name="host" id="accept-host" class="text ui-widget-content ui-corner-all"
+                               maxlength="255"/>
+                    </label>
+
+                    <label for="port">
+                        {{ site._('Port')|e('html') }}
+                        <input type="text" name="port" id="accept-port" value=""
+                               class="text ui-widget-content ui-corner-all"
+                               maxlength="5" onkeyup="this.value = this.value.replace(/\D/ig, '');"/>
+                    </label>
+
+                    <label for="protocol">
+                        {{ site._('Protocol')|e('html') }}
+                        <select name="protocol" id="accept-protocol" class="text ui-widget-content ui-corner-all"
+                                style="width: 99%; height: 32px;">
+                            <option value="tcp">TCP</option>
+                            <option value="udp">UDP</option>
+                        </select>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .error {
+            background: #E56B4D;
+            color: white;
+            padding-left: 4px;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #peerModal {
+            padding-right: 0;
+        }
+
+        #peerModalForm td.without-errors {
+            height: 47px;
+            padding: 0 8px;
+            vertical-align: top;
+        }
+
+
+        .h323-value-param {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .global-settings-block {
+            padding: 0;
+        }
+
+        .global-settings-block + .global-settings-block {
+            margin-top: 12px;
+        }
+
+        .global-settings-block_input-text {
+            width: 295px;
+        }
+
+        .global-settings-block > label > label.error {
+            width: 291px;
+        }
+
+        .global-settings-block__description {
+            color: grey;
+            font-size: 12px;
+        }
+
+        input.error {
+            border: 1px solid #E56B4D;
+            background: none;
+            color: #555555;
+        }
+
+        .peer-value-param {
+            border: 1px solid gray;
+            height: 25px;
+            padding-left: 4px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .peer-param {
+            width: 50%;
+            padding-top: 0;
+        }
+
+        .h323-preset-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .h323-preset-common-logo {
+            stroke: white;
+            stroke-width: 0.5px;
+            fill: #4279bc;
+        }
+
+        .default_call_destination-radio {
+            margin: 0 3px 6px 0;
+            position: relative;
+            top: 2px;
+        }
+
+        label.enabled-codecs {
+            display: block;
+            cursor: pointer;
+            margin: 0 3px 0 3px;
+        }
+
+        .peer-enabled-codecs {
+            display: block;
+            margin-top: -6px;
+            margin-bottom: -6px;
+            padding-top: 5px;
+        }
+
+        .enabled-codecs-block {
+            display: table;
+        }
+
+        .peer-enabled-codecs > div, .enabled-codecs > div {
+            display: inline;
+            padding-left: 5px;
+            position: relative;
+            bottom: 2px;
+        }
+
+        .clean-table td, .network-tb td {
+            border: none;
+        }
+
+        .table-body {
+            border: none !important;
+        }
+
+        .peer-item > .long_fields {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .peer-advanced-settings {
+            padding: 0 10px;
+        }
+
+        .peer-codecs-section {
+            margin: 5px 0;
+        }
+
+        .ui-dialog-buttonset {
+            width: 100%;
+        }
+
+        .peerButtonSet#saveBtn {
+            float: right;
+        }
+
+        .peerButtonSet#cancelBtn {
+            float: right;
+        }
+
+        #peerAvailableCodecs > div {
+            display: inline-table;
+            padding: 0 5px 0 5px;
+            margin-right: 25px;
+        }
+
+        #peerAvailableCodecs {
+            clear: left;
+            margin-bottom: 10px;
+        }
+
+        #registerStrategy {
+            height: 27px;
+        }
+
+        #peerModalForm td.with-errors {
+            height: 67px;
+            padding: 0 8px;
+            vertical-align: top;
+        }
+
+        #peerModalBody {
+            max-height: 580px;
+        }
+
+        #peerEnabledCodecs {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        #roleSpan {
+            padding-top: 0;
+            padding-bottom: 5px;
+        }
+
+        #availableCodecs {
+            clear: left;
+            padding-bottom: 10px;
+        }
+
+        #availableCodecs > div {
+            display: inline-table;
+            padding: 0 5px 0 5px;
+            margin-right: 8px;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block js %}
+    {#<script src="/public/js/api/localization.js?version={{ current_version }}"></script>#}
+    <script src="/public/js/jquery.validate.min.js?version={{ current_version }}"></script>
+    {% if lang != 'en' %}
+        <script type="text/javascript" language="javascript"
+                src="/public/js/jquery.validate_localization/messages_{{ lang }}.js?version={{ current_version }}"></script>
+    {% endif %}
+
+    {#JS для блока Network settings#}
+    {{ parent('js') }}
+
+
+    {#JS для блоков: Global H.323 settings и H.323 connection list#}
+    <script type="text/javascript" language="javascript"
+            src="/public/js/network/peerSettings.js?version={{ current_version }}"></script>
+    <script type="text/javascript">
+
+      /**
+       * Global variables
+       * */
+
+      var PROTOCOL_NAME = "{{ protocol_name|e('js') }}";
+      var PROTOCOL_DISPLAYNAME = "H.323";
+      var GLOBAL_SETTINGS_CONTROLLER = "{{ h323_controller|e('js') }}";
+      var PEERS_CONTROLLER = GLOBAL_SETTINGS_CONTROLLER + 'peers/';
+      var PEERS_STATUSES_RELOAD_TIMEOUT = {{ peers_statuses_reload_timeout|e('js') }}; //ms
+      var DISPlAY_MESSAGE_DURATION = {{ display_message_duration|e('js') }}; //ms
+      var DEFAULT_H323_GATEKEEPER_ROLE = "{{ default_h323_gatekeeper_role|e('js') }}";
+      var DEFAULT_VOIP_SERVER_ROLE = "{{ default_voip_server_role|e('js') }}";
+
+
+      /**
+       * Messages
+       * */
+
+      MESSAGE_PEER_NAME_IS_NOT_UNIQUE = MESSAGE_PEER_NAME_IS_NOT_UNIQUE.replace('%protocol', PROTOCOL_DISPLAYNAME);
+      MESSAGE_PEER_HOST_IS_NOT_UNIQUE = MESSAGE_PEER_HOST_IS_NOT_UNIQUE.replace('%protocol', PROTOCOL_DISPLAYNAME);
+      MESSAGE_ON_PEER_CREATED = MESSAGE_ON_PEER_CREATED.replace('%protocol', PROTOCOL_DISPLAYNAME);
+      MESSAGE_ON_PEER_DELETED = MESSAGE_ON_PEER_DELETED.replace('%protocol', PROTOCOL_DISPLAYNAME);
+      MESSAGE_PEER_WAS_ALREADY_DELETED = MESSAGE_PEER_WAS_ALREADY_DELETED.replace('%protocol', PROTOCOL_DISPLAYNAME);
+      TEXT_EDIT_PEER_TITLE = TEXT_EDIT_PEER_TITLE.replace('%protocol', PROTOCOL_DISPLAYNAME);
+      TEXT_CREATE_PEER_TITLE = TEXT_CREATE_PEER_TITLE.replace('%protocol', PROTOCOL_DISPLAYNAME);
+
+      var MAX_PEER_UNKNOWN_STATUS_REQUEST_COUNT = {{ max_peer_unknown_status_request_count|e('js') }};
+
+      var h323PeerValidateRules = {
+        rules: {
+          name: {
+            required: true,
+            minlength: {{ constant(namespace ~ '::LENGTH_NAME_MIN')|e('js') }},
+            maxlength: {{ constant(namespace ~ '::LENGTH_NAME_MAX')|e('js') }}
+          },
+          hostname: {
+            required: true,
+            minlength: {{ constant(namespace ~ '::LENGTH_HOSTNAME_MIN')|e('js') }},
+            maxlength: {{ constant(namespace ~ '::LENGTH_HOSTNAME_MAX')|e('js') }},
+            pattern: {{ constant(namespace ~ '::REGEXP_HOSTNAME') }}
+
+          },
+          port: {
+            required: true,
+            digits: true,
+            min: {{ constant(namespace ~ '::MIN_VALUE_PORT')|e('js') }},
+            max: {{ constant(namespace ~ '::MAX_VALUE_PORT')|e('js') }}
+          },
+          login: {
+            required: false,
+            minlength: {{ constant(namespace ~ '::LENGTH_LOGIN_MIN')|e('js') }},
+            maxlength: {{ constant(namespace ~ '::LENGTH_LOGIN_MAX')|e('js') }},
+            pattern: {{ constant(namespace ~ '::REGEXP_LOGIN') }}
+
+          },
+          password: {
+            required: false,
+            minlength: {{ constant(namespace ~ '::LENGTH_PASSWORD_MIN')|e('js') }},
+            maxlength: {{ constant(namespace ~ '::LENGTH_PASSWORD_MAX')|e('js') }}
+          },
+          registerStrategy: {
+            required: true,
+            oneOf: [
+              "{{ constant(namespace ~ '::ENUM_REGISTER_STRATEGY_OFF')|e('js') }}",
+              "{{ constant(namespace ~ '::ENUM_REGISTER_STRATEGY_ON')|e('js') }}"
+            ]
+          },
+          dialedDigit: {
+            required: false,
+            minlength: {{ constant(namespace ~ '::LENGTH_DIALED_DIGIT_MIN')|e('js') }},
+            maxlength: {{ constant(namespace ~ '::LENGTH_DIALED_DIGIT_MAX')|e('js') }},
+            pattern: {{ constant(namespace ~ '::REGEXP_DIALED_DIGIT') }}
+          },
+          externalAddress: {
+            required: false,
+            pattern: {{ hostname_regexp }}
+          }
+        },
+        messages: {
+          port: {
+            min: "[ " + {{ constant(namespace ~ '::MIN_VALUE_PORT')|e('js') }} +" - " + {{ constant(namespace ~ '::MAX_VALUE_PORT')|e('js') }} +" ]",
+            max: "[ " + {{ constant(namespace ~ '::MIN_VALUE_PORT')|e('js') }} +" - " + {{ constant(namespace ~ '::MAX_VALUE_PORT')|e('js') }} +" ]"
+          },
+          dialedDigit: {
+            pattern: "{{ site._('Enter E.164 as dialedDigits here. Only "0123456789#*," characters are allowed')|e('js') }}"
+          }
+        }
+      };
+
+      var globalParamsValidateRules = {
+        rules: {
+          default_call_destination_h323: {
+            required: {
+                depends: function() {
+                    return $('#default_call_destination_str').is(':checked');
+                }
+            },
+            minlength: {{ constant(global_namespace ~ '::LENGTH_DEFAULT_CALL_DESTINATION_H323_MIN')|e('js') }},
+            maxlength: {{ constant(global_namespace ~ '::LENGTH_DEFAULT_CALL_DESTINATION_H323_MAX')|e('js') }},
+            pattern: {{ constant(global_namespace ~ '::REGEXP_DEFAULT_CALL_DESTINATION_H323') }}
+          },
+          external_address_input: {
+            required: false,
+            pattern: {{ hostname_regexp }}
+          }
+        }
+      };
+
+      var h323Params = {
+        'default_call_destination-radio': 'defaultCallDestinationMode',
+        'default_call_destination-input': 'defaultCallDestinationH323',
+        'enable-h224-checkbox': 'h224Enabled',
+        'enable-h235-checkbox': 'h235Enabled',
+        'enable-h239-checkbox': 'h239Enabled',
+        'external_address_input': 'externalAddress'
+      };
+
+      var reservedPeers = {
+        defaultH323Gatekeeper: {
+          id: "#default",
+          name: "{{ site.constant(namespace ~ '::DEFAULT_H323_GATEKEEPER_NAME')|e('js') }}",
+          role: DEFAULT_H323_GATEKEEPER_ROLE
+        },
+        defaultVoIPServer: {
+          name: "{{ site.constant(namespace ~ '::DEFAULT_VOIP_SERVER_NAME')|e('js') }}",
+          role: DEFAULT_VOIP_SERVER_ROLE
+        }
+      };
+
+
+      /**
+       * Global functions
+       * */
+
+      /**
+       * Функцфия используется в файле peerSettings.js
+       * */
+      function peerListRender() {
+        var tbody = $('#peerList.table-body>tbody');
+
+        if (peers.length === 0) {
+          emptyTableMess = "<tr><td><span>" + "{{ site._("H.323 connections list is empty.")|e('html')|e('js') }}" + "</span></td></tr>";
+          tbody.html(emptyTableMess);
+          return;
+        }
+
+        parseDefaultVoIPServerId();
+        var emptyTableRow = '<tr class="empty-tr"><td colspan="3"></td></tr>';
+        tbody.html("");
+        var icon = '<svg class="h323-preset-icon h323-preset-common-logo" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M-74 29h48v48h-48V29z" fill="none"/>' +
+          '<path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/>' +
+          '<path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"/>' +
+          '</svg>';
+
+        peers.forEach(function (one_peer, counter) {
+
+          var conectionRoleNames = [];
+          one_peer.connectionRole = {};
+
+          for (var reservedPeer in reservedPeers) {
+            if (one_peer.id === globalSettings[reservedPeer + 'Id']) {
+              one_peer.connectionRole[reservedPeer] = true;
+              conectionRoleNames.push(reservedPeers[reservedPeer].role);
+            } else {
+              one_peer.connectionRole[reservedPeer] = false;
+            }
+          }
+
+          //Вывод всех ролей через запятую
+          var role = conectionRoleNames.join(', ');
+
+          one_peer.name = isReservedPeer(peer.id) ? _(one_peer.name) : one_peer.name;
+
+          var nameField = '<td class="long_fields peer-name" width="40%"><span>' +
+            icon +
+            ' <a href="javascript:void(0)" title="' +
+            one_peer.name + '" style="vertical-align: top" onclick="setTimeout(function(){openPeerModal(' + counter + ', \'save\')},0)">' +
+            one_peer.name +
+            '</a></span></td>';
+
+          var roleField = '<td class="peer-role" width="20%"><span class="role" title="' + role + '">' + role + '</span></td>';
+
+          var host = [one_peer.hostname, one_peer.port].filter(function (el) {
+            return Boolean(el)
+          }).join(':');
+
+          var hostField = '<td class="long_fields peer-host" width="20%"><span title="' + host + '">' + host +
+            '</span></td>';
+
+          var statusField = '<td class="long_fields peer-status" width="20%"><span class="status" style="float:right">' +
+            (one_peer.registerStrategy === 0 ? registrationOffMessage : defaultStatus)
+            + '</span></td>';
+
+          var row = '<tr class="peer-item" id="peer' + counter + '">' + nameField + roleField + hostField + statusField + '</tr>';
+          tbody.append(row);
+          mapId[one_peer.id] = counter;
+
+          /**
+           * Сброс счетчика получения статуса 0
+           */
+          one_peer.unknown_status_request_count = 0;
+        });
+        resize_table();
+      }
+
+      function peerModalFormRender() {
+        /**
+         * Рендер элементов формы с атрибутом value
+         * */
+        $('.peer-value-param').val(function () {
+          return peer[this.id];
+        });
+
+        /**
+         * Рендер чекбоксов формы
+         * */
+        $('.peer-checkbox-param').prop('checked', function () {
+          return peer[this.id] === 1;
+        });
+
+        $('#connectionRole').val(peer.connectionRole);
+
+        peerEnabledCodecsRender();
+        peerConnectionRoleRender();
+        currentPeerStatusReset();
+      }
+
+      function globalSettingsRender() {
+        /**
+         * Рендер элементов формы с атрибутом value
+         * */
+        $('.h323-value-param').val(function () {
+          return globalSettings[h323Params[this.id]];
+        });
+
+        /**
+         * Рендер чекбоксов формы
+         * */
+        $('.h323-checkbox-param').prop('checked', function () {
+          return globalSettings[h323Params[this.id]] === 1;
+        });
+
+        if (globalSettings['defaultCallDestinationMode'] === 1) {
+          $('#default_call_destination_allow_enter_cid').attr('checked', true);
+          $('#default_call_destination-input').prop('disabled', true).css('background', 'rgba(0,0,0,.16)');
+        } else {
+          if (globalSettings['defaultCallDestinationH323'] != '') {
+            $('#default_call_destination_str').attr('checked', true);
+            $('#default_call_destination-input').prop('disabled', false).css('background', 'initial');
+          } else {
+            $('#default_call_destination_reject').attr('checked', true);
+            $('#default_call_destination-input').prop('disabled', true).css('background', 'rgba(0,0,0,.16)');
+          }
+        }
+      }
+
+      function disableH323SaveBtn() {
+        var h323Savebtn = $('#h323-domain-btn');
+
+        if (h323Savebtn.prop('disabled') === true) {
+          return;
+        }
+
+        h323Savebtn.prop('disabled', true);
+        h323Savebtn.addClass('button-lock');
+      }
+
+      function enableH323SaveBtn() {
+        var h323Savebtn = $('#h323-domain-btn');
+
+        if (h323Savebtn.prop('disabled') === false) {
+          return;
+        }
+
+        h323Savebtn.prop('disabled', false);
+        h323Savebtn.removeClass('button-lock');
+      }
+
+      function openPeerModal(index, event) {
+        dialogTitle = "";
+        peer = {};
+        var dialogBtns = [
+          {
+            text: "{{ site._("Cancel")|e('html') }}",
+            id: "cancelBtn",
+            class: "peerButtonSet",
+            click: function () {
+              peerModalWindow.dialog('close');
+            }
+          }
+        ];
+
+        /**
+         * Настройка отображения формы для изменения настроек H.323-пира
+         * */
+        if (event === 'save') {
+          dialogBtns.unshift({
+            text: "{{ site._("Delete")|e('html') }}",
+            id: "deletePeerConfig",
+            class: "peerButtonSet",
+            click: function () {
+              dialogQuestionWindow.dialog({
+                resizable: false,
+                width: 'auto',
+                modal: true
+              });
+            }
+          });
+          dialogBtns.push(
+            {
+              text: TEXT_SAVE,
+              id: "saveBtn",
+              class: "peerButtonSet",
+              click: savePeerPreset
+            }
+          );
+          peer = peers[index];
+          dialogTitle = TEXT_EDIT_PEER_TITLE;
+
+          $('#peerModalForm #name').attr('disabled', isReservedPeer((peer.id)));
+
+        }
+        /**
+         * Настройка отображения формы для создания H.323-пира
+         * */
+        else {
+          dialogBtns.push(
+            {
+              text: TEXT_CREATE,
+              id: "saveBtn",
+              class: "peerButtonSet",
+              click: createPeerPreset
+            }
+          );
+
+          peer.port = {{ constant(namespace ~ '::DEFAULT_REG_PORT')|e('js') }};
+          peer.registerStrategy = {{ constant(namespace ~ '::ENUM_REGISTER_STRATEGY_OFF')|e('js') }};
+          peer.protocol = "{{ constant(namespace ~ '::ENUM_PROTOCOL_UDP')|e('js') }}";
+          peer.h224Enabled = {{ constant(namespace ~ '::DEFAULT_H224_ENABLED')|e('js') }};
+          peer.h235Enabled = {{ constant(namespace ~ '::DEFAULT_H235_ENABLED')|e('js') }};
+          peer.h239Enabled = {{ constant(namespace ~ '::DEFAULT_H239_ENABLED')|e('js') }};
+          $('#peerModalForm #name').attr('disabled', false);
+          peer.enabledCodecs = $('.enabled-codecs>input').map(function (key, codec) {
+              return codec.id;
+          }).get().join(' ');
+
+          dialogTitle = TEXT_CREATE_PEER_TITLE;
+
+          outputPeer = {};
+
+          for (var prop in peer) {
+            outputPeer[prop] = peer[prop];
+          }
+
+          peer.connectionRole = {};
+
+          for (var reservedPeer in reservedPeers) {
+            peer.connectionRole[reservedPeer] = false;
+          }
+
+        }
+
+        peerModalWindow.dialog({
+          resizable: false,
+          width: '600px',
+          modal: true,
+          title: dialogTitle,
+          close: function () {
+            outputPeer = {};
+          },
+          buttons: dialogBtns
+        });
+
+        disableSaveBtn();
+        peerModalFormRender();
+        /**
+         *  Очистка peer после рендера для отправки всех полей формы.
+         *  Для события 'save' отправляются только измненные поля формы.
+         */
+        if (event !== 'save') {
+          resetNewPeerParams(peer);
+        }
+
+        $('p.error, label.error').remove();
+        $('.peer-value-param').removeClass('error');
+
+      }
+
+      function resize_table() {
+        var fieldset_width = $('#h323-connections').width();
+        $('.peer-item > .peer-name').css('max-width', fieldset_width * 0.4);
+        $('.peer-item > .peer-role').css('max-width', fieldset_width * 0.2);
+        $('.peer-item > .peer-host').css('max-width', fieldset_width * 0.2);
+      }
+
+      function checked_allowEnterCID(checkbox) {
+          $('#default_call_destination-input').prop('disabled', checkbox.checked);
+      }
+
+      /**
+       * Handlers
+       * */
+
+      $().ready(function () {
+        peerModalWindow = $('#peerModal');
+        dialogQuestionWindow = $('#questionDialog');
+        var peerModalBodyElem = $('#peerModalBody');
+        $(window).resize(function () {
+          peerModalBodyElem.css('max-height', window.innerHeight * 0.6);
+          // peerModalWindow.parent().css('top', '10%');
+        });
+
+        $(document).bind('AfterStart', function () {
+          Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, DISPlAY_MESSAGE_DURATION);
+        });
+
+        $.validator.addMethod(
+          "pattern",
+          function (value, element, regexp) {
+            return regexp.test(value);
+          },
+          MESSAGE_PLEASE_ENTER_VALID_VALUE
+        );
+
+        $.validator.addMethod(
+          "oneOf",
+          function (value, element, allowedValues) {
+            return allowedValues.indexOf(value) > -1;
+          },
+          MESSAGE_CHANGE_ENTER_ALLOWED_VALUE
+        );
+
+        $(window).resize(resize_table);
+      });
+
+      $('.global-settings').ready(function () {
+
+        function rewriteOutputH323(element) {
+
+          if (element === undefined) {
+            return;
+          }
+
+          var validator = $('#globalForm').validate(globalParamsValidateRules);
+
+          if (validator.numberOfInvalids() !== 0
+                  || !$("#default_call_destination-input").valid() || !$("#external_address_input").valid()) {
+            $('.error').prop('title', function () {
+              return this.innerText
+            });
+            disableH323SaveBtn();
+            return;
+          }
+
+          var paramName = h323Params[element.id];
+
+          if (element.value === globalSettings[paramName]) {
+
+            if (outputGlobalSettings[paramName] !== undefined) {
+              delete outputGlobalSettings[paramName];
+            }
+
+            if (JSON.stringify(outputGlobalSettings) === "{}") {
+              disableH323SaveBtn();
+            }
+
+            return;
+          }
+
+          outputGlobalSettings[paramName] = element.value;
+
+          enableH323SaveBtn();
+        }
+
+        var h323ValueParam = $('.h323-value-param');
+
+        h323ValueParam.change(function () {
+          rewriteOutputH323(this)
+        });
+        h323ValueParam.keyup(function () {
+          rewriteOutputH323(this)
+        });
+
+        $('.enabled-codecs-checkbox').change(function () {
+
+          var currentEnabledCodecs = enabledCodecsGet();
+
+          /**
+           * Если значение не изменилось, исключаем его из outputGlobalSettings
+           */
+          if (globalSettings.enabledCodecs === currentEnabledCodecs) {
+
+            if (outputGlobalSettings.enabledCodecs !== undefined) {
+              delete outputGlobalSettings.enabledCodecs;
+            }
+
+            if (JSON.stringify(outputGlobalSettings) === "{}") {
+              disableH323SaveBtn();
+            }
+
+            return;
+          }
+
+          outputGlobalSettings.enabledCodecs = currentEnabledCodecs;
+
+          enableH323SaveBtn();
+
+        });
+
+        $('#h323-domain-btn').click(function () {
+          var validator = $('#globalForm').validate(globalParamsValidateRules);
+
+          if (validator.numberOfInvalids() !== 0
+                  || !$("#default_call_destination-input").valid() || !$("#external_address_input").valid()) {
+              $('.error').prop('title', function () {
+                  return this.innerText
+              });
+              disableH323SaveBtn();
+              return;
+          }
+
+          saveGlobalSettings();
+          disableH323SaveBtn();
+        });
+
+        $('.default_call_destination-radio').change(function () {
+            $('#default_call_destination-input').attr('disabled', this.value != 0);
+            $('#default_call_destination-input').css('background', this.value != 0 ? 'rgba(0,0,0,.16)' : 'initial');
+            if (this.value != 0)
+            {
+              $('#default_call_destination-input').prop('value', '');
+              $('#default_call_destination-input').valid();
+            }
+
+            delete outputGlobalSettings['defaultCallDestinationMode'];
+            if (globalSettings['defaultCallDestinationMode'] !== this.value)
+            {
+                if (this.value == 1) {
+                  outputGlobalSettings['defaultCallDestinationMode'] = this.value;
+                  outputGlobalSettings['defaultCallDestinationH323'] = '';
+                } else if (this.value == 2) {
+                  outputGlobalSettings['defaultCallDestinationMode'] = 0;
+                  outputGlobalSettings['defaultCallDestinationH323'] = '';
+                } else {
+                  outputGlobalSettings['defaultCallDestinationMode'] = this.value;
+                }
+            }
+
+            if (JSON.stringify(outputGlobalSettings) === "{}" || this.value == 0) {
+                disableH323SaveBtn();
+            } else {
+                enableH323SaveBtn();
+            }
+        })
+
+        $('.h323-checkbox-param').change(function () {
+
+          var value = this.checked ? 1 : 0;
+          var paramName = h323Params[this.id];
+
+          /**
+           * Если значение не изменилось, исключаем его из outputGlobalSettings
+           */
+          if (value === globalSettings[paramName]) {
+
+            if (outputGlobalSettings[paramName] !== undefined) {
+              delete outputGlobalSettings[paramName];
+            }
+
+            if (JSON.stringify(outputGlobalSettings) === "{}") {
+              disableH323SaveBtn();
+            }
+
+            return;
+          }
+
+          outputGlobalSettings[paramName] = value;
+
+          enableH323SaveBtn();
+
+        });
+
+        $.ajax({
+          url: GLOBAL_SETTINGS_CONTROLLER,
+          type: 'GET',
+          dataType: 'json',
+          success: function (data) {
+            if (data.H323 === undefined) {
+              $(document).trigger('display-header-error', {message: _(t._error)});
+              return;
+            }
+
+            globalSettings = data.H323;
+            parseDefaultVoIPServerId();
+            enabledCodecsRender();
+            globalSettingsRender();
+            peerListGet();
+            setTimeout(peersStatusesRefresh, PEERS_STATUSES_RELOAD_TIMEOUT);
+          },
+          error: function () {
+            $(document).trigger('display-header-error', {message: MESSAGE_REQUEST_ERROR});
+          }
+        });
+
+      });
+
+      $('#peerList.table-body>tbody').ready(function () {
+        $('#addConfig').click(function () {
+          openPeerModal(-1, 'Create');
+        })
+      });
+
+      $('#peerModalForm').ready(function () {
+
+        $('#peerModalForm').validate(h323PeerValidateRules);
+
+        /**
+         *
+         * @param element
+         */
+        function rewriteOutputPeer(element) {
+
+          if (element === undefined) {
+            return;
+          }
+
+          var errorElem = $(".unique-error");
+          if (errorElem[0] !== undefined) {
+            errorElem.remove();
+          }
+
+          var value = element.value;
+
+          var peerModalForm = $('#peerModalForm');
+          var validator = peerModalForm.validate();
+
+          var JQelem = $('#' + element.id);
+          JQelem.valid();
+
+          if (value == peer[element.id]) {
+
+            if (outputPeer[element.id] !== undefined) {
+              delete outputPeer[element.id];
+            }
+
+            if (JSON.stringify(outputPeer) === "{}") {
+              disableSaveBtn();
+            }
+
+            return;
+          }
+
+          if (JQelem.validate().numberOfInvalids() === 0) {
+            outputPeer[element.id] = value;
+          }
+
+          if (validator.numberOfInvalids() !== 0 || $('#name').val() === '' || $('#hostname').val() === '') {
+            disableSaveBtn();
+            return;
+          }
+
+          enableSaveBtn();
+
+        }
+
+        var peerValueParam = $('.peer-value-param');
+
+        peerValueParam.change(function () {
+          rewriteOutputPeer(this);
+        });
+
+        peerValueParam.keyup(function () {
+          rewriteOutputPeer(this)
+        });
+
+        $('.connection-role').change(function () {
+
+          if (outputPeer.connectionRole === undefined) {
+            outputPeer.connectionRole = {};
+          }
+
+          outputPeer.connectionRole[this.id] = this.checked;
+
+          if (connectionRoleIsNotModifed()) {
+            delete outputPeer.connectionRole;
+
+            if (JSON.stringify(outputPeer) === "{}") {
+              disableSaveBtn();
+            }
+
+            return;
+          }
+
+          var peerModalForm = $('#peerModalForm');
+          var validator = peerModalForm.validate();
+
+          peerModalForm.valid();
+
+          if (validator.numberOfInvalids() !== 0) {
+            disableSaveBtn();
+            return;
+          }
+
+          enableSaveBtn();
+        });
+
+        $('.peer-checkbox-param').change(function () {
+          var value = this.checked ? 1 : 0;
+
+          if (value === peer[this.id]) {
+
+            if (outputPeer[this.id] !== undefined) {
+              delete outputPeer[this.id];
+            }
+
+            if (JSON.stringify(outputPeer) === "{}") {
+              disableSaveBtn();
+            }
+            return;
+          }
+
+          var peerModalForm = $('#peerModalForm');
+          var validator = peerModalForm.validate();
+
+          peerModalForm.valid();
+
+          if (validator.numberOfInvalids() !== 0) {
+            disableSaveBtn();
+            return;
+          }
+
+          outputPeer[this.id] = value;
+          enableSaveBtn();
+
+        });
+
+        $('.peer-enabled-codecs-checkbox').change(function () {
+
+          var currentEnabledCodecs = peerEnabledCodecsGet();
+
+          var peerModalForm = $('#peerModalForm');
+          var validator = peerModalForm.validate();
+
+          peerModalForm.valid();
+
+          if (validator.numberOfInvalids() !== 0) {
+            disableSaveBtn();
+            return;
+          }
+
+          /**
+           * Если значение не изменилось, исключаем его из outputPeer
+           */
+          if (peer.enabledCodecs === currentEnabledCodecs || peer.enabledCodecs === null && currentEnabledCodecs.length === {{ constant(namespace ~ '::LENGTH_ENABLED_CODECS_MAX')|e('js') }}) {
+
+            if (outputPeer.enabledCodecs !== undefined) {
+              delete outputPeer.enabledCodecs;
+            }
+
+            if (JSON.stringify(outputPeer) === "{}") {
+              disableSaveBtn();
+            }
+
+            return;
+          }
+
+          outputPeer.enabledCodecs = currentEnabledCodecs;
+
+          enableSaveBtn();
+
+        });
+
+        $('.used-as-radio').click(function () {
+          switch (this.value) {
+            case 'defaultH323GateKeeper':
+              enableSaveBtn();
+              break;
+            default:
+              disableSaveBtn();
+              break;
+          }
+        });
+
+      });
+
+    </script>
+{% endblock %}

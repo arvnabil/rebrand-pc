@@ -1,0 +1,29 @@
+<script type='text/javascript' language='JavaScript'>
+  $(document).ready(function () {
+
+    $.timepicker.setDefaults($.timepicker.regional['{{ lang }}']);
+    $('#{{ id }}').datetimepicker($.extend($.datepicker.regional['{{ lang }}'], {
+      minDate: new Date(),
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: '{{ date_format }}',
+      timeFormat: '{{ time_format }}',
+      showAnim: 'show',
+      showOn: 'both',
+      buttonImage: '/img/calendar.png',
+      buttonImageOnly: true,
+      buttonText: '',
+    })).click(function () {
+      $('#ui-datepicker-div').css('z-index', 301);
+    });
+    $('img.ui-datepicker-trigger').click(function () {
+      $('#ui-datepicker-div').css('z-index', 301);
+    });
+    $.datepicker.base_gotoToday = $.datepicker._gotoToday;
+    $.datepicker._gotoToday = function () {
+      $('.ui-datepicker-close').click();
+      $.datepicker.base_gotoToday('#{{ id }}');
+    }
+  });
+</script>
+{{ input }}

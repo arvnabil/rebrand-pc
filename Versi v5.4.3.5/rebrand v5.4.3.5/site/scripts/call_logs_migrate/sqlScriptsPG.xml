@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    
+    <sql id="select_conferences_from_sqlite">
+        select
+            conference,
+            broker_id,
+            owner,
+            start_time,
+            end_time,
+            term_reason,
+            type,
+            subtype,
+            app_id,
+            is_public,
+            named_conf_id,
+            max_participants,
+            topic,
+            record_file,
+            guest_flags
+        from tb_conference_log;
+    </sql>
+    
+    <sql id="select_participants_from_sqlite">
+        select
+            conference,
+            broker_id,
+            call_id,
+            join_time,
+            leave_time,
+            leave_reason,
+            type,
+            display_name,
+            app_id,
+            avg_send_fps,
+            avg_cpu_load,
+            avg_jitter,
+            bytes_sent,
+            bytes_received,
+            reconnect_snd,
+            reconnect_rcv,
+            participant_time,
+            broadcast_time,
+            video_w,
+            video_h,
+            loss_rcv_packets
+        from tb_participant_log
+        where join_time is not null;
+    </sql>
+    
+    <sql id="select_invites_from_sqlite">
+        select
+            conference,
+            broker_id,
+            call_id,
+            invited_call_id,
+            invite_time,
+            case when type is null then null else 'true' end join_time
+        from tb_participant_log
+        where invited_call_id is not null;
+    </sql>
+    
+    <sql id="insert_conference_to_pg">
+        insert into stat.conferences (id,
+            owner,
+            start_time,
+            end_time,
+            term_reason,
+            type,
+            subtype,
+            app_id,
+            is_public,
+            named_conf_id,
+            max_participants,
+            topic,
+            record_file,
+            guest_flags) 
+        VALUES (:conference_id,
+            :owner,
+            :start_time,
+            :end_time,
+            :term_reason,
+            :type,
+            :subtype,
+            :app_id,
+            :is_public,
+            :named_conf_id,
+            :max_participants,
+            :topic,
+            :record_file,
+            :guest_flags
+        )
+    </sql>
+    
+    <sql id="insert_participant_to_pg">
+        insert into stat.participants (conference_id,
+            call_id,
+            join_time,
+            leave_time,
+            leave_reason,
+            type,
+            display_name,
+            app_id,
+            avg_sent_fps,
+            avg_cpu_load,
+            avg_jitter,
+            bytes_sent,
+            bytes_received,
+            reconnect_snd,
+            reconnect_rcv,
+            participant_time,
+            broadcast_time,
+            video_w,
+            video_h,
+            loss_rcv_packets)
+        VALUES (:conference_id,
+            :call_id,
+            :join_time,
+            :leave_time,
+            :leave_reason,
+            :type,
+            :display_name,
+            :app_id,
+            :avg_send_fps,
+            :avg_cpu_load,
+            :avg_jitter,
+            :bytes_sent,
+            :bytes_received,
+            :reconnect_snd,
+            :reconnect_rcv,
+            :participant_time,
+            :broadcast_time,
+            :video_w,
+            :video_h,
+            :loss_rcv_packets
+        )
+    </sql>
+    
+    <sql id="insert_invites_to_pg">
+        insert into stat.invites (conference_id,
+            call_id,
+            invited_call_id,
+            invite_time,
+            is_accepted)
+        VALUES (:conference_id,
+            :call_id,
+            :invited_call_id,
+            :invite_time,
+            :join_time
+        )
+    </sql>
+</root>

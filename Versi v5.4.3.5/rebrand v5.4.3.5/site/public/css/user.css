@@ -1,0 +1,290 @@
+.mgr_member {
+    width: 270px;
+    height: 80px;
+    overflow: hidden;
+    margin: 3px 3px;
+    padding: 3px;
+    border: 2px solid #CCCCCC;
+    float: left;
+    box-sizing: border-box;
+    position: relative;
+}
+
+ .mgr_member:hover {
+    border: 2px solid #0088CC;
+}
+
+
+.mgr_member.mgr_fixedMember {
+    width : 100%;
+    height: 100%;
+    float: none;
+    margin: 3px 0px;
+}
+
+.mgr_member.mgr_noBorder {
+    border: none;
+}
+
+.mgr_member.mgr_noBorder:hover {
+    border: none;
+}
+
+ .mgr_member.mgr_disabled {
+    border: 2px solid #AAA;
+}
+
+ .mgr_member.mgr_disabled:hover {
+    border: 2px solid #AAA;
+}
+
+.mgr_member.mgr_operator:not(.mgr_hasButtons):before {
+    content: "\2605";
+    position: absolute;
+    font-size: 24px;
+    right: 2px;
+    bottom: 4px;
+    color: #0088CC;
+}
+
+ .mgr_member .mgr_fade {
+    position: absolute;
+    top : 0px;
+    left : 0px;
+    right : 0px;
+    bottom : 0px;
+    background-color: #EEE;
+    opacity : 0.5;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+}
+
+
+.mgr_member .mgr_memberIcon {
+    width: 48px;
+    height:48px;
+    float: left;
+    margin: 2px 5px 0px 2px;
+    
+}
+
+.mgr_member .mgr_memberIcon .mgr_memberDefault {
+    width: 48px;
+    height:48px;
+    background-image: url(/images/gray-member.png);
+}
+
+.mgr_member .mgr_memberIcon .mgr_memberDefault.loaded {
+    background-image: none;
+}
+
+.mgr_member .mgr_memberIcon .mgr_memberDefault img {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.mgr_member .mgr_memberIcon .mgr_memberDefault.loaded img {
+    display: inline-block;
+}
+
+.mgr_memberDefault > img {
+    max-width:100%;
+    max-height: 100%;
+}
+
+.mgr_member .mgr_memberIcon .mgr_memberGuest {
+    width: 48px;
+    height:48px;
+    background: url(/images/lightgray-member.png) no-repeat;
+    background-position: center;
+}
+
+.mgr_member  .mgr_memberIcon .mgr_memberUnknown {
+    width: 48px;
+    height:48px;
+    background-image: url(/images/gray-question.png);
+}
+
+.mgr_member  .mgr_memberIcon .mgr_memberSIP {
+    width: 48px;
+    height:48px;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZlcnNpb249JzEuMScgaGVpZ2h0PSc1MHB4JyB3aWR0aD0nMTIwcHgnPiA8dGV4dCB4PSc1JyB5PSczNCcgZmlsbD0nIzk5OTk5OScgZm9udC1zaXplPScyMCc+U0lQPC90ZXh0Pjwvc3ZnPg==");
+}
+
+.mgr_member  .mgr_memberIcon .mgr_memberH323 {
+    width: 48px;
+    height:48px;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZlcnNpb249JzEuMScgaGVpZ2h0PSc1MHB4JyB3aWR0aD0nMTIwcHgnPiA8dGV4dCB4PScwJyB5PSczNicgZmlsbD0nIzk5OTk5OScgZm9udC1zaXplPScxOCc+SDMyMzwvdGV4dD48L3N2Zz4=");
+}
+
+.mgr_member  .mgr_memberIcon .mgr_memberTEL {
+    width: 48px;
+    height:48px;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZlcnNpb249JzEuMScgaGVpZ2h0PSc1MHB4JyB3aWR0aD0nMTIwcHgnPiA8dGV4dCB4PSc1JyB5PSczNCcgZmlsbD0nIzk5OTk5OScgZm9udC1zaXplPScyMCc+VEVMPC90ZXh0Pjwvc3ZnPg==");
+}
+
+
+.mgr_member .mgr_memberInfo {
+    margin-right: 10px;
+}
+
+.mgr_member .mgr_memberInfo .mgr_uid , .mgr_member .mgr_memberInfo .mgr_displayName, .mgr_member .mgr_groups {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mgr_member .mgr_memberInfo .mgr_uid {
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+
+.mgr_member .mgr_memberInfo .mgr_uid .mgr_highlighted {
+    font-weight: bold;
+    color: #6A4;
+}
+
+.mgr_member .mgr_memberInfo .mgr_displayName {
+    font-size : 12px;
+    font-weight: bold;
+}
+
+.mgr_member .mgr_memberInfo .mgr_displayName .mgr_highlighted {
+    color: #E22;
+}
+
+.mgr_member .mgr_groups {
+    font-size: 11px;
+    color: #3D9CCC;
+    margin-left: 5px;
+}
+
+.mgr_member .mgr_groups .mgr_highlighted {
+    font-weight: bold;
+    color: #E22;
+}
+
+.mgr_member.mgr_operator .mgr_groups, .mgr_member.mgr_hasButtons:hover .mgr_groups {
+    margin-right: 20px;
+}
+
+.mgr_member .mgr_memberInfo .mgr_status {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-right:5px;
+    float: left;
+}
+.mgr_member .mgr_memberInfo .mgr_status  .online {
+    background-color: #00ce00;
+    border-width: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.mgr_member .mgr_memberInfo .mgr_status .offline {
+    background-color: #e65563;
+    border-width: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.mgr_member .mgr_memberInfo .mgr_status .busy {
+    background-color: #ff9900;
+    border-width: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.mgr_member .mgr_memberInfo .mgr_status .invalid {
+    background-color: #333;
+    border-width: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.mgr_member .mgr_memberInfo .mgr_status .multihost {
+    background-color: #5588EE;
+    border-width: 0;
+    width: 18px;
+    height: 18px;
+    background: url("/images/star.png") no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.mgr_member .mgr_memberInfo .mgr_status .notActive {
+    background-color: #adadad;
+    border-width: 0;
+    width: 18px;
+    height: 18px;
+}
+
+
+ .mgr_member  .mgr_memberActionsIcon {
+    cursor: pointer;
+}
+
+.mgr_member  .mgr_memberActionsIcon > div {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    right : 0px;
+    display: none;
+    padding: 4px;
+}
+
+.mgr_member  .mgr_memberActionsIcon .mgr_iconAdd {
+    top: 25px;
+    background-image: url(/images/gray-add.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.mgr_member  .mgr_memberActionsIcon .mgr_iconRemove {   
+    top: 25px;
+    background-image: url(/images/gray-delete.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.cpl_members  .mgr_member  .mgr_memberActionsIcon .mgr_iconRemove {
+    top: 0px;
+}
+
+.mgr_member  .mgr_memberActionsIcon .mgr_iconOperator {
+    right: 2px;
+    bottom: 4px;
+}
+
+.mgr_member.mgr_operator  .mgr_memberActionsIcon .mgr_iconOperator {
+    display: block;
+}
+
+.mgr_member  .mgr_memberActionsIcon .mgr_iconOperator:before {   
+    content: "\2605";
+    font-size: 24px;
+    color: #0088CC;
+}
+
+.mgr_member:not(.mgr_operator) .mgr_memberActionsIcon .mgr_iconOperator:before {  
+    content: "\2606";
+}
+
+.mgr_member.mgr_operator  .mgr_memberActionsIcon .mgr_iconOperator.mgr_immutable {
+    cursor: default;
+}
+
+.mgr_member.mgr_disabled.mgr_operator .mgr_memberActionsIcon .mgr_iconOperator { 
+    z-index: 3;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    cursor: default;
+}
+
+.mgr_member:hover .mgr_memberActionsIcon .activeIcon  {
+    display: block;
+}

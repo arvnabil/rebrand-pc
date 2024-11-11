@@ -1,0 +1,12 @@
+
+
+#middle-block {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    bottom: 20px;
+    z-index: 0;
+    
+    min-width: inherit;
+}

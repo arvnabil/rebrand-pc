@@ -1,0 +1,35 @@
+<div title="{{ site._('Warning!') }}" id="cert_warning_popup">
+    <p>
+        {{ site._("In order to use all the possibilities of WebRTC, you need to add %server_host website into security exception list.")
+        |replace({'WebRTC': '<b>Web configurator</b>', '%server_host': server_host}) }}
+    </p>
+
+    <ol style="margin-left: 20px">
+        <li>{{ site._("Click on %button")
+            |replace({'%button': '<a class="ssl_security_btn ui-button ui-widget ui-corner-all" href="" target="_blank" rel="noopener">
+<span class="ui-button-text" style="margin: 5px 10px;">'~site._('Continue')~'</span>
+</a>'}) }}
+            <script>
+              $("#cert_warning_popup .ssl_security_btn").attr('href', thisUrlwithSSL);
+            </script>
+            <br/><br/>
+        </li>
+        <li style="float:left; margin-right:50px;">
+            <br/>
+            <a href="/public/images/help/{{ lang }}/{{ browser }}-security-warning-1.png?version={{ server_version }}"
+               class="colorbox" title="{{ browser|capitalize }}">
+                <img src="/public/images/help/{{ lang }}/{{ browser }}-security-warning-1-prev.png?version={{ server_version }}"
+                     style="margin-top: -20px;width:340px;">
+            </a>
+        </li>
+        <li style="float:left">
+            <br/>
+            <a href="/public/images/help/{{ lang }}/{{ browser }}-security-warning-2.png?version={{ server_version }}"
+               class="colorbox" title="{{ browser|capitalize }}">
+                <img src="/public/images/help/{{ lang }}/{{ browser }}-security-warning-2-prev.png?version={{ server_version }}"
+                     style="margin-top: -20px;width:340px;">
+            </a>
+        </li>
+    </ol>
+
+</div>

@@ -1,0 +1,170 @@
+
+.btn-event {
+    width: 160px;
+    height: 25px;
+    float: left;
+
+    line-height: 25px;
+    color: white;
+    cursor: pointer;
+    
+}
+
+.btn-event > span {
+    float: right;
+    margin-top: 2px;
+    font-weight: bold;
+    width: 160px;
+    text-align: center;
+}
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #0679B8;
+}
+
+.btn-arrow {
+    float: left;
+    margin-left: 2px;
+    height: 25px;
+    width: 27px;
+    cursor: pointer;
+}
+
+.btn-arrow > div {
+    margin: 8px 8px;
+}
+
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #0679B8;
+}
+
+.btn-list {
+    clear: both;
+    float: left;
+    background-color: #EEEEEE;
+    z-index: 10000;
+}
+
+.btn-list > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+.btn-list > ul li {
+    border-top: solid 1px white;
+    width: 184px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+.btn-list > ul li.action:hover {
+    background-color: #DDDDDD;
+}
+.none {
+    display: none;
+}
+
+.lock {
+    cursor: default;
+    background: #EEEEEE;
+}
+
+.lock:hover {
+    background: #EEEEEE;
+}
+
+.lock > span {
+    color: #999999;
+}
+
+.lock .triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #AAAAAA;
+}
+
+.btn-manage {
+    behavior: url("/public/js/common/pie/PIE.htc");
+    float: right;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    background: white;
+}
+
+.btn-manage:hover {
+    background: lightblue;
+}
+
+#server-info {
+    width: 200px;
+}
+
+.ui-widget-header {
+    background: url(/img/header/topmenu-bg.png);
+}
+.ui-dialog-title {
+    color: white;
+}
+
+.ui-state-hover .ui-icon {
+    background-image: url(/public/images/timepicker/ui-icons_222222_256x240.png);
+}
+
+#lang-list ul {
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+#lang-list {
+    padding-left: 0px;
+    padding-right: 5px;
+}
+
+#lang-list ul li {
+    border-bottom: solid 1px white;
+    border-top: none;
+    width: 169px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+#lang-list :hover {
+    background-color: #EEEEEE;
+}
+
+#lang-list ul li:hover {
+    background-color: #DDDDDD;
+}
+
+.current-lang {
+    font-weight: bold;
+}
+
+.arrow-lang-down, 
+.arrow-lang-up {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    float: right;
+    margin-top: 4px;
+    margin-right: 2px;
+}
+
+.arrow-lang-down {
+    background: url('/public/images/timepicker/ui-icons_222222_256x240.png') no-repeat -69px -18px;
+}
+
+.arrow-lang-up {
+    background: url('/public/images/timepicker/ui-icons_222222_256x240.png') no-repeat -4px -18px;
+}

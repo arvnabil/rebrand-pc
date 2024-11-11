@@ -1,0 +1,122 @@
+.mlc_multicheck {
+    width: 100%;
+}
+
+.mlc_multicheck .mlc_dropdown {
+    height : 30px;
+    border: 1px solid #000;
+    position: relative;
+}
+
+.mlc_multicheck .mlc_dropdown .mlc_disabled {
+    position: absolute;
+    background-image: url(/img/spinner-16.gif);
+    background-repeat: no-repeat;
+     background-position: center center;
+    top : 0px;
+    left : 0px;
+    right : 0px;
+    bottom : 0px;
+    background-color: #EEE;
+    opacity : 0.5;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    z-index: 5;
+}
+
+.mlc_multicheck .mlc_dropdown  .mlc_btnArrow {
+    background: white;
+    border-left: 1px solid #000;
+    height: 28px;
+    width: 25px;
+    padding-top: 2px;
+    cursor: pointer;
+    z-index: 2;
+    top:0px;
+    right:0px;
+    position:absolute;
+}
+
+.mlc_multicheck .mlc_dropdown .mlc_btnArrow:hover {
+    background: lightblue;
+}
+
+.mlc_multicheck .mlc_dropdown .mlc_upArrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #555;
+    margin: 8px 8px;
+}
+
+.mlc_multicheck .mlc_dropdown  .mlc_downArrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #555;
+    margin: 8px 8px;
+}
+
+.mlc_multicheck .mlc_dropdown .mlc_tooltip {
+    padding-left: 5px;
+    padding-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 28px;
+}
+
+.mlc_multicheck  .mlc_optionListWrapper {
+    position:relative;
+    width: 100%;
+}
+
+.mlc_multicheck  .mlc_optionList {
+    clear: both;
+    background-color: white;
+    z-index: 100;
+    position: absolute;
+    left : 0px;
+    right : 0px;
+    border-width: 0px 1px 1px 1px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-color: #000;
+    border-style: solid;
+}
+
+
+.mlc_multicheck  .mlc_optionList  ul {
+    max-height: 128px;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
+.mlc_multicheck  .mlc_optionList  ul li {
+    border-top: solid 1px #ddd;
+    width: inherit;
+    padding: 5px;
+    cursor: pointer;
+    height: 21px;
+    line-height: 21px;
+    white-space: nowrap;
+}
+
+.mlc_multicheck  .mlc_optionList ul li:hover {
+    background-color: #DDDDDD;
+}
+
+.mlc_multicheck  .mlc_optionList  ul li.mlc_disabledItem span {
+    color : #B3B3B3;
+}
+
+.mlc_multicheck  .mlc_optionList  ul li input[type=checkbox] {
+    width: auto;
+    margin: 0px 10px;
+}

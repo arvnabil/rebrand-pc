@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+{% apply spaceless %}
+{% set current_version = server_version ? server_version : '4.0.0' %}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {% block title %}<title>{{ ((srv_id) ? (srv_id) ~' - ' : '')~ title|striptags }}</title>{% endblock %}
+    {% block head %}
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <link href="/public/css/main.php?version={{ current_version }}" rel="stylesheet" type="text/css"/>
+        <link href="/css/admin.css?version={{ current_version }}" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="/img/favicon.ico"/>
+        <script type="text/javascript"
+                src="/public/js/moment-with-locales.js?version={{ current_version|e('html') }}"></script>
+        <script type="text/javascript" src="/public/js/{{ settings.lang }}.js?version={{ current_version }}"></script>
+        <script type="text/javascript" src="/public/js/ua-parser.min.js?version={{ current_version }}"></script>
+        <script type="text/javascript" src="{{ main_js }}?version={{ current_version }}"></script>
+        <script type="text/javascript">
+            {% block js_init_params %}
+            var tcm = {};
+            tcm.timeUpdateControlPanel = {{ web_manager.time_update_control_panel ? web_manager.time_update_control_panel : 10000 }};
+            tcm.timeWebRestartMax = {{ (web_manager.time_web_restart_max ? web_manager.time_web_restart_max : 60) * 1000 }};
+            tcm.usersStatusUpdate = {{ web_manager.users_status_update?web_manager.users_status_update:15000 }};
+            tcm.usersUpdateStep = {{ web_manager.users_update_step ? web_manager.users_update_step : 900 }};
+            tcm.service_name = '{{ web_manager.server_service ? web_manager.server_service : 'TrueConf' }}';
+            tcm.server_name = '{{ server_name }}';
+            tcm.client_name = '{{ settings.config.client_id_name }}';
+            tcm.server_version = '{{ current_version }}';
+            tcm.livechat_url = '{{ web_manager.livechat_url }}';
+            tcm.check_update_url = '{{ web_manager.check_update_url }}?lang={{ settings.lang }}&current_version={{ current_version }}&server={{ srv_id }}{{ web_manager.beta_tester ? '&beta='~web_manager.beta_tester : '' }}&d={{ license.requestSignature(web_manager.beta_tester ~ current_version) }}';
+            tcm.status_update_url = '{{ status_update_url }}';
+            tcm.generate_secret_key_url = '{{ generate_secret_key_url }}';
+            tcm.startServerUrl = '{{ startServerUrl }}';
+            tcm.stopServerUrl = '{{ stopServerUrl }}';
+            tcm.endRegisterUrl = '{{ endRegisterUrl }}';
+            tcm.setRestartMsgUrl = '{{ setRestartMsgUrl }}';
+            tcm.cmdRegisterUrl = '{{ cmdRegisterUrl }}';
+            tcm.restartApacheUrl = '{{ restartApacheUrl }}';
+            tcm.apacheIsWorkUrl = '{{ apacheIsWorkUrl }}';
+            tcm.securitySettingsUrl = '{{ securitySettingsUrl }}';
+            tcm.logUrl = '{{ logUrl }}';
+            tcm.preferencesUrl = '{{ preferencesUrl }}';
+            tcm.changeStorageUrl = '{{ changeStorageUrl }}';
+            tcm.importLdapUsersUrl = '{{ importLdapUsersUrl }}';
+            tcm.isSecurityAdmin = '{{ isSecurityAdmin }}';
+            tcm.languageList = '{{ web_manager.lang_list | json_encode() }}';
+            tcm.currentLanguage = '{{ settings.lang }}';
+
+            tcm.server_restart_required = {{ server_restart_required ? 'true' : 'false' }};
+            tcm.work_dir_path_requires_change = {{ work_dir_path_requires_change ? 'true' : 'false' }};
+            tcm.master_server_is_not_allowed = {{ master_server_is_not_allowed ? 'true' : 'false' }};
+
+            {% endblock %}
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+
+            // function setMessageStyle(){
+            //     var server_status_width = $('#server-status').width();
+            //     var horizontal_margin = 20;
+            //     var max_width = window.innerWidth - server_status_width - horizontal_margin * 3;
+            //     var message_elem = $('#header #line-1 #message');
+            //     var left = (window.innerWidth - max_width) / 2;
+            //     left = left + message_elem.width > window.innerWidth - server_status_width ? horizontal_margin : left;
+            //     message_elem.css('max-width', max_width).css('left', left);
+            // }
+            //
+            // $().ready(function(){
+            //     setMessageStyle();
+            //     $(window).resize(setMessageStyle);
+            // })
+
+            $(document).ajaxError(function (event, xhr, settings) {
+              if (xhr.status === 403 || xhr.status === "403" || xhr.status === 423 || xhr.status === "423") {
+                window.location.href = '/admin'
+              }
+            });
+
+            function renderFileButtons() {
+              var upload_button_list = $("input[type='file']");
+              for (var item_number = 0; item_number < upload_button_list.length; item_number++) {
+                var item = upload_button_list.get(item_number);
+                $(upload_button_list.get(item_number)).replaceWith($('<div class="upload-button-rendered-block">')
+                  .append(
+                    item.outerHTML
+                    + '<input class="button" type="button" value="{{ site._("Choose a file")|e("html") }}" '
+                    + 'title="{{ site._("No file chosen")|e("html") }}" />'
+                    + '<label>{{ site._("No file chosen")|e("html") }}</label>'
+                  ));
+              }
+
+              setTimeout(function () {
+                var rendered_upload_button_elem = $("div.upload-button-rendered-block>input[type='button']");
+                rendered_upload_button_elem.bind('click', function () {
+                  var hidden_upload_button_elem = $(this.parentElement.firstChild);
+                  hidden_upload_button_elem.click();
+                });
+                var hidden_upload_button_elem = $("div.upload-button-rendered-block>input[type='file']");
+                hidden_upload_button_elem.change(function () {
+                  var rendered_block = this.parentElement;
+                  var hidden_upload_button_elem = $(rendered_block.firstChild);
+                  var label_elem = $(rendered_block.lastChild);
+                  var file_path = hidden_upload_button_elem[0].files[0].name;
+                  var rendered_file = file_path === ''
+                    ? "{{ site._("No file chosen")|e("js") }}"
+                    : file_path;
+                  label_elem.text(rendered_file);
+                  rendered_block.children[1].title = rendered_file;
+                });
+              }, 0);
+            }
+
+            {% if self_signed_certificate_was_refreshed %}
+            localStorage.setItem('selfSignedCertificateWasRefreshed', "true");
+            {% endif %}
+
+            function detectBrowserName() {
+              if (window.navigator.userAgent.indexOf('Edge') !== -1) {
+                return "edge";
+              }
+              if (window.navigator.userAgent.indexOf('Chrome') !== -1) {
+                return "chrome";
+              }
+              if (window.navigator.userAgent.indexOf('Mozilla') !== -1) {
+                return "firefox";
+              }
+
+              return "ie";
+            }
+
+            function openAdminContactPopup(protocol) {
+              var contactPopup = $("#admin-contact-popup");
+              var sslWasDisabled = localStorage.getItem("sslWasDisabled") === "true";
+              contactPopup.dialog({
+                title: "{{ site.pgettext('Message', 'Contact administrator') }}",
+                width: '390px',
+                resizable: false,
+                modal: true,
+                buttons: [
+                  {
+                    text: _("Ok"),
+                    click: function () {
+                      if (sslWasDisabled && document.location.protocol === "https:"
+                        && typeof (protocol) !== "undefined") {
+                        document.location.protocol = "http:";
+                        return;
+                      }
+                      contactPopup.dialog("close");
+                    }
+                  }
+                ]
+              });
+              $(".ui-dialog .ui-dialog-buttonpane").css('text-align', 'center');
+              $(".ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset").css('float', 'none');
+              $(".ui-button-text").css('width', '50px');
+            }
+
+            function openPageInNewWindow(protocol, hostName, portNumber, path) {
+              portNumber = portNumber !== null ? ":" + portNumber : "";
+              var newUrl = protocol + "//" + hostName + portNumber + path;
+              checkConnection(newUrl, function () {
+                document.location.href = newUrl;
+              }, function () {
+                openNewWindow(newUrl);
+                openAdminContactPopup(protocol);
+              });
+            }
+
+            function openGuestPageInNewWindowByHttp() {
+              openPageInNewWindow("http:", document.location.hostname,
+                localStorage.getItem("apacheListenedHttpPort"), "/guest/login");
+            }
+
+            function openGuestPageInNewWindowByHttps() {
+              openPageInNewWindow("https:", document.location.hostname,
+                localStorage.getItem("apacheListenedHttpsPort"), "/guest/login");
+            }
+
+            function openGuestPageInNewWindow() {
+              openNewWindow("/guest/login");
+            }
+
+            function renderConnectionInstruction(criticalHttpsSettingsWereChanged) {
+              var sslWasDisabled = localStorage.getItem('sslWasDisabled') === "true";
+              var sslMode = localStorage.getItem("sslMode");
+              var instructionBlock = criticalHttpsSettingsWereChanged
+                ? (sslMode === "1" ? $("#certificate-instruction") : $("#ssl-instruction"))
+                : (sslWasDisabled ? $("#http-connection-instruction") : $("#enable-service-instruction"));
+              var openNewPageHandler = criticalHttpsSettingsWereChanged
+                ? openGuestPageInNewWindowByHttps
+                : (sslWasDisabled ? openGuestPageInNewWindowByHttp : openGuestPageInNewWindow);
+
+              var button = $(".next-button");
+              button.click(openNewPageHandler);
+              $('#middle-block').html(instructionBlock);
+              instructionBlock.show();
+
+              localStorage.removeItem("selfSignedCertificateWasRefreshed");
+              localStorage.removeItem("sslPortWasChanged");
+            }
+
+            function checkConnection(url, onSuccessCallback, onErrorCallback) {
+              $.ajax({
+                url: url,
+                success: onSuccessCallback,
+                error: onErrorCallback
+              });
+            }
+
+            /**
+             *
+             * @param url
+             * @param onSuccessCallback
+             * @returns {boolean}
+             */
+            function waitConnection(url, onSuccessCallback) {
+              $.ajax({
+                url: url,
+                success: onSuccessCallback,
+                error: function () {
+                  setTimeout(function () {
+                    waitConnection(url, onSuccessCallback);
+                  }, 500);
+                }
+              });
+            }
+
+            function waitAuthorization(childWindow, onSuccessCallback) {
+              var timer = setInterval(function () {
+                if (childWindow.location.pathname === "/admin/general/info/") {
+                  clearInterval(timer);
+                  if (typeof (onSuccessCallback) !== "function") {
+                    return;
+                  }
+                  onSuccessCallback();
+                }
+              }, 500);
+            }
+
+            /**
+             *
+             * @param path
+             */
+            function openNewWindow(path) {
+              var openedWindow = window.open(path, "login", "width=1024,height=720");
+              var sslWasDisabled = localStorage.getItem("sslWasDisabled") === "true";
+              if (sslWasDisabled && document.location.protocol === "https:") {
+                return;
+              }
+              // console.log(path);return;
+              waitConnection(path, function () {
+                localStorage.removeItem("sslWasDisabled");
+                openedWindow.close();
+                document.location.href = path;
+              });
+            }
+
+            $(document).ready(function () {
+              renderFileButtons();
+              var sslInstructionImages = $(".ssl-certificate-warning>img");
+              var browserName = detectBrowserName();
+              var browserLanguage = window.navigator.language === "ru-RU" ? 'ru' : 'en';
+              sslInstructionImages[0].src = "/public/images/help/" + browserLanguage + "/" + browserName
+                + "-security-warning-1.png";
+              sslInstructionImages[1].src = "/public/images/help/" + browserLanguage + "/" + browserName
+                + "-security-warning-2.png";
+            });
+
+        </script>
+    {% endblock %}
+    {% autoescape  'js' %}
+    {% endautoescape %}
+
+    {{ js_service }}
+
+    {% block js %}{% endblock %}
+</head>
+<body>
+
+{% if debug.isEnabled() %}
+    {% include 'debug.twig' %}
+{% endif %}
+<noscript>
+    <div id="loading-background"></div>
+    <div class="cont"><h1 class="red" style="font-size: 25px;">{{ site._('Please, enable JavaScript!') }}</h1></div>
+</noscript>
+<!-- Header -->
+{% block header %}
+    <div id="header">
+        <div id="line-1">
+            <div id="message">
+                {% if note_msg %}
+                    <span class="note-msg">{{ note_msg }}</span>
+                {% endif %}
+            </div>
+            {% if not(hide_left_menu) %}
+                <div id="server-status"></div>
+            {% endif %}
+        </div>
+        <div id="line-2">
+            <img id="logo" onclick="location.href = '/admin';"
+                 alt='{{ site._("Video conferencing software and video conferencing services") }}'
+                 title='{{ site._("Video conferencing software and video conferencing services") }}'
+                 src="/img/header/topmenu-logo.svg"/>
+            {% if not paid_server %}
+                <a class="paid-server" href="{{ company_site_url }}/tcsf?lang={{ settings.lang }}"
+                   target="_blank" rel="noopener">FREE</a>
+            {% elseif enterprise_master %}
+                <a class="paid-server"
+                   href="{{ company_site_url }}/products/enterprise/trueconf-enterprise.html?lang={{ settings.lang }}"
+                   target="_blank" rel="noopener">Enterprise Master</a>
+            {% elseif enterprise_slave %}
+                <a class="paid-server"
+                   href="{{ company_site_url }}/products/enterprise/trueconf-enterprise.html?lang={{ settings.lang }}"
+                   target="_blank" rel="noopener">Enterprise Slave</a>
+            {% endif %}
+            {% if is_not_registered %}
+                <span class="product-name">Server Manager</span>
+            {% endif %}
+            <div id="server-info"></div>
+            <div id="server-name">{{ server_name }}</div>
+        </div>
+    </div>
+{% endblock %}
+
+<div id="middle-block">
+    <!-- Left side-bar block -->
+    {% if not(hide_left_menu) %}
+        <div id="left-side-bar">
+            <table>
+                <tr>
+                    <td class="menu-cell">
+                        {% block vmenu %}
+                            <div id="left-menu">{{ left_menu }}</div>
+                        {% endblock %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="trial-cell">
+                        {% if not paid_server %}
+                            {% block trial_btn %}
+                                <a class="button btn_green"
+                                   href="{{ company_site_url }}/tcs/buy/?lang={{ settings.lang }}&version={{ server_version }}&server={{ srv_id }}&d={{ license.requestSignature() }}"
+                                   target="_blank" rel="noopener">{{ site._('Buy key') }}</a>
+                            {% endblock %}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+
+    <!-- Information block -->
+    <div id="content-side" {{ (hide_left_menu) ? 'style="left: 0px"' : '' }} >
+        {% block main_container %}
+            <div class="content-container">
+                <div id="error-message-container">
+                    <p class="error-text">
+                        {% if error_msg %}
+                            {{ error_msg }}
+                        {% endif %}
+                    </p>
+                </div>
+                {% if ('admin' == user_type) and (days_left != null) and (days_left <= 14) %}
+                    <script type="text/javascript">
+                      $(document).ready(function () {
+                        $('#dlg-expire').extensionsPopup('renewal');
+                      });
+                    </script>
+                    <div class="waning-msg">{{ (days_left > 0) ? site.ngettext(
+                            "Your license will expire soon. %d day left until expiration. [a]Renew the license[/a]",
+                            "Your license will expire soon. %d days left until expiration. [a]Renew the license[/a]",
+                            days_left) | replace({'%d': '<b>'~days_left~'</b>', '[a]': '<a href="" id="dlg-expire">', '[/a]': '</a>'}):
+                        site._("Your license has expired. [a]Renew the license[/a]") | replace({'[a]': '<a href="" id="dlg-expire">', '[/a]': '</a>'}) }}</div>
+                {% endif %}
+                <div id="restart-server-on-slots-change-msg"><span></span></div>
+
+                {% block h1 %}
+                    <h1>{{ title }}{% block help %}<p class="help" align="right"><a target="_blank" rel="noopener"
+                                                                                    href="{{ site.getInsideUrl('help', 'show')~help_section }}">{{ site._('Help') }}</a><label
+                                    class="help-icon">?</label></p>{% endblock %}</h1>
+                {% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block license_block %}
+            <div id="license-block">
+                {% block license_block_text %}
+                    <span>
+                        {% set current_year = 'now'|date("Y") %}
+                        {{ settings.config.server_name }} v{{ current_version }}
+                        . &copy; 2010-{{ 'now'|date("Y") }} {{ settings.config.company_name }}.
+                        {{ site._('All rights reserved.') }}
+                        </span>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+</div>
+
+<div id="admin-contact-popup">
+    <div>
+        <p>{{ site._("Contact name:")|e('html') }}</p>
+        <p>{{ web_manager.admin_fio|e('html') }}</p>
+    </div>
+    <div>
+        <p>{{ site._("Email:")|e('html') }}</p>
+        <p>{{ web_manager.admin_email|e('html') }}</p>
+    </div>
+    <div>
+        <p>{{ site._("Phone:")|e('html') }}</p>
+        <p>{{ web_manager.admin_phone|e('html') }}</p>
+    </div>
+</div>
+
+<div id='certificate-instruction' class="connection-instruction">
+    <h1>{{ site._("Self-signed certificate configuration")|e('html') }}</h1>
+    <p class="description">
+        {{ site._("To make full use of your video conferencing system, you need to add this server certificate "
+            ~"to the security exception list.")|e('html') }}
+    </p>
+    <ol>
+        <li>
+            <p>{{ site._("Click the button")|e('html') }}</p>
+            <button class="button next-button">{{ site._("Continue")|e('html') }}</button>
+        </li>
+        <li>
+            <p>{{ site._("Make the following changes in your browser settings") }}:</p>
+            <div class="ssl-certificate-warning"><img src="" alt=""/></div>
+            <div class="ssl-certificate-warning"><img src="" alt=""/></div>
+        </li>
+    </ol>
+    <p>{{ (site._("[b]Please note:[/b] if your browser cannot connect to the server after you "
+            ~ "click on the %continue_button_name button, you should manually start %web_manager_sevice "
+            ~ "service or [a]contact your server administrator[/a].")|e('html')
+        |replace({'[b]': '<b>', '[/b]': '</b>', '%continue_button_name': site._("Continue")|e('html'),
+            '[a]': '<a href="#" onclick="openAdminContactPopup()">', '[/a]': '</a>',
+            '%web_manager_sevice':web_manager.service_name})) }}
+    </p>
+</div>
+
+<div id='ssl-instruction' class="connection-instruction">
+    <h1>{{ site._("Changing HTTPS settings ")|e('html') }}</h1>
+    <p class="description">{{ instruction }}</p>
+    <button class="button next-button">{{ site._("Continue")|e('html') }}</button>
+    <p>{{ (site._("[b]Please note:[/b] if your browser cannot connect to the server after you "
+            ~ "click on the %continue_button_name button, you should manually start %web_manager_sevice "
+            ~ "service or [a]contact your server administrator[/a].")|e('html')
+        |replace({'[b]': '<b>', '[/b]': '</b>', '%continue_button_name': site._("Continue")|e('html'),
+            '[a]': '<a href="#" onclick="openAdminContactPopup()">', '[/a]': '</a>',
+            '%web_manager_sevice':web_manager.service_name})) }}
+    </p>
+</div>
+
+{% set instruction = (
+    site._("To log into the control panel with updated settings, click the %continue_button_name button.")
+    |replace({'%continue_button_name':site._("Continue")})
+    )|e('html') %}
+
+<div id='http-connection-instruction' class="connection-instruction">
+    <h1>{{ site._("Disabling HTTPS ")|e('html') }}</h1>
+    <p class="description">{{ instruction }}</p>
+    <button class="button next-button">{{ site._("Continue")|e('html') }}</button>
+    <p>{{ (site._("[b]Please note:[/b] if your browser cannot connect to the server after you "
+            ~ "click on the %continue_button_name button, you should manually start %web_manager_sevice "
+            ~ "service or [a]contact your server administrator[/a].")|e('html')
+        |replace({'[b]': '<b>', '[/b]': '</b>', '%continue_button_name': site._("Continue")|e('html'),
+            '[a]': '<a href="#" onclick="openAdminContactPopup()">', '[/a]': '</a>',
+            '%web_manager_sevice':web_manager.service_name})) }}
+    </p>
+</div>
+
+<div id='enable-service-instruction' class="connection-instruction">
+    <h1>{{ site._("Service %service_name unavailable")|e('html')
+        |replace({'%service_name unavailable':web_manager.service_name}) }}</h1>
+    <p class="description">{{ instruction }}</p>
+    <button class="button next-button">{{ site._("Continue")|e('html') }}</button>
+    <p>{{ (site._("[b]Please note:[/b] if your browser cannot connect to the server after you "
+            ~ "click on the %continue_button_name button, you should manually start %web_manager_sevice "
+            ~ "service or [a]contact your server administrator[/a].")|e('html')
+        |replace({'[b]': '<b>', '[/b]': '</b>', '%continue_button_name': site._("Continue")|e('html'),
+            '[a]': '<a href="#" onclick="openAdminContactPopup()">', '[/a]': '</a>',
+            '%web_manager_sevice':web_manager.service_name})) }}
+    </p>
+</div>
+
+<!-- Footer -->
+{% block footer %}
+    <div id="live_chat"></div>
+    <div id="footer"></div>
+{% endblock %}
+
+{{ set_time_zone }}
+
+<!--  Permanent blocks -->
+<div id="js_confirmation"></div>
+
+<style type="text/css">
+    select {
+        background-color: white;
+    }
+
+    .help-icon {
+        margin: 3px;
+        border: 1px solid gray;
+        border-radius: 28px;
+        padding: 0 4px 0 4px;
+        color: gray;
+        font-size: smaller;
+        cursor: default;
+    }
+
+    .help {
+        display: inline;
+        float: right;
+    }
+
+    #error-message-container {
+        border: 1px solid red;
+        padding: 8px;
+    {% if error_msg == null %} display: none;
+    {% endif %}
+    }
+
+    div.upload-button-rendered-block {
+        display: inline;
+    }
+
+    div.upload-button-rendered-block > input[type="file"] {
+        display: none;
+    }
+
+    div.upload-button-rendered-block > label {
+        display: inline-block;
+        width: 150px;
+        margin-left: 6px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    b.server-name {
+        color: #e65563;
+    }
+
+    #admin-contact-popup {
+        display: none;
+    }
+
+    #admin-contact-popup > div {
+        margin-bottom: 10px;
+    }
+
+    .connection-instruction {
+        display: none;
+        margin-left: 24px;
+        width: 990px;
+    }
+
+    .connection-instruction a {
+        color: #4178bb
+    }
+
+    .connection-instruction ol {
+        margin-left: 24px;
+    }
+
+    .connection-instruction p {
+        clear: both;
+        margin-top: 8px;
+    }
+
+    .next-button {
+        margin: 8px;
+        text-decoration: none;
+    }
+
+    .ssl-certificate-warning {
+        max-width: 450px;
+        height: 100%;
+        float: left;
+        clear: right;
+        padding: 8px;
+
+    }
+
+    .ssl-certificate-warning > img {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .hack_for_japanese_cancel_button > .ui-button-text {
+        padding: .4em 0;
+    }
+
+    .dialog-question-form {
+        min-width: 400px;
+    }
+
+    {% if work_dir_path_requires_change %}
+    .dialog-question-form div.ui-dialog-buttonset {
+        width: auto !important;
+        float: right !important;
+    }
+
+    .dialog-question-form button.ui-button {
+        width: auto !important;
+    }
+
+    {% endif %}
+</style>
+<!--  End page -->
+</body>
+</html>
+{% endapply %}

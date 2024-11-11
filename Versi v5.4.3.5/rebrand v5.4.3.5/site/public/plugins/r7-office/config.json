@@ -1,0 +1,48 @@
+{
+	"remember_me": false,
+	"defaults": {
+		"conference": {
+			"mode": "smart_meeting",
+			"pin": 0,
+			"recording": 0,
+			"on_join_mute_camera": 0,
+			"guest_send_messages": 1,
+			"guest_send_audio": 1,
+			"guest_send_video": 1
+		}
+	},
+	"lock": {
+		"conference": {
+			"pin": false,
+			"recording": false,
+			"on_join_mute_mic": false,
+			"on_join_mute_camera": false,
+			"disable_audio_remarks": false,
+			"guest_send_messages": false,
+			"guest_send_audio": false,
+			"guest_send_video": false
+		}
+	},
+	"hidden": {
+		"conference": {
+			"type": {
+				"private": false,
+				"public": false
+			},
+			"mode": {
+				"smart_meeting": false,
+				"moderated_role_based": false,
+				"all_on_screen": false,
+				"video_lecture": false
+			},
+			"pin": false,
+			"recording": false,
+			"on_join_mute_mic": false,
+			"on_join_mute_camera": false,
+			"disable_audio_remarks": false,
+			"guest_send_messages": false,
+			"guest_send_audio": false,
+			"guest_send_video": false
+		}
+	}
+}

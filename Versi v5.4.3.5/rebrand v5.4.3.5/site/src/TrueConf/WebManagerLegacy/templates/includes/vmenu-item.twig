@@ -1,0 +1,13 @@
+{% macro vmenuin(menu, site) %}
+    <ul>
+        {% for item in menu %}
+            <li>
+                {% if item.active %}
+                <div>{% endif %}
+                    <a href='{{ site.getInsideURL(item.module, item.action) }}'>{{ item.name }}</a>
+                    {% if item.active %}</div>{% endif %}
+            </li>
+            {{ _self.vmenuin(item.children, site) }}
+        {% endfor %}
+    </ul>
+{% endmacro %}

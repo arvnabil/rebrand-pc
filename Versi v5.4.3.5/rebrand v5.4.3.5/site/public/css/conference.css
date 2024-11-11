@@ -1,0 +1,598 @@
+
+.tc-plugin-ui span {
+    font-size: inherit;
+}
+
+.tc-plugin-ui a {
+    color: #0088CC;
+    font-weight: bold;
+}
+
+.tc-plugin-ui a.disabled, .tc-plugin-ui label.disabled, .tc-plugin-ui span.disabled {
+    opacity : 0.6;
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.6;
+}
+
+.tc-plugin-ui a.disabled {
+    color : #347A99;
+    text-decoration: none;
+    cursor: default;
+}
+
+.tc-plugin-ui label.disabled {
+    color: #808080;
+}
+
+.tc-plugin-ui hr {
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #B3B3B3;
+}
+
+.tc-plugin-ui table {
+    border: none;
+    margin: 0px;
+}
+
+
+.tc-plugin-ui table tr td {
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.tc-plugin-ui .ui-button.disabled {
+    cursor: default;
+}
+
+.tc-plugin-ui .ui-button.disabled span {
+    color: #b3b3b3;
+}
+
+.tc-plugin-ui input[type=text], .tc-plugin-ui select {
+    border-radius: 4px;
+    border: 1px solid #B3B3B3;
+    padding: 2px 6px;
+}
+
+.tc-plugin-ui table tr td label {
+    font-size: 14px;
+}
+
+.tc-plugin-ui table tr td input.disabled[readonly="readonly"] {
+    background-color: #EBEBE4;
+}
+
+.tc-plugin-ui table tr td input[disabled], .tc-plugin-ui table tr td select[disabled], .tc-plugin-ui table tr td select.disabled{
+    background-color: #EEE;
+    color: #BBB;
+    border: 2px solid #DDD;
+}
+
+.tc-plugin-ui table tr td.underlayText {
+    color: #888;
+    font-size : 12px;
+    padding: 0px 10px 5px 10px;
+}
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui.wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+.tc-plugin-ui #plugin {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.tc-plugin-ui #plugin .bigSpinner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: url("/img/spinner.gif") no-repeat;
+    background-position: center center;
+}
+
+.tc-plugin-ui #plugin .spinner {
+    width: 20px;
+    height: 20px;
+    background: url("/img/spinner-16.gif") no-repeat;
+    background-position: center left;
+}
+
+.tc-plugin-ui .title {    
+    margin: 10px 2px;
+    font-size: 16px;
+}
+
+.tc-plugin-ui .smallTitle {
+    font-size: 14px;
+    margin: 5px 0px;
+}
+
+.tc-plugin-ui .smallText {
+    font-size: 12px;
+}
+
+.tc-plugin-ui .blueText {
+    color: #0088CC;
+}
+
+.tc-plugin-ui .greenText {
+    color: #008200;
+    font-weight: bold;
+}
+
+.tc-plugin-ui .halfLeftBlock {
+    float: left;
+    width: 45%;
+}
+
+.tc-plugin-ui .halfRightBlock {
+    float: right;
+    width: 45%;
+}
+
+.tc-plugin-ui .contentPadding {
+    padding: 12px 8px;
+}
+
+.tc-plugin-ui .contentMargin {
+    margin: 12px 8px;
+}
+
+.tc-plugin-ui .leftMargin {
+    margin-left: 20px;
+}
+
+.tc-plugin-ui .leftMarginBig {
+    margin-left: 100px;
+}
+
+.tc-plugin-ui .fullBlock {
+    width: 100%;
+}
+
+.tc-plugin-ui .fullInput input {
+    width: 100%;
+}
+
+.tc-plugin-ui .errorInput {
+    border: 2px solid #b43d3d !important;
+}
+
+
+.tc-plugin-ui .hidden {
+    display: none;
+}
+
+
+.tc-plugin-ui .error {
+    font-size: 11px;
+    color: #b43d3d;
+}
+
+.tc-plugin-ui .error * {
+    font-size: 11px;
+    color: #b43d3d;
+    font-weight: normal;
+}
+
+.tc-plugin-ui .successFieldText {
+    position: relative;
+    color: #008200;
+    padding-left: 20px;
+    font-size: 11px;
+}
+
+.tc-plugin-ui .successFieldText:before {
+    content : " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background: url("/public/images/jstree/32px.png") -9px -70px;
+}
+
+.tc-plugin-ui .errorFieldText {
+    position: relative;
+    font-size: 11px;
+    color: #b43d3d;
+    padding-left: 20px;
+}
+
+.tc-plugin-ui .errorFieldText:before {
+    content : " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background: url("/public/images/jstree/32px.png") -39px -70px;
+}
+
+
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .grayButtonBlock {
+    border: 2px solid #686868;
+}
+
+.tc-plugin-ui .grayButtonBlock .content {
+    padding: 8px 10px;
+    min-height: 90px;
+}
+
+.tc-plugin-ui .grayButtonBlock .button_new {
+    background: none;
+    border: none;
+    width: 100%;
+    color: #FFF;
+    background-color: #0088CC;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .grayButtonBlock .button_new a{
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    text-decoration: none;
+}
+
+
+.tc-plugin-ui .grayButtonBlock .button_new.disabled {
+    background-color: #686868;
+    cursor: default;
+}
+
+.tc-plugin-ui .grayButtonBlock .button_new:hover:not(.disabled) {
+    background-color: #2895CC;
+}
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .grayBlock {
+    border: 1px solid #77BBDD;
+    background-color: #EEE;
+}
+
+
+.tc-plugin-ui .whiteBlock {
+    padding: 15px 6px;
+    border: 1px solid #77BBDD;
+    background-color: #FFF;
+}
+
+.tc-plugin-ui .selectableBlock {
+    border: 2px solid #686868;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .selectableBlock:hover {
+    border: 2px solid #0088CC;
+    outline: 2px solid #0088CC;
+}
+
+.tc-plugin-ui .selectableBlock.selected {
+    background-color: #edf8ff;
+    border: 2px solid #5d8ca3;
+}
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+.tc-plugin-ui .blueButton {
+    color: #FFF;
+    background-color: #008FD6;
+    border: 2px solid #0088CC;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .blueButton:hover {
+    background-color: #2895CC;
+    border: 2px solid #3D9CCC;
+}
+
+.tc-plugin-ui .blueButton.disabled {
+    color: #EFF8FD;
+    background-color:  #8DC8E6;
+    border: 2px solid #8AC7E5;
+}
+
+.tc-plugin-ui .blueButton.disabled:hover {
+    background-color:  #8DC8E6;
+    border: 2px solid #8AC7E5;
+    cursor: default;
+}
+
+.tc-plugin-ui .stbtn  {
+    
+    padding: 1px 4px;
+    height: 48px;
+    overflow: hidden;
+}
+.tc-plugin-ui .stbtn img {
+    float : left;
+    display: block;
+    margin-right:5px;
+}
+
+.tc-plugin-ui .stbtn .buttonData {
+    padding-top: 14px;
+}
+
+.tc-plugin-ui .stbtn .buttonData a span {
+    
+    color: #0088CC;
+    font-weight: bold;
+}
+
+.tc-plugin-ui .stbtn .buttonData span {
+    font-size: 14px;
+}
+
+
+/*
+********************************************************************************
+********************************************************************************
+********************************************************************************
+*/
+
+.tc-plugin-ui .menu {
+    width: 100%;
+}
+
+.tc-plugin-ui .menu ul {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}
+
+.tc-plugin-ui .menu ul li {
+    display: block;
+    float: left;
+    width: 30%;
+    margin: 10px 1% 10px 2%;
+    padding: 5px 0px;
+    cursor: pointer;
+    color: #0679B8;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.tc-plugin-ui .menu ul li.selected {
+    background-color: #DDD;
+    border: 1px solid #CDCDCD;
+    color: #555;
+    cursor: default;
+}
+
+
+.tc-plugin-ui .grayButton {
+    color: #0088cc;
+    background-color: #E5E5E5;
+    border: 2px solid #DFDFDF;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.tc-plugin-ui .grayButton.disabled {
+    color:#B3B3B3;
+    background-color: #EEE;
+    cursor: default;
+}
+.tc-plugin-ui .grayButton.small {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.tc-plugin-ui .grayButton:hover:not(.disabled) {
+    border: 2px solid #40A5D9;
+    color: #FFF;
+    background-color: #0088CC;
+}
+
+
+.tc-plugin-ui .confTypeSelectionSide {
+    height: 100%;
+    min-height: 100px;
+    overflow: hidden;
+}
+
+.tc-plugin-ui .confTypeSelectionSide td {
+    vertical-align: middle;
+}
+
+
+.tc-plugin-ui table.scheduleTable .fieldName {
+    width : 30%;
+}
+
+.tc-plugin-ui table.scheduleTable .fieldError {
+    width : 25%;
+}
+
+.tc-plugin-ui table.scheduleTable .field input {
+    width : 90%;
+}
+
+.tc-plugin-ui table.scheduleTable .field select, .tc-plugin-ui table.scheduleTable .field .ui-weekpicker-wrapper {
+    width: 93%;
+} 
+
+
+.tc-plugin-ui .confTypeSelectionSide .schemaEntry .schemaIcon {
+    float: left;
+    margin: 0px 5px 0px 0px;
+}
+
+.tc-plugin-ui .confTypeSelectionSide .schemaEntry .schemaTitle {
+    color: #0088CC;
+    margin-bottom : 8px;
+    font-weight: bold;
+}
+
+.tc-plugin-ui .schemaTable .schemaEntry .sizeDescription {
+    text-align: right;
+    color: #3D9CCC;
+    font-size : 13px;
+    font-weight: bold;
+    padding-right: 40px;
+    margin-top: 10px;
+}
+
+
+.tc-plugin-ui .outsideAddressBlock {
+    position: relative;
+}
+
+.tc-plugin-ui .disabledBlock {
+    position: absolute;
+    top : 0px;
+    left : 0px;
+    right : 0px;
+    bottom : 0px;
+    background-color: #EEE;
+    opacity : 0.5;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+}
+
+.tc-plugin-ui .transparentBlock {
+    position: absolute;
+    top : 0px;
+    left : 0px;
+    right : 0px;
+    bottom : 0px;
+    background-color: #FFF;
+    opacity : 0.0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0.0;
+}
+
+
+.tc-plugin-ui .typeList {
+    display: table;
+    border: none;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    border-spacing: 30px 0px;
+    margin-left: -30px;
+}
+
+.tc-plugin-ui .typeList .row {
+    display: table-row;  
+}
+
+.tc-plugin-ui .typeList .cell {
+    display: table-cell;
+    width: 50%;
+}
+
+.tc-plugin-ui .typeList .conferenceType {
+    min-height: 135px;
+    border: 1px solid #686868;
+    border-bottom: none;
+    vertical-align: top;
+}
+
+.tc-plugin-ui .typeList .cell.conferenceType:hover {
+    border: 1px solid #0088CC;
+    border-bottom: none;
+}
+
+.tc-plugin-ui .typeList .cell.conferenceType.disabled:hover {
+    border: 2px solid #686868;
+    border-bottom: none;
+}
+
+
+.tc-plugin-ui .typeList .conferenceType .content {
+    padding: 5px 10px;
+}
+
+.tc-plugin-ui .typeList .conferenceType .title {
+    color : #0088cc;
+}
+
+.tc-plugin-ui .typeList .conferenceType .description {
+    padding: 5px 0px;
+}
+
+
+.tc-plugin-ui .typeList  .btn {
+    background-color:  #0088cc;
+    color: #FFF;
+    cursor: pointer;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.tc-plugin-ui .typeList .btn.disabled {
+    background-color:  #686868;
+    color: #FFF;
+    cursor: default;
+}
+
+.tc-plugin-ui .typeList .btn:hover {
+    background-color: #007CBA;
+}
+
+.tc-plugin-ui .typeList .btn.disabled:hover {
+    background-color:  #686868;
+}
+
+
+.cmpl_sendInvitationDialog {
+    text-align: center;
+}
+
+.cmpl_sendInvitationDialog>span {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.tc-plugin-ui .cmpl_integrationCode  {
+    resize: none;
+    border: 2px solid #B3B3B3;
+    padding: 10px 5px;
+    width: 90%;
+    height: 60%;
+}
+
+.zmdi-time, .zmdi-account-add {float:left;margin:10px 5px 0 10px;color:#666;}
+#streaming .stream {margin-left: 8px;position:relative;bottom:3px;font-size:14px;}

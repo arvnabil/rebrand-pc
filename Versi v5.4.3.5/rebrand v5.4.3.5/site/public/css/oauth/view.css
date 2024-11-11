@@ -1,0 +1,175 @@
+
+#oauth > .authorization {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    min-width: 320px;
+    min-height: 280px;
+    max-width: 320px;
+    max-height: 320px;
+    margin: 24px auto;
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+#oauth > .authorization > .fields {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    width: 100%;
+}
+
+#oauth > .authorization > .fields > .field {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 16px 0;
+    height: 42px;
+}
+
+.error {
+    font-size: 13px;
+    color: red;
+}
+
+#oauth > .authorization > .fields > .field > label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+#oauth > .authorization > .fields > .field > input {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 4px 0 0 4px;
+    box-sizing: border-box;
+    background-color: #EEEEEE;
+}
+
+.button {
+    font-size: 16px;
+    min-width: 128px;
+    padding: 12px;
+    margin: 16px;
+    border: 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #EEEEEE;
+    color: #000;
+    cursor:pointer;
+}
+
+.primary {
+    background-color: #00838F;
+    color: #fff;
+}
+
+#oauth > .authorization > .action:hover {
+    cursor: pointer;
+    background-color: #0097A7;
+}
+
+.clear {
+    height: 42px;
+}
+
+#oauth > .block {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    min-width: 320px;
+    min-height: 280px;
+    max-width: 540px;
+    margin: 24px auto;
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+#oauth > .block > .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+#oauth > .block > .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+#oauth > .block > .scopes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+#oauth > .block > .scopes > .scope {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#oauth > .block > .scopes > .scope > .item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#oauth > .block > .scopes > .scope > .item > .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-overflow: clip;
+    overflow: hidden;
+}
+#oauth > .block > .scopes > .scope > .item > .profile > .name {
+    margin: 0 16px;
+    text-overflow: clip;
+    overflow: hidden;
+}
+
+
+#oauth > .block > .scopes > .scope > .item > .profile > .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    width: 42px;
+    min-height: 42px;
+    min-width: 42px;
+    box-sizing: border-box;
+}
+
+#oauth > .block > .scopes > .scope > .item > .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    width: 42px;
+    box-sizing: border-box;
+}
+
+
+#oauth > .block > .scopes > .scope > .permissions > .permission{
+    font-size: 13px;
+    margin: 8px;
+}
+
+.block > .actions {
+    display: flex;
+
+}

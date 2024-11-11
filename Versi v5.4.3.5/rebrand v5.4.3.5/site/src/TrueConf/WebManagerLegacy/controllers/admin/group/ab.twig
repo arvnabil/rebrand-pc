@@ -1,0 +1,277 @@
+{% extends template.base %}
+
+{% block js %}
+    <!-- <link rel="stylesheet" type="text/css" href="/admin-area/mdl-set.css?version={{ server_version }}"> -->
+    <link rel="stylesheet" type="text/css" href="/admin-area/styles.css?version={{ server_version }}">
+    <link href="/public/css/memberList.css?version={{ server_version }}" rel="stylesheet" type="text/css"/>
+    <link href="/public/css/user.css?version={{ server_version }}" rel="stylesheet" type="text/css"/>
+    <link href="/public/css/addToAddressBook.css?version={{ server_version }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/public/css/multiselect.css?version={{ server_version }}" type="text/css"/>
+    <script type="text/javascript"
+            src="/public/js/common/addressBook/jquery.addressBookAddContact.js?version={{ server_version }}"></script>
+    <script type="text/javascript">
+      var Scope = {
+        ALL: 0,
+        MANUAL: 1,
+        NONE: 2
+      };
+
+      var multiSelectPlugin = null, addressBookPlugin = null;
+      var groupListInitialized = false;
+
+      var scopeIdList = ["scope_all-users", "scope_group-users", "scope_nobody"];
+
+      {% autoescape 'js' %}
+      $(document).ready(function () {
+        init();
+        initGroupScopeButtons();
+
+        var currentScopeRadioBtn = $('#' + scopeIdList[{{ scope }}]);
+        currentScopeRadioBtn.click();
+      });
+
+      function setDisabledGroupScopeButtons(flag) {
+        for (var i = 0; i < scopeIdList.length; i++) {
+          $('#' + scopeIdList[i]).prop("disabled", flag);
+        }
+      }
+
+      function initGroupScopeButtons() {
+        $('#' + scopeIdList[Scope.MANUAL]).on('change', function () {
+          if (!groupListInitialized) {
+            setDisabledGroupScopeButtons(true);
+            initGroupList(function () {
+              setDisabledGroupScopeButtons(false);
+            });
+          } else {
+            multiSelectPlugin.enable();
+          }
+        });
+
+        $('#' + scopeIdList[Scope.ALL]).add(('#' + scopeIdList[Scope.NONE])).on('change', function () {
+          multiSelectPlugin.disable();
+        });
+      }
+
+      function initGroupList(onInit) {
+        multiSelectPlugin.showSpinner();
+
+        var groupListLoaded = false;
+        var abGroupListLoaded = false;
+        var abGroups = [];
+
+        function addList(list) {
+          for (var key in list) {
+            if (list[key].hasOwnProperty("displayName")) {
+              var name = list[key].displayName;
+            } else {
+              var name = key;
+            }
+
+            multiSelectPlugin.addItem(key, name);
+          }
+        }
+
+        function checkReady() {
+          if (!groupListLoaded || !abGroupListLoaded) {
+            return false;
+          }
+
+          selectGroups();
+
+          multiSelectPlugin.refreshList();
+          multiSelectPlugin.hideSpinner();
+
+          groupListInitialized = true;
+          onInit();
+        }
+
+        function selectGroups() {
+          for (var i = 0; i < abGroups.length; i++) {
+            var groupId = abGroups[i];
+            multiSelectPlugin.selectItem(groupId, false);
+          }
+        }
+
+        loadGroupList(function (list) {
+          addList(list);
+          groupListLoaded = true;
+          checkReady();
+        });
+
+        loadAbGroupList(function (list) {
+          abGroups = list;
+          abGroupListLoaded = true;
+          checkReady();
+        });
+      }
+
+      function loadGroupList(onLoad) {
+        $.getJSON("/admin/group/getListForAB")
+          .done(function (list) {
+            onLoad(list);
+          });
+      }
+
+
+      function loadAbGroupList(onLoad) {
+        $.getJSON("/admin/group/getAbGroups", {key: '{{ groupDN }}'})
+          .done(function (list) {
+            onLoad(list);
+          });
+      }
+
+      function init() {
+        var user = new User({
+          debug: {{ web_manager.debug ? 'true' : 'false' }},
+          locale: {
+            name: '{{ site._("User name") }}',
+            noGroup: '{{ site._("Without group") }}',
+            statusOnline: '{{ site._("Online") }}',
+            statusOffline: '{{ site._("Offline") }}',
+            statusNotActive: '{{ site._("Inactive") }}',
+            statusInvalid: '{{ site._("Invalid user") }}',
+            statusBusy: '{{ site._("Busy") }}',
+            statusMultihost: '{{ site._("Group conference owner") }}'
+          }
+        });
+
+        if (Server.getCurrentServerStatus() === Server.STATUSES_LIST.RUNNING && !user.statusSeviceStarted) {
+          user.start();
+        }
+
+        $(document).bind('server-status-updated', function (event) {
+          if (Server.getCurrentServerStatus() === Server.STATUSES_LIST.RUNNING && !user.statusSeviceStarted) {
+            user.start();
+          } else if (user.statusSeviceStarted && Server.getCurrentServerStatus() !== Server.STATUSES_LIST.RUNNING) {
+            user.stop();
+          }
+        });
+
+        $.memberListPlugin.init({
+          locale: {
+            'insertUserName': '{{ site._("Enter the user or group name") }}',
+            'searchAll': '{{ site._("All") }}',
+            'searchUsers': '{{ site._("Users") }}',
+            'searchGroups': '{{ site._("Groups") }}',
+            'emptyList': '{{ site._("No users found. Check the search criteria") }}'
+          }
+        });
+
+        $.addressBookPlugin.init({
+          ownerType: 2,
+          ownerId: "{{ groupDN }}",
+          deleteMode: $.addressBookPlugin.DELETE_MODE.CONTACTS,
+          handlers: {
+            userList: '/handlers/directory.php?ctx=3&oid={{ groupDN | url_encode | escape('js') }}',
+            removeUser: '/admin/group/delete-from-ab/?key={{ groupDN | url_encode |escape('js') }}'
+          },
+          plugins: {
+            user: user,
+            memberList: $.memberListPlugin
+          }
+        });
+        addressBookPlugin = $('#ab-list').addressBookPlugin();
+
+
+        $('#add-trueconf-id-to-ab').addContactPlugin({
+          locale: "{{ settings.lang }}",
+          userPlugin: user,
+          getApplyXHRObject: function (contactLogin, contactDisplayName, originalXHR) {
+            return {
+              url: '{{ site.getInsideUrl('group', 'addContactToAb') }}',
+              data: {
+                key: '{{ groupDN |escape('js') }}',
+                contactLoginName: contactLogin,
+                contactDisplayName: contactDisplayName
+              }
+            };
+          },
+          searchDelay: {{ isLdap ? 4000 : 2000 }}
+        });
+
+
+        $('#groupList').multiSelectPlugin({
+          counterDescription: '{{ site._("selected item(s): %count") }}',
+          defaultDescription: '{{ site._("no selection") }}'
+        }, function (controller) {
+          controller.disable();
+          multiSelectPlugin = controller;
+        });
+      }
+
+
+      function saveScope() {
+        var obj = {};
+        obj["key"] = '{{ groupDN }}';
+
+
+        $('#saveGroupScopeBtn').prop("enabled", true).addClass("button-lock");
+
+        var currentScope = parseInt($('input[name=scope-select]:checked').val());
+        obj["scope"] = currentScope;
+
+        if (currentScope === Scope.MANUAL) {
+          obj["groups"] = multiSelectPlugin.getSelectedItemsIds();
+        }
+
+        $.post('/admin/group/setGroupScope', obj)
+          .done(function (answer) {
+            onScopeSave();
+          });
+      }
+
+      function onScopeSave() {
+        // $('#saveGroupScopeBtn').prop("enabled", false).removeClass("button-lock");
+        // addressBookPlugin.refreshList(addressBookPlugin);
+        // Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+        window.location.reload();
+      }
+
+    </script>
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+    <fieldset id="fieldset-user-create">
+        <legend>{{ site._('Define, which users will be shown in the address book of the users in the group') }}</legend>
+        <form id="groupScopeForm" method="POST" onsubmit="saveScope()">
+            <div>
+                <input value="0" id="scope_all-users" type="radio" name="scope-select"/><label
+                        for="scope_all-users">{{ site._('All users') }}</label>
+            </div>
+            <div>
+                <input value="1" id="scope_group-users" type="radio" name="scope-select"/><label
+                        for="scope_group-users">{{ site._('User Groups') }}</label>
+                <div style="width: 300px;" id="groupList"></div>
+            </div>
+            <div>
+                <input value="2" id="scope_nobody" type="radio" name="scope-select"/><label
+                        for="scope_nobody">{{ site._('No One') }}</label>
+            </div>
+        </form>
+    </fieldset>
+
+    <div id="user-create-func-block" class="m-top-10 m-left-2 m-bottom-10">
+        <input id="saveGroupScopeBtn" type="button" onclick="saveScope()" class="button" value="{{ site._("Apply") }}"/>
+    </div>
+
+    <fieldset id="fieldset-user-create-ab" style="height: auto;">
+        <legend>{{ site._('Address Book of the Group') }}</legend>
+        <table class="ab-user-func-tb">
+            <tr>
+                <td>
+                    <div id="add-trueconf-id-to-ab">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id='admin-area-screen'></div>
+
+                    <script src="/admin-area/bundle.js?version={{ server_version }}"></script>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+{% endblock %}

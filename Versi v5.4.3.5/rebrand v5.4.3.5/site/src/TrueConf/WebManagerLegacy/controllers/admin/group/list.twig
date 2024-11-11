@@ -1,0 +1,540 @@
+{% extends template.base %}
+
+{% block js %}
+    <script type="text/javascript" src="/public/js/ldapGroups.js"></script>
+    <script type="text/javascript">
+        function updateCSSOnPage() {
+            $(".group-block-table-wrapper").height($(".entire-table-group-list").height() - $(".group-div-header-wrapper").height());
+        }
+
+        $(document).ready(function () {
+            lockButton('groups');
+        });
+
+        function lockButton(name) {
+            if ($('#' + name + ' input[name^="keys"]:checked').length) {
+                $('#' + name + '-del').removeClass('button-lock').click(function () {
+                    Group.delConfirm(name);
+            return !1;
+          });
+        }
+
+        $('#' + name + ' input[name^="keys"]').change(function () {
+          if ($('#' + name + ' input[name^="keys"]:checked').length) {
+            $('#' + name + '-del').removeClass('button-lock').click(function () {
+              Group.delConfirm(name);
+              return !1;
+            });
+          } else {
+            $('#' + name + '-del').addClass('button-lock').unbind('click');
+          }
+        });
+      }
+
+      Confirm.ok = function () {
+        $(this).dialog("close");
+        if (Confirm.link)
+          document.location.href = Confirm.link;
+        else {
+          var del_groups = [];
+          var selected_groups = $(Confirm.form_id + ' input[name="keys[]"]:checked');
+          var selected_groups_length = selected_groups.length;
+          for (var i = 0; i < selected_groups_length; i++) {
+            del_groups.push(selected_groups[i].value);
+          }
+            {% if not(ldap_flag) %}
+          deleteList("{{ site.getInsideUrl('group', 'delete') }}", "keys", del_groups, {{ web_manager.delete_users_step }});
+            {% else %}
+          deleteList("{{ site.getInsideUrl('group', 'remove-ldap-groups') }}", "list_remove", del_groups, {{ web_manager.delete_users_step }});
+            {% endif %}
+        }
+      };
+
+
+      var ldapGroups;
+
+      $(document).ready(function () {
+        $("#changeLdapGroups").dialog({
+          autoOpen: false,
+          height: 500,
+          minHeight: 240,
+          width: 800,
+          minWidth: 320,
+          modal: true,
+          draggable: true,
+          resizable: true,
+          title: "{{ site._("LDAP Groups") }}"
+        });
+
+        ldapGroups = new LdapGroups({
+          handlers: {
+            list: "{{ site.getInsideUrl('group', 'get-ldap-all-groups') }}",
+            save: "{{ site.getInsideUrl('group', 'add-ldap-group') }}"
+          },
+          locale: {
+            enterGroupName: '{{ site._('Search: enter group name') | e('js') }}',
+            enterSearchRequest: '{{ site._('Enter a search request') | e('js') }}',
+            alreadyInList: '{{ site._('This group has already been added') | e('js') }}',
+            notFound: '{{ site._('No groups found') | e('js') }}',
+            groupsFound: '{{ site._('Groups found: %n') | e('js') }}',
+            groupsToAdd: '{{ site._('Groups to add: %n') | e('js') }}'
+          }
+        });
+      });
+
+      function getAllLdapGroups() {
+        ldapGroups.show();
+      }
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <fieldset id="fieldset-group-list">
+        <legend>{{ site._("Group list") }}</legend>
+
+        <table class="group-tb">
+            <tr>
+                <td>
+                    {% if (ldap_flag) %}
+                        <div id="change-ldap-block">
+                            <div id="ldap-func-block">
+                                <a class="button" href="#"
+                                   onclick="getAllLdapGroups(); return false;">{{ site._('Change') }}</a>
+                            </div>
+                        </div>
+                        <div id='changeLdapGroups'>
+                            <div class="searchField">
+                                <div>
+                                    <div>
+                                        <input id="ldapGroupsSearchField" type="text"/>
+                                    </div>
+                                    <div>
+                                        <a class="button fr button-lock" id="searchLdapGroup">🔍</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listWrapper">
+                                <div class="allLdapGroupsWrapper">
+                                    <div class="listHeader"><span id="allLdapGroupsCount"></span></div>
+                                    <div id="allLdapGroups" class="list">
+                                        <div style="display: none" id="allLdapGroupsProgressBar"
+                                             class="verticalAlign progressBar">
+                                            <div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div style="display: none" id="searchMessage" class="verticalAlign">
+                                            <div>
+                                                <div class="text"></div>
+                                            </div>
+                                        </div>
+                                        <table id="allLdapGroupsTable" style="display: none;">
+                                            <colgroup>
+                                                <col width="32px"/>
+                                                <col/>
+                                            </colgroup>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="existsLdapGroupsWrapper">
+                                    <div class="listHeader"><span id="existsLdapGroupsCount"></span></div>
+                                    <div id="existsLdapGroups" class="list">
+                                        <div style="display: none" id="existsLdapGroupsProgressBar" class="progressBar">
+                                            <div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <table id="existsLdapGroupsTable">
+                                            <colgroup>
+                                                <col width="32px"/>
+                                                <col/>
+                                            </colgroup>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="applyBtnWrapper">
+                                <a class="button fr button-lock" id='saveGroupList'>{{ site._('Save') }}</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        {{ form }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="entire-table-group-list">
+                        <div class="group-div-header-wrapper">
+                            <table class="table-header tb-fix">
+                                {% if not no_group_only %}
+                                    <col width="60px">
+                                {% endif %}
+                                <col width="52%">
+                                <col width="24%" style="min-width: 90px;">
+                                <col width="26%" style="min-width: 99px;">
+                                <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <col width="15%">
+                              <tr style="border-bottom: #E4EEF3 1px solid;">
+                                <th colspan="4"></th>
+                                <th colspan="9"
+                                    style="text-align: center; padding: 7px;">{{ site._("User rights")|e('html') }}</th>
+                              </tr>
+                              <tr class="group-right-icons">
+                                {% if not no_group_only %}
+                                  <th class="text-c">
+                                    <input type="checkbox" name="checkall"
+                                           onClick="ListCheckAll(checked,'groups','keys[]');"/>
+                                  </th>
+                                {% endif %}
+
+                                <th class="text-c"
+                                        title="{{ site._('Group Name')|e('html') }}">{{ design.msort(site._("Group Name")|e('html'), 'sort', ['name', 'n_desc']) }}</th>
+                                    <th class="text-c"
+                                        title="{{ site._('Address Book')|e('html') }}">{{ site._("Address Book")|e('html') }}</th>
+                                    <th class="text-c"
+                                        title="{{ site._('Application')|e('html') }}">{{ site._("Application")|e('html') }}</th>
+                                    <th class="text-c" title="{{ site._('Address Book Editing')|e('html') }}">
+                                      <img src="/public/images/group-rights/ab-editing.svg" class="group-right-icon"
+                                           alt="{{ site._('Address Book Editing')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Make Calls')|e('html') }}">
+                                      <img src="/public/images/group-rights/make-calls.svg" class="group-right-icon"
+                                           alt="{{ site._('Make Calls')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Create group conference')|e('html') }}">
+                                      <img src="/public/images/group-rights/create-conference.svg" class="group-right-icon"
+                                           alt="{{ site._('Create group conference')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Screen sharing')|e('html') }}">
+                                      <img src="/public/images/group-rights/screen-sharing.svg" class="group-right-icon"
+                                           alt="{{ site._('Screen sharing')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Remote desktop control')|e('html') }}">
+                                      <img src="/public/images/group-rights/remote-desktop-control.svg" class="group-right-icon"
+                                           alt="{{ site._('Remote desktop control')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Slideshow')|e('html') }}">
+                                      <img src="/public/images/group-rights/slideshow.svg" class="group-right-icon"
+                                           alt="{{ site._('Slideshow')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Send files')|e('html') }}">
+                                      <img src="/public/images/group-rights/file-send.svg" class="group-right-icon"
+                                           alt="{{ site._('Send files')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Receive files')|e('html') }}">
+                                      <img src="/public/images/group-rights/file-receive.svg" class="group-right-icon"
+                                           alt="{{ site._('Receive files')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Conference recording')|e('html') }}">
+                                      <img src="/public/images/group-rights/recording.svg" class="group-right-icon"
+                                           alt="{{ site._('Conference recording')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                                    <th class="text-c" title="{{ site._('Operator Rights')|e('html') }}">
+                                      <img src="/public/images/group-rights/operator.svg" class="group-right-icon"
+                                           alt="{{ site._('Operator Rights')|e('html') }}" width="25px" height="25px">
+                                    </th>
+                              </tr>
+                            </table>
+                        </div>
+
+                        <div class="group-block-table-wrapper">
+                            {% if not(ldap_flag) %}
+                            <form id="groups" name="groups" method="POST"
+                                  action="{{ site.getInsideUrl('group', 'delete', 'sort=' ~sort) }}">
+                                {% else %}
+                                <form id="groups" name="groups" method="POST"
+                                      action="{{ site.getInsideUrl('group', 'remove-ldap-groups') }}">
+                                    {% endif %}
+                                    <div class="question"></div>
+                                    <table class="table-body tb-fix" scroll="no">
+                                        {% if not no_group_only %}
+                                            <col width="60px">
+                                        {% endif %}
+                                        <col width="52%">
+                                        <col width="24%" style="min-width: 90px;">
+                                        <col width="26%" style="min-width: 99px;">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        {% for item in list %}
+                                            {% set realId = item.identifier %}
+                                            {% if (ldap_flag) and realId !=  no_group_id %} {% set realId = item.ldap_dn %} {% endif %}
+                                            <tr>
+                                                {% if not no_group_only %}
+                                                    <td class="text-c">
+                                                        {% if item.identifier != no_group_id %}
+                                                          <input type="checkbox" class="key" name="keys[]"
+                                                                 value="{{ realId|e('html') }}" {{ checked_group_id == item.identifier ? 'checked="checked"' : '' }} />
+                                                        {% endif %}
+                                                    </td>
+                                                {% endif %}
+                                                <td class="group-name-container">
+                                                    {% if (ldap_flag and not(item.identifier)) %}
+                                                        {{ item.groupname|escape('html') }}
+                                                    {% elseif item.identifier == no_group_id %}
+                                                        {% if disable_no_group %}
+                                                            {{ item.groupname|escape('html') }}
+                                                        {% else %}
+                                                            <a title="{{ item.groupname|e('html') }}"
+                                                               href='{{ site.getInsideURL("users", "list", "group_id="~item.identifier) }}'>{{ item.groupname|escape('html') }}</a>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        <a title="{{ item.groupname|e('html') }}" class="group-name"
+                                                           href='{{ site.getInsideURL("users", "list") }}?group_id={{ item.identifier | url_encode }}'>{{ item.groupname|e('html') }}</a>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-c" title="{{ site._('Customize')|e('html') }}">
+                                                    <a href='{{ site.getInsideURL("group", "ab") }}?key={{ realId |url_encode }}&group_id={{ item.identifier |url_encode }}'>
+                                                        {{ site._('Customize') }}
+                                                    </a>
+                                                </td>
+                                                <td class="text-c" title="{{ site._('Customize')|e('html') }}">
+                                                    <a href='{{ site.getInsideURL("group", "app") }}?key={{ realId |url_encode }}'>
+                                                        {{ site._('Customize') }}
+                                                    </a>
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="custom" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_EDITAB') b-or constant(group_class ~ '::UR_COMM_EDITGROUP')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ (constant(group_class
+                                                             ~ '::UR_COMM_EDITAB') b-or constant(group_class
+                                                             ~ '::UR_COMM_EDITGROUP'))|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="mc" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_CALL')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_CALL')|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="uct" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_CREATEMULTI') b-or constant(group_class ~ '::UR_COMM_BROADCAST')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ (constant(group_class
+                                                             ~ '::UR_COMM_CREATEMULTI') b-or constant(group_class
+                                                             ~ '::UR_COMM_BROADCAST'))|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="cgc" {{ (item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_DSHARING')) and screensharing_allowed) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_DSHARING')|e('html') }}, Number(this.checked));"
+                                                            {{ (not(realId) or not(screensharing_allowed)) ? 'disabled="disabled"' : '' }}
+                                                            {{ not(screensharing_allowed) ? 'title=' ~ '"' ~ site._('Not available in your license') ~ '"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="cgc" {{ (item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_SHARE_CONTROL')) and screensharing_allowed) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_SHARE_CONTROL')|e('html') }}, Number(this.checked));"
+                                                            {{ (not(realId) or not(screensharing_allowed)) ? 'disabled="disabled"' : '' }}
+                                                            {{ not(screensharing_allowed) ? 'title=' ~ '"' ~ site._('Not available in your license') ~ '"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="cgc" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_SLIDESHOW')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_SLIDESHOW')|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="cgc" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_FILETRANSFER')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_FILETRANSFER')|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="cgc" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_RECEIVE_FILE')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_RECEIVE_FILE')|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="cgc" {{ item.getRight(constant(group_class
+                                                      ~ '::UR_COMM_RECORDING')) ? 'checked="checked"' : '' }}
+                                                           onclick="Group.changeRights('{{ realId|escape('js') }}', {{ constant(group_class
+                                                             ~ '::UR_COMM_RECORDING')|e('html') }}, Number(this.checked));" {{ not(realId) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                                <td class="text-c">
+                                                    <input type="checkbox"
+                                                           name="isoperators" {{ item.isoperators ? 'checked="checked"' : '' }}
+                                                           onclick="Group.setOperators('{{ realId|escape('js') }}', Number(this.checked));" {{ (not(realId) or realId == no_group_id) ? 'disabled="disabled"' : '' }} />
+                                                </td>
+                                            </tr>
+
+                                        {% endfor %}
+                                      <tr>
+                                        {% if not no_group_only %}
+                                          <td class="text-c"></td>
+                                        {% endif %}
+                                        <td class="group-name-container">{{ site._('Federated users')|e('html') }}</td>
+                                        <td class="text-c" title="{{ site._('Customize')|e('html') }}" style="color: #b1b1b1">{{ site._('Customize') }} </td>
+                                        <td class="text-c" title="{{ site._('Customize')|e('html') }}" style="color: #b1b1b1">{{ site._('Customize') }}</td>
+                                        <td class="text-c"><input type="checkbox" name="custom" disabled="disabled" /></td>
+                                        <td class="text-c"><input type="checkbox" name="mc" disabled="disabled"/></td>
+                                        <td class="text-c"><input type="checkbox" name="uct" disabled="disabled" /></td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ (group.getRight(constant(group_class
+                                            ~ '::UR_COMM_DSHARING'), fed_rights) and screensharing_allowed) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('federated_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_DSHARING')|e('html') }}, Number(this.checked));"
+                                                  {{ not(screensharing_allowed) ? 'disabled="disabled"' : '' }}
+                                                  {{ not(screensharing_allowed) ? 'title=' ~ '"' ~ site._('Not available in your license') ~ '"' : '' }} />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ (group.getRight(constant(group_class
+                                            ~ '::UR_COMM_SHARE_CONTROL'), fed_rights) and screensharing_allowed) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('federated_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_SHARE_CONTROL')|e('html') }}, Number(this.checked));"
+                                                  {{ not(screensharing_allowed) ? 'disabled="disabled"' : '' }}
+                                                  {{ not(screensharing_allowed) ? 'title=' ~ '"' ~ site._('Not available in your license') ~ '"' : '' }} />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_SLIDESHOW'), fed_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('federated_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_SLIDESHOW')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_FILETRANSFER'), fed_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('federated_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_FILETRANSFER')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_RECEIVE_FILE'), fed_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('federated_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_RECEIVE_FILE')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_RECORDING'), fed_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('federated_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_RECORDING')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c"><input type="checkbox" name="isoperators" disabled="disabled"/></td>
+                                      </tr>
+                                      <tr>
+                                        {% if not no_group_only %}
+                                          <td class="text-c"></td>
+                                        {% endif %}
+                                        <td class="group-name-container">{{ site._('Guest users')|e('html') }}</td>
+                                        <td class="text-c" title="{{ site._('Customize')|e('html') }}" style="color: #b1b1b1">{{ site._('Customize') }} </td>
+                                        <td class="text-c" title="{{ site._('Customize')|e('html') }}" style="color: #b1b1b1">{{ site._('Customize') }}</td>
+                                        <td class="text-c"><input type="checkbox" name="custom" disabled="disabled" /></td>
+                                        <td class="text-c"><input type="checkbox" name="mc" disabled="disabled"/></td>
+                                        <td class="text-c"><input type="checkbox" name="uct" disabled="disabled" /></td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ (group.getRight(constant(group_class
+                                            ~ '::UR_COMM_DSHARING'), guest_rights) and screensharing_allowed) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('guest_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_DSHARING')|e('html') }}, Number(this.checked));"
+                                                  {{ not(screensharing_allowed) ? 'disabled="disabled"' : '' }}
+                                                  {{ not(screensharing_allowed) ? 'title=' ~ '"' ~ site._('Not available in your license') ~ '"' : '' }} />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ (group.getRight(constant(group_class
+                                            ~ '::UR_COMM_SHARE_CONTROL'), guest_rights) and screensharing_allowed) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('guest_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_SHARE_CONTROL')|e('html') }}, Number(this.checked));"
+                                                  {{ not(screensharing_allowed) ? 'disabled="disabled"' : '' }}
+                                                  {{ not(screensharing_allowed) ? 'title=' ~ '"' ~ site._('Not available in your license') ~ '"' : '' }} />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_SLIDESHOW'), guest_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('guest_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_SLIDESHOW')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_FILETRANSFER'), guest_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('guest_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_FILETRANSFER')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_RECEIVE_FILE'), guest_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('guest_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_RECEIVE_FILE')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c">
+                                          <input type="checkbox"
+                                                 name="cgc" {{ group.getRight(constant(group_class
+                                            ~ '::UR_COMM_RECORDING'), guest_rights) ? 'checked="checked"' : '' }}
+                                                 onclick="Group.changeRights('guest_users', {{ constant(group_class
+                                                   ~ '::UR_COMM_RECORDING')|e('html') }}, Number(this.checked));" />
+                                        </td>
+                                        <td class="text-c"><input type="checkbox" name="isoperators" disabled="disabled"/></td>
+                                      </tr>
+
+                                    </table>
+                                    {% if not(ldap_flag) %}
+                                </form>
+                                {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if list|length %}
+                        <div id="reg-func-block">
+                            <a id="groups-del" class="button button-lock">{{ site._('Delete selected') }}</a>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <style>
+        .text-c, .group-name-container {
+            overflow: hidden;
+        }
+
+        .group-right-icon {
+            position: relative;
+            top: 3px;
+        }
+
+        .group-right-icons > th {
+            padding: 10px 5px;
+        }
+    </style>
+{% endblock %}

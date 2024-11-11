@@ -1,0 +1,15 @@
+<script type='text/javascript'>
+  $(function () {
+    $.datepicker.setDefaults($.datepicker.regional['{{ settings.lang }}']);
+    $('#{{ id }}').datepicker({
+      minDate: 0,
+      dateFormat: '{{ date_format }}',
+      showOn: 'both',
+      buttonImage: '/img/calendar.png',
+      buttonImageOnly: true,
+      buttonText: ''
+    });
+  });
+</script>
+{{ site._('Date') }}<br/>
+{{ input }}

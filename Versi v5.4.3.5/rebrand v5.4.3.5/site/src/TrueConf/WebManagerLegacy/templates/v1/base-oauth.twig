@@ -1,0 +1,49 @@
+<!doctype html>
+{% apply spaceless %}
+{% set debug = debug ? debug : false %}
+{% set locale = locale ? locale : 'en' %}
+{% set isUser = isUser? 1 : 0 %}
+{% set current_version = server_version ? server_version : '4.0.0' %}
+
+<html lang="{{ locale }}">
+<head>
+    <title>{{ title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link rel="stylesheet" type="text/css"
+          href="/public/fonts/material-design-icons/material-icons.css?version={{ current_version }}"/>
+    <link rel="stylesheet" type="text/css" href="/public/css/fonts/roboto.css?version={{ current_version }}">
+    <link rel="stylesheet" type="text/css" href="/public/css/oauth/template.css?version={{ current_version }}">
+    <script type="text/javascript">
+      window.onload = (function () {
+        var el = document.getElementById('app');
+        el.style.display = 'flex';
+      });
+    </script>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+{% block app %}
+    <div id="app" style="display:none">
+        {% block appbar %}
+            <div class="appbar">
+                <div class="title">
+                    <div class="company">{{ config["company_name"] }}</div>
+                    <div class="product">{{ site._("Server") }}</div>
+                </div>
+
+                {% block actions %}{% endblock %}
+            </div>
+        {% endblock %}
+        <div class="layout">
+            {% block layout %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+</body>
+{% block scripts %}{% endblock %}
+</html>
+{% endapply %}

@@ -1,0 +1,47 @@
+<link rel="alternate" href="android-app://com.trueconf.videochat/trueconf/{{ deep_link }}"/>
+<meta name="apple-itunes-app" content="app-id=536475636, app-argument={{ deep_link_bug_43086 }}"/>
+<meta property="fb:app_id" content="234354909931691"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="{{ site.getCurrentFullURL()|escape }}"/>
+<meta property="og:title" content="{{ topic }}"/>
+<meta property="og:site_name" content="{{ host }}"/>
+<meta property="og:description" content="{{ start_time_description }}"/>
+<meta property="og:locale" content="{{ locale }}"/>
+
+<meta property="og:image" content="{{ url ? url : secure_url }}/public/images/opengraph/illustration.png"/>
+{% if secure_url %}
+    <meta property="og:image:secure_url" content="{{ secure_url }}/public/images/opengraph/illustration.png"/>
+{% endif %}
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="300"/>
+<meta property="og:image:height" content="300"/>
+
+
+{% if deep_link %}
+    <meta property="al:ios:url" content="{{ deep_link }}"/>
+{% endif %}
+<meta property="al:ios:app_store_id" content="536475636"/>
+<meta property="al:ios:app_name" content="TrueConf"/>
+<meta property="al:android:url" content="{{ deep_link }}"/>
+<meta property="al:android:app_name" content="TrueConf"/>
+<meta property="al:android:package" content="com.trueconf.videochat"/>
+<meta property="al:windows_universal:url" content="{{ deep_link }}"/>
+<meta property="al:windows_universal:app_name" content="TrueConf"/>
+<meta property="al:web:should_fallback" content="false"/>
+
+<meta name="twitter:card" content="app">
+<meta name="twitter:site" content="@TrueConf">
+<meta name="twitter:title" content="{{ topic }}">
+<meta name="twitter:description" content="{{ start_time_description }}">
+<meta name="twitter:app:name:iphone" content="TrueConf">
+<meta name="twitter:app:id:iphone" content="536475636">
+<meta name="twitter:app:url:iphone" content="{{ deep_link }}">
+<meta name="twitter:app:name:ipad" content="TrueConf">
+<meta name="twitter:app:id:ipad" content="536475636">
+<meta name="twitter:app:url:ipad" content="{{ deep_link }}">
+<meta name="twitter:app:name:googleplay" content="TrueConf">
+<meta name="twitter:app:id:googleplay" content="com.trueconf.videochat">
+<meta name="twitter:app:url:googleplay" content="{{ deep_link }}">
+
+<meta name="title" content="{{ title }}"/>
+<title>{{ title }}</title>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Working with the server API | TrueConf</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="shortcut icon" href="/docs/favicon.ico">
+    <script src="/docs/js/ya.js"></script>
+    <script src="/docs/js/ga.js"></script>
+    <script src="/docs/js/widgets.js"></script>
+    <meta name="description" content="Extend TrueConf Server management capabilities via RESTful API. Create OAuth 2.0 applications with necessary permissions to execute HTTP requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.fd13e100.css" as="style"><link rel="preload" href="/docs/assets/js/app.2638b99c.js" as="script"><link rel="preload" href="/docs/assets/js/2.bdaed5d3.js" as="script"><link rel="preload" href="/docs/assets/js/1.204ac9d5.js" as="script"><link rel="preload" href="/docs/assets/js/55.8b31c01a.js" as="script"><link rel="preload" href="/docs/assets/js/22.19dce842.js" as="script"><link rel="preload" href="/docs/assets/js/28.dc33b352.js" as="script"><link rel="preload" href="/docs/assets/js/31.6e279f7e.js" as="script"><link rel="preload" href="/docs/assets/js/26.1bf8f651.js" as="script"><link rel="preload" href="/docs/assets/js/23.9fd842ec.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.94be5a85.js"><link rel="prefetch" href="/docs/assets/js/11.4ac98980.js"><link rel="prefetch" href="/docs/assets/js/12.3aa2553b.js"><link rel="prefetch" href="/docs/assets/js/13.7a893b25.js"><link rel="prefetch" href="/docs/assets/js/14.76363910.js"><link rel="prefetch" href="/docs/assets/js/15.cc62cce3.js"><link rel="prefetch" href="/docs/assets/js/16.913d0cbc.js"><link rel="prefetch" href="/docs/assets/js/17.96d0ba8d.js"><link rel="prefetch" href="/docs/assets/js/18.b338911a.js"><link rel="prefetch" href="/docs/assets/js/19.739100e9.js"><link rel="prefetch" href="/docs/assets/js/20.06e9dc85.js"><link rel="prefetch" href="/docs/assets/js/21.63bb349e.js"><link rel="prefetch" href="/docs/assets/js/24.3d9e53d5.js"><link rel="prefetch" href="/docs/assets/js/25.670a4b09.js"><link rel="prefetch" href="/docs/assets/js/27.1215ce23.js"><link rel="prefetch" href="/docs/assets/js/29.de776a8d.js"><link rel="prefetch" href="/docs/assets/js/3.4021dfe2.js"><link rel="prefetch" href="/docs/assets/js/30.b3f6701a.js"><link rel="prefetch" href="/docs/assets/js/32.5cb1bc31.js"><link rel="prefetch" href="/docs/assets/js/33.6e42b47a.js"><link rel="prefetch" href="/docs/assets/js/34.51aa9298.js"><link rel="prefetch" href="/docs/assets/js/35.eb0bc26f.js"><link rel="prefetch" href="/docs/assets/js/36.ec7e58a5.js"><link rel="prefetch" href="/docs/assets/js/37.4a3a530b.js"><link rel="prefetch" href="/docs/assets/js/38.6f9b090e.js"><link rel="prefetch" href="/docs/assets/js/39.8925d6cb.js"><link rel="prefetch" href="/docs/assets/js/4.ae11133d.js"><link rel="prefetch" href="/docs/assets/js/40.1c7b625d.js"><link rel="prefetch" href="/docs/assets/js/41.f040f1bc.js"><link rel="prefetch" href="/docs/assets/js/42.3020dfcb.js"><link rel="prefetch" href="/docs/assets/js/43.c10b2cd8.js"><link rel="prefetch" href="/docs/assets/js/44.6e63b603.js"><link rel="prefetch" href="/docs/assets/js/45.203c4110.js"><link rel="prefetch" href="/docs/assets/js/46.4c484525.js"><link rel="prefetch" href="/docs/assets/js/47.6f5ee1db.js"><link rel="prefetch" href="/docs/assets/js/48.26ec6e21.js"><link rel="prefetch" href="/docs/assets/js/49.d487a0de.js"><link rel="prefetch" href="/docs/assets/js/5.e165fbed.js"><link rel="prefetch" href="/docs/assets/js/50.1f2ef5c5.js"><link rel="prefetch" href="/docs/assets/js/51.340242a3.js"><link rel="prefetch" href="/docs/assets/js/52.83d72694.js"><link rel="prefetch" href="/docs/assets/js/53.80e076c6.js"><link rel="prefetch" href="/docs/assets/js/54.4f9a558d.js"><link rel="prefetch" href="/docs/assets/js/56.8c1db461.js"><link rel="prefetch" href="/docs/assets/js/57.d0d54ad8.js"><link rel="prefetch" href="/docs/assets/js/58.d7ca35e0.js"><link rel="prefetch" href="/docs/assets/js/59.2ea3a62a.js"><link rel="prefetch" href="/docs/assets/js/6.872c2530.js"><link rel="prefetch" href="/docs/assets/js/60.fa4247be.js"><link rel="prefetch" href="/docs/assets/js/61.955a2d12.js"><link rel="prefetch" href="/docs/assets/js/62.0bad85ea.js"><link rel="prefetch" href="/docs/assets/js/63.b5355540.js"><link rel="prefetch" href="/docs/assets/js/64.e2b4d370.js"><link rel="prefetch" href="/docs/assets/js/65.d3e57a8d.js"><link rel="prefetch" href="/docs/assets/js/66.8c3fa287.js"><link rel="prefetch" href="/docs/assets/js/67.c63db124.js"><link rel="prefetch" href="/docs/assets/js/68.bf55ec62.js"><link rel="prefetch" href="/docs/assets/js/69.9167ebd8.js"><link rel="prefetch" href="/docs/assets/js/7.f298e84f.js"><link rel="prefetch" href="/docs/assets/js/70.32f6c3f0.js"><link rel="prefetch" href="/docs/assets/js/71.05c8a84d.js"><link rel="prefetch" href="/docs/assets/js/72.d46555c7.js"><link rel="prefetch" href="/docs/assets/js/73.f17105e6.js"><link rel="prefetch" href="/docs/assets/js/74.548946c7.js"><link rel="prefetch" href="/docs/assets/js/75.5e7c4d21.js"><link rel="prefetch" href="/docs/assets/js/76.c218f7c2.js"><link rel="prefetch" href="/docs/assets/js/77.835dbee1.js"><link rel="prefetch" href="/docs/assets/js/78.164f7ead.js"><link rel="prefetch" href="/docs/assets/js/79.db219826.js"><link rel="prefetch" href="/docs/assets/js/80.ef4c97f8.js"><link rel="prefetch" href="/docs/assets/js/81.82d08e85.js"><link rel="prefetch" href="/docs/assets/js/82.043ff516.js"><link rel="prefetch" href="/docs/assets/js/83.02a4d7a6.js"><link rel="prefetch" href="/docs/assets/js/84.b970c89b.js"><link rel="prefetch" href="/docs/assets/js/85.ac95f1b4.js"><link rel="prefetch" href="/docs/assets/js/86.ca86a6d5.js"><link rel="prefetch" href="/docs/assets/js/87.f40d3dec.js"><link rel="prefetch" href="/docs/assets/js/88.00c13db1.js"><link rel="prefetch" href="/docs/assets/js/89.972cd016.js"><link rel="prefetch" href="/docs/assets/js/90.d1806848.js"><link rel="prefetch" href="/docs/assets/js/91.5fb1d1b9.js"><link rel="prefetch" href="/docs/assets/js/vendors~docsearch.cdf71c8e.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.fd13e100.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/en/" class="home-link router-link-active"><!----> <span class="site-name">TrueConf</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="All products" class="dropdown-title"><span class="title">All products</span> <span class="arrow down"></span></button> <button type="button" aria-label="All products" class="mobile-dropdown-title"><span class="title">All products</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/main/en/" target="_self" class="nav-link external">
+  ← Go back
+  <!----></a></li><li class="dropdown-item"><!----> <a href="/docs/en/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  TrueConf Server
+</a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/mcu/en/introduction/" target="_self" class="nav-link external">
+  TrueConf MCU
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client/en/installation" target="_self" class="nav-link external">
+  TrueConf for Windows, macOS, Linux
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android/en/installation" target="_self" class="nav-link external">
+  TrueConf for Android
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android-tv/en/getting-ready/" target="_self" class="nav-link external">
+  TrueConf for Android TV
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-ios/en/installation" target="_self" class="nav-link external">
+  TrueConf for iOS/iPadOS
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/room/en/introduction" target="_self" class="nav-link external">
+  TrueConf Room
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/weathervane/en/introduction" target="_self" class="nav-link external">
+  TrueConf Weathervane
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/group/en/introduction/" target="_self" class="nav-link external">
+  TrueConf Group
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videobar/en/characteristics/" target="_self" class="nav-link external">
+  TrueConf Videobar
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/kiosk/en/overview" target="_self" class="nav-link external">
+  TrueConf Kiosk
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/border-controller/en/introduction/" target="_self" class="nav-link external">
+  TrueConf Border Controller
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videosdk/en/introduction/common" target="_self" class="nav-link external">
+  TrueConf VideoSDK/Room API
+  <!----></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Support" class="dropdown-title"><span class="title">Support</span> <span class="arrow down"></span></button> <button type="button" aria-label="Support" class="mobile-dropdown-title"><span class="title">Support</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://trueconf.com/blog/knowledge-base" target="_self" class="nav-link external">
+  Knowledge base
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueacademy.com/" target="_self" class="nav-link external">
+  Learning portal
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueconf.com/support.html" target="_self" class="nav-link external">
+  Submit a ticket
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://chat.whatsapp.com/E8TEQ3HBlMj0h3016iRkxx" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Community
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://docs.trueconf.com/manual/server/trueconf-administrator-en.pdf" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PDF
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Lang" class="dropdown-title"><span class="title"> </span> <span class="arrow down"></span></button> <button type="button" aria-label="Lang" class="mobile-dropdown-title"><span class="title"> </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/en/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English - English
+</a></li><li class="dropdown-item"><!----> <a href="/docs/admin/api/" class="nav-link">
+  Russian - Русский
+</a></li><li class="dropdown-item"><!----> <a href="/docs/es/admin/api/" class="nav-link">
+  Spanish - Español
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="All products" class="dropdown-title"><span class="title">All products</span> <span class="arrow down"></span></button> <button type="button" aria-label="All products" class="mobile-dropdown-title"><span class="title">All products</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/main/en/" target="_self" class="nav-link external">
+  ← Go back
+  <!----></a></li><li class="dropdown-item"><!----> <a href="/docs/en/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  TrueConf Server
+</a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/mcu/en/introduction/" target="_self" class="nav-link external">
+  TrueConf MCU
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client/en/installation" target="_self" class="nav-link external">
+  TrueConf for Windows, macOS, Linux
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android/en/installation" target="_self" class="nav-link external">
+  TrueConf for Android
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android-tv/en/getting-ready/" target="_self" class="nav-link external">
+  TrueConf for Android TV
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-ios/en/installation" target="_self" class="nav-link external">
+  TrueConf for iOS/iPadOS
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/room/en/introduction" target="_self" class="nav-link external">
+  TrueConf Room
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/weathervane/en/introduction" target="_self" class="nav-link external">
+  TrueConf Weathervane
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/group/en/introduction/" target="_self" class="nav-link external">
+  TrueConf Group
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videobar/en/characteristics/" target="_self" class="nav-link external">
+  TrueConf Videobar
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/kiosk/en/overview" target="_self" class="nav-link external">
+  TrueConf Kiosk
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/border-controller/en/introduction/" target="_self" class="nav-link external">
+  TrueConf Border Controller
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videosdk/en/introduction/common" target="_self" class="nav-link external">
+  TrueConf VideoSDK/Room API
+  <!----></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Support" class="dropdown-title"><span class="title">Support</span> <span class="arrow down"></span></button> <button type="button" aria-label="Support" class="mobile-dropdown-title"><span class="title">Support</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://trueconf.com/blog/knowledge-base" target="_self" class="nav-link external">
+  Knowledge base
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueacademy.com/" target="_self" class="nav-link external">
+  Learning portal
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueconf.com/support.html" target="_self" class="nav-link external">
+  Submit a ticket
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://chat.whatsapp.com/E8TEQ3HBlMj0h3016iRkxx" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Community
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://docs.trueconf.com/manual/server/trueconf-administrator-en.pdf" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PDF
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Lang" class="dropdown-title"><span class="title"> </span> <span class="arrow down"></span></button> <button type="button" aria-label="Lang" class="mobile-dropdown-title"><span class="title"> </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/en/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English - English
+</a></li><li class="dropdown-item"><!----> <a href="/docs/admin/api/" class="nav-link">
+  Russian - Русский
+</a></li><li class="dropdown-item"><!----> <a href="/docs/es/admin/api/" class="nav-link">
+  Spanish - Español
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/docs/en/" class="sidebar-heading clickable router-link-active open"><span>TrueConf Server Administrator Guide</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/en/admin/introduction/" class="sidebar-link">Description of the video conferencing server and its capabilities</a></li><li><a href="/docs/en/admin/users/" class="sidebar-link">User types</a></li><li><a href="/docs/en/admin/calls/" class="sidebar-link">Types of video conferencing</a></li><li><a href="/docs/en/admin/extensions/" class="sidebar-link">Extensions</a></li><li><a href="/docs/en/admin/license/" class="sidebar-link">Licensing for the video conferencing server</a></li><li><a href="/docs/en/admin/server-part/" class="sidebar-link">Installation and system requirements</a></li><li><a href="/docs/en/admin/registration/" class="sidebar-link">Registration</a></li><li><a href="/docs/en/admin/start-settings/" class="sidebar-link">Initial setup</a></li><li><a href="/docs/en/admin/info/" class="sidebar-link">Server information and PRO licenses. Storage settings</a></li><li><a href="/docs/en/admin/network/" class="sidebar-link">Settings for network, notifications and federation</a></li><li><a href="/docs/en/admin/gateways/" class="sidebar-link">SIP/H.323/RTSP gateway and transcoding</a></li><li><a href="/docs/en/admin/web-config/" class="sidebar-link">Web and HTTPS settings</a></li><li><a href="/docs/en/admin/accounts/" class="sidebar-link">Server users. Integration with LDAP/Active Directory</a></li><li><a href="/docs/en/admin/conferences/" class="sidebar-link">Group conferences and streams</a></li><li><a href="/docs/en/admin/api/" aria-current="page" class="active sidebar-link">Working with the server API</a></li><li><a href="/docs/en/admin/reports/" class="sidebar-link">Server logs (reports)</a></li><li><a href="/docs/en/admin/extensions-config/" class="sidebar-link">Configuration of extensions</a></li><li><a href="/docs/en/admin/security-admin/" class="sidebar-link">Administrator Capabilities with the Security Admin Role</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p id="api"></p> <h1 id="working-with-the-server-api"><a href="#working-with-the-server-api" class="header-anchor">#</a> Working with the server API</h1> <!----> <p>The features of <span>TrueConf Server</span> can be extended with the RESTful API available in all versions, including the free one.</p> <p id="oauth2"></p> <h2 id="how-api-and-oauth-2-0-work"><a href="#how-api-and-oauth-2-0-work" class="header-anchor">#</a> How API and OAuth 2.0 work</h2> <p>The <span><b><!---->API</b><b><span> → </span>OAuth2</b></span> section is used to manage applications or services which utilize <span>TrueConf Server</span> API. Permissions are controlled based on OAuth 2.0. protocol. You can learn more information about OAuth 2.0. protocol in <a href="https://tools.ietf.org/html/rfc6749" target="_blank" rel="noopener noreferrer">RFC 6749 official documentation<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> or in the note below.</p> <div class="custom-block tip"><p class="custom-block-title"><span></span></p> <p>Oauth 2.0 is used to authorize certain applications (clients) to access protected resources with limited scopes and rights. With this approach, you can block a particular application or a user from the server resources at any given period of time. The protocol also allows you to authorize third-party applications and do actions on the server on behalf of the user via API. In this case, the user does not need to give their username or password to any third-party application (Authorization Code method).</p></div> <p>After authorization on <span>TrueConf Server</span> using OAuth 2.0 protocol, every third-party application obtains an access token. Those applications with a valid access token can access <span>TrueConf Server</span> API. The list of API commands can be found in <span><a href="https://developers.trueconf.com/api/server/" target="_self">[<span>TrueConf Server</span> API documentation]</a></span>. <span>TrueConf Server</span> administrator can manage third-party application permissions and access tokens obtained via this section.</p> <div class="custom-block tip"><p class="custom-block-title"><span></span></p> <p>Learn more about <span><a href="https://trueconf.com/blog/knowledge-base/how-to-get-started-with-trueconf-api.html" target="_self"><span>TrueConf</span> API use cases</a></span> in our blog.</p></div> <p>After successful authorization, the application receives <em>access token</em> with a limited lifespan and scope (server wide or limited to a specific user). For example, server wide scope gives information about any conference on the server, while user’s scope provides the information only about those conferences where the user is the conference owner or a listed participant. The scope is defined by the authorization type selected by a third-party application developer, while permissions set (rights) are determined by <span>TrueConf Server</span> administrator for every application.</p> <table><tr><th>
+            OAuth 2.0 authorization method
+        </th> <th>
+            Access token scope
+        </th> <th>
+            Authorization result
+        </th></tr> <tr><td><b>Client Credentials</b> <br>
+            The client gets access token, the scope of which is server wide. User authorization is not performed. This method is recommended for trusted applications only.
+        </td> <td>
+            Server wide
+        </td> <td><i>Access token</i> valid for 1 hour is issued.
+        </td></tr> <tr><td><b>User Credentials</b> (a.k.a. <i>Resource Owner Password Credentials Grant</i>)
+            <br>
+            To obtain access token, it is required to provide username and password received on the application side.
+        </td> <td>
+            User’s scope
+        </td> <td>
+            Access token valid for 1 hour and <i>(refresh token)</i> valid for 7 days are issued.
+        </td></tr> <tr><td><b>Authorization Code</b> <br> <i>Access token</i> is issued after user has successfully authorized on <span>TrueConf Server</span> special web page. The application cannot access username and password of the user.
+        </td> <td>
+            User’s scope
+        </td> <td>
+            Access token valid for 1 hour and refresh token valid for 7 days are issued.
+        </td></tr> <tr><td><b>Refresh Token</b> <br>
+            This method is used to obtain a new <i>access token</i> based on your existing <I>refresh token</I>.
+        </td> <td>
+            Equal to scope of the user who has received refresh token initially
+        </td> <td>
+            Access token valid for 24 hours is issued. This method cannot be used to obtain new refresh token.
+        </td></tr></table> <p>When requesting an access token, it is required to indicate Application ID and Secret. These parameters can be obtained and updated by creating or editing the application in this section. Application ID is created automatically and cannot be changed later. By contrast, application secret can be further regenerated.</p> <p id="oauth2-permissions"></p> <h2 id="permissions"><a href="#permissions" class="header-anchor">#</a> Permissions</h2> <p>API capabilities of a third-party application depend on the permissions it obtained.</p> <table><tr><th>
+            Permission
+        </th> <th>
+            Description
+        </th></tr> <tr><td>
+            conferences:read
+        </td> <td>
+            Reading conference details
+        </td></tr> <tr><td>
+            conferences:write
+        </td> <td>
+            Creating, editing, and deleting a conference
+        </td></tr> <tr><td>
+            conferences.records:read
+        </td> <td>
+            Reading conference recording details
+        </td></tr> <tr><td>
+            conferences.participants:read
+        </td> <td>
+            Reading the list of conference participants
+        </td></tr> <tr><td>
+            conferences.participants:write
+        </td> <td>
+            Creating, editing, and deleting conference participants
+        </td></tr> <tr><td>
+            conferences.invitations
+        </td> <td>
+            Reading and editing the list of participants invited to the conference
+        </td></tr> <tr><td>
+            conferences.sessions:read
+        </td> <td>
+            Reading active video conferencing session details
+        </td></tr> <tr><td>
+            conferences.sessions.participants:read
+        </td> <td>
+            Reading the list of active conference participants and their roles
+        </td></tr> <tr><td>
+            conferences.sessions.podiums.participants
+        </td> <td>
+            Inviting a participant of an active conference to the podium and removing the participant from the podium
+        </td></tr> <tr><td>
+            groups:read
+        </td> <td>
+            Reading user group information
+        </td></tr> <tr><td>
+            groups:write
+        </td> <td>
+            Creating, editing, and deleting user groups. Unavailable in LDAP mode
+        </td></tr> <tr><td>
+            groups.users:read
+        </td> <td>
+            Reading the group user list
+        </td></tr> <tr><td>
+            groups.users:write
+        </td> <td>
+            Creating, editing, and deleting group users. Unavailable in LDAP mode
+        </td></tr> <tr><td>
+            users:read
+        </td> <td>
+            Reading server user information
+        </td></tr> <tr><td>
+            users:write
+        </td> <td>
+            Creating, editing, and deleting server users. Unavailable in LDAP mode
+        </td></tr> <tr><td>
+            users.addressbook:read
+        </td> <td>
+            Reading contacts from user address books
+        </td></tr> <tr><td>
+            users.addressbook:write
+        </td> <td>
+            Creating, editing, and deleting contacts in the user address book
+        </td></tr> <tr><td>
+            users.avatar:read
+        </td> <td>
+            Reading user avatars details
+        </td></tr> <tr><td>
+            users.avatar:write
+        </td> <td>
+            Adding and deleting user avatars
+        </td></tr> <tr><td>
+            templates.conferences:read
+        </td> <td>
+            Reading conference template details
+        </td></tr> <tr><td>
+            templates.conferences:write
+        </td> <td>
+            Creating, editing, and deleting conference templates
+        </td></tr> <tr><td>
+            logs.calls:read
+        </td> <td>
+            Reading the conference list from server logs 
+        </td></tr> <tr><td>
+            logs.calls.participants:read
+        </td> <td>
+            Reading the list of conference participants from server logs
+        </td></tr> <tr><td>
+            logs.calls.invites:read
+        </td> <td>
+            Reading the list of invited users from server logs
+        </td></tr></table> <p>Each method is assigned with a set of permissions required for successful method call. All sets of permissions are specified in <span><a href="https://developers.trueconf.com/api/server/" target="_self"><span>TrueConf Server</span> API</a></span> documentation.</p> <div class="custom-block tip"><p class="custom-block-title"><span></span></p> <p>If an OAuth application requires both read and write access to a certain parameter, then you can specify a general permission <code>&lt;permission&gt;</code> instead of specifying <code>&lt;permission&gt;:read</code> and <code>&lt;permission&gt;:write</code> permissions, if it is available. For example, you don't need to click both <code>users:read</code> and <code>users:write</code> checkboxes to allow an application to read and edit TrueConf Server user accounts. Instead, you can select only the <code>users</code> checkbox.</p></div> <p id="create-oauth2-application"></p> <h2 id="creating-new-oauth-2-0-application"><a href="#creating-new-oauth-2-0-application" class="header-anchor">#</a> Creating new OAuth 2.0 application</h2> <p>To add an OAuth 2.0 application:</p> <ol><li><p>Click the <span><b><!---->Create a new application</b></span> button.</p></li> <li><p>Enter its identifier in the <span><b><!---->Name</b></span> field. It is only displayed in the application list.</p></li> <li><p>To authorize using the <strong>Authorization Code</strong> method, specify the URL to redirect the application to in the <span><b><!---->Redirect URL</b></span> field. For other authorization methods please indicate the following address <code>https://localhost/</code>.</p></li> <li><p>Check the <a href="#oauth2-permissions">rights</a> required for your application in the <span><b><!---->Permissions</b></span> list.</p></li> <li><p>Save your changes by clicking the <span><b><!---->Create</b></span> button.</p></li></ol> <p id="edit-oauth2-application"></p> <h2 id="editing-application"><a href="#editing-application" class="header-anchor">#</a> Editing application</h2> <p>On the application page you can not only edit its properties but also view access token list obtained by the application’s users. You can remove user access tokens at any time to block particular user from accessing API data.</p> <p>You can also <span><b><!---->Regenerate</b></span> the application secret to block the application and its new users from accessing the server for security purposes. Please note that access tokens and refresh tokens obtained using previous application secret will still be valid within their lifespan.</p> <button id="myBtn" title="Go to top"><span></span></button></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/en/admin/conferences/" class="prev">
+        Group conferences and streams
+      </a></span> <span class="next"><a href="/docs/en/admin/reports/">
+        Server logs (reports)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/docs/assets/js/app.2638b99c.js" defer></script><script src="/docs/assets/js/2.bdaed5d3.js" defer></script><script src="/docs/assets/js/1.204ac9d5.js" defer></script><script src="/docs/assets/js/55.8b31c01a.js" defer></script><script src="/docs/assets/js/22.19dce842.js" defer></script><script src="/docs/assets/js/28.dc33b352.js" defer></script><script src="/docs/assets/js/31.6e279f7e.js" defer></script><script src="/docs/assets/js/26.1bf8f651.js" defer></script><script src="/docs/assets/js/23.9fd842ec.js" defer></script>
+  </body>
+</html>

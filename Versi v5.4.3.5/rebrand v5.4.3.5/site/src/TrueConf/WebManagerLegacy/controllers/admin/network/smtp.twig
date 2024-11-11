@@ -1,0 +1,649 @@
+{% extends template.base %}
+
+{% block js %}
+    <script src="/public/js/jquery.validate.min.js?version={{ current_version }}"></script>
+    <link rel="stylesheet" href="/public/css/multiselect.css?version={{ server_version }}" type="text/css"/>
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+          var current_smtp = {};
+          current_smtp.host = '{{ config.smtp_server }}';
+          current_smtp.port = {{ config.smtp_port }};
+          current_smtp.admin_email = '{{ config.smtp_admin_email }}';
+          current_smtp.use_ssl = {{ config.smtp_use_ssl }};
+
+          default_ports = [25, 465, 25];
+          ports = default_ports;
+
+          passWasChanged = false;
+
+          var selectPlugin = null;
+
+          $(document).ready(function () {
+            function enablePassChangedFlag() {
+              $('#password').attr('model', '\\Classes\\Configuration');
+              passWasChanged = true;
+            }
+
+            $('#password').change(function () {
+              enablePassChangedFlag();
+            }).focus(function () {
+              this.value = '';
+              enablePassChangedFlag();
+            });
+
+            $('#authentication-type').change(function () {
+              var selected_auth = Number($(this).find(':selected').val());
+              if (selected_auth === 1 || selected_auth === 2) {
+                $('.authentication-fields').attr('disabled', false);
+              } else {
+                $('.authentication-fields').attr('disabled', true);
+                //$('#use-ssl').val(0);
+                //$('#port').val(ports[0]);
+              }
+            });
+
+            ports[current_smtp.use_ssl] = current_smtp.port;
+
+            $('#port').change(function () {
+              ports[$('#use-ssl').val()] = $(this).val();
+            });
+
+            $('#use-ssl').change(function () {
+              var port_field = $('#port');
+              var port = ports[$(this).val()];
+              port_field.val(port);
+            });
+
+            updateSmtpStatus();
+
+            $(document).bind('AfterStart', function () {
+              Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+            });
+
+            jQuery.validator.addMethod("isCorrectSenderName", function(value, element) {
+                return this.optional(element) || /^[^()<>\[\]:;@\\",.]+$/.test(value);
+            }, "{{ site._('Invalid format')|escape('js') }}");
+
+            jQuery.validator.addMethod("isPortInRange", function(value, element) {
+                return this.optional(element) || (value >= 1 && value <= 65535);
+            }, "{{ site._('Invalid format')|escape('js') }}");
+
+              /**
+             * https://bug-tracking.trueconf.com/show_bug.cgi?id=49332
+             */
+            $('#network-smtp').validate({
+              rules: {
+                "SMTP Sender Email": {
+                  required: true,
+                  email: true
+                },
+                "SMTP Admin Email": {
+                  required: true,
+                  email: true
+                },
+                "SMTP Sender Name": {
+                  required: false,
+                  isCorrectSenderName: true
+                },
+                "SMTP Server": {
+                  required: true
+                },
+                "SMTP Port": {
+                  required: true,
+                  isPortInRange: true
+                }
+              },
+              messages: {
+                "SMTP Sender Email": {
+                    email: "{{ email_invalid_format_message|e('js') }}",
+                    required: "{{ site._('Missing required field.')|escape('js') }}"
+                },
+                "SMTP Admin Email": {
+                    email: "{{ email_invalid_format_message|e('js') }}",
+                    required: "{{ site._('Missing required field.')|escape('js') }}"
+                },
+                "SMTP Server": {
+                    required: "{{ site._('Missing required field.')|escape('js') }}"
+                },
+                "SMTP Port": {
+                    required: "{{ site._('Missing required field.')|escape('js') }}"
+                }
+              }
+            });
+
+              $('#conf-remind-mselect').multiSelectPlugin({
+                  counterDescription: '{{ site._("Selected: %n") }}',
+                  defaultDescription: '{{ site._("Not selected") }}',
+                  maxHeight: 200,
+                  events: {
+                      onItemSelect: function (itemId, val, view, model) {
+                          let deselected = model.getDeselectedDomIds()
+                          if (model.getSelectedItemsIds().length >= 4) {
+                              for (id of deselected) {
+                                  view.disableItem(id);
+                              }
+                          }
+                      },
+                      onItemDeselect: function(itemId, val, view, model) {
+                          let deselected = model.getDeselectedDomIds()
+                          if (model.getSelectedItemsIds().length < 4) {
+                              for (id of deselected) {
+                                  view.enableItem(id);
+                              }
+                          }
+                      },
+                      onListShow: function(view, model) {
+                          let deselected = model.getDeselectedDomIds()
+                          if (model.getSelectedItemsIds().length >= 4) {
+                              for (id of deselected) {
+                                  view.disableItem(id);
+                              }
+                          }
+                      }
+                  },
+              }, function (controller) {
+                  controller.disable();
+                  selectPlugin = controller;
+              });
+              initConfRemindersList();
+          });
+
+          var smtpStatuses = {
+            0: "<span class='green'>{{ site._('successfully connected') }}</span>",
+            1: "<span class='red'>{{ site._('invalid server') }}</span>",
+            2: "<span class='red'>{{ site._('Invalid username or password')|lower }}</span>",
+            3: "<span class='red'>{{ site._('Unknown error')|lower }}</span>"
+          };
+
+          function validateSmtpFields() {
+              var smtp_host = $('#host');
+              var smtp_port = $('#port');
+              var smtp_sender_email = $('#smtp-sender-email');
+              var smtp_sender_name = $('#smtp-sender-name');
+              var admin_email = $('#input-admin-email');
+
+              var smtp_vars = [smtp_host, smtp_port, smtp_sender_email, smtp_sender_name, admin_email];
+
+              for (var i = 0; i < smtp_vars.length; i++) {
+                  if (false === smtp_vars[i].valid()) {
+                      smtp_vars[i].focus();
+                      return false;
+                  }
+              }
+              return true;
+          }
+
+          function checkConnection() {
+              if (false === validateSmtpFields()) {
+                  return;
+              }
+              updateSmtpStatus();
+          }
+
+          function updateSmtpStatus() {
+            var status_obj = $('#default-status');
+            var type = parseInt($("#authentication-type").val());
+            var data = {
+              host: $("#host").val(),
+              port: parseInt($("#port").val()),
+              type: type,
+              login: type ? $("#login").val() : '',
+              use_ssl: parseInt($("#use-ssl").val())
+            };
+            if (passWasChanged) {
+              data['password'] = type ? $("#password").val() : '';
+            }
+
+            $.ajax({
+              url: '/api/v4/smtp/configuration/check',
+              type: 'POST',
+              contentType: "application/json; charset=utf-8",
+              data: JSON.stringify(data),
+              beforeSend: function () {
+                status_obj.html($('<img />', {src: '/img/spinner-16.gif', id: 'spinner' + type}));
+                $('#smtp-check-connect-btn').attr('disabled', 'true');
+                $('#smtp-check-connect-btn').addClass('button-lock');
+                $('#host').attr('disabled', 'true');
+                $('#port').attr('disabled', 'true');
+                $('#authentication-type').attr('disabled', 'true');
+                $('#login').attr('disabled', 'true');
+                $('#password').attr('disabled', 'true');
+                $('#use-ssl').attr('disabled', 'true');
+              },
+              success: function (data) {
+                $('#smtp-check-connect-btn').removeAttr('disabled');
+                $('#smtp-check-connect-btn').removeClass('button-lock');
+                $('#host').removeAttr('disabled');
+                $('#port').removeAttr('disabled');
+                $('#authentication-type').removeAttr('disabled');
+                $('.authentication-fields').attr('disabled', type === 0);
+                $('#use-ssl').removeAttr('disabled');
+
+                if (data.result !== undefined) {
+                  status_obj.html(smtpStatuses[data.result]);
+                } else {
+                  status_obj.html(smtpStatuses[3]);
+                }
+              },
+              dataType: 'json',
+              error: function () {
+                $('#smtp-check-connect-btn').removeAttr('disabled');
+                $('#smtp-check-connect-btn').removeClass('button-lock');
+                $('#host').removeAttr('disabled');
+                $('#port').removeAttr('disabled');
+                $('#authentication-type').removeAttr('disabled');
+                $('#login').removeAttr('disabled');
+                $('#password').removeAttr('disabled');
+                $('#use-ssl').removeAttr('disabled');
+              }
+            });
+          }
+
+          function saveSmtp() {
+              /**
+               * https://bug-tracking.trueconf.com/show_bug.cgi?id=49332
+               */
+              if (false === validateSmtpFields())
+                  return;
+
+              if (!passWasChanged) {
+                  $("#password").attr('model', null);
+              }
+
+              if (false === $('#suppress_conf_remind').prop('checked') || '{{ config.suppress_conf_remind }}' === '0') {
+                  let checkboxes = selectPlugin.getSelectedItemsIds().join(' ');
+                  $('#remind_conf_checkboxes').val(checkboxes)
+              }
+
+              sendForm('network-smtp', null, null, 'network-smtp');
+          }
+
+          function initConfRemindersList() {
+              '{{ config.suppress_conf_remind }}' === '0' ? selectPlugin.enable() : selectPlugin.disable()
+
+              selectPlugin.addItem("300", '{{ site._('5 minutes before') }}', Boolean({{ reminders.rem300 }}))
+              selectPlugin.addItem("600", '{{ site._('10 minutes before') }}', Boolean({{ reminders.rem600 }}))
+              selectPlugin.addItem("900", '{{ site._('15 minutes before') }}', Boolean({{ reminders.rem900 }}))
+              selectPlugin.addItem("1800", '{{ site._('30 minutes before') }}', Boolean({{ reminders.rem1800 }}))
+              selectPlugin.addItem("3600", '{{ site._('1 hour before') }}', Boolean({{ reminders.rem3600 }}))
+              selectPlugin.addItem("86400", '{{ site._('1 day before') }}', Boolean({{ reminders.rem86400 }}))
+
+              selectPlugin.refreshList();
+          }
+        </script>
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        .smtp-param {
+            padding: 10px;
+            float: left;
+        }
+
+        input[disabled], textarea[disabled] {
+            background-color: #f2f0f0;
+        }
+
+        .smtp-param > label {
+            display: block;
+        }
+
+        .smtp-param > select {
+            width: 147px;
+        }
+
+        #smtp-authentication-type {
+            clear: left;
+        }
+
+        #smtp-smtp {
+            clear: left;
+        }
+
+        #smtp-status {
+            clear: left;
+        }
+
+        #smtp-button {
+            float: right;
+            padding: 10px;
+        }
+
+        #smtp-status {
+            float: left;
+            padding: 10px;
+        }
+
+        #smtp-status > p {
+            display: inline;
+            padding-left: 5px;
+        }
+
+        label.error {
+            background: #E56B4D !important;
+            color: white;
+            padding-left: 5px;
+            display: list-item;
+            width: 155px;
+            white-space: normal;
+            text-overflow: ellipsis;
+        }
+
+        label[for=input-admin-email] {
+          margin-left: 35px;
+          display: list-item;
+          white-space: normal;
+        }
+
+        fieldset#admin-email .error {
+          background: white;
+        }
+
+    </style>
+    {% autoescape 'html' %}
+        <form id="network-smtp">
+            <div class="tb-fix smtp-server-tb">
+                <fieldset id="smtp-server">
+                    <legend>{{ site._('Outgoing Mail Server') }}</legend>
+                    <div id="smtp-host" class="smtp-param">
+                        <label for="host">{{ site._('Host') }}</label>
+                        <input form="network-smtp" type="text" model="\Classes\Configuration"
+                               name="SMTP Server" value="{{ config.smtp_server }}" id="host" maxlength="255"
+                        />
+                    </div>
+                    <div id="smtp-port" class="smtp-param">
+                        <label for="port">{{ site._('Port') }}</label>
+                        <input form="network-smtp" type="text" model="\Classes\Configuration"
+                               name="SMTP Port" value="{{ config.smtp_port }}" id="port" maxlength="5"
+                               onkeyup="this.value = this.value.replace(/\D/ig, '');"/>
+                    </div>
+                    <div id="smtp-use-ssl" class="smtp-param">
+                        <label for="use-ssl">{{ site._('Connection security') }}</label>
+                        <select id="use-ssl" form="network-smtp" model="\Classes\Configuration"
+                                name="SMTP Use SSL">
+                            <option value="0" {{ (config.smtp_use_ssl != 1 and config.smtp_use_ssl != 2) ? 'selected' : '' }}>{{ site._('none') }}</option>
+                            <option value="1" {{ config.smtp_use_ssl == 1 ? 'selected' : '' }}>{{ site._('SSL') }}</option>
+                            <option value="2" {{ config.smtp_use_ssl == 2 ? 'selected' : '' }}>{{ site._('STARTTLS') }}</option>
+                        </select>
+                    </div>
+                    <div id="smtp-authentication-type" class="smtp-param">
+                        <label for="authentication-type">{{ site._('Authentication Type') }}</label>
+                        <select id="authentication-type" form="network-smtp" model="\Classes\Configuration"
+                                name="SMTP Authentication Type">
+                            <option value="0" {{ (config.smtp_authentication_type != 1 and config.smtp_authentication_type != 2) ? 'selected' : '' }}>{{ site._('no authorization') }}</option>
+                            <option value="1" {{ config.smtp_authentication_type == 1 ? 'selected' : '' }}>{{ site._('simple password') }}</option>
+                        </select>
+                    </div>
+                    <div id="smtp-login" class="smtp-param">
+                        <label for="login">{{ site._('Login') }}</label>
+                        <input form="network-smtp" type="text" model="\Classes\Configuration"
+                               name="SMTP Login" value="{{ config.smtp_login }}" id="login" maxlength="255"
+                               class="authentication-fields"
+                        />
+                    </div>
+                    <div id="smtp-password" class="smtp-param">
+                        <label for="password">{{ site._('Password') }}</label>
+                        <input form="network-smtp" type="password" model="\Classes\Configuration"
+                               name="SMTP Password" value="{{ config.smtp_password ? '****************' : '' }}"
+                               id="password"
+                               maxlength="255" class="authentication-fields"/>
+                    </div>
+                    <div id="smtp-smtp" class="smtp-param">
+                        <label for="smtp-sender-email">&nbsp;{{ site._('Sender email') }}</label>
+                        <input form="network-smtp" type="text" model="\Classes\Configuration"
+                               name="SMTP Sender Email" value="{{ config.smtp_sender_email }}" id="smtp-sender-email" maxlength="255"
+                        />
+                    </div>
+                    <div id="smtp-name" class="smtp-param">
+                        <label for="smtp-sender-name">&nbsp;{{ site._('Sender name')}}</label>
+                        <input form="network-smtp" type="text" model="\Classes\Configuration"
+                               name="SMTP Sender Name" value="{{ config.smtp_sender_name }}" id="smtp-sender-name"
+                               maxlength="60"
+                        />
+                    </div>
+                    <div id="smtp-status">
+                        <label for="status">{{ site._('Status') }}:</label>
+                        <p id="default-status"></p>
+                    </div>
+                    <div id="smtp-button">
+                        <a id="smtp-check-connect-btn" class="button"
+                           onclick="checkConnection()">{{ site._('Check connection') }}</a>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <fieldset id="admin-email">
+                <legend>{{ site._('Admin e-mail') }}</legend>
+                <table class="tb-fix smtp-server-tb">
+                    <col width="50%">
+                    <col width="50%">
+                    <tr>
+                        <td>
+                            <div class="field fl">
+                                {{ site._('E-mail') }}
+                                <input form="network-smtp" name="SMTP Admin Email" type="text"
+                                       model="\Classes\Configuration" id="input-admin-email" value="{{ config.smtp_admin_email }}"
+                                       maxlength="255" size="30"/>
+                                <div class="error">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div id="restart_notification_block" class="m-bottom-5">
+                    <label>
+                        <input id="restart_notification" form="network-smtp" class="fl" model="\Classes\Configuration"
+                               name="Restart Notification"
+                               type="checkbox" {{ config.restart_notification ? 'checked="checked"' : '' }} />&nbsp;{{ site._('Notify administrator about the server restart due to internal issues.') }}
+                    </label>
+                </div>
+            </fieldset>
+
+
+            <fieldset id="user-mails">
+                <legend>{{ site._('User mails') }}</legend>
+
+                <label>
+                    <input class="fl" model="\Classes\Configuration" form="network-smtp"
+                           name="suppress_missed_call_mail"
+                           id="suppress_missed_call_mail"
+                           type="checkbox" {{ config.suppress_missed_call_mail ? 'checked="checked"' : '' }} />&nbsp;{{ site._('Notify users about missed calls') }}
+                </label>
+
+                <div id="smtp-default-mails-block" class="fr m-right-10">
+                    <a class="button"
+                       onclick="$.ajax({
+                               type: 'POST',
+                               url: '{{ site.getInsideUrl('network', 'reset-smtp') }}',
+                               success: function() {location.reload();},
+                               })">{{ site._('Set default') }}</a>
+                </div>
+                <br class="clear"/>
+                <fieldset id="mail-user" class="mail-group">
+                    <legend>{{ site._('Missed call notification for registered users') }}</legend>
+                    <table class="mail-tb">
+                        <col width="50px">
+                        <col>
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Subject:') }}</td>
+                            <td><input form="network-smtp" model="\Classes\Configuration" type="text"
+                                       id="missed_call_mail_subj" name="missed_call_mail_subj" maxlength="1400"
+                                       value="{{ config.missed_call_mail_subj }}" {{ config.suppress_missed_call_mail ? '' : 'disabled="disabled"' }} />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Body:') }}</td>
+                            <td><textarea form="network-smtp" model="\Classes\Configuration" id="missed_call_mail_body"
+                                          name="missed_call_mail_body"
+                                          maxlength="10000" {{ config.suppress_missed_call_mail ? '' : 'disabled="disabled"' }}>{{ config.missed_call_mail_body }}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <fieldset id="mail-admin" class="mail-group">
+                    <legend>{{ site._('Missed call notification for unregistered user') }}</legend>
+                    <table class="mail-tb">
+                        <col width="50px">
+                        <col>
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Subject:') }}</td>
+                            <td><input form="network-smtp" model="\Classes\Configuration" type="text"
+                                       id="invite_mail_subj"
+                                       name="invite_mail_subj" maxlength="1400"
+                                       value="{{ config.invite_mail_subj }}" {{ config.suppress_missed_call_mail ? 'checked="checked"' : '' }} />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Body:') }}</td>
+                            <td><textarea form="network-smtp" model="\Classes\Configuration" id="invite_mail_body"
+                                          name="invite_mail_body"
+                                          maxlength="10000" {{ config.suppress_missed_call_mail ? '' : 'disabled="disabled"' }}>{{ config.invite_mail_body }}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <div class="m-top-10 m-bottom-5">
+                    <label>
+                        <input style="margin-top: 3px;" class="fl" model="\Classes\Configuration" form="network-smtp"
+                               name="suppress_conf_invite_mail" id="suppress_conf_invite_mail"
+                               type="checkbox" {{ config.suppress_conf_invite_mail ? 'checked="checked"' : '' }} />&nbsp;{{ site._('Send invitations to participants of the group conference') }}
+                    </label>
+                </div>
+
+                <fieldset id="mail-conf" class="mail-group">
+                    <legend>{{ site._('Scheduled Conference Invitation') }}</legend>
+                    <table class="mail-tb">
+                        <col width="50px">
+                        <col>
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Subject:') }}</td>
+                            <td><input form="network-smtp" model="\Classes\Configuration" type="text"
+                                       id="conf_invite_mail_subj" name="conf_invite_mail_subj" maxlength="1400"
+                                       value="{{ config.conf_invite_mail_subj }}" {{ config.suppress_conf_invite_mail ? '' : 'disabled="disabled"' }} />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Body:') }}</td>
+                            <td><textarea form="network-smtp" model="\Classes\Configuration" id="conf_invite_mail_body"
+                                          name="conf_invite_mail_body"
+                                          maxlength="10000" {{ config.suppress_conf_invite_mail ? '' : 'disabled="disabled"' }}>{{ config.conf_invite_mail_body }}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <fieldset id="mail-registration-success" class="mail-group">
+                    <legend>{{ site._('Conference registration notification') }}</legend>
+                    <table class="mail-tb">
+                        <col width="50px">
+                        <col>
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Subject:') }}</td>
+                            <td><input form="network-smtp" model="\Classes\Configuration" type="text"
+                                       id="registration_success_mail_subj" name="registration_success_mail_subj"
+                                       maxlength="1400"
+                                       value="{{ config.registration_success_mail_subj }}" {{ config.suppress_conf_invite_mail ? '' : 'disabled="disabled"' }} />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Body:') }}</td>
+                            <td><textarea form="network-smtp" model="\Classes\Configuration"
+                                          id="registration_success_mail_body"
+                                          name="registration_success_mail_body"
+                                          maxlength="10000" {{ config.suppress_conf_invite_mail ? '' : 'disabled="disabled"' }}>{{ config.registration_success_mail_body }}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+              <div class="m-top-10 m-bottom-5">
+                <label>
+                  <input style="margin-top: 3px;" class="fl" model="\Classes\Configuration" form="network-smtp"
+                         name="suppress_conf_remind" id="suppress_conf_remind"
+                         type="checkbox" {{ config.suppress_conf_remind ? 'checked="checked"' : '' }} />&nbsp;{{ site._('Send users reminders about upcoming conference') }}
+                </label>
+                <div class="fr m-right-10" style="display:flex;">
+                  <span style="position: relative; top: 3px; right: 6px">{{ site._('Reminders') }}</span>
+                  <div id="conf-remind-mselect" style="width: 200px;"></div>
+                </div>
+                <br class="clear"/>
+              </div>
+
+              <fieldset id="conf_remind" class="mail-group">
+                <legend>{{ site._('Reminder about upcoming conference') }}</legend>
+                <input form="network-smtp" model="\Classes\Reminders" type="hidden"
+                       id="remind_conf_checkboxes" name="remind_conf_checkboxes"
+                       value="{{ reminders.remind_conf_checkboxes }}">
+                <table class="mail-tb">
+                  <col width="50px">
+                  <col>
+                  <tr>
+                    <td align="left" valign="top">{{ site._('Subject:') }}</td>
+                    <td><input form="network-smtp" model="\Classes\Configuration" type="text"
+                               id="conf_remind_mail_subj" name="conf_remind_mail_subj" maxlength="1400"
+                               value="{{ config.conf_remind_mail_subj }}" {{ config.suppress_conf_remind ? 'checked="checked"' : '' }} />
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td align="left" valign="top">{{ site._('Body:') }}</td>
+                    <td><textarea form="network-smtp" model="\Classes\Configuration"
+                                  id="conf_remind_mail_body" name="conf_remind_mail_body"
+                                  maxlength="10000" {{ config.suppress_conf_remind ? '' : 'disabled="disabled"' }}>{{ config.conf_remind_mail_body }}</textarea>
+                    </td>
+                  </tr>
+                </table>
+              </fieldset>
+
+              <div class="m-top-10 m-bottom-5">
+                <label>
+                  <input style="margin-top: 3px;" class="fl" model="\Classes\Configuration" form="network-smtp"
+                         name="suppress_registration_revoke" id="suppress_registration_revoke"
+                         type="checkbox" {{ config.suppress_registration_revoke ? 'checked="checked"' : '' }} />&nbsp;{{ site._('Notify users if they are removed from the participant list') }}
+                </label>
+              </div>
+
+              <fieldset id="mail-registration-revoke" class="mail-group">
+                    <legend>{{ site._('Removal from participant list') }}</legend>
+                    <table class="mail-tb">
+                        <col width="50px">
+                        <col>
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Subject:') }}</td>
+                            <td><input form="network-smtp" model="\Classes\Configuration" type="text"
+                                       id="registration_revoke_mail_subj"
+                                       name="registration_revoke_mail_subj" maxlength="1400"
+                                       value="{{ config.registration_revoke_mail_subj }}" {{ config.suppress_registration_revoke ? 'checked="checked"' : '' }} />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="top">{{ site._('Body:') }}</td>
+                            <td><textarea form="network-smtp" model="\Classes\Configuration"
+                                          id="registration_revoke_mail_body"
+                                          name="registration_revoke_mail_body"
+                                          maxlength="10000" {{ config.suppress_registration_revoke ? '' : 'disabled="disabled"' }}>{{ config.registration_revoke_mail_body }}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+            </fieldset>
+        </form>
+    {% endautoescape %}
+    <div id="smtp-func-block" class="m-top-10 fl">
+        {{ design.btn({'text': site._('Apply'), 'onclick': "missedCallMailReverse(); emptyFieldsSolution(); saveSmtp(); missedCallMailReverse();" }) }}
+    </div>
+
+
+
+{% endblock %}

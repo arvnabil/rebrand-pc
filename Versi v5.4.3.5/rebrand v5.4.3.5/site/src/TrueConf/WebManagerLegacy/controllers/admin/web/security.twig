@@ -1,0 +1,628 @@
+{% extends template.base %}
+
+{% block js %}
+    <script type="text/javascript" src="/public/js/vue/vue/vue.min.js?version={{ current_version }}"></script>
+    <script type="text/javascript"
+            src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version }}"></script>
+    <script type="text/javascript">
+
+      var access_limit = {{ access_limit ? 'true' : 'false' }};
+      var allow_hosts_default = [
+          {% for item in allow_hosts_default %}
+        {'mask': "{{ item }}"}
+          {{ not(loop.last) ? ',' : '' }}
+          {% endfor %}
+      ];
+      var allow_hosts_current = [
+          {% for item in (allow_hosts) %}
+        {'mask': "{{ item }}"}
+          {{ not(loop.last) ? ',' : '' }}
+          {% endfor %}
+      ];
+      var allow_hosts = allow_hosts_current.slice(0);
+      var ip_reg = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
+      $(document).ready(function () {
+
+        $(document).bind('AfterStart', function () {
+          Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+        });
+        for (var i = 1; i <= 32; i++) {
+          $('#mask').append('<option id="' + i + '" value="' + i + '">' + i + ' - ' + bit2mask(i, true) + '</option>');
+        }
+        $('#host').keyup(function () {
+          if (checkIP(host.val())) {
+            getIpRange(host.val(), mask.val());
+          } else {
+            $("#ip_range").html('');
+          }
+        });
+        $('#host').keydown(function (e) {
+          if (e.keyCode == 13) {
+            return false;
+          }
+        });
+        $('#mask').change(function () {
+          if (checkIP(host.val())) {
+            getIpRange(host.val(), mask.val());
+          } else {
+            $("#ip_range").html('');
+          }
+        });
+        $("input[name='allowAdminAccess']").click(function () {
+          $('#allow_admin_access').val(this.value);
+          sendForm('allow-admin-access', null, null, "security_config");
+        });
+        $('#update-allow-hosts').click(function () {
+          $.ajax({
+            url: "{{ site.getInsideUrl('web', 'update-allow-hosts') }}",
+            type: 'POST',
+            data: {'allow_hosts': allow_hosts},
+            success: successUpdateAllowedHosts,
+            error: function () {
+              $(document).trigger('display-header-error', t._error);
+            }
+          });
+          return false;
+        });
+
+        function successUpdateAllowedHosts() {
+          if (!$('#access_limit')[0].checked) {
+            $.ajax({
+              url: "{{ site.getInsideUrl('web', 'allow-all-hosts') }}",
+              type: 'POST',
+              success: function () {
+                Server.apache.restart();
+              },
+              error: function () {
+                $(document).trigger('display-header-error', t._error);
+              }
+            });
+            return;
+          }
+          Server.apache.restart();
+        }
+
+        $('#access_limit').bind('click', function () {
+          if (!access_limit && !allow_hosts.length) {
+            allow_hosts = allow_hosts_default.slice(0);
+          }
+
+          if ($(this).is(':checked')/* && !access_limit*/) {
+            if (access_limit && isEqualObjectArrays(allow_hosts_current, allow_hosts)) {
+              hideMaskBtns();
+            } else {
+              showMaskBtns();
+            }
+
+            if (allow_hosts) {
+              renderEditMaskTableLines('inside-fieldset-block', allow_hosts);
+            } else {
+              renderEditMaskTableLines('inside-fieldset-block', allow_hosts_default);
+            }
+
+            $('#add-allow-hosts').removeClass('button-lock');
+          } else {
+            if (!access_limit && isEqualObjectArrays(allow_hosts_current, allow_hosts)) {
+              hideMaskBtns();
+            } else {
+              showMaskBtns();
+            }
+
+            renderMaskTableLines('inside-fieldset-block', allow_hosts);
+            $('#add-allow-hosts').addClass('button-lock');
+          }
+        });
+        $('#add-allow-hosts').click(function () {
+          if (!$(this).hasClass('button-lock')) {
+            $('#mask :last').attr('selected', 'selected');
+            var buttons = $("#dialog-form").dialog("option", "buttons");
+            $("#dialog-form").dialog("option", "open", function () {
+              addButtonsStyleAdd();
+            });
+            $("#dialog-form").dialog("option", "title", "{{ site._('Add subnetwork') }}");
+            $('#dialog-form').dialog('open');
+          }
+          return false;
+        });
+        var host = $("#host"),
+          mask = $("#mask"),
+          identifier = $("#identifier"),
+          allFields = $([]).add(host).add(mask);
+
+        function checkExistence(arr, obj) {
+          var real_mask = getFullMask(obj.host, obj.mask);
+          for (var k in arr) {
+            if (arr[k].mask == real_mask) {
+              updateTips("{{ site._('Address already exists') }}");
+              return false;
+            }
+          }
+          return true;
+        }
+
+        $("#dialog-form").dialog({
+          autoOpen: false,
+          height: 325,
+          width: 350,
+          modal: true,
+          minHeight: 325,
+          minWidth: 350,
+          draggable: true,
+          resizable: false,
+          open: function () {
+            addButtonsStyleAdd();
+          },
+          buttons: {
+            "{{ site._('Cancel') }}": function () {
+              $(this).dialog("close");
+            },
+            "{{ site._('Save') }}": function () {
+              var bValid = true;
+              host.val($.trim(host.val()));
+              allFields.removeClass("ui-state-error");
+              bValid = bValid && checkLength(host, "{{ site._('network address') }}", 1, 255);
+              var error_html = "<span title='%title'>%msg</span>";
+              var error_title = "{{ site._("4 octets in decimal form without leading zeros from 0 to 255 separated by dots, for instance «192.168.11.10»")|escape('js') }}";
+              var error_msg = "{{ site._("Invalid network address")|escape('js') }}";
+              bValid = bValid && checkRegexp(host, ip_reg, error_html.replace("%title", error_title).replace("%msg", error_msg), punycode.toASCII);
+              bValid = bValid && checkExistence(allow_hosts, {'host': host.val(), 'mask': mask.val()});
+              if (bValid) {
+                showMaskBtns();
+                add('inside-fieldset-block', allow_hosts, host.val(), mask.val(), identifier.val());
+                $('#dialog-form').dialog('close');
+              }
+            }
+          },
+          close: function () {
+            $('.validateTips').text('');
+            $("#ip_range").html('');
+            host.val("").removeClass("ui-state-error");
+            identifier.val('none');
+            $('.ui-button-text:contains({{ site._('Delete') }})').button().hide();
+          }
+        });
+      });
+
+      function add(id, arr, host, mask, key) {
+        var key = (key != 'none') ? key : false;
+        var full_mask = getFullMask(host, mask);
+        if (key) {
+          arr[key] = {'mask': full_mask};
+        } else {
+          arr.push({'mask': full_mask});
+        }
+
+        $('#identifier').val('none');
+        renderEditMaskTableLines(id, arr);
+      }
+
+      function editMask(mask) {
+        if (allow_hosts.length > 0) {
+          for (var k in allow_hosts) {
+            if (allow_hosts[k].mask == mask) {
+              var host = mask.split('/');
+              $("#identifier").val(k);
+              $("#host").val(host[0]);
+              $("#mask option[id = " + host[1] + "]").attr('selected', 'selected');
+              var buttons = $("#dialog-form").dialog("option", "buttons");
+              buttons["{{ site._('Delete') }}"] = function () {
+                deleteMask(mask);
+                $(this).dialog("close");
+                return false;
+              };
+              $("#dialog-form").dialog("option", "buttons", buttons);
+              $("#dialog-form").dialog("option", "open", function () {
+                editButtonsStyleAdd();
+              });
+              $("#dialog-form").dialog("option", "title", "{{ site._('Edit subnetwork') }}");
+              $('#dialog-form').dialog('open');
+              getIpRange(host[0], host[1]);
+            }
+          }
+        }
+      }
+
+      function deleteMask(mask) {
+        showMaskBtns();
+        if (allow_hosts.length > 0) {
+          for (var k in allow_hosts) {
+            if (allow_hosts[k].mask == mask) {
+              allow_hosts.splice(k, 1);
+              $('#add-allow-hosts').removeClass('button-lock');
+              if (!allow_hosts.length) {
+                $('#access_limit').removeAttr('checked');
+              }
+              renderEditMaskTableLines('inside-fieldset-block', allow_hosts);
+            }
+          }
+        }
+      }
+
+      function resetMask() {
+        hideMaskBtns();
+        allow_hosts = allow_hosts_current.slice(0);
+        if (access_limit) {
+          $('#access_limit').prop('checked', 'checked');
+          renderEditMaskTableLines('inside-fieldset-block', allow_hosts_current);
+          $('#add-allow-hosts').removeClass('button-lock');
+        } else {
+          $('#access_limit').removeAttr('checked');
+          renderMaskTableLines('inside-fieldset-block', (allow_hosts ? allow_hosts : allow_hosts_default));
+          $('#add-allow-hosts').addClass('button-lock');
+        }
+      }
+
+      function getFullMask(host, mask) {
+
+        return host + '/' + mask;
+      }
+
+      function renderEditMaskTableLines(id, arr) {
+        var html = '';
+        if (arr.length > 0) {
+          for (var k in arr) {
+            html += '<tr><td class="left">' + '<a href="#" onclick="editMask(\'' + arr[k].mask + '\'); return false;">' + arr[k].mask + '</a></td></tr>';
+          }
+          $('#' + id + ' .mask-entire-table table tbody').html(html);
+        } else {
+          $('#' + id + ' .mask-entire-table table tbody').html('<tr class="empty-tr"><td></td></tr>');
+        }
+        prepare_table();
+      }
+
+      function renderMaskTableLines(id, arr) {
+        var html = '';
+        if (arr.length > 0) {
+          for (var k in arr) {
+            html += '<tr><td class="left">' + arr[k].mask + '</td></tr>';
+          }
+          $('#' + id + ' .mask-entire-table table tbody').html(html);
+        } else {
+          $('#' + id + ' .mask-entire-table table tbody').html('<tr class="empty-tr"><td></td></tr>');
+        }
+        prepare_table();
+      }
+
+      function showMaskBtns() {
+        $('#reset-allow-hosts').show();
+        $('#update-allow-hosts').show();
+      }
+
+      function hideMaskBtns() {
+        $('#reset-allow-hosts').hide();
+        $('#update-allow-hosts').hide();
+      }
+
+      function addButtonsStyleAdd() {
+        $('.ui-dialog-buttonset').css('float', 'none');
+        $('.ui-dialog-buttonset>.ui-button:first').hide();
+        $('.ui-dialog-buttonset>.ui-button:not(:first)').css('float', 'right');
+      }
+
+      function editButtonsStyleAdd() {
+        $('.ui-dialog-buttonset').css('float', 'none');
+        $('.ui-dialog-buttonset>.ui-button:first').css('float', 'left').show();
+        $('.ui-dialog-buttonset>.ui-button:not(:first)').css('float', 'right');
+      }
+
+
+      function bin2dec(binary_string) {
+        binary_string = (binary_string + '').replace(/[^01]/gi, '');
+        return parseInt(binary_string, 2);
+      }
+
+      function dec2bin(number) {
+        return number.toString(2);
+      }
+
+      function bit2mask(bits, isArr) {
+
+        var maskBin = String();
+        for (var i = 0; i < 32; i++) {
+          if (i < bits) {
+            maskBin += "1";
+          } else {
+            maskBin += "0";
+          }
+        }
+
+        var maskArr = [bin2dec(maskBin.substr(0, 8)),
+          bin2dec(maskBin.substr(8, 8)),
+          bin2dec(maskBin.substr(16, 8)),
+          bin2dec(maskBin.substr(24, 8))];
+        if (isArr) {
+          return maskArr.join('.');
+        }
+
+        return maskArr;
+      }
+
+      function calcMask(maskStr) {
+        var maskArray = [];
+        if (!isNaN(maskStr)) {
+          maskArray = bit2mask(maskStr);
+        } else {
+          maskArray = maskStr.split(".");
+        }
+        return maskArray;
+      }
+
+      function checkIP(ip) {
+        return ip.match(ip_reg);
+      }
+
+      function getIpRange(ip, mask) {
+
+        var ipArray = ip.split(".");
+        var maskArray = calcMask(mask);
+        var Anet = [];
+        var Amin = [];
+        var Amax = [];
+        var maxIP, minIP;
+        var ipl32 = (ipArray[0] << 24) + (ipArray[1] << 16) + (ipArray[2] << 8) + parseInt(ipArray[3]);
+        var maskl32 = (maskArray[0] << 24) + (maskArray[1] << 16) + (maskArray[2] << 8) + parseInt(maskArray[3]);
+        var netl32 = ipl32 & maskl32;
+        Anet[0] = (netl32 >> 24) & 255;
+        Anet[1] = (netl32 >> 16) & 255;
+        Anet[2] = (netl32 >> 8) & 255;
+        Anet[3] = netl32 & 255;
+
+        Amin[0] = Anet[0];
+        Amin[1] = Anet[1];
+        Amin[2] = Anet[2];
+        Amin[3] = Anet[3];
+        minIP = Amin.join('.');
+
+        Amax[0] = (maskArray[0] ^ 255) | ipArray[0];
+        Amax[1] = (maskArray[1] ^ 255) | ipArray[1];
+        Amax[2] = (maskArray[2] ^ 255) | ipArray[2];
+        Amax[3] = (maskArray[3] ^ 255) | ipArray[3];
+        maxIP = Amax.join('.');
+        $("#ip_range").html((minIP == maxIP) ? minIP : minIP + " - " + maxIP);
+      }
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <fieldset id="inside-fieldset-block" class="fieldset-block">
+        <legend>{{ site._('Dashboard') }}</legend>
+        <div style="margin-left:10px">
+            {{ site._('Give admin access to:') }}
+        </div>
+
+        <form id="allow-admin-access" class="" style="margin-left: 10px">
+            <label>
+                <input type="radio" class="m-top-10"
+                       name="allowAdminAccess" :disabled="isSecurityAdmin"
+                       value="0" {{ (web_manager.admin_auth_type != 1) ? 'checked' : '' }}>
+                {{ site._('members of %win_group_name local security group')|replace({'%win_group_name': '<strong>'~ win_group_name~'</strong>'}) }}
+            </label>
+
+            <br/>
+
+            <label>
+                <input type="radio" class="m-bottom-10"
+                       name="allowAdminAccess" :disabled="isSecurityAdmin"
+                       value="1" {{ (admin_auth_type == 1) ? 'checked' : '' }}>
+                {{ site._('all %HOST_OS% users on <strong>%COMPUTERNAME%</strong>') | replace({ '%COMPUTERNAME%' : host_name, '%HOST_OS%' : host_os }) }}
+            </label>
+
+            <br/>
+
+            <input type="hidden" value="{{ admin_auth_type == 1 ?: 0 }}"
+                   id="allow_admin_access" :disabled="isSecurityAdmin"
+                   model="\Core\WebManager" name="admin_auth_type"/>
+        </form>
+
+        <div class="checkbox" @click="allowAdminsFromLocalhost">
+            <input class="checkbox__input" type="checkbox"
+                   :checked="isAllowAdminsFromLocalhost" :disabled="isSecurityAdmin"
+                   title="{{ site._('Allow admin access from localhost without authentication') }}">
+            <label class="checkbox__label">{{ site._('Allow admin access from localhost without authentication') }}</label>
+        </div>
+        <table class="network-tb">
+            <tr>
+                <td>
+                    <label>
+                        <input id="access_limit" name="access_limit" :disabled="isSecurityAdmin"
+                               type="checkbox" {{ access_limit ? 'checked="checked"' : '' }} />
+                        {{ site._('Limit access to admin area by IP') }}
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="mask-entire-table">
+                        <div class="block-table-wrapper">
+                            <table class="table-body">
+                                {% if not access_limit %}
+                                    {% for mask in (allow_hosts ? allow_hosts : allow_hosts_default) %}
+                                        <tr class="address-empty-tr">
+                                            <td>
+                                                <span>{{ mask }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    {% for item in allow_hosts %}
+                                        <tr>
+                                            <td class="left">
+                                                {% if is_security_admin %}
+                                                    {{ item }}
+                                                {% else %}
+                                                    <a href="#"
+                                                       onclick="editMask('{{ item }}'); return false;">{{ item }}</a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr class="empty-tr">
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% if not is_security_admin %}
+                <tr>
+                    <td>
+                        <a id="add-allow-hosts" class="button {{ access_limit ? '' : 'button-lock' }}"
+                           style="margin-right: 20px;">{{ site._('Add') }}</a>
+                        <a id="reset-allow-hosts" class="button" onclick="resetMask(); return false;"
+                           style="margin-right: 20px; display: none;">{{ site._('Reset') }}</a>
+                        <a id="update-allow-hosts" href="#" class="button btn_green"
+                           style="display: none;">{{ site._('Apply') }}</a>
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+
+    </fieldset>
+
+    <br/>
+    {% if not is_security_admin %}
+        <fieldset>
+            <legend>{{ site._('API') }}</legend>
+            <div style="padding: 2px 10px 12px">
+                <p>{{ site._('Please indicate the secret key for %server_name API. Read more in <a href="%booklet_url" target="_blank" rel="noopener">API documentation</a>')|replace({'%server_name' : settings.config.server_name, '%booklet_url' : company_site_url~'/tcs/manual/restapi/?lang='~settings.lang~'&version='~server_version }) }}</p>
+                <br/>
+                {{ form_api }}
+            </div>
+        </fieldset>
+    {% endif %}
+
+
+    <div id="dialog-form">
+        <p class="validateTips"></p>
+        <form>
+            <fieldset>
+                <input type="hidden" id="identifier" name="identifier" value="none"/>
+                <label for="host">{{ site._('Network address') }}</label>
+                <input type="text" name="host" id="host" class="text ui-widget-content ui-corner-all" maxlength="255"/>
+                <label for="mask">{{ site._('Subnet mask') }}</label>
+                <select id="mask" name="mask"></select>
+                <span id="ip_range_text" class="green">{{ site._('IP address range') }}</span><br>
+                <span id="ip_range" class="green"></span>
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="dialog-confirm-allow-admins-from-localhost" title="{{ site._('Confirm') }}">
+        {{ site._('By saving this change you will be sent to the login page.') }}
+    </div>
+
+    <style type="text/css">
+        .checkbox {
+            margin: 8px 10px;
+        }
+
+        .checkbox__label {
+            margin-left: 4px;
+        }
+
+        .checkbox__label:hover {
+            cursor: pointer;
+        }
+    </style>
+
+    <script type="text/javascript">
+      Vue.use(VueResource);
+
+      Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+      var el_confirm_admins_from_localhost = $('#dialog-confirm-allow-admins-from-localhost');
+      var handlers = {
+        set_status_admins_from_localhost: '{{ handler_set_status_admins_from_localhost }}'
+      };
+
+      var vm = new Vue({
+        el: '#inside-fieldset-block',
+        delimiters: ['${', '}'],
+        computed: {
+          isAllowAdminsFromLocalhost: function () {
+            return !this.$data.denyAdminsFromLocalhost;
+          }
+        },
+        data: {
+          previousRequest: null,
+          denyAdminsFromLocalhost: {{ deny_admins_from_localhost }},
+          isLocalhost: {{ is_localhost }},
+          isSecurityAdmin: {% if is_security_admin %}true{% else %}false{% endif %}
+        },
+        methods: {
+          allowAdminsFromLocalhost: function (event) {
+            if (this.isSecurityAdmin) {
+              return;
+            }
+            if (this.isLocalhost && !this.denyAdminsFromLocalhost) {
+              event.composedPath()[0].checked = true;
+              el_confirm_admins_from_localhost.dialog("open");
+              return;
+            }
+            this.setStatusAdminsFromLocalhost();
+          },
+          setStatusAdminsFromLocalhost: function (onSuccess) {
+
+            this.$http.post(handlers.set_status_admins_from_localhost, {
+              'status_admins_from_localhost': this.$data.denyAdminsFromLocalhost ? 0 : 1
+            }, {
+              before: function (request) {
+                if (this.previousRequest) {
+                  this.previousRequest.abort();
+                }
+
+                this.$set(this, 'previousRequest', request);
+              }
+            }).then(function (response) {
+              this.$set(this, 'denyAdminsFromLocalhost', response.data.deny_admins_from_localhost);
+              Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+
+              if (onSuccess) {
+                onSuccess(response);
+              }
+            }, function (response) {
+              Server.setServerMessage("{{ site._('Request error')|escape('js') }}", Server.MESSAGE_TYPE.ERROR, 4000);
+            });
+          }
+        }
+      });
+      console.log(vm.$data);
+      el_confirm_admins_from_localhost.dialog({
+        autoOpen: false,
+        height: 225,
+        width: 350,
+        modal: true,
+        minHeight: 225,
+        minWidth: 350,
+        draggable: true,
+        resizable: false,
+        open: function () {
+        },
+        buttons: [
+          {
+            id: 'cancel',
+            text: "{{ site._('Cancel') }}",
+            click: function () {
+              $(this).dialog("close");
+            }
+          },
+          {
+            id: 'confirm',
+            text: "{{ site._('Confirm') }}",
+            click: function () {
+              var dialog = this;
+              vm.setStatusAdminsFromLocalhost(function () {
+                $(dialog).dialog("close");
+                window.location.reload();
+              });
+            }
+          }
+        ]
+      });
+    </script>
+{% endblock %}

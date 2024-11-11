@@ -1,0 +1,10 @@
+{% extends template.base %}
+
+{% block content %}
+    <br/>
+    <a href="{{ site.getInsideURL('general', 'log_save', 'type='~type) }}"><img src="/img/save.png"
+                                                                                title="{{ site._('Save report') }}"/></a>&nbsp;
+    <br/>
+    <iframe src="/admin/general/stdlog" style="width: 100%; height: 90%;"></iframe>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+ErrorDocument 403 /guest/403
+ErrorDocument 404 /guest/404
+
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-CSRF-TOKEN"
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+
+RewriteEngine on
+
+AddType text/x-component .htc
+AddType application/vnd.android.package-archive .apk
+
+RewriteRule ^/docs/api/?$ "${root_dir}\/docs\/redoc\/redoc-static.html" [L,QSA,B]
+
+RewriteCond %{REQUEST_URI} ^\/downloads\/trueconf_windows_client\.exe$
+RewriteCond %{QUERY_STRING} ^arch=x(64|86)
+RewriteRule ^(.*)$ /downloads/trueconf_windows_client_x%1.exe [R=301,L]
+RewriteRule ^downloads/trueconf_windows_client.exe$ /downloads/trueconf_windows_client_x86.exe [R=301,L]
+
+RewriteRule ^public/plugins/outlook/config.json        /handlers/print_outlook_config.php [L,QSA]
+RewriteRule ^public/plugins/outlook/manifest.xml       /handlers/print_outlook_manifest.php [L,QSA]
+
+RewriteCond %{REQUEST_URI} !=/api/extra/index.php
+RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteRule ^(oauth/v2.*)|(draft/.*)$  public/app.php [L,QSA,B]
+
+RewriteRule ^api/(v1|v2).*$                     public/index-api-deprecated.php [L,QSA,B]
+RewriteRule ^api/v3.1/conferences/?$            public/response/conferences.json [L,QSA,B]
+RewriteRule ^api/(v\d.*)$                       public/index-api.php?route=api/$1 [L,QSA,B]
+
+RewriteCond %{HTTP_USER_AGENT} "MSIE\s(7|6)|Trident/[4-6]|Edge/[1-3]|(Chrome|Firefox)/(3|2)"
+RewriteRule ^(admin|guest|files|oauth2)/?(.*)$  public/index-legacy-app.php?area=guest&module=browser [L]
+
+RewriteCond %{HTTP_USER_AGENT} "MSIE\s(7|6)|Trident/4|(Chrome|Firefox)/(4|3|2)" [OR]
+RewriteCond %{HTTP_USER_AGENT} "Mac\sOS\sX.+Version\/(([1-9]|10)\.).+Safari"
+#RewriteCond %{HTTP_USER_AGENT} "(iPhone|iPad|iPod);"
+RewriteRule ^webrtc/?(.*)$                      public/index-legacy-app.php?area=guest&module=browser&action=webrtc [L]
+
+RewriteCond %{HTTP_USER_AGENT} "MSIE\s(7|6)|Trident/4|(Chrome|Firefox)/(4|3|2)" [OR]
+RewriteCond %{HTTP_USER_AGENT} "Mac\sOS\sX.+Version\/(([1-9]|10)\.).+Safari"
+RewriteRule ^c/?(.*)$                           public/index-legacy-app.php?area=guest&module=browser [L]
+
+RewriteRule ^files/?(.*)$                       public/index-app.php?route=files/$1 [L,B,QSA]
+RewriteRule ^oauth2/?(.*)$                      public/index-app.php?route=oauth2/$1 [L,QSA]
+
+#RewriteRule ^api/([^/]+)/([^/]+)/?([^/]+)?/?$ api/public/index.php?&namespase=$1&class=$2&obj_id=$3 [L,QSA]
+
+RewriteRule ([^/]{2,3}\.lang)$                  public/js/common/datatable/$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^client/search/(.*)\.(.*)$          public/client/search/$1.$2 [QSA]
+RewriteRule ^client/search/v1(.*)?$             public/client/search/v1/index.html [L,QSA]
+RewriteRule ^client/([^/]+)/([^/]+)/?$          public/index-legacy-api-client-slideshow.php?method=$1&api_version=$2 [L,QSA]
+
+#RewriteRule ^$ public/webrtc/public/guest-area/index.html [QSA]
+RewriteRule ^$                                  public/index-app.php?route=guest/$1 [QSA]
+
+RewriteRule ^public/js/(en|ru|cs|de|es|fr|nl|pl|pt|it|be|fa|zh|ja|vi|uk|zht).js$     public/js/locale.php?lang=$1 [L,QSA]
+
+RewriteRule ^guest/auth/login$                          public/index-legacy-app.php?area=guest&module=auth&action=login [L,QSA]
+RewriteRule ^guest(/?(.*))?$                            public/index-app.php?route=guest/$1 [QSA]
+RewriteRule ^c/(.*)$                                    public/index-app.php?route=c/$1 [QSA]
+RewriteRule ^chrome/ext/content-sharing/?$	            "${chrome_ext_content_sharing_url}" [L,QSA]
+
+RewriteRule ^appconf(/([^/]+)?/?)?$                     /handlers/widget.php?widget=WinInstaller&method=guest_config&cid=$2 [L,QSA]
+RewriteRule ^downloads/(([^/]+)/)?[a-z]+_client\.exe    /handlers/widget.php?widget=WinInstaller&method=download&cid=$2 [L,QSA]
+RewriteRule ^downloads/[a-z]+_windows_client\.exe       /handlers/widget.php?widget=WinInstaller&method=download&app=qt [L,QSA]
+RewriteRule ^cnf/([^\?]+)\??(.*)$                       /handlers/widget.php?widget=WinInstaller&method=getconfig&p=$1&name=$2 [L,QSA]
+RewriteRule ^s2/(.+)$                                   /handlers/get-s2-status.php [L,QSA]
+RewriteRule ^wfhlthch/getstatus$                        /handlers/its_ok.php [L,QSA]
+
+RewriteRule ^downloads/.+\.dmg - [L,QSA]
+RewriteRule ^downloads/.+\.apk - [L,QSA]
+
+RewriteRule  ^images/(.+)\.(gif|png|jpg|jpeg|ico|svg) public/images/$1.$2 [L,QSA]
+RewriteRule  ^img/(.+)\.(gif|png|jpg|jpeg|ico|svg) private/images/$1.$2 [L,QSA]
+RewriteRule  ^css/(.+)\.(css) private/css/$1.$2 [L,QSA]
+
+RewriteCond  %{QUERY_STRING}  lang=(ru|be)
+RewriteRule  ^tcsf/?   http://trueconf.ru/tcsf  [L]
+
+RewriteRule  ^tcsf/?   http://trueconf.com/tcsf  [L]
+
+RewriteRule  \.(php|js|pdf|txt|htc|css|xml)     -  [L,QSA]
+
+RewriteRule ^admin/logs/export/(calls/.*)$              private/index.php?area=admin&module=logs&action=export&other=$1 [L,QSA,B]
+RewriteRule  ^(admin)/?([^/]*)?(/([^/]*))?/?(.*)$       private/index.php?area=$1&module=$2&action=$4&other=$5 [L,QSA]
+
+RewriteRule ^app/conference?$                           /user/conference/list [R=301,L,QSA]
+
+RedirectMatch 403 ^/(scripts|src|locale|vendor|config)/.*$
+RedirectMatch 403 ^/config\.php$

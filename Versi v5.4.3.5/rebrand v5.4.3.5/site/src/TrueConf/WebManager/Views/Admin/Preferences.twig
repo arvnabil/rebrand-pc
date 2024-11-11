@@ -1,0 +1,151 @@
+{% extends template.base %}
+{% block js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /**
+             * bug 48783
+             */
+            if (localStorage.getItem('result_success') === 'ok') {
+                var result_message = "{{ site._('The settings are saved')|escape('js') }}";
+                Server.setServerMessage(result_message, Server.MESSAGE_TYPE.NOTE, 2000);
+                localStorage.removeItem('result_success');
+            }
+
+            var need_page_refresh = false;
+            let use_system_tz = Boolean({{ use_system_timezone }});
+            let use_system_tz_checkbox = $('#setSystemTimezone');
+
+            use_system_tz_checkbox.prop('checked', use_system_tz);
+            $('#timezone').prop('disabled', use_system_tz);
+
+            use_system_tz_checkbox.click(function () {
+                use_system_tz = this.checked;
+                $('#timezone').prop('disabled', this.checked);
+            });
+
+            $('#apply_btn').click(function () {
+                $('#apply_btn').addClass('button-lock');
+                Server.showLoadEffect(' ');
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        lang: $('#lang').val(),
+                        tz_offset: use_system_tz ? 9000 : $('#timezone').val(),
+                        report_encoding: $('#encoding').val(),
+                        report_delimiter: $('#delimiter').val()
+                    }),
+                    success: function () {
+                        localStorage.setItem('result_success', 'ok');
+                        document.location.reload();
+                    },
+                    error: function (error) {
+                        $('#apply_btn').removeClass('button-lock');
+                        Server.removeLoadEffect();
+                        $(document).trigger('display-header-error', {message: _('Request error')});
+                        if (typeof (error.responseJSON.code) === 'undefined') {
+                            return;
+                        }
+                        console.log('Request error code: ' + error.responseJSON.code);
+                    }
+                });
+            });
+            $('#lang').change(function () {
+                need_page_refresh = this.value !== '{{ lang }}';
+            });
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <label id="description">{{ site._("In this section you can set preferences for your account ([b]%admin_login[/b])")
+        |replace({'[b]%admin_login[/b]': '<b>'~admin_login~'</b>'}) }}</label>
+    <fieldset>
+        <legend>{{ site._("Settings")|e('html') }}</legend>
+        <form id="preferences">
+            <label>{{ site._('Language')|e('html') }}:</label>
+            <select id="lang" name="lang" class="m-bottom-10">
+                {% for item in lang_list %}
+                    <option value="{{ item.locale }}" {{ lang == item.locale ? 'selected' : '' }}>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <label>{{ site._('Time zone')|e('html') }}:</label>
+            <select id="timezone" name="timezone" class="m-bottom-10">
+                {% for item in timezone_list %}
+                    <option value="{{ item.value }}" {{ timezone == item.value ? 'selected' : '' }}>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <div class="set-system-timezone-block">
+                <input type="checkbox" id="setSystemTimezone" name="set-system-timezone"/>
+                <label for="setSystemTimezone">{{ site._("Use device time zone") }}</label>
+            </div>
+            <h2>{{ site._("Export to CSV")|e('html') }}</h2>
+            <label>{{ site._('Encoding')|e('html') }}:</label>
+            <select id="encoding" name="encoding" class="m-bottom-10">
+                {% for item in encoding_list %}
+                    <option value="{{ item.value }}" {{ encoding == item.value ? 'selected' : '' }}>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <label>{{ site._('Field delimiter')|e('html') }}:</label>
+            <select id="delimiter" name="delimiter" class="m-bottom-10">
+                {% for item in delimiter_list %}
+                    <option value="{{ item.value }}" {{ delimiter == item.value ? 'selected' : '' }}>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <a id="apply_btn" class="button">{{ site._('Apply')|e('html') }}</a>
+        </form>
+    </fieldset>
+    <br/>
+    <style>
+        fieldset, #preferences > label, #preferences > select, #preferences > h2 {
+            margin-top: 10px;
+        }
+
+        #preferences > label, #preferences > h2 {
+            float: left;
+            clear: both;
+            margin-right: 10px;
+            min-width: 270px;
+        }
+
+        #preferences > select {
+            width: 200px;
+            height: 28px;
+            float: left;
+            border: 1px solid gray;
+            margin-right: 10px;
+            margin-top: 5px;
+            padding-left: 4px;
+        }
+
+        #preferences > input {
+            float: left;
+            border: 1px solid gray;
+        }
+
+        #apply_btn {
+            margin-top: 10px;
+            float: left;
+            clear: both;
+        }
+
+        fieldset {
+            min-width: 820px;
+        }
+
+        .set-system-timezone-block {
+            position: relative;
+            display: table;
+            top: 51px;
+            left: 5px;
+            float: none;
+        }
+
+        .set-system-timezone-block > input[type=checkbox] {
+            position: relative;
+            top: 1px;
+            right: 4px;
+        }
+    </style>
+{% endblock %}

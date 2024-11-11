@@ -1,0 +1,98 @@
+.sbid_searchById * {
+    font-size: 13px;
+}
+
+.sbid_searchById {
+    margin: 0 auto;
+    width: 100%;
+    border: 2px solid #B3B3B3;
+    padding: 5px;
+}
+
+
+.sbid_searchById .sbid_searchBlock {
+    border-bottom: 2px solid #B3B3B3;
+    padding: 5px 0px 5px 20px;
+    margin: 0px 0px 10px 0px;
+    position: relative;
+}
+
+.sbid_searchById .sbid_searchBlock:before {
+    content: "";
+    height: 100%;
+    width: 20px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background: url("/images/gray_search.png") no-repeat;
+    background-position: center;
+}
+
+
+.sbid_searchById  .sbid_searchBlock  input {
+    border: none  !important;
+    outline: none  !important;
+    width: 80%;
+}
+
+.sbid_searchById .sbid_searchBlock  input.sbid_lightGray {
+    color: #CCC;
+    font-size : 11px;
+}
+
+.sbid_searchById .sbid_userData {
+    height: 120px;
+    width: 300px;
+}
+
+.sbid_searchById  .sbid_userData .sbid_dataStatus{
+    font-size : 15px;
+    padding-top: 45px;
+    color: #40A5D9;
+}
+
+.sbid_searchById  .sbid_userData .sbid_wait, .sbid_searchById  .sbid_userData .sbid_dataStatus {
+    text-align: center;
+    height: 100%;
+}
+
+.sbid_searchById .sbid_userData .sbid_wait img {
+    margin-top : 36px;
+}
+
+.sbid_searchById  .sbid_buttons {    
+    border-top: 2px solid #B3B3B3;
+    width: 100%;
+}
+.sbid_searchById  .sbid_buttons .sbid_inner {
+    margin: 0 auto;
+}
+
+.sbid_searchById  .sbid_buttons ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.sbid_searchById  .sbid_buttons ul li {
+    display: inline-block;
+    text-align: center;
+    color: #0088cc;
+    background-color: #E5E5E5;
+    border: 2px solid #DFDFDF;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin: 8px;
+    cursor: pointer;
+}
+
+.sbid_searchById  .sbid_buttons ul li.disabled {
+    color:#B3B3B3;
+    background-color: #EEE;
+    cursor: default;
+}
+
+.sbid_searchById  .sbid_buttons ul li:hover:not(.disabled) {
+    border: 2px solid #40A5D9;
+    color: #FFF;
+    background-color: #0088CC;
+}

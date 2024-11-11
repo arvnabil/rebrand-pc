@@ -1,0 +1,18 @@
+
+#line-2 span.product-name, #line-2 a.paid-server {
+    color: #fff;
+    font-size: 29px;
+    margin-left: 155px;
+    position: absolute;
+    line-height: 43px;
+}
+
+#line-2 a.paid-server +span.product-name {
+   margin-left: 240px; 
+}
+
+#line-2 a.paid-server {
+    color: #70DF00;
+    text-decoration: none;
+    font-weight:700;
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% apply spaceless %}
+{% set current_version = server_version ? server_version : '4.0.0' %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{% block title %}{{ title|striptags }}{% endblock %}</title>
+
+    <link rel="stylesheet" href="/public/fonts/material-design-icons/material-icons.css?version={{ current_version }}"/>
+    <link rel="stylesheet" type="text/css" href="/public/css/files/view.css?version={{ current_version }}">
+
+    {% block meta %}{% endblock %}
+
+    {% block head %}
+        <link href="/public/css/main.php?version={{ current_version }}" rel="stylesheet" type="text/css"/>
+        <link href="/css/guest.css?version={{ current_version }}" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="/img/favicon.ico"/>
+
+
+        <script type="text/javascript" src="/public/js/common/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="/public/js/common/timepick/jquery-ui-1.8.9.custom.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function () {
+            $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+            $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+          });
+        </script>
+
+    {% block zopim_js %}
+        {% if error_msg %}
+        <script type="text/javascript">
+          $(document).ready(function () {
+            $("#error-dialog").dialog({
+              modal: true,
+              buttons: {
+                Ok: function () {
+                  $(this).dialog("close");
+                }
+              }
+            });
+          });
+        </script>
+        {% endif %}
+
+    {% endblock %}
+    {% endblock %}
+    {% block js %}{% endblock %}
+</head>
+<body id="home-body">
+<noscript>
+    <div id="loading-background"></div>
+    <div class="cont"><h1 class="red">{{ site._('Please, enable JavaScript!') }}</h1></div>
+</noscript>
+<!-- Header -->
+{% block header %}
+    <div id="home-header">
+        <center>
+            <div id="compani-icon-block">
+                <img src="{{ web_manager.getClientLogoUrl() }}"/>
+            </div>
+            <img src="/images/guest/header.png"/>
+            <div>{% block header_h1 %}{{ server_name }}{% endblock %}</div>
+        </center>
+        {#<div>#}
+        {#{% if equipment_url_visible %}#}
+        {#<a href="http://trueconf.ru/tcs/equipment/?lang=ru&version={{server_version}}" target="_blank">{{ site._('Recommended Equipment') }}</a>#}
+        {#{% endif %}#}
+        {#{% block login_link %}#}
+        {#| <a href="{{ site.getInsideUrl('auth', 'login', null, 'guest') }}">{{ site._("Administrator Login") }}</a>#}
+        {#{% endblock %}#}
+        {#</div>#}
+        <div class="header-links">
+            {% if equipment_url_visible %}
+                <div><a href="http://trueconf.ru/tcs/equipment/?lang=ru&version={{ server_version }}"
+                        target="_blank">{{ site._('Recommended Equipment') }}</a></div>
+            {% endif %}
+            {% block login_link %}
+                <div>
+                    <a href="{{ site.getInsideUrl('auth', 'login', null, 'guest') }}">{{ site._("Administrator Login") }}</a>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+<!-- Footer -->
+{% block footer %}
+    <div id="home-footer">
+        <center>
+            <div>
+                &copy 2010-{{ 'now'|date("Y") }} {{ settings.config.company_name }}.
+                {{ site._('All rights reserved.') }}.
+                <a href="{{ site.getInsideUrl('home', 'license', null, 'guest') }}"
+                   target="_blank">{{ site._('License agreement') }}</a>
+            </div>
+        </center>
+    </div>
+{% endblock %}
+<div id="error-dialog" title="{{ site._('Error') }}!" style="color:red;">{{ error_msg }}</div>
+</body>
+</html>
+{% endapply %}

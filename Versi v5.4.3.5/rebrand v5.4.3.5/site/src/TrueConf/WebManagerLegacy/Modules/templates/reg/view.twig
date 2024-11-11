@@ -1,0 +1,229 @@
+{% extends template.base %}
+
+{% block js %}
+    {% autoescape  'js' %}
+        <script type="text/javascript">
+
+          $().ready(function () {
+
+            var current_server_name = '{{ current_server_name }}';
+
+            $('#reg input').each(function () {
+              $(this).keydown(function (event) {
+                if (event.which == 13) {
+                  validateTcSubdomain();
+                }
+              });
+            });
+
+            if (($('#wr-reg-srv_name').find('div.error')).length > 0) {
+              showServerNameEdit();
+            }
+
+            if ({{ is_not_registered ? 'true' : 'false' }}) {
+              $('#server-name-prompt a').hide();
+            }
+
+            function offlineReg() {
+              if (offline_reg) {
+                $('#get-free-key').click(function (e) {
+                  e.preventDefault();
+                  $('#gfk-dialog').dialog('open');
+                  $('.ui-dialog .ui-dialog-buttonpane.ui-widget-content').css({'border-width': '0px'});
+                });
+
+                $('#gfk-dialog').append('<p><b>' + t._internet_required_free_key + '</b></p><hr>\n\
+                    <p>' + t._test_server_in_network + '</p>');
+
+                switch (t.lang) {
+                  case 'ru':
+                  case 'be':
+                    lang = 'ru';
+                    break;
+
+                  case 'pt':
+                    lang = 'pt-br';
+                    break;
+
+                  default:
+                    lang = 'en';
+                }
+
+                $('#gfk-dialog>p>a').prop('href', '/docs/offline-reg-' + lang + '.pdf').prop('target', '_blank');
+
+                $('#gfk-dialog').dialog({
+                  title: "{{ site._('Get FREE Key') }}",
+                  autoOpen: false,
+                  resizable: false,
+                  width: 550,
+                  height: 250,
+                  buttons: {
+                    "{{ site._('Close') }}": function () {
+                      $(this).dialog('close');
+                    }
+                  }
+                });
+              }
+            }
+
+            setTimeout(offlineReg, 10000);
+
+            $('#reg-serial').bind('change keyup', function () {
+              $('#reg-serial').val($('#reg-serial').val().trim());
+              var name = $(this).val().match(/^([A-Z0-9]+)-/i);
+              var name_postfix = '{{ settings.config.server_name_postfix }}';
+              var srv_id = '{{ srv_id }}';
+              if (!$.isArray(name) && !(current_server_name.length > 0)) {
+                if (!{{ is_not_registered ? 'true' : 'false' }})
+                  $('#reg-srv_name').val(name_postfix);
+                //$('#server-name-prompt span').text(name_postfix);
+                if ({{ is_not_registered ? 'true' : 'false' }}) $('#server-name-prompt a').hide();
+              } else {
+                if (($.isArray(name) && !(current_server_name.length > 0)) || ((name !== null) && !(srv_id.match(new RegExp(name[1], "ig")))))
+                  $('#server-name-prompt span').text(name[1].toLowerCase() + name_postfix);
+                else
+                  $('#server-name-prompt span').text(current_server_name);
+
+                if (!{{ is_not_registered ? 'true' : 'false' }})
+                  if (!(current_server_name.length > 0) || current_server_name.match(new RegExp(name_postfix, "ig")))
+                    $('#reg-srv_name').val(name[1].toLowerCase() + name_postfix);
+                  else
+                    $('#reg-srv_name').val(current_server_name);
+
+                $('#server-name-prompt a').show();
+              }
+            });
+
+            $('#begin_offline_reg').click(function () {
+              Server.showLoadEffect();
+              $.ajax({
+                url: "{{ site.getInsideUrl('reg', 'begin_offline_reg') }}",
+                dataType: 'json',
+                success: function (request) {
+                  Server.removeLoadEffect();
+                  if (request.file != 0 && request.error == '') {
+                    window.location.href = "{{ site.getInsideUrl('reg', 'get_reg_file', 'str=') }}" + request.file;
+                    $('#offline_go').show();
+                  } else if (request.file == 0 && request.error == '') {
+                    $(document).trigger('display-header-error', {message: "{{ site._('Error generating file') }}"});
+                  } else {
+                    $(document).trigger('display-header-error', {message: request.error});
+                  }
+                },
+                error: function (request) {
+
+                }
+              });
+            });
+
+            new AjaxUpload("offline_reg_end", {
+              action: '{{ site.getInsideUrl('reg', 'end_offline_reg') }}',
+              name: 'filename',
+              responseType: 'json',
+              title: '{{ site._('file is not selected') }}',
+              onChange: function (file, extension) {
+                Server.showLoadEffect();
+              },
+              onComplete: function (file, response) {
+                Server.removeLoadEffect();
+                if (response.result == 1) {
+                  $(document).one('AfterStart', function (event) {
+                    window.location.href = "{{ site.getInsideUrl('general', 'info') }}";
+                  });
+                  Server.restartServer();
+                } else if (response.result == 2) {
+                  $(document).trigger('display-header-error', {message: "{{ site._('File error') }}"});
+                } else if (response.result == 3) {
+                  $(document).trigger('display-header-error', {message: "{{ site._('Registration failed') }}"});
+                } else {
+                  $(document).trigger('display-header-error', {message: "{{ site._('Error upload file') }}"});
+                }
+              }
+            });
+
+          });
+
+          function validateTcSubdomain() {
+            $('#reg-serial').val($('#reg-serial').val().trim());
+            var input_serial = $('#reg-serial').val().match(/^([A-Z0-9]+)-/i);
+            if (showServerNameEdit.isEdited)
+              var input_srv_name = $('#reg-srv_name').val();
+            else {
+              var input_srv_name = $('#server-name-prompt span').text();
+              $('#reg-srv_name').val($('#server-name-prompt span').text());
+            }
+
+            var name_postfix = '{{ settings.config.server_name_postfix }}';
+            var is_truconf_domain = input_srv_name.match(new RegExp(name_postfix, "ig"));
+            var check = true;
+            if (is_truconf_domain) {
+              if ($.isArray(input_serial) && input_srv_name) {
+                var server_name = (input_serial[1] + is_truconf_domain).toLowerCase();
+                if (input_srv_name.toLowerCase() != server_name) {
+                  check = false;
+                }
+              }
+            }
+
+            if (check) {
+              $('form#reg').submit();
+            } else {
+              $(document).trigger('display-header-error', {message: "{{ site._('invalid server name') }}"});
+            }
+          }
+
+          function showServerNameEdit() {
+            $('#wr-reg-srv_name').show();
+            $('#server-name-prompt').hide();
+            showServerNameEdit.isEdited = true;
+          }
+
+        </script>
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+    {% block reg_block %}
+        <div id="gfk-dialog">
+        </div>
+        <div id="reg-block">
+            <p>{{ site._('You have to register %server_name to activate it.')|replace({'%server_name' : settings.config.server_name}) }}</p>
+            <p><a id="reg-tutor"
+                  href="{{ company_site_url }}/tcs/manual/installation/?lang={{ settings.lang }}&version={{ server_version }}"
+                  target="_blank">{{ site._('%server_name: Installation and Registration Instructions.')|replace({'%server_name' : settings.config.server_name}) }}</a>
+            </p>
+            <div class="field">
+                <p>{{ site._("If you don't have the registration key") }}</p>
+                <a id="get-free-key" class="button btn_green"
+                   href="{{ company_site_url }}/tcs/key/?lang={{ settings.lang }}&version={{ server_version }}"
+                   target="_blank">{{ site._('Get FREE Key') }}</a>
+            </div>
+            {{ form }}
+            <p>{{ site._('See the <a href="%help_url" target="_blank">help</a> section or contact %company_name support by phone %phone or write us at <a href="mailto:%mail">%mail</a>')
+                |replace({ '%phone' : phone, '%mail' : attribute(settings.config.sales_email, settings.lang), '%help_url' : site.getInsideUrl('help', 'show', '#server-setup-in-five-minutes'), '%company_name' : settings.config.company_name }) }}</p>
+        </div>
+    {% endblock %}
+    {% if offline %}
+        <br/>
+        <p>{{ site._('Failed to connect to the registration server. The server might be unavailable at the moment, or %server_name is not connected to the Internet. In this case you can use offline registration.')|replace({'%server_name' : settings.config.server_name}) }}</p>
+        <br/>
+        <p>{{ site._('To do this, you need to generate offline registration file and send it to <a href="mailto:%mail">%mail</a>.')|replace({'%mail': attribute(settings.config.sales_email, settings.lang)|default(settings.config.sales_email.def) }) }}</p>
+        <br/>
+        <a class="button" id="begin_offline_reg">{{ site._('Create registration file') }}</a><br/>
+    {% endif %}
+    {% if offline_go %}
+        <div id='offline_go'>
+            <br/>
+            <p>{{ site._('You have initiated offline registration process. Open the file you received by e-mail to continue this process. Please enter registration data above to register the server over the Internet.') }}</p>
+            <br/>
+            <a class="button" id="offline_reg_end">{{ site._('Сontinue offline registration') }}</a><br/>
+        </div>
+    {% else %}
+        <div id='offline_go' style="display: none">
+            <br/>
+            <p>{{ site._('Choose the file you received to continue registration process. In case you shut down the browser window, you can continue registration process at the %server_name Manager restart.')|replace({'%server_name' : settings.config.server_name}) }}</p>
+            <br/>
+            <a class="button" id="offline_reg_end">{{ site._('Сontinue offline registration') }}</a><br/>
+        </div>
+    {% endif %}
+{% endblock %}

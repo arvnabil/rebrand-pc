@@ -1,0 +1,78 @@
+{% extends template.base %}
+
+{% block content %}
+
+    {{ storage_form }}
+
+  <script>
+    $(document).ready(function () {
+
+      $('#storageSettings-FilesQuota').change(function () {
+          if (this.checked) {
+              $('#storageSettings-files_quota').prop('disabled',  false);
+              $('#usedSpace').css('display', 'block');
+          } else {
+              $('#storageSettings-files_quota').prop('disabled',  true);
+              $('#usedSpace').css('display', 'none');
+          }
+      });
+
+      $('#storageSettings-FilesEnableLifeTime').change(function () {
+          if (this.checked) {
+              $('#storageSettings-files_life_time').prop('disabled',  false);
+          } else {
+              $('#storageSettings-files_life_time').prop('disabled',  true);
+          }
+      });
+
+      $('#storageSettings-limitUp').change(function () {
+        if (this.checked) {
+          $('#torrent_upstream_limit-block').css('display', 'table-cell');
+        } else {
+          $('#torrent_upstream_limit-block').hide();
+        }
+      });
+
+      $('#storageSettings-limitDown').change(function () {
+        if (this.checked) {
+          $('#torrent_downstream_limit-block').css('display', 'table-cell');
+        } else {
+          $('#torrent_downstream_limit-block').hide();
+        }
+      });
+
+      {% if (enable_quota == false) %}
+        $('#storageSettings-files_quota').prop('disabled', true);
+        $('#usedSpace').css('display', 'none');
+      {% endif %}
+
+      {% if (enable_life_time == false) %}
+        $('#storageSettings-files_life_time').prop('disabled', true);
+      {% endif %}
+
+      {% if (torrent_downstream_limit) %}
+        $('#torrent_downstream_limit-block').css('display', 'table-cell');
+      {% endif %}
+
+      {% if (torrent_upstream_limit) %}
+        $('#torrent_upstream_limit-block').css('display', 'table-cell');
+      {% endif %}
+    });
+
+    $(document).bind('AfterStart', function () {
+      Server.setServerMessage("{{ site._('The settings are saved') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+    });
+  </script>
+
+  <style>
+
+    #storageSettings-path[readonly],
+    #storageSettings-files_quota[disabled],
+    #storageSettings-files_life_time[disabled]
+    {
+      pointer-events: none;
+      background-color: #f2f0f0;
+    }
+  </style>
+
+{% endblock %}

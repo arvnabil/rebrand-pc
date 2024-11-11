@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[28],{323:function(t,n,s){"use strict";s.r(n);var e=s(45),a={props:{name:String},computed:{getConst(){return Object(e.a)(this.$props.name,this.$lang)}},data:()=>({})},i=s(8),o=Object(i.a)(a,(function(){return(0,this._self._c)("span",[this._v(this._s(this.getConst))])}),[],!1,null,null,null);n.default=o.exports}}]);

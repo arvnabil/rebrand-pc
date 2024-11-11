@@ -1,0 +1,33 @@
+{% extends template.base %}
+
+{% block head %}
+    {{ parent() }}
+    {# <link rel="stylesheet" type="text/css" href="/admin-area/mdl-set.css?version={{ server_version }}"> #}
+    <link rel="stylesheet" type="text/css" href="/admin-area/styles.css?version={{ server_version }}">
+{% endblock %}
+
+{% block content %}
+    <p id="outside-msg" class="none"></p>
+    <div id='admin-area-screen'></div>
+
+    <script src="/admin-area/bundle.js?version={{ server_version }}"></script>
+
+    <script type="text/javascript">
+        $('#admin-area-screen').ready(function () {
+            setTimeout(function () {
+                $('#dlg-maxOnline').extensionsPopup('online-users');
+                $('#dlg-maxGateway').extensionsPopup('multigateway');
+                $('#dlg-maxGuest').extensionsPopup('webinars');
+                $('#dlg-autonomy').extensionsPopup('autonomy');
+                $('#dlg-support').extensionsPopup('support');
+                $('#dlg-renewal').extensionsPopup('renewal');
+                $('#dlg-dlp').extensionsPopup('dlp');
+
+
+                {% for item in extensions %}
+                    $('#dlg-{{ item.link }}').extensionsPopup('{{ item.link }}');
+                {% endfor %}
+            }, 1000)
+        });
+    </script>
+{% endblock %}

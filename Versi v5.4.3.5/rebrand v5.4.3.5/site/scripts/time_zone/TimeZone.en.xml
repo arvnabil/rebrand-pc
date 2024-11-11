@@ -1,0 +1,168 @@
+<?xml version="1.0" standalone="yes"?>
+<TimeZones>
+    <TimeZone>
+      <Offset>-720</Offset>
+      <LongDescription>(GMT-12:00) International Date Line West</LongDescription>
+      <ShortDescription>GMT-12:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-660</Offset>
+      <LongDescription>(GMT-11:00) Midway Island, Samoa</LongDescription>
+      <ShortDescription>GMT-11:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-600</Offset>
+      <LongDescription>(GMT-10:00) Hawaii</LongDescription>
+      <ShortDescription>GMT-10:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-540</Offset>
+      <LongDescription>(GMT-09:00) Alaska</LongDescription>
+      <ShortDescription>GMT-09:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-480</Offset>
+      <LongDescription>(GMT-08:00) Pacific Time (US &amp; Canada)</LongDescription>
+      <ShortDescription>GMT-08:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-420</Offset>
+      <LongDescription>(GMT-07:00) Mountain Time (US &amp; Canada)</LongDescription>
+      <ShortDescription>GMT-07:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-360</Offset>
+      <LongDescription>(GMT-06:00) Central Time (US &amp; Canada)</LongDescription>
+      <ShortDescription>GMT-06:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-300</Offset>
+      <LongDescription>(GMT-05:00) Eastern Time (US &amp; Canada)</LongDescription>
+      <ShortDescription>GMT-05:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-240</Offset>
+      <LongDescription>(GMT-04:00) Caracas, Santiago, Atlantic Time (Canada)</LongDescription>
+      <ShortDescription>GMT-04:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-210</Offset>
+      <LongDescription>(GMT-03:30) Newfoundland</LongDescription>
+      <ShortDescription>GMT-03:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-180</Offset>
+      <LongDescription>(GMT-03:00) Buenos Aires, Georgetown, Brasilia</LongDescription>
+      <ShortDescription>GMT-03:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-120</Offset>
+      <LongDescription>(GMT-02:00) Mid-Atlantic</LongDescription>
+      <ShortDescription>GMT-02:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-60</Offset>
+      <LongDescription>(GMT-01:00) Cape Verde Is., Azores</LongDescription>
+      <ShortDescription>GMT-01:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>0</Offset>
+      <LongDescription>(GMT) London, Paris, GMT</LongDescription>
+      <ShortDescription>GMT</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>60</Offset>
+      <LongDescription>(GMT+01:00) Amsterdam, Berlin, Rome, West Central Africa</LongDescription>
+      <ShortDescription>GMT+01:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>120</Offset>
+      <LongDescription>(GMT+02:00) Harare, Kiev, Pretoria, Jerusalem</LongDescription>
+      <ShortDescription>GMT+02:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>180</Offset>
+      <LongDescription>(GMT+03:00) Moscow, St. Petersburg, Kaliningrad, Minsk, Baghdad, Nairobi</LongDescription>
+      <ShortDescription>GMT+03:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>210</Offset>
+      <LongDescription>(GMT+03:30) Tehran</LongDescription>
+      <ShortDescription>GMT+03:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>240</Offset>
+      <LongDescription>(GMT+04:00) Baku, Tbilisi, Yerevan</LongDescription>
+      <ShortDescription>GMT+04:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>270</Offset>
+      <LongDescription>(GMT+04:30) Kabul</LongDescription>
+      <ShortDescription>GMT+04:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>300</Offset>
+      <LongDescription>(GMT+05:00) Islamabad, Tashkent, Ekaterinburg</LongDescription>
+      <ShortDescription>GMT+05:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>330</Offset>
+      <LongDescription>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</LongDescription>
+      <ShortDescription>GMT+05:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>345</Offset>
+      <LongDescription>(GMT+05:45) Kathmandu</LongDescription>
+      <ShortDescription>GMT+05:45</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>360</Offset>
+      <LongDescription>(GMT+06:00) Almaty, Novosibirsk, Astana, Dhaka</LongDescription>
+      <ShortDescription>GMT+06:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>390</Offset>
+      <LongDescription>(GMT+06:30) Rangoon</LongDescription>
+      <ShortDescription>GMT+06:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>420</Offset>
+      <LongDescription>(GMT+07:00) Bangkok, Hanoi, Jakarta,  Krasnoyarsk</LongDescription>
+      <ShortDescription>GMT+07:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>480</Offset>
+      <LongDescription>(GMT+08:00) Perth, Taipei, Singapore, Hong Kong</LongDescription>
+      <ShortDescription>GMT+08:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>540</Offset>
+      <LongDescription>(GMT+09:00) Yakutsk,  Osaka, Sapporo, Tokyo,  Seoul</LongDescription>
+      <ShortDescription>GMT+09:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>570</Offset>
+      <LongDescription>(GMT+09:30) Adelaide, Darwin</LongDescription>
+      <ShortDescription>GMT+09:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>600</Offset>
+      <LongDescription>(GMT+10:00) Vladivostok, Melbourne, Sydney</LongDescription>
+      <ShortDescription>GMT+10:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>660</Offset>
+      <LongDescription>(GMT+11:00) Magadan, Solomon Is., New Caledonia</LongDescription>
+      <ShortDescription>GMT+11:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>720</Offset>
+      <LongDescription>(GMT+12:00) Auckland, Wellington, Fiji</LongDescription>
+      <ShortDescription>GMT+12:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>780</Offset>
+      <LongDescription>(GMT+13:00) Nuku`alofa </LongDescription>
+      <ShortDescription>GMT+13:00</ShortDescription>
+    </TimeZone>
+</TimeZones>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Работа с API сервера | Труконф</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="shortcut icon" href="/docs/favicon.ico">
+    <script src="/docs/js/ya.js"></script>
+    <script src="/docs/js/ga.js"></script>
+    <script src="/docs/js/widgets.js"></script>
+    <meta name="description" content="Расширьте возможности управления TrueConf Server через RESTful API. Создание OAuth 2.0 приложений с нужными правами для выполнения HTTP-запросов">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.fd13e100.css" as="style"><link rel="preload" href="/docs/assets/js/app.2638b99c.js" as="script"><link rel="preload" href="/docs/assets/js/2.bdaed5d3.js" as="script"><link rel="preload" href="/docs/assets/js/1.204ac9d5.js" as="script"><link rel="preload" href="/docs/assets/js/35.eb0bc26f.js" as="script"><link rel="preload" href="/docs/assets/js/22.19dce842.js" as="script"><link rel="preload" href="/docs/assets/js/28.dc33b352.js" as="script"><link rel="preload" href="/docs/assets/js/31.6e279f7e.js" as="script"><link rel="preload" href="/docs/assets/js/26.1bf8f651.js" as="script"><link rel="preload" href="/docs/assets/js/23.9fd842ec.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.94be5a85.js"><link rel="prefetch" href="/docs/assets/js/11.4ac98980.js"><link rel="prefetch" href="/docs/assets/js/12.3aa2553b.js"><link rel="prefetch" href="/docs/assets/js/13.7a893b25.js"><link rel="prefetch" href="/docs/assets/js/14.76363910.js"><link rel="prefetch" href="/docs/assets/js/15.cc62cce3.js"><link rel="prefetch" href="/docs/assets/js/16.913d0cbc.js"><link rel="prefetch" href="/docs/assets/js/17.96d0ba8d.js"><link rel="prefetch" href="/docs/assets/js/18.b338911a.js"><link rel="prefetch" href="/docs/assets/js/19.739100e9.js"><link rel="prefetch" href="/docs/assets/js/20.06e9dc85.js"><link rel="prefetch" href="/docs/assets/js/21.63bb349e.js"><link rel="prefetch" href="/docs/assets/js/24.3d9e53d5.js"><link rel="prefetch" href="/docs/assets/js/25.670a4b09.js"><link rel="prefetch" href="/docs/assets/js/27.1215ce23.js"><link rel="prefetch" href="/docs/assets/js/29.de776a8d.js"><link rel="prefetch" href="/docs/assets/js/3.4021dfe2.js"><link rel="prefetch" href="/docs/assets/js/30.b3f6701a.js"><link rel="prefetch" href="/docs/assets/js/32.5cb1bc31.js"><link rel="prefetch" href="/docs/assets/js/33.6e42b47a.js"><link rel="prefetch" href="/docs/assets/js/34.51aa9298.js"><link rel="prefetch" href="/docs/assets/js/36.ec7e58a5.js"><link rel="prefetch" href="/docs/assets/js/37.4a3a530b.js"><link rel="prefetch" href="/docs/assets/js/38.6f9b090e.js"><link rel="prefetch" href="/docs/assets/js/39.8925d6cb.js"><link rel="prefetch" href="/docs/assets/js/4.ae11133d.js"><link rel="prefetch" href="/docs/assets/js/40.1c7b625d.js"><link rel="prefetch" href="/docs/assets/js/41.f040f1bc.js"><link rel="prefetch" href="/docs/assets/js/42.3020dfcb.js"><link rel="prefetch" href="/docs/assets/js/43.c10b2cd8.js"><link rel="prefetch" href="/docs/assets/js/44.6e63b603.js"><link rel="prefetch" href="/docs/assets/js/45.203c4110.js"><link rel="prefetch" href="/docs/assets/js/46.4c484525.js"><link rel="prefetch" href="/docs/assets/js/47.6f5ee1db.js"><link rel="prefetch" href="/docs/assets/js/48.26ec6e21.js"><link rel="prefetch" href="/docs/assets/js/49.d487a0de.js"><link rel="prefetch" href="/docs/assets/js/5.e165fbed.js"><link rel="prefetch" href="/docs/assets/js/50.1f2ef5c5.js"><link rel="prefetch" href="/docs/assets/js/51.340242a3.js"><link rel="prefetch" href="/docs/assets/js/52.83d72694.js"><link rel="prefetch" href="/docs/assets/js/53.80e076c6.js"><link rel="prefetch" href="/docs/assets/js/54.4f9a558d.js"><link rel="prefetch" href="/docs/assets/js/55.8b31c01a.js"><link rel="prefetch" href="/docs/assets/js/56.8c1db461.js"><link rel="prefetch" href="/docs/assets/js/57.d0d54ad8.js"><link rel="prefetch" href="/docs/assets/js/58.d7ca35e0.js"><link rel="prefetch" href="/docs/assets/js/59.2ea3a62a.js"><link rel="prefetch" href="/docs/assets/js/6.872c2530.js"><link rel="prefetch" href="/docs/assets/js/60.fa4247be.js"><link rel="prefetch" href="/docs/assets/js/61.955a2d12.js"><link rel="prefetch" href="/docs/assets/js/62.0bad85ea.js"><link rel="prefetch" href="/docs/assets/js/63.b5355540.js"><link rel="prefetch" href="/docs/assets/js/64.e2b4d370.js"><link rel="prefetch" href="/docs/assets/js/65.d3e57a8d.js"><link rel="prefetch" href="/docs/assets/js/66.8c3fa287.js"><link rel="prefetch" href="/docs/assets/js/67.c63db124.js"><link rel="prefetch" href="/docs/assets/js/68.bf55ec62.js"><link rel="prefetch" href="/docs/assets/js/69.9167ebd8.js"><link rel="prefetch" href="/docs/assets/js/7.f298e84f.js"><link rel="prefetch" href="/docs/assets/js/70.32f6c3f0.js"><link rel="prefetch" href="/docs/assets/js/71.05c8a84d.js"><link rel="prefetch" href="/docs/assets/js/72.d46555c7.js"><link rel="prefetch" href="/docs/assets/js/73.f17105e6.js"><link rel="prefetch" href="/docs/assets/js/74.548946c7.js"><link rel="prefetch" href="/docs/assets/js/75.5e7c4d21.js"><link rel="prefetch" href="/docs/assets/js/76.c218f7c2.js"><link rel="prefetch" href="/docs/assets/js/77.835dbee1.js"><link rel="prefetch" href="/docs/assets/js/78.164f7ead.js"><link rel="prefetch" href="/docs/assets/js/79.db219826.js"><link rel="prefetch" href="/docs/assets/js/80.ef4c97f8.js"><link rel="prefetch" href="/docs/assets/js/81.82d08e85.js"><link rel="prefetch" href="/docs/assets/js/82.043ff516.js"><link rel="prefetch" href="/docs/assets/js/83.02a4d7a6.js"><link rel="prefetch" href="/docs/assets/js/84.b970c89b.js"><link rel="prefetch" href="/docs/assets/js/85.ac95f1b4.js"><link rel="prefetch" href="/docs/assets/js/86.ca86a6d5.js"><link rel="prefetch" href="/docs/assets/js/87.f40d3dec.js"><link rel="prefetch" href="/docs/assets/js/88.00c13db1.js"><link rel="prefetch" href="/docs/assets/js/89.972cd016.js"><link rel="prefetch" href="/docs/assets/js/90.d1806848.js"><link rel="prefetch" href="/docs/assets/js/91.5fb1d1b9.js"><link rel="prefetch" href="/docs/assets/js/vendors~docsearch.cdf71c8e.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.fd13e100.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">Труконф</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Все решения" class="dropdown-title"><span class="title">Все решения</span> <span class="arrow down"></span></button> <button type="button" aria-label="Все решения" class="mobile-dropdown-title"><span class="title">Все решения</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/main/" target="_self" class="nav-link external">
+  ← В начало
+  <!----></a></li><li class="dropdown-item"><!----> <a href="/docs/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  TrueConf Server
+</a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/mcu/introduction/" target="_self" class="nav-link external">
+  TrueConf MCU
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client/installation" target="_self" class="nav-link external">
+  TrueConf для Windows, macOS, Linux
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android/installation" target="_self" class="nav-link external">
+  TrueConf для Android
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android-tv/getting-ready/" target="_self" class="nav-link external">
+  TrueConf для Android TV
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-ios/installation" target="_self" class="nav-link external">
+  TrueConf для iOS/iPadOS
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/room/introduction" target="_self" class="nav-link external">
+  TrueConf Room
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/weathervane/introduction" target="_self" class="nav-link external">
+  TrueConf Weathervane
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/group/introduction/" target="_self" class="nav-link external">
+  TrueConf Group
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videobar/characteristics" target="_self" class="nav-link external">
+  TrueConf Videobar
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/kiosk/overview" target="_self" class="nav-link external">
+  TrueConf Kiosk
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/border-controller/introduction/" target="_self" class="nav-link external">
+  TrueConf Border Controller
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/coordinator/introduction" target="_self" class="nav-link external">
+  Unitsolutions Coordinator
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videosdk/introduction/common" target="_self" class="nav-link external">
+  TrueConf VideoSDK/Room API
+  <!----></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Поддержка" class="dropdown-title"><span class="title">Поддержка</span> <span class="arrow down"></span></button> <button type="button" aria-label="Поддержка" class="mobile-dropdown-title"><span class="title">Поддержка</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://trueconf.ru/blog/baza-znaniy" target="_self" class="nav-link external">
+  База знаний
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueconf.ru/academy/" target="_self" class="nav-link external">
+  Обучающий портал
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueconf.ru/support.html" target="_self" class="nav-link external">
+  Завести тикет
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://t.me/trueconf_talks" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Сообщество
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://docs.trueconf.com/manual/server/trueconf-administrator-ru.pdf" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PDF
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Lang" class="dropdown-title"><span class="title"> </span> <span class="arrow down"></span></button> <button type="button" aria-label="Lang" class="mobile-dropdown-title"><span class="title"> </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/en/admin/api/" class="nav-link">
+  English - English
+</a></li><li class="dropdown-item"><!----> <a href="/docs/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Russian - Русский
+</a></li><li class="dropdown-item"><!----> <a href="/docs/es/admin/api/" class="nav-link">
+  Spanish - Español
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Все решения" class="dropdown-title"><span class="title">Все решения</span> <span class="arrow down"></span></button> <button type="button" aria-label="Все решения" class="mobile-dropdown-title"><span class="title">Все решения</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/main/" target="_self" class="nav-link external">
+  ← В начало
+  <!----></a></li><li class="dropdown-item"><!----> <a href="/docs/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  TrueConf Server
+</a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/mcu/introduction/" target="_self" class="nav-link external">
+  TrueConf MCU
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client/installation" target="_self" class="nav-link external">
+  TrueConf для Windows, macOS, Linux
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android/installation" target="_self" class="nav-link external">
+  TrueConf для Android
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-android-tv/getting-ready/" target="_self" class="nav-link external">
+  TrueConf для Android TV
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/client-ios/installation" target="_self" class="nav-link external">
+  TrueConf для iOS/iPadOS
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/room/introduction" target="_self" class="nav-link external">
+  TrueConf Room
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/weathervane/introduction" target="_self" class="nav-link external">
+  TrueConf Weathervane
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/group/introduction/" target="_self" class="nav-link external">
+  TrueConf Group
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videobar/characteristics" target="_self" class="nav-link external">
+  TrueConf Videobar
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/kiosk/overview" target="_self" class="nav-link external">
+  TrueConf Kiosk
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/border-controller/introduction/" target="_self" class="nav-link external">
+  TrueConf Border Controller
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/coordinator/introduction" target="_self" class="nav-link external">
+  Unitsolutions Coordinator
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://docs.trueconf.com/videosdk/introduction/common" target="_self" class="nav-link external">
+  TrueConf VideoSDK/Room API
+  <!----></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Поддержка" class="dropdown-title"><span class="title">Поддержка</span> <span class="arrow down"></span></button> <button type="button" aria-label="Поддержка" class="mobile-dropdown-title"><span class="title">Поддержка</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://trueconf.ru/blog/baza-znaniy" target="_self" class="nav-link external">
+  База знаний
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueconf.ru/academy/" target="_self" class="nav-link external">
+  Обучающий портал
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://trueconf.ru/support.html" target="_self" class="nav-link external">
+  Завести тикет
+  <!----></a></li><li class="dropdown-item"><!----> <a href="https://t.me/trueconf_talks" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Сообщество
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://docs.trueconf.com/manual/server/trueconf-administrator-ru.pdf" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PDF
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Lang" class="dropdown-title"><span class="title"> </span> <span class="arrow down"></span></button> <button type="button" aria-label="Lang" class="mobile-dropdown-title"><span class="title"> </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/en/admin/api/" class="nav-link">
+  English - English
+</a></li><li class="dropdown-item"><!----> <a href="/docs/admin/api/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Russian - Русский
+</a></li><li class="dropdown-item"><!----> <a href="/docs/es/admin/api/" class="nav-link">
+  Spanish - Español
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/docs/" class="sidebar-heading clickable router-link-active open"><span>Руководство администратора TrueConf Server</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/admin/introduction/" class="sidebar-link">Описание сервера видеосвязи и его возможности</a></li><li><a href="/docs/admin/users/" class="sidebar-link">Типы пользователей</a></li><li><a href="/docs/admin/calls/" class="sidebar-link">Форматы видеосвязи</a></li><li><a href="/docs/admin/extensions/" class="sidebar-link">Расширение возможностей</a></li><li><a href="/docs/admin/license/" class="sidebar-link">Лицензирование сервера видеосвязи</a></li><li><a href="/docs/admin/server-part/" class="sidebar-link">Установка и системные требования</a></li><li><a href="/docs/admin/registration/" class="sidebar-link">Регистрация</a></li><li><a href="/docs/admin/start-settings/" class="sidebar-link">Начальная настройка</a></li><li><a href="/docs/admin/info/" class="sidebar-link">Информация о сервере и ПРО-лицензиях. Настройки хранилища</a></li><li><a href="/docs/admin/network/" class="sidebar-link">Настройки сети, уведомлений и федерации</a></li><li><a href="/docs/admin/gateways/" class="sidebar-link">SIP/H.323/RTSP шлюз и транскодирование</a></li><li><a href="/docs/admin/web-config/" class="sidebar-link">Настройки веб и HTTPS</a></li><li><a href="/docs/admin/accounts/" class="sidebar-link">Пользователи сервера. Интеграция с LDAP/Active Directory</a></li><li><a href="/docs/admin/conferences/" class="sidebar-link">Групповые конференции и трансляции</a></li><li><a href="/docs/admin/api/" aria-current="page" class="active sidebar-link">Работа с API сервера</a></li><li><a href="/docs/admin/reports/" class="sidebar-link">Логи работы сервера (отчёты)</a></li><li><a href="/docs/admin/extensions-config/" class="sidebar-link">Настройка расширений</a></li><li><a href="/docs/admin/security-admin/" class="sidebar-link">Возможности администратора с ролью Security Admin</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p id="api"></p> <h1 id="работа-с-api-сервера"><a href="#работа-с-api-сервера" class="header-anchor">#</a> Работа с API сервера</h1> <!----> <p>Расширить возможности по использованию <span>TrueConf Server</span> можно с помощью RESTful API, доступного во всех версиях, в том числе и бесплатной.</p> <p id="oauth2"></p> <h2 id="принципы-работы-api-и-oauth-2-0"><a href="#принципы-работы-api-и-oauth-2-0" class="header-anchor">#</a> Принципы работы API и OAuth 2.0</h2> <p>Раздел <span><b><!---->API</b><b><span> → </span>OAuth2</b></span> предназначен для управления приложениями или сервисами, работающими с <span>TrueConf Server</span> API. Управление доступом происходит согласно протоколу авторизации OAuth 2.0, подробнее о котором вы можете прочитать в <a href="https://tools.ietf.org/html/rfc6749" target="_blank" rel="noopener noreferrer">официальной документации к RFC 6749<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>, а также во врезке ниже.</p> <div class="custom-block tip"><p class="custom-block-title"><span></span></p> <p>Основная идея протокола OAuth 2.0 состоит в выдаче прав на доступ к API отдельным приложениям (client в терминологии OAuth) с ограниченной областью видимости и правами. Такой подход позволяет в любой момент отключить доступ конкретному приложению или его пользователю к ресурсам сервера. Протокол также позволяет безопасно авторизовать сторонние приложения и совершать действия на сервере через API от имени пользователя. При этом пользователь не должен сообщать свои логин или пароль стороннему приложению (метод Authorization Code).</p></div> <p>Каждое стороннее приложение обязано получить ключ доступа (access token) в результате процесса авторизации на <span>TrueConf Server</span> по протоколу OAuth 2.0. Приложения, имеющие валидный ключ доступа, могут в любой момент обращаться к <span>TrueConf Server</span> API, список вызовов которого <span><a href="https://developers.trueconf.ru/api/server/" target="_self">описан в документации</a></span>. Через данный раздел панели управления администратор <span>TrueConf Server</span> имеет контроль не только над доступами сторонних приложений, но и над ключами, полученными через эти приложения.</p> <div class="custom-block tip"><p class="custom-block-title"><span></span></p> <p>Примеры <span><a href="https://trueconf.ru/blog/baza-znaniy/kak-nachat-rabotu-s-trueconf-api.html" target="_self">работы с <span>Труконф</span> API</a></span> показаны в нашем блоге.</p></div> <p>После авторизации приложение получает ключ доступа <em>(access token)</em> с ограниченным временем жизни и с серверной либо пользовательской областью видимости. Например, серверная область видимости позволяет получать данные о любых конференциях, а пользовательская — только о конференциях, где пользователь является участником или владельцем. Область видимости определяется выбранным разработчиком стороннего приложения типом авторизации, а набор прав на доступ к ресурсам сервера определяется администратором сервера.</p> <table><tr><th>
+            Метод авторизации OAuth 2.0
+        </th> <th>
+            Область видимости ключа доступа
+        </th> <th>
+            Результат авторизации
+        </th></tr> <tr><td><b>Client Credentials</b> <br>
+            Приложение получает ключ доступа, область видимости которого не ограничена данными конкретного пользователя. Авторизация для пользователя не требуется. Рекомендуется использовать только для доверенных приложений.
+        </td> <td>
+            Не ограничена.
+        </td> <td>
+            Выдаётся ключ доступа <i>(access token)</i> со временем жизни 1 час.
+        </td></tr> <tr><td><b>User Credentials</b> (он же <i>Resource Owner Password Credentials Grant</i>)
+            <br>
+            Для получения ключа доступа необходимо передать логин и пароль пользователя, полученные на стороне приложения.
+        </td> <td>
+            Ограничена областью видимости авторизованного пользователя.
+        </td> <td>
+            Выдаётся ключ доступа на 1 час, а также ключ продления доступа <i>(refresh token)</i> на 7 дней.
+        </td></tr> <tr><td><b>Authorization Code</b> <br>
+            Ключ доступа <i>(access token)</i> выдаётся после самостоятельной авторизации пользователя на стороне <span>TrueConf Server</span>. Логин и пароль пользователя приложению недоступны.
+        </td> <td>
+            Ограничена областью видимости авторизованного пользователя.
+        </td> <td>
+            Выдаётся ключ доступа на 1 час, а также ключ продления доступа на 7 дней.
+        </td></tr> <tr><td><b>Refresh Token</b> <br>
+            Данный метод авторизации позволяет получить новый ключ доступа (access token) на основе существующего ключа продления доступа (refresh token).
+        </td> <td>
+            Ограничена областью видимости пользователя, которому был выдан ключ продления доступа.
+        </td> <td>
+            Выдаётся новый ключ доступа на 1 час. Обновить его с помощью этого метода нельзя.
+        </td></tr></table> <p>Каждый запрос на создание ключа доступа требует указания ID приложения (Application ID) и секрета приложения (Secret), которые можно получить и обновить, создав или, соответственно, отредактировав приложение в этом разделе. ID приложения создаётся автоматически и не может быть изменён в дальнейшем, в отличие от секрета приложения, который можно сгенерировать заново.</p> <p id="oauth2-permissions"></p> <h2 id="описание-разрешении"><a href="#описание-разрешении" class="header-anchor">#</a> Описание разрешений</h2> <p>Возможности стороннего приложения по работе с API зависят от выданных ему разрешений.</p> <table><tr><th>
+            Разрешение
+        </th> <th>
+            Описание
+        </th></tr> <tr><td>
+            conferences:read
+        </td> <td>
+            Чтение информации о конференции
+        </td></tr> <tr><td>
+            conferences:write
+        </td> <td>
+            Создание, редактирование, удаление конференции
+        </td></tr> <tr><td>
+            conferences.records:read
+        </td> <td>
+            Чтение информации о записях конференций
+        </td></tr> <tr><td>
+            conferences.participants:read
+        </td> <td>
+            Чтение списка участников конференции
+        </td></tr> <tr><td>
+            conferences.participants:write
+        </td> <td>
+            Создание, редактирование, удаление участников конференции
+        </td></tr> <tr><td>
+            conferences.invitations
+        </td> <td>
+            Чтение и редактирование списка приглашённых в конференцию абонентов
+        </td></tr> <tr><td>
+            conferences.sessions:read
+        </td> <td>
+            Чтение информации об определённой сессии (активном сеансе видеосвязи)
+        </td></tr> <tr><td>
+            conferences.sessions.participants:read
+        </td> <td>
+            Чтение списка участников активной конференции и их ролей
+        </td></tr> <tr><td>
+            conferences.sessions.podiums.participants
+        </td> <td>
+            Приглашение участника активной конференции на трибуну и удаление его с трибуны 
+        </td></tr> <tr><td>
+            groups:read
+        </td> <td>
+            Чтение информации о группе пользователей
+        </td></tr> <tr><td>
+            groups:write
+        </td> <td>
+            Создание, редактирование, удаление групп пользователей. Недоступно в LDAP
+        </td></tr> <tr><td>
+            groups.users:read
+        </td> <td>
+            Чтение списка пользователей группы
+        </td></tr> <tr><td>
+            groups.users:write
+        </td> <td>
+            Создание, редактирование, удаление пользователей групп. Недоступно в LDAP
+        </td></tr> <tr><td>
+            users:read
+        </td> <td>
+            Чтение информации о пользователях сервера
+        </td></tr> <tr><td>
+            users:write
+        </td> <td>
+            Создание, редактирование, удаление пользователей сервера. Недоступно в LDAP
+        </td></tr> <tr><td>
+            users.addressbook:read
+        </td> <td>
+            Чтение контактов из адресных книг пользователей
+        </td></tr> <tr><td>
+            users.addressbook:write
+        </td> <td>
+            Создание, редактирование, удаление контактов в адресной книге пользователей
+        </td></tr> <tr><td>
+            users.avatar:read
+        </td> <td>
+            Чтение информации об аватарах пользователей
+        </td></tr> <tr><td>
+            users.avatar:write
+        </td> <td>
+            Добавление и удаление аватаров пользователей
+        </td></tr> <tr><td>
+            templates.conferences:read
+        </td> <td>
+            Чтение информации о шаблонах конференций
+        </td></tr> <tr><td>
+            templates.conferences:write
+        </td> <td>
+            Создание, редактирование, удаление шаблонов конференций
+        </td></tr> <tr><td>
+            logs.calls:read
+        </td> <td>
+            Чтение списка конференций из логов сервера 
+        </td></tr> <tr><td>
+            logs.calls.participants:read
+        </td> <td>
+            Чтение списка участников конференции из логов сервера
+        </td></tr> <tr><td>
+            logs.calls.invites:read
+        </td> <td>
+            Чтение списка приглашённых в конференцию пользователей из логов сервера
+        </td></tr></table> <p>В документации к <span><a href="https://developers.trueconf.ru/api/server/" target="_self"><span>TrueConf Server</span> API</a></span> для каждого метода указан набор разрешений, требуемых для его успешного вызова.</p> <div class="custom-block tip"><p class="custom-block-title"><span></span></p> <p>Если OAuth-приложению требуется доступ как на чтение так и на запись некоторого параметра, то вместо указания разрешений <code>&lt;permission&gt;:read</code> и <code>&lt;permission&gt;:write</code> можно указать общее разрешение <code>&lt;permission&gt;</code> если это доступно. Например, для того, чтобы приложение могло читать и редактировать учётные записи пользователей сервера, то вместо выбора обоих флажков <code>users:read</code> и <code>users:write</code> можно указать только один <code>users</code>.</p></div> <p id="create-oauth2-application"></p> <h2 id="форма-создания-нового-oauth-2-0-приложения"><a href="#форма-создания-нового-oauth-2-0-приложения" class="header-anchor">#</a> Форма создания нового OAuth 2.0 приложения</h2> <p>Для добавления OAuth 2.0 приложения:</p> <ol><li><p>Нажмите <span><b><!---->Создать новое приложение</b></span>.</p></li> <li><p>Укажите его идентификатор в поле <span><b><!---->Имя</b></span>. Он используется только для отображения в списке приложений.</p></li> <li><p>Для авторизации методом <strong>Authorization Code</strong> в поле <span><b><!---->Переадресация URL</b></span> укажите URL-адрес, на который будет перенаправлено приложение. Для остальных методов авторизации можно указать адрес <code>https://localhost/</code>.</p></li> <li><p>В списке <span><b><!---->Разрешения</b></span> отметьте необходимые для вашего приложения <a href="#oauth2-permissions">права</a>.</p></li> <li><p>Сохраните изменения с помощью кнопки <span><b><!---->Создать</b></span>.</p></li></ol> <p id="edit-oauth2-application"></p> <h2 id="страница-редактирования-приложения"><a href="#страница-редактирования-приложения" class="header-anchor">#</a> Страница редактирования приложения</h2> <p>На странице приложения помимо редактирования его свойств возможно также увидеть список ключей доступа, которые были получены пользователями этого приложения. Вы можете в любой момент удалить ключи доступа для конкретных пользователей, что не позволит им более обращаться к ресурсам сервера через API.</p> <p>Вы также можете <span><b><!---->Перегенерировать</b></span> секрет приложения, что может быть полезно в целях безопасности для прекращения доступа к серверу этому приложению, а также всем его новым пользователям. Обратите внимание, что ключи доступа и продления доступа, полученные с использованием старого секрета, продолжат работать до окончания их времени жизни.</p> <button id="myBtn" title="Go to top"><span></span></button></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/admin/conferences/" class="prev">
+        Групповые конференции и трансляции
+      </a></span> <span class="next"><a href="/docs/admin/reports/">
+        Логи работы сервера (отчёты)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/docs/assets/js/app.2638b99c.js" defer></script><script src="/docs/assets/js/2.bdaed5d3.js" defer></script><script src="/docs/assets/js/1.204ac9d5.js" defer></script><script src="/docs/assets/js/35.eb0bc26f.js" defer></script><script src="/docs/assets/js/22.19dce842.js" defer></script><script src="/docs/assets/js/28.dc33b352.js" defer></script><script src="/docs/assets/js/31.6e279f7e.js" defer></script><script src="/docs/assets/js/26.1bf8f651.js" defer></script><script src="/docs/assets/js/23.9fd842ec.js" defer></script>
+  </body>
+</html>

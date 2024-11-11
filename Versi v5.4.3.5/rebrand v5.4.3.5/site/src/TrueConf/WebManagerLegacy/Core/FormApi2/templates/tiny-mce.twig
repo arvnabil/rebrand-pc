@@ -1,0 +1,47 @@
+<script type='text/javascript' src='/js/tiny_mce/jquery.tinymce.js'></script>
+<script type='text/javascript' language='JavaScript'>
+  $(function () {
+    $('#{{ id }}').tinymce({
+      script_url: '/js/tiny_mce/tiny_mce.js',
+
+      plugins: "paste",
+      theme: 'simple',
+      charLimit: {{ max }},
+      charCount: 0,
+      // content_css : '/css/tiny_mce.css',
+      paste_auto_cleanup_on_paste: true,
+      paste_preprocess: function (pl, o) {
+        if (tinyMCE.activeEditor.settings.charCount < tinyMCE.activeEditor.settings.charLimit) {
+          if ((tinyMCE.activeEditor.settings.charCount + o.content.length) > tinyMCE.activeEditor.settings.charLimit) {
+            o.content = o.content.replace(/>\s+</g, "><").replace(/^\s+/g, "").substring(0, (tinyMCE.activeEditor.settings.charLimit - tinyMCE.activeEditor.settings.charCount));
+            tinyMCE.activeEditor.settings.charCount = tinyMCE.activeEditor.settings.charLimit;
+          } else
+            tinyMCE.activeEditor.settings.charCount += o.content.length;
+        } else
+          o.content = "";
+      },
+
+      setup: function (ed) {
+        ed.onKeyUp.add(function (ed, e) {
+          var str = ed.getContent();
+          ed.settings.charCount = str.length;
+          var charCnt = tinyMCE.activeEditor.settings.charLimit - tinyMCE.activeEditor.settings.charCount;
+          document.getElementById('last_chars').innerHTML = charCnt > -1 ? charCnt : 0;
+          if (charCnt < 1)
+            ed.execCommand('mceSetContent', true, str.substr(0, ed.settings.charLimit - 1));
+        });
+
+        ed.onClick.add(function (ed, e) {
+          $.datepicker._hideDatepicker();
+        });
+
+      }
+    });
+
+  });
+  $(document).ready(function () {
+    document.getElementById('last_chars').innerHTML = {{ max }};
+  });
+
+</script>
+{{ input }}

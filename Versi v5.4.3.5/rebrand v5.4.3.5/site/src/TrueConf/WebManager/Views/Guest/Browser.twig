@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>{{ site._("Your browser is not supported") }}</title>
+</head>
+
+<body>
+
+<style type="text/css">
+    html, body {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, helvetica, 'helvetica neue', ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+    }
+
+    .app {
+        max-width: 480px;
+        min-width: 320px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .appbar {
+        height: 48px;
+    }
+
+    .appbar-title {
+        margin: 20px 16px 4px 16px;
+        color: #111111;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .appbar-description {
+        margin: 4px 16px 4px 16px;
+        color: #333333;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .layout {
+        margin: 16px 0;
+        width: 100%;
+        max-width: 480px;
+        min-width: 320px;
+    }
+
+    .browser {
+        margin: 8px 0;
+    }
+
+    .icon {
+        display: table-cell;
+        min-width: 48px;
+        min-height: 48px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .info {
+        display: table-cell;
+        padding: 0 16px;
+        vertical-align: middle;
+        width: 100%;
+        text-align: left;
+    }
+
+    .name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111111;
+    }
+
+    .description {
+        margin-top: 4px;
+        font-size: 13px;
+        color: #333333;
+    }
+
+    .action {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
+    }
+
+    .download {
+        cursor: pointer;
+        color: #0097A7;
+        font-size: 13px;
+        font-weight: 700;
+        border: 1px solid #0097A7;
+        border-radius: 12px;
+        padding: 8px 16px;
+        background-color: #fff;
+    }
+
+    .download:hover {
+        color: #fff;
+        background-color: #0097A7;
+    }
+</style>
+{% autoescape 'html' %}
+    <div class="app">
+        <div class="appbar">
+            <div class="appbar-title">{{ site._("Your browser is not supported") }}</div>
+            <div class="appbar-description">{{ site._("Please update your browser") }}</div>
+        </div>
+
+        <div class="layout">
+            <table class="browsers">
+
+                <tr class="browser">
+                    <td class="icon">
+                        <img src="/public/images/browsers/chrome-48px.png" alt="chrome">
+                    </td>
+                    <td class="info">
+                        <div class="name">Google Chrome</div>
+                        <div class="description">{{ site._("Minimal version") }}: {{ chrome_version }}</div>
+                    </td>
+                    <td class="action">
+                        <a href="https://google.com/chrome" target="_blank" rel="noopener">
+                            <input class="download" type="button" value="{{ site._("Download") }}">
+                        </a>
+                    </td>
+                </tr>
+
+                {% if edge_version %}
+                    <tr class="browser">
+                        <td class="icon">
+                            <img src="/public/images/browsers/edge-48px.png" alt="explorer">
+                        </td>
+                        <td class="info">
+                            <div class="name">Microsoft Edge</div>
+                            <div class="description">{{ site._("Minimal version") }}: {{ edge_version }}</div>
+                        </td>
+                        <td class="action">
+                            <a id="btnUpdateBrowser" href="https://www.microsoft.com/edge" target="_blank"
+                               rel="noopener">
+                                <input class="download" type="button" value="{{ site._("Download") }}">
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                <tr class="browser">
+                    <td class="icon">
+                        <img src="/public/images/browsers/mozilla-48px.png" alt="mozilla">
+                    </td>
+                    <td class="info">
+                        <div class="name">Mozilla Firefox</div>
+                        <div class="description">{{ site._("Minimal version") }}: {{ mozilla_version }}</div>
+                    </td>
+                    <td class="action">
+                        <a id="btnUpdateBrowser" href="https://mozilla.org/firefox/new" target="_blank" rel="noopener">
+                            <input class="download" type="button" value="{{ site._("Download") }}">
+                        </a>
+                    </td>
+                </tr>
+
+                {% if safari_version %}
+                    <tr class="browser">
+                        <td class="icon">
+                            <img src="/public/images/browsers/safari-48px.png" alt="safari">
+                        </td>
+                        <td class="info">
+                            <div class="name">Safari</div>
+                            <div class="description">{{ site._("Minimal version") }}: {{ safari_version }}</div>
+                        </td>
+                        <td class="action">
+                            <a href="https://support.apple.com/downloads/safari" target="_blank" rel="noopener">
+                                <input class="download" type="button" value="{{ site._("Download") }}">
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                {% if explorer_version %}
+                    <tr class="browser">
+                        <td class="icon">
+                            <img src="/public/images/browsers/explorer-48px.png" alt="explorer">
+                        </td>
+                        <td class="info">
+                            <div class="name">Internet Explorer</div>
+                            <div class="description">{{ site._("Minimal version") }}: {{ explorer_version }}</div>
+                        </td>
+                        <td class="action">
+                            <a id="btnUpdateBrowser" href="https://windows.microsoft.com/ie" target="_blank"
+                               rel="noopener">
+                                <input class="download" type="button" value="{{ site._("Download") }}">
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endautoescape %}
+</body>
+
+
+</html>
+

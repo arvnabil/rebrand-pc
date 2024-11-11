@@ -1,0 +1,168 @@
+<?xml version="1.0" standalone="yes"?>
+<TimeZones>
+    <TimeZone>
+      <Offset>-720</Offset>
+      <LongDescription>(GMT-12:00) Западная сторона линии даты</LongDescription>
+      <ShortDescription>GMT-12:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-660</Offset>
+      <LongDescription>(GMT-11:00) Острова Мидуэй, Самоа</LongDescription>
+      <ShortDescription>GMT-11:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-600</Offset>
+      <LongDescription>(GMT-10:00) Гаваи</LongDescription>
+      <ShortDescription>GMT-10:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-540</Offset>
+      <LongDescription>(GMT-09:00) Аляска</LongDescription>
+      <ShortDescription>GMT-09:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-480</Offset>
+      <LongDescription>(GMT-08:00) Тихоокеанский часовой пояс (США &amp; Канада)</LongDescription>
+      <ShortDescription>GMT-08:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-420</Offset>
+      <LongDescription>(GMT-07:00) Горный часовой пояс (США &amp; Канада)</LongDescription>
+      <ShortDescription>GMT-07:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-360</Offset>
+      <LongDescription>(GMT-06:00) Центральное поясное время (США &amp; Канада)</LongDescription>
+      <ShortDescription>GMT-06:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-300</Offset>
+      <LongDescription>(GMT-05:00) Восточное время (США &amp; Канада)</LongDescription>
+      <ShortDescription>GMT-05:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-240</Offset>
+      <LongDescription>(GMT-04:00) Каракас, Сантьяго, Атлантическое время (Канада)</LongDescription>
+      <ShortDescription>GMT-04:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-210</Offset>
+      <LongDescription>(GMT-03:30) Ньюфаундленд</LongDescription>
+      <ShortDescription>GMT-03:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-180</Offset>
+      <LongDescription>(GMT-03:00) Буэнос-Айрес, Джорджтаун, Бразилия</LongDescription>
+      <ShortDescription>GMT-03:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-120</Offset>
+      <LongDescription>(GMT-02:00) Среднеатлантическое время</LongDescription>
+      <ShortDescription>GMT-02:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>-60</Offset>
+      <LongDescription>(GMT-01:00) Республика Кабо Верде, Азорские острова</LongDescription>
+      <ShortDescription>GMT-01:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>0</Offset>
+      <LongDescription>(GMT) Лондон, Париж, Время по Гринвичу</LongDescription>
+      <ShortDescription>GMT</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>60</Offset>
+      <LongDescription>(GMT+01:00) Амстердам, Берлин, Рим, Западная и центральная Африка</LongDescription>
+      <ShortDescription>GMT+01:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>120</Offset>
+      <LongDescription>(GMT+02:00) Хараре, Киев, Претория, Иерусалим</LongDescription>
+      <ShortDescription>GMT+02:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>180</Offset>
+      <LongDescription>(GMT+03:00)  Москва, Санкт-Петербург, Волгоград, Калининград, Минск, Багдад</LongDescription>
+      <ShortDescription>GMT+03:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>210</Offset>
+      <LongDescription>(GMT+03:30) Тегеран</LongDescription>
+      <ShortDescription>GMT+03:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>240</Offset>
+      <LongDescription>(GMT+04:00) Баку, Тбилиси, Ереван</LongDescription>
+      <ShortDescription>GMT+04:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>270</Offset>
+      <LongDescription>(GMT+04:30) Кабул</LongDescription>
+      <ShortDescription>GMT+04:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>300</Offset>
+      <LongDescription>(GMT+05:00) Исламабад, Ташкент, Екатеринбург</LongDescription>
+      <ShortDescription>GMT+05:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>330</Offset>
+      <LongDescription>(GMT+05:30) Ченнаи, Колката, Мумбай, Нью-Дели</LongDescription>
+      <ShortDescription>GMT+05:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>345</Offset>
+      <LongDescription>(GMT+05:45) Катманду</LongDescription>
+      <ShortDescription>GMT+05:45</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>360</Offset>
+      <LongDescription>(GMT+06:00) Алмаата, Новосибирск, Астана, Дакка</LongDescription>
+      <ShortDescription>GMT+06:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>390</Offset>
+      <LongDescription>(GMT+06:30) Рангун</LongDescription>
+      <ShortDescription>GMT+06:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>420</Offset>
+      <LongDescription>(GMT+07:00) Бангкок, Ханой, Джакарта,  Красноярск</LongDescription>
+      <ShortDescription>GMT+07:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>480</Offset>
+      <LongDescription>(GMT+08:00) Перт, Тайпей, Сингапур, Гонконг</LongDescription>
+      <ShortDescription>GMT+08:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>540</Offset>
+      <LongDescription>(GMT+09:00) Якутск, Осака, Саппоро, Токио, Сеул</LongDescription>
+      <ShortDescription>GMT+09:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>570</Offset>
+      <LongDescription>(GMT+09:30) Аделаида, Дарвин</LongDescription>
+      <ShortDescription>GMT+09:30</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>600</Offset>
+      <LongDescription>(GMT+10:00) Владивосток, Мельбурн, Сидней</LongDescription>
+      <ShortDescription>GMT+10:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>660</Offset>
+      <LongDescription>(GMT+11:00) Магадан, Соломоновы острова, Новая Каледония</LongDescription>
+      <ShortDescription>GMT+11:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>720</Offset>
+      <LongDescription>(GMT+12:00) Окленд, Веллингтон, Фиджи</LongDescription>
+      <ShortDescription>GMT+12:00</ShortDescription>
+    </TimeZone>
+    <TimeZone>
+      <Offset>780</Offset>
+      <LongDescription>(GMT+13:00) Нукуалофа </LongDescription>
+      <ShortDescription>GMT+13:000</ShortDescription>
+    </TimeZone>
+</TimeZones>

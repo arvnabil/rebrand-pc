@@ -1,0 +1,64 @@
+* {
+    font-family: Roboto, Noto Sans, Noto, sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    -js-display: flex;
+    -js-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+#app > .appbar {
+    -js-display: flex;
+    -js-flex-direction: row;
+    -js-align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 48px;
+    margin: 0 16px;
+}
+
+#app > .appbar > .title {
+    -js-display: flex;
+    -js-flex-direction: row;
+    -js-justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#app > .appbar > .title > .name {
+    -js-display: flex;
+    display: flex;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+#app > .appbar > .title > .desc {
+    -js-display: flex;
+    display: flex;
+    font-size: 16px;
+}
+
+@media (max-width: 540px) {
+    #app > .appbar > .title {
+        -js-flex-direction: column;
+        flex-direction: column;
+    }
+
+    #app > .layout > .file-list > .file > .actions > .action > .text {
+        -js-display: none;
+        display: none;
+    }
+}

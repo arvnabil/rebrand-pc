@@ -1,0 +1,260 @@
+{% extends template.base %}
+
+{% block head %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="/admin-area/styles.css?version={{ server_version }}">
+{% endblock %}
+
+{% block content %}
+    {% block external_url %}
+        <fieldset>
+            <legend>{{ site._("External address of %server_name web")|replace({'%server_name':settings.config.server_name})|e('html') }}</legend>
+            <p class="m-top-10">{{ site._('This address should be accessible for all users') }}</p>
+            {{ url_form }}
+        </fieldset>
+        <br/>
+    {% endblock %}
+
+    {% block guest_page %}
+        <fieldset>
+            <legend>{{ site._('Guest page') }}</legend>
+            {% set web_port = current_web_url_port_is_not_def ? ':'~web_conf.port : '' %}
+            {% set guest_page_web_url = web_conf.protocol~'://'~web_conf.host~web_port %}
+            {% set guest_page_link = '<a href='~guest_page_web_url~' target="_blank" rel="noopener">'~guest_page_web_url~'</a>' %}
+            {{ site._('Link to the guest page: [b]%link[/b]')|replace({'[b]':'<b>', '[/b]':'</b>', '%link':guest_page_link}) }}
+            &nbsp
+            {{ admin_contacts_form }}
+        </fieldset>
+        <br/>
+    {% endblock %}
+
+    {% block company_logo %}
+        <fieldset id="company-logo-component" style="display:none">
+            <legend>{{ site._("Company logo") }}</legend>
+            <p>{{ site._("Logo to be displayed on the guest page") }}</p>
+
+            <img v-if="local_image_src === null"
+                 class="m-bottom-10 m-top-10 company-logo"
+                 style="background-color: #000000; opacity: 0.1"
+                 src="{{ logo_url }}"/>
+
+            <img v-if="local_image_src !== null"
+                 class="m-bottom-10 m-top-10 company-logo"
+                 style="background-color: #000000; opacity: 0.1"
+                 :src="local_image_src"/>
+            <br/>
+
+            <input type="file"
+                   id="logo__input"
+                   name="file"
+                   accept="image/png"
+                   @change="onSelectFile"/>
+
+            <button class="button m-left-10"
+                    @click="uploadFile"
+                    :class="{'button-lock': !file}"
+                    :disabled="!file">
+                {{ site._("Upload") }}
+            </button>
+
+            {#<a id="upload-logo"#}
+            {#class="button"#}
+            {#onclick="$('#upload-logo').click();">{{ site._("Upload") }}</a>#}
+
+            <a class="button m-left-10"
+               href="{{ site.getInsideUrl('web', 'set-default-logo') }}">{{ site._("Set by default") }}</a>
+
+            <p class="help-notify m-top-3">{{ site._("The logo must be on a transparent background in PNG, with maximum resolution %resolution and no more than 1 MB.")|replace({'%resolution': size.width~'x'~size.height}) }}</p>
+        </fieldset>
+    {% endblock %}
+
+    {% block description %}
+      <br/>
+      <div> 
+        <div id='admin-area-screen'></div>
+      </div>
+
+      <script src="/admin-area/bundle.js?version={{ server_version }}"></script>
+    {% endblock %}
+
+    <style>
+        #company-name-title + nobr {
+            padding-left: 5px;
+            padding-right: 39px;
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    <script src="/public/js/vue/vue/vue.min.js?version={{ current_version|e('html') }}"></script>
+    <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version|e('html') }}"></script>
+    <script type="text/javascript" defer>
+      $(document).ready(function () {
+        $('#dlg-autonomy').extensionsPopup('autonomy');
+
+        var MAX_FILE_SIZE = {{ max_logo_size }};
+        var MAX_LOGO_WIDTH = {{ size.width }};
+        var MAX_LOGO_HEIGHT = {{ size.height }};
+        var ERROR_MESSAGE_INVALID_BROWSER = "{{ site._('To download the file you need to use a more modern browser.') }}";
+        var ERROR_MESSAGE_INVALID_FILE_FORMAT = "{{ site._('Invalid file format. Only PNG is supported') }}";
+        var ERROR_MESSAGE_INVALID_FILE_SIZE = "{{ site._('Maximum upload file size 1MB') }}";
+        var LOGO_ERROR_MESSAGE_INVALID_WIDTH_HEIGHT = "{{ site._('Invalid file format') }}.";
+        var ERROR_MESSAGE_UPLOAD = "{{ site._('Error upload settings file') }}";
+        var MESSAGE_SETTINGS_SAVED = "{{ site._('The settings are saved') }}";
+        var LOGO_UPLOAD_SUCCESS = {{ logo_upload_success }};
+        var LOGO_ERROR_MISSING_REQUIRED_FIELD = {{ logo_error_missing_required_field }};
+        var LOGO_ERROR_UPLOAD = {{ logo_error_upload }};
+        var LOGO_ERROR_SIZE = {{ logo_error_size }};
+        var LOGO_ERROR_TYPE = {{ logo_error_type }};
+        var LOGO_ERROR_WIDTH_HEIGHT = {{ logo_error_width_height }};
+
+        Vue.use(VueResource);
+        Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+        new Vue({
+          data: {
+            local_image_src: null,
+            file: null
+          },
+          computed: {
+            hasFileApi: function () {
+              return (
+                window.File &&
+                window.FileReader &&
+                window.FileList &&
+                window.Blob
+              );
+            }
+          },
+          methods: {
+            onSelectFile: function (event) {
+              if (!this.hasFileApi) {
+                $(document).trigger('display-header-error', {message: ERROR_MESSAGE_INVALID_BROWSER});
+                return;
+              }
+
+              this.$set(this, 'local_image_src', null);
+              this.$set(this, 'file', null);
+
+              var files = event.target.files;
+              if (files.length === 0) {
+                return;
+              }
+
+              var file = files[0];
+              if (!file.type.match('image/png')) {
+                $(document).trigger('display-header-error', {message: ERROR_MESSAGE_INVALID_FILE_FORMAT});
+                return;
+              }
+
+              var self = this;
+              var reader = new FileReader();
+
+              reader.onload = (function (the_file) {
+                $(document).trigger('hidden-header-error');
+                if (the_file.size > MAX_FILE_SIZE) {
+                  $(document).trigger('display-header-error', {message: ERROR_MESSAGE_INVALID_FILE_SIZE});
+                  return;
+                }
+
+                return function (event) {
+                  var img = new Image();
+                  img.src = event.target.result;
+                  setTimeout(function () {
+                    if (img.naturalWidth > MAX_LOGO_WIDTH || img.naturalHeight > MAX_LOGO_HEIGHT
+                      || img.naturalWidth === 0 || img.naturalHeight === 0) {
+                      $(document).trigger('display-header-error', {
+                        message: LOGO_ERROR_MESSAGE_INVALID_WIDTH_HEIGHT
+                      });
+                      return;
+                    }
+
+                    self.$set(self, 'local_image_src', event.target.result);
+                    self.$set(self, 'file', file);
+                  }, 0);
+                }
+              })(file);
+              reader.readAsDataURL(file);
+            },
+            uploadFile: function () {
+              if (!this.hasFileApi) {
+                $(document).trigger('display-header-error', {message: ERROR_MESSAGE_INVALID_BROWSER});
+                return;
+              }
+
+              if (!this.$data.file) {
+                return;
+              }
+
+              var file = this.$data.file;
+              var formData = new FormData();
+              formData.append('filename', file);
+              this.$set(this, 'file', null);
+
+              Server.showLoadEffect('');
+              this.$http.post('{{ site.getInsideUrl('web', 'upload-logo') }}', formData).then(function (response) {
+                Server.removeLoadEffect();
+                $(document).trigger('display-header-messages', {message: MESSAGE_SETTINGS_SAVED})
+              }, function (error) {
+                Server.removeLoadEffect();
+                if (!error.body.hasOwnProperty('result')) {
+                  $(document).trigger('display-header-error', {message: "{{ site._('Request error') }}"});
+                  return;
+                }
+
+                switch (error.body.result) {
+                  case(LOGO_ERROR_MISSING_REQUIRED_FIELD):
+                  case(LOGO_ERROR_UPLOAD):
+                    $(document).trigger('display-header-error', {message: ERROR_MESSAGE_UPLOAD});
+                    return;
+                  case(LOGO_ERROR_TYPE):
+                    $(document).trigger('display-header-error', {message: ERROR_MESSAGE_INVALID_FILE_FORMAT});
+                    return;
+                  case(LOGO_ERROR_SIZE):
+                    $(document).trigger('display-header-error', {message: ERROR_MESSAGE_INVALID_FILE_SIZE});
+                    return;
+                  case(LOGO_ERROR_WIDTH_HEIGHT):
+                    $(document).trigger('display-header-error', {message: LOGO_ERROR_MESSAGE_INVALID_WIDTH_HEIGHT});
+                    return;
+                  default:
+                    $(document).trigger('display-header-error', {message: "{{ site._('Request error') }}"});
+                    return;
+                }
+              });
+            }
+          },
+          mounted: function () {
+            this.$el.style.display = 'block';
+          }
+        }).$mount('#company-logo-component');
+      })
+    </script>
+
+    {#<script type="text/javascript">#}
+    {#$(document).ready(function () {#}
+    {#new AjaxUpload("upload-logo", {#}
+    {#action: '{{ site.getInsideUrl('web', 'upload-logo') }}',#}
+    {#name: 'filename',#}
+    {#accept: 'image/png',#}
+    {#responseType: 'json',#}
+    {#title: '{{ site._("Click to upload") }}',#}
+    {#onChange: function (file, extension) {#}
+    {#Server.showLoadEffect();#}
+    {#},#}
+    {#onComplete: function (file, response) {#}
+    {#Server.removeLoadEffect();#}
+    {#if (response.result == 1) {#}
+    {#window.location.href = window.location.href;#}
+    {#} else if (response.result == 2) {#}
+    {#$(document).trigger('display-header-error', {message: "{{ site._('Maximum upload file size 1MB') }}"});#}
+    {#} else if (response.result == 3) {#}
+    {#$(document).trigger('display-header-error', {message: "{{ site._('Invalid file format. Only PNG is supported') }}"});#}
+    {#} else {#}
+    {#$(document).trigger('display-header-error', {message: "{{ site._('Error upload settings file') }}"});#}
+    {#}#}
+    {#}#}
+    {#});#}
+    {#});#}
+    {#</script>#}
+{% endblock %}

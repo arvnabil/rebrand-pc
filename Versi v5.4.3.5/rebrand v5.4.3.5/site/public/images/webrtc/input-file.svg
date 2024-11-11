@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="20.814mm" width="20.814mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 73.749999 73.749998">
+ <g transform="translate(-20.714 -13.612)">
+  <circle cy="50.487" cx="57.589" r="36.875" fill="#73b75f"/>
+  <path fill="#fff" d="m91.429 50.487a33.839 33.839 0 0 1 -32.231 33.801 33.839 33.839 0 0 1 -35.295 -30.587 33.839 33.839 0 0 1 28.874 -36.709 33.839 33.839 0 0 1 38.041 27.096l-33.229 6.3989z"/>
+  <circle cy="50.487" cx="57.589" r="30.893" fill="#73b75f"/>
+ </g>
+ <g transform="translate(-20.714 -13.612)" fill="#fff">
+  <path d="m44.643 33.97v34.107h29.463v-19.107h-14.91v-15h-14.553z"/>
+  <path d="m74.107 46.916h-12.857v-12.857"/>
+ </g>
+</svg>

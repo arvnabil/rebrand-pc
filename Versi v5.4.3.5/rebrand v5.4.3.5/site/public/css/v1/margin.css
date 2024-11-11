@@ -1,0 +1,53 @@
+
+/* ------------------ margin-top ------------------ */
+.m-top-10 {
+    margin-top: 10px;
+}
+
+.m-top-3 {
+    margin-top: 3px;
+}
+
+/* ------------------ margin-left ------------------ */
+
+.m-left-2 {
+    margin-left: 2px;
+}
+
+.m-left-5 {
+    margin-left: 5px;
+}
+
+.m-left-10 {
+    margin-left: 10px;
+}
+
+.m-left-20 {
+    margin-left: 20px;
+}
+
+.m-left-150 {
+    margin-left: 150px;
+}
+
+.m-left-160 {
+    margin-left: 160px;
+}
+
+.m-left-170 {
+    margin-left: 170px;
+}
+/* ------------------ margin-bottom ------------------ */
+.m-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.m-bottom-5 {
+    margin-bottom: 5px;
+}
+
+/* ------------------ margin-right ------------------ */
+
+.m-right-10 {
+    margin-right: 10px;
+}

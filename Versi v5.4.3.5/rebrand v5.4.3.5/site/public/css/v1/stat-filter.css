@@ -1,0 +1,104 @@
+div.filters {
+    margin: 10px 0;
+    float: left;
+}
+
+div.filters > * {
+    float: left;
+    margin-right: 10px;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+div.filters input.search {
+    padding: 15px;
+    width: 300px;
+
+}
+
+div.filters div.daterange {
+    width: 300px;
+    /*background: rgb(255, 255, 255);*/
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+div.filters div.daterange > b.caret {
+    float: right;
+    margin-top: 8px
+}
+
+div.filters button.search {
+    padding: 5px;
+}
+
+div.filters input[type=date] {
+    padding: 4px 5px 4px;
+}
+
+
+.tb-header,
+.search-result,
+.search-result > div > div {
+    width: 100%;
+    float: left;
+}
+
+.search-result {
+    border:1px solid #ddd;
+}
+
+.tb-header > div,
+.search-result > div > div >div {
+    float:left;
+    width: 12%;
+    height: 40px;
+    padding: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tb-header > div:nth-child(1),
+.tb-header > div:nth-child(6),
+.search-result > div > div >div:nth-child(1),
+.search-result > div > div >div:nth-child(6)
+{
+    width: 20%;
+}
+
+.tb-header > div:nth-child(4),
+.tb-header > div:nth-child(5),
+.search-result > div > div >div:nth-child(4),
+.search-result > div > div >div:nth-child(5) {
+    width: 5%;
+}
+
+.tb-header > div:nth-child(7),
+.tb-header > div:nth-child(8),
+.search-result > div > div >div:nth-child(7),
+.search-result > div > div >div:nth-child(8) {
+    width: 10%;
+}
+
+.tb-header > div:nth-child(2),
+.tb-header > div:nth-child(3),
+.search-result > div > div >div:nth-child(2),
+.search-result > div > div >div:nth-child(3) {
+    width: 15%;
+}
+
+.search-result > div > div:hover {
+    background: #f9f8f8;
+    cursor: pointer;
+}
+
+.tb-header > div {
+    font-weight: bold;
+    background: #EDF2F6;
+    height: auto;
+    border-right: 1px solid #E4EEF3;
+}
+
+div.count {
+    clear: both;
+    padding-top: 15px;
+}

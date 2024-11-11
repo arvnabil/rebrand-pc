@@ -1,0 +1,31 @@
+{# рекурсивный вывод меню в левом сайд-баре #}
+
+{% macro display_left_menu(menu, site, root, area, is_localhost, is_deny_admins_from_localhost) %}
+    <ul {{ not root ? 'class="children-list"' : '' }}>
+        {% for item in menu %}
+            {% if not (is_localhost and item.module == 'auth' and not is_deny_admins_from_localhost) %}{# не выводим пунк "выхода", если адрес 127.0.0.1 #}
+            <li id="{{ item.module~'-'~item.action~'-menu-li' }}" {{ item.current ? 'class="current"' : '' }}>
+                <a
+                        {% if item.popup %}
+                            href='' id="dlg_{{ item.action }}"
+                        {% else %}
+                            {#
+                            Bug 48947
+                            При клике на родительский пункт меню по умолчанию происходит клик
+                            по его первому дочернему подпункту.
+                            #}
+                          {% if item.children|length %}
+                            href="#" onclick="this.parentElement.children[1].children[0].children[0].click()"
+                          {% else %}
+                            href="{{ site.getInsideURL(item.module, item.action, null, area) }}"
+                          {% endif %}
+                        {% endif %}
+                        {% if item.blank %}target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>
+              {% endif %}
+              {% if item.children|length %}
+                {{ _self.display_left_menu(item.children, site, false, area, is_localhost, deny_admins_from_localhost) }}
+              {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}

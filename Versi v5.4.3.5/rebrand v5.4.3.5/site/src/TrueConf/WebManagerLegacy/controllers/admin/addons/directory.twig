@@ -1,0 +1,162 @@
+{% extends template.base %}
+
+{% block js %}
+    {% if debug %}
+        <script src="/public/js/vue/vue/vue.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.js?version={{ current_version }}"></script>
+    {% else %}
+        <script src="/public/js/vue/vue/vue.min.js?version={{ current_version }}"></script>
+        <script src="/public/js/vue/vue-resource/vue-resource.min.js?version={{ current_version }}"></script>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id='directory' class="component">
+        <p class="description">
+            {{ site._("%product_name% is a solution that combines multiple servers into a single address space."
+                ~" This product allows users from one server to search among users of other independent servers within"
+                ~" TrueConf Enterprise solution, as well as view information about them, add them to address books, make"
+                ~" point-to-point and group video calls and exchange instant messages in chat.")|replace({'%product_name%':directory_name}) }}
+        </p>
+
+        <button v-if="!isEnabled"
+                class="button"
+                @click="installDirectory">{{ site._("Activate") }}
+        </button>
+        <button v-else
+                class="button"
+                @click="uninstallDirectory">{{ site._("Deactivate") }}
+        </button>
+
+        <div v-if="isEnabled" class="install">
+            <table class="requirements">
+                <thead>
+                <tr>
+                    <th>Directory</th>
+                    <th>{{ site._("Requirements") }}</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+                <tr>
+                    <td>{{ site._("Version") }}</td>
+                    <td>{{ site._("%version% or above")|replace({'%version%': requirements.directory.minimal_version}) }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        SSL (HTTPS)
+                    </td>
+                    <td>
+                        {{ requirements.directory.ssl_enabled ? site._("enabled") : site._("disabled") }}
+                    </td>
+                </tr>
+            </table>
+
+            <textarea id="install-token-input"
+                      title="{{ site._("The secret code needed to integrate the server into %directory_name%.")|replace({'%directory_name%':directory_name})|e('html') }}"
+                      class="install-token"
+                      readonly>{{ install_token }}</textarea>
+
+            <button class="button" @click="copyInstallToken">{{ site._('Copy') }}</button>
+        </div>
+
+    </div>
+
+    <style>
+        .component {
+            display: none;
+            max-width: 800px
+        }
+
+        .install-token {
+            resize: none;
+            min-width: 320px;
+            min-height: 160px;
+            width: 100%;
+            border: 1px solid #E4EEF3;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .button {
+            margin: 16px 0;
+        }
+    </style>
+
+    <script type="application/javascript">
+      Vue.use(VueResource);
+      Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+      var app = new Vue({
+        el: '#directory',
+        delimiters: ["${", "}"],
+        data: {
+          hasLicense: {{ has_license|json_encode }},
+          sslEnabled: {{ ssl_enabled|json_encode }},
+          isEnabled: {{ is_enabled|json_encode }},
+          previousRequest: {
+            enable: null,
+            disable: null
+          }
+        },
+        computed: {
+          installLock: function () {
+            return (!this.hasLicense || !this.sslEnabled)
+          }
+        },
+        methods: {
+          copyInstallToken: function () {
+            $('#install-token-input').select();
+
+            try {
+              var successful = document.execCommand('copy');
+            } catch (err) {
+            }
+
+          },
+          installDirectory: function () {
+            if (!this.hasLicense) {
+              return;
+            }
+
+            this.$http.post('/admin/addons/directory-enable', {
+
+              before: function (request) {
+
+                if (this.previousRequest.enable) {
+                  this.previousRequest.enable.abort();
+                }
+
+                this.previousRequest.enable = request;
+              }
+
+            }).then(function (respone) {
+              this.$set(this, 'isEnabled', true);
+            }, function (response) {
+
+            });
+          },
+          uninstallDirectory: function () {
+            this.$http.post('/admin/addons/directory-disable', {
+
+              before: function (request) {
+
+                if (this.previousRequest.disable) {
+                  this.previousRequest.disable.abort();
+                }
+
+                this.previousRequest.disable = request;
+              }
+
+            }).then(function (response) {
+              this.$set(this, 'isEnabled', false);
+            }, function (response) {
+
+            });
+          }
+        },
+        mounted: function () {
+          this.$el.style.display = 'block';
+        }
+      });
+    </script>
+{% endblock %}

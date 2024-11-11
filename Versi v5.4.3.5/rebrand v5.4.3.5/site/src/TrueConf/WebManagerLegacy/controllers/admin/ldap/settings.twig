@@ -1,0 +1,510 @@
+{% extends template.base %}
+
+{% block js %}
+    <script src="/public/js/ldapLoginGroup.js" type="text/javascript"></script>
+    <script src="/public/js/common/jquery.placeholder.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        {% autoescape 'js' %}
+
+        {#var defaultValues = {#}
+        {#{% for type, advanced_default in ldap_advanced_default %}#}
+        {#'{{ type }}': {#}
+        {#'ldap_addressbook_refresh': "{{ advanced_default.ldap_addressbook_refresh }}",#}
+        {#'ldap_company': "{{ advanced_default.ldap_company }}",#}
+        {#'ldap_display_name': "{{ advanced_default.ldap_display_name }}",#}
+        {#'ldap_email': "{{ advanced_default.ldap_email }}",#}
+        {#'ldap_filter_addressbook': "{{ advanced_default.ldap_filter_addressbook }}",#}
+        {#'ldap_filter_callid': "{{ advanced_default.ldap_filter_callid }}",#}
+        {#'ldap_filter_disabled': "{{ advanced_default.ldap_filter_disabled }}",#}
+        {#'ldap_filter_group': "{{ advanced_default.ldap_filter_group }}",#}
+        {#'ldap_filter_login': "{{ advanced_default.ldap_filter_login }}",#}
+        {#'ldap_first_name': "{{ advanced_default.ldap_first_name }}",#}
+        {#'ldap_group_member': "{{ advanced_default.ldap_group_member }}",#}
+        {#'ldap_last_name': "{{ advanced_default.ldap_last_name }}",#}
+        {#'ldap_login': "{{ advanced_default.ldap_login }}",#}
+        {#'ldap_timeout': "{{ advanced_default.ldap_timeout }}",#}
+        {#'ldap_user_alias_list': "{{ advanced_default.ldap_user_alias_list }}",#}
+        {#'ldap_driver': "{{ advanced_default.ldap_driver }}",#}
+        {#'ldap_memberOf': "{{ advanced_default.ldap_memberof }}",#}
+        {#'ldap_attr_primaryGroupId': "{{ advanced_default.ldap_attr_primarygroupid }}",#}
+        {#'ldap_attr_primaryGroupToken': "{{ advanced_default.ldap_attr_primarygrouptoken }}",#}
+        {#'ldap_attr_objectSid': "{{ advanced_default.ldap_attr_objectsid }}"#}
+        {#},#}
+        {#{% endfor %}#}
+        {#};#}
+
+
+        defaultValues = {{ ldap_advanced_default|json_encode()|raw }};
+
+        var storageTypeId = 0;
+
+        var formStateIsDefault = false;
+
+        function checkDefaultState() {
+          if ($('#ldap_server_type').val() === -1) {
+            formStateIsDefault = false;
+            return;
+          }
+
+          formStateIsDefault = true;
+          $('input[form=advanced-ldap-options]').each(function () {
+            var defaultValue = defaultValues[storageTypeId][this.name];
+            formStateIsDefault = formStateIsDefault && this.value === defaultValue;
+          });
+        }
+
+        function changeStorageTypeId(type_id) {
+          type_id = parseInt(type_id);
+          storageTypeId = type_id === -1 ? 0 : type_id;
+          if (formStateIsDefault) {
+            setDefault();
+          }
+        }
+
+        changeStorageTypeId("{{ configuration.ldap_server_type }}");
+
+        passWasChanged = false;
+
+        $(document).ready(function () {
+          function enablePassChangedFlag() {
+            $('#ldap_auth_password').attr('model', '\\Classes\\Configuration');
+            passWasChanged = true;
+          }
+
+          $('#ldap_auth_password').change(function () {
+            enablePassChangedFlag();
+          }).focus(function () {
+            this.value = '';
+            enablePassChangedFlag();
+          });
+
+          checkDefaultState();
+          $(document).bind('AfterStart', function () {
+            Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+          });
+
+          $(document).bind('onStorageChange', function () {
+            $.post('{{ site.getInsideUrl('ldap', 'trueconf-ldap-init') }}');
+          });
+
+          $('#advanced-options legend').bind('click', function () {
+            $('#property-block').toggle();
+            var span = $(this).find('span')[0];
+            if (span.innerHTML == '++')
+              $(span).text('');
+            else
+              $(span).text('++');
+          });
+
+
+          var loginGroup = new TC_LDAPLoginGroup($('#selectLdapGroupDialog').get(0),
+            "{{ site.getInsideUrl('group', 'get-ldap-all-groups') }}");
+
+          loginGroup.onGroupSelect = function (dn) {
+            $("#ldap_group").val(dn);
+            $('#selectLdapGroupDialog').dialog("close");
+          };
+
+          $('#selectLdapGroupDialog').dialog({
+            autoOpen: false,
+            height: 320,
+            width: 480,
+            modal: true,
+            draggable: false,
+            resizable: false,
+            title: "{{ site._("Select group") }}"
+          });
+
+          $("#ldap-group-dialog").click(function () {
+            if ($("#ldap-group-dialog").hasClass("button-lock")) return;
+            $('#selectLdapGroupDialog').dialog("open");
+          });
+
+          $('input[model],select[model]').not("#ldap_group").on("input change", function () {
+            $("#ldap-group-dialog").addClass("button-lock");
+          });
+
+
+          authenticationChange();
+
+          $("#auth-type").change(function () {
+            authenticationChange();
+          });
+
+          $("input[name='SrvSettingsAutoDetectRadio']").click(function () {
+            $('#ldap_domain').attr({disabled: this.value == 0 ? true : false});
+            $('#ldap_server').attr({disabled: this.value == 1 ? true : false});
+            $('#ldap_port').attr({disabled: this.value == 1 ? true : false});
+            $('#srvsettingsautodetect').val(this.value == 1 ? 1 : 0);
+            $(document).trigger('auto-detect');
+          });
+
+          $("#secure-connection").click(function () {
+            if (this.checked)
+              $("#ldap_port").val(636);
+            else
+              $("#ldap_port").val(389);
+          });
+
+          $("#ldap_base_dn").autocomplete({
+            source: [""],
+            minLength: 0
+          }).focus(function () {
+            if ($(this).autocomplete("option", "source").length > 1 && $(this).val() == '')
+              $(this).autocomplete("search", "");
+          });
+
+          $('#ldap_domain, #ldap_server').focusout(function () {
+            $(document).trigger('auto-detect');
+          });
+
+          $(document).bind('auto-detect', function () {
+            updateBaseDN();
+          });
+
+          $('#ldap_server_type').change(function () {
+            checkDefaultState();
+            changeStorageTypeId(this.value);
+          });
+
+        });
+
+        function updateBaseDN() {
+          if ($('#ldap_base_dn').val() == '') {
+
+            var auto_detect = $('#srvsettingsautodetect').val();
+            var ldap_domain = $("#ldap_domain").val();
+            var ldap_server = $("#ldap_server").val();
+            var ldap_port = $("#ldap_port").val();
+            var update_base_dn_request = false;
+
+            if (auto_detect == 1) {
+              if (ldap_domain != '') {
+                update_base_dn_request = true;
+              }
+            } else if (auto_detect == 0) {
+              if ((ldap_server != '') && (ldap_port != '')) {
+                update_base_dn_request = true;
+              }
+            }
+
+            if (update_base_dn_request) {
+              $("#ldap_base_dn").autocomplete("option", "source", [""]);
+              $.ajax({
+                url: "{{ site.getInsideUrl('ldap', 'get-base-dn-list') }}",
+                data: {
+                  ldap_domain: ldap_domain,
+                  ldap_server: ldap_server,
+                  srvsettingsautodetect: auto_detect,
+                  ldap_secure: ($('#secure-connection').prop('checked') ? 1 : 0),
+                  ldap_port: ldap_port
+                },
+                success: function (data) {
+                  if (!data.error) {
+
+                    if ($('#ldap_base_dn').val() == '') {
+                      $('#ldap_base_dn').val(data.default_dn);
+                    }
+
+                    $("#ldap_base_dn").autocomplete("option", "source", data.all_dn);
+
+                  } else {
+                    $("#ldap_base_dn").autocomplete("option", "source", [""]);
+                  }
+                },
+                dataType: 'json'
+              });
+            }
+          }
+        }
+
+        function authenticationChange() {
+          var authType = Number($("#auth-type").val());
+
+          $('#ldap_auth_domain').attr({disabled: false});
+          $('#ldap_auth_user').attr({disabled: false});
+          $('#ldap_auth_password').attr({disabled: false});
+
+          switch (authType) {
+            case 1:
+              $('#ldap_auth_domain').attr({disabled: true});
+              break;
+            case 3:
+              $('#ldap_auth_domain').attr({disabled: true});
+              $('#ldap_auth_user').attr({disabled: true});
+              $('#ldap_auth_password').attr({disabled: true});
+              break;
+          }
+        }
+
+        function undoChanges() {
+          $('#advanced-options table tr').each(function () {
+            var currentValue = $(this).children('td.current-value').text();
+            $(this).children('td.value').children('input').val(currentValue);
+          });
+
+        }
+
+        function setDefault() {
+          $('#advanced-options table tr').each(function () {
+            var valueElem = $(this).children('td.value').children('input');
+            var paramName = valueElem.attr('name');
+            $(this).children('td.value').children('input').val(defaultValues[storageTypeId][paramName]);
+          });
+        }
+
+        function restartServer() {
+          Server.showLoadEffect(t._service_is_stopping);
+          $(document).one('AfterStop', function () {
+            Server.storage.afterChangeStorage();
+          });
+          Server.stopServer();
+        }
+
+        function sendAdvancedLdapForm(message) {
+          sendForm('advanced-ldap-options',
+            message,
+            function () {
+              $.post('{{ site.getInsideUrl('ldap', 'trueconf-ldap-init') }}');
+            }, '{{ log_config_id|e('js') }}');
+        }
+
+        function saveAdvancedLdap() {
+          sendAdvancedLdapForm('none');
+        }
+
+        function saveLdap() {
+          $('#ldap_auth_password + div.error, #ldap_group + div.error').remove();
+          $('#message>span').text('');
+          $("#ldap_group").val($.trim($("#ldap_group").val().replace(/(\s)*(=|,)(\s)*/g, '$2')));
+
+          var ldapData = {
+            ldap_server_type: $("#ldap_server_type").val(),
+            ldap_domain: $("#ldap_domain").val(),
+            ldap_server: $("#ldap_server").val(),
+            ldap_port: $("#ldap_port").val(),
+            ldap_base_dn: $("#ldap_base_dn").val(),
+            ldap_auth_method: Number($("#auth-type").val()),
+            ldap_auth_user: $("#ldap_auth_user").val(),
+              ldap_auth_domain: $("#ldap_auth_domain").val(),
+              ldap_timeout: $("#ldap_timeout").val(),
+              ldap_filter_group: $("#ldap_filter_group").val(),
+              srvsettingsautodetect: $('#srvsettingsautodetect').val(),
+              ldap_group: $("#ldap_group").val(),
+              ldap_secure: $('#secure-connection').prop('checked') ? 1 : 0,
+              ldap_auth_password_was_changed: passWasChanged ? 1 : 0
+          };
+
+            if (passWasChanged) {
+                ldapData.ldap_auth_password2 = $("#ldap_auth_password").val();
+            }
+
+            $.ajax({
+                url: "{{ site.getInsideUrl('ldap', 'get-ldap-status') }}",
+            data: ldapData,
+            beforeSend: function () {
+              Server.showLoadEffect();
+              sendForm('server-settings', 'none', null, '{{ log_config_id|e('js') }}');
+            },
+            success: function (data) {
+              sendAdvancedLdapForm('none');
+              Server.removeLoadEffect();
+              if (data.error) {
+                if (data.error == 1) {
+                  $(document).trigger('display-header-error', {message: data.message});
+                } else {
+                  $("#ldap_group").after('<div class="error"><div>' + data.message + '</div></div>').focus();
+                }
+              } else {
+                var ldap_group = $("#ldap_group");
+                ldap_group.val(data.ldap_group_dn);
+                eventBlur(document.getElementById('ldap_group'), ldap_group.attr('model'));
+
+                if (data.current_storage) {
+                  /**
+                   * https://bug-tracking.trueconf.com/show_bug.cgi?id=50386
+                   */
+                  $('#mode').prop("checked", true);
+                  Server.storage.changeStorage();
+                } else {
+                  $.post('{{ site.getInsideUrl('ldap', 'trueconf-ldap-init') }}');
+                  $(document).trigger('display-header-messages', {message: data.message});
+                  Server.showRestartDialog();
+                  Server.enableRestartMessage();
+                  $(document).one('AfterStart AfterFailedStart', function () {
+                    location.reload();
+                  });
+                }
+              }
+            },
+            dataType: 'json'
+          });
+        }
+        {% endautoescape %}
+
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <style>
+      input[disabled] {
+        background-color: #cacacab0;
+      }
+    </style>
+
+    <form id="server-settings">
+        <fieldset class="m-top-10">
+            <legend>{{ site._('Server settings') }}</legend>
+
+            <div class="fl">
+                {{ site._('Server Type:') }}
+                <select id="ldap_server_type" form="server-settings" model="\Classes\Configuration"
+                        name="LDAP Server Type">
+                    <option value="0" {{ configuration.ldap_server_type == 0 ? 'selected' : '' }}>{{ site._('Active Directory') }}</option>
+                    <option value="1" {{ configuration.ldap_server_type == 1 ? 'selected' : '' }}>{{ site._('OpenLDAP') }}</option>
+                    <option value="2" {{ configuration.ldap_server_type == 2 ? 'selected' : '' }}>{{ site._('389 Directory Server') }}</option>
+                    <option value="-1" {{ configuration.ldap_server_type == -1 ? 'selected' : '' }}>{{ site._('Custom') }}</option>
+                </select>
+                <br/>
+
+                <label><input class="m-top-10" id="secure-connection" model="\Classes\Configuration" name="LDAP Secure"
+                              form="server-settings"
+                              type="checkbox" {{ configuration.ldap_secure ? 'checked' : '' }}>&nbsp;{{ site._('Secure connection') }}
+                </label><br/>
+
+                <label><input class="m-top-10" type="radio" name="SrvSettingsAutoDetectRadio"
+                              value="1" {{ configuration.srvsettingsautodetect != 0 ? 'checked' : '' }} />&nbsp;{{ site._('Auto detect') }}
+                </label><br/>
+                <label><input class="m-top-10" type="radio" name="SrvSettingsAutoDetectRadio"
+                              value="0" {{ configuration.srvsettingsautodetect == 0 ? 'checked' : '' }} />&nbsp;{{ site._('Manual configuration') }}
+                </label><br/>
+                <input type="hidden" value="{{ configuration.srvsettingsautodetect ? 1 : 0 }}" form="server-settings"
+                       id="srvsettingsautodetect" model="\Classes\Configuration" name="SrvSettingsAutoDetect"/>
+            </div>
+
+            <div class="fr" id="manual-settings">
+                <div class="fl ldap-field-name-width-1">{{ site._('Domain:') }}</div>
+                <input type="text" id="ldap_domain" form="server-settings" class="ldap-field-width-1"
+                       value="{{ configuration.ldap_domain }}" model="\Classes\Configuration"
+                       name="LDAP Domain" {{ not(configuration.srvsettingsautodetect) ? 'disabled' : '' }}
+                       maxlength="255"/><br/>
+                <div class="fl m-top-10 ldap-field-name-width-1">{{ site._('Server:') }}</div>
+                <input type="text" id="ldap_server" form="server-settings" class="fl m-top-10"
+                       model="\Classes\Configuration" name="LDAP Server"
+                       value="{{ configuration.ldap_server }}" {{ configuration.srvsettingsautodetect ? 'disabled' : '' }}
+                       maxlength="255"/>
+                <div id="ldap_port_name" class="fl m-top-10 m-left-10">{{ site._('Port:') }}</div>
+                <input id="ldap_port" form="server-settings"
+                       value="{{ configuration.ldap_port ? configuration.ldap_port : (configuration.ldap_secure ? 636 : 389 ) }}"
+                       name="LDAP Port"
+                       model="\Classes\Configuration" type="text" class="m-top-10"
+                       maxlength="5" {{ configuration.srvsettingsautodetect ? 'disabled' : '' }}
+                       onkeyup="this.value = this.value.replace(/\D/ig, '');"/><br/>
+                <div class="fl m-top-10 ldap-field-name-width-1">{{ site._('Base DN:') }}</div>
+                <input id="ldap_base_dn" form="server-settings" type="text" class="m-top-10 ldap-field-width-1"
+                       model="\Classes\Configuration" name="LDAP Base DN" value="{{ configuration.ldap_base_dn }}"
+                       maxlength="255"/>
+            </div>
+
+        </fieldset>
+
+        <fieldset class="m-top-10">
+            <legend>{{ site._('Authentication') }}</legend>
+
+            <div class="fl">
+                <select id="auth-type" form="server-settings" model="\Classes\Configuration" name="LDAP Auth Method">
+                    <option value="1" {{ configuration.ldap_auth_method == 1 ? 'selected' : '' }}>{{ site._('Simple') }}</option>
+                    <option value="2" {{ configuration.ldap_auth_method == 2 ? 'selected' : '' }}>{{ site._('NTLM') }}</option>
+                    {% if is_windows == true %}
+                      <option value="3" {{ configuration.ldap_auth_method == 3 ? 'selected' : '' }}>{{ site._('Current NT User') }}</option>
+                    {% endif %}
+                    <option value="4" {{ configuration.ldap_auth_method == 4 ? 'selected' : '' }}>{{ site._('GSS') }}</option>
+                </select>
+            </div>
+            <div class="fr">
+                <div class="fl">
+                    <div class="fl ldap-field-name-width-1">{{ site._('Name:') }}</div>
+                    <input id="ldap_auth_user" form="server-settings" value="{{ configuration.ldap_auth_user }}"
+                           name="LDAP Auth User" model="\Classes\Configuration" type="text" class="ldap-field-width-1"
+                           maxlength="255"/></div>
+                <div class="fl m-left-10">
+                    <div class="fl ldap-field-name-width-1">{{ site._('Domain:') }}</div>
+                    <input id="ldap_auth_domain" form="server-settings" value="{{ configuration.ldap_auth_domain }}"
+                           name="LDAP Auth Domain" model="\Classes\Configuration" type="text" class="ldap-field-width-1"
+                           maxlength="255"/></div>
+                <br class="clear"/>
+                <div class="fl m-top-10">
+                    <div class="fl ldap-field-name-width-1">{{ site._('Password:') }}</div>
+                    <input id="ldap_auth_password" form="server-settings"
+                           value="{{ configuration.ldap_auth_password2 ? '****************' : '' }}"
+                           name="LDAP Auth Password2"
+                           type="password" class="ldap-field-width-1" maxlength="255"/>
+                    <div class="error">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+      <fieldset class="m-top-10">
+        <legend>{{ site._('Group allowed to authorize') }}</legend>
+        <div style="margin-bottom: 5px;"><label>{{ site._('This group restricts the list of users allowed to authorize on %server_name.')
+            |replace({'%server_name' : settings.config.server_name}) }}</label></div>
+        <div>
+          <div id="ldap-group-block" class="m-top-10 m-bottom-10 fl">
+            <table>
+              <tr>
+                <td>
+                  <div class="fl m-top-3">{{ site._('Path') }} (distinguishedName):</div>
+                  <input type="text" form="server-settings" model="\Classes\Configuration" id="ldap_group"
+                         name="LDAP Group" value="{{ configuration.ldap_group }}" maxlength="255"
+                         class="m-left-5"/>
+                </td>
+                <td>
+                  <a class="button {{ ldapEnabled ? '' : 'button-lock' }}"
+                     id='ldap-group-dialog'>{{ site._('Browse') }}</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='selectLdapGroupDialog' class="selectList">
+        </div>
+      </fieldset>
+    </form>
+    <br class="clear"/>
+    <a class="button" onclick="saveLdap();
+            return !1;">{{ site._('Apply') }}</a>
+
+    <fieldset id="advanced-options" class="m-top-10">
+        <legend><span>++</span>{{ site._('Advanced') }}</legend>
+        <div id="property-block" class="none">
+            <form id="advanced-ldap-options">
+                <table class="fl m-right-10">
+                    <col width="200px">
+                    <col>
+                    <tr>
+                        <th>{{ site._('LDAP Property Name') }}</th>
+                        <th>{{ site._('Value') }}</th>
+                    </tr>
+                    {% for field_name, field_attributes in ldap_advanced_form_schema %}
+                        <tr>
+                            <td>{{ field_attributes.display_name }}</td>
+                            <td class="none current-value">{{ field_attributes.value }}</td>
+                            <td class='value'><input id="{{ field_attributes.id }}" form="advanced-ldap-options"
+                                                     model="{{ model }}" name="{{ field_name }}"
+                                                     value="{{ field_attributes.value }}" maxlength="255"/></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </form>
+            <div id="apply-btns">
+                <a class="button" onclick="saveLdap(); saveAdvancedLdap();">{{ site._('Apply') }}</a> <br/>
+                <a class="button m-top-10" onclick="setDefault();">{{ site._('Default') }}</a><br/>
+                <a class="button m-top-10" onclick="undoChanges();">{{ site._('Cancel') }}</a>
+            </div>
+        </div>
+    </fieldset>
+    <input id="mode" type="checkbox" style="display: none">
+{% endblock %}

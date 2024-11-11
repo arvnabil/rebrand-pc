@@ -1,0 +1,99 @@
+{% extends template.base %}
+
+{% block js %}
+    {% autoescape 'js' %}
+        <script type="text/javascript">
+          $(document).ready(function () {
+            lockButton('aliases');
+          });
+
+          function updateCSSOnPage() {
+            $(".block-table-wrapper").height($(".entire-table").height() - $(".div-header-wrapper").height());
+          }
+
+          function lockButton(name) {
+            $('#form-' + name + ' input[type=checkbox]').change(function () {
+              if ($('#form-' + name + ' input[type=checkbox]:checked').length) {
+                $('#' + name + '-del').removeClass('button-lock').click(function () {
+                  var count = $("input.alias:checked").length;
+
+                  if (count > 0) {
+                    var question = (count > 1) ? "{{ site._("The aliases will be <b>deleted</b>. Are you sure?") }}" : "{{ site._("The alias will be <b>deleted</b>. Are you sure?") }}";
+                    $("#form-aliases .question").html(question);
+                    Confirm.dialog('form-aliases');
+                  }
+                  return !1;
+                });
+              } else {
+                $('#' + name + '-del').addClass('button-lock').unbind('click');
+              }
+            });
+          }
+        </script>
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+    {% autoescape 'html' %}
+        <fieldset id="aliases-fieldset">
+            <legend>{{ site._('Aliases') }}</legend>
+
+            <div>
+                <div class="entire-table-header">
+                    <table class="table-header tb-fix">
+                        <col width="40px">
+                        <col width="50%">
+                        <col width="50%">
+                        <tr>
+                            <th class="text-c">
+                                {% if aliases %}
+                                    <input class="radio" type="checkbox" name="checkall"
+                                           onClick="ListCheckAll(checked,'form-aliases','alias[]');"/>
+                                {% endif %}
+                            </th>
+                            <th>{{ site._('Alias') }}</th>
+                            <th>{{ site._('User') }}</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="entire-table">
+                    <div class="block-table-wrapper">
+                        <form id="form-aliases" method="POST" action="{{ site.getInsideUrl('users', 'delete-alias') }}">
+                            <input title="csrf" name="{{ csrf_param }}" value="{{ csrf_token }}" hidden>
+                            <div class="question"></div>
+
+                            <table class="table-body tb-fix">
+                                <col width="40px">
+                                <col width="50%">
+                                <col width="50%">
+                                {% for item in aliases %}
+                                    <tr>
+                                        <td class="text-c"><input class="radio alias" type="checkbox" name="alias[]"
+                                                                  value='{{ item.alias }}'/></td>
+                                        <td class="left" title="{{ item.alias }}">{{ item.alias }}</td>
+                                        <td class="left" title="{{ item.login_name }}">{{ item.login_name }}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr class="empty-tr">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div class="endpoint-func-block">
+                    <a id="aliases-del" class="button button-lock">{{ site._('Delete selected') }}</a>
+                </div>
+            </div>
+
+            <div class="alias-accept-block">
+                {{ alias_form|raw }}
+            </div>
+
+        </fieldset>
+    {% endautoescape %}
+
+{% endblock %}

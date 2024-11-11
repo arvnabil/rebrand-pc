@@ -1,0 +1,210 @@
+.mlpl_memberList * {
+    font-size: 13px;
+}
+
+.mlpl_memberList {
+    width: 99%;
+    height: 99%;
+    margin: 0 auto;
+}
+
+.mlpl_memberList span {
+    font-size: inherit;
+}
+
+.mlpl_memberList a {
+    color: #0088CC;
+    font-weight: bold;
+}
+
+.mlpl_memberList hr {
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #B3B3B3;
+    margin: 4px 0px;
+}
+
+.mlpl_memberList input[type=text] {
+    border-radius: 4px;
+    border: 2px solid #B3B3B3;
+    padding: 2px 6px;
+}
+
+.mlpl_memberList .mlpl_inner {
+    height: 100%;
+    width: 100%;
+    display: table;
+    border: 2px solid #CCC;
+}
+
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock {
+    display: table-row;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock .mlpl_innerSearch {
+    display: table-cell;
+    border-bottom: 2px solid #B3B3B3;
+    
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock .mlpl_searchFieldWrapper {
+    position: relative;
+    padding: 2px 0px 2px 25px;
+}
+
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock .mlpl_searchFieldWrapper:before {
+    content: "";
+    height: 100%;
+    width: 20px;
+    top: -2px;
+    left: 5px;
+    position: absolute;
+    background: url("/images/gray_search.png") no-repeat;
+    background-position: center;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock  input {
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock  input.mlpl_lightGray {
+    color: #CCC;
+    font-size : 11px;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock ul.mlpl_searchMethodSelect {
+    list-style-type: none;
+    width: 100%;
+    border-top: 2px solid #B3B3B3;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock ul.mlpl_searchMethodSelect li {
+    float: left;
+    font-size: 11px;
+    width: 25%;
+    margin: 6px 3%;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    text-align: center;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock ul.mlpl_searchMethodSelect li.mlpl_selected {
+    background-color: #DFDFDF;
+    border-radius: 4px;
+    border: 1px solid #B3B3B3;
+    cursor: default;
+}
+
+
+.mlpl_memberList .mlpl_inner .mlpl_list {
+    height: 100%;
+    width: 100%;
+    display : table-cell;
+    padding: 0px 5px;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_list .mlpl_innerList {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_list  .mlpl_members {
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+}
+
+.mlpl_memberList .mlpl_listInfo {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+.mlpl_memberList .mlpl_listInfo  .mlpl_innerListInfo {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.mlpl_memberList .mlpl_inner .mlpl_list  .mlpl_members .mlpl_wait {
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_list  .mlpl_members .mlpl_emptyList {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display : table;
+}
+
+
+.mlpl_memberList .mlpl_inner .mlpl_list  .mlpl_members .mlpl_emptyList span {
+    display: table-cell;
+    font-weight: bold;
+    font-size: 16px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.mlpl_memberList .mlpl_inner .mlp_lsearchBlock  input {
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+.mlpl_memberList .mlpl_inner .mlpl_searchBlock  input.mlpl_lightGray {
+    color: #CCC;
+    font-size : 11px;
+}
+
+#search-str{
+    width: 100%;
+}
+
+.adpl_abLimitsButtons {
+    position: absolute;
+    top: 7px;
+    right: 25px;
+}
+
+.adpl_abLimitsButtons > span {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.adpl_abLimitsButtons > span:hover {
+    text-decoration: none;
+}
+
+.adpl_abLimitsButtons > span.adpl_warningBtn {
+    padding-left: 10px;
+    color: #E6A733;
+}
+
+.adpl_abLimitsButtons > span.adpl_errorBtn {
+    color: #E63333;
+}
+
+.adpl_abLimitsPopup .adpl_list > div {
+    padding-bottom: 10px;
+}

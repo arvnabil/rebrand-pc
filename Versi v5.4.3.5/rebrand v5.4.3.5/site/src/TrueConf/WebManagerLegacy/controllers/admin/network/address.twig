@@ -1,0 +1,647 @@
+{% extends template.base %}
+
+{% block js %}
+  {% autoescape 'js' %}
+    <script type="text/javascript">
+      function updateCSSOnPage() {
+        $(".block-table-wrapper").height($(".address-entire-table").height() - $(".div-header-wrapper").height());
+      }
+
+      var insideAllIp =  {{ endpoint_accept ? 'false' : 'true' }};
+      var externalAddresses = {{ endpoint_connect ? 'true' : 'false' }};
+      var maxAddresses = {{ max_hosts }};
+      var defaultPort = {{ constant('\\Classes\\Server::DEFAULT_PORT') }};
+
+      var connects = [
+        {% for connect in connects %} {
+          'connect': '{{ connect }}'
+        } {{ not(loop.last) ? ',' : '' }}
+        {% endfor %}
+      ];
+
+      var endpoint_accept_default = [
+        {% for item in endpoint_accept_default %}
+        {
+          'host': '{{ item.host }}',
+          'port': {{ item.port }}
+        } {{ not(loop.last) ? ',' : '' }}
+        {% endfor %}
+      ];
+
+      var endpoint_accept_current = [
+        {% for item in endpoint_accept %}
+        {
+          'host': '{{ item.host }}',
+          'port': {{ item.port }}
+        } {{ not(loop.last) ? ',' : '' }}
+        {% endfor %}
+      ];
+
+      var endpoint_accept = endpoint_accept_current.slice(0);
+
+      var endpoint_connect_current = [
+        {% for item in endpoint_connect %}
+        {
+          'host': '{{ item.host }}',
+          'port': {{ item.port }}
+        } {{ not(loop.last) ? ',' : '' }}
+        {% endfor %}
+      ];
+
+      var endpoint_connect = endpoint_connect_current.slice(0);
+
+      var g_accept = true;
+      var g_action_add = true;
+
+      $(document).ready(function () {
+
+        var externalHostIsManual = {{ host_is_manual }};
+
+        $(document).bind('AfterStart', function () {
+          if (localStorage['message']) {
+            var message = localStorage.getItem('message').replace('%edit', '<a href="/admin/web/settings/">{{ site._('Edit')|lower }}</a>');
+            Server.setServerMessage(message, Server.MESSAGE_TYPE.NOTE, null, true);
+            localStorage.removeItem('message');
+          } else {
+            Server.setServerMessage("{{ site._('The settings are saved')|escape('js') }}", Server.MESSAGE_TYPE.NOTE, 2000);
+          }
+        });
+
+        $('#update-accept-hosts').click(function () {
+          var insides = $('#network_inside_all_ip').is(':checked') ? [] : endpoint_accept;
+
+          $.ajax({
+            url: "{{ site.getInsideUrl('network', 'update-accept-hosts') }}",
+            type: 'POST',
+            data: {'insides': insides},
+            success: function () {
+              window.location.reload();
+            },
+            error: function () {
+              $(document).trigger('display-header-error', t._error);
+            }
+          });
+          return !1;
+        });
+
+        $('#update-external-hosts').click(function () {
+          var externals = $('#network_external_ip').is(':checked') ? endpoint_connect : [];
+          var old_external_host = endpoint_connect_current.length ? endpoint_connect_current[0].host : undefined;
+
+          $.ajax({
+            url: "{{ site.getInsideUrl('network', 'update-external-hosts') }}",
+            type: 'POST',
+            data: {'externals': externals},
+            success: function () {
+              if (externals.length && externalHostIsManual === 0 && externals[0].host !== old_external_host) {
+                localStorage.setItem('message', '{{ site._('External web URL changed to: ') }}' + '{{ protocol }}' + '://' + externals[0].host + ':{{ default_port }} [%edit]');
+              }
+              window.location.reload();
+            },
+            error: function () {
+              $(document).trigger('display-header-error', t._error);
+            }
+          });
+          return !1;
+        });
+
+
+        // Changes checkbox - "Listen on all IP addresses"
+        $('#network_inside_all_ip').bind('click', function () {
+
+          if (insideAllIp && $(this).is(':checked')) {
+            hideAcceptBtns();
+          } else if (!insideAllIp && !$(this).is(':checked') && isEqualObjectArrays(endpoint_accept_current, endpoint_accept)) {
+            hideAcceptBtns();
+          } else {
+            showAcceptBtns();
+          }
+
+          g_accept = true;
+          if ($(this).is(':checked')) {
+            renderListenAll('inside-fieldset-block', connects);
+            $('#add-accept-address').addClass('button-lock');
+          } else {
+            if (!endpoint_accept.length)
+              endpoint_accept = endpoint_accept_default.slice(0);
+
+            renderAddressTableLines('inside-fieldset-block', endpoint_accept);
+
+            if (endpoint_accept.length < maxAddresses)
+              $('#add-accept-address').removeClass('button-lock');
+            else
+              $('#add-accept-address').addClass('button-lock');
+          }
+        });
+
+        $('#add-accept-address').click(function () {
+          if (!$(this).hasClass('button-lock')) {
+            g_accept = true;
+            g_action_add = true;
+            $("#port").val(defaultPort);
+            var buttons = $("#dialog-form").dialog("option", "buttons");
+            $("#dialog-form").dialog("option", "open", function () {
+              addButtonsStyleAdd();
+            });
+            $("#dialog-form").dialog("option", "title", "{{ site._('Add address') }}");
+            $('#dialog-form').dialog('open');
+          }
+          return !1;
+        });
+
+
+        // Changes checkbox - "Specify"
+        $('#network_external_ip').bind('click', function () {
+
+          if (!externalAddresses && !$(this).is(':checked')) {
+            hideConnectBtns();
+          } else if (externalAddresses && $(this).is(':checked') && isEqualObjectArrays(endpoint_connect_current, endpoint_connect)) {
+            hideConnectBtns();
+          } else {
+            showConnectBtns();
+          }
+
+          g_accept = false;
+          if ($(this).is(':checked')) {
+            renderAddressTableLines('external-fieldset-block', endpoint_connect);
+            if (endpoint_connect.length < maxAddresses)
+              $('#add-external-address').removeClass('button-lock');
+            else
+              $('#add-external-address').addClass('button-lock');
+          } else {
+            renderListenAll('external-fieldset-block', []);
+            $('#add-external-address').addClass('button-lock');
+          }
+        });
+
+        $('#add-external-address').click(function () {
+          if (!$(this).hasClass('button-lock')) {
+            g_accept = false;
+            g_action_add = true;
+            $("#port").val(defaultPort);
+            var buttons = $("#dialog-form").dialog("option", "buttons");
+            $("#dialog-form").dialog("option", "open", function () {
+              addButtonsStyleAdd();
+            });
+            $("#dialog-form").dialog("option", "title", "{{ site._('Add address') }}");
+            $('#dialog-form').dialog('open');
+          }
+          return !1;
+        });
+
+        var host = $("#host"),
+                port = $("#port"),
+                identifier = $("#identifier"),
+                allFields = $([]).add(host).add(port);
+
+        function checkExistence(arr, obj) {
+          for (var k in arr) {
+            if (Number(arr[k].port) == Number(obj.port) && arr[k].host == obj.host) {
+              updateTips("{{ site._('Address already exists') }}");
+              return false;
+            }
+          }
+          return true
+        }
+
+        $("#dialog-form").dialog({
+          autoOpen: false,
+          height: 325,
+          width: 350,
+          modal: true,
+          minHeight: 325,
+          minWidth: 350,
+          draggable: true,
+          resizable: false,
+          open: function () {
+            addButtonsStyleAdd();
+          },
+          buttons: {
+            "{{ site._('Delete') }}": function () {
+              return !1;
+            },
+            "{{ site._('Cancel') }}": function () {
+              $(this).dialog("close");
+            },
+            "{{ site._('Save') }}": function () {
+              var bValid = true;
+              host.val($.trim(host.val()));
+              allFields.removeClass("ui-state-error");
+
+              bValid = bValid && checkLength(host, "{{ site._('Host') }}", 1, 255);
+              bValid = bValid && checkLength(port, "{{ site._('Port') }}", 1, 5);
+
+              bValid = bValid && checkRegexp(host, {{ host_regex|raw }}, "<b>{{ site._('Host') }}</b>: {{ site._('Hostname or IP invalid') }}", punycode.toASCII);
+              bValid = bValid && checkRegexp(port, /^\d+$/, "<b>{{ site._('Port') }}</b>: {{ site._('Only numbers are allowed') }}");
+              bValid = bValid && checkInt(port, "{{ site._('Port') }}", 1, {{ constant('\\Core\\FormApi2\\SpecificFields\\PortField::MAX') }});
+
+              if (g_action_add)
+                bValid = bValid && checkExistence((g_accept ? endpoint_accept : endpoint_connect), {
+                  'host': host.val(),
+                  'port': port.val()
+                });
+
+              if (bValid) {
+
+                if (g_accept == true) {
+                  showAcceptBtns();
+                  add('inside-fieldset-block', endpoint_accept, host.val(), port.val(), identifier.val());
+
+                  if (endpoint_accept.length >= maxAddresses)
+                    $('#add-accept-address').addClass('button-lock');
+                } else {
+                  showConnectBtns();
+                  add('external-fieldset-block', endpoint_connect, host.val(), port.val(), identifier.val());
+
+                  if (endpoint_connect.length >= maxAddresses)
+                    $('#add-external-address').addClass('button-lock');
+                }
+
+                $("#dialog-form").dialog("close");
+              }
+            }
+          },
+          close: function () {
+            $(".validateTips").text("");
+            allFields.val("").removeClass("ui-state-error");
+            identifier.val('none');
+          }
+        });
+
+        $('#inside-fieldset-block .address-entire-table a').click(editAdressAccept);
+        $('#external-fieldset-block .address-entire-table a').click(editAdressConnect);
+
+        $('#reset-accept-address').click(function () {
+          resetAccept();
+          return !1;
+        });
+
+        $('#reset-external-address').click(function () {
+          resetConnect();
+          return !1;
+        });
+      });
+
+      function editAdressAccept() {
+        var item = $(this).text();
+        var data = item.match(/(.+):+(\d*)/);
+
+        if (data)
+          editAccept(data[1], data[2]);
+
+        return !1;
+      }
+
+      function editAdressConnect() {
+        var host = $(this).text();
+        var data = host.match(/(.+):+(\d*)/);
+
+        if (data)
+          editConnect(data[1], data[2]);
+
+        return !1;
+      }
+
+      function add(id, arr, host, port, key) {
+        var key = (key != 'none') ? key : false;
+
+        if (key)
+          arr[key] = {'host': host, 'port': Number(port)};
+        else
+          arr.push({'host': host, 'port': Number(port)});
+
+        $('#identifier').val('none');
+
+        renderAddressTableLines(id, arr);
+      }
+
+      function deleteConnect(host, port) {
+        showConnectBtns();
+        if (endpoint_connect.length > 0) {
+          for (var k in endpoint_connect) {
+            if (Number(endpoint_connect[k].port) == Number(port) && endpoint_connect[k].host == host) {
+              endpoint_connect.splice(k, 1);
+
+              if (endpoint_connect.length < maxAddresses)
+                $('#add-external-address').removeClass('button-lock');
+
+              g_accept = false;
+              renderAddressTableLines('external-fieldset-block', endpoint_connect);
+            }
+          }
+        }
+      }
+
+      function deleteAccept(host, port) {
+        showAcceptBtns();
+        if (endpoint_accept.length > 0) {
+          for (var k in endpoint_accept) {
+            if (Number(endpoint_accept[k].port) == Number(port) && endpoint_accept[k].host == host) {
+              endpoint_accept.splice(k, 1);
+
+              if (endpoint_accept.length < maxAddresses)
+                $('#add-accept-address').removeClass('button-lock');
+
+              g_accept = true;
+              renderAddressTableLines('inside-fieldset-block', endpoint_accept);
+            }
+          }
+        }
+      }
+
+      function resetConnect() {
+        hideConnectBtns();
+        g_accept = false;
+        endpoint_connect = endpoint_connect_current.slice(0);
+
+        if (!externalAddresses) {
+          $('#network_external_ip').removeAttr('checked');
+          renderListenAll('external-fieldset-block', []);
+          $('#add-external-address').addClass('button-lock');
+        } else {
+          $('#network_external_ip').prop("checked", true);
+          renderAddressTableLines('external-fieldset-block', endpoint_connect_current);
+          if (endpoint_connect.length < maxAddresses)
+            $('#add-external-address').removeClass('button-lock');
+          else
+            $('#add-external-address').addClass('button-lock');
+        }
+
+      }
+
+      function resetAccept() {
+        hideAcceptBtns();
+        g_accept = true;
+        endpoint_accept = endpoint_accept_current.slice(0);
+
+        if (insideAllIp) {
+          $('#network_inside_all_ip').prop("checked", true);
+          renderListenAll('inside-fieldset-block', connects);
+          $('#add-accept-address').addClass('button-lock');
+        } else {
+          $('#network_inside_all_ip').removeAttr('checked');
+          renderAddressTableLines('inside-fieldset-block', endpoint_accept_current);
+          if (endpoint_accept.length < maxAddresses)
+            $('#add-accept-address').removeClass('button-lock');
+          else
+            $('#add-accept-address').addClass('button-lock');
+        }
+
+      }
+
+      function renderAddressTableLines(id, arr) {
+        var html = '';
+        if (arr.length > 0) {
+          for (var k in arr) {
+            html += '<tr><td class="left">' + '<a href="#">' +
+                    arr[k].host + ':' + arr[k].port + '</a></td></tr>';
+          }
+
+          $('#' + id + ' .address-entire-table table tbody').html(html);
+        } else {
+          $('#' + id + ' .address-entire-table table tbody').html('<tr class="empty-tr"><td></td></tr>');
+        }
+        prepare_table();
+
+        $('#' + id + ' .address-entire-table a').click(g_accept ? editAdressAccept : editAdressConnect);
+      }
+
+      function renderListenAll(id, arr) {
+        var html = '';
+        if (arr.length > 0) {
+          for (var k in arr) {
+            html += '<tr><td class="left">' + arr[k].connect + '</td></tr>';
+          }
+
+          $('#' + id + ' .address-entire-table table tbody').html(html);
+        } else {
+          $('#' + id + ' .address-entire-table table tbody').html('<tr class="empty-tr"><td></td></tr>');
+        }
+        prepare_table();
+      }
+
+      function editConnect(host, port) {
+        g_accept = false;
+        g_action_add = false;
+        if (endpoint_connect.length > 0) {
+          for (var k in endpoint_connect) {
+            if (Number(endpoint_connect[k].port) == Number(port) && endpoint_connect[k].host == host) {
+              $("#identifier").val(k);
+              $("#host").val(host);
+              $("#port").val(port);
+              var buttons = $("#dialog-form").dialog("option", "buttons");
+              buttons["{{ site._('Delete') }}"] = function () {
+                deleteConnect(host, port);
+                $(this).dialog("close");
+                return !1;
+              };
+              $("#dialog-form").dialog("option", "buttons", buttons);
+              $("#dialog-form").dialog("option", "open", function () {
+                editButtonsStyleAdd();
+              });
+              $("#dialog-form").dialog("option", "title", "{{ site._('Edit address') }}");
+              $('#dialog-form').dialog('open');
+            }
+          }
+        }
+      }
+
+      function editAccept(host, port) {
+        g_accept = true;
+        g_action_add = false;
+        if (endpoint_accept.length > 0) {
+          for (var k in endpoint_accept) {
+            if (Number(endpoint_accept[k].port) == Number(port) && endpoint_accept[k].host == host) {
+              $("#identifier").val(k);
+              $("#host").val(host);
+              $("#port").val(port);
+              var buttons = $("#dialog-form").dialog("option", "buttons");
+              buttons["{{ site._('Delete') }}"] = function () {
+                deleteAccept(host, port);
+                $(this).dialog("close");
+                return !1;
+              };
+              $("#dialog-form").dialog("option", "buttons", buttons);
+              $("#dialog-form").dialog("option", "open", function () {
+                editButtonsStyleAdd();
+              });
+              $("#dialog-form").dialog("option", "title", "{{ site._('Edit address') }}");
+              $('#dialog-form').dialog('open');
+            }
+          }
+        }
+      }
+
+      function showAcceptBtns() {
+        $('#reset-accept-address').show();
+        $('#update-accept-hosts').show();
+      }
+
+      function hideAcceptBtns() {
+        $('#reset-accept-address').hide();
+        $('#update-accept-hosts').hide();
+      }
+
+      function showConnectBtns() {
+        $('#reset-external-address').show();
+        $('#update-external-hosts').show();
+      }
+
+      function hideConnectBtns() {
+        $('#reset-external-address').hide();
+        $('#update-external-hosts').hide();
+      }
+
+      function addButtonsStyleAdd() {
+        $('.ui-dialog-buttonset').css('float', 'none');
+        $('.ui-dialog-buttonset>.ui-button:first').hide();
+        $('.ui-dialog-buttonset>.ui-button:not(:first)').css('float', 'right');
+      }
+
+      function editButtonsStyleAdd() {
+        $('.ui-dialog-buttonset').css('float', 'none');
+        $('.ui-dialog-buttonset>.ui-button:first').css('float', 'left').show();
+        $('.ui-dialog-buttonset>.ui-button:not(:first)').css('float', 'right');
+      }
+
+    </script>
+  {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- Inside address -->
+    <div class="network-settings">
+        <fieldset id="inside-fieldset-block" class="fieldset-block">
+            <legend>{{ site._('Internal addresses') }}</legend>
+
+            <table class="network-tb">
+                <tr>
+                    <td>
+                        <label><input id="network_inside_all_ip"
+                                      name="network_inside_all_ip"
+                                      type="checkbox"
+                                    {{ endpoint_accept ? '' : 'checked="checked"' }} />
+                            {{ site._('Listen on all IP addresses') }}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="address-entire-table">
+                            <div class="block-table-wrapper">
+                                <table class="table-body">
+                                    {% if not (endpoint_accept) %}
+                                        {% for connect in connects %}
+                                            <tr class="address-empty-tr">
+                                                <td>
+                                                    <span>{{ connect }}</span>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        {# Выводим список внутренних хостов #}
+                                        {% for item in endpoint_accept %}
+                                            <tr>
+                                                <td class="left">
+                                                    <a href="#">{{ item.host~':'~item.port }}</a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr class="empty-tr">
+                                                <td></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a id="add-accept-address"
+                           class="button {{ endpoint_accept and (endpoint_accept|length < max_hosts) ? '' : 'button-lock' }}"
+                           style="margin-right: 20px;">{{ site._('Add') }}</a>
+                        <a id="reset-accept-address" class="button"
+                           style="margin-right: 20px; display: none;">{{ site._('Reset') }}</a>
+                        <a id="update-accept-hosts" href="#" class="button btn_green"
+                           style="display: none;">{{ site._('Apply') }}</a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    <!-- /Inside address -->
+
+    <!-- External address -->
+    <div class="network-settings">
+        <fieldset id="external-fieldset-block" class="fieldset-block ">
+            <legend>{{ site._('External addresses') }}</legend>
+
+            <table class="network-tb">
+                <tr>
+                    <td>
+                        <label><input type="checkbox"
+                                      id="network_external_ip"
+                                      name="network_external_ip"
+                                    {{ endpoint_connect ? 'checked="checked"' : '' }} /> {{ site._('Specify') }}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="address-entire-table">
+                            <div class="block-table-wrapper">
+                                <table class="table-body">
+                                    {# Выводим список внешних хостов #}
+                                    {% for item in endpoint_connect %}
+                                        <tr>
+                                            <td class="left">
+                                                <a href="#">{{ item.host~':'~item.port }}</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr class="empty-tr">
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a id="add-external-address" href="#"
+                           class="button {{ endpoint_connect and (endpoint_connect|length < max_hosts) ? '' : 'button-lock' }}"
+                           style="margin-right: 20px;">{{ site._('Add') }}</a>
+                        <a id="reset-external-address" href="#" class="button"
+                           style="margin-right: 20px; display: none;">{{ site._('Reset') }}</a>
+                        <a id="update-external-hosts" href="#" class="button btn_green"
+                           style="display: none;">{{ site._('Apply') }}</a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <div id="dialog-form">
+        <p class="validateTips"></p>
+        <form>
+            <fieldset>
+                <input type="hidden" id="identifier" name="identifier" value="none"/>
+                <label for="host">{{ site._('Host') }}</label>
+                <input type="text" name="host" id="host" class="text ui-widget-content ui-corner-all" maxlength="255"/>
+                <label for="port">{{ site._('Port') }}</label>
+              <input type="text" name="port" id="port" value="" class="text ui-widget-content ui-corner-all"
+                     maxlength="5" onkeyup="this.value = this.value.replace(/\D/ig, '');"/>
+            </fieldset>
+        </form>
+    </div>
+  <style>
+    table td {
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+{% endblock %}

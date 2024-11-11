@@ -1,0 +1,150 @@
+{% extends template.base %}
+{% block js %}
+    <script type="text/javascript">
+        {% if secure_url %}
+        var secure_url = "{{ secure_url|escape('js') }}";
+        {% else %}
+        var secure_url = false;
+        {% endif %}
+        if (window.location.protocol == "http:" && secure_url) {
+          var loc = window.location;
+          var thisUrlwithSSL = secure_url + loc.pathname + loc.search + loc.hash;
+          $.ajax({
+            type: 'HEAD',
+            url: thisUrlwithSSL,
+            crossDomain: true,
+            success: function () {
+              window.location = thisUrlwithSSL;
+            },
+            error: function () {
+              $("#cert_warning").ready(function () {
+                $("#cert_warning").load('/guest/auth/cert-warning', function () {
+                  $("#cert_warning > div").dialog({
+                    width: (function () {
+                      var width = $(window).width() * 0.9;
+                      return (width > 840) ? 840 : width;
+                    })(),
+                    height: $(window).height() * 0.9,
+                    modal: true,
+                    buttons: {
+                      '{{ site._("Skip")|escape('js') }}': function () {
+                        $(this).dialog("close");
+                      }
+                    },
+                    beforeClose: function (event, ui) {
+                      if ($("#colorbox:visible").length)
+                        return false;
+                    }
+                  });
+                });
+              });
+            }
+          });
+        }
+
+        function checkLogin() {
+          var rawlogin = $('#rawlogin').val();
+          if (rawlogin.length === 0) {
+            $('#message').html("<span class=\"error-msg\">{{ empty_error }}</span>");
+          }
+        }
+
+        $().ready(function () {
+          $('.raw-auth-data').keydown(function (e) {
+            if (e.keyCode === 13) {
+              checkLogin();
+            }
+          });
+        });
+
+    </script>
+{% endblock %}
+
+{% block header %}
+    <div id="header">
+        <div id="line-1">
+            <div id="message">
+                {% if error_msg %}
+                    <span class="error-msg">{{ error_msg }}</span>
+                {% endif %}
+
+                {% if note_msg %}
+                    <span class="note-msg">{{ note_msg }}</span>
+                {% endif %}
+            </div>
+        </div>
+        <div id="line-2">
+            <img id="logo" onclick="location.href = '/';"
+                 alt='{{ site._("Video conferencing software and video conferencing services") }}'
+                 title='{{ site._("Video conferencing software and video conferencing services") }}'
+                 src="/img/header/topmenu-logo.png"/>
+            {% if is_not_registered %}
+                <span class="product-name">Server Manager</span>
+            {% endif %}
+
+            <div id="server-name">{{ server_name }}</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block h1 %}<h1 class="text-c">{{ title }}</h1>{% endblock %}
+{% block content %}
+    <div id="cert_warning" style="display:none"></div>
+    {% block login_block %}
+        <div id="auth-form" class="text-c" style="width:450px;margin:0 auto;border:1px solid #ccc;padding:20px;">
+            <form id="auth" action="" method="POST">
+                <input type="hidden" id="auth-login" name="login" value=""/>
+                <input type="hidden" id="auth-password" name="password" value=""/>
+            </form>
+            <div class="auth-field">
+                <p>{{ site._("User Name") }}</p>
+                <div>
+                    <input type="text" id="rawlogin" value="{{ login }}" maxlength="64" class="text raw-auth-data"
+                           autocomplete="on" {% if not login %}autofocus{% endif %}>
+                </div>
+            </div>
+            <div class="auth-field">
+                <p>{{ site._("Password") }}</p>
+                <div>
+                    <input type="password" id="rawpassword" class="raw-auth-data" autofocus>
+                </div>
+            </div>
+            <a href="javascript:checkLogin()" class="button">{{ site._('Sign in') }}</a>
+            <br class="clear"/>
+
+            <input type="hidden" id="pkey" value="{{ pkey }}"/>
+        </div>
+
+    {% endblock %}
+
+    <script type="text/javascript">
+      $(function () {
+        function encryptPwd() {
+          if (!$('#rawlogin').val())
+            return;
+
+          var encrypt = new JSEncrypt();
+          encrypt.setPublicKey($('#pkey').val());
+
+          if ($('#rawlogin').val()) {
+            $('#auth-login').val(encrypt.encrypt($('#rawlogin').val()));
+          }
+
+          if ($('#rawpassword').val()) {
+            $('#auth-password').val(encrypt.encrypt($('#rawpassword').val()));
+          }
+          $('form#auth').submit();
+        }
+
+        $('.button').click(encryptPwd);
+
+        $(document).keydown(function (event) {
+          if (event.which == 13) {
+            encryptPwd();
+          }
+        });
+
+
+      });
+    </script>
+{% endblock %}
